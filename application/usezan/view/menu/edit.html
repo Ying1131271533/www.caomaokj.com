@@ -1,0 +1,58 @@
+{include file="public/header" /}
+<div class="mainbox animated fadeInRight">
+  <div class="mainnav_title">
+      <a class="on">导航修改</a>
+      <a class="add-edit" href="{:url('menu/index')}?tree={$tree_id}">[<b class="uzfont uzico-fanhui"></b>返回列表]</a>
+      <a class="bth-rand fr" href="javascript:location.replace(location.href);" title="刷新"><b class="uzfont uzico-shuaxin"></b></a>
+    </div>
+<form name="myform" id="myform" action="" method="post">
+<table cellpadding="0" cellspacing="0" class="table_form" width="100%">
+	<tr>
+		<td width="120"><font color="red">*</font>导航名称</td>
+		<td><input type="text" name="title" class="title input-text" value="{$menu['title']}" size="20" validate="required:true,minlength:2,maxlength:150"/>&nbsp;<a href="javascript:;" class="getmenu"><font color="red">[快速选择]</font></a></td>
+	</tr>
+	<tr>
+	  <td>路径</td>
+	  <td><input type="text" name="url" class="murl input-text" size="20" value="{$menu['url']}" /></td>
+	</tr>
+	<tr>
+	  <td>跳转方式：</td>
+	  <td>
+	  	<select name="target">
+			<option {if condition="$menu['target'] eq '_self'"}selected{/if} value="_self">本窗口</option>
+			<option {if condition="$menu['target'] eq '_blank'"}selected{/if} value="_blank">新窗口</option>
+		</select>
+	  </td>
+	</tr>
+	<tr>
+		<td>状态</td>
+        <td>
+	        <input type="radio" class="input_radio" name="status" {if condition="$menu['status']"}checked{/if} value="1"> 显示
+	        <input type="radio" class="input_radio" name="status" {if condition="!$menu['status']"}checked{/if} value="0"> 不显示
+        </td>
+	</tr>
+</table>
+<div  class="btn">
+    <input type="hidden" name="id" value="{$menu['id']}" />
+    <input type="hidden" name="catid" class="catid" value="{$menu['catid']}" />
+	<input type="submit" value="{:lang('dosubmit')}" class="button" />
+	<input type="reset"  value="{:lang('cancel')}" class="button" />
+</div>
+</form>
+</div>
+</body>
+<script type="text/javascript">
+$(function () {
+	$(".getmenu").on("click",function () {
+		layer.open({
+		  type: 2,
+		  title: '选择栏目ID[只能单选]',
+		  shadeClose: true,
+		  shade: 0.8,
+		  area: ['600px', '80%'],
+		  content: "{:url('ajax/getcid')}?menu=1"
+	    });
+	});
+})
+</script>
+</html>

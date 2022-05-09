@@ -1,0 +1,134 @@
+{extend name="layout/base" /}
+{block name="title"}{$service.name}{/block}
+{block name="load"}
+
+<!-- css -->
+<link href="__MCSS__/5g.css?{$time}" rel="stylesheet" type="text/css">
+<link href="__MCSS__/service_detail.css" rel="stylesheet" type="text/css">
+<link href="__MCSS__/swiper.min.css" rel="stylesheet" type="text/css">
+<style type="text/css">
+    .layui-layer-content{
+        text-align: center;
+    }
+    img {
+        vertical-align: middle;
+        border-style: none;
+        max-width: 100%;
+    }
+</style>
+<!-- js -->
+<script src="__MJS__/swiper.min.js" type="text/javascript"></script>
+
+{/block}
+<!-- 主体内容 -->
+{block name="main"}
+    <div class="container" id="pjax_main" style="margin-top: 4px;">
+        <div class="header-info">
+            <div class="qrcode" id="showqrcode">查看二维码</div>
+            <div class="avatar">
+                <a href="https://www.amz123.com/prouser-141.htm" style="color:#fff;"> <img src="{$service.image}"></a>
+            </div>
+            <div class="uname">
+                <a href="https://www.amz123.com/prouser-141.htm" style="color:#fff;">{$service.name}</a>
+            </div>
+            <div class="desc">{$service.description}</div>
+        </div>
+        <div class="userinfo">
+            <div class="gw">官网：<a href="{$service.url}" target="_blank">{$service.url}</a></div>
+            <!-- <div class="lx">联系电话：<span>18588782360</span></div>
+            <div class="qq">QQ：<span>619169279</span></div> -->
+        </div>
+        <div class="menu-nav">
+            <nav class="nav-wrap" id="navds">
+                <ul class="clearfix" style="display: flex;/*flex-wrap: wrap;*/">
+                    {notempty name="$service.detail.featured"}
+                    <li class="active"><a class="sroll" href="#s1">主推服务</a></li>
+                    {/notempty}
+                    {notempty name="$service.detail.content"}
+                    <li><a class="sroll" href="#s3">服务介绍</a></li>
+                    {/notempty}
+                </ul>
+            </nav>
+        </div>
+        <div class="akali" style="height: 0.49rem;width: 100%;background: #ffffff;display: none;"></div>
+        <div class="content">
+
+            {notempty name="$service.detail.featured"}
+            <div class="boxtitle" id="s1">主推服务</div>
+
+            <div style="display: flex;flex-wrap: wrap">
+                {foreach $service.detail.featured as $value}
+                <div class="zhutuilist">
+                    <div class="thumb">
+                        <a href="javascript:;"> <img src="{$value.0}"></a>
+                    </div>
+                    <a class="contents" href="javascript:;" style="color:#444">{$value.2}</a>
+                </div>
+                {/foreach}
+            </div>
+
+            {/notempty}
+
+            {notempty name="$service.detail.content"}
+            <div style="border-top:1px solid #eee">
+                <div class="boxtitle" id="s3">服务介绍</div>
+                <div style="word-break:break-word;" class="htmldesc">
+                    <p></p>
+                    {$service.detail.content|raw}
+                    <p></p>
+                </div>
+            </div>
+            {/notempty}
+
+            <div class="swiper-container swiper-container-initialized swiper-container-horizontal"></div>
+        </div>
+    </div>
+    <div style="display: none" id="qrcodetpl">
+        <div style="align-content: center;"><img src="{$service.wechat}" style="width: 70%;"></div>
+    </div>
+{/block}
+
+{block name="script"}
+<script src="__MJS__/jquery-3.1.0.js" type="text/javascript"></script>
+<script src="__MJS__/nav.js"></script>
+<script>
+    $('#navds').navScroll({
+        scrollSpy: true,
+    });
+
+    $('body').on('click', '#showqrcode', function() {
+        let h = $('#qrcodetpl').html();
+        layer.open({
+          type: 1,
+          content: h // 这里content是一个普通的String
+        });
+        // $.alert(h);
+    })
+    
+</script>
+<script>
+
+    // 滚动固定顶部的导航
+    $(window).scroll(function() {
+        var top = $(window).scrollTop();
+        $('#home-search').css("position", "absolute");
+        if(top > 332){
+            $('.nav-wrap').addClass('fixed');
+            $('.akali').css("display", "block");
+        } else {
+            $('.nav-wrap').removeClass('fixed');
+            $('.akali').css("display", "none");
+        }
+    });
+
+    var swiper = new Swiper('.swiper-container', {
+        slidesPerView: 2,
+        spaceBetween: 30,
+        direction: 'horizontal',
+        pagination: {
+            el: '.swiper-pagination-zlzz',
+            clickable: true,
+        },
+    });
+</script>
+{/block}

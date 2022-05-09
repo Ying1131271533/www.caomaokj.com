@@ -1,0 +1,201 @@
+{extend name="layout/base" /}
+{block name="title"}{$community.name}{/block}
+{block name="load"}
+<!-- css -->
+<link rel="stylesheet" href="__AMZCSS__/swiper.min.css">
+<link rel="stylesheet" type="text/css" href="__AMZCSS__/font_2020772_ylpwq57cfto.css">
+<link rel="stylesheet" type="text/css" href="__AMZCSS__/wuliu.css">
+<link rel="stylesheet" href="__SCSS__/production-detail.css">
+<!-- js -->
+<script src="__AMZJS__/swiper-02.min.js"></script>
+<style>
+    .edit_condit{ align-items: center;text-align: center; }
+    .edit_condit p{ width:900px; }
+    .edit_condit p img{ width:900px; }
+</style>
+{/block}
+<!-- 主体内容 -->
+{block name="main"}
+<main id="body" style="margin-top: 109px;">
+    <div class="container">
+    </div>
+    <link rel="stylesheet" type="text/css" href="__AMZCSS__/font_2020772_ylpwq57cfto.css">
+    <link rel="stylesheet" type="text/css" href="__AMZCSS__/common(2).css">
+    <style>
+        .textarea>div p {
+            font-size: 16px;
+            color: #666;
+            line-height: 28px;
+        }
+
+
+        .boxtitle {
+            margin: 15px 0;
+        }
+
+        .hr {
+            width: 100%;
+            background: #ddd;
+            height: 1px;
+            margin: 40px 0;
+        }
+    </style>
+    <div class="header-info">
+        <div class="container">
+            <div class="avatar">
+                <img src="{$community.logo}">
+            </div>
+            <div class="contents">
+                <div class="c-title">{$community.name}</div>
+                <div class="desc">{$community.description}</div>
+                <div class="hinfo">
+                    <!-- {notempty name="$community.qq"}<div class="qq">QQ：{$community.qq}</div>{/notempty} -->
+                    <div class="gw">官网：<a href="{$community.url}" target="_blank" style="color:#ff4300">立即访问</a></div>
+                    {notempty name="$community.connect"}<div class="lx">联系方式：{$community.connect}</div>{/notempty}
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="navmenu" style="width: 100%">
+        <nav class="nav-wrap" id="navds" style="width:1100px;margin:0 auto;">
+            <ul class="clearfix" style="display: flex;flex-wrap: wrap;">
+                {notempty name="$community.detail.introduction"}
+                <li><a class="sroll active" href="#s3">简介</a></li>
+                {/notempty}
+                {notempty name="$community.imgs.0"}
+                <li><a class="sroll" href="#s1">网站详情</a></li>
+                {/notempty}
+            </ul>
+        </nav>
+    </div>
+    <div class="container">
+        <div class="content">
+            <div class="container" style="padding:20px 0; padding-top: 70px;">
+
+                {notempty name="$community.detail.introduction"}
+                <div class="hr"></div>
+                <div class="textarea"style="width: 70%;line-height: 25px;">
+                    <div class="boxtitle" id="s3">简介</div>
+                    <div style="word-break:break-word;" class="edit_condit" >{$community.detail.introduction|raw}</div>
+                </div>
+                {/notempty}
+                {notempty name="$community.imgs"}
+                <div class="textarea" style="margin-bottom:100px;">
+                    <div class="boxtitle" id="s1">网站详情</div>
+                    <div style="display: flex;flex-wrap: wrap">
+
+                        {foreach $community.imgs as $value}
+                        <div class="zhutuilist">
+                            <div class="thumb" style="height: auto;">
+                                <img src="{$value.path}" style="cursor:pointer;height: auto;" onclick="open_img(this)" >
+                            </div>
+                        </div>
+                        {/foreach}
+                       
+                    </div>
+                </div>
+                {/notempty}
+            </div>
+        </div>
+    </div>
+</main>
+<script src="__AMZJS__/nav.js"></script>
+<script>
+    // 滚动固定顶部的导航
+    $(window).scroll(function() {
+        var top = $(window).scrollTop();
+        if (top < 250) {
+            $('.header').show();
+        } else {
+            $('.header').hide();
+        }
+    });
+
+    $('.fitem').click(function() {
+        window.open($(this).attr('dhref'));
+    });
+
+    $(document).ready(function() {
+        $('.navmenu').find('li').eq(0).find('a').addClass('active')
+        // var navHeight = $('header').height() + $('.banner').height()+30;
+        var navHeight = $('header').height() + 250;
+        // console.log(navHeight);
+        var left = 0;
+        var width = $('.catetitle').width()
+        if ($(this).scrollTop() >= navHeight) {
+            $('.navmenu').addClass('fixed').css({ width: '100%' })
+        } else {
+            $('.navmenu').removeClass('fixed').css({ width: '100%' })
+        }
+        $(window).scroll(function() {
+            if ($(this).scrollTop() >= navHeight) {
+                $('.navmenu').addClass('fixed').css({ width: width })
+            } else {
+                $('.navmenu').removeClass('fixed').css({ width: width })
+            }
+        })
+    })
+
+    //内容信息导航锚点
+    $('.nav-wrap').navScroll({
+        mobileDropdown: true,
+        mobileBreakpoint: 768,
+        scrollSpy: true
+    });
+</script>
+<script>
+    // 点击自动滚动
+    $(document).on('click', '.course-cate-name', function() {
+        var top = $(window).scrollTop();
+        if (top < 470) {
+            var attr_cate_data = $(this).attr('attr-cate-data');
+            $(this).addClass('current_active').siblings().removeClass('current_active');
+            $(this).css('border-bottom', '1px solid #fc9d27').siblings().css('border-bottom', '0px solid #fc9d27');
+            if (attr_cate_data == 0) {
+                $("html, body").animate({
+                    scrollTop: 0
+                }, {
+                    duration: 500,
+                    easing: "swing"
+                });
+            } else {
+                var height = $('.cate-' + attr_cate_data).offset().top - 120 + "px";
+                $("html, body").animate({
+                    scrollTop: $('.cate-' + attr_cate_data).offset().top - 120 + "px"
+                }, {
+                    duration: 500,
+                    easing: "swing"
+                });
+            }
+
+            $('.header').show();
+        } else {
+            var attr_cate_data = $(this).attr('attr-cate-data');
+            $(this).addClass('current_active').siblings().removeClass('current_active');
+            $(this).css('border-bottom', '1px solid #fc9d27').siblings().css('border-bottom', '0px solid #fc9d27');
+            if (attr_cate_data == 0) {
+                $("html, body").animate({
+                    scrollTop: 0
+                }, {
+                    duration: 500,
+                    easing: "swing"
+                });
+            } else {
+                var height = $('.cate-' + attr_cate_data).offset().top - 70 + "px";
+                $("html, body").animate({
+                    scrollTop: $('.cate-' + attr_cate_data).offset().top - 70 + "px"
+                }, {
+                    duration: 500,
+                    easing: "swing"
+                });
+            }
+
+            $('.header').hide();
+        }
+
+
+        return false;
+
+    });
+</script>
+{/block}

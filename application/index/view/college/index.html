@@ -1,0 +1,130 @@
+{extend name="layout/base" /}
+{block name="title"}草帽学院{/block}
+
+<!-- 加载文件 -->
+{block name="load"}
+<!-- css -->
+<link rel="stylesheet" href="__XCSS__/course.css">
+<!-- js -->
+<script src="__XJS__/swiper.js"></script>
+{/block}
+
+<!-- 主体内容 -->
+{block name="main"}
+
+    <!-- 轮播图 -->
+    <div class="layui-carousel" id="test1" style="margin-top:129px;">
+        <div carousel-item>
+            {foreach $banner as $key => $value}
+            <div><a href="{$value.url}"><img src="{$value.thumb}" style="width:100%;"></a></div>
+            {/foreach}
+        </div>
+    </div>
+
+    <script>
+    layui.use('carousel', function(){
+      var carousel = layui.carousel;
+      //建造实例
+      carousel.render({
+        elem: '#test1'
+        ,width: '100%' //设置容器宽度
+        //,arrow: 'always' //始终显示箭头
+        //,anim: 'updown' //切换动画方式
+      });
+    });
+    </script>
+
+    <!--***************************导航结束******************************** -->
+    <div class="course_body">
+        <div class="doiphin-banner swiper-container-fade swiper-container-initialized swiper-container-horizontal"
+            style="overflow: hidden;position: relative">
+            <div class="swiper-wrapper" style="transition-duration: 0ms;">
+            </div>
+            <!-- Add Arrows -->
+            <div
+                class="swiper-pagination swiper-pagination-white swiper-pagination-clickable swiper-pagination-bullets">
+            </div>
+            <span class="swiper-notification" aria-live="assertive" aria-atomic="true"></span>
+        </div>
+
+        <div class="course_nav" style="z-index: 99999999;">
+            <div style="width: 1200px;height: 48px;margin: 0 auto;">
+                <span style="border-bottom: 1px solid #fc9d27;" attr-cate-data="0" class="course_nav_span pointer course-cate-name current_active">全部</span>
+                {foreach $category as $key => $value}
+                <span class="course_nav_span pointer course-cate-name course-cate-nav-{$key+1}" attr-cate-data="{$key+1}" style="border-bottom: 0px solid #fc9d27;">{$value.catname}</span>
+                {/foreach}
+            </div>
+        </div>
+
+        <div class="course_container">
+
+            <div class="course_tips">火热报名中</div>
+            <div class="top_ongoing_div">
+
+                {foreach $college as $key => $value}
+                <a href="{:url('college/detail', ['id' => $value.id])}">
+                    <div class="ongoing_list">
+                        <div class="ongoing_list_img" style="background: url({$value.thumb});background-size: 100% 100%;background-position: center center;">
+
+                            {if $value.end_time > time()}
+                            <div class="course_title_tips">{$value.category.catname}</div>
+                            {else/}
+                            <div class="course_title_tips" style="background: #9FA0A3;" data-coursetype="{$value.category.catname}">已结束</div>
+                            {/if}
+                        </div>
+
+                        <div class="ongoing_list_title">{$value.title}</div>
+                        <div class="ongoing_list_date">{:date('Y-m-d H:i:s', $value.start_time)} 至 {:date('Y-m-d H:i:s', $value.end_time)}</div>
+                        <div class="ongoing_list_address">
+                            <span class="pull-left">{$value.address}</span>
+                            <span class="pull-right price_span">¥{:number_format($value.tickets.0.discount_price, 2)}</span>
+                        </div>
+                    </div>
+                </a>
+                {/foreach}
+            </div>
+
+
+            {foreach $category as $key => $value}
+            <div id="cate-{$key+1}" class="course_tips cate-{$key+1}" cate-attr="{$key+1}">{$value.catname}</div>
+            <div class="top_ongoing_div">
+
+                {foreach $college as $k => $val}
+                {if $value.id == $val.category.id}
+                <a href="{:url('college/detail', ['id' => $val.id])}">
+                    <div class="ongoing_list">
+                        <div class="ongoing_list_img"
+                            style="background: url({$val.thumb});background-size: 100% 100%;background-position: center center;">
+                            <div class="course_title_tips">{$value.catname}</div>
+                        </div>
+
+                        <div class="ongoing_list_title">{$val.title}</div>
+                        <div class="ongoing_list_date">{:date('Y-m-d H:i:s', $val.start_time)} 至 {:date('Y-m-d H:i:s', $val.end_time)}</div>
+                        <div class="ongoing_list_address">
+                            <span class="pull-left">{$val.address}</span>
+                            <span class="pull-right price_span">¥{:number_format($val.tickets.0.discount_price, 2)}</span>
+                        </div>
+                    </div>
+                </a>
+                {/if}
+                {/foreach}
+
+            </div>
+            {/foreach}
+
+        </div>
+    </div>
+
+    <script src="__XJS__/course.js?{$time}"></script>
+    <script>
+        //从底部超链接跳转过来的锚点
+        var target_url = localStorage.getItem("target_url");
+        if (target_url) {
+            $("body,html").animate({
+                scrollTop: $("#" + target_url).offset().top - 90
+            }, 0);
+            localStorage.removeItem("target_url");
+        }
+    </script>
+
+{/block}

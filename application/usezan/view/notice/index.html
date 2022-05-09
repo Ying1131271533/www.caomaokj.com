@@ -1,0 +1,25 @@
+{include file="public/header" /}
+<div class="mainbox animated fadeInRight">
+	<div class="mainnav_title">
+	    <a href="{:url('notice/index')}?tree={$tree_id}" class="on">发布公告</a>
+	    <a class="bth-rand fr" href="javascript:location.replace(location.href);" title="刷新"><b class="uzfont uzico-shuaxin"></b></a>
+    </div>
+<form name="myform" id="myform" action="" method="post">
+<div class="content_2">
+	<div class="tabbox" style="display:block;">
+		<table cellpadding="0" cellspacing="0" class="table_form" width="100%">
+			<tr>
+				<td width="90">公告说明</td>
+				<td>
+					<textarea name="title" cols="60" rows="6" validate="required:true,minlength:5,maxlength:200," placeholder="通知公告"></textarea>
+				</td>
+			</tr>
+		</table>
+	</div>
+</div>
+<div id="btnbox" class="btn">
+	<input type="submit" value="发送公告" class="button" />
+	<input type="reset" value="{:lang('cancel')}" class="button" />
+</div>
+</form>
+</div>

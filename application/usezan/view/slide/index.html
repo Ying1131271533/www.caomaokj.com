@@ -1,0 +1,70 @@
+{include file="public/header" /}
+<div class="mainbox animated fadeInRight">
+  <div class="mainnav_title">
+      <a class="on">幻灯列表</a>
+      {include file="public/menu_right" /}
+      <a class="bth-rand fr" href="javascript:location.replace(location.href);" title="刷新"><b class="uzfont uzico-shuaxin"></b></a>
+    </div>
+<table  class="search_table" width="100%">
+  <tr>
+    <td class="search">
+      <form action="{:url('slide/index')}" method="get">
+        <input id="title" type="text" class="input-text" name="keyword" value="{$Think.get.keyword}" />
+        <input type="hidden" name="tree" value="{$tree_id}"/>
+        <input type="submit" value="{:lang('chaxun')}"  class="button" />
+        <a href="{:url('slide/index')}" class="button">重置</a>
+      </form>
+    </td>
+  </tr>
+</table>
+<form name="myform" id="myform" action="" method="post">
+<div class="table-list">
+  <table width="100%" cellspacing="0">
+    <thead>
+  		<tr>
+  			<th width="30">{:lang('listorder')}</th>
+  			<th width="40">ID</th>
+        <th width="180" align="center">位置</th>
+  			<th width="180" align="left">{:lang('title')}</th>
+  			<th width="220" align="center">{:lang('thumb')}</th>
+  			<th width="50" align="center">{:lang('status')}</th>
+  			<th align="left">{:lang('manage')}</th>
+  		</tr>
+  	</thead>
+  	<tbody>
+  	 {volist name="list" id="v"}
+		  <tr>
+          <td width="40" align='center'>
+              <input name='listorders[{$v.id}]' type='text' size='3' value='{$v.listorder}' class='input-text-c' />
+          </td>
+          <td align="center">{$v['id']}</td>
+          <td align="center">{$v['catname']}</td>
+          <td align="left">
+              <input type="hidden" class="inputcheckbox" value="{$v['id']}" />
+              <input class="ajax-title w75" type="text" name="title" value="{$v['title']}" onchange="Gettitle($(this),'');" /><i class="ajax-title-i uzfont"></i>
+          </td>
+          <td align="left"><img src="{$v['thumb']}" width="135" style="cursor:pointer;" onclick="open_img(this)" /></td>
+          <td align="center">
+            {eq name="v['status']" value="1"}
+                  <a class="bth-a ajax-status" onclick="StatusAjax($(this));" data-href="{:url('ajax/statusajax')}?id={$v['id']}&status=0"></a>
+              {else /}
+                  <a class="bth-a error-c ajax-status" onclick="StatusAjax($(this));" data-href="{:url('ajax/statusajax')}?id={$v['id']}&status=1"></a>
+            {/eq}
+          </td>
+          <td align="left">
+              <a href="{:url('slide/edit')}?id={$v['id']}&tree={$tree_id}&cid={$v['cid']}">{:lang('edit')}</a> |
+              <a href="javascript:confirm_delete('{:url(\'slide/del\')}?id={$v["id"]}&tree={$tree_id}')">{:lang('delete')}</a>
+          </td>
+  		</tr>
+      {/volist}
+  	</tbody>
+  </table>
+  <div class="btn">
+      <input type="button" class="button"  value="提交<?php echo lang('listorder');?>" onclick="myform.action='{:url(\'slide/listorder\')}';$('#myform').submit();" />
+  </div>
+</div>
+</form>
+</div>
+<div id="pages" class="page">{$list|raw}</div>
+</body>
+</html>

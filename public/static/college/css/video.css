@@ -1,0 +1,142 @@
+/* ===========  2020-8-25 改版  ===== */
+
+.banner_course img {
+    width: 100%;
+}
+
+.content {
+    width: 1200px;
+    margin: 0 auto;
+}
+
+.nav {
+    width: 100%;
+    height: 48px;
+    line-height: 48px;
+    border-bottom: 1px solid #ddd;
+    color: #555;
+    /*margin: 20px 0px;*/
+}
+
+.nav li {
+    width: 130px;
+    display: inline-block;
+    font-size: 16px;
+    text-align: center;
+    cursor: pointer;
+    font-weight: bold;
+}
+
+.nav li:hover {
+    color: #0089FF;
+    border-bottom: 1px solid #0089FF;
+}
+
+.nav .current_active {
+    color: #0089FF;
+    border-bottom: 1px solid #0089FF;
+}
+
+.content .title {
+    font-size: 16px;
+    color: #333;
+    margin: 25px 0;
+    padding-left: 20px;
+    border-left: 3px solid #0089FF;
+}
+
+.course-list {
+    /*display: flex;*/
+    /*flex-flow: row wrap;*/
+    /*justify-content: space-between;*/
+    width: 100%;
+    overflow: hidden;
+}
+
+.course-item {
+    float: left;
+    width: 24%;
+    height: 261px;
+    border: 1px solid #f0f0f0;
+    margin-bottom: 15px;
+    margin-right: 10px;
+}
+
+.course-item:hover{
+    background: #FFFFFF;
+    border: 1px solid #F0F0F0;
+    box-shadow: 0px 0px 11px 2px rgba(0, 0, 0, 0.13);
+}
+
+.course-item .item-img {
+    position: relative;
+}
+
+.course-item img {
+    width: 100%;
+    height: 155px;
+}
+
+.course-item .shadow {
+    width: 100%;
+    height: 155px;
+    text-align: center;
+    line-height: 155px;
+    position: absolute;
+    top: 0;
+    background-color: rgba(0, 0, 0, 0.3);
+}
+
+.course-item .item-info {
+    margin: 15px;
+}
+
+.course-item .item-info p {
+    margin-bottom: 15px;
+}
+
+.course-item .item-info .item-title {
+    font-size: 16px;
+    color: #333;
+    height: 40px;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    display: -webkit-box;
+    -webkit-line-clamp: 2;
+    line-clamp: 2;
+    -webkit-box-orient: vertical;
+}
+
+
+.course-item .item-info .item-desc {
+    font-size: 12px;
+    color: #999;
+}
+
+.course-item .item-info .item-tag {
+    padding: 3px 10px;
+    background-color: #FC583D;
+    color: #fff;
+    border-radius: 4px;
+}
+
+.nav_position_fixed {
+    position: fixed;
+    top: 0;
+    width: 100%;
+    background: #F6F6F8;
+    color: #333;
+    z-index: 100;
+}
+.swiper-pagination-white .swiper-pagination-bullet-active {
+    background: #ffffff;
+    opacity: 1;
+}
+.swiper-pagination-bullet {
+    width: 8px;
+    height: 8px;
+    display: inline-block;
+    border-radius: 100%;
+    background: yellow;
+    opacity: 0.5;
+}

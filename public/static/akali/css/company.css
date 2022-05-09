@@ -1,0 +1,589 @@
+/**************************首页************************************/
+/*侧边栏*/
+.home .sidebar {
+	position: fixed;
+	width: 180px;
+	height: 100%;
+	background: #eee;
+	font-size: 16px;
+	color: #555;
+}
+
+.home .nav-sidebar {
+	margin-left: -15px;
+	margin-right: -15px;
+}
+
+.home .nav-sidebar>li {
+	border-bottom: 1px solid #ddd;
+	padding-left: 35px;
+	height: 50px;
+	line-height: 25px;
+}
+
+.home .nav-sidebar>li:first-child {
+	height: 75px;
+	line-height: 45px;
+}
+
+.home .nav-sidebar .tab3-menu {
+	margin-top: 15px;
+}
+
+.home .nav-sidebar .tab3-menu li {
+	height: 50px;
+}
+
+/*中间*/
+.home-menu {
+	margin-top: 22px;
+}
+
+.home .main {
+	margin-left: 172px;
+	margin-right: 28px;
+}
+
+.home .main .media {
+	background: #fff;
+	width: 720px;
+	padding: 20px 17px 15px 20px;
+}
+
+.home .main .media .media-body a {
+	color: #aaa;
+	padding-top: 0;
+	padding-bottom: 0;
+}
+
+.home .main .media .media-body .navbar-left li a {
+	color: #f7cec5;
+	padding: 0;
+}
+
+.home .main .media .media-body .navbar-left li a img {
+	width: 15%;
+}
+
+.home .main .media .media-body .navbar-left li .navbar-time {
+	color: #aaa;
+	line-height: 22px;
+}
+
+.home .main .btn-more {
+	width: 720px;
+}
+
+/*右侧*/
+.home .common-right .list-inline span {
+	color: #aaa;
+	font-size: 12px;
+}
+/*******************海外观察*********************/
+/*评论*/
+.home-comment input {
+	width: 92%;
+	height: 50px;
+	border: transparent;
+	border-left: 2px solid #ff7600;
+	padding-left: 10px;
+	margin: 15px 0;
+}
+
+.home-comment ul li {
+	height: 45px;
+}
+
+.home-comment .fa {
+	font-size: 18px;
+	color: #aaa;
+	margin-right: 5px;
+}
+
+.home-comment img {
+	width: 5%;
+}
+
+/******************文章*************************/
+.article {
+	margin-top: 20px;
+	margin-bottom: 20px;
+}
+
+.article .main {
+	padding: 40px 46px;
+	background: #fff;
+}
+
+.article .article-main {
+	text-indent: 2em;
+	padding-bottom: 30px;
+}
+
+.article .main .icons a {
+	color: #ff9e00;
+}
+/*评论*/
+.article .home-comment .comment-btn {
+	display: block;
+	height: 34px;
+	line-height: 34px;
+	margin: 5px auto;
+}
+/****************个人页******************/
+.all-banner, .all-article {
+	background: #fff;
+	padding: 20px 45px 25px;
+	margin-bottom: 1px;
+}
+
+.all-banner {
+	height: 230px;
+}
+
+.all-banner .person-letter {
+	/*   width: 65px; */
+	height: 25px;
+	line-height: 10px;
+	margin-top: 20px;
+}
+
+.all-banner .banner-about {
+	height: 117px;
+	overflow: hidden;
+	margin: 10px 0;
+}
+
+.all-banner .total {
+	margin-top: 30px;
+}
+
+.xun {
+    background: #fff;
+    color: #555;
+    border: 1px solid #ddd;
+}
+.xun:hover {
+    background: #fff;
+    color: #555!important;
+    border: 1px solid #ddd;
+}
+
+/*私信*/
+.main .all-article {
+	padding:0px;
+	min-height: 200px;
+}
+/*分页*/
+.pager li a {
+	padding: 3px 10px;
+}
+
+.pager li:nth-child(2) a {
+	border: none;
+}
+/*红人个人页-海外观察*/
+.hot-popole .oversea-article ul.nav-pills.pull-right>li:nth-child(1) {
+	float: left;
+}
+
+.hot-popole .oversea-article ul.nav-pills.pull-right>li:nth-child(2) {
+	height: 40px;
+	line-height: 40px;
+}
+/*私信模态框*/
+.modal-header {
+	border-bottom: transparent;
+}
+
+.media-body .total span {
+	margin-right: 20px;
+}
+
+.media-body .total b {
+	/* 	color: #ff7600; */
+
+}
+
+.nav-pills>li.active>a, .nav-pills>li.active>a:focus, .nav-pills>li.active>a:hover
+	{
+	color: #555;
+	background-color: transparent;
+	border-bottom: 2px solid #ff7600;
+	margin-bottom: 5px;
+	-webkit-border-radius: 0;
+	-moz-border-radius: 0;
+	border-radius: 0;
+}
+
+.nav-pills li {
+	font-weight: 600;
+	font-size: 16px;
+	margin: 0 15px;
+}
+
+.tab-content .country_div, .tab-content .post {
+	padding: 10px 15px;
+}
+
+.tab-content .country_div .country_title {
+	font-size: 16px;
+	font-weight: 600;
+	padding: 0 30px 0 25px;
+}
+
+.tab-content .country_div a {
+	/*padding-right: 25px;*/
+	display: inline-block;
+	color: #ff7600;
+	padding: 10px;
+}
+
+.all-content .all-article .country_div a {
+
+}
+
+.user_thumb {
+	width: 202px;
+	height: 202px;
+	 border: 1px solid #eee
+}
+
+.service_logo_128 {
+	display: inline-block;
+	width: 128px;
+	height: 128px;
+	text-align: center;
+	background-color: #fff;
+	border-radius: 50%;
+}
+
+.service_desc {
+	padding-left: 60px;
+}
+
+/*FAQ*/
+.all-content .faq-list {
+	background: #fff;
+}
+
+.all-content .faq-header h4 {
+	height: 40px;
+	background: #fafafa;
+	margin-top: 10px;
+}
+
+.all-content .faq-header .input-group {
+	margin-top: 15px;
+	width: 100%;
+}
+
+.all-content .faq-header .input-search {
+	background: #f4f4f5;
+	padding: 20px 0;
+	text-align: center;
+}
+
+.all-content .input-group input {
+	height: 32px;
+	padding-left: 10px;
+	margin-right: 10px;
+	width: 50%;
+	border: none;
+}
+
+.all-content .input-group .btn {
+	height: 32px;
+	line-height: 32px;
+	background: #ff7600;
+	color: #fff;
+	padding: 0 20px;
+	vertical-align: middle;
+	-webkit-border-radius: 0;
+	-moz-border-radius: 0;
+	border-radius: 0;
+}
+
+.all-content .all-article.question {
+	padding-top: 0;
+}
+
+.all-content .all-article .question-list {
+	padding: 15px 10px;
+	border-bottom: 1px solid #ddd;
+}
+
+.all-content .question-list li {
+	padding: 5px 0;
+	overflow: hidden;
+	word-wrap: break-word;
+}
+
+.all-content .question-list li span.icon {
+	color: #fff;
+	display: inline-block;
+	width: 25px;
+	height: 20px;
+	text-align: center;
+	margin-right: 10px;
+}
+
+.all-content .question-list li span.icon-q {
+	background: #ff7600;
+}
+
+.all-content .question-list li span.icon-a {
+	background: #88aacd;
+}
+
+.all-content .question-list li a {
+	color: #1976d3;
+}
+
+.company .main {
+	margin-top: 30px;
+}
+
+.faq-header {
+	margin: 0 20px;
+}
+
+.layer_div {
+	padding: 20px;
+	line-height: 22px;
+	font-weight: 300;
+}
+
+.layer_div label {
+	padding: 10px 20px 0 0;
+	cursor: pointer;
+}
+
+.laypage {
+	text-align: right;
+	margin-right: 20px;
+}
+
+.news-list {
+	padding: 10px 0;
+}
+
+.media .media-left img.alticle_img {
+	width: 185px;
+	height: 115px;
+}
+
+.news_desc {
+	height: 60px;
+}
+
+p {
+	margin: 0 0 10px;
+}
+
+.bot_tips {
+	position: relative;
+	/* bottom: -10px; */
+	color: #aaaaaa;
+	font-size: 13px;
+}
+
+.post-poster {
+	padding-right: 15px;
+	color: #ff7600;
+	font-size: 12px;
+	text-decoration: none;
+}
+
+.post-tags {
+	float: right;
+}
+
+.post-tags .glyphicon {
+	padding-left: 10px;
+	padding-right: 5px;
+	top: -1px;
+}
+
+a:hover {
+	color: #ff7600;
+	text-decoration: none;
+}
+
+.banner-about a:hover {
+	color: #555;
+}
+
+.qq-talk {
+	float: right;
+	color: #999;
+}
+
+.tab-content .post h4 {
+	margin-bottom: 20px;
+	padding: 12px;
+	line-height: 0px;
+	border-left: 3px solid #ff7600;
+	border-radius: 0 2px 2px 0;
+}
+
+.post .all span {
+	margin-right: 20px;
+}
+
+.tab-content .area, .tab-content .all {
+	margin-top: 20px;
+}
+
+.tab-content .area div {
+	margin: 10px 0;
+}
+
+.tab-content .best .bestrow div {
+	background: #f4f4f5;
+	width: 32%;
+	float: left;
+	overflow: auto;
+}
+
+.tab-content .best .bestrow .div1, .tab-content .best .bestrow .div2 {
+	margin-right: 2%;
+}
+
+.bestrow {
+
+}
+
+.bestrow h1 {
+	text-align: center;
+	font-size: 20px;
+	font-weight: 300;
+	margin: 10px 0;
+}
+
+.bestrow p {
+	padding: 10px;
+	line-height: 24px;
+	height: 200px;
+}
+
+.fa-qq {
+	padding-right: 5px;
+}
+
+.bestrow tr th, .bestrow tr td {
+	padding: 5px;
+}
+
+table tr th, table tr td {
+	padding: 5px;
+}
+
+.partner_item {
+	border-bottom: 1px solid #f0f0f0;
+	padding: 25px 15px;
+	margin-bottom: 18px;
+	overflow: hidden;
+}
+
+.partner_logo {
+	width: 182px;
+	height: 65px;
+	float: left;
+	text-align: center;
+	margin: 38px auto;
+}
+
+.partner_logo img {
+	height: 80px;
+}
+
+.partner_info {
+	padding-left: 20px; padding-right: 15px;
+	float: left;
+	margin-left: 20px !important;
+	border-left: 1px solid #f0f0f0;border-right: 1px solid #f0f0f0;
+	width: 514px;
+}
+.partner_info p{ color: #757575}
+
+.partner_info .partner_name {
+	font-size: 18px;
+	color: #555;
+	padding-bottom: 10px;
+}
+
+.partner_join {
+	width: 154px;
+	float: left;
+	text-align: center;
+}
+
+.partner_info>p {
+	font-size: 14px;
+	color: #555;
+	margin: 0;
+	line-height: 28px;
+}
+
+.partner_join .join-bnt {
+	color: #555;
+	border-color: #ff8400;
+	height: 30px;
+	font-size: 14px;
+	border-radius: 2px;
+	width: 85px;
+	line-height: 18px;
+	background: #fff;
+	margin-top: 50px;
+}
+
+.partner_join .join-bnt:hover {
+	color: #fff;
+	border-color: #ff7600;
+}
+
+.partner_join .join-bnt:hover{ background: #ff8400; color: #fff}
+.partner_join .join-bnt
+
+/*---zhangbing ---*/
+.user_thumb {width: 202px;height: 202px;border-radius: 0; border: 1px solid #f5f5f5;}
+.service_desc .media-heading { font-size: 18px; color: #333; margin-top: 20px;}
+.all-banner .total{ margin-top: 10px;    height: 40px;line-height: 40px;}
+.service_desc .banner-about{ color: #555; line-height: 180%}
+.all-content .faq-header h4{ margin-top: 0px; background: #fff;    padding-left: 15px; font-size: 18px;}
+.total .fa,.total a{ color: #999}
+
+.media-body .total b{ font-weight: normal;}
+.nav-pills{ border-bottom: 1px solid #f5f5f5}
+.nav-pills>li.active>a, .nav-pills>li.active>a:focus, .nav-pills>li.active>a:hover{ margin-bottom: 0px; border-bottom: 1px solid #ff7600}
+.nav-pills>li.active>a, .nav-pills>li.active>a:focus, .nav-pills>li.active>a:hover{ color: #ff7600}
+
+.all-article .nav-pills li a{ font-weight: normal; font-size: 18px;}
+.tab-content > .tab-pane{ padding: 10px 15px;}
+.partner_item{padding: 25px 0px;}
+.partner_join .join-bnt{ width: 114px; height: 40px;transition: all .4s; color: #ff8400}
+
+.platform_div>.partner_item:last-child { }
+.faq-header{ margin: 0px;}
+.faq-header h4{ border-bottom: 1px solid #f5f5f5; }
+.all-content .faq-header .input-search{ margin: 0px 15px ; padding: 10px 0px;}
+.input-search .fa{ color: #fff}
+.all-content .all-article .question-list{ padding: 15px 0px;}
+.all-banner, .all-article{    padding: 20px 15px 20px 15px;}
+.faq-list .all-article{ padding: 0px 15px;}
+ .all-content .all-article .question-list{ border-bottom: 1px solid #f5f5f5}
+ .service_desc {
+    padding-left: 13px;
+}
+.service_logo_128 {display: inline-block;width: 202px;height: 134px;}
+.partner_item{ margin-bottom: 0px;}
+.all-banner {height: 242px;}
+.news-list{ padding: 10px 15px;}
+.all-article>h4{ padding-left: 15px;}
+
+
+body .layui-layer-btn .layui-layer-btn0{
+	border-color: #ff7600;
+    background-color: #ff8400;
+}

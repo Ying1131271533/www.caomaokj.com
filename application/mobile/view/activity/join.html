@@ -1,0 +1,83 @@
+{extend name="layout/base" /}
+{block name="title"}{$activity.title}{/block}
+{block name="load"}
+<!-- css -->
+<link rel="stylesheet" href="__MCSS__/activity_join.css">
+<link rel="stylesheet" href="__MCSS__/main.css">
+<link rel="stylesheet" href="__MCSS__/custom.css?{$time}">
+<style type="text/css">
+    .i-checks .icheckbox_square-green{
+        margin-bottom: 6px;
+    }
+</style>
+
+<!-- js -->
+<script type="text/javascript" src="__MJS__/icheck.min.js"></script>
+<script type="text/javascript" src="__MJS__/activity_join.js?{$time}"></script>
+<!-- layui -->
+<!-- <link rel="stylesheet" href="__ALAYUI__/css/layui.css">
+<script src="__ALAYUI__/layui.js"></script> -->
+
+{/block}
+<!-- 主体内容 -->
+{block name="main"}
+<div class="container">
+    <div class="site-index">
+        <div class="ac-name">
+            <div class="title">{$activity.title}</div>
+            <div class="price">
+                门票类型：<b>普通票（¥{:sprintf("%.2f", $activity.discount)}）</b>
+            </div>
+            <div class="detail">
+                <p>地点：{$activity.address}</p>
+                <p>时间：{:date('Y-m-d H:i:s', $activity.starttime)} 至 {:date('Y-m-d H:i:s', $activity.endtime)}</p>
+                <!-- <p>费用说明：看台1-26排</p> -->
+            </div>
+        </div>
+        <form class="joinForm">
+            <!-- <input type="hidden" name="af_id" value="1433" title="票种名称"> -->
+            <input type="hidden" name="activity_id" value="{$activity.id}">
+            <div class="group">
+                <div class="fee-tips">填写报名人信息</div>
+                <div>姓名<span class="red">*</span></div>
+                <!-- input -->
+                <div><input class="form-control type_name" type="text" name="name" placeholder="请输入您的姓名"></div>
+                <div>公司名<span class="red">*</span></div>
+                <!-- input -->
+                <div><input class="form-control type_name" type="text" name="company" placeholder="请输入您的公司名"></div>
+                <div>手机<span class="red">*</span></div>
+                <!-- input -->
+                <div><input class="form-control type_phone" type="text" name="phone" placeholder="请输入您的手机号码"></div>
+                <div>请输入验证码<span class="red">*</span></div>
+                <div>
+                    <input maxlength="6" class="form-control" style="width:50%;display: inline" placeholder="必填" type="text" name="code">
+                    <button class="btn btn-code" type="button" onclick="getCode();">获取验证码</button>
+                </div>
+                
+                <div>4.您的需求/问题？<span class="red">*</span></div>
+                <!-- input -->
+                <div>
+                    <input type="text" placeholder="请输入您的管理需求/问题？" name="demand" class="form-control type_other">
+                </div>
+            </div>
+
+            {gt name="$activity.shop_num" value="1"}
+            <div style="margin-top:-10px;">
+                <span style="display:inline;margin-left:10px;">数量：</span>
+                <input class="btn-default" style="background: #fc9d27;width: 20px;height: 20px;color:#fff;" type="button" value="-" onclick="decrease()">
+                <span class="num" style="font-size: 15px;">1</span>
+                <input class="btn-default" style="background: #fc9d27;width: 20px;height: 20px;color:#fff;" type="button" value="+" onclick="increase({$activity.shop_num})">
+            </div>
+            {/gt}
+            <input type="hidden" name="number" value="1" class="number_up">
+
+            <div><button class="btn btn-join" type="button" onclick="join(1049)">立刻报名</button></div>
+            <div class="form-check text-center" style="padding-bottom: 20px;">
+                <label class="form-check-label">
+                    <input type="checkbox" class="form-check-input is_check" value="" style="vertical-align:middle;"> <span style="font-weight: normal;vertical-align:top;">我已阅读，理解并接受<a style="color: #FC9D27;" href="{:url('activity/agreement')}">《草帽跨境服务协议》</a></span>
+                </label>
+            </div>
+        </form>
+    </div>
+</div>
+{/block}

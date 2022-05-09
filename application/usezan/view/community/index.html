@@ -1,0 +1,84 @@
+{include file="public/header" /}
+<div class="mainbox animated fadeInRight">
+	<div class="mainnav_title">
+	    <a class="on">行业社群列表</a>
+		<a class="add-edit " href="{:url('community/add')}">[<b class="uzfont uzico-add"></b>行业社群添加]</a>
+	    <a class="bth-rand fr" href="javascript:location.replace(location.href);" title="刷新"><b class="uzfont uzico-shuaxin"></b></a>
+    </div>
+<table  class="search_table" width="100%">
+	<tr>
+		<td class="search">
+			<form action="{:url('community/index')}" method="post">
+				<input id="title" type="text" class="input-text" name="keyword" placeholder="行业社群名称搜索" value="{:input('keyword')}" />
+				<select class="catid" name="status">
+					<option value="" {eq name="$status" value=""}selected{/eq}>状态</option>
+					<option value="2" {eq name="$status" value="2"}selected{/eq}>开启</option>
+					<option value="1" {eq name="$status" value="1"}selected{/eq}>关闭</option>
+				</select>
+				<input type="hidden" name="tree" value="{$tree_id}"/>
+				<input type="submit" value="{:lang('chaxun')}"  class="button" />
+				<!-- <input type="reset" value="{:lang('reset')}" class="button"  /> -->
+				<a href="{:url('community/index')}" class="button">重置</a>
+			</form>
+		</td>
+	</tr>
+</table>
+<form name="myform" id="myform" action="" method="post">
+<div class="table-list">
+    <table width="100%" cellspacing="0">
+		<thead>
+            <tr>
+				<th width="20">ID</th>
+				<th width="50">排序</th>
+				<th width="200">名称</th>
+				<th width="200">logo</th>
+				<th width="200">官方网站</th>
+				<th width="right">{:lang('createtime')}</th>
+				<th width="50">{:lang('STATUS')}</th>
+				<th align="left">{:lang('manage')}</th>
+			</tr>
+        </thead>
+      	<tbody>
+			{foreach $list as $value}
+			<tr height="70">
+				<td width="20" align="center">{$value['id']}</td>
+
+				<td  width="50" align='center'><input name='sort[{$value.id}]' type='text' size='3' value='{$value.sort}' class='input-text-c'></td>
+
+				<td align="center">{$value['name']}</td>
+
+				<td align="center"><img height="70" src="{$value['logo']?$value['logo']:'__UIMG__/nodata.svg'}" style="cursor:pointer;" onclick="open_img(this)" /></td>
+
+				<td align="center">{$value['url']}</td>
+
+				<td align="center">{$value.create_time}</td>
+
+				<td align="center">
+                    <a onclick="ajax_status(this)" data-id="{$value.id}" data-url="{:url('ajax/status', ['id' => $value.id, 'value' => $value.status, 'field' => 'status', 'db' => 'community'])}" class="bth-a ajax-status {$value.status == 1 ?: 'error-c'}"></a>
+                </td>
+
+                <td align="left">
+                    <a href="{:url('community/edit', ['id' => $value.id])}">修改</a> |
+                    <a href="javascript:del({$value.id});">删除</a>
+                </td>
+
+			</tr>
+			{/foreach}
+      	</tbody>
+    </table>
+    <div class="btn">
+	    <input  type="button" class="button" value="{:lang('listorder')}" onclick="myform.action='{:url(\'community/sort\')}';$('#myform').submit();" />
+    </div>
+</div>
+</form>
+</div>
+<div id="pages" class="page">{$list|raw}</div>
+
+<script type="text/javascript">
+function del(id) {
+    layer.confirm('确定要删除吗', function(index) {
+        window.location.href = "{:url('community/del')}?id=" + id;
+        layer.close(index);
+    });
+}
+</script>

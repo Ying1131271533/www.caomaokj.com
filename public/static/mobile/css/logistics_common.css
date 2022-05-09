@@ -1,0 +1,822 @@
+input::-webkit-input-placeholder, textarea::-webkit-input-placeholder {
+    color: #ccc;
+}
+
+input:-moz-placeholder, textarea:-moz-placeholder {
+    color: #ccc;
+}
+
+/*html5标签*/
+header, footer, section, article, aside, nav, figure {
+    display: block;
+}
+
+/*长英文字母 数字 换行*/
+p {
+    word-break: break-all;
+    word-wrap: break-word;
+}
+
+/*去除长按a链接弹框*/
+html, body {
+    -webkit-touch-callout: none;
+}
+
+/*css 初始化 */
+input {
+    padding-top: 0;
+    padding-bottom: 0;
+    font-family: "SimSun", "宋体";
+}
+
+select, input {
+    vertical-align: middle;
+}
+
+select, input, textarea {
+    font-size: 14px;
+    margin: 0;
+}
+
+/*禁止手动修改大小*/
+textarea {
+    resize: none;
+}
+
+/*清除浮动*/
+s, i, em {
+    font-style: normal;
+    text-decoration: none;
+}
+
+/*公共类*/
+.al {
+    text-align: left;
+}
+
+.ac {
+    text-align: center;
+}
+
+.ar {
+    text-align: right;
+}
+
+.pr {
+    position: relative;
+}
+
+.pa {
+    position: absolute;
+}
+
+.hide {
+    display: none;
+}
+
+/*css初始化完成*/
+.yellow {
+    background: #ff8d00;
+    color: #fff;
+}
+
+.header_left {
+    float: left;
+    padding-left: 10px;
+}
+
+.header_right {
+    float: right;
+    padding-right: 10px;
+}
+
+/* .header {
+	background: #ff8d00 url(/img/logo-m.png) no-repeat center center;
+	background-size: 33%;
+	width: 100%;
+	font-size: 1.6rem;
+	height: 50px;
+	line-height: 50px;
+} */
+/*私信*/
+.private-letter {
+    position: fixed;
+    bottom: 0;
+    background: #fff;
+    width: 100%;
+    -webkit-box-sizing: border-box;
+    -moz-box-sizing: border-box;
+    box-sizing: border-box;
+    height: 50px;
+    z-index: 1; /*手风琴悬浮到后面*/
+}
+
+.company-name {
+    line-height: 50px;
+    padding-left: 10px;
+    width: 67%;
+    display: inline-block;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+
+.btn-comments .btn {
+    width: 60px;
+    height: 50px;
+    font-size: 14px;
+    color: #fff;
+}
+
+.btn-comments .btn-letter {
+    background: #ff8d00;
+}
+
+.btn-comments .btn-inquiry {
+    background: #f35327;
+}
+
+.tab3 {
+    padding-right: 10px;
+}
+
+@media only screen and (max-width: 375px) {
+    .company-name {
+        width: 64%;
+    }
+}
+
+@media only screen and (max-width: 320px) {
+    .company-name {
+        width: 58%;
+    }
+}
+
+/*common*/
+.container {
+    width: 100%;
+}
+
+body {
+    overflow-x: hidden;
+    overflow-y: auto;
+    background: #f5f5f5;
+    font-size: 0.14rem;
+}
+
+/*主体内容*/
+.main .media {
+    background: #fff;
+    margin-top: 10px;
+    padding: 10px;
+}
+
+.main .media.media-top {
+    margin-top: 60px;
+}
+
+.main .media h4 {
+    font-size: 0.14rem;
+}
+
+.main .media span {
+    font-size: 0.14rem;
+    color: #aaa;
+}
+
+.main .media .media-img {
+    padding: 10px 0;
+}
+
+.main .media .media-img .img-div + .img-div {
+    margin-left: 10px;
+}
+
+.main .media .media-img img {
+    width: 100%;
+}
+
+.main .media .navbar-nav a img {
+    width: 16%;
+}
+
+.main .media .navbar-nav a span.a-text {
+    color: #f7cec5;
+}
+
+.main .nav-tabs {
+    display: flex;
+    width: 100%;
+}
+
+.main .nav-tabs > li {
+    float: left;
+    text-align: center;
+    height: 22px;
+    line-height: 22px;
+    margin: 10px 0 0;
+}
+
+.main .nav-tabs > li {
+    border-right: 1px solid #ddd;
+}
+
+.main .nav-tabs > li:last-child {
+    border: none;
+}
+
+.main .media .media-left {
+    flex: 0 0 31.4%;
+    padding-right: 10px;
+}
+
+.main .media .media-left a img {
+    width: 100%;
+}
+
+.main .media-side .navbar-nav {
+    padding: 5px 0 0;
+}
+
+.main .btn-full {
+    width: 100%;
+    height: 34px;
+    background: #eee;
+    font-size: 0.12rem;
+    color: #3f3f3f;
+    font-weight: bold;
+}
+
+.main .media-side .media-title {
+    display: flex;
+    align-items: flex-start;
+}
+
+.main .media-side .media-title a {
+    margin-right: 1em;
+}
+
+.main .media-side .media-title h4 {
+    display: inline;
+    padding-right: 20px;
+}
+
+.main .media-side .media-time {
+    color: #aaa;
+}
+
+/*找海外仓*/
+.find-oversea .find-search {
+    height: 30px;
+    padding: 20px 10px 10px 10px;
+    background: #fff;
+}
+
+.find-oversea .find-search .form-group {
+    position: relative;
+    width: 75%;
+    float: left;
+}
+
+.find-oversea input.input-text {
+    outline: none;
+    font-size: 0.12rem;
+    height: 28px;
+    border: 1px solid #ff8d00;
+    width: 97%;
+    padding-left: 5px;
+    border-right: 0;
+}
+
+.find-oversea .btn-find {
+    background: transparent;
+    color: #ff8d00;
+    border: 1px solid #ff8d00;
+    text-align: center;
+    width: 30%;
+    height: 30px;
+    line-height: 29px;
+    position: absolute;
+    top: 0;
+    right: 0;
+}
+
+.find-oversea .submit_btn {
+    height: 30px;
+    padding-left: 2%;
+    width: 22%;
+    float: left;
+}
+
+.find-oversea .btn-issue {
+    height: 30px;
+    width: 100%;
+    background: #ff8d00;
+    color: #fff;
+}
+
+/*搜索无结果*/
+.search-tips {
+    background: #fff;
+    height: 100%;
+    text-align: center;
+}
+
+.search-tips .tips-img img {
+    width: 66%;
+    margin: 20px 0;
+}
+
+.search-tips .tips-title {
+    color: #2d2727;
+    line-height: 23px;
+    font-size: 14px;
+}
+
+.search-tips .tips-add {
+    margin: 20px 0;
+}
+
+.search-tips .tips-add .btn {
+    height: 30px;
+    width: 25%;
+    background: transparent;
+    color: #ff8d00;
+    border: 1px solid #ff8d00;
+    border-radius: 2px;
+}
+
+/*下拉框选择*/
+.find-oversea .find-lists {
+    margin-top: 10px;
+}
+
+.find-oversea .list-select {
+    padding: 5px 0;
+    background: #fafafa;
+}
+
+.find-oversea .list-select select {
+    min-width: 32%;
+    min-height: 30px;
+    padding-left: 12px;
+    background: transparent;
+}
+
+/*图片详情*/
+.find-oversea .list-detail .media-body a, .find-oversea .list-detail .media-body .fa,
+.find-oversea .list-detail .media-body .scole-num {
+    color: #ff9e00;
+}
+
+.find-oversea .list-detail .media-body .fa.fa-star.gray {
+    color: #d8d8d8;
+}
+
+.find-oversea .list-detail .media {
+    margin-top: 0;
+    border-bottom: 1px solid #e5e5e5;
+}
+
+.find-oversea .list-detail .media-body h4 {
+    font-size: 0.16rem;
+    padding: 5px 0;
+}
+
+.find-oversea .list-detail .media-body h4 .area {
+    float: right;
+}
+
+.find-oversea .list-detail .media-body h4 .area b {
+    font-weight: 500;
+    color: #ff8d00;
+}
+
+.find-oversea .list-detail .media-body p {
+    line-height: 25px;
+}
+
+.find-oversea .list-detail .media-body p span.title {
+    color: #2d2727;
+}
+
+.find-oversea .list-detail .media-body p span.data {
+    color: #555;
+}
+
+.find-oversea .list-detail .media-body p.info i, .find-oversea .list-detail .media-body p.info a {
+    color: #999;
+    margin-right: 8px;
+}
+
+.find-oversea .media-top {
+    width: 100%;
+}
+
+.find-oversea .media-top img {
+    width: 100%;
+}
+
+/*海外仓详情*/
+.main .pl10 {
+    padding-left: 10px;
+    padding-right: 10px;
+}
+
+.footer .container div:last-child {
+    height: 60px;
+}
+
+.layer_div {
+    padding: 10px;
+}
+
+.layer_div .askForm {
+    font-size: 0.14rem;
+}
+
+.layer_div .askForm .form-control {
+    display: block;
+    width: 100%;
+    height: 27px;
+    padding: 0 5px;
+    font-size: 14px;
+    background-color: #fff;
+    background-image: none;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    -webkit-box-shadow: inset 0 1px 1px rgba(0, 0, 0, .075);
+    box-shadow: inset 0 1px 1px rgba(0, 0, 0, .075);
+    -webkit-transition: border-color ease-in-out .15s, -webkit-box-shadow ease-in-out .15s;
+    -o-transition: border-color ease-in-out .15s, box-shadow ease-in-out .15s;
+    transition: border-color ease-in-out .15s, box-shadow ease-in-out .15s;
+}
+
+.layer_div .askForm .checkbox label {
+    padding: 10px 10px 0 0;
+    display: inline-block;
+}
+
+.laypage {
+    text-align: right;
+    padding-right: 10px;
+    margin-top: 15px;
+}
+
+.quetion_div {
+    font-size: 0.14rem;
+    margin-top: 0;
+    padding-top: 0;
+}
+
+.question-list li span {
+    line-height: 20px;
+}
+
+.ui-autocomplete {
+    height: 220px;
+    overflow-y: auto;
+    overflow-x: hidden;
+}
+
+.ui-widget-content {
+    border: 1px solid #ff8d00;
+    color: #222222;
+    z-index: 9999;
+}
+
+.top-warehouse {
+    /* padding: 10px; */
+    text-align: center;
+    margin:0 10px;
+    /* margin-bottom: 10px; */
+}
+
+.top-warehouse p {
+    font-size: 0.16rem;
+    text-align: left;
+    /* border-bottom: 2px solid #ff8d00; */
+}
+
+.top-warehouse a img {
+    width: 100%;
+    margin-top: 10px;
+}
+
+/*2018-6-12 bing*/
+.find-lists .haiwaic li {
+    width: 33%; /*单独设置*/
+}
+
+.haiwaic {
+    border: none !important
+}
+
+.find-oversea .list-detail .media {
+    margin-top: 0;
+    border-bottom: 0px solid #f5f5f5;
+}
+
+.main .media {
+    background: #f5f5f5;
+    padding: 4px 6px;
+    overflow: hidden;
+}
+
+.media-box {
+    background: #fff;
+    border-radius: 4px;
+    padding-bottom: 5px;
+}
+
+.media-side .media-box .media-body {
+    margin-left: 5px;
+    margin-right: 5px;
+}
+
+.find-oversea .find-search {
+
+}
+
+.header-sort {
+    background: #fff;
+    padding: 6px 0px 0px 0px;
+    margin-bottom: 5px;
+}
+
+.find-lists .find-select {
+    margin-bottom: 0px;
+}
+
+.header-sort a {
+    color: #757575
+}
+
+.header-sort .selected a {
+    background: #ff8d00
+}
+
+.find-oversea .find-search {
+    background: #ffb252
+}
+
+.find-oversea .find-search .form-group {
+    width: 100%;
+}
+
+.find-oversea .media-top img {
+    border-radius: 4px 4px 0px 0px;
+}
+
+.find-oversea .find-search {
+    padding: 10px 10px 10px 10px;
+}
+
+.find-lists .find-select {
+    background: #f5f5f5
+}
+
+.find-lists .select-items {
+    margin: 0px 0 5px 0;
+    /*padding: 7px 0px 2px 0px;*/
+}
+
+.find-lists .select-items li a.a-box {
+    background: #fff ;
+    color: #555;
+    line-height: 28px;
+}
+
+.cart:before {
+    color: #ff8d00;
+}
+
+.find-lists .select-items li .outside-box {
+    background: #efefef;
+    height: auto;
+    border: none;
+    border-radius: 4px;
+}
+
+.find-lists .find-select .dropdown-sub li {
+    width: 46%;
+    margin-right: 5.5%;
+}
+
+.find-lists .find-select .dropdown-sub {
+    padding: 0 0.12rem;
+    height: 212px;
+    overflow: auto;
+    overflow-x: hidden;
+    border-top: 1px solid #ddd;
+}
+
+.header-sort {
+    border-bottom: #f0f0f0 1px solid;
+}
+
+.dropdown-sub li.cur div.menu-text {
+    color: #fff;
+    background: #ff8d00;
+    border-bottom: 1px solid #f2982d;
+}
+
+.cur .icon-checkmark {
+    color: #fff;
+}
+
+.find-lists .find-select .dropdown-sub .cur {
+    background: #ff8d00;
+}
+
+.find-lists .find-select .dropdown-sub li {
+    border-radius: 4px;
+}
+
+.dropdown-sub li div.menu-text {
+
+}
+
+.find-lists .find-select .dropdown-sub {
+    padding: 0 0.08rem;
+}
+
+.select-items > li > a > .icon-checkmark {
+    color: #ff8d00
+}
+
+.find-lists .find-select .dropdown-sub li:nth-child(even) {
+    margin-right: 0px;
+}
+
+.find-lists .select-items li a.btn-check {
+    background: #efefef;
+    color: #555;
+    border: none;
+}
+
+.find-lists .select-items li.cur a.btn-check {
+    color: #ff8d00;
+    border: none
+}
+
+.header-sort dt {
+    text-align: left;
+    padding-left: 10px;
+    width: 38px;
+}
+
+.header-sort dd {
+    margin-right: 10px;
+}
+
+.find-oversea .btn-find {
+    background: #fff;
+}
+
+.submit_btn {
+    display: none;
+}
+
+.find-lists .select-items {
+    margin: 0px;
+    /*border-bottom: 1px solid #e2e2e2;*/
+    background: #fff;
+}
+
+.find-lists .select-items .outside-box a {
+    color: #ff8d00 !important
+}
+
+.find-oversea .find-lists {
+    margin-bottom: 6px;
+}
+
+.top-warehouse > p {
+    line-height: 220%
+}
+
+.main0 {
+    margin: 0px !important;
+}
+
+.find-oversea input.input-text, .find-oversea .btn-find {
+    border: none;
+    height: 32px;
+    line-height: 32px;
+}
+
+.find-oversea .btn-find {
+    border-left: 1px solid #ffb252
+}
+
+.search-tips {
+    background: #fff;
+    height: 100%;
+    text-align: center;
+    width: 98%;
+    margin: 0 auto;
+    border-radius: 4px;
+}
+
+@media screen and (max-width: 321px) {
+    .find-lists .select-items li a.a-box {
+        width: 82px;
+        display: block; /*内联对象需加*/
+        word-break: keep-all;
+        white-space: nowrap;
+        overflow: hidden;
+        /*text-overflow:ellipsis*/;
+    }
+}
+
+/* 筛选条件新样式-2018-07-13 */
+.topmenu {
+    width: 100%;
+}
+
+.topmenu dt {
+    width: 33.3%;
+    float: left;
+}
+
+.selectlist {
+    width: 100%;
+    height: auto;
+    box-sizing: border-box;
+}
+
+.select_textdiv {
+    height: 0.3rem;
+    width: 100%;
+    line-height: 0.3rem;
+    text-align: center;
+    position: relative;
+}
+
+.s_text {
+    display: inline-block;
+    width: 80%;
+}
+
+.select_textul {
+    width: 100%;
+    line-height: 0.3rem;
+    box-sizing: border-box;
+    display: none;
+    width: 980px;
+    max-height: 2rem;
+    overflow-y: scroll;
+    height: 100%;
+}
+
+.select_first_ul {
+    width: 100%;
+    background: #fff;
+    position: absolute;
+    box-sizing: border-box;
+    left: 0;
+}
+
+.select_first_ul > li {
+    padding: 0 0.05rem;
+    box-sizing: border-box;
+}
+
+.select_first_ul > li > p {
+    width: 35%;
+    padding: 0 0.01rem;
+    box-sizing: border-box;
+    border-bottom: 1px #b1b1b1 solid;
+}
+
+.focus > p {
+    border-bottom: 1px #FF9800 solid !important;
+    color: #FF9800;
+}
+
+.select_second_ul {
+    width: 65%;
+    position: absolute;
+    right: 0px;
+    top: 0;
+    background: #eaeaea;
+    display: none;
+    box-sizing: border-box;
+    /*z-index: 1;*/
+}
+
+.focusli {
+    background: #ffb252;
+    color: #FFFFFF;
+}
+
+.select_second_ul > li {
+    padding: 0 0.05rem;
+    box-sizing: border-box;
+    border-bottom: 1px solid #eaeaea;
+}
+
+.header-sort a {
+    color: #757575;
+}

@@ -1,0 +1,159 @@
+
+<!-- 热门文章 最新文章 -->
+<div style="">
+    <style>
+        .index-right h4 {
+            overflow: hidden;
+            color: #3f3f3f;
+            font-size: 16px;
+            font-weight: 500;
+            padding: 0 10px;
+        }
+
+        .star_and_top_jzc .hot-article ul {}
+
+        .star_and_top_jzc .hot-article ul li {
+            /*border-bottom: 1px solid #ddd;*/
+            font-size: 14px;
+            /*padding: 10px 0;*/
+            color: #555555;
+            white-space: nowrap;
+            overflow: hidden;
+            overflow: hidden;
+            text-overflow: ellipsis;
+        }
+
+        .star_and_top_jzc .hot-article ul li {
+            color: #555555;
+        }
+
+        .star_and_top_jzc .hot-article b {
+            display: inline-block;
+            width: 22px;
+            height: 20px;
+            color: #ff7600;
+            text-align: center;
+            font-weight: bold;
+            margin-right: 5px;
+        }
+
+        .star_and_top_jzc .hot-title li a {
+            font-size: 18px;
+            color: #333;
+        }
+
+        .star_and_top_jzc #user .logo-box img {
+            width: 56px;
+            height: 56px;
+            border-radius: 50%;
+        }
+
+        .star_and_top_jzc #user ul li {
+            padding-top: 10px;
+            padding-bottom: 10px;
+        }
+
+        .star_and_top_jzc #user ul li .user-btn {
+            line-height: 45px;
+            padding-left: 0;
+        }
+
+        .star_and_top_jzc #user ul li .user-home {
+            display: inline-block;
+            width: 64px;
+            background: #ff7600;
+            color: #fff;
+            border-radius: 4px;
+            height: 28px;
+            line-height: 28px;
+            text-align: center;
+        }
+
+        .star_and_top_jzc .tab-content ul li {
+            border-bottom: 0px solid #ddd;
+        }
+
+        .star_and_top_jzc .nav-pills>li.active>a,
+        .nav-pills>li.active>a:focus,
+        .nav-pills>li.active>a:hover {
+            color: #ff7600;
+            background-color: transparent;
+        }
+
+        .star_and_top_jzc #article ul li,
+        #article_new ul li {
+            padding: 10px 0;
+        }
+
+        .star_and_top_jzc #article ul li:hover{
+            /*border-left: 3px solid #ff7600;*/
+        }
+
+        .star_and_top_jzc {
+            background: #fff;
+            clear: both;
+            /*border-bottom: 1px solid #ddd;*/
+        }
+
+        .star_and_top_jzc .hot-article {
+            padding: 0 10px;
+        }
+
+        .star_and_top_jzc .nav-pills li,
+        .nav-pills li.active {
+            width: 49%;
+            text-align: center;
+        }
+
+        .star_and_top_jzc>.nav-pills li,
+        .nav-pills li.active a {
+            /*font-size: 18px !important;*/
+            color: #ff7600 !important;
+        }
+
+        .hot_title_jzc {
+            border-bottom: 1px solid #F5F5F5;
+        }
+
+        .hot_title_jzc .active {
+            border-bottom: 2px solid #ff7600;
+        }
+
+        .hot-article ul li a:hover {
+            color: #ff7600;
+        }
+    </style>
+    <div class="star_and_top_jzc">
+        <ul class="nav nav-pills hot-title hot_title_jzc" role="tablist">
+            <li class="active"><a href="{:url('home/index')}#article" data-toggle="pill">跨境头条</a>
+            </li>
+            <li><a href="{:url('home/index')}#article_new" data-toggle="pill">最新头条</a></li>
+        </ul>
+
+        <div class="tab-content">
+            <div id="article" class="tab-pane hot-article active">
+                <ul>
+
+                    {foreach $hotArticle as $key => $value}
+                    <li><b class="">{$value.num}F</b>
+                        <a title="{$value.title}" target="_blank" href="{:url('home/article', ['id' => $value.id])}">{$value.title}</a>
+                    </li>
+                    {/foreach}
+                    
+                </ul>
+            </div>
+            <div id="article_new" class="tab-pane hot-article">
+                <ul>
+
+                    {foreach $newArticle as $key => $value}
+                    <li><b class="icon-num{$value.num}">{$value.num}F</b>
+                        <a title="{$value.title}" target="_blank" href="{:url('home/article', ['id' => $value.id])}"> {$value.title} </a>
+                    </li>
+                    {/foreach}
+
+                </ul>
+            </div>
+        </div>
+
+    </div>
+</div>

@@ -1,0 +1,330 @@
+{extend name="layout/base" /}
+{block name="title"}报名的活动{/block}
+{block name="load"}
+
+<!-- css -->
+<link rel="stylesheet" href="__ACSS__/site.css">
+<link rel="stylesheet" type="text/css"href="__ACSS__/jquery.editable-select.css" >
+
+<!-- js -->
+<script src="__AJS__/jquery.editable-select.js"></script>
+{/block}
+
+<!-- 主体内容 -->
+{block name="main"}
+        <div class="container body-container">
+            <div class="site-body">
+                <!-- 左边导航 -->
+                {include file="layout/user_nav" /}
+
+                <!-- 右侧 -->
+                <div class="left_cont">
+                    <style>
+                        .post-title {
+                            width: 130px;
+                        }
+                        
+                        .star-sign {
+                            color: red;
+                        }
+                        
+                        .goods_detail {
+                            text-indent: 5px;
+                        }
+                    </style>
+                    <div class="main-info">
+                        <h1 class="site-h1">活动开票</h1>
+
+                        <div class="post-article">
+                            <div class="tab-content">
+                                <form id="postForm" name="postForm">
+                                    <table class="table details-table detail-table">
+                                        <tbody>
+                                            <input type="hidden" id="activity_id" name="activity_id" value="72173">
+                                            <input type="hidden" name="type" value="1">
+
+                                            <tr>
+                                                <td class="post-title"><span class="star-sign">*</span>销售方：</td>
+                                                <td>广东威速易信息科技有限公司</td>
+                                            </tr>
+
+                                            <tr>
+                                                <td class="post-title"><span class="star-sign">*</span>发票类型：</td>
+                                                <td>电子普通发票</td>
+                                            </tr>
+
+                                            <tr>
+                                                <td class="post-title"><span class="star-sign">*</span>购方类型：</td>
+                                                <td>
+                                                    <input type="hidden" class="buyerType_info" value="0">
+                                                    <select name="buyerType" class="buyerType form-control">
+                                                        <option value="01">企业及非企业性单位</option>
+                                                        <option value="03">个人</option>
+                                                    </select>
+                                                </td>
+                                            </tr>
+
+                                            <tr class="company_tr company_list_none">
+                                                <td class="post-title"><span class="star-sign">*</span>公司名称：</td>
+                                                <td>
+                                                    <!--                        <div class="input-group">-->
+                                                    <!--                            <input type="text" autocomplete="off" name="buyerName"   class="form-control company_name" placeholder="请输入公司名称">-->
+                                                    <!--                            <span style="cursor: pointer;background: #ff7600;color:#fff;" class="input-group-addon find_company">点击智能检索企业</span>-->
+                                                    <!--                        </div>-->
+                                                    <input type="text" autocomplete="off" class="form-control buyerTaxNo" name="buyerName" value="" placeholder="请输入公司名称">
+
+                                                </td>
+                                            </tr>
+
+                                            <!--                <tr class="company_tr company_list" style="display: none">-->
+                                            <!--                    <td class="post-title"><span class="star-sign">*</span>公司名称：</td>-->
+                                            <!--                    <td>-->
+                                            <!--                        <select  id="editable-select" class="select_company_list form-control">-->
+                                            <!---->
+                                            <!--                        </select>-->
+                                            <!--                        <input type="hidden" name="buyerName" class="form-control buyerName_select" value="" placeholder="">-->
+                                            <!--                    </td>-->
+                                            <!--                </tr>-->
+
+                                            <tr class="company_tr">
+                                                <td class="post-title"><span class="star-sign">*</span>公司税号：</td>
+                                                <td><input type="text" autocomplete="off" class="form-control buyerTaxNo" name="buyerTaxNo" value="" placeholder="请输入公司税号"></td>
+                                            </tr>
+
+                                            <!--               <tr  class="company_tr">
+                    <td class="post-title">企业开票地址：</td>
+                    <td><input type="text" autocomplete="off" class="form-control buyerAddr" name="buyerAddr" value=""  placeholder="请输入开票地址"></td>
+                </tr>
+
+                <tr  class="company_tr">
+                    <td class="post-title">企业开票电话：</td>
+                    <td><input type="text" autocomplete="off" class="form-control buyerTele" name="buyerTele" value=""  placeholder="请输入开票电话"></td>
+                </tr>
+
+                <tr  class="company_tr">
+                    <td class="post-title">企业开户银行：</td>
+                    <td><input type="text" autocomplete="off" class="form-control buyerBankName" name="buyerBankName" value=""   placeholder="请输入开户银行"></td>
+                </tr>
+
+                <tr  class="company_tr">
+                    <td class="post-title">企业银行账号：</td>
+                    <td><input type="text" autocomplete="off" class="form-control buyerBankNum" name="buyerBankNum" value=""  placeholder="请输入银行账号"></td>
+                </tr>-->
+
+                                            <tr class="personal_tr" style="display: none;">
+                                                <td class="post-title"><span class="star-sign">*</span>发票抬头：</td>
+                                                <td><input type="text" autocomplete="off" class="form-control buyerName_personal" value="" placeholder="请输入发票抬头"></td>
+                                            </tr>
+
+                                            <tr>
+                                                <td colspan="2">
+                                                    <hr style="border: 0.5px solid #ddd;">
+                                                </td>
+                                            </tr>
+
+
+                                            <tr>
+                                                <td class="post-title"><span class="star-sign">*</span>接收发票手机：</td>
+                                                <td><input type="text" autocomplete="off" class="form-control buyerMobile" name="buyerMobile" value="" placeholder="请输入手机号码"></td>
+                                            </tr>
+
+                                            <tr>
+                                                <td class="post-title"><span class="star-sign">*</span>接收发票邮箱：</td>
+                                                <td><input type="text" autocomplete="off" class="form-control buyerEmail" name="buyerEmail" value="" placeholder="请输入电子邮箱"></td>
+                                            </tr>
+
+                                            <tr>
+                                                <td class="post-title goods_detail">商品明细：</td>
+                                                <td>
+                                                    <input type="hidden" value="{$order.id}" name="ap_id">
+                                                    <p>活动名称：{$activity.title}</p>
+                                                    <p>类目名称：草帽跨境活动</p>
+                                                    <p>订单号：{$order.order_sn}</p>
+                                                    <p>金额：{:sprintf("%.2f", $order.total)}元</p>
+                                                </td>
+                                            </tr>
+
+                                        </tbody>
+                                    </table>
+                                </form>
+                                <div class="button-div text-right">
+                                    <button class="btn btn-success" id="btn_save">提交</button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <script>
+                        $(function() {
+                            $('.personal_tr').hide();
+                            $('.buyerType').change(function() {
+                                var type = $(this).val();
+
+                                if (type == '01') {
+                                    $('.company_tr').show();
+                                    $('.personal_tr').hide();
+                                    $('.buyerName_personal').removeAttr('name');
+                                    $('.buyerName_select').attr('name', 'buyerName');
+                                } else {
+                                    $('.company_tr').hide();
+                                    $('.personal_tr').show();
+                                    $('.buyerName_personal').attr('name', 'buyerName');
+                                    $('.buyerName_select').removeAttr('name');
+                                }
+                            })
+
+                            var buyerType_info = $('.buyerType_info').val();
+                            if (buyerType_info != 0) {
+                                $('.buyerType').trigger('change');
+                            }
+
+
+                            $(".find_company").click(function() {
+                                var company_name = $(this).prev('.company_name').val();
+                                var loading = layer.load();
+                                $.ajax({
+                                    url: '/activity/get-company-code-by-key-word',
+                                    data: {
+                                        'company_name': company_name
+                                    },
+                                    type: 'post',
+                                    dataType: 'json',
+                                    success: function(res) {
+                                        layer.close(loading);
+                                        layer.msg('请选择为您查询到的企业', {
+                                            icon: 1,
+                                            time: 3000
+                                        });
+                                        if (res.state == 1) {
+                                            var html = '<option value="">请选择为您查询到的企业</option>';
+                                            $.each(res.data, function(key, val) {
+                                                html += '<option class="select_company_option" data-code="' + val.code + '" value="' + val.name + '">' + val.name + '</option>';
+                                            })
+                                            $('.select_company_list').html(html);
+                                            $('.company_list_none').hide();
+                                            $('.company_list').show();
+                                            // $('#editable-select').editableSelect({
+                                            //     bg_iframe: true,
+                                            //
+                                            //     case_sensitive: false,
+                                            //     items_then_scroll: 10 ,
+                                            //     isFilter:false,
+                                            // });
+                                        } else {
+                                            $('.company_list_none').show();
+                                            $('.company_list').hide();
+                                        }
+                                    }
+                                })
+                            });
+
+                            $(document).on('change', '.select_company_list', function() {
+                                var selectId  =  $('.select_company_list>option:selected');
+                                var code = selectId.attr('data-code');
+                                if (code == '') {
+                                    layer.msg('温馨提示：请选择企业！', {
+                                        icon: 2,
+                                        time: 2000,
+                                    });
+                                }
+                                var loading = layer.load();
+                                $.ajax({
+                                    url: '/activity/get-company-inv-info-by-code',
+                                    data: {
+                                        'code': code
+                                    },
+                                    type: 'post',
+                                    dataType: 'json',
+                                    success: function(res) {
+                                        layer.close(loading);
+                                        if (res.state == 1) {
+                                            $('.buyerTaxNo').val(res.data.taxNo);
+                                            $('.buyerBankName').val(res.data.buyerBankAcc);
+                                            $('.buyerAddr').val(res.data.address);
+                                            //$('.buyerTaxNo').val(res.data.buyerBankNum);
+                                            $('.buyerTele').val(res.data.telephone);
+
+                                            $('.select_company_list').next('.buyerName_select').val(selectId.val());
+                                        }
+                                    }
+                                })
+
+                            })
+
+                            $(document).on('click', '#btn_save', function() {
+                                var buyerMobile = $('.buyerMobile').val();
+                                var buyerEmail = $('.buyerEmail').val();
+                                var buyerType = $('.buyerType').val();
+                                var buyerName = $('.buyerName_personal').val();
+                                var buyerNameCompany = $('.buyerName_select').val();
+
+                                if (buyerType == '01') {
+                                    if (buyerNameCompany == '') {
+                                        layer.msg('温馨提示：公司名称不能为空！', {
+                                            icon: 2,
+                                            time: 3000 //3秒关闭（如果不配置，默认是3秒）
+                                        });
+                                        return false;
+                                    }
+                                } else {
+                                    if (buyerName == '') {
+                                        layer.msg('温馨提示：发票抬头不能为空！', {
+                                            icon: 2,
+                                            time: 3000 //3秒关闭（如果不配置，默认是3秒）
+                                        });
+                                        return false;
+                                    }
+                                }
+
+                                if (buyerMobile == '') {
+                                    layer.msg('温馨提示：接收发票的手机号不能为空！', {
+                                        icon: 2,
+                                        time: 3000 //3秒关闭（如果不配置，默认是3秒）
+                                    });
+                                    return false;
+                                }
+
+                                if (buyerEmail == '') {
+                                    layer.msg('温馨提示：接收发票的电子邮箱不能为空！', {
+                                        icon: 2,
+                                        time: 3000 //3秒关闭（如果不配置，默认是3秒）
+                                    });
+                                    return false;
+                                }
+
+                                var loading = layer.load();
+                                $.ajax({
+                                    url: '/activity/billing',
+                                    data: $("#postForm").serialize(),
+                                    type: 'post',
+                                    dataType: 'json',
+                                    success: function(res) {
+                                        layer.close(loading);
+                                        if (res.state == 1) {
+                                            layer.msg('温馨提示：开票成功，请留意短信或者邮箱查收发票！', {
+                                                icon: 1,
+                                                time: 5000 //2秒关闭（如果不配置，默认是3秒）
+                                            }, function() {
+                                                window.open(res.url);
+                                            });
+                                        } else {
+                                            layer.msg(res.msg, {
+                                                icon: 2,
+                                                time: 5000
+                                            });
+                                        }
+                                    }
+                                })
+
+                            })
+
+
+
+                            //$('#editable-select_sele').val($('.editable_select_input').val());
+                        })
+                    </script>
+
+                </div>
+            </div>
+        </div>
+{/block}

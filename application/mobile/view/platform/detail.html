@@ -1,0 +1,111 @@
+{extend name="layout/base" /}
+{block name="title"}{$platform.name}{/block}
+{block name="load"}
+
+<!-- css -->
+<link rel="stylesheet" href="__MCSS__/platform_detail.css">
+
+<!-- js -->
+
+{/block}
+<!-- 主体内容 -->
+{block name="main"}
+    <div class="container">
+        <div class="b2c-detail-main">
+            <div class="detail-top">
+                <div class="detail-title">
+                    <div class="title-img"><img src="{$platform.logo}"></div>
+                    <div class="title-content">{$platform.name}</div>
+                    <div style="clear: both"></div>
+                </div>
+                <div class="title-desc">{$platform.descrip} </div>
+            </div>
+            <div class="detail-bottom" style="min-height: 449px;">
+
+                {foreach $detailType as $value}
+                {notempty name="$details[$value.id]"}
+                <div class="detail-box">
+                    <p class="box-title">{$value.name}</p>
+                    <div class="box-content">
+                        <p><img src="{$details[$value.id]}" title="lue.name}.png" alt="lue.name}.png.png"></p>
+                    </div>
+                </div>
+                {/notempty}
+                {/foreach}
+
+            </div>
+        </div>
+        <div class="b2c-footer-box">
+            <div class="b2c-footer-div">
+                <p>官方入驻</p>
+                <a href="{:url('platform/join', ['id' => $platform.id])}" class="btn_submit">入驻通道</a>
+            </div>
+        </div>
+    </div>
+    <script type="text/javascript">
+    $(function() {
+        //计算按钮块的高度
+        var _height1 = $('.detail-bottom').height();
+        var _height2 = $('.b2c-footer-box').height();
+        var height = (_height1 + _height2) + 'px';
+        $('.detail-bottom').css('min-height', height)
+
+    })
+    </script>
+{/block}
+
+{block name="script"}
+    <script>
+        HOME_URL = "https://www.caomaokj.com";
+        $('#cnzz_stat_icon_1276964401').find('a').css('color', '#fff');
+
+        wx.config({
+            appId: 'wxa0dfe525aa5c94fd',
+            timestamp: 1629702638,
+            nonceStr: 'RtLQO4qGarh5DtZL',
+            signature: '10b62d67aa4dde7f3740026b9407741015ec6a06',
+            jsApiList: [
+                'onMenuShareTimeline',
+                'onMenuShareAppMessage',
+                'chooseImage',
+                'onMenuShareQQ'
+            ]
+        });
+        wx.ready(function() {
+            wx.onMenuShareTimeline({
+                title: '跨境电商平台_跨境电商平台排名_跨境电商平台有哪些—草帽跨境',
+                link: window.location.href,
+                imgUrl: 'http://www.caomaokj.com/static/icon/icon-caomao-small.png',
+                success: function(res) {},
+                cancel: function(res) {},
+                fail: function(res) {
+                    alert(JSON.stringify(res));
+                }
+            })
+            wx.onMenuShareAppMessage({
+                title: '跨境电商平台_跨境电商平台排名_跨境电商平台有哪些—草帽跨境', // 分享标题
+                desc: '跨境电商平台_跨境电商平台排名_跨境电商平台有哪些—草帽跨境', // 分享描述
+                link: window.location.href, // 分享链接，该链接域名或路径必须与当前页面对应的公众号JS安全域名一致
+                imgUrl: 'http://www.caomaokj.com/img/icon-caomao-small.png', // 分享图标
+                success: function() {
+                    // 用户确认分享后执行的回调函数
+                },
+                cancel: function() {
+                    // 用户取消分享后执行的回调函数
+                }
+            });
+            wx.onMenuShareQQ({
+                title: '跨境电商平台_跨境电商平台排名_跨境电商平台有哪些—草帽跨境', // 分享标题
+                desc: '跨境电商平台_跨境电商平台排名_跨境电商平台有哪些—草帽跨境', // 分享描述
+                link: window.location.href, // 分享链接，该链接域名或路径必须与当前页面对应的公众号JS安全域名一致
+                imgUrl: 'http://www.caomaokj.com/img/icon-caomao-small.png', // 分享图标
+                success: function() {
+                    // 用户确认分享后执行的回调函数
+                },
+                cancel: function() {
+                    // 用户取消分享后执行的回调函数
+                }
+            });
+        });
+    </script>
+{/block}

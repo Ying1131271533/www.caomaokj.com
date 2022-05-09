@@ -1,0 +1,43 @@
+{include file="public:header" /}
+<div class="node">
+    <div class="node-list">
+    <form class="action-form" action="" method="post">
+        <span class="all-check"><input type="checkbox" class="checkAll" />全选</span>
+        <ul>                    
+            {volist name="node" id="v"}
+                <li>
+                    <h5><input type="checkbox" name="rules[]" value="{$v['id']}" {$v['check']} class="nav-check i-checks" />{$v['title']}</h5>
+                    <div class="node-list-che">
+                    {volist name="v.lower" id="vv"}
+                        <div class="cd-left">
+                            <p><input type="checkbox" {$vv['check']} name="rules[]" class="cd-two i-checks" value="{$vv['id']}" />{$vv['title']}[CD]</p>
+                            {volist name="vv.lower" id="vvv"}
+                            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="left-span"><input type="checkbox" {$vvv['check']} name="rules[]" class="i-checks" value="{$vvv['id']}" />{$vvv['title']}</span>
+                            {foreach name="vvv.lower" item="vvvv" }
+                            <span><input type="checkbox" {$vvvv['check']} name="rules[]" class="i-checks" value="{$vvvv['id']}" />{$vvvv['title']}</span>
+                            {/foreach}
+                            {/volist}
+                        </div>
+                    {/volist}
+                    </div>
+                </li>
+            {/volist}
+        </ul>
+        <input type="hidden" name="id" value="{$nid}" />
+        <input type="submit" class="bth bth-node" value="保存" />
+    </form>    
+    </div>
+</div>
+<script type="text/javascript">
+$(".checkAll").on('click', function(){
+    $(".i-checks").prop("checked", this.checked);
+});
+$(".nav-check").on("click",function () {
+    var parents = $(this).parents("h5");
+        parents.next(".node-list-che").find(".i-checks").prop("checked", this.checked);
+});
+$(".cd-two").on("click",function () {
+    var parents = $(this).parents(".cd-left");
+    parents.find(".i-checks").prop("checked", this.checked);
+});
+</script>

@@ -1,0 +1,64 @@
+{notempty name="toolbar"}
+<!-- 底部导航 -->
+<div class="footer_nav">
+    <ul class="footer_navCon">
+        <li {eq name="$controller" value="index"}class='active'{/eq}>
+            <a href="/">
+                <svg class="icon" aria-hidden="true">
+                    <use xlink:href='#icon-shouye{neq name="$controller" value="index"}-xianxing{/neq}'></use>
+                </svg>
+                <p>首页</p>
+            </a>
+        </li>
+        <li {eq name="$controller" value="activity"}class='active'{/eq}>
+            <a href="{:url('activity/index')}">
+                <svg class="icon" aria-hidden="true">
+                    <use xlink:href='#icon-shoucang{neq name="$controller" value="activity"}-xianxing{/neq}'></use>
+                </svg>
+                <p>活动</p>
+            </a>
+        </li>
+        <li {eq name="$controller" value="college"}class='active'{/eq}>
+            <a href="{:url('college/index')}">
+                <svg class="icon" aria-hidden="true">
+                    <use xlink:href='#icon-{neq name="$controller" value="college"}boshimao1{else}canjiapeixun{/neq}'></use>
+                </svg>
+                <p>学院</p>
+            </a>
+        </li>
+        <li class='nav_service_c {eq name="$controller" value="service"}active{/eq}' >
+            <svg class="icon" aria-hidden="true">
+                <use xlink:href='#icon-lingdang{neq name="$controller" value="service"}-xianxing{/neq}'></use>
+            </svg>
+            <p>服务</p>
+        </li>
+        <li {eq name="$controller" value="user"}class='active'{/eq}>
+            <a href="{:url('user/index')}">
+                <svg class="icon" aria-hidden="true">
+                    <use xlink:href='#icon-yonghu{neq name="$controller" value="user"}-xianxing{/neq}'></use>
+                </svg>
+                <p>我的</p>
+            </a>
+        </li>
+        
+    </ul>
+</div>
+
+<!-- 底部导航服务的展开 -->
+<div class="nav_service" style="display:none">
+    <div class="nav_service_con">
+        {foreach $service as $value}
+        <dl>
+            <dt>{$value.catname}</dt>
+            {foreach $value.services as $val}
+            <dd>
+                <a href="{:url('service/detail', ['id' => $val.id])}">
+                    <p>{$val.name}</p>
+                </a>
+            </dd>
+            {/foreach}
+        </dl>
+        {/foreach}
+    </div>
+</div>
+{/notempty}

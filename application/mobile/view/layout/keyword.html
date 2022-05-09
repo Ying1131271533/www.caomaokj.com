@@ -1,0 +1,164 @@
+<!-- 关注热点 -->
+<div style="margin-top: 15px;">
+    <style>
+    .index-right h4 {
+        overflow: hidden;
+        color: #3f3f3f;
+        font-size: 16px;
+        font-weight: 500;
+        padding: 0 10px;
+    }
+
+    .hot-article ul {}
+
+    .hot-article ul li {
+        /*border-bottom: 1px solid #ddd;*/
+        font-size: 14px;
+        /*padding: 10px 0;*/
+        color: #555555;
+        white-space: nowrap;
+        overflow: hidden;
+        text-overflow: ellipsis;
+    }
+
+    .hot-article ul li {
+        color: #555555;
+    }
+
+    .hot-article b {
+        display: inline-block;
+        width: 22px;
+        height: 20px;
+        color: #fff;
+        text-align: center;
+        font-weight: initial;
+    }
+
+    .hot-article b.icon-num1 {
+        background: #ea492d;
+    }
+
+    .hot-article b.icon-num2 {
+        background: #f19601;
+    }
+
+    .hot-article b.icon-num3 {
+        background: #f3d400;
+    }
+
+    .hot-article b.icon-num4,
+    b.icon-num5,
+    b.icon-num6,
+    b.icon-num7,
+    b.icon-num8,
+    b.icon-num9,
+    b.icon-num10 {
+        background: #a2a2a2;
+    }
+
+    .hot-title-jzc {
+        border-bottom: 1px solid #F5F5F5;
+    }
+
+    .hot-title-jzc li a {
+        font-size: 18px;
+        color: #757575;
+    }
+
+    #user .logo-box img {
+        width: 56px;
+        height: 56px;
+        border-radius: 50%;
+    }
+
+    #user ul li {
+        padding-top: 10px;
+        padding-bottom: 10px;
+    }
+
+    #user ul li .user-btn {
+        line-height: 45px;
+        padding-left: 0;
+    }
+
+    #user ul li .user-home {
+        display: inline-block;
+        width: 64px;
+        background: #fc9d27;
+        color: #fff;
+        border-radius: 4px;
+        height: 28px;
+        line-height: 28px;
+        text-align: center;
+    }
+
+    .tab-content ul li {
+        border-bottom: 1px solid #ddd;
+    }
+
+    .nav-pills-jzc>li.active>a,
+    .nav-pills-jzc>li.active>a:focus,
+    .nav-pills-jzc>li.active>a:hover {
+        color: #282828;
+        background-color: transparent;
+    }
+
+    #article ul li {
+        padding: 10px 0;
+    }
+
+    .star_and_top {
+        background: #fff;
+        clear: both;
+        border-bottom: 1px solid #ddd;
+        width: 304px;
+    }
+
+    .content_div {
+        min-width: 70px;
+        height: 25px;
+        float: left;
+        line-height: 23px;
+        text-align: center;
+        margin-left: 10px;
+        margin-top: 15px;
+        padding: 0px 8px;
+        border-radius: 20px;
+        border: 1px solid #e5e5e5e5;
+    }
+
+    .tab-content {
+        border: 0px solid red;
+        padding-bottom: 20px;
+    }
+
+    li.active {
+        width: 100%;
+    }
+
+    li.active a {
+        font-size: 16px;
+        display: inline-block;
+    }
+
+    .content_div:hover {
+        border: 1px solid #fc9d27;
+    }
+    </style>
+    <div class="hot-user">
+        <h4 class="top_hot_div">
+            <img src="__AIMG__/9c843a9e883c857c.png" title="1606894704821175.png" alt="关注热点.png">
+            <span style="font-size: 16px;color: #282828;">关注热点</span>
+            <a style="color: #999999" href="{:url('keyword/index')}">更多&gt;</a>
+        </h4>
+        <div class="tab-content clearfix" style="border-top: 1px solid #eee;">
+            <div id="article" class="active clearfix">
+                {foreach $hotKeywords as $key => $value}
+                <div class="content_div">
+                    <a style="color: #777777" href="{:url('keyword/article', ['id' => $value.id])}">{$value.name}</a>
+                </div>
+                {/foreach}
+            </div>
+        </div>
+    </div>
+</div>

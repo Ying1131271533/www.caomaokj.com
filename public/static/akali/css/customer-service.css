@@ -1,0 +1,99 @@
+.main-div{
+    min-height: 600px;
+}
+.main-box{
+    width: 700px;
+    margin: 70px auto;
+    border-radius: 6px;
+    overflow: hidden;
+
+    background:rgba(255,255,255,1);
+}
+.main-box .title-box{
+    font-size: 18px;
+    padding: 25px 10px;
+    background:rgba(236,236,236,1);
+    text-align: center;
+
+    font-weight:bold;
+    color:rgba(85,85,85,0.8);
+}
+.main-box .content-box{
+    /*min-height: 424px;*/
+    padding: 50px 10px;
+}
+.main-box .content-box .contact-box{
+    width: 300px;
+    margin: auto;
+}
+.main-box .content-box p{
+    font-size:14px;
+    font-weight:bold;
+    color:rgba(85,85,85,1);
+    margin-bottom: 15px;
+}
+.main-box .content-box p:last-child{
+    margin-bottom: 0px;
+}
+.main-box .content-box .qr-code-box{
+     display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    margin-top: 25px;
+}
+.qr-code-box img{
+    width: 210px;
+    height: 210px;
+}
+.qr-code-box span{
+    font-size: 12px;
+}
+
+/***************************suggestion***************/
+
+#suggestion-form .content-box .suggestion-item{
+    display: flex;
+    margin-bottom: 20px;
+}
+#suggestion-form .content-box .suggestion-item label{
+    width: 135px;
+    text-align: right;
+    font-size:14px;
+    font-weight:bold;
+    color:rgba(85,85,85,1);
+
+}
+#suggestion-form .content-box .suggestion-item textarea.suggestion-desc-box{
+  min-height: 100px;
+}
+#suggestion-form .content-box {
+
+    padding-left: 56px;
+    padding-right: 56px;
+}
+#suggestion-form  .suggestion-desc{
+    padding-left: 110px;
+    font-weight:bold;
+    color:rgba(153,153,153,1);
+}
+#suggestion-form  .suggestion-desc span{
+    color:#ff7600;
+}
+#suggestion-form  .suggestion-btn-box{
+    padding-left: 110px;
+}
+#suggestion-form  .suggestion-btn-box a{
+    display: inline-block;
+    height:42px;
+    background:rgba(252,157,39,1);
+    border-radius:2px;
+    color: #fff;
+    line-height: 42px;
+    width: 100%;
+    text-align: center;
+    margin-top: 40px;
+}
+
+
+

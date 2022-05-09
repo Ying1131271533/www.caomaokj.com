@@ -1,0 +1,215 @@
+@charset "UTF-8";
+	:root {
+	--dark:#525252
+}
+body {
+    font-size: 16px;
+}
+a {
+	color:#555
+}
+
+a:hover {
+    color: #009dda;
+    text-decoration: none;
+}
+body {
+	font-family:"Hiragino Sans GB","Microsoft Yahei",sans-serif;
+	background:#f6f6f6;
+}
+
+a {
+	-webkit-font-smoothing: antialiased;
+}
+.navbar {
+	padding:0;
+	-webkit-box-shadow:0 2px 3px rgba(10,10,10,.1);
+	box-shadow:0 2px 3px rgba(10,10,10,.1)
+}
+.navbar>.container {
+	max-width:none;
+	padding-right:0;
+	/*position: fixed;*/
+    /*top: 0;*/
+    z-index: 1001;
+    background-color: #3d4557 !important;
+}
+
+.navbar-dark .navbar-toggler {
+	border-color:transparent!important;
+
+	padding:1rem
+}
+.navbar-dark .navbar-toggler:before {
+	display:inline-block;
+	font:normal normal normal 14px/1 FontAwesome;
+	font-size:inherit;
+	text-rendering:auto;
+	-webkit-font-smoothing:antialiased;
+	-moz-osx-font-smoothing:grayscale;
+	content:"\f0c9"
+}
+.navbar-dark .navbar-toggler-icon {
+	display:none
+}
+.navbar-dark .navbar-brand {
+
+	padding:0
+}
+.navbar-dark .navbar-nav .nav-link {
+	padding:0.89rem 1rem;
+	color:#ffffff
+}
+.navbar-dark .navbar-nav .show > .nav-link, .navbar-dark .navbar-nav .active > .nav-link, .navbar-dark .navbar-nav .nav-link.show, .navbar-dark .navbar-nav .nav-link.active {
+        background: rgba(0, 0, 0, .1);
+}
+.blockquote {
+    background-color: #f3f3f3;
+    border-left: 5px solid #d2d2d2;
+
+}
+
+.badge-secondary {
+    color: #fff;
+    background-color: #b0c5d2;
+
+}
+.badge-pill {
+    border-radius: 0.25rem; 
+
+}
+
+.bg-dark {
+    background-color: #3d4557 !important;
+}
+
+.aside>a.btn {
+	padding:.75rem 1rem;
+	border-width:0
+}
+
+.form-control {
+    border: 1px solid #eaeaea;
+    }
+.card {
+	background:var(--white);
+	box-shadow:none;
+	border-color:#eaeaea
+}
+.card>.card-header {
+	background-image:none;
+
+}
+.card-header-tabs {
+	margin-top:-.25rem
+}
+h1, .h1 {
+  font-size: 2rem;
+}
+
+h2, .h2 {
+  font-size: 1.5rem;
+}
+
+h3, .h3 {
+  font-size: 1.3rem;
+}
+
+h4, .h4 {
+  font-size: 1.3rem;
+}
+
+h5, .h5 {
+  font-size: 1rem;
+}
+
+h6, .h6 {
+  font-size: 0.8rem;
+}
+
+.card.card-threadlist>.card-body {
+	padding:.25rem 1rem
+}
+.card.card-threadlist>.card-body>.threadlist .ml-2.d-none {
+	display:inline-flex!important
+}
+.card.card-threadlist>.card-body>.threadlist .d-flex.justify-content-between.small {
+	font-size:13px
+}
+.card.card-postlist {
+	border-top-width:0;
+	border-top-left-radius:0!important;
+	border-top-right-radius:0!important;
+	font-size:14px;
+	margin-top:20px;
+	border-top: 1px solid rgba(0, 0, 0, 0.125);
+}
+.card.card-thread {
+	margin-bottom:0;
+	border-bottom-left-radius:0!important;
+	border-bottom-right-radius:0!important
+}
+.card.card-thread hr {
+	border-color:transparent
+}
+.breadcrumb {
+	font-size:14px
+}
+
+.icon-top-3 {
+    color: #1d4878;
+}
+.nav_tag_list {
+	display:flex;
+	flex-direction:column
+}
+[class^=icon-top-]:before {
+	content:"\f0aa"
+}
+@media screen and (min-width:1408px) {
+	html {
+	font-size:16px
+}
+#body>.container {
+	max-width:1225px;
+	width:1225px;
+}
+#footer>.container {
+	max-width:1225px;
+	width:1225px
+}
+}@media (max-width:576px) {
+	html {
+	font-size:12px
+}
+}
+.daniu .col-auto {width:80px;}
+
+.message img {border:0;}
+
+.col-lg-3 .card-forum-info .text-center{
+	display: none;
+}
+
+.card-thread .card-body .media{
+	border-bottom: 1px solid #eee;
+	padding-bottom: 10px;
+}
+
+@media (min-width: 1620px) {
+	.container {
+		width: 1600px;
+	}
+}
+#header{
+	background: #3d4557;
+	padding: 0.1rem;
+}
+#body{
+	padding-top: .5rem;
+}
+@media (min-width: 1200px) {
+	.container {
+		width: 92%;
+	}
+}

@@ -1,0 +1,127 @@
+{extend name="layout/base" /}
+{block name="title"}跨境电商平台入驻{/block}
+{block name="load"}
+<!-- css -->
+    <link rel="stylesheet" type="text/css" href="__ACSS__/platform.css">
+<!-- js -->
+{/block}
+<!-- 主体内容 -->
+{block name="main"}
+<div class="container body-container">
+    <style></style>
+    <div class="main-div main-join">
+        <form class="require-form join_form_jzc" id="join-form">
+            <h3>{$platform.name}</h3>
+            <input type="hidden" name="platform_id" value="{$platform.id}">
+            <div class="form-group clearfix">
+                <div class="input-group input_group_jzc">
+                    <span class="left_span_join">*</span><input type="text" class="input_jzc_join type_name" name="name" placeholder="请输入联系人姓名">
+                </div>
+            </div>
+            <div class="form-group clearfix">
+                <div class="input-group input_group_jzc">
+                        <span class="left_span_join">*</span><input type="text" class="input_jzc_join type_phone" name="phone" placeholder="请输入联系人电话">
+                </div>
+            </div>
+            <div class="form-group clearfix">
+                    <span class="left_span_join">*</span><input class="form-control yzm_code_jzc_input" placeholder="请输入验证码" type="text" name="code">
+                    <button class="btn btn-code yzm_btn_jzc" type="button" onclick="getCode();">获取验证码</button>
+            </div>
+            <div class="form-group clearfix">
+                <div class="input-group input_group_jzc">
+                    <span class="left_span_join">*</span><input type="text" class="input_jzc_join type_company" name="company" placeholder="请输入公司名称">
+                </div>
+            </div>
+            <div class="form-group clearfix">
+                <div class="input-group input_group_jzc">
+                    <span class="left_span_join">*</span><input type="text" class="input_jzc_join type_email" name="email" placeholder="请输入联系邮箱">
+                </div>
+            </div>
+            <div class="btn-block">
+                &nbsp;&nbsp;<button type="button" id="sub-data" class="btn btn-default btn-require sub_btn_jzc">提交</button>
+            </div>
+        </form>
+    </div>
+    <script>
+
+    $(function() {
+        $("#sub-data").click(function() {
+            var loadding = layer.load();
+
+            $.ajax({
+                url: "/index/platform_api/join",
+                type: "POST",
+                data: $("#join-form").serialize() + '&phone=' + $('.type_phone').val(),
+                dataType: "json",
+                success: function(json) {
+                    layer.close(loadding);
+                    if (json.code == 200) {
+                        if (json.data.url) {
+                            layer.confirm('提交成功，请联系客服咨询详情', function(index){
+                                window.location.href = json.data.url;
+                            });
+                            window.location.href = json.data.url;
+                        } else {
+                            layer.msg(json.msg, { "icon": 1, "time": 1000 });
+                            setTimeout(function() {
+                                window.location.href = '/index/platform/index';
+                            }, 500);
+                        }
+
+                    } else {
+                        layer.msg(json.msg, { "icon": 2 });
+                    }
+                },
+                error: function() {
+                    layer.close(loadding);
+                    layer.msg('网络错误', { "icon": 2, "time": 1000 });
+                }
+            });
+        });
+    });
+
+    function getCode() {
+        var phone = $(".type_phone").val();
+        if (phone == '') {
+            layer.msg('请输入手机号码', { icon: 0 });
+            $(".type_phone").focus();
+            return false;
+        }
+        if (!phone.match(/^(13[0-9]{9})|(18[0-9]{9})|(19[0-9]{9})|(16[0-9]{9})|(14[0-9]{9})|(17[0-9]{9})|(15[0-9]{9})$/)) {
+            layer.msg('手机号码填写不正确', { icon: 0 });
+            $(".type_phone").focus();
+            return false;
+        }
+
+        $('.btn-code').attr('disabled', 'disabled');
+        var i = 59;
+        var flag = setInterval(function() {
+            $('.btn-code').text("重新发送(" + i + "s)");
+            if (i-- == 0) {
+                clearInterval(flag);
+                $('.btn-code').removeAttr('disabled').text("获取验证码");
+            }
+        }, 1000);
+        $.ajax({
+            url: "/index/code_api/getCode",
+            type: "POST",
+            data: { phone: phone, type: 6 },
+            dataType: "json",
+            success: function(json) {
+                if (json.code == 200) {
+                    layer.msg('验证码已发送，请注意查收', { icon: 1 });
+                } else {
+                    layer.msg(json.msg);
+                    clearInterval(flag);
+                    $('.btn-code').removeAttr('disabled').text("获取验证码");
+                }
+            },
+            error: function() {
+                layer.msg('网络错误！', { icon: 0 });
+            }
+        });
+    }
+    </script>
+</div>
+</div>
+{/block}

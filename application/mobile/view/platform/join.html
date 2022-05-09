@@ -1,0 +1,215 @@
+{extend name="layout/base" /}
+{block name="title"}跨境电商入驻{/block}
+{block name="load"}
+
+<!-- css -->
+<link rel="stylesheet" href="__MCSS__/platform.css">
+<style type="text/css">
+    .yzm_btn_jzc {
+        width: 29%;
+        height: 46px;
+        margin-top: -3px;
+        background: #FC9D27;
+        color: #fff;
+    }
+    .btn {
+        display: inline-block;
+        padding: 6px 12px;
+        margin-bottom: 0;
+        font-size: 14px;
+        font-weight: 400;
+        line-height: 1.42857143;
+        text-align: center;
+        white-space: nowrap;
+        vertical-align: middle;
+        -ms-touch-action: manipulation;
+        touch-action: manipulation;
+        cursor: pointer;
+        -webkit-user-select: none;
+        -moz-user-select: none;
+        -ms-user-select: none;
+        user-select: none;
+        background-image: none;
+        border: 1px solid transparent;
+        border-radius: 4px;
+    }
+</style>
+<!-- js -->
+
+{/block}
+<!-- 主体内容 -->
+{block name="main"}
+    <div class="container">
+        <div class="main-div main-join">
+            <form class="require-form" id="join-form">
+                <h3>{$platform.name}</h3>
+                <input type="hidden" name="platform_id" value="{$platform.id}">
+                <div class="form-group clearfix">
+                    <label class="control-label text-right col-sm-3">姓名</label>
+                    <div class="input-group pull-right col-sm-9">
+                        <input type="text" class="form-control" name="name" placeholder="请输入联系人姓名">
+                    </div>
+                </div>
+                <div class="form-group clearfix">
+                    <label class="control-label text-right col-sm-3">电话</label>
+                    <div class="input-group pull-right col-sm-9">
+                        <input type="text" class="form-control" name="phone" placeholder="请输入联系人电话">
+                    </div>
+                </div>
+                <div class="form-group clearfix">
+                    <label class="control-label text-right col-sm-3">手机验证码</label>
+                    <div class="input-group pull-right col-sm-9">
+                        <input type="text" class="form-control" style="width: 65%;" name="code" placeholder="获取手机验证码">
+                        <button class="btn btn-code yzm_btn_jzc" type="button" onclick="getCode();">获取验证码</button>
+                    </div>
+                </div>
+                <div class="form-group clearfix">
+                    <label class="control-label text-right col-sm-3">公司</label>
+                    <div class="input-group pull-right col-sm-9">
+                        <input type="text" class="form-control" name="company" placeholder="请输入公司名称">
+                    </div>
+                </div>
+                <div class="form-group clearfix">
+                    <label class="control-label text-right col-sm-3">邮箱</label>
+                    <div class="input-group pull-right col-sm-9">
+                        <input type="text" class="form-control" name="email" placeholder="请输入联系邮箱">
+                    </div>
+                </div>
+                <div class="btn-block">
+                    <button type="button" id="sub-data" class="btn btn-default btn-require">提交</button>
+                </div>
+            </form>
+        </div>
+        <script>
+            $(function() {
+                $("#sub-data").click(function() {
+                    $.ajax({
+                        url: "/index/platform_api/join",
+                        type: "POST",
+                        data: $("#join-form").serialize(),
+                        dataType: "json",
+                        success: function(json) {
+                            if (json.code == 200) {
+                                layer.msg(json.msg, {
+                                    "icon": 1,
+                                    "time": 1000
+                                });
+                                setTimeout(function() {
+                                    window.location.href = '/index/platform/index';
+                                }, 500);
+                            } else {
+                                layer.msg(json.msg, {
+                                    "icon": 2
+                                });
+                            }
+                        },
+                        error: function() {
+                            layer.msg('网络错误', {
+                                "icon": 2,
+                                "time": 1000
+                            });
+                        }
+                    });
+                });
+            });
+
+            // 发送手机验证码
+            function getCode() {
+                var phone = $(".type_phone").val();
+                if (phone == '') {
+                    layer.msg('请输入手机号码', { icon: 0 });
+                    $(".type_phone").focus();
+                    return false;
+                }
+                if (!phone.match(/^(13[0-9]{9})|(18[0-9]{9})|(19[0-9]{9})|(16[0-9]{9})|(14[0-9]{9})|(17[0-9]{9})|(15[0-9]{9})$/)) {
+                    layer.msg('手机号码填写不正确', { icon: 0 });
+                    $(".type_phone").focus();
+                    return false;
+                }
+
+                $('.btn-code').attr('disabled', 'disabled');
+                var i = 59;
+                var flag = setInterval(function() {
+                    $('.btn-code').text("重新发送(" + i + "s)");
+                    if (i-- == 0) {
+                        clearInterval(flag);
+                        $('.btn-code').removeAttr('disabled').text("获取验证码");
+                    }
+                }, 1000);
+                $.ajax({
+                    url: "/index/code_api/getCode",
+                    type: "POST",
+                    data: { phone: phone, type: 2 },
+                    dataType: "json",
+                    success: function(json) {
+                        if (json.code == 200) {
+                            layer.msg('验证码已发送，请注意查收', { icon: 1 });
+                        } else {
+                            layer.msg(json.msg);
+                            clearInterval(flag);
+                            $('.btn-code').removeAttr('disabled').text("获取验证码");
+                        }
+                    },
+                    error: function() {
+                        layer.msg('网络错误！', { icon: 0 });
+                    }
+                });
+            }
+        </script>
+    </div>
+{/block}
+{block name="script"}
+    <script>
+        HOME_URL = "https://www.caomaokj.com";
+        $('#cnzz_stat_icon_1276964401').find('a').css('color', '#fff');
+
+        wx.config({
+            appId: 'wxa0dfe525aa5c94fd',
+            timestamp: 1629702638,
+            nonceStr: 'RtLQO4qGarh5DtZL',
+            signature: '10b62d67aa4dde7f3740026b9407741015ec6a06',
+            jsApiList: [
+                'onMenuShareTimeline',
+                'onMenuShareAppMessage',
+                'chooseImage',
+                'onMenuShareQQ'
+            ]
+        });
+        wx.ready(function() {
+            wx.onMenuShareTimeline({
+                title: '跨境电商平台_跨境电商平台排名_跨境电商平台有哪些—草帽跨境',
+                link: window.location.href,
+                imgUrl: 'http://www.caomaokj.com/static/icon/icon-caomao-small.png',
+                success: function(res) {},
+                cancel: function(res) {},
+                fail: function(res) {
+                    alert(JSON.stringify(res));
+                }
+            })
+            wx.onMenuShareAppMessage({
+                title: '跨境电商平台_跨境电商平台排名_跨境电商平台有哪些—草帽跨境', // 分享标题
+                desc: '跨境电商平台_跨境电商平台排名_跨境电商平台有哪些—草帽跨境', // 分享描述
+                link: window.location.href, // 分享链接，该链接域名或路径必须与当前页面对应的公众号JS安全域名一致
+                imgUrl: 'http://www.caomaokj.com/img/icon-caomao-small.png', // 分享图标
+                success: function() {
+                    // 用户确认分享后执行的回调函数
+                },
+                cancel: function() {
+                    // 用户取消分享后执行的回调函数
+                }
+            });
+            wx.onMenuShareQQ({
+                title: '跨境电商平台_跨境电商平台排名_跨境电商平台有哪些—草帽跨境', // 分享标题
+                desc: '跨境电商平台_跨境电商平台排名_跨境电商平台有哪些—草帽跨境', // 分享描述
+                link: window.location.href, // 分享链接，该链接域名或路径必须与当前页面对应的公众号JS安全域名一致
+                imgUrl: 'http://www.caomaokj.com/img/icon-caomao-small.png', // 分享图标
+                success: function() {
+                    // 用户确认分享后执行的回调函数
+                },
+                cancel: function() {
+                    // 用户取消分享后执行的回调函数
+                }
+            });
+        });
+    </script>
+{/block}

@@ -1,0 +1,63 @@
+{include file="public/header" /}
+<div class="mainbox animated fadeInRight">
+	<div class="mainnav_title">
+	    <a class="on">友链列表</a>
+		{include file="public/menu_right" /}
+	    <a class="bth-rand fr" href="javascript:location.replace(location.href);" title="刷新"><b class="uzfont uzico-shuaxin"></b></a>
+    </div>
+<table  class="search_table" width="100%">
+	<tr>
+		<td class="search">
+			<form action="{:url('links/index')}" method="get">
+				<input id="title" type="text" class="input-text" name="keyword" value="{$Think.get.keyword}" />
+				<input type="hidden" name="tree" value="{$tree_id}"/>
+				<input type="submit" value="{:lang('chaxun')}"  class="button" />
+				<a href="{:url('links/index')}" class="button">重置</a>
+			</form>
+		</td>
+	</tr>
+</table>
+<form name="myform" id="myform" action="" method="post">
+<div class="table-list">
+    <table width="100%" cellspacing="0">
+		<thead>
+            <tr>
+			<th width="20">ID</th>
+            <th width="50">{:lang('listorder')}</th>
+			<th width="250" align="left">{:lang('name')}</th>
+			<th width="400" align="left">网址</th>
+            <th width="180">{:lang('createtime')}</th>
+            <th width="50">{:lang('STATUS')}</th>
+			<th align="left">{:lang('manage')}</th>
+            </tr>
+        </thead>
+      	<tbody>
+      		{volist name="list" id="v"}
+      		<tr>
+			<td width="20" align="center">{$v['id']}</td>
+			<td  width="50" align='center'><input name='listorders[{$v.id}]' type='text' size='3' value='{$v.listorder}' class='input-text-c'></td>
+			<td align="left">{$v['name']}</td>
+			<td><a target="_blank" rel="nofollow" href="{$v['url']}">{$v['url']}</a></td>
+      		<td align="center">{:date('Y-m-d',$v['createtime'])}</td>
+      		<td align="center">
+	            {eq name="v['status']" value="1"}
+	        		<a class="bth-a ajax-status" onclick="StatusAjax(this);" data-href="{:url('ajax/statusajax')}?id={$v['id']}&status=0"></a>
+	        	{else /}
+	        		<a class="bth-a error-c ajax-status" onclick="StatusAjax(this);" data-href="{:url('ajax/statusajax')}?id={$v['id']}&status=1"></a>
+	        	{/eq}
+            </td>
+			<td align="left">
+				<a href="{:url('links/edit')}?id={$v['id']}&tree={$tree_id}">{:lang('edit')}</a> |
+				<a href="javascript:confirm_delete('{:url(\'links/del\')}?id={$v[\'id\']}&tree={$tree_id}')">{:lang('delete')}</a>
+			</td>
+      		</tr>
+      		{/volist}
+      	</tbody>
+    </table>
+    <div class="btn">
+	    <input  type="button" class="button" value="{:lang('listorder')}" onclick="myform.action='{:url(\'links/listorder\')}';$('#myform').submit();" />
+    </div>
+</div>
+</form>
+</div>
+<div id="pages" class="page">{$list|raw}</div>

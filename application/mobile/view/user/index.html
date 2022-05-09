@@ -1,0 +1,88 @@
+{extend name="layout/base" /}
+{block name="title"}用户中心{/block}
+{block name="load"}
+
+<!-- css -->
+<link rel="stylesheet" href="__MCSS__/user_index.css?{$time}">
+
+<!-- js -->
+<!-- <script src="__MJS__/11.0.1.js" id="sozz"></script> -->
+<!-- <script charset="utf-8" src="https://s.ssl.qhres.com/ssl/ab77b6ea7f3fbf79.js"></script> -->
+<script src="__MJS__/user_common.js"></script>
+
+{/block}
+<!-- 主体内容 -->
+{block name="main"}
+    <div class="container">
+
+        <div class="person-info all-content clearfix">
+            <div class="main">
+                <div class="media media-side clearfix all-banner">
+                    <div class="media-title">
+                        <div class="media-body">
+                            <h4 class="media-heading">{$nickname}</h4>
+                            <div class="media-text">
+                                <a href="{:url('user/security')}">
+                                    <img src="__MIMG__/phone-h.png"><span class="phone-btn phone-y">已绑定</span>
+                                </a>
+                                <a href="https://user.kuajingyan.com/"><img src="__MIMG__/mail-h.png"></a>
+                                <a href="{:url('user/security')}"><img src="__MIMG__/weixin.png"></a>
+                                <a href="{:url('user/security')}"><img src="__MIMG__/qq.png"></a>
+
+                            </div>
+                            <div class="media-edit">
+                                <a class="a-edit" href="{:url('user/info')}"><span class="icon-edit"></span>编辑资料</a>
+                            </div>
+                        </div>
+                        <div class="user-thumb">
+                            <a class="a-edit" href="{:url('user/info')}">
+                                <img src="{$avatar}" alt="{$nickname}">
+                            </a>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="person-text clearfix">
+                </div>
+                <div class="info-main person-center">
+                    <ul class="user_list">
+                        <li target_href="{:url('user/collect')}">
+                            <i class="fa fa-star-o fl"></i>我的收藏<i class="fa fa-angle-right fr"></i>
+                        </li>
+                        <li target_href="{:url('user/activity')}">
+                            <i class="fa fa-ticket fl"></i>报名的活动<i class="fa fa-angle-right fr"></i>
+                        </li>
+                        <li target_href="{:url('user/college')}">
+                            <i class="fa fa-ticket fl"></i>报名的课程<i class="fa fa-angle-right fr"></i>
+                        </li>
+                        <li target_href="{:url('user/security')}">
+                            <i class="fa fa-html5 fl"></i>账户安全<i class="fa fa-angle-right fr"></i>
+                        </li>
+                    </ul>
+                    <!-- 退出账号-->
+                    <button class="btn-full more" onclick="logout();">退出账户</button>
+                </div>
+            </div>
+        </div>
+        <script>
+            function logout() {
+                layer.msg("正在注销...");
+                storage('token', null);
+                window.location.href = '/index/login/logout';
+            }
+            $(function() {
+                $(".user_list li").click(function() {
+                    var url = $(this).attr("target_href");
+                    window.location.href = url;
+                });
+            });
+        </script>
+    </div>
+{/block}
+
+{block name="script"}
+    <script>
+        HOME_URL = "https://www.caomaokj.com";
+        $('#cnzz_stat_icon_1276964401').find('a').css('color', '#fff');
+    </script>
+{/block}

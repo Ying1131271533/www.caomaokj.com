@@ -1,0 +1,175 @@
+@CHARSET "UTF-8";
+/****************找平台 begin****************/
+.b2c-main{
+	padding: 0 2.5%;
+	background: #ffffff;
+}
+.b2c-main .banner-img{
+	margin-top: 10px;
+	margin-bottom: 15px;
+}
+.b2c-main .banner-img img{
+   width: 100%;
+}
+.center-title{
+	font-weight:bold;
+	color:rgba(51,51,51,1);
+	line-height:25px;
+	font-size: 1.25em;
+	text-align: center;
+	width: 100%;
+}
+.center-nav {
+ text-align: center;
+ margin: 10px 0;
+}
+.center-nav ul li{
+	display: inline-block;
+	text-align: center;
+	font-size: 1em;
+	color:rgba(85,85,85,1);
+	line-height:14px;
+	margin-right: 4%;
+}
+.center-nav .nav-li{
+	color:#FC9D27;
+}
+.row-logo{
+	text-align: center;
+	width: 100%;
+	clear: both;
+}
+.row-logo .logo-box{
+	width: 42%;
+	float: left;
+	background:rgba(255,255,255,1);
+	box-shadow:0px 2px 15px 5px rgba(0,0,0,0.1);
+	border-radius:4px;
+	padding: 20px 10px;
+	margin-right: 3%;
+	margin-bottom: 10px;
+}
+.row-logo .logo-box:nth-child(2n){
+	margin-right: 0%;
+}
+.row-logo .logo-box .logo_p{
+	width: 100px;
+	margin: 0 auto;
+}
+.row-logo .logo-box .logo_p img{
+	width: 100%;
+	margin: 0 auto;
+	height: 45px;
+}
+.row-logo .logo-box .name_p{
+	font-weight:bold;
+	color:rgba(51,51,51,1);
+	line-height:25px;
+	overflow: hidden;
+	text-overflow: ellipsis;
+	white-space: nowrap;
+	height: 40px;
+}
+.row-logo .logo-box .desc_p{
+	font-size: 0.75em;
+	font-weight:500;
+	color:rgba(153,153,153,1);
+	line-height:20px;
+	text-align: center;
+	display: -webkit-box;
+	-webkit-box-orient: vertical;
+	-webkit-line-clamp: 2;
+	overflow: hidden;
+	height: 40px;
+}
+@media only screen and (max-width: 375px) {
+	.center-nav ul li{
+		margin-right: 3%;
+	}
+
+}
+
+@media only screen and (max-width: 320px) {
+	.row-logo .logo-box {
+		margin-right: 1%;
+	}
+	.center-nav ul li{
+		margin-right: 1%;
+	}
+}
+.center-nav ul li:last-child{
+	margin-right: 0px;
+}
+/****************找平台 end****************/
+
+/****************平台入驻表单 begin****************/
+.main-join .require-form {
+	padding: 0 15px 20px;
+	background: #fff;
+}
+
+.main-join h3 {
+	font-size: 18px;
+	text-align: center;
+	padding-top: 50px;
+	padding-bottom: 30px;
+}
+
+.main-join .require-form .form-group {
+	border-bottom: 1px solid #ededed;
+}
+
+.main-join .require-form label.control-label {
+	font-weight: normal;
+	line-height: 52px;
+}
+
+.main-join .require-form .input-group {
+	width: 78%;
+	padding: 10px 0;
+}
+
+.main-join .require-form .form-control, .require-form .btn-require {
+	display: inline-block;
+	width: 60%;
+	height: 30px;
+	line-height: 30px;
+	border: 1px solid #ddd;
+	background: transparent;
+	text-align: left;
+	-webkit-box-sizing: border-box;
+	box-sizing: border-box;
+	border: none;
+}
+
+.main-join .require-form .btn-block {
+	margin-top: 30px;
+}
+
+.main-join .require-form .btn-require {
+	height: 45px;
+	font-size: 16px;
+	-webkit-border-radius: 2px;
+	-moz-border-radius: 2px;
+	border-radius: 2px;
+	background: #ff8d00;
+	color: #fff;
+	border: 1px solid #ff8d00;
+	text-align: center;
+}
+/****************平台入驻表单 end****************/
+
+
+/*---zhangbing---*/
+.main-div .partner_name{ font-weight: normal;}
+.join_detail a{font-weight: normal; color: #757575}
+.main-div .join_detail .btn{ width: 100%; color: #fff; background: #ff8d00}
+.main-div .partner_info p{ color: #757575}
+
+.join_div>div:nth-child(odd){ float: left;}
+.join_div>div:nth-child(even){ float: right;}
+.unfold{ background: #f9f9f9; line-height: 180%; border-radius: 4px;}
+.unfold span{ color: #757575}
+.main-div .join_div{ margin-top: 0px; border: none}
+.main-div .join_detail h5{ text-align: left; font-size: 14px; font-weight:normal; padding-bottom: 6px;}
+.one_width{ width: 100%!important}

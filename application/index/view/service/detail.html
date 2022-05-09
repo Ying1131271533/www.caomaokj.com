@@ -1,0 +1,272 @@
+{extend name="layout/base" /}
+{block name="title"}{$service.name}{/block}
+{block name="load"}
+<!-- css -->
+<link rel="stylesheet" href="__AMZCSS__/swiper.min.css">
+<link rel="stylesheet" type="text/css" href="__AMZCSS__/font_2020772_ylpwq57cfto.css">
+<link rel="stylesheet" type="text/css" href="__AMZCSS__/wuliu.css">
+<link rel="stylesheet" href="__SCSS__/production-detail.css">
+<!-- js -->
+<script src="__AMZJS__/swiper-02.min.js"></script>
+<style>
+    .edit_condit{ align-items: center;text-align: center; }
+    .edit_condit p{ width:900px; }
+    .edit_condit p img{ width:900px; }
+</style>
+{/block}
+<!-- 主体内容 -->
+{block name="main"}
+<main id="body" style="margin-top: 109px;">
+    <div class="container">
+    </div>
+    <link rel="stylesheet" type="text/css" href="__AMZCSS__/font_2020772_ylpwq57cfto.css">
+    <link rel="stylesheet" type="text/css" href="__AMZCSS__/common(2).css">
+    <style>
+        .textarea>div p {
+            font-size: 16px;
+            color: #666;
+            line-height: 28px;
+        }
+
+
+        .boxtitle {
+            margin: 15px 0;
+        }
+
+        .hr {
+            width: 100%;
+            background: #ddd;
+            height: 1px;
+            margin: 40px 0;
+        }
+    </style>
+    <div class="header-info">
+        <div class="container">
+            <div class="avatar">
+                <img src="{$service.image}">
+            </div>
+            <div class="contents">
+                <div class="c-title">{$service.name}</div>
+                <div class="desc">{$service.description}</div>
+                <div class="hinfo">
+                    <!-- {notempty name="$service.qq"}<div class="qq">QQ：{$service.qq}</div>{/notempty} -->
+                    <div class="gw">官网：<a href="{$service.url}" target="_blank" style="color:#ff4300">立即访问</a></div>
+                    <!-- {notempty name="$service.phone"}<div class="lx">联系电话：{$service.phone}</div>{/notempty} -->
+                </div>
+            </div>
+            <div class="qrcode">
+                <div><img src="{$service.wechat}"></div>
+                <div>{$service.remarks}</div>
+            </div>
+        </div>
+    </div>
+    <div class="navmenu" style="width: 100%">
+        <nav class="nav-wrap" id="navds" style="width:1100px;margin:0 auto;">
+            <ul class="clearfix" style="display: flex;flex-wrap: wrap;">
+                {notempty name="$service.detail.featured"}
+                <li><a class="sroll active" href="#s1">主推服务</a></li>
+                {/notempty}
+                <!-- <li><a class="sroll" href="#s2">为您推荐</a></li> -->
+                {notempty name="$service.detail.content"}
+                <li><a class="sroll" href="#s3">服务介绍</a></li>
+                {/notempty}
+            </ul>
+        </nav>
+    </div>
+    <div class="container">
+        <div class="content">
+            <div class="container" style="padding:20px 0; padding-top: 70px;">
+                {notempty name="$service.detail.featured"}
+                <div class="textarea">
+                    <div class="boxtitle" id="s1">主推服务</div>
+                    <div style="display: flex;flex-wrap: wrap">
+
+                        {foreach $service.detail.featured as $value}
+                        <div class="zhutuilist">
+                            <div class="thumb">
+                                <img src="{$value.0}" style="cursor:pointer" onclick="open_img(this)" >
+                            </div>
+                            <a class="contents" style="color:#444">{$value.2}</a>
+                            <a class="description">{$value.3}</a>
+                        </div>
+                        {/foreach}
+                       
+                    </div>
+                </div>
+                {/notempty}
+
+                <!-- <div class="hr"></div>
+                <div class="textarea">
+                    <div class="boxtitle" id="s2">为您推荐</div>
+
+                    <div style="word-break:break-word;">
+                        <div class="cif-recommend-box__cont">
+                            <div class="cif-recommend is-type2">
+                                <a href="https://m.cifnews.com/product/1047?origin=guanliantuijian" target="_blank" class="link-area">
+                                    <div class="cif-imgbox cif-recommend__img">
+                                        <img src="__SIMG__/187f77bd0e5a4a119e08360a04154360.jpg" alt="">
+                                    </div>
+                                    <div class="cif-recommend__cont">
+                                        <div class="cif-recommend__tit">积加ERP工具 标准版</div>
+                                        <div class="cif-recommend__desc">支持自动化广告优化策略,多店铺，多维度、多指标 10秒掌握运营数据,即时查看各店铺商品销售数据,商品采购集中管,多店铺精准利润分析从</div>
+                                    </div>
+                                </a>
+                                <a href="https://m.cifnews.com/product/1047/services?origin=guanliantuijian" target="_blank" class="cif-btn is-plain cif-recommend__btn">免费咨询</a>
+                            </div>
+                            <div class="cif-recommend is-type2">
+                                <a href="https://m.cifnews.com/product/1049?origin=guanliantuijian" target="_blank" class="link-area">
+                                    <div class="cif-imgbox cif-recommend__img">
+                                        <img src="__SIMG__/5a594b4836f3495e8f3f9fdc11ada29c.jpg" alt="">
+                                    </div>
+                                    <div class="cif-recommend__cont">
+                                        <div class="cif-recommend__tit">积加ERP工具 高级版</div>
+                                        <div class="cif-recommend__desc">支持自动化广告优化策略,多店铺，多维度、多指标 10秒掌握运营数据,即时查看各店铺商品销售数据,商品采购集中管,多店铺精准利润分析从</div>
+                                    </div>
+                                </a>
+                                <a href="https://m.cifnews.com/product/1049/services?origin=guanliantuijian" target="_blank" class="cif-btn is-plain cif-recommend__btn">免费咨询</a>
+                            </div>
+                            <div class="cif-recommend is-type2">
+                                <a href="https://m.cifnews.com/product/1050?origin=guanliantuijian" target="_blank" class="link-area">
+                                    <div class="cif-imgbox cif-recommend__img">
+                                        <img src="__SIMG__/d58b527f154a4116a2696ebe930e3e19.jpg" alt="">
+                                    </div>
+                                    <div class="cif-recommend__cont">
+                                        <div class="cif-recommend__tit">积加ERP工具 至尊版</div>
+                                        <div class="cif-recommend__desc">支持自动化广告优化策略,多店铺，多维度、多指标 10秒掌握运营数据,即时查看各店铺商品销售数据,商品采购集中管,多店铺精准利润分析从</div>
+                                    </div>
+                                </a>
+                                <a href="https://m.cifnews.com/product/1050/services?origin=guanliantuijian" target="_blank" class="cif-btn is-plain cif-recommend__btn">免费咨询</a>
+                            </div>
+                            <div class="cif-recommend is-type2">
+                                <a href="https://m.cifnews.com/product/1051?origin=guanliantuijian" target="_blank" class="link-area">
+                                    <div class="cif-imgbox cif-recommend__img">
+                                        <img src="__SIMG__/82c1a743a0a64b9e8763c82aaa4738b0.jpg" alt="">
+                                    </div>
+                                    <div class="cif-recommend__cont">
+                                        <div class="cif-recommend__tit">积加ERP工具 旗舰版</div>
+                                        <div class="cif-recommend__desc">创始人来自Anker，最懂亚马逊卖家的资深行内人,多店铺，多维度、多指标 10秒掌握运营数据,50+数据详情精准统计分析 效能提升90%,双接口数据获取技术，自动同步、及时性高,对接财务系统，数据准确率98%</div>
+                                    </div>
+                                </a>
+                                <a href="https://m.cifnews.com/product/1051/services?origin=guanliantuijian" target="_blank" class="cif-btn is-plain cif-recommend__btn">免费咨询</a>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div style="word-break:break-word;">
+                        <p>{$service.detail.company}</p>
+                        <p><br></p>
+                    </div>
+
+                </div> -->
+
+                {notempty name="$service.detail.content"}
+                <div class="hr"></div>
+                <div class="textarea">
+                    <div class="boxtitle" id="s3">服务介绍</div>
+                    <div style="word-break:break-word;" class="edit_condit">{$service.detail.content|raw}</div>
+                </div>
+                {/notempty}
+            </div>
+        </div>
+    </div>
+</main>
+<script src="__AMZJS__/nav.js"></script>
+<script>
+    // 滚动固定顶部的导航
+    $(window).scroll(function() {
+        var top = $(window).scrollTop();
+        if (top < 250) {
+            $('.header').show();
+        } else {
+            $('.header').hide();
+        }
+    });
+
+    $('.fitem').click(function() {
+        window.open($(this).attr('dhref'));
+    });
+
+    $(document).ready(function() {
+        $('.navmenu').find('li').eq(0).find('a').addClass('active')
+        // var navHeight = $('header').height() + $('.banner').height()+30;
+        var navHeight = $('header').height() + 250;
+        // console.log(navHeight);
+        var left = 0;
+        var width = $('.catetitle').width()
+        if ($(this).scrollTop() >= navHeight) {
+            $('.navmenu').addClass('fixed').css({ width: '100%' })
+        } else {
+            $('.navmenu').removeClass('fixed').css({ width: '100%' })
+        }
+        $(window).scroll(function() {
+            if ($(this).scrollTop() >= navHeight) {
+                $('.navmenu').addClass('fixed').css({ width: width })
+            } else {
+                $('.navmenu').removeClass('fixed').css({ width: width })
+            }
+        })
+    })
+
+    //内容信息导航锚点
+    $('.nav-wrap').navScroll({
+        mobileDropdown: true,
+        mobileBreakpoint: 768,
+        scrollSpy: true
+    });
+</script>
+<script>
+    // 点击自动滚动
+    $(document).on('click', '.course-cate-name', function() {
+        var top = $(window).scrollTop();
+        if (top < 470) {
+            var attr_cate_data = $(this).attr('attr-cate-data');
+            $(this).addClass('current_active').siblings().removeClass('current_active');
+            $(this).css('border-bottom', '1px solid #fc9d27').siblings().css('border-bottom', '0px solid #fc9d27');
+            if (attr_cate_data == 0) {
+                $("html, body").animate({
+                    scrollTop: 0
+                }, {
+                    duration: 500,
+                    easing: "swing"
+                });
+            } else {
+                var height = $('.cate-' + attr_cate_data).offset().top - 120 + "px";
+                $("html, body").animate({
+                    scrollTop: $('.cate-' + attr_cate_data).offset().top - 120 + "px"
+                }, {
+                    duration: 500,
+                    easing: "swing"
+                });
+            }
+
+            $('.header').show();
+        } else {
+            var attr_cate_data = $(this).attr('attr-cate-data');
+            $(this).addClass('current_active').siblings().removeClass('current_active');
+            $(this).css('border-bottom', '1px solid #fc9d27').siblings().css('border-bottom', '0px solid #fc9d27');
+            if (attr_cate_data == 0) {
+                $("html, body").animate({
+                    scrollTop: 0
+                }, {
+                    duration: 500,
+                    easing: "swing"
+                });
+            } else {
+                var height = $('.cate-' + attr_cate_data).offset().top - 70 + "px";
+                $("html, body").animate({
+                    scrollTop: $('.cate-' + attr_cate_data).offset().top - 70 + "px"
+                }, {
+                    duration: 500,
+                    easing: "swing"
+                });
+            }
+
+            $('.header').hide();
+        }
+
+
+        return false;
+
+    });
+</script>
+{/block}

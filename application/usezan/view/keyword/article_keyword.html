@@ -1,0 +1,51 @@
+{include file="public:header" /}
+<style type="text/css">
+    .akali-keyword{
+        position: fixed;
+        width: 100%;
+        height: 100%;
+        top: 50px;
+        overflow-x: scroll;
+        padding-bottom: 200px;
+    }
+</style>
+<div id="akali-keyword">
+    <div class="node">
+        <div class="node-list">
+            <form class="action-form" action="" method="post">
+
+                <div class="node-list-che">
+                    <div class="cd-left" style="padding-bottom: 60px;">
+                        {foreach $list as $key => $value}
+                        <h3>{$key}</h3>
+                        {foreach $value as $val}
+                        <span class="left-span">
+                            <label><input type="checkbox" {in name="$val.id" value="$data"}checked{/in} name="keywords[]" class="i-checks" value="{$val.id}">{$val.name}</label>
+                        </span>
+                        {/foreach}
+                        {/foreach}
+                    </div>
+                </div>
+                <div id="btnbox" class="btn" style="line-height: 30px;height: 30px;position: fixed;padding: 15px 30px;">
+                    <input type="hidden" name="id" value="{:input('id/d')}" />
+
+                    <input type="submit" class="bth bth-node" value="立即提交" style="float: left;margin:0px;" />
+                </div>
+                
+            </form>
+        </div>
+    </div>
+</div>
+<script type="text/javascript">
+$(".checkAll").on('click', function() {
+    $(".i-checks").prop("checked", this.checked);
+});
+$(".nav-check").on("click", function() {
+    var parents = $(this).parents("h5");
+    parents.next(".node-list-che").find(".i-checks").prop("checked", this.checked);
+});
+$(".cd-two").on("click", function() {
+    var parents = $(this).parents(".cd-left");
+    parents.find(".i-checks").prop("checked", this.checked);
+});
+</script>

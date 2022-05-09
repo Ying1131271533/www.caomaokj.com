@@ -1,0 +1,256 @@
+{extend name="layout/base" /}
+{block name="title"}{$logistics.title}{/block}
+{block name="load"}
+<!-- css -->
+<!-- js -->
+{/block}
+<!-- 主体内容 -->
+{block name="main"}
+<div class="container body-container">
+    <link href="__ACSS__/swiper.css" rel="stylesheet">
+    <link rel="stylesheet" href="__ACSS__/company.css" type="text/css">
+    <link rel="stylesheet" href="__ACSS__/service-detail.css" type="text/css">
+    <link rel="stylesheet" href="__ACSS__/service-detail-new.css" type="text/css">
+    <script src="__AJS__/swiper.js"></script>
+    <script>
+        //优惠券选项卡切换
+                $(document).ready(function (e) {
+                    $(".discount_span").click(function () {
+                        $(this).addClass('orange_color').siblings().removeClass('orange_color');
+                        //$(".discount_ul li").eq($(this).index()).addClass("active").siblings().removeClass("active");
+                        $(".card-pane").hide().eq($(this).index()).show();
+                    })
+                })
+                //企业服务选项卡切换
+                $(document).ready(function (e) {
+                    $(".service-nav li").click(function () {
+                        $(".service-nav li").eq($(this).index()).addClass("active").siblings().removeClass("active");
+                        $(".service-pane").hide().eq($(this).index()).show();
+                    })
+                });
+                $(document).ready(function () {
+                    $('.actionWarehouseSarch').on('click', function () {
+                        //标识是否清空选项区
+                        var region_sgin = $(this).parent().is('.country-more-box');
+                        if (region_sgin) {
+                            $('.warehouse_country>.actionWarehouseSarch').removeClass('orange_color')
+                        } else {
+                            $('.country-more-box .actionWarehouseSarch').removeClass('orange_color');
+                        }
+
+
+                        let weaId = $(this).attr('data-id');
+                        $(this).addClass('orange_color').siblings().removeClass('orange_color');
+                        if (weaId == 0) {
+                            $('.warehouseAct').show();
+                            return false;
+                        }
+                        $('.warehouseAct').each(function (k, v) {
+                            let thanId = $(v).attr('data-list');
+                            if (weaId.indexOf(thanId) < 0) {
+                                $(v).hide();
+                            } else {
+                                $(v).show();
+                            }
+                        });
+                    });
+                    $('.actionLineSarch').on('click', function () {
+                        //标识是否清空选项区
+                        var region_sgin = $(this).parent().is('.country-more-box');
+                        if (region_sgin) {
+                            $('.warehouse_country>.actionLineSarch').removeClass('orange_color')
+                        } else {
+                            $('.country-more-box .actionLineSarch').removeClass('orange_color');
+                        }
+                        $(this).addClass('orange_color').siblings().removeClass('orange_color');
+                        var num = $(this).attr('data-id');
+                        if (num != '') {
+                            $('.key_list_box .key_list_con > div').eq(num).addClass('showIn').siblings().removeClass('showIn');
+                            $('.key_list_box .key_nav li').eq(num).find('a').addClass('on').parent().siblings().find('a').removeClass('on');
+                        } else {
+                            $('.key_list_box .key_nav li').eq(0).find('a').addClass('on').parent().siblings().find('a').removeClass('on');
+                        }
+
+                    });
+                });
+
+
+
+            </script>
+        <div class="nav_div_service mb5" style="line-height:40px;margin-top: 25px;">
+            <span>
+                <a class="color9" href="/"><svg class="icon" aria-hidden="true">
+                        <use xlink:href="#icon-shouye2"></use>
+                    </svg>首页 &gt;</a>
+            </span>
+            <span>
+                <a class="color9" href="{:url('logistics/index')}">找物流资源 &gt;</a>
+            </span>
+            <span>
+                <a class="color-main" href="javascript:void(0)">{$logistics.title}</a>
+            </span>
+        </div>
+        <div class="main-div all-content main-wrap">
+            <div class="service-box">
+                <div class="l-service-box">
+                    <div class="l-company-img">
+                        <img class="company-img" src="{$logistics.thumb}" alt="{$logistics.title}">
+                    </div>
+                </div>
+                <div class="c-service-box">
+                    <div class="c-info-top">
+                        <h4 class="media-heading">{$logistics.title}</h4>
+
+                        <!-- 登录显示 -->
+                        <div class="c-info-div-box">
+                            <p><img src="__AIMG__/15880614116905.png" style="margin-top: -2px"> {$logistics.address} </p>
+                            <p><img src="__AIMG__/15897666976170.png"> {$logistics.phone} </p>
+                            <p><img src="__AIMG__/15880614893090.png"> {$logistics.email} </p>
+                        </div>
+                        
+                    </div>
+
+                    <div class="c-service-div-box">
+                        <div class="c-service-div-title">服务类型:</div>
+                        <div class="c-service-div-desc">
+                            {foreach $logistics->keywords as $value}
+                            <span>{$value.name}</span>
+                            {/foreach}
+                        </div>
+                    </div>
+
+                    <div class="c-service-btn-box">
+                        <a class="xun-btn " style="cursor:pointer" onclick="wechat('{$logistics.wechat}');">点击询盘</a>
+                        <!-- <a class="xun-btn " href="javascrpt:void(0)" onclick="sendAsk('{$logistics.wechat}');">点击询盘</a> -->
+                        <!-- 已登录 -->
+                        <a class="login" target="_blank" data-id="23" data-qq="{$logistics.qq}" href="http://wpa.qq.com/msgrd?v=3&uin={$logistics.qq}&site=kuajingyan.com&menu=yes"> QQ咨询 </a>
+                    </div>
+                </div>
+
+
+            </div>
+            
+
+            <!-- 优势 -->
+            <div class="youshi-advantage bg-white" style="border:1px solid #fff;">
+                <div class="company_title_div">物流详情</div>
+                <div class="company_info padding10 font_color555">{$logistics.content|raw}</div>
+            </div>
+
+
+        </div>
+
+        {notempty name="$article"}
+        <div class="bg-white news-div" style="border:1px solid #fff;">
+            <div class="company_title_div  mt15">
+                <div class="pull-left" style="display: inline-block;">新闻中心</div>
+                <div class="pull-right show_more" style="display: inline-block;"><a target="_blank" href="{:url('home/index')}">查看更多</a></div>
+            </div>
+
+            <div class="news_list_box">
+
+                {foreach $article as $value}
+                <div class="news_father_div">
+                    <div class="weui-panel__bd">
+                        <a href="javascript:void(0);" class="weui-media-box weui-media-box_appmsg">
+                        </a>
+                        <div class="weui-media-box__hd pull-left"><a href="javascript:void(0);" class="weui-media-box weui-media-box_appmsg">
+                            </a><a href="{:url('home/article', ['id' => $value.id])}">
+                                <img class="weui-media-box__thumb" src="{$value.thumb}" alt="">
+                            </a>
+                        </div>
+                        <div class="weui-media-box__bd pull-right">
+                            <h4 class="weui-media-box__title"><a href="{$value.title}">{$value.title}</a></h4>
+                            <p class="weui-media-box__desc">{$value.description}</p>
+                            <h5 class="weui-media-box__time">发布于：{:date('Y-m-d H:i:s', $value.createtime)}</h5>
+                        </div>
+                    </div>
+                </div>
+                {/foreach}
+                
+            </div>
+        </div>
+        {/notempty}
+        <div style="height: 20px;width: 100%"></div>
+</div>
+<input type="hidden" id="address_Longitude" value="">
+<input type="hidden" id="address_Latitude" value="">
+<input type="hidden" id="isLogin" value="{$userid}">
+<script type="text/javascript" src="__AJS__/laypage.js"></script>
+<script type="text/javascript" src="__AJS__/service.js?{$time}"></script>
+<script src="__AJS__/service-detail.js"></script>
+<script>
+    var swiper = new Swiper('.swiper_photo', {
+        slidesPerView: 4,
+        spaceBetween: 15,
+        // init: false,
+        pagination: {
+            el: '.swiper-pagination',
+            clickable: true,
+        },
+        navigation: {
+            nextEl: '.swiper-button-next_photo',
+            prevEl: '.swiper-button-prev_photo',
+        },
+    });
+
+    var swiper1 = new Swiper('.swiper-container_printing', {
+        slidesPerView: 4,
+        spaceBetween: 15,
+        // init: false,
+        pagination: {
+            el: '.swiper-pagination',
+            clickable: true,
+        },
+        navigation: {
+            nextEl: '.swiper-button-next_printing',
+            prevEl: '.swiper-button-prev_printing',
+        },
+    });
+    var swiper = new Swiper('.pick-swiper-container', {
+        slidesPerView: 3,
+        spaceBetween: 8,
+        pagination: {
+            el: '.swiper-pagination',
+            clickable: true,
+        },
+        navigation: {
+            nextEl: '.pick-swiper-button-next',
+            prevEl: '.pick-swiper-button-prev',
+        },
+        loop: true
+
+    });
+    //图片切换
+    $(document).on('click', '.l-min-img div.swiper-slide', function() {
+        var pic_attr = $(this).attr('pic_attr');
+        $('.l-max-img img').attr('src', pic_attr);
+    });
+
+
+    // 最近浏览
+    var latest_view = new Object();
+    latest_view.service_id = "23";
+    latest_view.service_name = "深圳市乐一宝国际物流有限公司";
+    latest_view.service_logo = "https://img.kuajingyan.com/home/1564558105568466.png";
+
+    var latest_views = localStorage.getItem('service_latest_views') ?
+        JSON.parse(localStorage.getItem('service_latest_views')) : new Array();
+
+    // 浏览记录去重，相同的两次只保留最近的一次
+    // 由于splice函数会改变数组长度，所以数组长度需要实时获取，不能使用$.each()函数遍历，也不能在for中初始化数组长度 for (var i = 0, len = latest_views.length; i < len; i++)
+    for (var i = 0; i < latest_views.length; i++) {
+        if (latest_views[i].service_id == 23) {
+            latest_views.splice(i, 1);
+        }
+    }
+
+    // 最保留最近5条数据
+    if (latest_views.length > 4) {
+        latest_views.pop();
+    }
+
+    latest_views.unshift(latest_view);
+    localStorage.setItem('service_latest_views', JSON.stringify(latest_views));
+</script>
+{/block}

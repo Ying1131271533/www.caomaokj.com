@@ -1,0 +1,150 @@
+<!-- 最顶部 -->
+<div class="container kjy_top_nav" style="border:none;height: 100px;background-color: #fff;">
+    <ul id="w1" class="navbar-nav navbar-left nav">
+        <li>
+            <div>
+                <a href="/" style="background-color: none">
+                    <img src="__AIMG__/logo.png" class="menu_logo" alt="草帽跨境">
+                    <img src="__AIMG__/top_2.png" class="menu_logo_right_abc" alt="草帽跨境">
+                </a>
+            </div>
+        </li>
+        <!-- <li class="items select_li_padding"> -->
+        <li class="sousuoItem" style="display:flex;flex-direction:column;">
+            <div class="home_search_word" style="width: 520px;">
+                <div class="searchShowCont" style="float: left;height: 32px;">
+                    
+                    <div class="layui-form" style="width: 210px;margin-left: -95px;">
+                        <form action="{:url('search')}" method="post" name="example">
+                            <div class="layui-form-item">
+                                <div class="layui-input-block" style="height: 30px">
+                                    <select name="quanzhan_select" class="quanzhan_select" lay-verify="required">
+                                        <option value="0" {if input('select_type') =="0" }selected{/if}>站内搜索</option>
+                                        <option value="1" {if input('select_type') =="1" }selected{/if}>头条</option>
+                                        <option value="2" {if input('select_type') =="2" }selected{/if}>活动</option>
+                                        <option value="3" {if input('select_type') =="3" }selected{/if}>学院</option>
+                                    </select>
+                                </div>
+                            </div>
+                        </form>
+                    </div>
+
+                </div>
+                <div class="searchShowCont" style="float: left;height: 32px;">
+                    <input id="keyword_search" autofocus="autofocus" value="{:input('keyword/s', '')}" type="text"
+                        placeholder="请输入搜索内容" class="keyword_search_input" style="width:295px;">
+                    <span id="fangdajing">搜索</span>
+                </div>
+            </div>
+            <!--搜索输入框下部-->
+            <div class="cif-header__word cifnews_block">
+                <a href="{:url('platform/detail', ['id' => 52])}">速卖通</a>
+                <a href="{:url('platform/detail', ['id' => 5])}">亚马逊</a>
+                <a href="{:url('platform/detail', ['id' => 6])}">Shopee</a>
+                <a href="{:url('platform/detail', ['id' => 7])}">Wish</a>
+                <a href="{:url('platform/detail', ['id' => 9])}">eBay</a>
+                <a href="{:url('platform/detail', ['id' => 10])}">Shopify</a>
+                <a href="{:url('college/index#cate-1')}">速卖通培训</a>
+                <a href="{:url('logistics/detail', ['id' => 1])}">美国海外仓</a>
+            </div>
+
+        </li>
+        <li class="task-li taskliMenu" style="width:150px;">
+            <div class="header-right-nav-box rightNav-box">
+
+                <span class="header-drop-down-a select-dropdown">
+                    商务合作 <svg class="icon" style="width:14px;height:12px;" aria-hidden="true">
+                        <use xlink:href="#icon-arrowdown"></use>
+                    </svg>
+                    <div class="header-drop-down-list-box" style="width: 90px; display: none;">
+                        <a href="{:url('customer/contact')}">商务对接</a>
+                        <a href="{:url('customer/platform')}">电商入驻</a>
+                        <a href="{:url('customer/activity')}">活动报名</a>
+                        <a href="{:url('customer/college')}">课程报名</a>
+                        <!-- <a href="{:url('customer/suggestion')}">意见反馈</a> -->
+                    </div>
+                </span>
+
+                <!-- <span><a class="navigation" href="https://www.caomaokj.com/navigation-tool/tool">网站导航</a></span>
+                <span class="official-dropdown">
+                    <span class="officialText"> 关注公众号</span>
+                    <div class="officials">
+                        <div class="officialContainer">
+                            <div class="officialItem">
+                                <img src="__AIMG__/QR_code/code_caomao_public.jpg" title="草帽跨境公众号"
+                                    alt="草帽跨境公众号.jpg">
+                                <p>草帽跨境公众号</p>
+                            </div>
+                            <div class="officialItem">
+                                <img src="__AIMG__/QR_code/code_smt_public.jpg" title="速卖通草帽公众号"
+                                    alt="速卖通草帽公众号.png">
+                                <p>速卖通草帽公众号</p>
+                            </div>
+                            <div class="officialItem">
+                                <img src="__AIMG__/QR_code/code_wsy_video.jpg" title="威速易视频号"
+                                    alt="威速易视频号.jpg">
+                                <p>威速易视频号</p>
+                            </div>
+                            <div class="officialItem">
+                                <img src="__AIMG__/QR_code/code_wsy_public.jpg" title="威速易公众号"
+                                    alt="威速易公众号.png">
+                                <p>威速易公众号</p>
+                            </div>
+                        </div>
+                    </div>
+                </span> -->
+            </div>
+        </li>
+        
+        <input type="hidden" name="user_type" value="0" class="user_type">
+        <input type="hidden" name="user_service_id" value="0" class="user_service_id">
+        
+        {empty name="$userid"}
+        <!-- 未登录头像 -->
+        <li class="btn-operation pull-right" id="padding0_nav">
+            <p>
+                <a href="{:url('login/index')}">
+                     <button type="button" id="denglu_btn" class=" btn-header">登录</button>
+                </a>
+                <a href="{:url('login/register')}">
+                     <button type="button" id="denglu_btn" class=" btn-header">注册</button>
+                </a>
+            </p>
+        </li>
+        {else/}
+        <!-- 已登录头像 -->
+        <li class="user-menu-container">
+            <div class="userInfo">
+                <a href="{:url('user/index')}" id="user-center">
+                    <img src="{$avatar}" style="max-width:38px;">
+                </a>
+            </div>
+            <div class="user-menu-top" aria-labelledby="user-center" style="display: none;">
+                <p><a href="{:url('user/index')}">个人中心</a></p>
+                <p><a href="{:url('user/info')}">我的资料</a></p>
+                <p><a href="{:url('user/collect')}">我的收藏</a></p>
+                <p><a href="{:url('user/activity')}">我的报名</a></p>
+                <p><a href="{:url('user/college')}">我的课程</a></p>
+                <p><a href="javascript:logout();">退出</a></p>
+            </div>
+        </li>
+        
+        <li class="user-menu-container message" style="width:34px;">
+            <!-- <div class="userInfo" style="height:60px;position:relative">
+                <a href="{:url('user/message')}" id="message">
+                    <span class="span-svg">
+                        <img style="width:26px;" src="__AIMG__/ccd8eb55a2d9b8b6.png" title="1606962473978757.png" alt="提醒.png">
+                    </span>
+                </a>
+            </div>
+            <div class="user-menu-top" aria-labelledby="message" style="display: none;">
+                <p class="more-message">
+                    <a href="{:url('user/message')}">查看全部消息</a>
+                </p>
+            </div> -->
+        </li>
+        
+        {/empty}
+
+    </ul>
+</div>

@@ -1,0 +1,179 @@
+{include file="public/header" /}
+<div class="mainbox animated fadeInRight">
+    <div class="mainnav_title">
+        <a class="on">报名详情</a>
+        <a class="bth-rand fr" href="javascript:location.replace(location.href);" title="刷新"><b class="uzfont uzico-shuaxin"></b></a>
+    </div>
+    <form name="myform" id="myform" action="" method="post">
+        <table cellpadding=0 cellspacing=0 class="table_form" width="100%">
+
+            <tr>
+                <td width="90"><label>id：</label></td>
+                <td>{$join.id}</td>
+            </tr>
+
+            <tr>
+                <td width="90"><label>姓名：</label></td>
+                <td>{$join.name}</td>
+            </tr>
+
+            <tr>
+                <td width="90"><label>公司名称：</label></td>
+                <td>{$join.company}</td>
+            </tr>
+            
+            <tr>
+                <td width="90"><label>描述：</label></td>
+                <td>
+                    <textarea rows="4" cols="58" name="description" placeholder="内容描述">{$join.demand}</textarea>
+                </td>
+            </tr>
+
+            <tr>
+                <td>报名时间：</td>
+                <td>{$join.create_time}</td>
+            </tr>
+
+            <tr>
+                <td>推荐用户：</td>
+                <td>{$join.ref_user}</td>
+            </tr>
+
+            <tr>
+                <td>用户id：</td>
+                <td>{$join.member_id}</td>
+            </tr>
+
+            <tr>
+                <td>订单编号：</td>
+                <td>{$order.order_sn}</td>
+            </tr>
+
+            <tr>
+                <td>支付宝交易号：</td>
+                <td>{$order.alipay_sn}</td>
+            </tr>
+
+            <tr>
+                <td>微信交易号：</td>
+                <td>{$order.wechat_sn}</td>
+            </tr>
+
+            <tr>
+                <td>原价：</td>
+                <td>{$order.original_price}</td>
+            </tr>
+
+            <tr>
+                <td>购买价：</td>
+                <td>{$order.shop_price}</td>
+            </tr>
+
+            <tr>
+                <td>数量：</td>
+                <td>{$order.number}</td>
+            </tr>
+
+            <tr>
+                <td>总价：</td>
+                <td>{$order.total}</td>
+            </tr>
+
+            <tr>
+                <td>支付需求：</td>
+                <td>{$order.need_pay == 1 ? '需要' : '不需要'}</td>
+            </tr>
+
+            <tr>
+                <td>订单状态：</td>
+                <td>
+                    {if $order.order_status == 0}
+                    <font color="red">待付款</font>
+                    {elseif $order.order_status == 1}
+                    <font color="green">已完成</font>
+                    {elseif $order.order_status == 2}
+                    <font color="#999">取消订单 </font>
+                    {/if}
+                </td>
+            </tr>
+
+            <tr>
+                <td>支付状态：</td>
+                <td>
+                    {if $order.pay_status == 0}
+                    <font color="red">未支付</font>
+                    {elseif $order.pay_status == 1}
+                    <font color="green">已支付</font>
+                    {elseif $order.pay_status == 2}
+                    <font color="#999">已退款</font>
+                    {/if}
+                </td>
+            </tr>
+
+            <tr>
+                <td>发票状态：</td>
+                <td>
+                    {if $order.invoice_status == 0}
+                    <font color="red">未开发票</font>
+                    {elseif $order.invoice_status == 1}
+                    <font color="green">已开发票</font>
+                    {elseif $order.invoice_status == 2}
+                    <font color="#999">已退发票 </font>
+                    {/if}
+                </td>
+            </tr>
+
+            <tr>
+                <td>支付时间：</td>
+                <td>{$order.pay_time != '' ? get_date($order.pay_time) : ''}</td>
+            </tr>
+
+            {eq name="$order.pay_status" value="2"}
+            <tr>
+                <td>退款原因：</td>
+                <td>{:get_date($order.refund_reason)}</td>
+            </tr>
+            {/eq}
+
+            <tr>
+                <td>课程标题：</td>
+                <td>{$college.title}</td>
+            </tr>
+
+            <tr>
+                <td>课程时间：</td>
+                <td>{:date('Y-m-d H:i:s', $college.start_time)} 至 {:date('Y-m-d H:i:s', $college.end_time)}</td>
+            </tr>
+
+            <tr>
+                <td>课程状态：</td>
+                <td>
+                    {if $college.status == 1 && $college.end_time > time()}
+                    进行中
+                    {else/}
+                    已结束
+                    {/if}
+                </td>
+            </tr>
+
+            <tr>
+                <td>课程地址：</td>
+                <td>{$college.address}</td>
+            </tr>
+
+
+            
+        </table>
+        <div id="bootline"></div>
+    </form>
+</div>
+<script type="text/javascript" src="__UJS__/ueditor/ueditor.config.js"></script>
+<script type="text/javascript" src="__UJS__/ueditor/ueditor.all.min.js"></script>
+<script type="text/javascript" src="__UJS__/ueditor/lang/zh-cn/zh-cn.js"></script>
+<script type="text/javascript">
+    var ue = UE.getEditor('container', {
+        initialFrameHeight: 300,
+        allowDivTransToP:false,
+        autoClearEmptyNode:false
+    });
+</script>

@@ -1,0 +1,28 @@
+{include file="public/header" /}
+<div class="mainbox animated fadeInRight">
+	<div class="mainnav_title">
+	    <a class="on">权限节点列表</a>
+		{include file="public/menu_right" /}
+	    <a class="bth-rand fr" href="javascript:location.replace(location.href);" title="刷新"><b class="uzfont uzico-shuaxin"></b></a>
+    </div>
+<form name="myform" id="myform" action="{:url('auth/listorder')}" method="post">
+<div class="table-list">
+    <table width="100%" cellspacing="0">
+        <thead>
+      		<tr>
+				<th width="40">{:lang('listorder')}</th>
+				<th align="left">节点名称</th>
+				<th align="left" width="150">权限方法</th>
+				<th align="left" width="80">权限菜单</th>
+				<th width="40">{:lang('status')}</th>
+				<th width="150">{:lang('manage')}</th>
+      		</tr>
+      	</thead>
+      	<tbody>
+		{$rule|raw}
+      	</tbody>
+    </table>
+    <div class="btn"><input type="submit" class="button" value="{:lang('listorder')}" /></div></div>
+</form>
+</div>
+</div>

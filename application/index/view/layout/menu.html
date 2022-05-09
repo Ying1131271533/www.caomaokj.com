@@ -1,0 +1,43 @@
+
+
+<!-- 导航栏 -->
+<div class="kua_menu_div">
+    <div class="kua_menu_div_box">
+        <input type="hidden" id="home_url" value="/index">
+        <a class="color_333" href="/index">
+            <div class="shouye_div">
+                <svg class="icon" aria-hidden="true">
+                  <use xlink:href="#icon-gengduo"></use>
+                </svg>
+                首页
+                <div class="kua-home-nav-bottom"></div>
+            </div>
+        </a>
+        {foreach $menu as $key => $value}
+        {empty name="$value.child"}
+        <a class="color_333" target="{$value.target}" href="/index/{$value.url}">
+            <div class="{$value.url != $controller ?: 'menu_active'} {$value.class} home-nav-hover">
+                {$value.catname}
+                <div class="kua-home-nav-bottom"></div>
+            </div>
+        </a>
+        {else/}
+        <div class="{$value.url != $controller ?: 'menu_active'} {$value.class} dropdown dropdown_jzc home-nav-hover">
+            <a href="/index/{$value.url}" class="dropdown-toggle color_333" target="{$value.target}">
+                <span>
+                    {$value.catname}
+                    <img src="__AIMG__/xia-copy.png" style="width: 15px;margin-left: 5px;margin-top:-3px;">
+                </span>
+            </a>
+            <div class="kua-home-nav-bottom"></div>
+            <ul class="dropdown-menu menu_dropdown_jzc" style="display: none;">
+                {foreach $value.child as $k => $val}
+                <li><a href="{:url($val.url)}">{$val.catname}</a></li>
+                {/foreach}
+            </ul>
+        </div>
+        {/empty}
+        {/foreach}
+        
+    </div>
+</div>

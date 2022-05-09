@@ -1,0 +1,357 @@
+{extend name="layout/base" /}
+{block name="title"}找物流资源{/block}
+{block name="load"}
+<!-- css -->
+<link type="text/css" rel="stylesheet" href="__ACSS__/laypage.css" id="laypagecss">
+<link rel="stylesheet" href="__ACSS__/resources-index.css?{$time}" type="text/css">
+<link rel="stylesheet" href="__ACSS__/lcd-enter.css" type="text/css">
+<style>
+    .search-div {
+        height: 76px;
+        /* margin-top: 36px; */
+        /* margin-bottom: 20px; */
+        text-align: center;
+        padding-top: 17px;
+        background: url(/img/bg_search.jpg) repeat-x;
+    }
+
+    .search-div .form-inline input.form-control {
+        width: 667px;
+        height: 42px;
+        border-color: #fc9d27;
+    }
+
+    .search-div .btn-search {
+        height: 42px;
+        width: 60px;
+        background: #fc9d27;
+        font-size: 20px;
+        color: #fff;
+    }
+
+    .select-div {
+        background: #fff url(/img/label-left.png) no-repeat -20px;
+        margin-bottom: 15px;
+        border-bottom: none;
+    }
+
+    .input-group-btn {
+        position: relative;
+        font-size: 0;
+        white-space: nowrap;
+    }
+
+
+    .header-sort {
+        border-bottom: #ddd 1px solid;
+        height: 43px;
+    }
+
+    .bordered {
+        border-color: #ececec !important;
+        background: #fff;
+    }
+
+    .panel-body .recommend-article li {
+        height: 30px;
+        line-height: 30px;
+        border-bottom: 1px solid #ddd;
+        font-size: 14px;
+        color: #555555;
+        white-space: nowrap;
+        overflow: hidden;
+        text-overflow: ellipsis;
+    }
+
+    .panel-body .recommend-article li b {
+        display: inline-block;
+        width: 20px;
+        height: 20px;
+        line-height: 20px;
+        color: #fff;
+        text-align: center;
+        font-weight: initial;
+        margin: 0px 6px;
+    }
+
+    .panel-body .recommend-article li .icon-num-1 {
+        background: #ea492d;
+    }
+
+    .panel-body .recommend-article li .icon-num-2 {
+        background: #f19601;
+    }
+
+    .panel-body .recommend-article li .icon-num-3 {
+        background: #f3d400;
+    }
+
+    .panel-body .recommend-article li .icon-num-4,
+    .icon-num-5,
+    .icon-num-6,
+    .icon-num-7,
+    .icon-num-8,
+    .icon-num-9,
+    .icon-num-10 {
+        background: #a2a2a2;
+    }
+</style>
+<!-- js -->
+<script src="__AJS__/font_606323_0z1x61qzo3u.js"></script>
+<script src="__AJS__/warehouse_ad_click.js"></script>
+<script type="text/javascript" src="__AJS__/laypage.js"></script>
+{/block}
+<!-- 主体内容 -->
+{block name="main"}
+<div class="container body-container">
+
+    <!-- lcd入口 -->
+    <!-- <div class="lcd-entrance">
+        <a class="entrance-btn" href="" target="_blank"></a>
+    </div> -->
+    <!-- 上方搜索区域 -->
+    <!-- <div class="search-div nav-menu bordered">
+
+        <div class="form-inline" style="width: 1200px;margin: 0 auto;border: 1px solid #fc9d27;border-right: none;border-radius: 20px;padding:0 0 0 20px">
+            <div class="input-group" style="width: 100%">
+                <input type="text" style="width: 100%;border: none" id="keyword" class="form-control input-box ui-autocomplete-input" placeholder="找物流，服务等关键字..." autocomplete="off">
+                <span class="input-group-btn" style="width: 60px;border: none;">
+                    <button class="btn btn-search" type="button" style="font-size: 18px;border-radius: 0 20px 20px 0">
+                        <svg class="icon" aria-hidden="true" style="position: relative;top: -3px;">
+                            <use xlink:href="#icon-sousuo1-copy"></use>
+                        </svg>
+                    </button>
+                </span>
+            </div>
+        </div>
+    </div> -->
+
+    <div class="main-div">
+        <div class="nav_div_zwl" style="height:30px; line-height: 30px;">
+        </div>
+        
+        <!-- 条件筛选区域 -->
+        <div class="select-div bordered">
+            <ul class="select">
+                <!--揽货范围-->
+                <li class="select-list" id="cate">
+                    <div id="less-city" class="show-info show">
+                        <span class="label-left">渠道类型：</span>
+                        <div class="list-area" style="height: ;">
+                            <span class="search selected" data-id="0">
+                                <a href="javascript:void(0)">全部</a>
+                            </span>
+
+                            {foreach $categoryData as $value}
+                            <span class="search {$value.id != $cate ?: 'selected'}" data-id="{$value.id}">
+                                <a href="javascript:void(0)">{$value.catname}</a>
+                            </span>
+                            {/foreach}
+                        </div>
+                    </div>
+                </li>
+
+                <!--走货属性-->
+                <li class="select-list" id="attr">
+                    <div>
+                        <span class="label-left">走货属性：</span>
+                        <div class="list-area">
+                            <span class="search selected" data-id="0"><a href="javascript:void(0)">全部</a></span>
+                            {foreach $attributesData as $value}
+                            <span class="search {$value.id != $attr ?: 'selected'}" data-id="{$value.id}"><a href="javascript:void(0)">{$value.name}</a></span>
+                            {/foreach}
+                        </div>
+                    </div>
+                </li>
+
+                <!--增值服务-->
+                <li class="select-list" id="type">
+                    <div>
+                        <span class="label-left">服务类型：</span>
+                        <div class="list-area">
+                            <span class="search selected" data-id="0"><a href="javascript:void(0)">全部</a></span>
+
+                            {foreach $seviceTypeData as $value}
+                            <span class="search {$value.id != $type ?: 'selected'}" data-id="{$value.id}"><a href="javascript:void(0)">{$value.name}</a></span>
+                            {/foreach}
+                        </div>
+                    </div>
+                </li>
+
+            </ul>
+        </div>
+        <div class="main-list-group">
+            <div class="col-md-9 left">
+                <!-- 仓库列表 -->
+                <div class="data-div">
+
+                    <!-- 分页数据 -->
+                    <input type="hidden" id="count" value="{$count}">
+                    <input type="hidden" id="thisPage" value="{$page}">
+
+                    <!-- 排序 -->
+                    <!-- <div class="header-sort bordered">
+                        <dl>
+                            <dt>排序:</dt>
+                            <dd class="selected" data-type="1"><a href="javascript:void(0)">公司排序</a></dd>
+                            <dd data-type="3"><a href="javascript:void(0)">LCD会员</a></dd>
+                        </dl>
+                    </div> -->
+                    {foreach $logistics as $value}
+                    <div class="media bordered">
+                        <div class="media-left">
+                            <a title="{$value.title}" href="{:url('logistics/detail', ['id' => $value.id])}">
+                                <img class="img" src="{$value.thumb}" alt="{$value.title}">
+                            </a>
+                        </div>
+                        <div class="media-body">
+                            <h4 class="media-heading">
+                                <a href="{:url('logistics/detail', ['id' => $value.id])}">{$value.title}</a>
+                            </h4>
+                            <!-- <p class="font14">
+                                <span>专线服务：</span>
+                                <span>欧洲专线</span>
+                                <span>美国专线</span>
+                            </p> -->
+                            <p class="font14">
+                                <span>揽货范围：</span>
+                                <span>全国</span>
+                            </p>
+                            <!-- 查看物流公司邮箱和电话 -->
+                            <!-- 登陆显示 -->
+                            <div class="info font12">
+                                <span>
+                                    <i class="fa fa-envelope"></i>
+                                    <span class="service_email_15">{$value.email}</span>
+                                    <!-- <a class="view_service_email color-red" data-id="15" href="javascript:;">点击查看邮箱</a> -->
+                                </span>
+                                <span><i class="fa fa-phone"></i>
+                                    <span class="service_phone_15">{$value.phone}</span>
+                                    <!-- <a class="view_service_phone color-red" data-id="15" href="javascript:;">点击查看电话</a> -->
+
+                                </span>
+                                <a target="_blank" class="contactqq" data-id="15" data-qq="{$value.qq}"
+                                    href="http://wpa.qq.com/msgrd?v=3&amp;uin={$value.qq}&amp;site=caomaokj.com&amp;menu=yes"><img border="0" src="__AIMG__/button_111.jpg" alt="点击这里给我发消息" title="点击这里给我发消息">
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+                    {/foreach}
+
+                    
+                </div>
+                <div id="laypage" class="laypage"></div>
+            </div>
+
+            <div class="col-md-3 right" id="right-sidebar" style="top: 0px;">
+
+                <div class="panel" id="recommend-post-box" style="">
+                    <div class="panel-body">
+                        <div class="panel-heading font16 panel-title-warehouse" style="margin-bottom: 15px">为您推荐
+                        </div>
+                        <ul class="recommend-post"></ul>
+                    </div>
+                </div>
+
+
+                <!--top article-->
+                <div class="panel" id="recommend-article-box" style="">
+                    <div class="panel-body">
+                        <div class="panel-heading font16">相关资讯</div>
+                        <ul class="recommend-article"></ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <script type="text/javascript" src="__AJS__/post.js?{$time}"></script>
+    <link rel="stylesheet" href="__ACSS__/jquery-ui.css">
+    <script src="__AJS__/jquery-ui.js"></script>
+    <script type="text/javascript">
+    $(function() {
+
+        var CompanyName = [
+            "美国海外仓",
+            "FBA头程美森快船",
+            "UPS快递 2-3签收",
+            "Fedex",
+            "荷兰小包",
+            "中国邮政航空小包（China Post Air Mail）",
+            "DHL",
+            "俄罗斯海外仓",
+            "东南亚专线",
+            "中东专线",
+            "外邮/马邮",
+            "国际EUB",
+            "ETK",
+            "Express Mail Service",
+        ];
+
+        $("#keyword").autocomplete({
+            source: CompanyName,
+            select: function(event, ui) {
+                $("#keyword").val(ui.item.value);
+                submitSearch();
+            }
+        });
+
+        var request = getParams();
+
+        // 为您推荐
+        $.post('/index/logistics_api/recommendLogistics', { request: request, limit: 3 }, function(result) {
+            if (result.data.length == 0) {
+                return;
+            }
+            var recommend_list = "";
+            for (var i = 0; i < result.data.length; i++) {
+                if (i == result.data.length - 1) {
+                    recommend_list += "<li style='clear: left;height: 60px;margin:10px'><dl><dd style='float:left;'>";
+                } else {
+                    recommend_list += "<li style='clear: left;height: 60px;border-bottom:1px solid #eee; margin:10px'><dl><dd style='float:left;'>";
+                }
+                recommend_list += "<a href='/index/logistics/detail/id/" + result.data[i].id + "?t=post' title='" + result.data[i].title + "'>";
+                recommend_list += "<img src='" + result.data[i].thumb + "' alt='" + result.data[i].title + "' style='height: 50px;width: 75px;border:1px solid rgba(238,238,238,1);border-radius:4px;'></a></dd>";
+                recommend_list += "<dd style='float: left;margin:7px 10px;width: 130px;overflow:hidden;text-overflow:ellipsis;white-space:nowrap;'><p style='font: normal bold 14px/25px \"MicrosoftYaHei-Bold\";color: #333333;text-overflow:ellipsis;overflow: hidden;white-space: nowrap;'>";
+                recommend_list += "<a href='/index/logistics/detail/id/" + result.data[i].id + "?t=post'>" + result.data[i].title + "</a></p></dd></dl></li>";
+            }
+            $('.panel-body .recommend-post').html(recommend_list);
+            $('#recommend-post-box').show();
+        });
+
+        // 相关咨询
+        var title = "找专线_国际海陆空运专线_跨境物流公司查询-草帽跨境";
+        $.post('/index/home_api/recommendArticle', { title: title }, function(result) {
+            if (result.code == 200) {
+                var hot_articles = '';
+                $.each(result.data, function(i, item) {
+                    var num = i + 1;
+                    hot_articles += '<li><a href="/index/home/article/id/' + item.id + '" target="_blank"><b class="icon-num-' + num + '">' + num + '</b><span>' + item.title + '</span></a></li>';
+                });
+                $('.panel-body .recommend-article').html(hot_articles);
+                $('#recommend-article-box').show();
+            }
+        });
+
+        // 如果不存在分页，就去掉多余的边框
+        if ($('#laypage').length == 0) {
+            $('.data-div').css('margin', '0px auto 0px auto');
+        }
+    });
+
+    // 将url参数封装成json对象
+    function getParams() {
+        var url = decodeURI(location.search); //获取url中"?"符后的字符串
+        var request = new Object();
+        if (url.indexOf("?") != -1) {
+            var str = url.substr(1);
+            strs = str.split("&");
+            for (var i = 0; i < strs.length; i++) {
+                request[strs[i].split("=")[0]] = decodeURI(strs[i].split("=")[1]);
+            }
+        }
+        return request;
+    }
+    </script>
+</div>
+</div>
+{/block}

@@ -1,0 +1,243 @@
+{include file="public/header" /}
+<style type="text/css">
+    .akali-keyword{
+        position: fixed;
+        width: 100%;
+        height: 100%;
+        top: 50px;
+        overflow-x: scroll;
+        padding-bottom: 200px;
+    }
+</style>
+<div class="mainbox animated fadeInRight">
+    <div class="mainnav_title">
+        <a class="on">内容添加</a>
+        <a class="add-edit" href="{:url('activity/index')}?tree={$tree_id}">[<b class="uzfont uzico-fanhui"></b>返回列表]</a>
+        <a class="bth-rand fr" href="javascript:location.replace(location.href);" title="刷新"><b class="uzfont uzico-shuaxin"></b></a>
+    </div>
+    <form name="myform" id="myform" action="" method="post">
+        <div class="table_akali">
+            <table cellpadding=0 cellspacing=0 class="table_form" width="100%">
+                <tr>
+                    <td width="90"><font color="red">*</font><label>所属分类：</label></td>
+                    <td>
+                        <select class="catid" name="catid" validate="required:true">
+                            <option value="" selected>请选择分类</option>
+                            {foreach $category as $value}
+                            <option value="{$value.id}">{$value.catname}</option>
+                            {/foreach}
+                        </select>
+                    </td>
+                </tr>
+                <tr>
+                    <td width="90"><font color="red">*</font><label>标题：</label></td>
+                    <td>
+                        <div class="thumb_box ">
+                            <div class="img-upload">
+                                <img class="cthumb" width="100" onclick="up_img('cthumb','thumb','jpg,gif,png,jpeg','10485760','290px',0);" src="__UIMG__/upload_thumb.png" alt="上传封面">
+                                <input type="hidden" class="thumb" name="thumb">
+                                <input type="text" class="input-text" name="title" size="50" placeholder="标题" validate="minlength:2,maxlength:80,required:true">
+                            </div>
+                        </div>
+                    </td>
+                </tr>
+
+                <tr>
+                    <td width="90"><font color="red">*</font><label>关键字：</label></td>
+                    <td>
+                        <input type="text" class="input-text" name="keyword" size="50" placeholder="例如：电商、开店、海外仓等等" validate="required:true">
+                    </td>
+                </tr>
+
+                <tr>
+                    <td width="90"><font color="red">*</font><label>关键词列表：</label></td>
+                    <td><a class="keyword-article" href="javascript:;">【 关键词列表 】</a></td>
+                </tr>
+
+                <tr>
+                    <td>热门活动：</td>
+                    <td>
+                        <label><input type="radio" class="input_radio" name="popular" checked value="0"> 否</label>&nbsp;&nbsp;
+                        <label><input type="radio" class="input_radio" name="popular" value="1"> 是</label>
+                    </td>
+                </tr>
+
+                <tr>
+                    <td>原价：</td>
+                    <td>
+                        <input class="input-text" name="price" type="text" size="11" >
+                    </td>
+                </tr>
+
+                <tr>
+                    <td>折后价格：</td>
+                    <td>
+                        <input class="input-text" name="discount" type="text" size="11" >
+                    </td>
+                </tr>
+
+                <tr>
+                    <td>已报名人数：</td>
+                    <td>
+                        <input class="input-text" name="apply_num" type="text" size="25" placeholder="不可填" disabled>
+                    </td>
+                </tr>
+
+                <tr>
+                    <td>门票数量：</td>
+                    <td>
+                        <input class="input-text" name="tickets_num" type="text" size="25" >
+                    </td>
+                </tr>
+
+                <tr>
+                    <td>个人允许购买次数：</td>
+                    <td>
+                        <input class="input-text" name="shop_num" value="1" type="text" size="25" >
+                    </td>
+                </tr>
+
+                <tr>
+                    <td width="90"><label>描述：</label></td>
+                    <td>
+                        <textarea rows="4" cols="58" name="description" placeholder="内容描述"></textarea>
+                    </td>
+                </tr>
+
+                <tr>
+                    <td>开始时间</td>
+                    <td>
+                        <input class="Wdate input-text" name="starttime" type="text" size="25" onfocus="WdatePicker({dateFmt:'yyyy-MM-dd HH:mm'})" value="{:date('Y-m-d H:i',time())}">
+                    </td>
+                </tr>
+
+                <tr>
+                    <td>结束时间</td>
+                    <td>
+                        <input class="Wdate input-text" name="endtime" type="text" size="25" onfocus="WdatePicker({dateFmt:'yyyy-MM-dd HH:mm'})" value="{:date('Y-m-d H:i',time())}">
+                    </td>
+                </tr>
+                <tr>
+                    <td>活动地址</td>
+                    <td>
+                        <input type="text" class="input-text" name="address" size="50" placeholder="活动地址" validate="required:true"/>
+                    </td>
+                </tr>
+                <tr>
+                    <td width="90"><label>浏览数：</label></td>
+                    <td>
+                        <input type="text" class="input-text" name="view" value="0" size="6" placeholder="0">
+                    </td>
+                </tr>
+                <tr>
+                    <td>状态</td>
+                    <td>
+                        <label><input type="radio" class="input_radio" name="status" value="1" checked> 开启</label>&nbsp;&nbsp;
+                        <label><input type="radio" class="input_radio" name="status" value="0" > 关闭</label>
+                    </td>
+                </tr>
+                <tr>
+                    <td>添加时间</td>
+                    <td>
+                        <input class="Wdate input-text" name="createtime" type="text" size="25" onfocus="WdatePicker({dateFmt:'yyyy-MM-dd HH:mm:ss'})" value="{:date('Y-m-d H:i:s',time())}">
+                    </td>
+                </tr>
+                <tr class="editor">
+                    <td>内容:</td>
+                    <td style="width:1000px;"><script id="container" name="content" type="text/plain"></script></td>
+                </tr>
+                
+            </table>
+            <div id="bootline"></div>
+            <div id="btnbox" class="btn">
+                <input type="submit" value="{:lang('dosubmit')}" class="button" />
+                <input type="reset" value="{:lang('cancel')}" class="button" />
+            </div>
+        </div>
+
+        <!-- 关键词列表 -->
+        <div id="akali-keyword" style="display:none;">
+            <div class="node">
+
+                <div class="node-list-che">
+                    <div class="cd-left" style="padding-bottom: 60px;">
+                        {foreach $list as $key => $value}
+                        <h3>{$key}</h3>
+                        {foreach $value as $val}
+                        &nbsp;<span class="left-span">
+                            <label><input type="checkbox" name="keywords[]" class="i-checks" value="{$val.id}"> {$val.name}</label>
+                        </span>
+                        {/foreach}
+                        {/foreach}
+                    </div>
+
+                        <div id="btnbox" class="btn" style="padding-left: 20px;line-height: 40px;height: 40px;position: fixed;">
+                            <a type="submit" class="button akali_btn" style="padding: 10px 30px;">确定</a>
+                        </div>
+                </div>
+
+            </div>
+        </div>
+    </form>
+</div>
+<script type="text/javascript" src="__UJS__/ueditor/ueditor.config.js"></script>
+<script type="text/javascript" src="__UJS__/ueditor/ueditor.all.min.js"></script>
+<script type="text/javascript" src="__UJS__/ueditor/lang/zh-cn/zh-cn.js"></script>
+<script type="text/javascript">
+    var ue = UE.getEditor('container', {
+        initialFrameHeight: 300,
+        allowDivTransToP:false,
+        autoClearEmptyNode:false
+    });
+</script>
+<script type="text/javascript">
+
+    $("form").submit(function(e){
+        var val = $("input[ name='thumb']").val();
+        if(val == ''){
+            layer.msg('封面不能为空', {icon:2});
+            return false;
+        }
+
+        var keywords = $("input[name='keywords[]']:checked").val();
+        if(!keywords) {
+            layer.msg('关键词列表不能为空', {icon:2});
+            return false;
+        }
+    });
+
+    var ue = UE.getEditor('container', {
+        initialFrameHeight: 300,
+        allowDivTransToP:false,
+        autoClearEmptyNode:false
+    });
+
+</script>
+
+<!-- 关键词列表 -->
+<script type="text/javascript">
+    $(".keyword-article").on("click", function () {
+        $('.table_akali').hide();
+        $('#akali-keyword').show();
+    });
+
+    $(".akali_btn").on("click", function () {
+        $('.table_akali').show();
+        $('#akali-keyword').hide();
+        $(document).scrollTop(0);
+    });
+</script>
+
+<script type="text/javascript">
+$(".checkAll").on('click', function() {
+    $(".i-checks").prop("checked", this.checked);
+});
+$(".nav-check").on("click", function() {
+    var parents = $(this).parents("h5");
+    parents.next(".node-list-che").find(".i-checks").prop("checked", this.checked);
+});
+$(".cd-two").on("click", function() {
+    var parents = $(this).parents(".cd-left");
+    parents.find(".i-checks").prop("checked", this.checked);
+});
+</script>

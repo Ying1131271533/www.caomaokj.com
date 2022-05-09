@@ -1,0 +1,53 @@
+{include file="public/header" /}
+<style>
+.queding{display: block;width: 60px;height: 30px;line-height: 30px;text-align: center;border: 1px solid #ddd;background: #fff;color: #000;}
+.queding:hover{text-decoration: none;}
+.table-list{padding-bottom: 45px;}
+.btn{width:100%;position: fixed;bottom: 0px;z-index: 99;}
+</style>
+<div class="table-list">
+    <table width="100%" cellspacing="0">
+		<thead> 
+            <tr>
+            <th width="30">选择</th>
+            <th align="left" width="50">ID</th>
+			<th align="left">所属栏目</th>
+            </tr> 
+        </thead> 
+      	<tbody>
+      		{$categorys|raw}
+      	</tbody>
+    </table>
+    <div class="btn"><a class="queding" href="javascript:;">确定</a></div>
+</div>
+<script type="text/javascript">
+$(function () {
+	var menu = "{$menu}"; 
+	$(".queding").on("click",function () {
+		var _a = $(".inputcheckbox:checked").val();
+		$.ajax({
+			url : "{:url('ajax/getcid')}",
+			type: "post",
+			data: {aid:_a,menu:menu},
+			dataType: "json",
+			success: function(data){
+    			if(data.status && data.type == 0) {
+    				parent.$(".getcid").val(data.data);
+    				parent.layer.closeAll();
+    			} else {
+    				parent.$(".title").val(data.data.catname);
+    				parent.$(".murl").val(data.data.url);
+    				parent.$(".catid").val(data.data.id);
+    				parent.layer.closeAll();
+    			}
+            }
+		})
+	})
+});
+$(".on-radio").on("click",function () {
+	$(this).addClass("radon");
+	$(this).siblings("tr.on-radio").removeClass("radon").find(".inputcheckbox").prop("checked",false);
+	$(this).find(".inputcheckbox").prop("checked",true);
+});
+
+</script>

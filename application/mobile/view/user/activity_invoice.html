@@ -1,0 +1,578 @@
+{extend name="layout/base" /}
+{block name="title"}开发票{/block}
+{block name="load"}
+
+<!-- css -->
+<link rel="stylesheet" href="__MCSS__/jquery.editable-select.css">
+<link rel="stylesheet" href="__MCSS__/bootstrap.min.css">
+
+<!-- js -->
+<script src="__MJS__/jweixin-1.2.0.js"></script>
+<script src="__MJS__/jquery.editable-select.js"></script>
+<script src="__MJS__/bootstrap.min.js"></script>
+
+{/block}
+<!-- 主体内容 -->
+{block name="main"}
+    <div class="container">
+        <style>
+            .wrap {
+                background: #f6f6f6;
+            }
+            
+            p {
+                margin: 0;
+                padding: 0;
+            }
+            
+            .container {
+                padding-left: 0px;
+                padding-right: 0px;
+            }
+            
+            #home-search {
+                display: none !important;
+            }
+            
+            .home-header-bg,
+            .nav_menu {
+                display: none !important;
+            }
+            
+            #home-search {
+                width: 100%;
+                height: 56px;
+            }
+            
+            .post-title {
+                width: 100px;
+                font-size: 16px;
+                color: #282828;
+            }
+            
+            .post-text {
+                color: #999;
+                font-size: 16px;
+                flex: 1;
+            }
+            
+            .main-info {
+                /* margin:50px 0; */
+                margin-bottom: 50px;
+            }
+            
+            .list-ul li {
+                display: flex;
+                display: -wekit-flex;
+                /* border-bottom:1px solid #e1e1e1; */
+                padding: 10px 10px 12px 18px;
+                background: #fff;
+                position: relative;
+                overflow: hidden;
+                align-items: center;
+            }
+            
+            .item-border::after {
+                position: absolute;
+                bottom: 0;
+                content: '';
+                width: 100%;
+                border-bottom: 1px solid #e1e1e1;
+            }
+            
+            .radio-con {
+                display: flex;
+                display: -wekit-flex;
+                flex: 1;
+            }
+            
+            .list-ul li p {
+                overflow: hidden;
+            }
+            
+            .list-class {
+                background: #f6f6f6 !important;
+                padding: 12px 0 12px 18px !important;
+                font-size: 14px;
+                color: #999;
+            }
+            
+            .sec-color {
+                color: #FC9D27;
+            }
+            
+            .star-sign {
+                color: red;
+            }
+            
+            .goods_detail {
+                text-indent: 5px;
+            }
+            
+            .radio_qiye {
+                margin-right: 26px;
+            }
+            
+            input[type="radio"]+label::before {
+                content: "\a0";
+                /*不换行空格*/
+                display: inline-block;
+                vertical-align: middle;
+                font-size: 18px;
+                width: 16px;
+                height: 16px;
+                margin-right: 4px;
+                border-radius: 50%;
+                border: 1px solid #FC9D27;
+                /* text-indent: .15em; */
+                line-height: 1;
+            }
+            
+            input[type="radio"]:checked+label::before {
+                background-color: #FC9D27;
+                background-clip: content-box;
+                padding: 2px;
+            }
+            
+            input[type="radio"] {
+                position: absolute;
+                clip: rect(0, 0, 0, 0);
+            }
+            
+            .wx-enport {
+                margin-left: 2px;
+                padding-left: 14px;
+                border-left: 1px solid #FC9D27;
+                color: #FC9D27;
+                width: 78px;
+            }
+            
+            .button-div {
+                padding: 0 30px;
+                margin-top: 15px;
+            }
+            
+            .success-btn {
+                width: 100%;
+                height: 44px;
+                background: #FC9D27;
+                border-radius: 40px;
+                line-height: 44px;
+                color: #fff;
+            }
+            
+            .btn-able {
+                opacity: 1;
+            }
+            
+            .btn-unable {
+                opacity: 0.5;
+            }
+            
+            .logo-con {
+                width: 80px;
+                height: 50px;
+                margin: auto;
+                position: relative;
+            }
+            
+            .logo-con::before {
+                content: '';
+                width: 36px;
+                height: 1px;
+                background: #FC9D27;
+                border-radius: 2px;
+                top: 50%;
+                left: -40px;
+                position: absolute;
+            }
+            
+            .logo-con::after {
+                position: absolute;
+                content: '';
+                width: 36px;
+                height: 1px;
+                background: #FC9D27;
+                border-radius: 2px;
+                top: 50%;
+                right: -40px
+            }
+            
+            .logo-con .icon {
+                width: 100%;
+                height: 100%;
+            }
+            
+            .post-input {
+                flex: 1;
+                position: relative;
+                display: flex;
+                display: -wekit-flex;
+            }
+            
+            .post-input input {
+                /* width:100%; */
+                flex: 1;
+            }
+            
+            .input_clear {
+                width: 20px;
+                height: 20px;
+                border-radius: 50%;
+                background: #909090;
+                display: none;
+                position: relative;
+                margin-left: 4px;
+                z-index: 999;
+            }
+            
+            .input_clear:before,
+            .input_clear:after {
+                position: absolute;
+                left: 9px;
+                top: 4px;
+                content: ' ';
+                height: 12px;
+                width: 2px;
+                background-color: #fff;
+            }
+            
+            .input_clear:before {
+                transform: rotate(45deg);
+            }
+            
+            .input_clear:after {
+                transform: rotate(-45deg);
+            }
+            
+            .footer {
+                padding: .3rem 0;
+            }
+        </style>
+        <div class="main-info">
+            <div class="post-article">
+                <div class="tab-content">
+                    <form id="postForm" name="postForm">
+                        <div class="details-table detail-table" style="margin-bottom:10px">
+                            <ul class="list-ul">
+                                <li class="list-class">
+                                    <p>开票详情</p>
+                                </li>
+                                <input type="hidden" id="activity_id" name="activity_id" value="72173">
+                                <input type="hidden" id="type_value" name="type" value="1">
+                                <li class="item-border">
+                                    <p class="post-title">开票金额</p>
+                                    <p class="sec-color"><span style="font-size:14px">￥</span>&nbsp;<span style="font-size:20px">{:sprintf("%.2f", $order.total)}<span></span></span>
+                                    </p>
+                                </li>
+                                <li class="item-border">
+                                    <p class="post-title">销售方</p>
+                                    <p class="post-text">广东威速易信息科技有限公司</p>
+                                </li>
+                                <li class="item-border">
+                                    <p class="post-title">发票类型</p>
+                                    <p class="post-text">电子普通发票</p>
+                                </li>
+
+                                <li class="item-border">
+                                    <p class="post-title">购方类型</p>
+                                    <div class="radio-con">
+                                        <input type="hidden" class="buyerType_info" value="01">
+                                        <div class="radio_qiye">
+                                            <input type="radio" id="radio_qiye" name="buyerType" value="01" class="buyerType" checked="">
+                                            <label for="radio_qiye">企业</label>
+                                        </div>
+                                        <div class="radio_geren">
+                                            <input type="radio" id="radio_geren" name="buyerType" value="03" class="buyerType">
+                                            <label for="radio_geren">个人</label>
+                                        </div>
+                                    </div>
+                                </li>
+
+                                <li class="company_tr company_list_none item-border">
+                                    <!-- <span class="star-sign">*</span> -->
+                                    <p class="post-title">公司名称</p>
+                                    <p class="post-input">
+                                        <input style="width:100%" type="text" autocomplete="off" class="buyerName input-text" data-name="buyerName" name="buyerName" value="" placeholder="请输入要申请的公司名称">
+                                        <span class="input_clear"></span>
+                                    </p>
+                                    <p onclick="jsApiCall()" id="select_btn_save" class="wx-enport">微信导入</p>
+                                </li>
+
+                                <li class="company_tr">
+                                    <p class="post-title">公司税号</p>
+                                    <p class="post-input">
+                                        <input type="text" autocomplete="off" class="buyerTaxNo input-text" name="buyerTaxNo" data-name="buyerTaxNo" value="" placeholder="请输入纳税人识别号">
+                                        <span class="input_clear"></span>
+                                    </p>
+                                </li>
+                                <li class="personal_tr" style="display: none;">
+                                    <p class="post-title">发票抬头</p>
+                                    <p class="post-input">
+                                        <input type="text" autocomplete="off" class="buyerName_personal input-text" data-name="buyerNamePersonal" name="buyerName" value="" placeholder="请输入发票抬头">
+                                        <span class="input_clear"></span>
+                                    </p>
+                                    <p onclick="jsApiCall()" id="select_btn_save" class="wx-enport">微信导入</p>
+                                </li>
+
+                                <li class="list-class">
+                                    <p>接收方式</p>
+                                </li>
+
+                                <li class="item-border">
+                                    <p class="post-title">手机号</p>
+                                    <p class="post-input">
+                                        <input type="tel" autocomplete="off" class="buyerMobile input-text" data-name="buyerMobile" name="buyerMobile" value="" placeholder="用于向你发送电子发票">
+                                        <span class="input_clear"></span>
+                                    </p>
+                                </li>
+
+                                <li>
+                                    <p class="post-title">电子邮箱</p>
+                                    <p class="post-input">
+                                        <input type="text" autocomplete="off" class="buyerEmail input-text" data-name="buyerEmail" name="buyerEmail" value="" placeholder="用于向你发送电子发票">
+                                        <span class="input_clear"></span>
+                                    </p>
+                                </li>
+                                <li class="list-class">
+                                    <p>商品明细</p>
+                                </li>
+                                <li class="item-border">
+                                    <p class="post-title goods_detail">订单名称</p>
+                                    <p class="post-text"><input type="hidden" id="ap_id" value="{$order.id}" name="ap_id">{$activity.title}</p>
+                                </li>
+                                <li class="item-border">
+                                    <p class="post-title goods_detail">类目名称</p>
+                                    <p class="post-text">草帽跨境活动</p>
+                                </li>
+                                <li>
+                                    <p class="post-title goods_detail">订单号</p>
+                                    <p class="post-text">{$order.order_sn}</p>
+                                </li>
+                            </ul>
+                        </div>
+                    </form>
+                    <div class="logo-con">
+                        <svg class="icon" aria-hidden="true">
+                <use xlink:href="#icon-LOGO"></use>
+            </svg>
+                    </div>
+                    <div class="button-div text-center">
+                        <button class="success-btn btn-able" id="btn_save">提交申请</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <script>
+            $(function() {
+                var businessForm = {},
+                    personForm = {};
+                var buyerMobile = $('.buyerMobile').val();
+                var buyerEmail = $('.buyerEmail').val();
+                var buyerType = $('.buyerType_info').val();
+                var buyerName = $('.buyerName').val();
+                var buyerNamePersonal = $('.buyerName_personal').val();
+                var buyerTaxNo = $('.buyerTaxNo').val();
+                businessForm = {
+                    'buyerMobile': buyerMobile || '',
+                    'buyerEmail': buyerEmail || '',
+                    'buyerName': buyerName || '',
+                    'buyerTaxNo': buyerTaxNo || ''
+                }
+                personForm = {
+                        'buyerMobile': buyerMobile || '',
+                        'buyerEmail': buyerEmail || '',
+                        'buyerNamePersonal': buyerNamePersonal || ''
+                    }
+                    // if(buyerType == '03'){ //4
+                    //     $('#btn_save').attr("disabled", isFormReady(businessForm));
+                    // }else{ //3
+                    //     $('#btn_save').attr("disabled", isFormReady(personForm));
+                    // }
+                $('.personal_tr').hide();
+                $('.buyerType').change(function() {
+                        var type = $(this).val();
+                        if (type == '01') {
+                            $('.buyerType_info').val('01');
+                            $("input[name=buyerType][value='01']").prop("checked", true);
+                            $('.company_tr').show();
+                            $('.personal_tr').hide();
+                            // if(businessForm.hasOwnProperty('buyerMobile')){
+                            //     $('#btn_save').attr("disabled", isFormReady(businessForm));
+                            // }
+                        } else {
+                            $('.buyerType_info').val('03');
+                            $("input[name=buyerType][value='03']").prop("checked", true);
+                            $('.company_tr').hide();
+                            $('.personal_tr').show();
+                            // if(personForm.hasOwnProperty('buyerMobile')){
+                            //     $('#btn_save').attr("disabled", isFormReady(personForm));
+                            // }
+                        }
+                    })
+                    // mouseenter\mouseleave 事件给父节点添加删除类input-hovering, input失去焦点时如果是mouseenter状态,input_clear不消失,
+                $('.post-input').on('mouseenter', function() {
+                    $(this).addClass('input-hovering')
+                })
+                $('.post-input').on('mouseleave', function() {
+                    $(this).removeClass('input-hovering')
+                })
+                $(".input-text").focus(function() {
+                    var value = $(this).val();
+                    if (value) {
+                        $(this).next().show();
+                    }
+                })
+                $('.input-text').on('input', function() {
+                    var curName = $(this).data('name');
+                    var curVal = $(this).val();
+                    //右侧清空按钮
+                    if (curVal) {
+                        $(this).next().show();
+                    } else {
+                        $(this).next().hide();
+                    }
+                    var buyerType = $('.buyerType_info').val();
+                    //是否启用提交按钮
+                    //1.之前没有值现在有值,2.//清空（或者之前有值现在没有值）
+                    if (buyerType == '01') { //4
+                        var oldValue = businessForm[curName]
+                        businessForm[curName] = curVal;
+                        //if(!(oldValue && curVal)) $('#btn_save').attr("disabled", isFormReady(businessForm));
+                    } else {
+                        var oldValue = personForm[curName]
+                        personForm[curName] = curVal;
+                        // if(!(oldValue && curVal)) $('#btn_save').attr("disabled", isFormReady(personForm));
+                    }
+                    if (curName === 'buyerMobile' || curName === 'buyerEmail') {
+                        personForm[curName] = curVal;
+                        businessForm[curName] = curVal;
+                    }
+                })
+                $(".input-text").blur(function(e) {
+                    if (!$(this).parent().hasClass('input-hovering')) { //失去焦点时,根据父节点是否有类input-hovering,判断input_clear是否隐藏
+                        $(this).next().hide();
+                    }
+                });
+                $(".input_clear").click(function() {
+                    event.stopPropagation()
+                    $(this).prev().val('');
+                    $(this).hide();
+                    var curName = $(this).prev().data('name');
+                    var buyerType = $('.buyerType_info').val();
+                    if (buyerType == '01') { //4
+                        businessForm[curName] = '';
+                        // $('#btn_save').attr("disabled", isFormReady(businessForm));
+                    } else {
+                        personForm[curName] = '';
+                        //  $('#btn_save').attr("disabled", isFormReady(personForm));
+                    }
+                    if (curName === 'buyerMobile' || curName === 'buyerEmail') {
+                        personForm[curName] = '';
+                        businessForm[curName] = '';
+                    }
+                });
+                //是否启用提交按钮
+                function isFormReady(formData) {
+                    var $btn = $('#btn_save');
+                    var isReady = false;
+                    for (let i in formData) {
+                        if (!formData[i]) {
+                            isReady = true;
+                        }
+                    }
+                    if (isReady) {
+                        if ($btn.hasClass('btn-able')) $btn.removeClass('btn-able').addClass('btn-unable');
+                    } else {
+                        if ($btn.hasClass('btn-unable')) $btn.removeClass('btn-unable').addClass('btn-able');
+                    }
+                    return isReady
+                }
+                $(document).on('click', '#btn_save', function() {
+                        var buyerMobile = $('.buyerMobile').val();
+                        var buyerEmail = $('.buyerEmail').val();
+                        var buyerType = $('.buyerType_info').val();
+                        var buyerName = $('.buyerName').val();
+                        var buyerPersonal = $('.buyerName_personal').val();
+                        // var buyerNameCompany = $('.buyerName_select').val();
+                        var paramObj = {
+                            activity_id: $('#activity_id').val(),
+                            type: $('#type_value').val(),
+                            buyerType: buyerType,
+                            buyerMobile: buyerMobile,
+                            buyerEmail: buyerEmail,
+                            ap_id: $('#ap_id').val()
+                        }
+                        if (buyerType == '01') {
+                            paramObj.buyerName = buyerName
+                            paramObj.buyerTaxNo = $('.buyerTaxNo').val();
+                            if (buyerName == '') {
+                                layer.msg('温馨提示：公司名称不能为空！', {
+                                    icon: 2,
+                                    time: 3000 //3秒关闭（如果不配置，默认是3秒）
+                                });
+                                return false;
+                            }
+                        } else {
+                            paramObj.buyerName = buyerPersonal
+                            if (buyerPersonal == '') {
+                                layer.msg('温馨提示：发票抬头不能为空！', {
+                                    icon: 2,
+                                    time: 3000 //3秒关闭（如果不配置，默认是3秒）
+                                });
+                                return false;
+                            }
+                        }
+
+                        if (buyerMobile == '') {
+                            layer.msg('温馨提示：接收发票的手机号不能为空！', {
+                                icon: 2,
+                                time: 3000 //3秒关闭（如果不配置，默认是3秒）
+                            });
+                            return false;
+                        }
+
+                        if (buyerEmail == '') {
+                            layer.msg('温馨提示：接收发票的电子邮箱不能为空！', {
+                                icon: 2,
+                                time: 3000 //3秒关闭（如果不配置，默认是3秒）
+                            });
+                            return false;
+                        }
+
+                        var loading = layer.load();
+                        // console.log('$("#postForm").serialize()', $("#postForm").serialize())
+                        // return false;
+                        $.ajax({
+                            url: '/activity/billing',
+                            data: paramObj,
+                            type: 'post',
+                            dataType: 'json',
+                            success: function(res) {
+                                layer.close(loading);
+                                if (res.state == 1) {
+                                    layer.msg('温馨提示：开票成功，请留意短信或者邮箱查收发票！', {
+                                        icon: 1,
+                                        time: 5000 //2秒关闭（如果不配置，默认是3秒）
+                                    }, function() {
+                                        window.location.href = '/activity/invoice-success?ref=' + res.url;
+                                        //window.location.href=res.url;
+                                        //window.open(res.url);
+                                    });
+                                } else {
+                                    layer.msg(res.msg, {
+                                        icon: 2,
+                                        time: 5000
+                                    });
+                                }
+                            }
+                        })
+
+                    })
+                    //$('#editable-select_sele').val($('.editable_select_input').val());
+            })
+        </script>
+
+    </div>
+{/block}

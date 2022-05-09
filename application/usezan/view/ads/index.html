@@ -1,0 +1,74 @@
+{include file="public/header" /}
+<div class="mainbox animated fadeInRight">
+  <div class="mainnav_title">
+      <a class="on">广告列表</a>
+      {include file="public/menu_right" /}
+      <a class="bth-rand fr" href="javascript:location.replace(location.href);" title="刷新"><b class="uzfont uzico-shuaxin"></b></a>
+    </div>
+<table  class="search_table" width="100%">
+  <tr>
+    <td class="search">
+      <form action="{:url('ads/index')}" method="get">
+          <input id="title" type="text" class="input-text" name="keyword" value="{$Think.get.keyword}" />
+          <select name="type">
+              <option value="-1" {eq name="keys['type']" value="-1"}selected{/eq}>筛选类型</option>
+              <option value="1" {eq name="keys['type']" value="1"}selected{/eq}>文本</option>
+              <option value="2" {eq name="keys['type']" value="2"}selected{/eq}>图文</option>
+          </select>
+          <input type="hidden" name="tree" value="{$tree_id}"/>
+          <input type="submit" value="{:lang('chaxun')}"  class="button" />
+        <a href="{:url('ads/index')}" class="button">重置</a>
+      </form>
+    </td>
+  </tr>
+</table>
+<form name="myform" id="myform" action="" method="post">
+<div class="table-list">
+  <table width="100%" cellspacing="0">
+    <thead>
+  		<tr>
+  			<th width="30">{:lang('listorder')}</th>
+  			<th width="40">ID</th>
+  			<th width="200" align="left">{:lang('title')}</th>
+  			<th width="350" align="left">路径</th>
+            <th width="80" align="left">类型</th>
+            <th width="80" align="left">nofollow</th>
+  			<th width="50" align="center">{:lang('status')}</th>
+  			<th align="left">{:lang('manage')}</th>
+  		</tr>
+  	</thead>
+  	<tbody>
+  	 {volist name="list" id="v"}
+  		<tr>
+            <td width="40" align='center'>
+                <input name='listorders[{$v.id}]' type='text' size='3' value='{$v.listorder}' class='input-text-c' />
+            </td>
+            <td align="center">{$v['id']}</td>
+            <td align="left">{$v['name']}</td>
+            <td align="left"><a target="_blank" rel="nofollow" href="{$v['url']}">{$v['url']}</a></td>
+            <td align="left">{$v['type'] == 1 ? '文本' : '图文'}</td>
+            <td align="left">{$v['nofollow'] ? 'nofollow' : '----'}</td>
+            <td align="center">
+              {eq name="v['status']" value="1"}
+                    <a class="bth-a ajax-status" onclick="StatusAjax($(this));" data-href="{:url('ajax/statusajax')}?id={$v['id']}&status=0"></a>
+                {else /}
+                    <a class="bth-a error-c ajax-status" onclick="StatusAjax($(this));" data-href="{:url('ajax/statusajax')}?id={$v['id']}&status=1"></a>
+              {/eq}
+            </td>
+            <td align="left">
+                <a href="{:url('ads/edit')}?id={$v['id']}&tree={$tree_id}">{:lang('edit')}</a> |
+                <a href="javascript:confirm_delete('{:url(\'ads/del\')}?id={$v["id"]}&tree={$tree_id}')">{:lang('delete')}</a>
+            </td>
+  		</tr>
+     {/volist}
+  	</tbody>
+  </table>
+  <div class="btn">
+      <input type="button" class="button"  value="<?php echo lang('listorder');?>" onclick="myform.action='{:url(\'ads/listorder\')}';$('#myform').submit();" />
+  </div>
+</div>
+</form>
+</div>
+<div id="pages" class="page">{$list|raw}</div>
+</body>
+</html>

@@ -1,0 +1,37 @@
+{extend name="layout/base" /}
+{block name="title"}报名成功{/block}
+{block name="load"}
+<!-- css -->
+<link rel="stylesheet" href="__MCSS__/success.css">
+<!-- js -->
+{/block}
+<!-- 主体内容 -->
+{block name="main"}
+    <div class="container">
+        <div class="site-index">
+            <div class="iconTop">
+                <div class="l">
+                    <img src="__MIMG__/web_kiss_icon5_s.png">
+                </div>
+                <div class="r1" data-value="0" data-id="0">
+                    <p class="f24">报名成功！</p>
+                </div>
+            </div>
+            <!-- 扫码入群 -->
+            <div class="lh-tips">请<b>识别二维码了解更多大会详情</b></div>
+            <div class="lh-tips">
+            </div>
+            <div class="lh-wechat">
+                <img class="share_ma" src="__AIMG__/QR_code/code_yongqi.jpg">
+            </div>
+            <div class="join_info_btn">
+                <a href="{:url('user/college')}" class="btn_right_1">查看报名详情</a>
+            </div>
+            <div class="join_info_btn">
+                <a href="{:url('college/detail', ['id' => $college_id])}" class="btn_right_1">返回课程</a>
+            </div>
+        </div>
+        <script>
+        </script>
+    </div>
+{/block}

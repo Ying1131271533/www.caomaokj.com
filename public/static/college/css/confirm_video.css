@@ -1,0 +1,259 @@
+.wrap > .container {
+    padding-top: 0px;
+}
+
+.orderPayPcWrap h2 {
+    /*width: 1170px;*/
+    height: 36px;
+    /*border-bottom: 2px solid #d7dae6;*/
+    position: relative;
+    font-weight: normal;
+    margin: 0 auto;
+}
+
+.orderPayPcWrap h2 span {
+    font-size: 18px;
+    color: #444;
+    line-height: 36px;
+    border-bottom: 2px solid #0099e9;
+    position: absolute;
+    left: 0;
+    top: 0;
+}
+
+.orderPayPcWrap .joinDetail {
+    /*width: 1170px;*/
+    margin: 0 auto 55px;
+    border:1px solid #ddd;
+    margin-bottom: 30px;
+    margin-top: 20px;
+}
+
+.orderPayPcWrap .joinDetail .partyBox {
+    height: 98px;
+    margin: 10px auto 20px;
+}
+
+.orderPayPcWrap .joinDetail .partyBox img {
+    float: left;
+    width: 169px;
+    height: 98px;
+    margin-right: 20px;
+}
+
+.orderPayPcWrap .joinDetail .partyBox .tlt {
+    font-size: 14px;
+    color: #444;
+    height: 55px;
+    line-height: 30px;
+}
+
+.orderPayPcWrap .joinDetail .partyBox .time, .orderPayPcWrap .joinDetail .partyBox .location
+{
+    font-size: 14px;
+    color: #aaa;
+    line-height: 22px;
+}
+
+.orderPayPcWrap .joinDetail	.ticketBox {
+    overflow: hidden;
+    /* background: #f4f9fe; */
+}
+
+.orderPayPcWrap .joinDetail	.ticketBox li {
+    width: 20%;
+    border-left: none;
+    padding-left: 20px;
+    text-align: left;
+}
+
+.orderPayPcWrap .joinDetail	.ticketBox li.gray {
+    background-color: #f6f6f6;
+}
+
+.orderPayPcWrap .joinDetail	.ticketBox li {
+    float: left;
+    width: 20%;
+    line-height: 40px;
+    text-align: center;
+    font-size: 14px;
+    color: #666;
+}
+
+.orderPayPcWrap .joinTexe {
+    width: 1170px;
+    margin: 10px auto 35px;
+    /* background: #f4f9fe; */
+    padding-bottom: 25px;
+    border:1px solid #ddd;
+}
+
+.joinTexe .myUl {
+    width: 1170px;
+    overflow: hidden;
+    margin: 10px auto;
+    padding: 10px;
+    font-size: 18px;
+}
+
+.joinTexe .myUl li {
+    /* 	border-top: 10px solid #FFF; */
+}
+
+.orderPayPcWrap .joinTexe .myUl li .personList:first-child {
+    border: none;
+}
+
+.orderPayPcWrap .joinTexe .myUl li .personList.onlyOne {
+    border: none;
+}
+
+.joinTexe .myUl li .personList:first-child {
+    display: block;
+}
+
+.orderPayPcWrap .joinTexe .myUl li .personList {
+    overflow: hidden;
+    border-top: 1px solid #e7ecf2;
+    padding: 15px 0;
+}
+
+.joinTexe .myUl li .personList {
+    display: none;
+}
+
+.joinMessR {
+    width: 800px;
+    float: left;
+    overflow: hidden;
+    margin-bottom: 1rem;
+    color: #555555;
+}
+.margin-bottom0 {
+    margin-bottom: 0;
+}
+
+.joinTexe .myUl .li_text_long {
+    padding: 4px 0;
+    overflow: hidden;
+    padding-left: 3px;
+    padding-right: 20px;
+}
+
+.joinTexe .myUl .li_text_long .c_name {
+    display: block;
+    line-height: 18px;
+    font-size: 14px;
+    color: #999;
+    padding: 3px 0;
+}
+
+.joinTexe .myUl .li_text_long .c_content {
+    display: block;
+    line-height: 18px;
+    font-size: 14px;
+    color: #444;
+    padding: 3px 0;
+}
+
+.orderPayPcWrap .payType {
+    width: 1170px;
+    height: 70px;
+    margin: 0 auto 55px;
+    overflow: hidden;
+    /*padding-left: 20px;*/
+}
+
+.orderPayPcWrap .payType li.thisOver {
+    border-color: #0099e9;
+    /*background: url(http://img1.hudongba.com/static_v4/images/other/manage_ticket_over.png) no-repeat 152px 27px;*/
+}
+
+.orderPayPcWrap .payType li {
+    float: left;
+    width: 170px;
+    height: 45px;
+    border: 1px solid #d2d6df;
+    border-radius: 5px;
+    overflow: hidden;
+    margin: 20px 40px 0 0;
+    cursor: pointer;
+}
+
+.orderPayPcWrap .payType li img {
+    display: block;
+    margin: 9px auto;
+}
+
+.orderPayPcWrap .coupon_list_ordercount {
+    margin: 20px auto;
+    /*width: 1000px;*/
+}
+
+.orderPayPcWrap .coupon_list_ordercount .all_money {
+    padding-bottom: 6px;
+}
+
+.orderPayPcWrap .coupon_list_ordercount .all_money, .orderPayPcWrap .coupon_list_ordercount .coupon_money,
+.orderPayPcWrap .coupon_list_ordercount .money {
+    overflow: hidden;
+    text-align: right;
+    font-size: 14px;
+    padding-top: 10px;
+}
+
+.orderPayPcWrap .coupon_list_ordercount .all_money p, .orderPayPcWrap .coupon_list_ordercount .coupon_money p,
+.orderPayPcWrap .coupon_list_ordercount .money p {
+    display: inline-block;
+    width: 120px;
+}
+
+.orderPayPcWrap .coupon_list_ordercount .money p {
+    font-size: 22px;
+    color: #ff9933;
+}
+
+.orderPayPcWrap .coupon_list_payBtn {
+    margin: 20px auto;
+    /*width: 1000px;*/
+    overflow: hidden;
+}
+
+.orderPayPcWrap .coupon_list_payBtn a {
+    display: inline-block;
+    width: 180px;
+    height: 42px;
+    text-align: center;
+    line-height: 42px;
+    color: #FFF;
+    font-size: 16px;
+    background-color: #0099e9;
+    float: right;
+    border-radius: 3px;
+}
+
+.joinTexe .myUl li .personList {
+    display: none;
+}
+
+.joinTexe .myUl li .personList:first-child {
+    display: block;
+}
+
+.joinTexe.myliAll .myUl li .personList {
+    display: block;
+}
+.site_index_jzc{
+    background: #F5F5F5;
+    padding: 20px;
+    margin-bottom: 2rem;
+}
+.guide_div{
+    width:1200px;height:60px;margin:0 auto;margin-top:5px;line-height:60px;
+}
+.table_video_order tr th{
+    border:none !important;
+}
+.table_video_order{
+    margin-bottom: 0px;
+}

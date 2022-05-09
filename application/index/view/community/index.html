@@ -1,0 +1,252 @@
+{extend name="layout/base" /}
+{block name="title"}行业社群{/block}
+{block name="load"}
+
+<!-- css -->
+<link rel="stylesheet" href="__AMZCSS__/swiper.min.css">
+<link rel="stylesheet" type="text/css" href="__AMZCSS__/font_2020772_ylpwq57cfto.css">
+<link rel="stylesheet" type="text/css" href="__AMZCSS__/wuliu.css">
+
+<!-- js -->
+<script src="__AMZJS__/swiper-02.min.js"></script>
+{/block}
+
+<!-- 主体内容 -->
+{block name="main"}
+
+    <!-- <header class="navbar navbar-expand-lg navbar-dark bg-dark" id="header"></header> -->
+    <main id="body" style="margin-top: 129px;">
+        <div class="container">
+            <style>
+                body {
+                    background: #f6f6f6;
+                }
+
+                .content .container {
+                    max-width: 1250px !important;
+                    width: 100%;
+                }
+
+                .findpage-title {
+                    text-align: center;
+                }
+
+                .navmenu {
+                    background: #fff;
+                    z-index: 1000;
+                    position: absolute;
+                    margin-bottom: 40px;
+                    box-shadow: 1px 2px 12px -5px rgba(0, 0, 0, .1);
+                    max-width: 1195px;
+                }
+
+                .navmenu.fixed {
+                    position: fixed;
+                    top: 0;
+                }
+
+                .navmenu ul {
+                    margin: 0;
+                    padding: 0;
+                }
+
+                .navmenu ul li {
+                    list-style: none;
+                    text-align: center;
+                    cursor: pointer;
+                }
+
+                .navmenu ul li a {
+                    color: #444;
+                    padding: 15px;
+                    display: -webkit-box;
+                    height:55px;
+                    font-size:16px;
+                }
+
+                .navmenu ul li a.active {
+                    position: relative;
+                    color: #fe6d00;
+                    cursor: default;
+                }
+
+                .navmenu ul li a.active:after {
+                    content: "";
+                    width: 100%;
+                    border-bottom: 2px solid #fe6d00;
+                    position: absolute;
+                    bottom: 0;
+                    left: 0;
+                }
+
+                .catetitle {
+                    margin-top: 0;
+                    font-size: 24px;
+                    font-weight: bold;
+                }
+
+                @media (max-width: 768px) {
+                    .find-r-box .fitem {
+                        width: 50%;
+                    }
+                }
+            </style>
+            
+            <div class="layui-carousel" id="test1">
+              <div carousel-item>
+                {foreach $banner as $key => $value}
+                <div><a href="{$value.url}"><img src="{$value.thumb}" style="width:100%;"></a></div>
+                {/foreach}
+              </div>
+            </div>
+
+            <script>
+                layui.use('carousel', function(){
+                  var carousel = layui.carousel;
+                  //建造实例
+                  carousel.render({
+                    elem: '#test1'
+                    ,width: '100%' //设置容器宽度
+                    //,arrow: 'always' //始终显示箭头
+                    //,anim: 'updown' //切换动画方式
+                  });
+                });
+            </script>
+
+            <div class="content">
+                <div class="container" style="padding:20px 0;position: relative;max-width: 1400px;">
+
+
+                    <div class="catetitle" >行业社群</div>
+                    <div class="find-r-box">
+                        <div class="databox">
+
+                            {foreach $list as $value}
+                            <div class="theme-item shoplist">
+                                <a href="{:url('community/detail', ['id' => $value.id])}" target="_blank">
+                                    <div class="img" style="text-align: center">
+                                        <img src="{$value.logo}" style="width: auto; height: auto;max-width: 100%;max-height: 100%;text-align: center;">
+                                    </div>
+                                    <div class="titlename">
+                                        <h2>{$value.name}</h2>
+                                    </div>
+                                    <div class="desc">
+                                        <p>{$value.description}</p>
+                                    </div>
+                                    <div class="zixun duijie">
+                                        <div class="btn">查看详情</div>
+                                    </div>
+                                </a>
+                            </div>
+                            {/foreach}
+                            
+                        </div>
+                    </div>
+                    
+                </div>
+            </div>
+        </div>
+    </main>
+    
+    <script src="__AMZJS__/nav.js"></script>
+    <script>
+    
+    // 滚动固定顶部的导航
+    $(window).scroll(function() {
+        var top = $(window).scrollTop();
+        if(top < 350){
+            $('.header').show();
+        } else {
+            $('.header').hide();
+        }
+    });
+    
+    
+    $('.fitem').click(function() {
+        window.open($(this).attr('dhref'));
+    })
+
+    $(document).ready(function() {
+        $('.navmenu').find('li').eq(0).find('a').addClass('active')
+        // var navHeight = $('header').height() + $('.banner').height()+30;
+        var navHeight = $('header').height() + 270;
+        // console.log(navHeight);
+        var left = 0;
+        var width = $('.catetitle').width()
+        if ($(this).scrollTop() >= navHeight) {
+            $('.navmenu').addClass('fixed').css({ width: '100%' })
+        } else {
+            $('.navmenu').removeClass('fixed').css({ width: '100%' })
+        }
+        $(window).scroll(function() {
+            if ($(this).scrollTop() >= navHeight) {
+                $('.navmenu').addClass('fixed').css({ width: width })
+            } else {
+                $('.navmenu').removeClass('fixed').css({ width: width })
+            }
+        })
+    })
+    
+    //内容信息导航锚点
+    $('.nav-wrap').navScroll({
+        mobileDropdown: true,
+        mobileBreakpoint: 768,
+        scrollSpy: true
+    });
+    </script>
+    <script>
+        //点击自动滚动
+        $(document).on('click','.course-cate-name',function() {
+            var top = $(window).scrollTop();
+            if(top < 470){
+                var attr_cate_data=$(this).attr('attr-cate-data');
+                $(this).addClass('current_active').siblings().removeClass('current_active');
+                $(this).css('border-bottom','1px solid #fc9d27').siblings().css('border-bottom','0px solid #fc9d27');
+                if(attr_cate_data == 0){
+                    $("html, body").animate({
+                        scrollTop: 0
+                    }, {
+                        duration: 500,
+                        easing: "swing"
+                    });
+                }else{
+                    var height = $('.cate-'+attr_cate_data).offset().top - 120 + "px";
+                    $("html, body").animate({
+                        scrollTop: $('.cate-'+attr_cate_data).offset().top - 120 + "px"
+                    }, {
+                        duration: 500,
+                        easing: "swing"
+                    });
+                }
+                
+                $('.header').show();
+            }else{
+                var attr_cate_data=$(this).attr('attr-cate-data');
+                $(this).addClass('current_active').siblings().removeClass('current_active');
+                $(this).css('border-bottom','1px solid #fc9d27').siblings().css('border-bottom','0px solid #fc9d27');
+                if(attr_cate_data == 0){
+                    $("html, body").animate({
+                        scrollTop: 0
+                    }, {
+                        duration: 500,
+                        easing: "swing"
+                    });
+                }else{
+                    var height = $('.cate-'+attr_cate_data).offset().top -70 + "px";
+                    $("html, body").animate({
+                        scrollTop: $('.cate-'+attr_cate_data).offset().top -70 + "px"
+                    }, {
+                        duration: 500,
+                        easing: "swing"
+                    });
+                }
+                
+                $('.header').hide();
+            }
+
+
+            return false;
+
+        });
+    </script>
+    {/block}

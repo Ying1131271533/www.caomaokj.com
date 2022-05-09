@@ -1,0 +1,124 @@
+.wrap>.container {
+	padding-top: 0px;
+}
+
+.coupon_list_outside {
+	margin: 0 auto;
+	background-color: #FFF;
+	border: none;
+	overflow: hidden;
+}
+
+.coupon_list_outside .orderPayTop {
+	background-color: #f8f8f8;
+	padding: 45px 0 15px;
+	overflow: hidden;
+}
+
+.coupon_list_outside .orderPayTop .l {
+	width: 920px;
+	line-height: 35px;
+	overflow: hidden;
+	float: left;
+}
+
+.coupon_list_outside .orderPayTop .l p {
+	font-size: 14px;
+	color: #999;
+	text-align: left;
+	line-height: 20px;
+	padding: 5px 0;
+}
+
+.coupon_list_outside .orderPayTop .l p {
+	font-size: 14px;
+	color: #999;
+	text-align: left;
+	line-height: 20px;
+	padding: 5px 0;
+}
+
+.coupon_list_outside .orderPayTop .r {
+	width: 240px;
+	float: right;
+	text-align: right;
+	padding-top: 20px;
+}
+
+.coupon_list_outside .orderPayTop .r span {
+	font-size: 14px;
+	color: #666;
+}
+
+.coupon_list_outside .orderPayTop .r i {
+	font-size: 32px;
+	color: #ff8208;
+}
+
+.order_ma_wx {
+	border-top: 3px solid #b3b3b3;
+	min-height: 680px;
+}
+
+.order_ma_wx {
+	height: 580px;
+	background-color: #FFF;
+	margin: 0 auto;
+}
+
+.order_ma_wx .order_ma_T {
+	padding-top: 28px;
+	overflow: hidden;
+}
+
+.info_Pay_main .order_ma_wx .order_ma_T img {
+	float: left;
+	margin-left: 15px;
+}
+
+.info_Pay_main .order_ma_wx .order_ma_T span {
+	display: inline-block;
+	font-size: 14px;
+	color: #666;
+	float: left;
+	margin-left: 20px;
+	margin-top: 8px;
+}
+
+.info_Pay_main .order_ma_wx .order_ma_C {
+	overflow: hidden;
+}
+
+.info_Pay_main .order_ma_wx .order_ma_C .l {
+	width: 341px;
+	float: left;
+	margin: 40px 40px 0 180px;
+}
+
+.info_Pay_main .order_ma_wx .order_ma_C .l .img {
+	width: 339px;
+	height: 339px;
+	border: 1px solid #ddd;
+	margin-bottom: 10px;
+}
+
+.info_Pay_main .order_ma_wx .order_ma_C .l .img img {
+	width: 319px;
+	height: 319px;
+	margin: 10px;
+}
+
+.info_Pay_main .order_ma_wx .order_ma_C .wxTsPic {
+	float: left;
+	margin: 50px 0 0 0;
+}
+
+.info_Pay_main .order_ma_wx .btn_return {
+	text-align: center;
+	padding-top: 18px;
+}
+
+.info_Pay_main .order_ma_wx .btn_return a {
+	font-size: 14px;
+	color: #2272c8;
+}

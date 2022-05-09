@@ -1,0 +1,78 @@
+{include file="public/header" /}
+<div class="mainbox animated fadeInRight">
+	<div class="mainnav_title">
+	    <a href="{:url('system/index')}" class="on">站点配置</a>
+		{include file="public/menu_right" /}
+	    <a class="bth-rand fr" href="javascript:location.replace(location.href);" title="刷新"><b class="uzfont uzico-shuaxin"></b></a>
+    </div>
+<p class="success-data"></p>    
+<form method='post' id="form1" action="{:url('system/update')}" enctype="multipart/form-data">
+<table cellpadding="0" cellspacing="0" width="100%" class="table_form" >
+	<tbody>
+	    {volist name="system" id="v"}
+	        {switch name="v['type']"}
+	            {case value="1"}
+	            	<tr>
+						<th width="120">{$v['info']}:</th>
+						<td><input type="text" class="input-text" {if condition="$v['varname'] eq 'watemard_text_face'"}disabled{/if} name="{$v['varname']}" value="{$v['value']}" size="{$v['size']}">&nbsp;{$v['remark']}</td>
+					</tr>
+	            {/case}
+	            {case value="3"}
+					<tr class="clogo">
+						<th>{$v['info']}:</th>
+						<td>
+							<div class="img-upload up_img_get">
+							    <a href="javascript:;" class="cpic"><img style="max-width:90px;max-height:60px;" class="{$v['varname']}" onclick="up_img('{$v["varname"]}','{$v["varname"]}','png','10485760','290px',0,0);" src="{if condition="$v['value']"}{$v['value']}{else /}__IMG__/upload_thumb.png{/if}" alt="上传图片" /></a>
+							    {if condition="$v['value']"}<a title="移除" class="del-pic" onclick="del_img('{$v['value']}',{$v['id']},0,this,'{$v['varname']}')" href="javascript:;"></a>{/if}
+							</div>    
+							<input type="hidden" class="{$v['varname']}" name="{$v['varname']}" value="{$v['value']}" />
+							<font>{$v['remark']}</font>
+						</td>
+					</tr>
+	            {/case}
+	            {case value="5"}
+	            	<tr>
+					    <th>{$v['info']}</th>
+					    <td>
+					        <input name="{$v['varname']}" {if condition="$v['value']"}checked{/if} value="1" type="radio">开启&nbsp;&nbsp;&nbsp;&nbsp;
+					        <input name="{$v['varname']}" {if condition="!$v['value']"}checked{/if} value="0" type="radio">关闭
+					    </td>
+				    </tr>
+	            {/case}
+	            {case value="9"}
+	            <tr>
+				    <th width="130">水印位置</th>
+				    <td>
+						<table width="20%" class="radio-label" cellpadding="0" cellspacing="0">
+						    <tbody>
+						    <tr class="water">
+							    <td><input class="radio_style" {if condition="$v['value'] eq 1"}checked{/if} name="watermark_pos" value="1" type="radio">左上角</td>
+							    <td><input class="radio_style" {if condition="$v['value'] eq 4"}checked{/if} name="watermark_pos" value="4" type="radio">左居中</td>
+							    <td><input class="radio_style" {if condition="$v['value'] eq 7"}checked{/if} name="watermark_pos" value="7" type="radio">左下角</td>
+						    </tr>
+						    <tr class="water">
+							    <td><input class="radio_style" {if condition="$v['value'] eq 2"}checked{/if} name="watermark_pos" value="2" type="radio">上居中</td>
+							    <td><input class="radio_style" {if condition="$v['value'] eq 5"}checked{/if} name="watermark_pos" value="5" type="radio">居中</td>
+							    <td><input class="radio_style" {if condition="$v['value'] eq 8"}checked{/if} name="watermark_pos" value="8" type="radio">下居中</td>
+							</tr>
+						    <tr class="water">
+							    <td><input class="radio_style" {if condition="$v['value'] eq 3"}checked{/if} name="watermark_pos" value="3" type="radio">右上角</td>
+							    <td><input class="radio_style" {if condition="$v['value'] eq 6"}checked{/if} name="watermark_pos" value="6" type="radio">右居中</td>
+							    <td><input class="radio_style" {if condition="$v['value'] eq 9"}checked{/if} name="watermark_pos" value="9" type="radio">右下角</td>
+							</tr>
+							</tbody>
+						</table>
+					</td>
+					</tr>
+				{/case}
+	        {/switch}
+	    {/volist}
+	</tbody>
+</table>
+<div class="btn">
+    <input type="hidden" name="groupid" value="4" />
+	<input type="submit" value="{:lang('save')}" class="button" />
+	<input type="reset"  value="{:lang('reset')}" class="button" />
+</div>
+</form>
+</div>

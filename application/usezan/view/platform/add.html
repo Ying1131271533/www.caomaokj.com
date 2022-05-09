@@ -1,0 +1,128 @@
+{include file="public/header" /}
+<div class="mainbox animated fadeInRight">
+    <div class="mainnav_title">
+        <a class="on">内容添加</a>
+        <a class="add-edit" href="{:url('platform/index')}?tree={$tree_id}">[<b class="uzfont uzico-fanhui"></b>返回列表]</a>
+        <a class="bth-rand fr" href="javascript:location.replace(location.href);" title="刷新"><b class="uzfont uzico-shuaxin"></b></a>
+    </div>
+    <form name="myform" id="myform" action="" method="post">
+        <table cellpadding=0 cellspacing=0 class="table_form" width="100%">
+            <tr>
+                <td width="90"><font color="red">*</font><label>平台名称:</label></td>
+                <td>
+                    <input type="text" class="input-text" name="name" size="50" placeholder="平台名称" validate="minlength:2,maxlength:80,required:true">
+                </td>
+            </tr>
+
+            <tr>
+                <td width="90" height="100"><font color="red">*</font><label>平台logo：</label></td>
+                <td>
+                    <div>
+                        <div class="img-upload">
+                            <img class="cthumb" width="100" onclick="up_img('cthumb','thumb','jpg,gif,png,jpeg','10485760','290px',0);" src="__UIMG__/upload_thumb.png" alt="上传封面" style="cursor:pointer;">
+                            <input type="hidden" class="thumb" name="logo" validate="required:true">
+                        </div>
+                    </div>
+                </td>
+            </tr>
+
+            <tr>
+                <td width="90"><label>标题：</label></td>
+                <td>
+                    <input type="text" class="input-text" name="title" size="50" placeholder="标题" validate="required:true">
+                </td>
+            </tr>
+            <tr>
+                <td width="90"><label>描述：</label></td>
+                <td>
+                    <textarea rows="10" cols="58" name="descrip" placeholder="内容描述, 不能超过255字" validate="required:true"></textarea>
+                </td>
+            </tr>
+
+            <tr>
+                <td width="90" height="100"><font color="red">*</font><label>微信二维码：</label></td>
+                <td>
+                    <div>
+                        <div class="img-upload">
+                            <img class="cwechat" width="100" onclick="up_img('cwechat','wechat','jpg,gif,png,jpeg','10485760','290px',0);" src="__UIMG__/upload_thumb.png" alt="上传封面" style="cursor:pointer;">
+                            <input type="hidden" class="wechat" name="wechat" value="" >
+                        </div>
+                    </div>
+                </td>
+            </tr>
+
+            <tr>
+                <td width="90"><label>网址：</label></td>
+                <td>
+                    <input type="text" class="input-text" name="url" size="50" placeholder="网址" validate="required:true">
+                </td>
+            </tr>
+            <tr>
+                <td>区域：</td>
+                <td>
+                    {foreach $continent as $value}
+                    <label><input type="checkbox" class="input_radio" name="continent[{$value.id}]" value="{$value.id}" {$value.id == 1 ? 'checked' : ''} /> {$value.name}&nbsp;&nbsp;</label>
+                    {/foreach}
+                </td>
+            </tr>
+
+            <tr>
+                <td width="90">详情</td>
+                <td style="width:1000px;">
+                    <fieldset class="images_box">
+                        <legend>电商平台详情图片（部分可以为空）</legend>
+                        <div id="pics_images" class="imagesList nopic album_more" style="display: flex;">
+                            <style type="text/css">
+                                .uplist{
+                                    flex: 1;
+                                }
+                            </style>
+
+                            {foreach $detailType as $value}
+                            <div class="uplist">
+                                <div class="img-upload">
+                                    <div style="align-items: center;text-align: center;">{$value.name}</div>
+                                    <img class="ctype{$value.id}" width="100" onclick="up_img('ctype{$value.id}','type{$value.id}','jpg,gif,png,jpeg','10485760','290px',0);" src="__UIMG__/upload_thumb.png" alt="上传封面" style="cursor:pointer;">
+                                    <input type="hidden" class="type{$value.id}" name="type[{$value.id}]">
+                                </div>
+                            </div>
+                            {/foreach}
+
+
+                        </div>
+                    </fieldset>
+                </td>
+            </tr>
+
+            </tr>
+            <tr>
+                <td>状态</td>
+                <td>
+                    <label><input type="radio" class="input_radio" name="status" checked value="1"> 开启</label>&nbsp;&nbsp;
+                    <label><input type="radio" class="input_radio" name="status" value="0"> 关闭</label>
+                </td>
+            </tr>
+            <tr>
+                <td>添加时间</td>
+                <td>
+                    <input class="Wdate input-text" name="createtime" type="text" size="25" onfocus="WdatePicker({dateFmt:'yyyy-MM-dd HH:mm:ss'})" value="{:date('Y-m-d H:i:s',time())}">
+                </td>
+            </tr>
+        </table>
+        <div id="bootline"></div>
+        <div id="btnbox" class="btn">
+            <input type="submit" value="{:lang('dosubmit')}" class="button" />
+            <input type="reset" value="{:lang('cancel')}" class="button" />
+        </div>
+    </form>
+</div>
+<script type="text/javascript" src="__UJS__/ueditor/ueditor.config.js"></script>
+<script type="text/javascript" src="__UJS__/ueditor/ueditor.all.min.js"></script>
+<script type="text/javascript" src="__UJS__/ueditor/lang/zh-cn/zh-cn.js"></script>
+<script type="text/javascript">
+    var ue = UE.getEditor('container', {
+        initialFrameHeight: 300,
+        allowDivTransToP:false,
+        autoClearEmptyNode:false
+    });
+</script>

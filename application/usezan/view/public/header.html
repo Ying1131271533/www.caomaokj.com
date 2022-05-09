@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+
+<html lang="zh-cn">
+
+<head>
+
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+
+<link rel="shortcut icon" href="__ICON__/icon.ico" />
+
+<title>{:lang('usezan_title')}</title>
+
+<link rel="stylesheet" type="text/css" href="__UCSS__/style.css" />
+
+<link rel='stylesheet' type='text/css' href='__UFONT__/uzfont.css' />
+
+<script type="text/javascript" src="__UJS__/jquery.min.js"></script>
+
+<script type="text/javascript" src="__UJS__/jquery.form.js"></script>
+
+<script type="text/javascript" src="__UJS__/jquery.validate.js"></script>
+
+<script type="text/javascript" src="__UJS__/my.js"></script>
+
+<script type="text/javascript" src="__UJS__/layer-v2.3/layer.js"></script>
+
+<script type="text/javascript" src="__UJS__/MyDate/WdatePicker.js"></script>
+
+<script type="text/javascript" src="__ALAYUI__/css/layui.css"></script>
+<script type="text/javascript" src="__ALAYUI__/layui.js"></script>
+
+
+<script language="JavaScript">
+
+var PUBLIC = '/static/admin/';
+
+var CONTROLLER_NAME = '{:request()->controller()}';
+
+var ACTION_NAME = '{:request()->action()}';
+
+function confirm_delete(url){
+
+    layer.confirm("{:lang('real_delete')}", {
+
+        title:'~~删除提示~~',
+
+        btn: ['删除','算了吧']
+
+    }, function(){
+
+        location.href = url;
+
+    });
+
+}
+
+</script>
+
+</head>
+
+<body width="100%">
+
+<!-- Template Ceng Start -->
+
+<div class="dask-template">
+
+    <div class="lists">
+
+        <span class="load-ing"></span>
+
+        <span class="close-x" onclick="close_x(this);"></span>
+
+        <ul id="lists-temp"></ul>
+
+    </div>
+
+</div>
+
+<!-- Template Ceng End -->
+
+<!-- 查看图片 -->
+<div id="akali" class="hide layui-layer-wrap" style="display: none;">
+    <img src="" id=""/>
+</div>
+<script>
+    function open_img(obj)
+    {
+        var src = obj.src;
+        $('#akali img').attr('src', src);
+        
+        // 获取图片的真实宽高
+        $('<img/>').attr("src", $('#akali img').attr("src")).load(function() {
+
+             // 获取图片的宽度 不能超过1280px
+            var pic_real_width = this.width > 1280 ? 1280 : this.width;  // Note: $(this).width() will not
+            var pic_real_height = this.height; // work for in memory images.
+            
+            // 设置图片的宽度 不能超过1280px
+            $('#akali img').attr('width', pic_real_width);
+            
+            // 页面层-佟丽娅
+            layer.open({
+                type: 1,
+                title: false,
+                closeBtn: 0,
+                area: pic_real_width + 'px',
+                skin: 'layui-layer-nobg', //没有背景色
+                shadeClose: true,
+                content: $('#akali')
+            });
+        });
+    }
+</script>

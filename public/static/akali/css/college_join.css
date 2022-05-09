@@ -1,0 +1,229 @@
+.joinForm {
+	background: #fff;
+	font-size: 16px;
+	margin-bottom: 30px;
+	padding-bottom: 20px;
+}
+
+.group {
+	padding-top: 30px;
+}
+
+.group+.group {
+	border-top: 10px solid #f5f5f5;
+}
+
+.joinForm .w600 {
+	width: 600px;
+	margin: 0 auto 30px auto;
+}
+
+.group .fee-tips {
+	padding-left: 10px;
+	line-height: 22px;
+	border-left: 3px solid #ff7600;
+	margin-bottom: 20px;
+}
+
+.fee-tips {
+	padding-left: 10px;
+	line-height: 22px;
+	border-left: 3px solid #ff7600;
+	margin-bottom: 20px;
+}
+
+.group .q {
+	margin-bottom: 10px;
+}
+
+.group .v {
+	width: 100%;
+	overflow: hidden;
+}
+
+.group .v .J_valueList {
+	width: 100%;
+	overflow: hidden;
+}
+
+.i-checks .iradio_square-green {
+	margin-bottom: 0;
+}
+
+.i-checks .icheckbox_square-green {
+	margin-bottom: 0;
+}
+
+.red {
+	color: red;
+}
+
+.joinForm div label {
+	padding-left: 0;
+	padding-right: 20px;
+}
+
+.J_valueList li {
+	float: left;
+	_display: inline;
+	margin-bottom: 4px;
+	/*height: 37px;*/
+	line-height: 40px;
+	text-align: left;
+}
+
+.btn-join {
+	padding: 7px 45px;
+	background: #ff7600;
+	color: #fff;
+	border-color: #ff7600;
+	width: 100%;
+	margin-top: 20px;
+	font-size: 18px;
+}
+
+.btn-join:hover {
+	background: #ff7600;
+	color: #fff;
+}
+
+.btn-code {
+	width: 150px;
+	background: #fff;
+	border-color: #ff7600;
+	color: #ff7600;
+	padding: 6px 5px;
+	border-radius: 4px;
+	font-size: 1.4rem;
+	float: right;
+}
+
+.btn-code:hover {
+	background: #ff7600;
+	color: #fff;
+}
+
+.site-index {
+	margin: 30px 0;
+	overflow: hidden;
+}
+
+.bg-f {
+	background: #fff;
+}
+
+.ac-name {
+	padding: 15px 0;
+	position: relative;
+}
+
+.ac-name:before {
+	content: '';
+	position: absolute;
+	width: 10px;
+	height: 10px;
+	border-raduis: 50%;
+	background: #f5f5f5;
+	bottom: -5px;
+}
+
+.ac-name .title {
+	font-size: 16px;
+	font-weight: bold;
+	line-height: 180%;
+	color: #333333;
+}
+
+.ac-name .title b {
+	color: #ff7600;
+}
+
+.ac-name .detail {
+	color: #555555;
+	font-size: 12px;
+	margin: 30px 0;
+	line-height: 250%;
+}
+
+.ac-name .price {
+	text-align: right;
+}
+
+.ac-name .price b {
+	font-size: 16px;
+	color: #ff7600;
+}
+.transaction_info{
+	width: 1200px;
+	height: 150px;
+	margin:0 auto;
+	border:0px solid;
+}
+.actual_payment{
+	clear: both;
+	width: 1200px;
+	height: 50px;
+	margin:0 auto;
+	border:0px solid;
+	margin-top:40px;
+	margin-bottom:40px;
+	background: #fff;
+}
+.next_btn{
+	width:139px;
+	height:38px;
+	background:rgba(252,157,39,1);
+	border-radius:4px;
+	color:#fff;
+	border: none;
+	font-size:16px;
+	font-family:Microsoft YaHei;
+	font-weight:400;
+	color:rgba(255,255,255,1);
+	margin-left : 20px;
+}
+.actual_payment_span{
+	display: inline-block;
+}
+.actual_price{
+	font-size: 24px;
+	color:#ff7600;
+}
+.transaction_p{
+	font-size:16px;
+	font-family:Microsoft YaHei;
+	font-weight:bold;
+	color:rgba(51,51,51,1);
+	line-height:36px;
+}
+.table_transaction_info,.table_transaction_info tr td{
+	border:none !important;
+	text-align: center;
+}
+.table_transaction_info tr th{
+	background: #F6F6F8;
+	border:none !important;
+	text-align: center;
+}
+.join_info_sure_div{
+	width: 1170px;background: #fff;margin-top:-30px;
+	padding-bottom: 1px;
+}
+.table>thead>tr>th {
+	vertical-align: bottom;
+	border-bottom: 0px solid #ddd;
+	font-weight: normal;
+}
+.price_color{
+	color:#ff7600;
+}
+.activity-original-price{
+	text-decoration: line-through;
+	color: #999;
+}
+.width100{
+	width: 100%;
+}
+.font_weight{
+	font-weight: bold;
+}

@@ -1,0 +1,33 @@
+{include file="public:header" /}
+<div class="node">
+    <div class="node-list">
+        <form class="action-form" action="" method="post">
+
+            <div class="node-list-che">
+                <div class="cd-left">
+                    {foreach $keyword as $key => $value}
+                    <span class="left-span">
+                        <label><input type="checkbox" {in name="$value.id" value="$data"}checked{/in} name="keywords[]" class="i-checks" value="{$value.id}">{$value.name}</label>
+                    </span>
+                    {/foreach}
+                </div>
+            </div>
+
+            <input type="hidden" name="id" value="{:input('id/d')}" />
+            <input type="submit" class="bth bth-node" value="立即提交" style="float: left" />
+        </form>
+    </div>
+</div>
+<script type="text/javascript">
+$(".checkAll").on('click', function() {
+    $(".i-checks").prop("checked", this.checked);
+});
+$(".nav-check").on("click", function() {
+    var parents = $(this).parents("h5");
+    parents.next(".node-list-che").find(".i-checks").prop("checked", this.checked);
+});
+$(".cd-two").on("click", function() {
+    var parents = $(this).parents(".cd-left");
+    parents.find(".i-checks").prop("checked", this.checked);
+});
+</script>

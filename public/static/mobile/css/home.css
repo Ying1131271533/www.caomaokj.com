@@ -1,0 +1,29 @@
+/*******新增了菜单栏的样式********/
+.list_tab{
+    overflow-x: scroll !important;
+    width: 100% !important;
+}
+.list_tab ul {
+    height: 0.74rem;
+    border-bottom: 1px solid #eee;
+    width: 40em !important;
+}
+.list_tab ul li {
+    width: 16% !important;
+    float: left;
+    text-align: center;
+    height: 0.72rem;
+}
+/***************/
+.crumbs {
+    font-size: 14px;
+    margin-bottom: 0;
+    padding: 10px 5px;
+}
+
+ol, ul, li {
+    list-style-type: none;
+}
+.crumbs>li {
+    display: inline-block;
+}

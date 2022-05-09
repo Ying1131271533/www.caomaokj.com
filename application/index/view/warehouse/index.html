@@ -1,0 +1,1552 @@
+{extend name="layout/base" /}
+
+{block name="title"}首页{/block}
+
+{block name="load"}
+<!-- css -->
+<link type="text/css" rel="stylesheet" href="__ACSS__/laypage.css" id="laypagecss">
+<link rel="stylesheet" href="__ACSS__/resources-index.css" type="text/css">
+<link rel="stylesheet" href="__ACSS__/lcd-enter.css" type="text/css">
+<link rel="stylesheet" href="__ACSS__/jquery-ui.css">
+
+<!-- js -->
+<script src="__AJS__/warehouse_ad_click.js"></script>
+<script type="text/javascript" src="__AJS__/laypage.js"></script>
+<script src="__AJS__/jquery-ui.js"></script>
+{/block}
+<!-- 主体内容 -->
+{block name="main"}
+<div class="container body-container">
+    <div class="main-div">
+        <div class="pos_div">
+            <span>
+                <a class="color9" href="https://fw.kuajingyan.com/%3C?%20/*=%20Yii::$app-%3Eparams[%27HOME_URL%27]%20*/%20?%3E"><svg class="icon" aria-hidden="true">
+                        <use xlink:href="#icon-shouye2"></use>
+                    </svg>首页 &gt;</a>
+            </span> <i style="color: #999999;font-style: normal;">跨境平台 &gt;</i>
+            <span>
+                <a href="https://fw.kuajingyan.com/warehouse" class="color5"><i style="color: #ff7600;font-style: normal;">找海外仓</i></a>
+            </span>
+        </div>
+        <div class="main-list-group">
+            <div class="col-md-9 left">
+                <!-- 上方搜索区域 -->
+                <div class="search-div nav-menu">
+                    <div class="form-inline">
+                        <div class="input-group" style="display: flex;border: 1px solid #fc9d27;border-right: none;border-radius: 20px;padding: 0 0 0 20px;background-color: #fff">
+                            <select name="content_type" style="border: none" <!--style="border: 1px solid #fc9d27;border-right:none;color: #999" --="">&gt;
+                                <option value="warehouse" selected="">
+                                    海外仓
+                                </option>
+                                <option value="service">
+                                    服务商
+                                </option>
+                            </select>
+                            <input type="text" style="border: none;width: 90%" id="keyword" class="form-control input-box ui-autocomplete-input" placeholder="找海外仓，请输入国家、公司名、服务等关键字..." autocomplete="off">
+                            <span class="input-group-btn">
+                                <div class="btn-search" style="width: 60px;border-radius: 0 20px 20px 0;border: none">
+                                    <span class="search_text" style="font-size: 18px">
+                                        <svg class="icon" aria-hidden="true">
+                                            <use xlink:href="#icon-sousuo1-copy"></use>
+                                        </svg>
+                                    </span>
+                                </div>
+                            </span>
+                        </div>
+                    </div>
+                </div>
+                <div class="select-div">
+                    <ul class="select">
+                        <li class="select-list" id="c">
+                            <div id="less-country" class="show-info show">
+                                <span class="label-left">国家选择：</span>
+                                <div class="list-area">
+                                    <span class="search" data-id="2">
+                                        <a href="javascript:void(0)">美国</a>
+                                    </span>
+                                    <span class="search" data-id="4">
+                                        <a href="javascript:void(0)">英国</a>
+                                    </span>
+                                    <span class="search" data-id="3">
+                                        <a href="javascript:void(0)">德国</a>
+                                    </span>
+                                    <span class="search" data-id="242">
+                                        <a href="javascript:void(0)">澳大利亚</a>
+                                    </span>
+                                    <span class="search" data-id="243">
+                                        <a href="javascript:void(0)">俄罗斯</a>
+                                    </span>
+                                    <span class="search" data-id="246">
+                                        <a href="javascript:void(0)">日本</a>
+                                    </span>
+                                    <span class="search" data-id="5">
+                                        <a href="javascript:void(0)">法国</a>
+                                    </span>
+                                    <span class="search" data-id="241">
+                                        <a href="javascript:void(0)">西班牙</a>
+                                    </span>
+                                    <span class="search" data-id="251">
+                                        <a href="javascript:void(0)">荷兰</a>
+                                    </span>
+                                    <span class="search" data-id="265">
+                                        <a href="javascript:void(0)">捷克</a>
+                                    </span>
+                                    <span class="search" data-id="244">
+                                        <a href="javascript:void(0)">意大利</a>
+                                    </span>
+                                    <span class="search" data-id="247">
+                                        <a href="javascript:void(0)">加拿大</a>
+                                    </span>
+                                    <span class="search" data-id="252">
+                                        <a href="javascript:void(0)">印度</a>
+                                    </span>
+                                    <span class="search" data-id="261">
+                                        <a href="javascript:void(0)">马来西亚</a>
+                                    </span>
+                                    <span class="search" data-id="262">
+                                        <a href="javascript:void(0)">巴西</a>
+                                    </span>
+                                    <span class="search" data-id="277">
+                                        <a href="javascript:void(0)">中国香港</a>
+                                    </span>
+                                </div>
+                            </div>
+                            <!--全部-->
+                            <div id="more-country" class="more-info show-info ">
+                                <span class="label-left">国家选择：</span>
+                                <div class="list-area more-country-area more-1" id="z">
+                                    <div> <span class="selected  continent continent-0" data-id="0">
+                                            <a class="specail-a">全部</a>
+                                            <i class="arrows"></i>
+                                        </span>
+                                        <span class="continent continent-1" data-id="1">
+                                            <a>亚洲</a>
+                                            <i class="arrows"></i>
+                                        </span>
+                                        <span class="continent continent-6" data-id="6">
+                                            <a>南美洲</a>
+                                            <i class="arrows"></i>
+                                        </span>
+                                        <span class="continent continent-4" data-id="4">
+                                            <a>北美洲</a>
+                                            <i class="arrows"></i>
+                                        </span>
+                                        <span class="continent continent-3" data-id="3">
+                                            <a>非洲</a>
+                                            <i class="arrows"></i>
+                                        </span>
+                                        <span class="continent continent-2" data-id="2">
+                                            <a>欧洲</a>
+                                            <i class="arrows"></i>
+                                        </span>
+                                        <span class="continent continent-5" data-id="5">
+                                            <a>大洋洲</a>
+                                            <i class="arrows"></i>
+                                        </span>
+                                    </div>
+                                </div>
+                                <!--                    <span class="label-left"></span>-->
+                                <div class="list-area more-country-area more-2" id="more-c">
+                                    <span class="more-search coun country-2" data-id="276">
+                                        <a href="javascript:void(0)">匈牙利</a>
+                                    </span>
+                                    <span class="more-search coun country-4" data-id="2">
+                                        <a href="javascript:void(0)">美国</a>
+                                    </span>
+                                    <span class="more-search coun country-2" data-id="4">
+                                        <a href="javascript:void(0)">英国</a>
+                                    </span>
+                                    <span class="more-search coun country-2" data-id="3">
+                                        <a href="javascript:void(0)">德国</a>
+                                    </span>
+                                    <span class="more-search coun country-5" data-id="242">
+                                        <a href="javascript:void(0)">澳大利亚</a>
+                                    </span>
+                                    <span class="more-search coun country-2" data-id="243">
+                                        <a href="javascript:void(0)">俄罗斯</a>
+                                    </span>
+                                    <span class="more-search coun country-1" data-id="246">
+                                        <a href="javascript:void(0)">日本</a>
+                                    </span>
+                                    <span class="more-search coun country-2" data-id="5">
+                                        <a href="javascript:void(0)">法国</a>
+                                    </span>
+                                    <span class="more-search coun country-2" data-id="241">
+                                        <a href="javascript:void(0)">西班牙</a>
+                                    </span>
+                                    <span class="more-search coun country-2" data-id="251">
+                                        <a href="javascript:void(0)">荷兰</a>
+                                    </span>
+                                    <span class="more-search coun country-1" data-id="266">
+                                        <a href="javascript:void(0)">印度尼西亚</a>
+                                    </span>
+                                    <span class="more-search coun country-2" data-id="265">
+                                        <a href="javascript:void(0)">捷克</a>
+                                    </span>
+                                    <span class="more-search coun country-1" data-id="275">
+                                        <a href="javascript:void(0)">以色列</a>
+                                    </span>
+                                    <span class="more-search coun country-3" data-id="269">
+                                        <a href="javascript:void(0)">南非共和国</a>
+                                    </span>
+                                    <span class="more-search coun country-1" data-id="272">
+                                        <a href="javascript:void(0)">泰国</a>
+                                    </span>
+                                    <span class="more-search coun country-1" data-id="271">
+                                        <a href="javascript:void(0)">柬埔寨</a>
+                                    </span>
+                                    <span class="more-search coun country-3" data-id="270">
+                                        <a href="javascript:void(0)">安哥拉</a>
+                                    </span>
+                                    <span class="more-search coun country-1" data-id="273">
+                                        <a href="javascript:void(0)">哈萨克斯坦</a>
+                                    </span>
+                                    <span class="more-search coun country-2" data-id="250">
+                                        <a href="javascript:void(0)">比利时</a>
+                                    </span>
+                                    <span class="more-search coun country-5" data-id="249">
+                                        <a href="javascript:void(0)">新西兰</a>
+                                    </span>
+                                    <span class="more-search coun country-2" data-id="248">
+                                        <a href="javascript:void(0)">波兰</a>
+                                    </span>
+                                    <span class="more-search coun country-1" data-id="274">
+                                        <a href="javascript:void(0)">越南</a>
+                                    </span>
+                                    <span class="more-search coun country-1" data-id="280">
+                                        <a href="javascript:void(0)">菲律宾</a>
+                                    </span>
+                                    <span class="more-search coun country-1" data-id="268">
+                                        <a href="javascript:void(0)">新加坡</a>
+                                    </span>
+                                    <span class="more-search coun country-1" data-id="267">
+                                        <a href="javascript:void(0)">科威特</a>
+                                    </span>
+                                    <span class="more-search coun country-1" data-id="277">
+                                        <a href="javascript:void(0)">中国香港</a>
+                                    </span>
+                                    <span class="more-search coun country-2" data-id="264">
+                                        <a href="javascript:void(0)">爱沙尼亚</a>
+                                    </span>
+                                    <span class="more-search coun country-1" data-id="263">
+                                        <a href="javascript:void(0)">中国大陆</a>
+                                    </span>
+                                    <span class="more-search coun country-6" data-id="262">
+                                        <a href="javascript:void(0)">巴西</a>
+                                    </span>
+                                    <span class="more-search coun country-1" data-id="261">
+                                        <a href="javascript:void(0)">马来西亚</a>
+                                    </span>
+                                    <span class="more-search coun country-3" data-id="260">
+                                        <a href="javascript:void(0)">尼日利亚</a>
+                                    </span>
+                                    <span class="more-search coun country-3" data-id="259">
+                                        <a href="javascript:void(0)">肯尼亚</a>
+                                    </span>
+                                    <span class="more-search coun country-2" data-id="258">
+                                        <a href="javascript:void(0)">乌克兰</a>
+                                    </span>
+                                    <span class="more-search coun country-4" data-id="257">
+                                        <a href="javascript:void(0)">墨西哥</a>
+                                    </span>
+                                    <span class="more-search coun country-1" data-id="256">
+                                        <a href="javascript:void(0)">伊朗</a>
+                                    </span>
+                                    <span class="more-search coun country-1" data-id="255">
+                                        <a href="javascript:void(0)">沙特</a>
+                                    </span>
+                                    <span class="more-search coun country-1" data-id="254">
+                                        <a href="javascript:void(0)">阿联酋</a>
+                                    </span>
+                                    <span class="more-search coun country-1" data-id="253">
+                                        <a href="javascript:void(0)">土耳其</a>
+                                    </span>
+                                    <span class="more-search coun country-1" data-id="252">
+                                        <a href="javascript:void(0)">印度</a>
+                                    </span>
+                                    <span class="more-search coun country-4" data-id="247">
+                                        <a href="javascript:void(0)">加拿大</a>
+                                    </span>
+                                    <span class="more-search coun country-1" data-id="245">
+                                        <a href="javascript:void(0)">韩国</a>
+                                    </span>
+                                    <span class="more-search coun country-2" data-id="244">
+                                        <a href="javascript:void(0)">意大利</a>
+                                    </span>
+                                </div>
+                            </div>
+                            <div class="btn-area">
+                                <button class="button more" style="display: inline-block;">更多&nbsp;<i class="fa fa-angle-down"></i>
+                                </button>
+                                <button class="button less" style="display: none;">收起&nbsp;<i class="fa fa-angle-up"></i>
+                                </button>
+                            </div>
+                        </li>
+                        <li class="select-list" id="big">
+                            <div>
+                                <span class="label-left">支持大货：</span>
+                                <div class="list-area">
+                                    <span class="search  selected " data-id="0">
+                                        <a href="javascript:void(0)">全部</a>
+                                    </span>
+                                    <span class="search " data-id="1">
+                                        <a href="javascript:void(0)">支持</a>
+                                    </span>
+                                    <span class="search " data-id="2">
+                                        <a href="javascript:void(0)">不支持</a>
+                                    </span>
+                                </div>
+                            </div>
+                        </li>
+                        <!--增值服务-->
+                        <li class="select-list" id="s">
+                            <div id="less-service" class="show-info show">
+                                <span class="label-left">服务类型：</span>
+                                <div class="list-area country-area">
+                                    <span class="search" data-id="14">
+                                        <a href="javascript:void(0)">退货换标</a>
+                                    </span>
+                                    <span class="search" data-id="12">
+                                        <a href="javascript:void(0)">一件代发</a>
+                                    </span>
+                                    <span class="search" data-id="19">
+                                        <a href="javascript:void(0)">(FBA)头程派送</a>
+                                    </span>
+                                    <span class="search" data-id="20">
+                                        <a href="javascript:void(0)">专线</a>
+                                    </span>
+                                    <span class="search" data-id="13">
+                                        <a href="javascript:void(0)">中转服务</a>
+                                    </span>
+                                    <span class="search" data-id="5">
+                                        <a href="javascript:void(0)">退货检测</a>
+                                    </span>
+                                    <span class="search" data-id="3">
+                                        <a href="javascript:void(0)">分销</a>
+                                    </span>
+                                    <span class="search" data-id="18">
+                                        <a href="javascript:void(0)">保税仓储</a>
+                                    </span>
+                                    <span class="search" data-id="2">
+                                        <a href="javascript:void(0)">清关服务</a>
+                                    </span>
+                                    <span class="search" data-id="1">
+                                        <a href="javascript:void(0)">出口退税</a>
+                                    </span>
+                                    <span class="search" data-id="48">
+                                        <a href="javascript:void(0)">食品储存</a>
+                                    </span>
+                                    <span class="search" data-id="50">
+                                        <a href="javascript:void(0)">仓配一体</a>
+                                    </span>
+                                </div>
+                            </div>
+                            <!--全部-->
+                            <div id="more-service" class="more-info show-info ">
+                                <span class="label-left">服务类型：</span>
+                                <div class="list-area more-service-area more-2" id="more-s">
+                                    <span class="selected  more-search" data-id="0">
+                                        <a href="javascript:void(0)">全部</a>
+                                    </span>
+                                    <span class="more-search" data-id="41">
+                                        <a href="javascript:void(0)">退货换包装</a>
+                                    </span>
+                                    <span class="more-search" data-id="40">
+                                        <a href="javascript:void(0)">更换包装</a>
+                                    </span>
+                                    <span class="more-search" data-id="37">
+                                        <a href="javascript:void(0)">商标注册</a>
+                                    </span>
+                                    <span class="more-search" data-id="39">
+                                        <a href="javascript:void(0)">移民咨询</a>
+                                    </span>
+                                    <span class="more-search" data-id="38">
+                                        <a href="javascript:void(0)">代销试销</a>
+                                    </span>
+                                    <span class="more-search" data-id="36">
+                                        <a href="javascript:void(0)">退货回国 </a>
+                                    </span>
+                                    <span class="more-search" data-id="14">
+                                        <a href="javascript:void(0)">退货换标</a>
+                                    </span>
+                                    <span class="more-search" data-id="12">
+                                        <a href="javascript:void(0)">一件代发</a>
+                                    </span>
+                                    <span class="more-search" data-id="19">
+                                        <a href="javascript:void(0)">(FBA)头程派送</a>
+                                    </span>
+                                    <span class="more-search" data-id="20">
+                                        <a href="javascript:void(0)">专线</a>
+                                    </span>
+                                    <span class="more-search" data-id="13">
+                                        <a href="javascript:void(0)">中转服务</a>
+                                    </span>
+                                    <span class="more-search" data-id="5">
+                                        <a href="javascript:void(0)">退货检测</a>
+                                    </span>
+                                    <span class="more-search" data-id="10">
+                                        <a href="javascript:void(0)">线下产品展示</a>
+                                    </span>
+                                    <span class="more-search" data-id="3">
+                                        <a href="javascript:void(0)">分销</a>
+                                    </span>
+                                    <span class="more-search" data-id="18">
+                                        <a href="javascript:void(0)">保税仓储</a>
+                                    </span>
+                                    <span class="more-search" data-id="2">
+                                        <a href="javascript:void(0)">清关服务</a>
+                                    </span>
+                                    <span class="more-search" data-id="1">
+                                        <a href="javascript:void(0)">出口退税</a>
+                                    </span>
+                                    <span class="more-search" data-id="23">
+                                        <a href="javascript:void(0)">货到付款</a>
+                                    </span>
+                                    <span class="more-search" data-id="24">
+                                        <a href="javascript:void(0)">代运营</a>
+                                    </span>
+                                    <span class="more-search" data-id="9">
+                                        <a href="javascript:void(0)">海外客服</a>
+                                    </span>
+                                    <span class="more-search" data-id="6">
+                                        <a href="javascript:void(0)">海外售后维修</a>
+                                    </span>
+                                    <span class="more-search" data-id="11">
+                                        <a href="javascript:void(0)">清仓处理</a>
+                                    </span>
+                                    <span class="more-search" data-id="26">
+                                        <a href="javascript:void(0)">海外营销</a>
+                                    </span>
+                                    <span class="more-search" data-id="17">
+                                        <a href="javascript:void(0)">海外线下销售渠道</a>
+                                    </span>
+                                    <span class="more-search" data-id="7">
+                                        <a href="javascript:void(0)">海外税法咨询</a>
+                                    </span>
+                                    <span class="more-search" data-id="27">
+                                        <a href="javascript:void(0)">海外员工招聘</a>
+                                    </span>
+                                    <span class="more-search" data-id="22">
+                                        <a href="javascript:void(0)">海外公司注册</a>
+                                    </span>
+                                    <span class="more-search" data-id="21">
+                                        <a href="javascript:void(0)">海外平台招商</a>
+                                    </span>
+                                    <span class="more-search" data-id="28">
+                                        <a href="javascript:void(0)">翻译服务</a>
+                                    </span>
+                                    <span class="more-search" data-id="8">
+                                        <a href="javascript:void(0)">垫资代采</a>
+                                    </span>
+                                    <span class="more-search" data-id="25">
+                                        <a href="javascript:void(0)">定制化物流仓储管理</a>
+                                    </span>
+                                    <span class="more-search" data-id="4">
+                                        <a href="javascript:void(0)">退货处理</a>
+                                    </span>
+                                    <span class="more-search" data-id="42">
+                                        <a href="javascript:void(0)">仓中仓服务</a>
+                                    </span>
+                                    <span class="more-search" data-id="48">
+                                        <a href="javascript:void(0)">食品储存</a>
+                                    </span>
+                                    <span class="more-search" data-id="49">
+                                        <a href="javascript:void(0)">可亚马逊自提</a>
+                                    </span>
+                                    <span class="more-search" data-id="43">
+                                        <a href="javascript:void(0)">卖家售后中心</a>
+                                    </span>
+                                    <span class="more-search" data-id="33">
+                                        <a href="javascript:void(0)">沃尔玛代发</a>
+                                    </span>
+                                    <span class="more-search" data-id="32">
+                                        <a href="javascript:void(0)">FBA中转</a>
+                                    </span>
+                                    <span class="more-search" data-id="31">
+                                        <a href="javascript:void(0)">COD代收货款</a>
+                                    </span>
+                                    <span class="more-search" data-id="30">
+                                        <a href="javascript:void(0)">海外仓滞销库存处理</a>
+                                    </span>
+                                    <span class="more-search" data-id="45">
+                                        <a href="javascript:void(0)">尾程渠道</a>
+                                    </span>
+                                    <span class="more-search" data-id="46">
+                                        <a href="javascript:void(0)">美金购汇售汇</a>
+                                    </span>
+                                    <span class="more-search" data-id="47">
+                                        <a href="javascript:void(0)">分货贴标</a>
+                                    </span>
+                                    <span class="more-search" data-id="50">
+                                        <a href="javascript:void(0)">仓配一体</a>
+                                    </span>
+                                </div>
+                            </div>
+                            <div class="btn-area">
+                                <button class="button more" style="display: inline-block;">更多&nbsp;<i class="fa fa-angle-down"></i>
+                                </button>
+                                <button class="button less" style="display: none;">收起&nbsp;<i class="fa fa-angle-up"></i>
+                                </button>
+                            </div>
+                        </li>
+                    </ul>
+                </div>
+                <div class="split_line"></div>
+                <div class="sort_div">
+                    <a class="sort_all" data-type="1" data-sort="0">
+                        <span class="sort_item">综合<img src="__AIMG__/sort_down.png" alt=""></span>
+                    </a>
+                    <a class="sort_popularity" data-type="2" data-sort="0">
+                        <span class="sort_item">人气<img src="__AIMG__/sort_no.png" alt=""></span>
+                    </a>
+                    <!--<a class='sort_response' data-type="3" data-sort="0">
+                    <span class="sort_item">响应度<img src="" alt=""></span>
+                </a>-->
+                    <a class="sort_vip" data-type="4" data-sort="0">
+                        <span class="sort_item">会员<img src="__AIMG__/sort_no.png" alt=""></span>
+                    </a>
+                </div>
+                <div class="split_line"></div>
+                <div class="data-body">
+                    <input type="hidden" id="count" value="601">
+                    <input type="hidden" id="thisPage" value="1">
+                    <input type="hidden" id="type" value="1">
+                    <input type="hidden" id="sort" value="0">
+                    <input type="hidden" id="content_type" value="warehouse">
+                    <div class="img-box">
+                        <div class="item-img" style="height: 170px;">
+                            <a href="detail" title="马里兰州仓">
+                                <img src="__AIMG__/dd033ac5c9657964.png" alt="马里兰州仓">
+                            </a>
+                            <div class="company-name">飞鸟国际跨境电商综合服务有限公司</div>
+                            <div class="vip_level_div">
+                                <img class="vip_level_style" src="__AIMG__/3b459ea5867ec665.png" title="1617356415181359.png" alt="image.png">
+                            </div>
+                        </div>
+                        <div class="item-text">
+                            <span class="name">
+                                <a href="detail">马里兰州仓</a>
+                                <img class="ml5" style="display: inline-block;margin-top: -5px;" src="__AIMG__/15881569931581.png">
+                            </span>
+                            <p class="info">
+                                美国 |
+                                服务类型: <span style="color:#fc9d27"></span>
+                                清关服务 一件代发 </p>
+                            <p class="contact">咨询：
+                                <a href="http://wpa.qq.com/msgrd?v=3&amp;uin=2853788666&amp;site=kuajingyan.com&amp;menu=yes" target="_blank">
+                                    <i class="fa fa-qq"></i>&nbsp;&nbsp;QQ&nbsp;&nbsp;&nbsp;&nbsp; </a>
+                                <a class="phone" href="javascript:void(0)" data-number="18665314221 / 0755-61882187">
+                                    <i class="fa fa-phone"></i>&nbsp;&nbsp;电话</a>
+                            </p>
+                        </div>
+                    </div>
+                    <div class="img-box">
+                        <div class="item-img" style="height: 170px;">
+                            <a href="https://fw.kuajingyan.com/warehouse/106" title="法兰克福仓">
+                                <img src="__AIMG__/15003763054288.png" alt="法兰克福仓">
+                            </a>
+                            <div class="company-name">飞鸟国际跨境电商综合服务有限公司</div>
+                            <div class="vip_level_div">
+                                <img class="vip_level_style" src="__AIMG__/3b459ea5867ec665.png" title="1617356415181359.png" alt="image.png">
+                            </div>
+                        </div>
+                        <div class="item-text">
+                            <span class="name">
+                                <a href="https://fw.kuajingyan.com/warehouse/106">法兰克福仓</a>
+                                <img class="ml5" style="display: inline-block;margin-top: -5px;" src="__AIMG__/15881569931581.png">
+                            </span>
+                            <p class="info">
+                                德国 |
+                                服务类型: <span style="color:#fc9d27"></span>
+                                清关服务 一件代发 </p>
+                            <p class="contact">咨询：
+                                <a href="http://wpa.qq.com/msgrd?v=3&amp;uin=2853788666&amp;site=kuajingyan.com&amp;menu=yes" target="_blank">
+                                    <i class="fa fa-qq"></i>&nbsp;&nbsp;QQ&nbsp;&nbsp;&nbsp;&nbsp; </a>
+                                <a class="phone" href="javascript:void(0)" data-number="18665314221 / 0755-61882187">
+                                    <i class="fa fa-phone"></i>&nbsp;&nbsp;电话</a>
+                            </p>
+                        </div>
+                    </div>
+                    <div class="img-box-right">
+                        <div class="item-img" style="height: 170px;">
+                            <a href="https://fw.kuajingyan.com/warehouse/104" title="曼彻斯特仓">
+                                <img src="__AIMG__/96ea8a0677a5baa3.jpg" alt="曼彻斯特仓">
+                            </a>
+                            <div class="company-name">飞鸟国际跨境电商综合服务有限公司</div>
+                            <div class="vip_level_div">
+                                <img class="vip_level_style" src="__AIMG__/3b459ea5867ec665.png" title="1617356415181359.png" alt="image.png">
+                            </div>
+                        </div>
+                        <div class="item-text">
+                            <span class="name">
+                                <a href="https://fw.kuajingyan.com/warehouse/104">曼彻斯特仓</a>
+                                <img class="ml5" style="display: inline-block;margin-top: -5px;" src="__AIMG__/15881569931581.png">
+                            </span>
+                            <p class="info">
+                                英国 |
+                                服务类型: <span style="color:#fc9d27"></span>
+                                清关服务 一件代发 </p>
+                            <p class="contact">咨询：
+                                <a href="http://wpa.qq.com/msgrd?v=3&amp;uin=2853788666&amp;site=kuajingyan.com&amp;menu=yes" target="_blank">
+                                    <i class="fa fa-qq"></i>&nbsp;&nbsp;QQ&nbsp;&nbsp;&nbsp;&nbsp; </a>
+                                <a class="phone" href="javascript:void(0)" data-number="18665314221 / 0755-61882187">
+                                    <i class="fa fa-phone"></i>&nbsp;&nbsp;电话</a>
+                            </p>
+                        </div>
+                    </div>
+                    <div class="img-box">
+                        <div class="item-img" style="height: 170px;">
+                            <a href="https://fw.kuajingyan.com/warehouse/181" title="汉诺威仓">
+                                <img src="__AIMG__/15692890277081.jpg" alt="汉诺威仓">
+                            </a>
+                            <div class="company-name">深圳市乐一宝国际物流有限公司</div>
+                            <div class="vip_level_div">
+                                <img class="vip_level_style" src="__AIMG__/4c38f1a2c7bd586e.png" title="1617356347905581.png" alt="image.png">
+                            </div>
+                        </div>
+                        <div class="item-text">
+                            <span class="name">
+                                <a href="https://fw.kuajingyan.com/warehouse/181">汉诺威仓</a>
+                                <img class="ml5" style="display: inline-block;margin-top: -5px;" src="__AIMG__/15881569931581.png">
+                            </span>
+                            <p class="info">
+                                德国 |
+                                服务类型: <span style="color:#fc9d27"></span>
+                                一件代发 </p>
+                            <p class="contact">咨询：
+                                <a href="http://wpa.qq.com/msgrd?v=3&amp;uin=2949925169&amp;site=kuajingyan.com&amp;menu=yes" target="_blank">
+                                    <i class="fa fa-qq"></i>&nbsp;&nbsp;QQ&nbsp;&nbsp;&nbsp;&nbsp; </a>
+                                <a class="phone" href="javascript:void(0)" data-number="4000051060">
+                                    <i class="fa fa-phone"></i>&nbsp;&nbsp;电话</a>
+                            </p>
+                        </div>
+                    </div>
+                    <div class="img-box">
+                        <div class="item-img" style="height: 170px;">
+                            <a href="https://fw.kuajingyan.com/warehouse/183" title="洛杉矶">
+                                <img src="__AIMG__/15692894144116.jpg" alt="洛杉矶">
+                            </a>
+                            <div class="company-name">深圳市乐一宝国际物流有限公司</div>
+                            <div class="vip_level_div">
+                                <img class="vip_level_style" src="__AIMG__/4c38f1a2c7bd586e.png" title="1617356347905581.png" alt="image.png">
+                            </div>
+                        </div>
+                        <div class="item-text">
+                            <span class="name">
+                                <a href="https://fw.kuajingyan.com/warehouse/183">洛杉矶</a>
+                                <img class="ml5" style="display: inline-block;margin-top: -5px;" src="__AIMG__/15881569931581.png">
+                            </span>
+                            <p class="info">
+                                美国 |
+                                服务类型: <span style="color:#fc9d27"></span>
+                                一件代发 </p>
+                            <p class="contact">咨询：
+                                <a href="http://wpa.qq.com/msgrd?v=3&amp;uin=2949925169&amp;site=kuajingyan.com&amp;menu=yes" target="_blank">
+                                    <i class="fa fa-qq"></i>&nbsp;&nbsp;QQ&nbsp;&nbsp;&nbsp;&nbsp; </a>
+                                <a class="phone" href="javascript:void(0)" data-number="4000051060">
+                                    <i class="fa fa-phone"></i>&nbsp;&nbsp;电话</a>
+                            </p>
+                        </div>
+                    </div>
+                    <div class="img-box-right">
+                        <div class="item-img" style="height: 170px;">
+                            <a href="https://fw.kuajingyan.com/warehouse/182" title="英国海外仓">
+                                <img src="__AIMG__/15692344251055.jpg" alt="英国海外仓">
+                            </a>
+                            <div class="company-name">深圳市乐一宝国际物流有限公司</div>
+                            <div class="vip_level_div">
+                                <img class="vip_level_style" src="__AIMG__/4c38f1a2c7bd586e.png" title="1617356347905581.png" alt="image.png">
+                            </div>
+                        </div>
+                        <div class="item-text">
+                            <span class="name">
+                                <a href="https://fw.kuajingyan.com/warehouse/182">英国海外仓</a>
+                                <img class="ml5" style="display: inline-block;margin-top: -5px;" src="__AIMG__/15881569931581.png">
+                            </span>
+                            <p class="info">
+                                英国 |
+                                服务类型: <span style="color:#fc9d27"></span>
+                                一件代发 </p>
+                            <p class="contact">咨询：
+                                <a href="http://wpa.qq.com/msgrd?v=3&amp;uin=2949925169&amp;site=kuajingyan.com&amp;menu=yes" target="_blank">
+                                    <i class="fa fa-qq"></i>&nbsp;&nbsp;QQ&nbsp;&nbsp;&nbsp;&nbsp; </a>
+                                <a class="phone" href="javascript:void(0)" data-number="4000051060">
+                                    <i class="fa fa-phone"></i>&nbsp;&nbsp;电话</a>
+                            </p>
+                        </div>
+                    </div>
+                    <div class="img-box">
+                        <div class="item-img" style="height: 170px;">
+                            <a href="https://fw.kuajingyan.com/warehouse/180" title="伯明翰">
+                                <img src="__AIMG__/15692892469010.jpg" alt="伯明翰">
+                            </a>
+                            <div class="company-name">深圳市乐一宝国际物流有限公司</div>
+                            <div class="vip_level_div">
+                                <img class="vip_level_style" src="__AIMG__/4c38f1a2c7bd586e.png" title="1617356347905581.png" alt="image.png">
+                            </div>
+                        </div>
+                        <div class="item-text">
+                            <span class="name">
+                                <a href="https://fw.kuajingyan.com/warehouse/180">伯明翰</a>
+                                <img class="ml5" style="display: inline-block;margin-top: -5px;" src="__AIMG__/15881569931581.png">
+                            </span>
+                            <p class="info">
+                                英国 |
+                                服务类型: <span style="color:#fc9d27"></span>
+                                一件代发 </p>
+                            <p class="contact">咨询：
+                                <a href="http://wpa.qq.com/msgrd?v=3&amp;uin=2949925169&amp;site=kuajingyan.com&amp;menu=yes" target="_blank">
+                                    <i class="fa fa-qq"></i>&nbsp;&nbsp;QQ&nbsp;&nbsp;&nbsp;&nbsp; </a>
+                                <a class="phone" href="javascript:void(0)" data-number="4000051060">
+                                    <i class="fa fa-phone"></i>&nbsp;&nbsp;电话</a>
+                            </p>
+                        </div>
+                    </div>
+                    <div class="img-box">
+                        <div class="item-img" style="height: 170px;">
+                            <a href="https://fw.kuajingyan.com/warehouse/184" title="美国">
+                                <img src="__AIMG__/15692891463374.jpg" alt="美国">
+                            </a>
+                            <div class="company-name">深圳市乐一宝国际物流有限公司</div>
+                            <div class="vip_level_div">
+                                <img class="vip_level_style" src="__AIMG__/4c38f1a2c7bd586e.png" title="1617356347905581.png" alt="image.png">
+                            </div>
+                        </div>
+                        <div class="item-text">
+                            <span class="name">
+                                <a href="https://fw.kuajingyan.com/warehouse/184">美国</a>
+                                <img class="ml5" style="display: inline-block;margin-top: -5px;" src="__AIMG__/15881569931581.png">
+                            </span>
+                            <p class="info">
+                                美国 |
+                                服务类型: <span style="color:#fc9d27"></span>
+                            </p>
+                            <p class="contact">咨询：
+                                <a href="http://wpa.qq.com/msgrd?v=3&amp;uin=2949925169&amp;site=kuajingyan.com&amp;menu=yes" target="_blank">
+                                    <i class="fa fa-qq"></i>&nbsp;&nbsp;QQ&nbsp;&nbsp;&nbsp;&nbsp; </a>
+                                <a class="phone" href="javascript:void(0)" data-number="4000051060">
+                                    <i class="fa fa-phone"></i>&nbsp;&nbsp;电话</a>
+                            </p>
+                        </div>
+                    </div>
+                    <div class="img-box-right">
+                        <div class="item-img" style="height: 170px;">
+                            <a href="https://fw.kuajingyan.com/warehouse/874" title="美国亚特兰大仓">
+                                <img src="__AIMG__/15536774373717.jpg" alt="美国亚特兰大仓">
+                            </a>
+                            <div class="company-name">深圳市宏益国际跨境电商服务有限公司</div>
+                            <div class="vip_level_div">
+                                <img class="vip_level_style" src="__AIMG__/4c38f1a2c7bd586e.png" title="1617356347905581.png" alt="image.png">
+                            </div>
+                        </div>
+                        <div class="item-text">
+                            <span class="name">
+                                <a href="https://fw.kuajingyan.com/warehouse/874">美国亚特兰大仓</a>
+                                <img class="ml5" style="display: inline-block;margin-top: -5px;" src="__AIMG__/15881569931581.png">
+                            </span>
+                            <p class="info">
+                                美国 |
+                                服务类型: <span style="color:#fc9d27"></span>
+                                一件代发 </p>
+                            <p class="contact">咨询：
+                                <a href="http://wpa.qq.com/msgrd?v=3&amp;uin=3590587615&amp;site=kuajingyan.com&amp;menu=yes" target="_blank">
+                                    <i class="fa fa-qq"></i>&nbsp;&nbsp;QQ&nbsp;&nbsp;&nbsp;&nbsp; </a>
+                                <a class="phone" href="javascript:void(0)" data-number="18926065409">
+                                    <i class="fa fa-phone"></i>&nbsp;&nbsp;电话</a>
+                            </p>
+                        </div>
+                    </div>
+                    <div class="img-box">
+                        <div class="item-img" style="height: 170px;">
+                            <a href="https://fw.kuajingyan.com/warehouse/883" title="意大利仓">
+                                <img src="__AIMG__/15536558782198.jpg" alt="意大利仓">
+                            </a>
+                            <div class="company-name">深圳市宏益国际跨境电商服务有限公司</div>
+                            <div class="vip_level_div">
+                                <img class="vip_level_style" src="__AIMG__/4c38f1a2c7bd586e.png" title="1617356347905581.png" alt="image.png">
+                            </div>
+                        </div>
+                        <div class="item-text">
+                            <span class="name">
+                                <a href="https://fw.kuajingyan.com/warehouse/883">意大利仓</a>
+                                <img class="ml5" style="display: inline-block;margin-top: -5px;" src="__AIMG__/15881569931581.png">
+                            </span>
+                            <p class="info">
+                                意大利 |
+                                服务类型: <span style="color:#fc9d27"></span>
+                                一件代发 </p>
+                            <p class="contact">咨询：
+                                <a href="http://wpa.qq.com/msgrd?v=3&amp;uin=3590587615&amp;site=kuajingyan.com&amp;menu=yes" target="_blank">
+                                    <i class="fa fa-qq"></i>&nbsp;&nbsp;QQ&nbsp;&nbsp;&nbsp;&nbsp; </a>
+                                <a class="phone" href="javascript:void(0)" data-number="18926065409">
+                                    <i class="fa fa-phone"></i>&nbsp;&nbsp;电话</a>
+                            </p>
+                        </div>
+                    </div>
+                    <div class="img-box">
+                        <div class="item-img" style="height: 170px;">
+                            <a href="https://fw.kuajingyan.com/warehouse/876" title="美西换标代发仓">
+                                <img src="__AIMG__/15536756363284.jpg" alt="美西换标代发仓">
+                            </a>
+                            <div class="company-name">深圳市宏益国际跨境电商服务有限公司</div>
+                            <div class="vip_level_div">
+                                <img class="vip_level_style" src="__AIMG__/4c38f1a2c7bd586e.png" title="1617356347905581.png" alt="image.png">
+                            </div>
+                        </div>
+                        <div class="item-text">
+                            <span class="name">
+                                <a href="https://fw.kuajingyan.com/warehouse/876">美西换标代发仓</a>
+                                <img class="ml5" style="display: inline-block;margin-top: -5px;" src="__AIMG__/15881569931581.png">
+                            </span>
+                            <p class="info">
+                                美国 |
+                                服务类型: <span style="color:#fc9d27"></span>
+                                一件代发 </p>
+                            <p class="contact">咨询：
+                                <a href="http://wpa.qq.com/msgrd?v=3&amp;uin=3590587615&amp;site=kuajingyan.com&amp;menu=yes" target="_blank">
+                                    <i class="fa fa-qq"></i>&nbsp;&nbsp;QQ&nbsp;&nbsp;&nbsp;&nbsp; </a>
+                                <a class="phone" href="javascript:void(0)" data-number="18926065409">
+                                    <i class="fa fa-phone"></i>&nbsp;&nbsp;电话</a>
+                            </p>
+                        </div>
+                    </div>
+                    <div class="img-box-right">
+                        <div class="item-img" style="height: 170px;">
+                            <a href="https://fw.kuajingyan.com/warehouse/885" title="西班牙仓">
+                                <img src="__AIMG__/15536561474107.jpg" alt="西班牙仓">
+                            </a>
+                            <div class="company-name">深圳市宏益国际跨境电商服务有限公司</div>
+                            <div class="vip_level_div">
+                                <img class="vip_level_style" src="__AIMG__/4c38f1a2c7bd586e.png" title="1617356347905581.png" alt="image.png">
+                            </div>
+                        </div>
+                        <div class="item-text">
+                            <span class="name">
+                                <a href="https://fw.kuajingyan.com/warehouse/885">西班牙仓</a>
+                                <img class="ml5" style="display: inline-block;margin-top: -5px;" src="__AIMG__/15881569931581.png">
+                            </span>
+                            <p class="info">
+                                西班牙 |
+                                服务类型: <span style="color:#fc9d27"></span>
+                                一件代发 </p>
+                            <p class="contact">咨询：
+                                <a href="http://wpa.qq.com/msgrd?v=3&amp;uin=3590587615&amp;site=kuajingyan.com&amp;menu=yes" target="_blank">
+                                    <i class="fa fa-qq"></i>&nbsp;&nbsp;QQ&nbsp;&nbsp;&nbsp;&nbsp; </a>
+                                <a class="phone" href="javascript:void(0)" data-number="18926065409">
+                                    <i class="fa fa-phone"></i>&nbsp;&nbsp;电话</a>
+                            </p>
+                        </div>
+                    </div>
+                </div>
+                <div id="laypage" class="laypage">
+                    <div name="laypage1.2" class="laypage_main laypageskin_molv" id="laypage_0"><span class="laypage_curr" style="background-color:#fc9d27">1</span><a href="javascript:;" data-page="2">2</a><a href="javascript:;" data-page="3">3</a><a href="javascript:;" data-page="4">4</a><a href="javascript:;" data-page="5">5</a><span>…</span><a href="javascript:;" class="laypage_last" title="尾页" data-page="51">51</a><a href="javascript:;" class="laypage_next" data-page="2">下一页</a></div>
+                </div>
+            </div>
+            <div class="col-md-3 right" id="right-sidebar" style="top: 0px;">
+                <!-- 推荐位置或浏览足迹 -->
+                <div class="panel panel-default latest-views" style="">
+                    <div class="panel-body">
+                        <div class="panel-title" style="margin-bottom: 15px">最近浏览过</div>
+                        <ul class="view-list">
+                            <li style="clear:left">
+                                <dl style="height: 60px">
+                                    <dd style="float:left;"><a href="https://fw.kuajingyan.com/company/594" title="深圳市宏益国际跨境电商服务有限公司"><img src="__AIMG__/15590948739888.jpg" alt="深圳市宏益国际跨境电商服务有限公司" style="height: 50px;width: 75px;border:1px solid rgba(238,238,238,1);border-radius:4px;"></a>
+                                    </dd>
+                                    <dd style="float: left;margin:7px 10px;width: 150px;overflow:;text-overflow:ellipsis;white-space:nowrap;">
+                                        <p style="font: normal bold 14px/16px;MicrosoftYaHei-Bold;color: #333333;margin-bottom: 0px">
+                                            <a href="https://fw.kuajingyan.com/warehouse/880">英国仓</a></p>
+                                        <p style="font: normal normal 14px/16px;MicrosoftYaHei-Bold;color:#C0BDBD;margin-bottom: 0px">
+                                            深圳市宏益国际跨境电商服务有限公司</p>
+                                    </dd>
+                                </dl>
+                            </li>
+                            <li style="clear:left">
+                                <dl style="height: 60px">
+                                    <dd style="float:left;"><a href="https://fw.kuajingyan.com/company/15" title="飞鸟国际跨境电商综合服务有限公司"><img src="__AIMG__/15287943702611.png" alt="飞鸟国际跨境电商综合服务有限公司" style="height: 50px;width: 75px;border:1px solid rgba(238,238,238,1);border-radius:4px;"></a>
+                                    </dd>
+                                    <dd style="float: left;margin:7px 10px;width: 150px;overflow:hidden;text-overflow:ellipsis;white-space:nowrap;">
+                                        <p style="font: normal bold 14px/16px;MicrosoftYaHei-Bold;color: #333333;margin-bottom: 0px">
+                                            <a href="https://fw.kuajingyan.com/warehouse/107">马里兰州仓</a></p>
+                                        <p style="font: normal normal 14px/16px;MicrosoftYaHei-Bold;color:#C0BDBD;margin-bottom: 0px">
+                                            飞鸟国际跨境电商综合服务有限公司</p>
+                                    </dd>
+                                </dl>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+                <!-- 为你推荐-->
+                <div class="panel panel-default latest-views">
+                    <div class="panel-body">
+                        <div class="panel-title" style="margin-bottom: 15px">为您推荐</div>
+                        <ul>
+                            <li style="clear: left">
+                                <dl style="height: 60px">
+                                    <dd style="float:left;">
+                                        <a href="https://fw.kuajingyan.com/company/286" title="深圳市德恒顺供应链管理有限公司">
+                                            <img src="__AIMG__/15222930415551.png" alt="深圳市德恒顺供应链管理有限公司" style="height: 50px;width: 75px;border:1px solid rgba(238,238,238,1);border-radius:4px;">
+                                        </a>
+                                    </dd>
+                                    <dd style="float: left;margin:7px 10px;width: 150px;overflow:hidden;text-overflow:ellipsis;white-space:nowrap;">
+                                        <p style="font: normal bold 14px/16px;MicrosoftYaHei-Bold;color: #333333;margin-bottom: 0px">
+                                            <a href="https://fw.kuajingyan.com/warehouse/505">圣保罗仓</a>
+                                        </p>
+                                        <p style="font: normal normal 14px/16px;MicrosoftYaHei-Bold;color:#C0BDBD;margin-bottom: 0px">
+                                            深圳市德恒顺供应链管理有限公司 </p>
+                                    </dd>
+                                </dl>
+                            </li>
+                            <li style="clear: left">
+                                <dl style="height: 60px">
+                                    <dd style="float:left;">
+                                        <a href="https://fw.kuajingyan.com/company/115" title="北京邮差小马科技有限公司">
+                                            <img src="__AIMG__/15204158880557.png" alt="北京邮差小马科技有限公司" style="height: 50px;width: 75px;border:1px solid rgba(238,238,238,1);border-radius:4px;">
+                                        </a>
+                                    </dd>
+                                    <dd style="float: left;margin:7px 10px;width: 150px;overflow:hidden;text-overflow:ellipsis;white-space:nowrap;">
+                                        <p style="font: normal bold 14px/16px;MicrosoftYaHei-Bold;color: #333333;margin-bottom: 0px">
+                                            <a href="https://fw.kuajingyan.com/warehouse/1072">洛杉矶海外仓</a>
+                                        </p>
+                                        <p style="font: normal normal 14px/16px;MicrosoftYaHei-Bold;color:#C0BDBD;margin-bottom: 0px">
+                                            北京邮差小马科技有限公司 </p>
+                                    </dd>
+                                </dl>
+                            </li>
+                            <li style="clear: left">
+                                <dl style="height: 60px">
+                                    <dd style="float:left;">
+                                        <a href="https://fw.kuajingyan.com/company/547" title="特立达供应链管理有限公司">
+                                            <img src="__AIMG__/15453789677765.png" alt="特立达供应链管理有限公司" style="height: 50px;width: 75px;border:1px solid rgba(238,238,238,1);border-radius:4px;">
+                                        </a>
+                                    </dd>
+                                    <dd style="float: left;margin:7px 10px;width: 150px;overflow:hidden;text-overflow:ellipsis;white-space:nowrap;">
+                                        <p style="font: normal bold 14px/16px;MicrosoftYaHei-Bold;color: #333333;margin-bottom: 0px">
+                                            <a href="https://fw.kuajingyan.com/warehouse/788">新泽西州仓</a>
+                                        </p>
+                                        <p style="font: normal normal 14px/16px;MicrosoftYaHei-Bold;color:#C0BDBD;margin-bottom: 0px">
+                                            特立达供应链管理有限公司 </p>
+                                    </dd>
+                                </dl>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+
+                <style>
+
+                    .panel {
+                        width: 100%;
+                        border: 0;
+                        border-radius: 0;
+                    }
+                    .panel-default>.panel-heading {
+                        color: #3f3f3f;
+                        background-color: transparent;
+                        border: none;
+                        font-size: 16px;
+                        font-weight: 500;
+                    }
+                    .panel-default>.panel-heading .panel-body {
+                        padding: 5px 14px 10px;
+                    }
+                    .panel-default>.panel-body p {
+                        margin-bottom: 10px;
+                    }
+                    .panel-default .panel-body p img {
+                        width: 100%;
+                        /*height: 100px;*/
+                    }
+
+                </style>
+
+                <div class="panel panel-default">
+                    <div class="panel-heading font16">推荐海外仓</div>
+                    <div class="panel-body">
+                        <p>
+                            <img style="cursor: pointer;" class="banner_href" data-type="pc" data-id="33" data-url="https://fw.kuajingyan.com/warehouse/1076" src="__AIMG__/16183964342362.png" alt="推荐海外仓">
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <script type="text/javascript" src="__AJS__/warehouse-index.js"></script>
+    <script type="text/javascript">
+    $(function() {
+        $('#logistics-a').addClass('active').find('img').attr('src', "__AIMG__/xiajiantou2.png");
+        $('#resource-a').removeClass('active');
+        $('#resource-a,.home_nav_baike').hover(function() {
+            $(this).find('img').attr('src', "__AIMG__/xiajiantou2.png");
+        }, function() {
+            $(this).find('img').attr('src', "__AIMG__/xiajiantou.png");
+        });
+
+        var CompanyName = [
+            "DEJ Umwelt GmbH",
+            "深圳市递四方速递有限公司",
+            "迈科（深圳）跨境供应链有限公司",
+            "深圳市宏益国际跨境电商服务有限公司",
+            "深圳市未半国际货运代理有限公司",
+            "深圳市中南通达国际物流有限公司",
+            "深圳速腾仓储服务有限公司",
+            "深圳市乐一宝国际物流有限公司",
+            "易送网络有限公司",
+            " 金仓海外仓",
+            "深圳市凯利国际货运代理有限公司",
+            "深圳市英杰货运有限公司",
+            "深圳市卡丽丝贸易有限公司",
+            "淘贸供应链管理有限公司",
+            "蓝纬信息科技有限公司",
+            "深圳市壹电商国际物流有限公司",
+            "珠海优美达科技有限公司",
+            "深圳市易通跨境电商物流有限公司",
+            "华腾集团公司",
+            "SASU CCS",
+            "牛轮海外仓",
+            "深圳市京华达物流有限公司",
+            "深圳市中递国际物流有限公司",
+            "飞鸟国际跨境电商综合服务有限公司",
+            "谷仓海外仓",
+            "51Delivery (USA)  Inc（无忧达）",
+            "深圳市易达云科技有限公司",
+            "宁波发现国际物流有限公司",
+            "深圳市乐丰联运国际货运代理有限公司",
+            "深圳市品诚伟业科技有限公司",
+            "Canada international shared warehouse LTD",
+            "深圳市鸿羽国际物流有限公司",
+            "万邑通集团",
+            "出口易（广州市贝法易信息科技有限公司）",
+            "路达英国海外仓储有限责任公司",
+            "美仓互联（上海）供应链管理有限公司",
+            "深圳市世联互通供应链有限公司",
+            "力拓鼎盛海外仓",
+            "港通天下商务管理有限公司",
+            " 深圳市易通达海外仓信息科技有限公司",
+            "深圳飞得快国际物流有限公司",
+            "阿甘海外仓",
+            "诺鼎国际货运代理（深圳）有限公司",
+            "晟世海外仓储有限公司",
+            "YLT Wholesale Inc.",
+            "深圳市蜘蛛网智慧科技有限公司",
+            "Calabash Brothers LLC",
+            "深圳市叁河一供应链有限公司",
+            "千象盒子科技仓储（深圳）有限公司",
+            "深圳市昊宏国际物流有限公司",
+            "广东唯客路供应链物流有限公司",
+            "美国铁三角海外仓(ship angle)",
+            "飞洋物流集团",
+            "M.B.B. Logistics Sp. z o.o",
+            "深圳市华翰鸿运国际货运代理有限公司",
+            "深圳市全和悦供应链管理有限公司",
+            "上海捷网国际物流有限公司",
+            "艾姆勒海外仓储（深圳）有限责任公司",
+            "007EX 对俄跨境仓配平台",
+            "海豚日本仓 深圳市东电行科技有限公司",
+            "トップウェル株式会社 日本大熊猫海外仓",
+            "深圳飞鹰物流有限公司",
+            "美亚海外仓",
+            "北京网易速达国际货运代理有限公司上海分公司",
+            "浙江雷鸟供应链管理有限公司（深圳、义乌）",
+            "立赢德国海外仓",
+            "上海驿川供应链管理有限公司",
+            "海洋国际有限责任公司",
+            "天府盛（北京）国际供应链管理有限公司",
+            "深圳大森林国际货运代理有限公司 ",
+            "深圳市汇嘉信供应链有限公司",
+            "瑞尔国际物流（北京）有限公司",
+            "上海义达国际物流有限公司",
+            "深圳市华灵云科技有限公司（深圳）",
+            "顺丰速运有限公司",
+            "Diamond Bull Inc.",
+            "深圳前海三态现代物流有限公司",
+            "上海及束国际贸易有限公司",
+            "深圳前海纬狮物流网络科技有限公司",
+            "远铂电商服务有限公司",
+            "深圳一线通货运代理有限公司",
+            "王道海外仓",
+            "中国邮政速递物流股份有限公司",
+            "北京数码港电子商务有限公司",
+            "杭州佳成国际物流股份有限公司",
+            "北京邮差小马科技有限公司",
+            "深圳市前海运德物流有限公司",
+            "广州速猫跨境供应链有限公司",
+            "深圳市一站式国际电商服务有限公司",
+            "深圳龙迅国际物流有限公司",
+            "上海千亚国际货物运输代理有限公司",
+            "深圳市九方通逊电商物流有限公司",
+            "德邦物流股份有限公司",
+            "优力克物流管理公司",
+            "深圳海拓通供应链管理有限公司",
+            "美国雷霆物流",
+            "广州星乾货运代理有限公司",
+            "广州赤金国际货运代理有限公司",
+            "INNOVAA INC.",
+            "深圳市坤鑫国际货运代理有限公司",
+            "上海颐龙国际货运代理有限公司",
+            "深圳君辉供应链管理有限公司",
+            "深圳市捎客转运物流有限公司",
+            "CCS供应链管理有限公司",
+            "广州侨业国际货运代理有限公司",
+            "深圳市星空供应链管理有限公司",
+            "广州三通供应链有限公司",
+            "日葉海外仓（www.r-exp.com）",
+            "深圳市派格通运货运代理有限公司",
+            "广州遨通国际供应链有限公司",
+            "上海旨福供应链管理有限公司",
+            "德勤海外仓",
+            "丹正物流集团",
+            "深圳市精通供应链服务有限公司",
+            "西法共享仓有限公司",
+            "意大利易售欧（ESOEU）海外仓储中心",
+            "风雷集团（Thunder Express）",
+            "广东柏迅供应链管理有限公司",
+            "深圳市飞高国际货运代理有限公司",
+            "深圳市超峰国际货运代理公司",
+            "深圳市易联通达物流科技发展有限公司",
+            "深圳海诚达国际供应链有限公司",
+            "宇乐供应链管理有限公司",
+            "深圳市天龙货运代理有限公司",
+            "深圳波斯通物流有限公司",
+            "急速国际快递（集团）有限公司",
+            "法国STOCK EXPRESS跨境电商一站式服务有限公司",
+            "广州市中非桥电商供应链管理有限公司",
+            "深圳君威国际货运代理有限公司",
+            "物流集团",
+            "Radtec Holland",
+            "Ubi Connected GmbH",
+            "昂博国际贸易（上海）有限公司",
+            "Ying International Trade LLC",
+            "深圳市勒思购电子科技有限公司",
+            "德国渥途（Voltoo GmbH）",
+            "海纳国际（美国）物联网有限公司",
+            "深圳市易联速递有限公司",
+            "深圳市雁信物流有限公司",
+            "深圳市乾龙物流有限公司",
+            "Ai Delivery Inc",
+            "EWE集团",
+            "易诚美国海外仓（YCWUS INC)",
+            "深圳澳通国际货运代理有限公司",
+            "德国中德经济文化交流协会服务中心",
+            "B2B LOGISTICS LLC",
+            "海洲国际电商物流（深圳)有限公司",
+            "圆通速递有限公司",
+            "深圳市蚁仓科技有限公司",
+            "深圳市中运国际科技有限公司",
+            "厦门迅蜂物联科技有限公司",
+            "深圳市正远储运科技有限公司",
+            "速十供应链",
+            "深圳市嘀嗒嘀物流科技有限公司",
+            "上海森女神电子商务有限公司",
+            "深圳市延华国际供应链有限公司",
+            "G-fortune",
+            "够快供应链管理（广州）有限公司",
+            "外贸邦国际物流有限公司",
+            "深圳市马帮运通国际货运代理有限公司",
+            "敦豪全球货运（中国）有限公司",
+            "深圳欧贝达供应链管理有限公司",
+            "文鼎供应链管理（福州）有限公司",
+            "I.T.WAY Clearance transgroup LLP",
+            "宁波佳源国际货运有限公司",
+            "D Element Group LLC DBA FBD Logi",
+            "Uyou logistics inc",
+            "英国捷逊海外仓",
+            "Translead Group INC",
+            "广东俄速易供应链管理有限公司",
+            "浙江开亚国际供应链有限公司",
+            "深圳市东翔国际货运代理有限公司",
+            "盖亚昊通（深圳）国际物流有限公司",
+            "深圳汇速供应链有限公司",
+            "深圳市天御通达国际货运代理有限公司",
+            "深圳市通邮物流科技有限公司",
+            "深圳市先行国际货运代理有限公司",
+            "广东贝加尔国际货运代理有限公司",
+            "山西华纳机械加工有限公司",
+            "浙江凯西国际货运代理有限公司",
+            "深圳市万德兄弟科技有限公司",
+            "深圳市浩宇天航物流有限公司",
+            "乘驿科技（深圳）有限公司",
+            "优时派跨境物流供应链（深圳）有限公司",
+            "深圳市一站物流有限公司",
+            "深圳市大迈国际货运代理",
+            "深圳市铭大国际物流有限公司",
+            "深圳市大誉国际物流有限责任公司",
+            "US RUNNER LOGISTICS INC",
+            "英国迅腾海外仓",
+            "常州开定货运有限公司",
+            "深圳市天成通运国际货运代理有限公司",
+            "新银河世纪投资有限公司",
+            "深圳圆融汇通跨境电商物流股份有限公司",
+            "深圳拓威百顺达国际货运代理有限公司",
+            "青岛昊坤达国际物流有限公司",
+            "Garylnn Tech Inc.",
+            "深圳如易科技有限公司",
+            "深圳市至诚仓储科技有限公司",
+            "红叶仓（Hongye Ecommerce Corporation）",
+            "深圳四季国际货运代理有限公司",
+            "深圳市龙飙物流有限公司",
+            "北京金开宇国际货运代理有限公司深圳分公司",
+            "广州通达供应链有限公司厦门分公司",
+            "深圳市世博通货运代理有限公司",
+            "深圳市风驰海外仓科技有限公司",
+            "Spread the Word 斯漫瑞德美国海外仓",
+            "武汉德帕科技股份有限公司",
+            "上海众睿供应链管理有限公司",
+            "禹文海外仓储有限公司",
+            "北京京邦达贸易有限公司",
+            "彼森德（科技）科技有限公司",
+            "企鹅跨境电商服务站",
+            "安美集团",
+            "深圳市纵横跨境电商物流有限公司",
+            "E-GATE德国海外仓",
+            "浙江合联国际货运代理有限公司",
+            "唯德精品国际电子商务（北京）有限公司",
+            "亦邦（深圳）国际物流有限公司",
+            "HB FULFILLMENT 蜂鸟仓",
+            "北京鑫井泉物流有限公司",
+            "CENTURY BUSINESS",
+            "杭州点点物流有限公司",
+            "Berkeley International Services Ltd",
+            "深圳市荣昇供应链有限公司",
+            "杭州德睿拓跨境电子商务有限公司",
+            "元亨株式会社",
+            "深圳首库集装有限公司(Shenzhen Soku Consolidation LTD.)",
+            "申通国际事业部",
+            "广东天运跨境电商服务有限公司",
+            "深圳柏域斯浩航国际货运代理有限公司",
+            "LJ Supply Chain Ltd",
+            "深圳市纳百万国际货运代理有限公司",
+            "深圳中联胜国际货运代理有限公司",
+            "ShipToday Warehouse Inc",
+            "广州千城供应链科技有限公司",
+            "瑭玛科技（深圳）有限公司",
+            "广州泽天国际货运代理有限公司深圳分公司",
+            "山西华纳机械加工有限公司",
+            "株式会社昇龍",
+            "四川成泰南向国际贸易有限公司",
+            "深圳合星国际供应链有限公司",
+            "Distribution Asiatique JW S.E.N.C",
+            "喻丰商贸有限公司",
+            "鑫思唯（深圳）贸易有限责任公司",
+            "深圳市翠杰辉科技有限公司",
+            "Top Logistics Australia",
+            "美国奥福兰智能仓储公司",
+            "深圳市云帆智慧科技有限公司",
+            "深圳市佰事达通国际货运代理有限公司",
+            "深圳市欧嘉国际货运有限公司",
+            "XiPost GmbH",
+            "深圳市大迈云仓国际物流有限公司",
+            "江苏飞力达国际物流股份有限公司",
+            "百飞科海外仓科技（深圳）有限公司",
+            "株式会社未来倉庫",
+            "百世物流科技（中国）有限公司",
+            "深圳市鸿捷国际货运代理有限公司",
+            "广和国际物流（深圳）有限公司",
+            "骏航国际物流",
+            "深圳市华庭恩国际货运代理有限公司",
+            "ダイオウネットワークス株式会社",
+            "NEXT INNOVATION FIRVR株式会社",
+            "山东泛亚国际货运有限公司上海分公司",
+            "NEOGLORY LTD",
+            "深圳市中链全球供应链有限公司",
+            "亚运通供应链（深圳）有限公司",
+            "深圳市米达货运代理有限公司",
+            "深圳市亿龙达物流有限公司",
+            "深圳市蓝鲸跨境物流有限公司",
+            "深圳市曼云信息科技有限公司",
+            "CANADA SAFTER INTERNATIONAL SUPPLY CHAIN MANGEMENT CO, LTD.",
+            "深圳市铭源盛科技有限公司",
+            "英派物流服务有限公司",
+            "深圳市丰泽国际货运代理有限公司",
+            "美国纪奈尔实业集团",
+            "败欧洲有限责任公司",
+            "深圳市炜易达国际供应链有限公司",
+            "EAST ASIA EXPRESS GLOBAL PTE LTD",
+            "广东易连国际货运代理有限公司",
+            "速派通（深圳）供应链管理有限公司",
+            "深圳市明大运达国际物流有限公司",
+            "TWV Logistic",
+            "广州凯利物流有限公司",
+            "欧亚国际公司（OUYA INTERNATIONAL V.O.F）",
+            "广州豪斯国际供应链有限公司",
+            "镇江天天向上科技有限公司",
+            "广东泓邑供应链管理有限公司",
+            "BLS Logistic Services GmbH",
+            "上海虹先供应链管理有限公司",
+            "美国邮立达有限公司",
+            "AUK Logistics(奥可物流 )",
+            "天津奥格瑞玛国际货运代理有限公司",
+            "上海珑瑗国际货物运输代理有限公司",
+            "深圳市华纵物流有限公司",
+            "香港乐天集运有限公司",
+            "至美通供应链管理（深圳）有限公司",
+            "深圳市鸿宸联运国际货运代理有限公司",
+            "珑鼎供应链管理（上海）有限公司",
+            "深圳市泰博国际供应链有限公司",
+            " 广东联宇物流有限公司",
+            "宁波美沃国际物流有限公司",
+            "吉倉株式会社",
+            "深圳众包物流有限公司",
+            "黑龙江俄速通国际物流有限公司",
+            "明特（上海）国际物流有限公司",
+            "美国永利国际物流股份有限公司",
+            "OnePost.com",
+            "深圳市德恒顺供应链管理有限公司",
+            "深圳市超光速国际物流有限公司",
+            "猫头鹰供应链（深圳）有限公司",
+            "深圳印态跨境电子商务有限公司",
+            "伟德物流（深圳）有限公司",
+            "WLS Panda GmbH",
+            "深圳市启德电子商务供应链管理有限公司",
+            "深圳市邦国天下货运代理有限公司",
+            "west bank investment LLC",
+            "深圳市东荣物流有限公司",
+            "北俄供应链（深圳）有限公司",
+            "深圳市永盛达物流有限公司",
+            "深圳市速丰国际货运代理有限公司",
+            "特立达供应链管理有限公司",
+            "全中跨境供应链（深圳）有限公司",
+            "深圳市领兵斯通供应链管理有限公司",
+            "深圳市德尚国际货运代理有限公司",
+            "深圳帝国速运有限公司",
+            "万邦速运有限公司",
+            "西法共享仓",
+            "深圳联合优选国际物流有限公司",
+            "YIBO InternationaL GmbH",
+            "深圳市骆驼兄弟国际货运代理有限公司",
+            "深圳美特联合国际物流有限公司",
+            "深圳市可爱物流供应链有限公司",
+            "深圳市智速测量信息技术有限公司",
+            "Effectual Ltd",
+            "Flexport 飞协博亚洲有限公司",
+            "宁波西铁供应链管理有限公司",
+            "海拓联合供应链管理（深圳）有限公司",
+            "中欧铁运物流（深圳）有限公司",
+            "BEAR LOGISTICS ",
+            "嘉泰国际物流有限公司",
+            "三益（郑州）贸易有限公司",
+            "深圳市一代国际货运代理有限公司",
+            "广州市兴远国际物流有限公司",
+            "义乌市义通欧物流有限公司",
+            "BlueWhaleLogisticsCorp",
+            "锦麦斯供应链管理(苏州)有限公司",
+            "深圳海派艇国际仓储服务有限公司",
+            "深圳正佳物流有限公司",
+            "深圳市蓝鲸跨境物流有限公司",
+            "深圳市炬锐货运代理有限公司",
+            "深圳市帕沃尔国际仓储服务有限公司",
+            "STOCKEXPRESS",
+            "蓝纬信息科技（东莞）有限公司",
+            "FEST7 SRL",
+            "广州市八好国际货运代理有限公司",
+            "深圳市飞呗国际物流有限公司",
+            "深圳头程国际货运代理有限公司 ",
+            "唯凯供应链管理有限公司 ",
+            "深圳市美畅国际物流有限公司",
+            "申怡群供应链服务（深圳）有限公司",
+            "Icubic Pty Ltd",
+            "Dels Spedition GmbH",
+            "深圳市鹏远国际货运代理有限公司",
+            "深圳市荟千物流有限公司",
+            "深圳市盟邦进出口供应链管理有限公司",
+            "广州市丰年国际货运代理有限公司",
+            "深圳市华商丰汇供应链管理有限公司",
+            "广州侨业国际货运代理有限公司",
+            "KARAT International GmbH",
+            "广州利速国际物流有限公司",
+            "FLASH FULFILLMENT CO., LTD.",
+            "全境通国际仓储贸易（深圳）有限公司",
+            "Real Int'l SCM Corp.",
+            "广州云库海外仓物流有限公司",
+            "心怡科技股份有限公司",
+            "eBizWare Inc.",
+            "深圳市万鸠物流有限公司",
+            "东莞中集小飞鱼物流科技有限公司",
+            "迦递货运代理（上海）有限公司",
+            "深圳市前海沃德太客供应链管理服务有限公司",
+            "TASTENINE EXPRESS S.A.",
+            "天津易客满国际物流有限公司",
+            "浣熊（上海）国际物流有限公司",
+            "深圳市智闻贸易有限公司",
+            "深圳市万国仓跨境电商服务有限公司",
+            "深圳市昂泰国际物流有限公司",
+            "CAISON LINK (UK) Ltd.",
+            "深圳市宝通达国际货运代理有限公司",
+            "广州速通国际货运有限公司",
+            "深圳市鹏城海物流有限公司上海分公司",
+            "北京跃瑞国际货运代理有限公司",
+            "东莞市蜂鸟物流有限公司",
+            "深圳市凯利国际货运代理有限公司",
+            "YIBAIFENG INC",
+            "深圳易万佳国际物流有限公司",
+            "深圳市畅达永越电子商务服务有限公司",
+            "萨诺意大利海外共享仓",
+            "福建省众硕网络科技有限公司",
+            "凯蔚(上海)机电科技有限公司",
+            "盘古德豪（深圳）科技发展有限公司",
+        ];
+        $("#keyword").autocomplete({
+            source: CompanyName,
+            select: function(event, ui) {
+                $("#keyword").val(ui.item.value);
+                submitSearch();
+            }
+        });
+
+        var request = getParams();
+
+        // 隐藏侧边栏
+        $('.float_tool_bar').hide();
+
+        var content_type = 'warehouse';
+        $('select[name=content_type]').change(function() {
+            content_type = $(this).val();
+            location.href = '/warehouse?content_type=' + content_type;
+        });
+
+        sortImg(1, 0);
+        $('.sort_div a').click(function() {
+            var type = $(this).data('type');
+            var sort = $(this).data('sort');
+            if (type == 1) {
+                sort = 0 ? 0 : 1;
+            }
+            request.type = type;
+            request.sort = sort;
+
+            var url = getUrl(request);
+            location.href = '/warehouse' + url;
+        });
+
+        $('.data-body  .item-text .phone').click(function() {
+            var title = $(this).data('number');
+            layer.tips("<span style='color:#000'>" + title + "</span>", $(this), {
+                tips: [3, '#fff']
+            });
+        });
+
+        // 如果不存在分页，就去掉多余的边框
+        if ('warehouse' == 'service' && $('#laypage').length == 0) {
+            $('.data-div').css('margin', '0px auto 0px auto');
+        }
+
+        // 最近浏览
+        if ("warehouse" == 'warehouse') {
+            var latest_views = localStorage.getItem('warehouse_latest_views') ? JSON.parse(localStorage.getItem('warehouse_latest_views')) : new Array();
+            var length = latest_views.length > 3 ? 3 : latest_views.length;
+            if (length > 0) {
+                var list_views = "";
+                for (var i = 0; i < length; i++) {
+                    list_views += '<li style="clear:left">';
+                    list_views += '<dl style="height: 60px">';
+                    list_views += '<dd style="float:left;">';
+                    list_views += '<a href="/company/' + latest_views[i]['service_id'] + '"';
+                    list_views += 'title="' + latest_views[i]['service_name'] + '">';
+                    list_views += '<img src="' + latest_views[i]['service_logo'] + '"';
+                    list_views += 'alt="' + latest_views[i]['service_name'] + '"';
+                    list_views += 'style="height: 50px;width: 75px;border:1px solid rgba(238,238,238,1);border-radius:4px;">';
+                    list_views += '</a>';
+                    list_views += '</dd>';
+                    list_views += '<dd style="float: left;margin:7px 10px;width: 150px;overflow:hidden;text-overflow:ellipsis;white-space:nowrap;">';
+                    list_views += '<p style="font: normal bold 14px/16px;MicrosoftYaHei-Bold;color: #333333;margin-bottom: 0px">';
+                    list_views += '<a href="/warehouse/' + latest_views[i]['warehouse_id'] + '">' + latest_views[i]['warehouse_name'] + '</a>';
+                    list_views += '</p>';
+                    list_views += '<p style="font: normal normal 14px/16px;MicrosoftYaHei-Bold;color:#C0BDBD;margin-bottom: 0px">';
+                    list_views += latest_views[i]['service_name'];
+                    list_views += '</p>';
+                    list_views += '</dd>';
+                    list_views += '</dl>';
+                    list_views += '</li>';
+                }
+                $('.panel-body .view-list').html(list_views);
+                $('.latest-views').show();
+            }
+        } else {
+            var latest_views = localStorage.getItem('service_latest_views') ? JSON.parse(localStorage.getItem('service_latest_views')) : new Array();
+            var length = latest_views.length > 3 ? 3 : latest_views.length;
+            if (length > 0) {
+                var list_views = "";
+                for (var i = 0; i < length; i++) {
+                    list_views += '<li style="clear:left">';
+                    list_views += '<dl style="height: 60px">';
+                    list_views += '<dd style="float:left;">';
+                    list_views += '<a href="/company/' + latest_views[i]['service_id'] + '"';
+                    list_views += 'title="' + latest_views[i]['service_name'] + '">';
+                    list_views += '<img src="' + latest_views[i]['service_logo'] + '"';
+                    list_views += 'alt="' + latest_views[i]['service_name'] + '"';
+                    list_views += 'style="height: 50px;width: 75px;border:1px solid rgba(238,238,238,1);border-radius:4px;">';
+                    list_views += '</a>';
+                    list_views += '</dd>';
+                    list_views += '<dd style="float: left;margin:15px 10px;width: 150px;overflow:hidden;text-overflow:ellipsis;white-space:nowrap;">';
+                    list_views += '<p style="font: normal bold 14px/16px;MicrosoftYaHei-Bold;color: #333333">';
+                    list_views += '<a href="/company/' + latest_views[i]['service_id'] + '">' + latest_views[i]['service_name'] + '</a>';
+                    list_views += '</p>';
+                    list_views += '</dd>';
+                    list_views += '</dl>';
+                    list_views += '</li>';
+                }
+                $('.panel-body .view-list').html(list_views);
+                $('.latest-views').show();
+            }
+        }
+
+    });
+
+    function sortImg(type, sort) {
+        if (type == 1 && sort == 0) {
+            $('.sort_div .sort_all img').attr('src', '__AIMG__/sort_down.png');
+        } else if (type == 1 && sort == 1) {
+            $('.sort_div .sort_all img').attr('src', '__AIMG__/sort_up.png');
+        } else {
+            $('.sort_div .sort_all img').attr('src', '__AIMG__/sort_no.png');
+        }
+
+        if (type == 2 && sort == 0) {
+            $('.sort_div .sort_popularity img').attr('src', '__AIMG__/sort_down.png');
+        } else if (type == 2 && sort == 1) {
+            $('.sort_div .sort_popularity img').attr('src', '__AIMG__/sort_up.png');
+        } else {
+            $('.sort_div .sort_popularity img').attr('src', '__AIMG__/sort_no.png');
+        }
+
+        if (type == 3 && sort == 0) {
+            $('.sort_div .sort_response img').attr('src', '__AIMG__/sort_down.png');
+        } else if (type == 3 && sort == 1) {
+            $('.sort_div .sort_response img').attr('src', '__AIMG__/sort_up.png');
+        } else {
+            $('.sort_div .sort_response img').attr('src', '__AIMG__/sort_no.png');
+        }
+
+        if (type == 4 && sort == 0) {
+            $('.sort_div .sort_vip img').attr('src', '__AIMG__/sort_down.png');
+        } else if (type == 4 && sort == 1) {
+            $('.sort_div .sort_vip img').attr('src', '__AIMG__/sort_up.png');
+        } else {
+            $('.sort_div .sort_vip img').attr('src', '__AIMG__/sort_no.png');
+        }
+    }
+
+    // 将url参数封装成json对象
+    function getParams() {
+        var url = decodeURI(location.search); //获取url中"?"符后的字符串
+        var request = new Object();
+        if (url.indexOf("?") != -1) {
+            var str = url.substr(1);
+            strs = str.split("&");
+            for (var i = 0; i < strs.length; i++) {
+                request[strs[i].split("=")[0]] = decodeURI(strs[i].split("=")[1]);
+            }
+        }
+        return request;
+    }
+
+    function getUrl(request) {
+        var url = '?';
+        $.each(request, function(i, v) {
+            url += i + '=' + v + '&';
+        });
+        return url.substr(0, url.length - 1);
+    }
+    </script>
+</div>
+</div>
+{/block}

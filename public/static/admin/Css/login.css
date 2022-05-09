@@ -1,0 +1,25 @@
+body{font-family:Georgia;font-size:12px;background:#0f49b2 url(../Images/login_bg.png) repeat-x left -40px;}
+a,input,textarea,button,:hover,:active,:focus{outline:0;text-decoration:none;}
+ul,li{list-style:none;padding:0;margin:0;}
+.main{width:1200px;margin:240px auto 0;height:370px;background:url(../Images/login_main.png) no-repeat;overflow:hidden;}
+.main .login_box{float:left;margin:70px 0 0 780px;width:420px;overflow:hidden;}
+.main .login_box .bcok{float:left;width:340px;height:50px;}
+.main .login_box .bcok a{display:block;width:100%;height:50px;overflow:hidden;}
+.main .login_box .form{float:left;width:100%;margin-top:50px;}
+.main .login_box .form ul{}
+.main .login_box .form ul li{float:left;width:100%;height:30px;margin-bottom:10px;}
+.main .login_box .form ul li label{float:left;width:60px;height:30px;line-height:30px;font-size:14px;text-align: right;font-family:'Mircosoft YaHei';color:#fff;overflow:hidden;}
+.main .login_box .form ul li .input{float:left;width:290px;height:30px;line-height:30px;border:none;text-indent:15px;}
+.main .login_box .form ul li .i2{background-position:5px -30px;}
+.main .login_box .form ul li .code{width: 125px;}
+.main .login_box .form ul li  img.code_img{width: 155px;height: 30px;margin-left: 10px;cursor:pointer;}
+.main .login_box .form ul li .submit,.main .login_box .form ul li a.site{float:left;width:80px;height:30px;line-height:28px;border:none;background:#f79220;color:#fff;margin-right:15px;cursor: pointer;}
+.main .login_box .form ul li a.site{line-height:30px;width:100px;}
+.main .login_box .form ul li a.forgets{float:left;height:12px;line-height:12px;margin:9px 0;color:#fff;letter-spacing:1px;}
+.msg #result{color: red;line-height: 30px;font-size: 12px;}
+.msg #result span.success{color:#5cb85c}
+.main .login_box .form ul li.captcha{height:44px;margin-bottom:0px;padding-top:5px;margin-left:60px;}
+.main .login_box .form ul li.verify input[type=text]{width:150px;float:left;}
+.main .login_box .form ul li.verify img{width:135px;height:32px;float:right;margin-right:70px;}
+.main .login_box .verify-submit{width:100px;height:30px;line-height:28px;border: none;background:#f79220;color:#fff;cursor:pointer;
+    margin-left:60px;}

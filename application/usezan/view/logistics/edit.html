@@ -1,0 +1,144 @@
+{include file="public/header" /}
+<div class="mainbox animated fadeInRight">
+    <div class="mainnav_title">
+        <a class="on">内容修改</a>
+        <a class="add-edit" href="{:url('logistics/index')}?tree={$tree_id}">[<b class="uzfont uzico-fanhui"></b>返回列表]</a>
+        <a class="bth-rand fr" href="javascript:location.replace(location.href);" title="刷新"><b class="uzfont uzico-shuaxin"></b></a>
+    </div>
+    <form name="myform" id="myform" action="" method="post">
+        <table cellpadding=0 cellspacing=0 class="table_form" width="100%">
+            <tr>
+                <td width="90"><font color="red">*</font><label>所属分类：</label></td>
+                <td>
+                    <select class="catid" name="catid">
+                        {if condition="isset($select_categorys) and $select_categorys"}{$select_categorys|raw}{/if}
+                    </select>
+                </td>
+            </tr>
+
+            
+            <tr>
+                <td width="90"><font color="red">*</font><label>标题：</label></td>
+                <td>
+                    <div class="thumb_box ">
+                        <div class="img-upload">
+                            <img class="cthumb thumb" width="100" onclick="up_img('cthumb','thumb','jpg,gif,png,jpeg','10485760','290px',0);" src="{if condition="$list['thumb']"}{$list['thumb']}{else /}__UIMG__/upload_thumb.png{/if}" alt="上传封面">
+                            <input type="hidden" class="thumb" name="thumb" value="">
+                            <input type="text" class="input-text" name="title" value="{$list['title']}" size="50" placeholder="标题" validate="minlength:2,maxlength:80,required:true">
+                            {if condition="$list['thumb']"}<a title="移除" class="del-pic con-del" onclick="del_img('$list[\'thumb\']',{$list['id']},0,this,'thumb')" href="javascript:;"></a>{/if}
+                        </div>
+                    </div>
+                </td>
+            </tr>
+
+            <tr>
+                <td width="90"><label>手机：</label></td>
+                <td>
+                    <input type="text" class="input-text" name="phone" value="{$list.phone}" size="50" placeholder="手机">
+                </td>
+            </tr>
+
+            <tr>
+                <td width="90"><label>QQ：</label></td>
+                <td>
+                    <input type="text" class="input-text" name="qq" value="{$list.qq}" size="50" placeholder="QQ">
+                </td>
+            </tr>
+
+            <tr>
+                <td width="90"><label>邮箱：</label></td>
+                <td>
+                    <input type="text" class="input-text" name="email" value="{$list.email}" size="50" placeholder="邮箱">
+                </td>
+            </tr>
+            <tr>
+                <td>走货属性：</td>
+                <td>
+                    {foreach $attributes as $value}
+                    <label><input type="checkbox" class="input_radio" name="attributes[{$value.id}]" value="{$value.id}" {:in_array($value.id, $attributesId) ? 'checked' : ''}  /> {$value.name}&nbsp;&nbsp;</label>
+                    {/foreach}
+                </td>
+            </tr>
+            <tr>
+                <td>服务类型：</td>
+                <td>
+                    {foreach $seviceType as $value}
+                    <label><input type="checkbox" class="input_radio" name="service[{$value.id}]" value="{$value.id}" {:in_array($value.id, $serviceId) ? 'checked' : ''}  /> {$value.name}&nbsp;&nbsp;</label>
+                    {/foreach}
+                </td>
+            </tr>
+
+            <tr>
+                <td width="90"><font color="red">*</font><label>微信二维码：</label></td>
+                <td>
+                    <div class="thumb_box ">
+                        <div class="img-upload">
+                            <img class="cwechat thumb" width="100" onclick="up_img('cwechat','wechat','jpg,gif,png,jpeg','10485760','290px',0);" src="{if condition="$list['wechat']"}{$list['wechat']}{else /}__UIMG__/upload_thumb.png{/if}" alt="上传二维码">
+                            <input type="hidden" class="wechat" name="wechat" value="{$list['wechat']}">
+                            {if condition="$list['wechat']"}<a title="移除" class="del-pic con-del" onclick="del_img('$list[\'wechat\']',{$list['id']},0,this,'wechat')" href="javascript:;" style="left: 85px;"></a>{/if}
+                        </div>
+                    </div>
+                </td>
+            </tr>
+
+            
+            <tr>
+                <td width="90"><label>地址：</label></td>
+                <td>
+                    <input type="text" class="input-text" name="address" value="{$list['address']}" size="50" placeholder="地址">
+                </td>
+            </tr>
+            <tr>
+                <td>状态</td>
+                <td>
+                    <label><input type="radio" class="input_radio" name="status" value="1" {$list.status == 1 ? 'checked' : ''}> 开启</label>&nbsp;&nbsp;
+                    <label><input type="radio" class="input_radio" name="status" value="0" {$list.status == 0 ? 'checked' : ''}> 关闭</label>
+                </td>
+            </tr>
+            <!-- <tr>
+                <td width="90">主推服务</td>
+                <td style="width:1000px;">
+                    <fieldset class="images_box">
+                        <legend>图片上传</legend>
+                        <div id="pics_images" class="imagesList nopic album_more">
+                            {if condition="!empty($list['imgs'])"}
+                            {volist name="list['imgs']" id="vo"}
+                            <div class="uplist">
+                                <img src="{$vo[0]}" width="150" height="60" style="float:left;margin-right:10px">
+                                <input type="hidden" size="10" class="input-text" name="imgs[]" value="{$vo[0]}">
+                                <input type="text" class="input-text" placeholder="排序" name="imgs_order[]" size="2" value="{$vo[1]}">
+                                <input type="text" class="input-text" placeholder="标题" name="imgs_title[]" size="40" value="{$vo[2]}">
+                                <textarea name="imgs_remark[]" row="4" style="resize:none;" placeholder="简介" cols="60">{$vo[3]}</textarea>&nbsp;<a onclick="remove_thumbs(this)" href="javascript:;">移除</a>
+                            </div>
+                            {/volist}
+                            {/if}
+                        </div>
+                    </fieldset>
+                    <input type="button" class="button" value="图片上传" onclick="up_img('imgs','imgs','jpg,gif,png,jpeg','2097152','390px',1);">
+                </td>
+            </tr> -->
+            <tr class="editor">
+                <td>内容:</td>
+                <td style="width:1000px;"><script id="container" name="content" type="text/plain">{$list['content']|raw}</script></td>
+            </tr>
+            
+        </table>
+        <div id="bootline"></div>
+        <div id="btnbox" class="btn">
+            <input type="hidden" name="id" value="{$list['id']}">
+            <input type="hidden" name="oldthumb" value="{$list['thumb']}">
+            <input type="submit" value="{:lang('dosubmit')}" class="button" />
+            <input type="reset" value="{:lang('cancel')}" class="button" />
+        </div>
+    </form>
+</div>
+<script type="text/javascript" src="__UJS__/ueditor/ueditor.config.js"></script>
+<script type="text/javascript" src="__UJS__/ueditor/ueditor.all.min.js"></script>
+<script type="text/javascript" src="__UJS__/ueditor/lang/zh-cn/zh-cn.js"></script>
+<script type="text/javascript">
+    var ue = UE.getEditor('container', {
+        initialFrameHeight: 300,
+        allowDivTransToP:false,
+        autoClearEmptyNode:false
+    });
+</script>

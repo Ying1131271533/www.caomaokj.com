@@ -1,0 +1,626 @@
+{extend name="layout/base" /}
+{block name="title"}草帽跨境 - 跨境卖家综合服务平台{/block}
+{block name="load"}
+
+<!-- css -->
+<link rel="stylesheet" href="__ACSS__/swiper.min.css">
+<link rel="stylesheet" href="__ACSS__/index.css?{$time}">
+<link rel="stylesheet" href="__ACSS__/home.css">
+
+<!-- js -->
+<script type="text/javascript" src="__AJS__/1575032615.js"></script>
+<script src="__AJS__/swiper.min.js"></script>
+<script src="__AJS__/banner_click.js?{:time()}"></script>
+<script type="text/javascript" src="__AJS__/home.js?{:time()}"></script>
+<script src="__AJS__/afterSign.js"></script>
+<script type="text/javascript" src="__AJS__/jquery.lazyload.js"></script>
+<script src="__AJS__/warehouse_ad_click.js"></script>
+
+<!-- 推荐服务 - 换一批 -->
+<script src="__AJS__/pc-main.js?{$time}"></script>
+
+<style type="text/css">
+
+    .banner .banner-right {
+        /*border: 1px solid #f0f0f0;*/
+        /*background: #fff;*/
+        padding: 0;
+        float: left;
+        height: 420px;
+        /* width: 230px; */
+        margin-left: 10px;
+        left: 30px;
+    }
+    .tuijian_div {
+            width: 100%;
+            height: 420px;
+            margin: 0px;
+            /*margin-top: 15px;*/
+            background: none;
+            /*margin-left: 19px;*/
+        }
+
+    .tuijian_div .tuijian_content_div {
+        width: 230px;
+        height: 200px;
+        float: left;
+        margin-left: 0;
+        position: relative;
+        border-radius: 2px;
+        overflow: hidden;
+        /* margin-left:19px; */
+    }
+
+
+    .tuijian_div .tuijian_content_div:nth-child(2) {
+        margin-top: 20px;
+    }
+
+    .tuijian_img {
+        height: 100%;
+    }
+
+    .tuijian_img a img {
+        width: 100%;
+        height: 100%;
+        transition: all 1s;
+    }
+
+    .tuijian_div .tuijian_content_div:hover .tuijian_img a img {
+        transform: scale(1.12);
+    }
+
+    .tuijian_title {
+        position: absolute;
+        bottom: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        background-image: linear-gradient(-180deg, hsla(0, 0%, 74.9%, 0), rgba(0, 0, 0, .78) 97%);
+        transition: all .5s;
+    }
+
+    .tuijian_title a {
+        font-size: 13px;
+        line-height: 18px;
+        color: #fff;
+        text-align: justify;
+        padding: 0 10px;
+        max-height: 36px;
+        position: absolute;
+        bottom: 6px;
+        overflow: hidden;
+        transition: bottom .5s;
+        -webkit-line-clamp: 2;
+        line-clamp: 2;
+        font-weight: 400;
+    }
+
+    .tuijian_div .tuijian_content_div:hover .tuijian_title a {
+        font-size: 14px;
+        line-height: 18px;
+        color: #fff;
+        text-align: justify;
+        padding: 0 10px;
+        max-height: 98px;
+        position: absolute;
+        bottom: 98px;
+        overflow: hidden;
+        font-weight: 500;
+        transform: translateY(50%);
+        opacity: 1;
+        -webkit-line-clamp: 4;
+        line-clamp: 4;
+    }
+
+    @-webkit-keyframes bgdonghua
+
+    /* Safari and Chrome */
+        {
+        0% {
+            background-color: rgba(0, 0, 0, 0.1);
+        }
+
+        100% {
+            background-color: rgba(0, 0, 0, 0.5);
+        }
+    }
+
+    @keyframes bgdonghua {
+        0% {
+            background-color: rgba(0, 0, 0, 0.1);
+        }
+
+        100% {
+            background-color: rgba(0, 0, 0, 0.5);
+        }
+    }
+
+    .title-text {
+        word-break: break-all;
+        overflow: hidden;
+        text-overflow: ellipsis;
+        display: -webkit-box;
+        -webkit-box-orient: vertical;
+    }
+
+    .star_and_top_jzc {
+        border: 1px solid #F5F5F5;
+    }
+
+    .hot_title_jzc .active {
+        border-bottom: 3px solid #ff7600 !important;
+    }
+    .banner-left-li a{
+        font-size: 24px !important;
+        font-weight: bold !important;
+    }
+    .banner-left-li a .icon{
+        font-size: 30px !important;
+    }
+
+</style>
+
+{/block}
+<!-- 主体内容 -->
+{block name="main"}
+<div class="container body-container">
+    <!-- banner -->
+    <div class="top clearfix">
+        <div class="banner" style="position: relative">
+
+            <!-- 左 -->
+            <div class="col-md-6 banner-left" style="width: 700px;">
+                <div class="swiper-container swiper-container-horizontal swiper-container-fade">
+                    <!-- 轮播图 -->
+                    <div class="swiper-wrapper" style="transition-duration: 0ms;">
+
+                        {foreach $banner as $key => $value}
+                        <div class="swiper-slide" data-swiper-slide-index="{$key}">
+                            <img alt="草帽跨境" style="width:100%;height:100%;cursor: pointer;" class="banner_href" data-type="pc" data-id="157" data-url="{$value.url}" src="{$value.thumb}">
+                        </div>
+                        {/foreach}
+                    </div>
+
+                    <!-- 轮播图下方的圈圈 -->
+                    <div class="swiper-pagination swiper-pagination-white swiper-pagination-clickable swiper-pagination-bullets">
+
+                        {foreach $banner as $key => $value}
+                        <span class="swiper-pagination-bullet">
+                            <svg width="24" height="24" viewBox="0 0 24 24">
+                                <circle cx="12" cy="12" r="10" stroke-width="2" stroke="rgba(255,255,255,0.5)" fill="none"></circle>
+                                <circle cx="12" cy="12" r="10" stroke-width="2" stroke="#fff" fill="none" transform="matrix(0,-1,1,0,0,24)" stroke-dasharray="0 62.83185307179586"></circle>
+                            </svg>
+                        </span>
+                        {foreach}
+
+                    </div>
+                </div>
+            </div>
+            
+            <!-- 轮播图 -->
+            <div class="banner-swiper col-md-2" style="width: 19%;">
+                <div class="tuijian_div">
+                    {foreach $hotArticle as $value}
+                    <div class="tuijian_content_div">
+                        <div class="tuijian_img"><a href="{:url('home/article', ['id' => $value.id])}"><img src="{$value.thumb}"></a></div>
+                        <div class="tuijian_title tuijian-bg2"><a class="title-text ellipsis-2" href="{:url('home/article', ['id' => $value.id])}">{$value.title}</a></div>
+                    </div>
+                    {/foreach}
+                </div>
+            </div>
+            
+            <div class="col-md-5 banner-right" style="background-color: #fff;width: 250px;padding: 0 10px;">
+                <!-- 热门活动 -->
+                <div class="march-activit">
+                    <div class="header">
+                        <div class="left">
+                            <!-- <div class="skewLine lineLogo"></div> -->
+                            <svg class="icon" aria-hidden="true">
+                              <use xlink:href="#icon-gonggao"></use>
+                            </svg>
+                            <div class="text">推荐活动</div>
+                        </div><a class="goMore" href="{:url('activity/index')}" target="_blank" rel="noreferrer"><span>更多</span><i style="padding-right: 20px;"></i></a>
+                    </div>
+    
+                    {foreach $activity as $value}
+                    <a href="{:url('activity/detail', ['id' => $value.id])}" target="_blank">
+                        <div class="march-item">
+                            <div class="img"><img src="{$value.thumb}" alt=""></div>
+                            <div class="container">
+                                <div class="title_mj">{$value.title}</div>
+                                <div class="tip">
+                                    {if $value.endtime > time() && $value.status == 1}
+                                    <div class="active">报名中</div>
+    
+                                    <div class="hover">距离报名截止还有{:floor(($value.endtime - time()) / 86400)}天
+                                        <div class="tip-time">{:get_date($value.endtime)} 报名结束</div>
+                                    </div>
+                                    {else/}
+                                    <div class="none">已结束</div>
+                                    <div class="hover">报名已截止
+                                    </div>
+                                    {/if}
+                                </div>
+                            </div>
+                        </div>
+                    </a>
+                    {/foreach}
+                </div>
+            </div>
+                
+        </div>
+    </div>
+
+    <!-- 中间部分 -->
+    <!--推荐服务-->
+    
+    <link rel="stylesheet" href="__ACSS__/main-pc-kant.css?{$time}">
+    <div class="px1200">
+        <div class="reMfuw">
+            <div class="fuwu_bt">
+                <div class="tj">推荐服务</div>
+                <div class="hyp" style="cursor:pointer;">换一批</div>
+            </div>
+            <div class="recommend-content">
+                <ul data-index="0">
+                    
+                    {foreach $serviceData as $key => $value}
+                    <li class="">
+                        {if $key < 5}
+                        <a href="{:url('platform/detail', ['id' => $value.id])}" target="_blank">
+                        {else/}
+                        <a href="{:url('service/detail', ['id' => $value.id])}" target="_blank">
+                        {/if}
+                        <i style=" background-image:url({$value.image ? $value.image : $value.logo});"></i>
+                        <span style=" line-height:30px">{$value.name}</span></a>
+                    </li>
+                    {/foreach}
+                    
+                </ul>
+
+            </div>
+        </div>
+    </div>
+
+    <div class="top" style="height: 20px;background-color: #f6f6f8;"></div>
+
+    <!-- 下部内容 -->
+    <div class="container_div" style="margin-top: 0px">
+        <!-- 左侧跨境干货文章列表 -->
+        {include file="layout/left_article" /}
+        <!-- 右侧推进内容卡片 -->
+        <div class="index-right" style="margin-top:0px;">
+
+            <!-- 推荐培训 -->
+            <div class="march-activit">
+                <div class="header">
+                    <div class="left">
+                        <!-- <div class="skewLine lineLogo"></div> -->
+                        <svg class="icon" aria-hidden="true">
+                          <use xlink:href="#icon-canjiapeixun"></use>
+                        </svg>
+                        <div class="text">推荐培训</div>
+                    </div><a class="goMore" href="{:url('college/index')}" target="_blank" rel="noreferrer"><span>更多</span><i></i></a>
+                </div>
+
+                {foreach $college as $value}
+                <a href="{:url('college/detail', ['id' => $value.id])}" target="_blank">
+                    <div class="march-item">
+                        <div class="img"><img src="{$value.thumb}" alt=""></div>
+                        <div class="container">
+                            <div class="title_mj">{$value.title}</div>
+                            <div class="tip">
+                                {if $value.end_time > time() && $value.status == 1}
+                                <div class="active">报名中</div>
+
+                                <div class="hover">距离报名截止还有{:floor(($value.end_time - time()) / 86400)}天
+                                    <div class="tip-time">{:get_date($value.end_time)} 报名结束</div>
+                                </div>
+                                {else/}
+                                <div class="none">已结束</div>
+                                <div class="hover">报名已截止
+                                </div>
+                                {/if}
+                            </div>
+                        </div>
+                    </div>
+                </a>
+                {/foreach}
+
+            </div>
+
+            <!-- 推荐物流 -->
+            <div class="march-activit">
+                <div class="header">
+                    <div class="left">
+                        <!-- <div class="skewLine lineLogo"></div> -->
+                        <svg class="icon" aria-hidden="true">
+                          <use xlink:href="#icon-dahuoche"></use>
+                        </svg>
+                        <div class="text">推荐物流</div>
+                    </div><a class="goMore" href="{:url('logistics/index')}" target="_blank" rel="noreferrer"><span>更多</span><i></i></a>
+                </div>
+
+                {foreach $logistics as $value}
+                <a href="{:url('logistics/detail', ['id' => $value.id])}" target="_blank">
+                    <div class="march-item">
+                        <div class="img"><img src="{$value.thumb}" alt=""></div>
+                        <div class="container">
+                            <div class="title_mj">{$value.subtitle}</div>
+                            <div class="tip">
+                                <div class="active">{$value.title}</div>
+
+                                <div class="hover">查看详情</div>
+                            </div>
+                        </div>
+                    </div>
+                </a>
+                {/foreach}
+
+            <!-- 加入圈子 -->
+            <div class="hot-user" style="margin:15px 0;">
+                <h4>
+                    <svg class="icon" aria-hidden="true">
+                      <use xlink:href="#icon-daochu1024-13"></use>
+                    </svg>&nbsp;
+                    <span>加入圈子</span>
+                </h4>
+
+                <div class="qr_code_div">
+
+                    <!-- <div class="qr_code_div_left">
+                        <p>跨境管理交流 <img data-title="跨境管理交流" data-img="__AIMG__/QR_code/code_yongqi.jpg" src="__AIMG__/7592a345f7cff1ec.png"></p>
+
+                        <p>亚马逊卖家群 <img data-title="亚马逊卖家群" data-img="__AIMG__/QR_code/code_yongqi.jpg" src="__AIMG__/7592a345f7cff1ec.png"></p>
+
+                        <p>速卖通卖家群 <img data-title="速卖通卖家群" data-img="__AIMG__/QR_code/code_yongqi.jpg" src="__AIMG__/7592a345f7cff1ec.png"></p>
+
+                        <p>独立站卖家群 <img data-title="独立站卖家群" data-img="__AIMG__/QR_code/code_yongqi.jpg" src="__AIMG__/7592a345f7cff1ec.png"></p>
+                        
+                        <p>沃尔玛卖家群 <img data-title="沃尔玛卖家群" data-img="__AIMG__/QR_code/code_yongqi.jpg" src="__AIMG__/7592a345f7cff1ec.png"></p>
+                    </div> -->
+
+                    <div class="qr_code_div_right">
+                        <img class="official_account" src="__AIMG__/QR_code/code_caomao_public.jpg">
+                        <div class="text-center">扫一扫</div>
+                        <div class="official_account_title">跨境管理交流</div>
+                    </div>
+                </div>
+
+                <span class="codeNote">请注明：姓名-公司-职位，我会在24小时邀请你进群</span>
+            </div>
+            
+            <!-- 文章热门标签 -->
+        </div>
+    </div>
+
+    <script>
+        $(function() {
+            var $slider = $('.top .banner .slider').css({ width: 0 });
+
+            $('.top .banner .show-nav').hover(function() {
+                navVisit('slider');
+                var content = $(this).data('sign');
+                $slider.stop(true)
+                $slider.html($('#' + content).html()).attr('data-sign', content);
+                $slider.css({ width: 0 }).show();
+                $slider.delay(0).animate({ width: '970px' }, 'fast');
+            }, function() {
+                $slider.delay(200).animate({ width: 0 }, function() {
+                    $slider.hide();
+                });
+            });
+
+            $('.top .banner .slider').hover(function() {
+                navVisit('click');
+                $slider.stop(true)
+                $slider.show().css({ width: '970px' })
+            }, function() {
+                $slider.stop(true)
+                $slider.delay(200).animate({ width: 0 }, function() {
+                    $slider.hide();
+                });
+            });
+
+            $('.banner .slider').on('click', 'a', function() {
+                var clickItem = $(this).find('span').text();
+                var parentItem = $('.banner .slider').attr('data-sign');
+                $.get('/home/nav-click-log?item=' + clickItem + '&parent_item=' + parentItem);
+            });
+
+            function navVisit(type) {
+                $.get('/index/index_api/navVisit?type=' + type);
+            }
+
+        });
+    </script>
+    <script>
+        $(window).scroll(function() {
+            var document_height = document.body.clientHeight - 380;
+            if ($(document).scrollTop() >= $(document).height() - $(window).height()) {
+                $('.right_bottom_div').css({ 'position': 'absolute', 'top': document_height });
+            } else {
+                $('.right_bottom_div').css({ 'position': 'fixed', 'bottom': '5px', 'top': '' });
+            }
+        });
+
+        $('.qr_code_div_left p').mouseover(function() {
+            var img_index = $(this).find('img');
+            var img = img_index.attr('data-img');
+            var title = img_index.attr('data-title');
+            //捕获页
+            $('.official_account').attr('src', img);
+            $('.official_account_title').text(title);
+            //   $('.additive_group').show();
+        }).mouseout(function() {
+            $('.official_account').attr('src', '__AIMG__/QR_code/code_caomao_public.jpg');
+            $('.official_account_title').text('获取行业数据报告');
+            // $('.additive_group').hide();
+        });
+        var perimeter = Math.PI * 2 * 10;
+        var timer = null;
+        var value = 0;
+
+        function circleSvg() {
+            value = 0;
+            clearInterval(timer);
+
+            var circle1 = $(".swiper-pagination-bullet");
+            //console.log(circle1.valueOf());
+            $.each(circle1, function(i, v) {
+                $(v).html('<svg width="24" height="24" viewbox="0 0 24 24">\
+                    <circle cx="12" cy="12" r="10" stroke-width="2" stroke="rgba(255,255,255,0.5)" fill="none"></circle>\
+                        <circle cx="12" cy="12" r="10" stroke-width="2" stroke="#fff" fill="none" transform="matrix(0,-1,1,0,0,24)" stroke-dasharray="0 ' + perimeter + '"></circle>\
+                    </svg>');
+                //console.log("=========" + i, v)
+            })
+            var circle = document.querySelectorAll(".swiper-pagination-bullet-active circle")[1];
+            if (circle) {
+
+                timer = setInterval(function() {
+                    value++;
+                    if (value == 102) {
+                        value = 0;
+                        circle.setAttribute('stroke-dasharray', 0 + " " + perimeter);
+                        clearInterval(timer);
+                        return false;
+                    }
+                    var percent = value / 100;
+                    circle.setAttribute('stroke-dasharray', perimeter * percent + " " + perimeter * (1 - percent));
+
+                }, 50)
+            }
+        }
+
+        var swiper = new Swiper('.swiper-container', {
+
+
+            pagination: '.swiper-pagination',
+            paginationClickable: true,
+            paginationBulletRender: function(swiper, index, className) {
+                return '<span class="' + className + '">' +
+                    '<svg width="24" height="24" viewbox="0 0 24 24">\
+                        <circle cx="12" cy="12" r="10" stroke-width="2" stroke="rgba(255,255,255,0.5)" fill="none"></circle>\
+                            <circle cx="12" cy="12" r="10" stroke-width="2" stroke="#fff" fill="none" transform="matrix(0,-1,1,0,0,24)" stroke-dasharray="0 ' + perimeter + '"></circle>\
+                    </svg>' +
+                    '</span>';
+            },
+
+            spaceBetween: 30,
+            effect: 'fade',
+            loop: true,
+            autoplay: 5000,
+            autoplayDisableOnInteraction: false,
+            onInit: function(swiper) {
+                //Swiper初始化了
+                //alert(swiper.activeIndex);提示Swiper的当前索引
+                circleSvg();
+            },
+            onSlideChangeStart: function(swiper) {
+                value = 0;
+                console.log(swiper.activeIndex + '');
+                // swiper.activeIndex 这个就是索引， 从 0 开始！ 可看一共有多少元素！
+                circleSvg();
+            },
+        });
+
+        $(function() {
+            var h = $(".find-item>.table").height();
+
+            $(".find-label_img").height(h + 2);
+
+            $('.zhao_haiwaicang').click(function() {
+                // $('.haiwaichangchu').show();
+                // $('.zhuanxianwuliu').hide();
+                // $(this).addClass('div_zhaowuliu_active').find('img').attr('src','https://cacwww.caomaokj.com/img/shouyetabhaiwaicang1.png');
+                // $('.zhaozhuanxian').removeClass('div_zhaowuliu_active').find('img').attr('src','https://cacwww.caomaokj.com/img/shouyetabzhuanxian1.png');
+                // $(this).find('p').addClass('p_zhaowuliu_active');
+                // $('.zhaozhuanxian').find('p').removeClass('p_zhaowuliu_active');
+            })
+
+            $('.zhaozhuanxian').click(function() {
+                // $('.haiwaichangchu').hide();
+                // $('.zhuanxianwuliu').show();
+                // $(this).addClass('div_zhaowuliu_active').find('img').attr('src','https://cacwww.caomaokj.com/img/shouyetabzhuanxian.png');;
+                // $('.zhao_haiwaicang').removeClass('div_zhaowuliu_active').find('img').attr('src','https://cacwww.caomaokj.com/img/shouyetabhaiwaicang.png');
+                // $(this).find('p').addClass('p_zhaowuliu_active');
+                // $('.zhao_haiwaicang').find('p').removeClass('p_zhaowuliu_active');
+            })
+
+
+        })
+    </script>
+    <style>
+        circle {
+            -webkit-transition: stroke-dasharray .25s;
+            transition: stroke-dasharray .25s;
+        }
+
+        body .swiper-pagination-white .swiper-pagination-bullet-active,
+        body .swiper-pagination-white .swiper-pagination-bullet {
+            background: transparent;
+        }
+
+        body .swiper-container-horizontal>.swiper-pagination-bullets,
+        body .swiper-pagination-custom,
+        .swiper-pagination-fraction {
+            background: rgba(0, 0, 0, .15);
+            opacity: 1;
+            width: auto;
+            left: 50%;
+            transform: translateX(-50%);
+            padding: 4px 4%;
+            border-radius: 20px;
+            -webkit-border-radius: 20px;
+            -moz-border-radius: 20px;
+        }
+
+        body .swiper-container-horizontal>.swiper-pagination-bullets .swiper-pagination-bullet {
+            margin: 0 12px;
+        }
+
+        body .swiper-container-horizontal>.swiper-pagination-bullets .swiper-pagination-bullet:first-child {
+            margin-left: 0;
+        }
+    </style>
+    <script>
+        $(function() {
+            $(".lazy").lazyload();
+
+            var scrtime;
+            var $ul = $("#con ul");
+            var liFirstHeight = $ul.find("li:first").height();
+            $ul.css({
+                top: "-" + liFirstHeight - 10 + "px"
+            });
+            $("#con").hover(function() {
+                    $ul.pause();
+                    clearInterval(scrtime);
+                },
+                function() {
+                    $ul.resume();
+                    scrtime = setInterval(function scrolllist() {
+                            $ul.animate({
+                                    top: 0 + "px"
+                                },
+                                1500,
+                                function() {
+                                    $ul.find("li:last").prependTo($ul);
+                                    liFirstHeight = $ul.find("li:first").height();
+                                    $ul.css({
+                                        top: "-" + liFirstHeight - 10 + "px"
+                                    });
+                                });
+                        },
+                        3300);
+                }).trigger("mouseleave");
+        });
+    </script>
+</div>
+{/block}
+
+
+
+
+

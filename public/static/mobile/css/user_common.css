@@ -1,0 +1,167 @@
+/*我的报名*/
+.user-content .user-list {
+	background: #fff;
+	margin-top: 10px;
+}
+
+.user-content .user-list .article-list {
+	margin: 0 10px;
+	padding: 10px 0;
+}
+
+.user-content .user-list .table {
+	width: 100%;
+}
+
+.user-content .user-list .table tr td {
+	padding: 12px 6px;
+	border-bottom: 1px solid #ddd;
+}
+
+.user-content .table .btn-pay {
+	display: inline-block;
+	width: 50px;
+	height: 22px;
+	color: #fff;
+	background: #1976d3;
+	-webkit-border-radius: 3px;
+	-moz-border-radius: 3px;
+	border-radius: 3px;
+}
+
+.user-content .table .blue {
+	color: #1976d3;
+}
+
+.main .btn-full {
+	width: 100%;
+	height: 34px;
+	margin-top: 30px;
+	background: #eee;
+	font-size: 0.12rem;
+	color: #3f3f3f;
+	font-weight: bold;
+}
+
+/*列表*/
+.conten-top {
+	background: #fafafa;
+	text-align: center;
+}
+
+.sub-header {
+	width: 100%;
+	background: #eee;
+	font-size: 0.16rem;
+}
+
+.conten-top h4 {
+	font-size: 0.125rem;
+	line-height: 40px;
+	display: inline-block;
+	max-width: 70%;
+	white-space: nowrap;
+	overflow: hidden;
+	text-overflow: ellipsis;
+	font-size: 16px;
+	color: #1b1b1b;
+	font-weight: bold;
+	padding: 0 20px;
+}
+
+.data_ul>li {
+	border-bottom: solid 1px #EDEDED;
+	margin-bottom: 10px;
+	background: #fff;
+	min-height: 20px;
+	overflow: hidden;
+}
+
+.no_msg {
+	width: 100%;
+	padding: 20px;
+	font-size: 16px;
+}
+
+.li_title {
+	float: left;
+	width: 100%;
+	padding: 0 10px;
+	box-sizing: border-box;
+}
+
+.li_title img {
+	width: 37px;
+	height: 37px;
+	border-radius: 40px;
+	overflow: hidden;
+	display: block;
+	float: left;
+}
+
+.li_title h4 {
+	float: left;
+	line-height: 37px;
+	font-size: 0.15rem;
+	padding-left: 20px;
+}
+
+.li_title .times {
+	line-height: 37px;
+	float: right;
+	padding-right: 20px;
+}
+
+.times {
+	margin-left: 15px;
+}
+
+.li_content {
+	float: left;
+	font-size: 0.13rem;
+	width: 100%;
+	padding: 10px;
+	box-sizing: border-box;
+	line-height: 24px;
+}
+
+.data_ul .nav-tabs {
+	width: 100%;
+	background: #fafafa;
+	font-size: 0.13rem;
+	color: #444;
+}
+
+.data_ul .nav-tabs>li {
+	border-right: 1px solid #ddd;
+	width: 49%;
+}
+
+.data_ul .nav-tabs>li {
+	float: left;
+	text-align: center;
+	height: 24px;
+	line-height: 24px;
+	margin: 8px 0;
+}
+
+.data_ul .nav-tabs>li:last-child {
+	border: none;
+}
+
+.nav>li {
+	position: relative;
+	display: block;
+}
+
+.data-list {
+	margin-top: 10px;
+	clear: both;
+	min-height: 380px;
+}
+
+.laypage {
+	text-align: right;
+	padding-top: 10px;
+	padding-right: 10px;
+}

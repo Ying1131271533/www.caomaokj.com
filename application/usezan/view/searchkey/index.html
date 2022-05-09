@@ -1,0 +1,46 @@
+{include file="public/header" /}
+<div class="mainbox animated fadeInRight">
+    <div class="mainnav_title">
+        <a class="on">搜索推荐</a>
+        {include file="public/menu_right" /}
+        <a class="bth-rand fr" href="javascript:location.replace(location.href);" title="刷新"><b class="uzfont uzico-shuaxin"></b></a>
+    </div>
+    <form name="myform" id="myform" action="" method="post">
+        <div class="table-list">
+            <table width="100%" cellspacing="0">
+                <thead>
+                <tr>
+                    <th width="40">ID</th>
+                    <th width="200" align="left">{:lang('title')}</th>
+                    <th width="350" align="left">路径</th>
+                    <th width="50" align="center">{:lang('status')}</th>
+                    <th align="left">{:lang('manage')}</th>
+                </tr>
+                </thead>
+                <tbody>
+                {volist name="list" id="v"}
+                <tr>
+                    <td align="center">{$v['id']}</td>
+                    <td align="left">{$v['title']}</td>
+                    <td align="left"><a target="_blank" rel="nofollow" href="{$v['url']}">{$v['url']}</a></td>
+                    <td align="center">
+                        {eq name="v['status']" value="1"}
+                        <a class="bth-a ajax-status" onclick="StatusAjax($(this));" data-href="{:url('ajax/statusajax')}?id={$v['id']}&status=0"></a>
+                        {else /}
+                        <a class="bth-a error-c ajax-status" onclick="StatusAjax($(this));" data-href="{:url('ajax/statusajax')}?id={$v['id']}&status=1"></a>
+                        {/eq}
+                    </td>
+                    <td align="left">
+                        <a href="{:url('searchkey/edit')}?id={$v['id']}&tree={$tree_id}">{:lang('edit')}</a> |
+                        <a href="javascript:confirm_delete('{:url(\'searchkey/del\')}?id={$v["id"]}&tree={$tree_id}')">{:lang('delete')}</a>
+                    </td>
+                </tr>
+                {/volist}
+                </tbody>
+            </table>
+        </div>
+    </form>
+</div>
+<div id="pages" class="page">{$list|raw}</div>
+</body>
+</html>

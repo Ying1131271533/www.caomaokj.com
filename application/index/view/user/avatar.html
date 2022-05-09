@@ -1,0 +1,68 @@
+{extend name="layout/base" /}
+{block name="title"}修改头像{/block}
+{block name="load"}
+<!-- css -->
+<link rel="stylesheet" href="__ACSS__/site.css">
+<link href="__ALAYUI__/cropper/cropper.css" rel="stylesheet" type="text/css">
+<!-- js -->
+{/block}
+
+<!-- 主体内容 -->
+{block name="main"}
+        <div class="container body-container">
+            <div class="site-body">
+
+                <!-- 左侧 -->
+                {include file="layout/user_nav" /}
+
+                <!-- 右侧 -->
+                <div class="left_cont">
+                    <div class="main-info">
+                        <h1 class="site-h1">修改头像</h1>
+                        <div class="ml20 mt20">
+
+                            <div class="layui-form-item" style="margin-left: 50px;">
+                                <div class="layui-input-inline">
+                                    <div class="layui-upload-list" style="margin:0">
+                                        <img src="{$avatar}" id="srcimgurl" class="layui-upload-img" alt="点击修改头像" title="点击修改头像">
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="layui-form-item" style="margin-left: 50px;">
+                                <div class="layui-input-inline layui-btn-container" style="width: auto;">
+                                    <button class="layui-btn layui-btn-primary" id="editimg">修改头像</button >
+                                </div>
+                            </div>
+
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <script type="text/javascript">
+            layui.config({
+                base: '__ALAYUI__/cropper/' // layui自定义layui组件目录
+            }).use(['form', 'croppers'], function () {
+                var $ = layui.jquery
+                    ,form = layui.form
+                    ,croppers = layui.croppers
+                    ,layer= layui.layer;
+
+                // 创建一个头像上传组件
+                var loadding = croppers.render({
+                    elem: '#editimg'
+                    ,saveW:150 // 保存宽度
+                    ,saveH:150
+                    ,mark:1/1 // 选取比例
+                    ,area:'900px'  // 弹窗宽度
+                    ,url: "/index/user_api/updateAvatar"  // 图片上传接口返回和（layui 的upload 模块）返回的JOSN一样
+                    ,done: function(url){ // 上传完毕回调
+                        $("#inputimgurl").val(url);
+                        $("#srcimgurl").attr('src', url);
+                        $("#user-center img").attr('src', url);
+                    }
+                });
+            });
+        </script>
+{/block}

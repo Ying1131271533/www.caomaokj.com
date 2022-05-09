@@ -1,0 +1,105 @@
+@CHARSET "UTF-8";
+.abuout{
+    height: 800px;
+}
+.about-banner{
+height:360px;
+width: 100%;
+overflow: hidden;
+}
+.about-banner img{
+   margin: 0 auto;
+    height: 100%;
+    width: 100%;
+}
+
+.abuout .navbar-collapse{
+    position: relative;
+    height: 880px;
+}
+.abuout .abuout-box{
+    position: absolute;
+    top: -105px;
+    background: #fff;
+    text-align: center;
+    height: 100%;
+    padding: 50px 70px;
+}
+.abuout .abuout-title{
+    font-weight:400;
+    font-size: 36px;
+    color:rgba(51,51,51,1);
+    margin-bottom: 48px;
+}
+.abuout .abuout-desc{
+    font-size:16px;
+    font-weight:400;
+    color:#555555;
+    line-height:36px;
+    text-align: left;
+    margin-bottom: 30px;
+}
+.abuout .abuout-desc p{
+    text-indent: 30px;
+}
+.abuout .abuout-contact .contact-img{
+    width: 200px;
+    height: 200px;
+}
+.abuout .abuout-contact .contact-desc{
+    font-size:18px;
+    font-weight:bold;
+    color:rgba(51,51,51,1);
+}
+.about-worth{
+    width: 100%;
+    margin:0 auto;
+    height: 121px;
+    display: flex;
+    justify-content: space-around;
+}
+.about-worth-list{
+    width:330px;
+    height:121px;
+    background:rgba(255,255,255,1);
+    border:1px solid rgba(238,238,238,1);
+    border-radius:4px;
+}
+.about-worth-list-left{
+    width: 15%;
+    height: 100%;
+    text-align: center;
+    line-height: 80px;
+    padding-left: 7px;
+}
+.about-worth-list-left-img{
+    width: 55px;height: 55px;line-height:55px;margin:0 auto;
+}
+.about-worth-list-right{
+    width: 85%;
+    height: 100%;
+    padding-top: 33px;
+    padding-left: 10px;
+}
+.about-worth-list-right-title{
+    text-align: left;
+    padding-left: 20px;
+    font-size:16px;
+    font-family:Microsoft YaHei;
+    font-weight:bold;
+    color:#333;
+}
+.about-worth-list-right-desc{
+    text-align: left;
+    padding-left: 20px;
+    margin-top:10px;
+    font-size:16px;
+    font-family:Microsoft YaHei;
+}
+.contact-phone,.contact-email{
+    font-size:16px;
+    font-family:Microsoft YaHei;
+    font-weight:400;
+    color:rgba(85,85,85,1);
+    margin-top:10px;
+}

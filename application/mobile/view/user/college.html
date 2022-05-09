@@ -1,0 +1,221 @@
+{extend name="layout/base" /}
+{block name="title"}报名的活动{/block}
+{block name="load"}
+
+<!-- css -->
+<link rel="stylesheet" href="__MLAYUI__/css/layui.css">
+<link rel="stylesheet" href="__MCSS__/user_common.css">
+<style type="text/css">
+    .headerlist{
+        margin-top:10px !important;
+        height: 0.19rem !important;
+    }
+</style>
+
+<!-- js -->
+<script src="__MLAYUI__/layui.js"></script>
+<script src="__MJS__/user_common.js"></script>
+
+{/block}
+<!-- 主体内容 -->
+{block name="main"}
+        <div class="container">
+            <style>
+                .data_ul .li_title h4 {
+                    padding-left: 0px
+                }
+                
+                .orderUl .orderList {
+                    overflow: hidden;
+                    margin-bottom: 10px
+                }
+                
+                .orderList .personTop {
+                    display: block;
+                    height: 40px;
+                    background-color: #FFF
+                }
+                
+                .orderList .personTop .img {
+                    display: inline-block;
+                    width: 20px;
+                    height: 20px;
+                    float: left;
+                    margin: 10px 5px 0 10px
+                }
+                
+                .orderList .personTop .img img {
+                    width: 20px;
+                    height: 20px;
+                    border-radius: 50%
+                }
+                
+                .orderList .personTop .name {
+                    padding-left: 10px;
+                    display: block;
+                    width: calc(100% - 115px);
+                    height: 40px;
+                    line-height: 40px;
+                    float: left;
+                    white-space: nowrap;
+                    text-overflow: ellipsis;
+                    -o-text-overflow: ellipsis;
+                    overflow: hidden;
+                    font-size: 14px;
+                    color: #999
+                }
+                
+                .orderList .personTop .state {
+                    display: inline-block;
+                    width: 60px;
+                    height: 40px;
+                    line-height: 40px;
+                    text-align: right;
+                    float: right;
+                    margin-right: 15px;
+                    font-size: 14px;
+                    color: #ff9933
+                }
+                
+                .orderList .partyMess {
+                    display: block;
+                    height: 90px;
+                    background-color: #f8f8f8
+                }
+                
+                .orderList .partyMess .img {
+                    width: 110px;
+                    height: 64px;
+                    float: left;
+                    margin: 13px 10px 0
+                }
+                
+                .orderList .partyMess .img img {
+                    width: 110px;
+                    height: 64px
+                }
+                
+                .orderList .partyMess .messTxt {
+                    width: calc(100% - 140px);
+                    float: left;
+                    margin-top: 10px
+                }
+                
+                .orderList .partyMess .messTxt .title {
+                    height: 38px;
+                    line-height: 19px;
+                    font-size: 14px;
+                    color: #000;
+                    text-align: left;
+                    white-space: nowrap;
+                    text-overflow: ellipsis;
+                    -o-text-overflow: ellipsis;
+                    overflow: hidden
+                }
+                
+                .orderList .partyMess .messTxt .time,
+                .orderList .partyMess .messTxt .addr {
+                    height: 16px;
+                    line-height: 16px;
+                    font-size: 12px;
+                    color: #aaa;
+                    text-align: left;
+                    white-space: nowrap;
+                    text-overflow: ellipsis;
+                    -o-text-overflow: ellipsis;
+                    overflow: hidden
+                }
+                
+                .orderList .ticketBox {
+                    display: block;
+                    background-color: #FFF;
+                    padding: 10px 0
+                }
+                
+                .orderList .boderBtn {
+                    background-color: #FFF;
+                    overflow: hidden;
+                    padding-bottom: 10px
+                }
+                
+                .orderList .boderBtn .line {
+                    height: 8px;
+                    width: calc(100% - 10px);
+                    border-top: 1px solid #e7ecf2;
+                    float: right
+                }
+                
+                .orderList .ticketBox ul li {
+                    display: block;
+                    overflow: hidden;
+                    padding: 3px 10px 0 0
+                }
+                
+                .orderList .ticketBox ul li .name {
+                    width: calc(100% - 125px);
+                    line-height: 18px;
+                    font-size: 14px;
+                    color: #444;
+                    float: left;
+                    text-align: left;
+                    margin-left: 15px
+                }
+                
+                .orderList .ticketBox ul li .price {
+                    width: 80px;
+                    line-height: 18px;
+                    font-size: 14px;
+                    color: #444;
+                    float: right;
+                    text-align: right;
+                    margin-left: 5px
+                }
+                
+                .orderList .boderBtn .cz {
+                    padding-top: 8px
+                }
+                
+                .orderList .boderBtn .cz a.yellow {
+                    border: 1px solid #f93;
+                    color: #fff;
+                    background: #f93
+                }
+                
+                .orderList .boderBtn .cz a.white {
+                    border: 1px solid #ddd;
+                    color: #444;
+                    background: #fff
+                }
+                
+                .orderList .boderBtn .cz a {
+                    width: 68px;
+                    height: 24px;
+                    line-height: 24px;
+                    text-align: center;
+                    font-size: 12px;
+                    border-radius: 4px;
+                    display: inline-block;
+                    float: right;
+                    margin-right: 10px
+                }
+                
+                .live_activity {
+                    display: inline-block;
+                    font-size: 12px;
+                    background-color: #FF5722;
+                    color: #fff;
+                    margin-left: 10px;
+                    height: 18px;
+                    text-align: center;
+                    line-height: 18px;
+                    padding: 0 5px;
+                }
+            </style>
+            <div class="data-list">
+                <ul class="data_ul orderUl"></ul>
+            </div>
+            <div id="laypage" class="laypage"></div>
+            <script type="text/javascript" src="__MJS__/collegeJoin.js?{$time}"></script>
+        </div>
+    </div>
+{/block}

@@ -1,0 +1,249 @@
+{extend name="layout/base" /}
+{block name="title"}{$college.title}{/block}
+{block name="load"}
+<!-- css -->
+<link href="__MCSS__/activity_detail.css?{$time}" rel="stylesheet" type="text/css">
+<style>
+    .footer {  padding-bottom: 0.2rem; }
+</style>
+
+<!-- js -->
+<script src="__MJS__/activity.js?{$time}" type="text/javascript"></script>
+
+<!-- 微信分享自定义 -->
+<script type="text/javascript" src="https://res.wx.qq.com/open/js/jweixin-1.6.0.js"></script>
+<script type="text/javascript">
+    
+    // alert(location.href.split('#')[0]); // 查看完整地址
+
+    // 微信配置参数
+    var appid = "{$wechat.appid}";
+    var timestamp = "{$wechat.timestamp}";
+    var nonceStr = "{$wechat.nonceStr}";
+    var signature = "{$wechat.signature}";
+
+    // 自定义分享参数
+    var link = "{$wechat.link}";
+    var imgUrl = "{$wechat.imgUrl}";
+    var title = "{$college.title}";
+    var desc = "{$wechat.desc}";
+
+    // 配置
+    wx.config({
+        // debug: true, // 开启调试模式,调用的所有api的返回值会在客户端alert出来，若要查看传入的参数，可以在pc端打开，参数信息会通过log打出，仅在pc端时才会打印。
+        appId: appid, // 必填，公众号的唯一标识
+        timestamp: timestamp, // 必填，生成签名的时间戳
+        nonceStr: nonceStr, // 必填，生成签名的随机串
+        signature: signature,// 必填，签名
+        jsApiList: [
+            'checkJsApi',
+            // 'updateAppMessageShareData', // 新版本的用不了
+            // 'updateTimelineShareData', // 新版本的用不了
+            'onMenuShareTimeline', // 旧版本
+            'onMenuShareAppMessage' // 旧版本
+
+        ] // 必填，需要使用的JS接口列表
+    });
+
+    wx.ready(function () {   // 需在用户可能点击分享按钮前就先调用
+        // 判断当前客户端版本是否支持指定JS接口
+        /* wx.checkJsApi({
+            jsApiList: ['checkJsApi', 'onMenuShareTimeline', 'onMenuShareAppMessage'], // 需要检测的JS接口列表，所有JS接口列表见附录2,
+            success: function(res) {
+                // 以键值对的形式返回，可用的api值true，不可用为false
+                console.log(res);
+                alert('配置成功');
+            },
+            fail: function(res) {
+                // 以键值对的形式返回，可用的api值true，不可用为false
+                console.log(res);
+                alert('配置失败');
+            },
+        }); */
+
+        // 分享到朋友圈
+        wx.onMenuShareTimeline({
+            // title: title, // 分享标题
+            desc: desc, // 分享描述
+            link: link, // 分享链接，该链接域名或路径必须与当前页面对应的公众号JS安全域名一致
+            imgUrl: imgUrl, // 分享图标
+            success: function () {
+                layer.msg('分享成功');
+            },
+            cancel: function () {
+                // 用户取消分享后执行的回调函数
+                layer.msg('分享取消');
+            },
+            fail: function () {
+                // 接口调用失败时执行的回调函数
+                layer.msg('分享失败');
+            }
+        }),
+
+        // 分享给朋友
+        wx.onMenuShareAppMessage({
+            title: title, // 分享标题
+            desc: desc, // 分享描述
+            link: link, // 分享链接，该链接域名或路径必须与当前页面对应的公众号JS安全域名一致
+            imgUrl: imgUrl, // 分享图标
+            success: function () {
+                layer.msg('分享成功');
+            },
+            cancel: function () {
+                // 用户取消分享后执行的回调函数
+                layer.msg('分享失败');
+            },
+            fail: function () {
+                // 接口调用失败时执行的回调函数
+                layer.msg('分享失败');
+            }
+        })
+    });
+
+    // 返回错误信息
+    wx.error(function (res) {
+        // config信息验证失败会执行error函数，如签名过期导致验证失败，具体错误信息可以打开config的debug模式查看，也可以在返回的res参数中查看，对于SPA可以在这里更新签名。
+        // alert(res);
+        console.log(res);
+    });
+</script>
+
+{/block}
+<!-- 主体内容 -->
+{block name="main"}
+<div class="container" style="margin-top: 4px;">
+    <div class="site-index">
+        <div class="activity-detail clearfix">
+            <input type="hidden" id="user_id" name="user_id" value="{$userid}">
+            <input type="hidden" id="college_id" name="college_id" value="{$college.id}">
+            <div class="geek-banner">
+                <div class="banner-img" style="max-height: 350px; height: 216px;">
+                    <img style="max-width: 100%;max-height: 100%;" src="{$college.thumb}" alt="{$college.title}">
+                </div>
+                <div class="banner-text">
+                    <h4>{$college.title}</h4>
+                    <div class="activity-text">
+                        <div>
+                            <i class="fa fa-clock-o"></i> 时间：<span>{:date('Y-m-d H:i', $college.start_time)} 至 {:date('Y-m-d H:i', $college.end_time)}</span>
+                        </div>
+                        <div>
+                            <i class="fa fa-location-arrow"></i> 地点：<span>{$college.address}</span>
+                        </div>
+                        <div>
+                            <i class="fa fa-user"></i> 人数：
+                            <span>剩余 <b>{$college.tickets_num - $college.apply_num}</b>名
+                            </span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="price-text">
+                <i class="fa fa-gg"></i> 票价：<a id="ticket-price" class="ticket-price yellow">
+                    {if $tickesEndLen > 0}
+                    ￥{$college['tickets'][0]['discount_price']} ~ ￥{$college['tickets'][$tickesEndLen]['discount_price']}
+                    {else/}
+                    {$college['tickets'][0]['discount_price'] <= 0 ? '免费咨询' : '￥' .$college['tickets'][0]['discount_price']}
+                    {/if}
+                <i class="fa fa-angle-right"></i>
+            </a>
+            </div>
+
+            <!-- 活动内容-->
+            <div class="activity-content clearfix">
+                <div class="content_jzc">{$college.content|raw}</div>
+                <div class="sharebox">
+                    <span>分享</span>
+                    <ul>
+                        <li><a data-app="weixinFriend" class="nativeShare">
+                                <h4>朋友圈</h4>
+                            </a>
+                        </li>
+                        <li><a data-app="weixin" class="nativeShare">
+                                <h4>好友</h4>
+                            </a>
+                        </li>
+                        <li class="weibo"><a data-app="sinaWeibo" class="nativeShare">
+                                <h4>微博</h4>
+                            </a>
+                        </li>
+                        <li class="qzone"><a data-app="QZone" class="nativeShare">
+                                <h4>QQ空间</h4>
+                            </a>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+        <div class="join-operation clearfix">
+            <ul class="btn-operation">
+                <li>
+                    <a href="{:url('user/college')}">
+                        <button class="btn">
+                            <i id="collect" class="fa fa-ticket"></i>
+                            <div>我的门票</div>
+                        </button>
+                    </a>
+                </li>
+                <!-- <li>
+                    <a target="_blank" href="https://user.kuajingyan.com/activity/get-activity-poster?id=1049">
+                        <button class="btn">
+                            <i class="fa fa-share-square-o"></i>
+                            <div>转发</div>
+                        </button>
+                    </a>
+                </li> -->
+                <li>
+                    {if is_numeric($college.join_num) and $college.end_time > time() and $college.status == 1}
+                    <button class="btn btn-join pull-right">我要报名</button>
+                    {else/}
+                    <a class="btn btn-find baoming_btn"><button class="btn btn-join pull-right" style="background-color:rgba(153,153,153,1);">已结束</button></a>
+                    {/if}
+                </li>
+            </ul>
+        </div>
+
+
+        <!--选择票价-->
+        <div class="choose-price" style="display: none;">
+            <div class="ticket-header">
+                <span>选择门票</span>
+                <span class="pull-right btn-close"><i class="fa fa-close"></i></span>
+            </div>
+            <div class="activity-ticket clearfix">
+
+                {foreach $college.tickets as $key => $value}
+                <div af_id="{$value.id}" data-price="{$value.discount_price}" class="ticket-list sale">
+                    <span class="t"> {$value.name}<span class="remain"></span></span>
+                    <span class="pull-right yellow"> ￥{$value.discount_price} </span>
+                    <i></i>
+                </div>
+                {/foreach}
+
+            </div>
+            <div class="ticket-footer">
+                <span>总金额:</span> <span class="yellow count_price"> ￥ {$college['tickets'][0]['discount_price']}</span>
+                <div class="pull-right">
+                    <button class="btn btn-next" onclick="joinActivity()">下一步</button>
+                </div>
+            </div>
+        </div>
+        
+        <!-- 我知道了 -->
+        <div class="shareTips">
+            <img src="__MIMG__/m_share_tips.png"><a href="javascript:;" class="tips_close">我知道了</a>
+        </div>
+        <ol class="crumbs">
+            <li>
+                <a href="/">
+                    <svg class="icon" aria-hidden="true">
+                        <use xlink:href="#icon-shouye2"></use>
+                    </svg>
+                    首页
+                </a>
+            </li>
+            <li><a href="{:url('activity/index')}">&gt; 跨境活动</a></li>
+            <li class="word-wrap"><a href="javascript:;">&gt; {$college.title}</a></li>
+        </ol>
+    </div>
+</div>
+{/block}

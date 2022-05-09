@@ -1,0 +1,26 @@
+{include file="public/header" /}
+<div class="mainbox animated fadeInRight">
+	<div class="mainnav_title">
+	    <a class="on">关键词添加</a>
+	    <a class="add-edit" href="{:url('attributes/index')}">[<b class="uzfont uzico-fanhui"></b>返回列表]</a>
+	    <a class="bth-rand fr" href="javascript:location.replace(location.href);" title="刷新"><b class="uzfont uzico-shuaxin"></b></a>
+    </div>
+	<form id="myform" action="" method="post">
+		<table cellpadding="0" cellspacing="0" class="table_form" width="100%">
+
+			<tr>
+				<td width="120">关键词名称：</td>
+				<td>
+					<div class="akali">
+						<input type="text" class="input-text" name="name" placeholder="例如：食品、纺织品等等" validate="required:true,minlength:2, maxlength:50" style="width: 300px" />
+					</div>
+					<div class="jinx" style="display:hidden;"></div>
+				</td>
+			</tr>
+		</table>
+		<div class="btn">
+			<input type="submit"  value="{:lang('dosubmit')}" class="button" />
+			<input type="reset"  value="{:lang('cancel')}" class="button" />
+		</div>
+	</form>
+</div>

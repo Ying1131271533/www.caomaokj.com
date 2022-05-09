@@ -1,0 +1,255 @@
+/*登录页*/
+.nav>li {
+	position: relative;
+	display: block;
+}
+
+.nav>li>a {
+	position: relative;
+	display: block;
+}
+
+.tab-content {
+	padding: 0 10px;
+}
+
+.site-login .other-way {
+	position: relative;
+	font-size: 0.14rem;
+}
+
+.site-login .other-way:before {
+	left: 0;
+}
+
+.site-login .other-way:before, .site-login .other-way:after {
+	content: '';
+	width: 30%;
+	border-top: 1px solid #c2c2c2;
+	position: absolute;
+	top: 50%;
+}
+
+.site-login .other-way:after {
+	right: 0;
+}
+
+*:before, *:after {
+	-webkit-box-sizing: border-box;
+	-moz-box-sizing: border-box;
+	box-sizing: border-box;
+}
+
+.text-center {
+	text-align: center;
+}
+
+.site-login .form-icons {
+	margin: 0.3rem 0;
+}
+
+.site-login .form-icons .icon-sina {
+	background: url(../images/icons.png) no-repeat -306px -214px;
+}
+
+.site-login .form-icons .icon-qq {
+	background: url(../images/icons.png) no-repeat -363px -214px;
+}
+
+.site-login .form-icons .icon-weixin {
+	background: url("../images/icons.png") no-repeat -421px -214px;
+}
+
+.site-login .form-icons a {
+	display: inline-block;
+	width: 0.44rem;
+	height: 0.44rem;
+	margin: 0 0.23rem;
+}
+
+.site-login form a {
+	color: #555;
+}
+
+.site-login label.control-label {
+	font-weight: bold;
+}
+
+.site-login .require-form {
+	background: #fff;
+	padding: 15px 20px;
+	margin-top: 60px;
+}
+
+.site-login .form-control, .site-login .btn-require {
+	display: inline-block;
+	width: 100%;
+	height: 55px;
+	line-height: 30px;
+	border: 1px solid #ccc;
+	font-size: 0.14rem;
+	background: transparent;
+	text-align: left;
+	-webkit-border-radius: 3px;
+	-moz-border-radius: 3px;
+	border-radius: 3px;
+}
+
+.tab-box {
+	background: #fff;
+	margin-top: 10px;
+	min-height: 408px;
+	font-size: 14px;
+}
+
+.site-login .nav-pills {
+	margin: 20px 10px;
+	background: #f5f5f5;
+	font-size: 0.14rem;
+	border-top: 2px solid #dadada;
+}
+
+.nav-pills>li {
+	float: left;
+	width: 50%;
+	text-align: center;
+}
+
+.nav-pills>li>a, .nav-pills>li>a:focus, .nav-pills>li>a:hover {
+	color: #555;
+	padding: 10px 25px;
+	-webkit-border-radius: 0;
+	-moz-border-radius: 0;
+	border-radius: 0;
+}
+
+.nav-pills>li.active>a, .nav-pills>li.active>a:focus, .nav-pills>li.active>a:hover
+	{
+	color: #555;
+	background-color: #fff;
+	border-top: 2px solid #ff8d00;
+	margin-top: -2px;
+	padding: 10px 25px;
+	-webkit-border-radius: 0;
+	-moz-border-radius: 0;
+	border-radius: 0;
+}
+
+.tab-content .btn-default {
+	border-radius: 2px;
+	padding: 2px 10px;
+	background: #f5f5f5;
+	border: 1px solid #ddd;
+}
+
+.tab-content .show {
+	display: block;
+}
+
+.tab-content .form {
+	padding: 10px 0;
+}
+
+.site-login form .form-control {
+	padding-left: 10%;
+}
+
+.site-login .form-group {
+	position: relative;
+}
+
+.site-login form .input-icon {
+	margin-bottom: 10px;
+	width: 90%;
+}
+
+.site-login form i {
+	display: inline-block;
+	width: 18px;
+	height: 18px;
+	position: absolute;
+	top: 18px;
+	left: 8px;
+}
+
+.site-login form .icon-user {
+	background: url("../images/icons.png") no-repeat -622px -108px;
+}
+
+.site-login form .icon-psd {
+	background: url("../images/icons.png") no-repeat -663px -145px;
+}
+
+.site-login form .form-actions .checkbox {
+	margin-top: 0;
+	margin-bottom: 22px;
+	color: #848484;
+}
+
+.site-login form .form-actions a {
+	color: #848484;
+}
+
+.site-login form .btn-submit {
+	display: block;
+	width: 100%;
+	height: 40px;
+	background: #ff8d00;
+	color: #fff;
+	font-size: 16px;
+	margin-bottom: 20px;
+	-webkit-border-radius: 4px;
+	-moz-border-radius: 4px;
+	border-radius: 4px;
+	margin-top: 25px;
+}
+/*注册*/
+.site-login form .icon-phone {
+	top: 21px;
+	background: url("../images/icons.png") no-repeat -662px -180px;
+}
+
+.site-login form .icon-email {
+	top: 21px;
+	background: url("../images/icons.png") no-repeat -622px -146px;
+}
+
+.site-login form .icon-code {
+	top: 21px;
+	background: url("../images/icons.png") no-repeat -624px -181px;
+	z-index: 9;
+}
+
+.site-login form .icon-name {
+	background: url("../images/icons.png") no-repeat -662px -108px;
+}
+
+.site-login form .btn-code {
+	display: inline-block;
+	height: 55px;
+	background: #ff8d00;
+	color: #fff;
+	font-size: 16px;
+	padding: 0 10px;
+	position: absolute;
+	top: 1px;
+	right: 2px;
+}
+
+.site-login form a.agreement {
+	padding: 0 5px;
+	color: #ff8d00;
+}
+
+.signup-tips {
+	text-align: center;
+	margin-bottom: 15px;
+}
+
+.signup-tips span {
+	color: #ff8d00;
+}
+
+.footer {
+	background: #fff;
+}

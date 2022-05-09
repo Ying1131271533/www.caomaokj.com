@@ -1,0 +1,108 @@
+{include file="public/header" /}
+<div class="mainbox animated fadeInRight">
+	<div class="mainnav_title">
+	    <a href="{:url('system/index')}" class="on">站点配置</a>
+		{include file="public/menu_right" /}
+	    <a class="bth-rand fr" href="javascript:location.replace(location.href);" title="刷新"><b class="uzfont uzico-shuaxin"></b></a>
+    </div>
+<form name="myform" id="myform"  action="{:url('system/extended')}" method="post">
+<div class="content_2">
+	<div class="tabbox" style="display:block;">
+		<table cellpadding="0" cellspacing="0" class="table_form" width="100%">
+			<tr>
+				<td>默认分页数</td>
+				<td><input type="text" name="page_listrows" class="input-text" size="8" value="{$extend_config['page_listrows']}"/></td>
+			</tr>
+			<!--<tr>-->
+				<!--<td width="200">手机模板</td>-->
+				<!--<td class="posi">-->
+					<!--<select name="wap_on">-->
+						<!--<option value="true" {if condition="$extend_config['wap_on'] eq 'true'"}selected{/if}>开启</option>-->
+						<!--<option value="false" {if condition="$extend_config['wap_on'] eq 'false'"}selected{/if}>关闭</option>-->
+					<!--</select>&nbsp;&nbsp;<span class="tips-color">开启手机模板将显示手机端模板，关闭将默认显示PC端模板</span>-->
+				<!--</td>-->
+			<!--</tr>-->
+			<tr>
+				<td width="200">站点维护</td>
+				<td class="posi">
+					<select name="main_web">
+						<option value="true" {if condition="$extend_config['main_web'] eq 'true'"}selected{/if}>开启</option>
+						<option value="false" {if condition="$extend_config['main_web'] eq 'false'"}selected{/if}>关闭</option>
+					</select>&nbsp;&nbsp;<span class="tips-color">开启/关闭 网站维护</span>
+				</td>
+			</tr>
+			<tr>
+				<td>屏蔽右键</td>
+				<td class="posi">
+					<select name="oncontext">
+						<option value="1" {if condition="$extend_config['oncontext'] eq '1'"}selected{/if}>开启</option>
+						<option value="0" {if condition="$extend_config['oncontext'] eq '0'"}selected{/if}>关闭</option>
+					</select>&nbsp;&nbsp;<span class="tips-color">网站禁止鼠标右键</span>
+				</td>
+			</tr>
+			<tr>
+				<td>屏蔽复制</td>
+				<td class="posi">
+					<select name="oncopy">
+						<option value="1" {if condition="$extend_config['oncopy'] eq '1'"}selected{/if}>开启</option>
+						<option value="0" {if condition="$extend_config['oncopy'] eq '0'"}selected{/if}>关闭</option>
+					</select>&nbsp;&nbsp;<span class="tips-color">网站禁止内容复制</span>
+				</td>
+			</tr>
+			<tr>
+				<td>屏蔽选中</td>
+				<td class="posi">
+					<select name="onselect">
+						<option value="1" {if condition="$extend_config['onselect'] eq '1'"}selected{/if}>开启</option>
+						<option value="0" {if condition="$extend_config['onselect'] eq '0'"}selected{/if}>关闭</option>
+					</select>&nbsp;&nbsp;<span class="tips-color">网站禁止内容选中</span>
+				</td>
+			</tr>
+			<tr>
+				<td>对象存储</td>
+				<td class="posi">
+					<select name="buck_on">
+						<option value="1" {if condition="$extend_config['buck_on'] eq '1'"}selected{/if}>开启</option>
+						<option value="0" {if condition="$extend_config['buck_on'] eq '0'"}selected{/if}>关闭</option>
+					</select>&nbsp;&nbsp;<span class="tips-color">只支持幻灯片、视频、其他大文件[七牛存储:<a target="_blank" href="https://www.qiniu.com/">https://www.qiniu.com/</a>]</span>
+				</td>
+			</tr>
+			<tr class="auth">
+				<td>存储空间名</td>
+				<td><input type="text" name="bucket" class="input-text" size="45" value="{$extend_config['bucket']}"/></td>
+			</tr>
+			<tr class="auth">
+				<td>存储ACCESSKEY</td>
+				<td><input type="text" name="accesskey" class="input-text" size="45" value="{$extend_config['accesskey']}"/></td>
+			</tr>
+			<tr class="auth">
+				<td>存储SECRETKEY</td>
+				<td><input type="text" name="secretkey" class="input-text" size="45" value="{$extend_config['secretkey']}"/></td>
+			</tr>
+			<tr class="auth">
+				<td>存储空间域名</td>
+				<td><input type="text" name="bucketurl" class="input-text" size="45" value="{$extend_config['bucketurl']}"/></td>
+			</tr>
+		</table>
+	</div>
+</div>
+<div class="btn">
+	<input type="submit" value="{:lang('dosubmit')}" class="button" />
+	<input type="reset" value="{:lang('cancel')}" class="button" />
+</div>
+</form>
+</div>
+<script type="text/javascript">
+$(function () {
+	//存储
+	{if condition="!config('outer.buck_on')"}$(".auth").addClass("hide");{/if}
+	$("select[name=buck_on]").change(function () {
+		val = $(this).val();
+		if (val == 1) {
+			$(".auth").removeClass("hide");
+		} else {
+			$(".auth").addClass("hide");
+		}
+	});
+});
+</script>

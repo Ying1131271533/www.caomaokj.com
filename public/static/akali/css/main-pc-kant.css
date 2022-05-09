@@ -1,0 +1,480 @@
+/*--- Global style ---*/
+
+* {
+    word-wrap: break-word;
+    word-break: break-all;
+}
+
+body,
+input,
+select,
+button,
+textarea {
+    font: 12px/1.5 Helvetica, Tahoma, 'Microsoft Yahei', STXihei, \5b8b\4f53, Arial, sans-serif;
+}
+
+body {
+    margin: 0px;
+    color: #333;
+}
+
+form,
+img,
+cite,
+em,
+p,
+div,
+ul,
+li,
+p,
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+    margin: 0;
+    border: 0;
+    padding: 0;
+}
+
+cite,
+em,
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+    font-size: 12px;
+    font-weight: normal;
+    font-style: normal;
+}
+
+ul,
+li {
+    list-style: none;
+}
+
+a {
+    color: #666;
+    text-decoration: none;
+}
+
+a:hover {
+    color: #FF6600;
+    text-decoration: none;
+}
+
+*:focus {
+    outline-color: #FFBE7D;
+}
+
+.px1200 {
+    margin: 0 auto;
+    width: 1200px;
+    margin-bottom: 20px;
+}
+
+
+/* 热门服务 */
+
+.reMfuw {
+    background-color: #FFFFFF;
+    padding-bottom: 5px;
+    margin-top: 20px;
+    position: relative;
+    overflow: hidden;
+}
+
+.reMfuw .fuwu_bt {
+    width: 100%;
+    height: 55px;
+    line-height: 50px;
+    float: left;
+    font-size: 15px;
+    color: #646464;
+}
+
+.reMfuw .fuwu_bt .tj {
+    display: block;
+    float: left;
+    width: 13%;
+    text-align: center;
+    background: url(../images/cyfwbg.png) no-repeat center;
+    color: #FFFFFF;
+    cursor: pointer;
+}
+
+.reMfuw .fuwu_bt .hyp {
+    display: block;
+    float: right;
+    width: 13%;
+    text-align: center;
+    background: url(../images/cyfwbg.png) no-repeat center;
+    color: #FFFFFF;
+}
+
+.reMfuw .fuwu_bt span {
+    display: block;
+    width: 0;
+    height: 0;
+    border-width: 0 10px 10px;
+    border-style: double;
+    border-color: transparent transparent #333;
+    position: absolute;
+    top: 29px;
+    right: -15px;
+    margin-left: -10px;
+    transform: rotate(90deg);
+    -ms-transform: rotate(90deg);
+    -moz-transform: rotate(90deg);
+    -webkit-transform: rotate(90deg);
+    -o-transform: rotate(90deg);
+}
+
+.reMfuw .fuwu_bt span em {
+    display: block;
+    width: 0;
+    height: 0;
+    border-width: 0 10px 10px;
+    border-style: solid;
+    border-color: transparent transparent #f8f8f8;
+    position: absolute;
+    top: 1px;
+    left: -10px;
+}
+
+.reMfuw ul li {
+    width: 90px;
+    position: relative;
+    color: #727272;
+}
+
+.reMfuw ul li i {
+    display: block;
+    width: 90px;
+    height: 90px;
+    position: relative;
+    top: 0;
+    margin: 0 auto;
+    background: url(/templates/main/default/images/reMfw.png) no-repeat;
+    background-position: -2px -6px;
+    -webkit-transition: all 0.3s ease-in-out 0s;
+    -o-transition: all 0.3s ease-in-out 0s;
+    transition: all 0.3s ease-in-out 0s;
+}
+
+.reMfuw ul li:hover i {
+    top: -5px;
+}
+
+.reMfuw ul li i.halou {
+    background: url(/templates/main/default/images/reMfw.png) no-repeat;
+    background-position: -131px -6px;
+}
+
+.reMfuw ul li i.halou1 {
+    background: url(/templates/main/default/images/reMfw.png) no-repeat;
+    background-position: -240px -6px;
+}
+
+.reMfuw ul li i.halou2 {
+    background: url(/templates/main/default/images/reMfw.png) no-repeat;
+    background-position: -352px -6px;
+}
+
+.reMfuw ul li i.halou3 {
+    background: url(/templates/main/default/images/reMfw.png) no-repeat;
+    background-position: -461px -6px;
+}
+
+.reMfuw ul li i.halou4 {
+    background: url(/templates/main/default/images/reMfw.png) no-repeat;
+    background-position: -573px -6px;
+}
+
+.reMfuw ul li i.halou5 {
+    background: url(/templates/main/default/images/reMfw.png) no-repeat;
+    background-position: -685px -6px;
+}
+
+.reMfuw ul li i.halou6 {
+    background: url(/templates/main/default/images/reMfw.png) no-repeat;
+    background-position: -798px -6px;
+}
+
+.reMfuw ul li i.halou7 {
+    background: url(/templates/main/default/images/reMfw.png) no-repeat;
+    background-position: -916px -6px;
+}
+
+.reMfuw ul li i.halou8 {
+    background: url(/templates/main/default/images/reMfw.png) no-repeat;
+    background-position: -1028px -6px;
+}
+
+.reMfuw .recommend-content,
+.tti-cont,
+.cp_lia .cph .cp_h1 {
+    overflow: hidden;
+}
+
+.reMfuw .recommend-content ul li {
+    overflow-x: hidden;
+}
+
+.reMfuw .recommend-content {
+    float: none;
+}
+
+.reMfuw .recommend-content {
+    clear: both;
+}
+
+.reMfuw .recommend-content ul li,
+.cp_lia .cph .cp_h1 {
+    white-space: nowrap;
+}
+
+.ceping .cp_li {
+    -webkit-box-sizing: border-box;
+    -moz-box-sizing: border-box;
+    box-sizing: border-box;
+}
+
+.reMfuw .recommend-content ul li i {
+    border-radius: 5px;
+}
+
+.fix_ad {
+    display: none;
+}
+
+.main-ad img,
+.right-nav li a,
+.fix_ad .px1200 div a,
+.fix_ad .px1200 div img {
+    display: block;
+}
+
+.passport_api em,
+.reMfuw .recommend-content ul li {
+    display: inline-block;
+}
+
+.ceping .cp_li .new-edit {
+    color: #fff;
+}
+
+.reMfuw .recommend-content .hyp,
+.tti span {
+    cursor: pointer;
+}
+
+.fix_ad .px1200 div:last-child {
+    float: right;
+}
+
+.fix_ad .px1200 div:first-child {
+    float: left;
+}
+
+.reMfuw .recommend-content {
+    text-align: center;
+}
+
+.logo_hang .right #header-search-frm .soust_souy {
+    background-position-x: 8px;
+    padding-left: 30px;
+}
+
+.logo_hang .right #header-search-frm .sobtn {
+    outline: none;
+}
+
+.passport_api {
+    display: inline;
+    background: none;
+    width: auto;
+    padding: 5px;
+}
+
+.passport_api em img {
+    float: none;
+    margin: 0;
+    vertical-align: middle;
+}
+
+.header-small {
+    border-bottom: 2px solid #2ccac8;
+}
+
+.clear {
+    clear: both;
+}
+
+.reMfuw .recommend-content {
+    height: 125px;
+    position: relative;
+    margin: 10px 0;
+}
+
+.reMfuw .recommend-content ul {
+    position: absolute;
+    width: 100%;
+    left: 0;
+    top: 0;
+}
+
+.reMfuw .recommend-content ul li {
+    padding: 5px 20px;
+    width: 130px;
+}
+
+.reMfuw .recommend-content ul li i {
+    -webkit-background-size: 90px 90px;
+    background-size: 90px auto;
+    background-position:center;
+    background-repeat: no-repeat;
+}
+
+.tti-cont {
+    position: relative;
+    height: 220px;
+    padding-right: 10px;
+}
+
+.tti-cont ul {
+    position: absolute;
+    width: 100%;
+    top: 0;
+    left: 0;
+}
+
+.cp_lia .cph .cp_h1 {
+    text-overflow: ellipsis;
+    margin-right: 15px;
+}
+
+.ceping .cp_li {
+    padding: 15px 10px;
+    position: relative;
+}
+
+.ceping .cp_li .new-edit {
+    position: absolute;
+    width: 80px;
+    height: 16px;
+    left: 0;
+    top: 0;
+    padding-left: 10px;
+    line-height: 16px;
+    background: #232f3e;
+    font-size: 10px;
+}
+
+.ceping .cp_li .new-edit em {
+    position: absolute;
+    width: 0;
+    height: 0;
+    border: 8px solid #232f3e;
+    border-right-color: #fff;
+    border-bottom-color: #fff;
+    top: 0;
+    right: -14px;
+}
+
+.ceping .cp_li .new-edit span {
+    color: #ffa41c;
+}
+
+.ceping .cp_li .cp_h2 li {
+    line-height: 2;
+}
+
+.ceping .cp_li .cp_h2 li.li1 {
+    line-height: 3;
+}
+
+.ceping .cp_li .cpimg img {
+    border-radius: 5px;
+    width: 80px;
+    height: 80px;
+}
+
+.main-ad {
+    margin: 25px 0;
+}
+
+.main-ad img {
+    width: 100%;
+    height: 120px;
+}
+
+.right-nav {
+    display: none;
+    width: 100px;
+    top: 250px;
+    right: 0;
+    background: #ff8800;
+    position: fixed;
+    line-height: 2.5;
+    z-index: 999999;
+    border-radius: 5px;
+}
+
+.right-nav li a {
+    color: #fff;
+    padding-left: 10px;
+}
+
+.right-nav li a:hover {
+    background: #ffd6bc;
+    color: #ff7723;
+}
+
+.right-nav li img {
+    vertical-align: middle;
+}
+
+.fix_ad {
+    position: fixed;
+    top: 150px;
+    left: 0;
+    width: 100%;
+    z-index: 1;
+}
+
+.fix_ad .px1200 div {
+    width: 100px;
+    height: 300px;
+}
+
+.fix_ad .px1200 div a {
+    width: 100%;
+    height: 100%;
+}
+
+.fix_ad .px1200 div img {
+    width: 100%;
+    height: 100%;
+}
+
+.fix_ad .px1200 div:first-child {
+    margin-left: -125px;
+}
+
+.fix_ad .px1200 div:last-child {
+    margin-right: -125px;
+}
+
+.zcjy_NRk,
+.top_rd,
+.reMfuw {
+    z-index: 2;
+    position: relative;
+}
+
+
+/*# sourceMappingURL=main-pc-kant.css.map */

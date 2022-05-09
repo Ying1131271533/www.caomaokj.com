@@ -1,0 +1,47 @@
+<style type="text/css">
+    .icon{
+        font-size: 22px;
+    }
+</style>
+<div class="left_nav">
+    <ul>
+        <li>
+            <span class="nav_span">
+                <svg class="icon" aria-hidden="true">
+                  <use xlink:href="#icon-yonghu"></use>
+                </svg>
+            </span>
+            <a href="javascript:;">我的草帽跨境</a>
+            <ul class="second">
+                <li class="{$action != 'index' ?: 'active'}"><a href="{:url('user/index')}">个人中心</a></li>
+                <li class="{$action != 'info' ?: 'active'}"><a href="{:url('user/info')}">我的资料</a></li>
+                <li class="{$action != 'collect' ?: 'active'}"><a href="{:url('user/collect')}">我的收藏</a></li>
+            </ul>
+        </li>
+        
+        <li>
+            <span class="nav_span">
+                <svg class="icon" aria-hidden="true">
+                  <use xlink:href="#icon-shoucang"></use>
+                </svg>
+            </span>
+            <a href="javascript:;">跨境活动</a>
+            <ul class="second">
+                <li class="{$action != 'activity' ?: 'active'}"><a href="{:url('user/activity')}">报名的活动</a></li>
+            </ul>
+        </li>
+        
+        <li>
+            <span class="nav_span">
+                <svg class="icon" aria-hidden="true">
+                  <use xlink:href="#icon-boshimaobeifen"></use>
+                </svg>
+            </span>
+            <a href="javascript:;">跨境课程</a>
+            <ul class="second">
+                <li class="{$action != 'college' ?: 'active'}"><a href="{:url('user/college')}">报名的课程</a></li>
+            </ul>
+        </li>
+
+    </ul>
+</div>

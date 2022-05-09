@@ -1,0 +1,59 @@
+{include file="public/header" /}
+<div class="welcome">
+	<div class="wel_list">
+	    <div class="wel-li">
+			<h1><b>管理员信息</b></h1>
+			<ul>
+			{volist name="userinfo" id="v"}
+			    <li><span>{:lang($key)}:</span>{$v}</li>
+			{/volist}
+			</ul>
+		</div>
+	</div>
+
+	<div class="wel_list">
+		<div class="wel-li">
+			<h1><b>系统信息</b></h1>
+			<ul>
+				{volist name="server_info" id="v"}
+					<li><span>{:lang($key)}:</span>{$v}</li>
+				{/volist}
+			</ul>
+		</div>
+	</div>
+	
+	<!-- <div class="wel_list">
+		<div class="wel-li">
+			<h1><b>技术支持</b></h1>
+			<ul>
+			    <li><span>官方网站:</span><a href="https://www.h7uz.com" target="_blank">https://www.h7uz.com</a></li>
+			    <li><span>客服电话:</span>135-3395-7190(周先生) 135-3395-7191(李小姐)</li>
+			    <li><span>客服QQ:</span>
+					<a target="_blank" href="http://wpa.qq.com/msgrd?v=3&uin=1847355369&site=qq&menu=yes">
+						<img style="vertical-align:sub;" border="0" src="http://wpa.qq.com/pa?p=1:1847355369:4" alt="点击这里给我发消息" height="16" align="absmiddle">
+						(优优)
+					</a>
+				</li>
+				<li><span>客服QQ:</span>
+					<a target="_blank" href="http://wpa.qq.com/msgrd?v=3&uin=366532931&site=qq&menu=yes">
+						<img style="vertical-align:sub;" border="0" src="http://wpa.qq.com/pa?p=1:366532931:4" alt="点击这里给我发消息" height="16" align="absmiddle">
+						(李小姐)
+					</a>
+				</li>
+			    <li>如需技术支持请联系我们的专业客服</li>
+			</ul>
+		</div>
+	</div>
+	<div class="wel_list version">
+	    <div class="wel-li">
+			<h1><b>系统详情</b></h1>
+			<ul>
+			    <li><span>程序版本:</span>USEZANCMS&nbsp;{$version['pc_version']}</li>
+			    <li><span>更新日期:</span>{$version['pc_release']}</li>
+			    <li><span>更新版本:</span>{$version['pc_release']}</li>
+			    <li><span>版权所有:</span>环企优站科技有限公司</li>
+			    <li><span>程序开发:</span>环企优站科技有限公司</li>
+			</ul>
+		</div>
+	</div> -->
+</div>	

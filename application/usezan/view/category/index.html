@@ -1,0 +1,59 @@
+{include file="public/header" /}
+<div class="mainbox animated fadeInRight">
+    <div class="mainnav_title">
+        <a class="on">栏目列表</a>
+        {include file="public/menu_right" /}
+        <a class="bth-rand fr" href="javascript:location.replace(location.href);" title="刷新"><b class="uzfont uzico-shuaxin"></b></a>
+    </div>
+    <form name="myform" action="{:url('category/listorder')}" method="post">
+        <div class="pad-lr-10">
+            <div class="table-list">
+                <table width="100%" cellspacing="0">
+                    <thead>
+                        <tr>
+                            <th width="40">排序</th>
+                            <th width="40">catid</th>
+                            <th align="center" width="50">导航显示</th>
+                            <th align="left" width="300">栏目名称</th>
+                            <th align="left" width="200">栏目路径</th>
+                            <th align="left" width="90">所属模型</th>
+                            <th width="60">状态</th>
+                            <th align="left">管理操作</th>
+                        </tr>
+                    </thead>
+                    <tbody id="categorys">
+                        {if condition="isset($cate) and $cate"}{$cate|raw}{/if}
+                    </tbody>
+                </table>
+                <div class="btn"><input type="submit" class="button" name="dosubmit" value="{:lang('listorder')}" /></div>
+            </div>
+        </div>
+    </form>
+</div>
+<script type="text/javascript">
+$(function() {
+    var id = '';
+    $(".open").on("click", function() {
+        var parents = $(this).parents(".open-tr");
+        data = parents.attr("data-child"),
+            dataarr = data.split(',');
+        if (parents.hasClass("open-on")) {
+            $("#categorys>tr").each(function(i, k) {
+                id = $(this).attr("data-id");
+                if (-1 != $.inArray(id, dataarr)) {
+                    $(".tr-" + id).removeClass("hide");
+                }
+            });
+            parents.removeClass("open-on");
+        } else {
+            $("#categorys>tr").each(function(i, k) {
+                id = $(this).attr("data-id");
+                if (-1 != $.inArray(id, dataarr)) {
+                    $(".tr-" + id).addClass("hide");
+                }
+            });
+            parents.addClass("open-on");
+        }
+    });
+})
+</script>

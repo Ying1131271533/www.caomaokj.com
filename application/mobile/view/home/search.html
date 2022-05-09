@@ -1,0 +1,166 @@
+{extend name="layout/base" /}
+{block name="title"}草帽跨境 - 跨境卖家综合服务平台{/block}
+{block name="load"}
+
+<!-- css -->
+<link rel="stylesheet" href="__MCSS__/swiper.min.css">
+<link rel="stylesheet" href="__MCSS__/search.css">
+
+<!-- js -->
+<!-- <script src="__MJS__/11.0.1.js" id="sozz"></script> -->
+<!-- <script charset="utf-8" src="https://s.ssl.qhres.com/ssl/ab77b6ea7f3fbf79.js"></script> -->
+
+{/block}
+<!-- 主体内容 -->
+{block name="main"}
+    <div class="container">
+        <style>
+            .home-header-bg {
+                height: 0.5rem;
+            }
+        </style>
+        <div class="home">
+            <div id="search-nav">
+                <nav class="search-nav-title">
+                </nav>
+                <div class="search-keyword-count">你搜索的关键词内容<span>“{$keyword}”</span>共找到<span>{$count}</span>个内容
+                </div>
+            </div>
+
+            <!-- 最新干货-->
+            <div class="new-article">
+                <ul class="list_article clearfix">
+
+                    {foreach $articleList as $value}
+                    <li>
+                        <a class="alink" href="{:url('home/article', ['id' => $value.id])}">
+                            <img src="{$value.thumb}" alt="{$value.title}">
+                        </a>
+                        <div class="art_con">
+                            <h2>
+                                <a class="title" href="{:url('home/article', ['id' => $value.id])}">{$value.title|raw}</a>
+                            </h2>
+                            <a href="{:url('home/article', ['id' => $value.id])}">
+                                <h3>草帽跨境</h3>
+                            </a>
+                            <span class="times">{:date('Y-m-d', $value.createtime)} </span>
+                        </div>
+                    </li>
+                    {/foreach}
+
+                </ul>
+                <a class="more" id="index_more" href="javascript:void(0)" onclick="getMoreArticle()">加载更多</a>
+            </div>
+        </div>
+        <script>
+            var pageSize = 10;
+            var page = 1;
+            var category = '';
+            var country = '';
+            var type = 'article';
+            var akali = false;
+            $(function() {
+                $(window).scroll(function() {
+                    var scrollTop = $(this).scrollTop();
+                    var scrollHeight = $(document).height();
+                    var windowHeight = $(this).height();
+                    if (scrollTop + windowHeight == scrollHeight) {
+                        // 当然没有数据时，停止获取
+                        if (akali){
+                            return false;
+                        }
+                        getMoreArticle();
+                    }
+                });
+
+                //文章类型
+                $(".search-nav-title .search-nav-ul li a").click(function() {
+                    $(".search-nav-title .search-nav-ul li a").removeClass('search-nav-li-a-default');
+                    $(this).addClass('search-nav-li-a-default');
+                    category = $(this).attr("data-type");
+                    page = 1;
+                    getArticle("change");
+                    type = 'article';
+
+                });
+            });
+
+            // 加载更多首页文章
+            function getMoreArticle() {
+                page++;
+                $(".more").text("正在加载...");
+                if (type == 'overseas') {
+                    getOverseas("more");
+                } else {
+                    category = $('.search-nav-li-a-default').attr("data-type");
+                    getArticle("more");
+                }
+            }
+
+            function getArticle(type) {
+                //关键词
+                var keyword = $("#keyword_search").val();
+                if (keyword == '') {
+                    layer.msg('温馨提示：搜索关键词不能为空！', {
+                        icon: 2
+                    });
+                    return false;
+                }
+                var loadding = layer.load(0, {
+                    shade: false
+                });
+                $.ajax({
+                    url: "/index/home_api/searchArticle",
+                    type: "get",
+                    data: {
+                        page: page,
+                        keyword: keyword,
+                        select_type: category,
+                    },
+                    dataType: "json",
+                    success: function(json) {
+                        layer.close(loadding);
+                        if (json.data.article.length > 0) {
+                            var html = '';
+                            $.each(json.data.article, function(key, val) {
+                                html += '<li>';
+                                html += '<a class="alink" href="' + val.url + '">';
+                                html += '<img src="' + val.logo + '" alt="' + val.title + '">';
+                                html += '</a>';
+                                html += '<div class="art_con">';
+                                html += '<h2>';
+                                html += '<a class="title" href="' + val.url + '">' + val.title + '</a>';
+                                html += '</h2>';
+                                html += '<a href="' + val.url + '">';
+                                html += '<h3>' + val.add_user_name + '</h3>';
+                                html += '</a>';
+                                html += '<span class="times">' + val.add_time + '</span>';
+                                html += '</div>';
+                                html += '</li>';
+                            });
+                            if (type == "change") {
+                                $(".list_article").html(html);
+                            } else {
+                                $(".list_article").append(html);
+                                $(".more").text("加载更多");
+                            }
+                            var totalPages = Math.ceil(json.count / pageSize) || 1;
+                            if (totalPages <= page) {
+                                $(".more").text("没有更多了...");
+                                $(".more").removeAttr("onclick");
+                                akali = true;
+                            }
+                        } else {
+                            layer.msg(data.msg);
+                        }
+                    },
+                    error: function() {
+                        layer.close(loadding);
+                        layer.msg('网络错误！');
+                    }
+                });
+            }
+        </script>
+
+    </div>
+{/block}

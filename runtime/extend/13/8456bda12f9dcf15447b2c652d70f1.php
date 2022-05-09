@@ -1,0 +1,4 @@
+<?php
+//000000000000
+ exit();?>
+think_serialize:a:24:{s:13:"page_listrows";s:2:"28";s:13:"html_cache_on";s:5:"false";s:8:"main_web";s:4:"true";s:6:"wap_on";s:5:"false";s:8:"wap_only";s:5:"false";s:10:"wap_applet";s:5:"false";s:6:"search";s:7:"product";s:9:"oncontext";s:1:"0";s:6:"oncopy";s:1:"0";s:8:"onselect";s:1:"0";s:7:"buck_on";s:1:"0";s:6:"bucket";s:0:"";s:9:"accesskey";s:0:"";s:9:"secretkey";s:0:"";s:9:"bucketurl";s:0:"";s:7:"web_url";s:12:"www.h7uz.com";s:7:"web_tel";s:50:"135-3395-7190(周先生)  135-3395-7191(李小姐)";s:7:"web_qqs";s:43:"1847355369::(优优),366532931::(李小姐)";s:8:"web_name";s:30:"环企优站科技有限公司";s:8:"web_copy";s:73:"Copyright © 2016-2040 环企优站科技有限公司 .保留所有权利";s:10:"web_b_logo";s:42:"/public/static/admin/Images/admin_logo.jpg";s:10:"web_s_logo";s:39:"/public/static/admin/Images/UI/logo.png";s:10:"web_a_logo";s:35:"/public/static/admin/Images/ie3.png";s:8:"web_maps";s:1:"1";}

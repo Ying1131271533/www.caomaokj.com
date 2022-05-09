@@ -1,0 +1,318 @@
+---------------------------------------------------------------
+
+[2022-04-22T09:28:07+08:00] 127.0.0.1 GET www.caomao.com/
+[运行时间：2.703196s] [吞吐率：0.37req/s] [内存消耗：1,766.34kb] [文件加载：125]
+[ info ] [ ROUTE ] array (
+)
+[ info ] [ HEADER ] array (
+  'host' => 'www.caomao.com',
+  'connection' => 'keep-alive',
+  'upgrade-insecure-requests' => '1',
+  'user-agent' => 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/100.0.4896.127 Safari/537.36',
+  'accept' => 'text/html,application/xhtml+xml,application/xml;q=0.9,image/avif,image/webp,image/apng,*/*;q=0.8,application/signed-exchange;v=b3;q=0.9',
+  'accept-encoding' => 'gzip, deflate',
+  'accept-language' => 'zh-CN,zh;q=0.9',
+  'cookie' => 'Hm_lvt_dd05196a1abdf825fc7a76f577ec4144=1636596244,1636623988,1636683797,1637206457; user=think%3A%7B%22username%22%3A%222NywHCEVdQ12yudRNWVg74s%22%2C%22password%22%3A%22iozmHXUQcFkPlrUMOF475YlilU2tgfCadRpvZXpFcScg6p9llcTMRYkb9jK1jATQ%22%7D',
+)
+[ info ] [ PARAM ] array (
+)
+[ info ] [ DB ] INIT mysql
+[ info ] [ VIEW ] ../application/index/view/index\index.html [ array (
+  0 => 'service',
+  1 => 'menu',
+  2 => 'continents',
+  3 => 'controller',
+  4 => 'userid',
+  5 => 'username',
+  6 => 'nickname',
+  7 => 'avatar',
+  8 => 'time',
+  9 => 'toolbar',
+  10 => 'wechat',
+  11 => 'serviceData',
+  12 => 'banner',
+  13 => 'hotArticle',
+  14 => 'category',
+  15 => 'leftArticle',
+  16 => 'activity',
+  17 => 'college',
+  18 => 'logistics',
+  19 => 'announcement',
+  20 => 'links',
+) ]
+---------------------------------------------------------------
+
+[2022-04-22T09:28:13+08:00] 127.0.0.1 GET www.caomao.com/
+[运行时间：0.091636s] [吞吐率：10.91req/s] [内存消耗：415.57kb] [文件加载：104]
+[ info ] [ ROUTE ] array (
+)
+[ info ] [ HEADER ] array (
+  'host' => 'www.caomao.com',
+  'connection' => 'keep-alive',
+  'cache-control' => 'max-age=0',
+  'upgrade-insecure-requests' => '1',
+  'user-agent' => 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/100.0.4896.127 Safari/537.36',
+  'accept' => 'text/html,application/xhtml+xml,application/xml;q=0.9,image/avif,image/webp,image/apng,*/*;q=0.8,application/signed-exchange;v=b3;q=0.9',
+  'accept-encoding' => 'gzip, deflate',
+  'accept-language' => 'zh-CN,zh;q=0.9',
+  'cookie' => 'Hm_lvt_dd05196a1abdf825fc7a76f577ec4144=1636596244,1636623988,1636683797,1637206457; user=think%3A%7B%22username%22%3A%222NywHCEVdQ12yudRNWVg74s%22%2C%22password%22%3A%22iozmHXUQcFkPlrUMOF475YlilU2tgfCadRpvZXpFcScg6p9llcTMRYkb9jK1jATQ%22%7D; PHPSESSID=iob8pstfnfhac7den1tlo98hi0; thinkphp_show_page_trace=0|0',
+)
+[ info ] [ PARAM ] array (
+)
+[ info ] [ DB ] INIT mysql
+[ error ] [1045]SQLSTATE[HY000] [1045] Access denied for user 'www_caomaokj_co'@'113.67.182.53' (using password: YES)[D:\Web\www.caomaokj.com\thinkphp\library\think\db\Connection.php:528]
+---------------------------------------------------------------
+
+[2022-04-22T09:28:16+08:00] 127.0.0.1 GET www.caomao.com/
+[运行时间：0.968392s] [吞吐率：1.03req/s] [内存消耗：1,767.23kb] [文件加载：125]
+[ info ] [ ROUTE ] array (
+)
+[ info ] [ HEADER ] array (
+  'host' => 'www.caomao.com',
+  'connection' => 'keep-alive',
+  'cache-control' => 'max-age=0',
+  'upgrade-insecure-requests' => '1',
+  'user-agent' => 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/100.0.4896.127 Safari/537.36',
+  'accept' => 'text/html,application/xhtml+xml,application/xml;q=0.9,image/avif,image/webp,image/apng,*/*;q=0.8,application/signed-exchange;v=b3;q=0.9',
+  'accept-encoding' => 'gzip, deflate',
+  'accept-language' => 'zh-CN,zh;q=0.9',
+  'cookie' => 'Hm_lvt_dd05196a1abdf825fc7a76f577ec4144=1636596244,1636623988,1636683797,1637206457; user=think%3A%7B%22username%22%3A%222NywHCEVdQ12yudRNWVg74s%22%2C%22password%22%3A%22iozmHXUQcFkPlrUMOF475YlilU2tgfCadRpvZXpFcScg6p9llcTMRYkb9jK1jATQ%22%7D; PHPSESSID=iob8pstfnfhac7den1tlo98hi0; thinkphp_show_page_trace=0|0',
+)
+[ info ] [ PARAM ] array (
+)
+[ info ] [ DB ] INIT mysql
+[ info ] [ VIEW ] ../application/index/view/index\index.html [ array (
+  0 => 'service',
+  1 => 'menu',
+  2 => 'continents',
+  3 => 'controller',
+  4 => 'userid',
+  5 => 'username',
+  6 => 'nickname',
+  7 => 'avatar',
+  8 => 'time',
+  9 => 'toolbar',
+  10 => 'wechat',
+  11 => 'serviceData',
+  12 => 'banner',
+  13 => 'hotArticle',
+  14 => 'category',
+  15 => 'leftArticle',
+  16 => 'activity',
+  17 => 'college',
+  18 => 'logistics',
+  19 => 'announcement',
+  20 => 'links',
+) ]
+---------------------------------------------------------------
+
+[2022-04-22T09:28:19+08:00] 127.0.0.1 GET www.caomao.com/index/service/index/category_id/160
+[运行时间：0.467548s] [吞吐率：2.14req/s] [内存消耗：722.48kb] [文件加载：115]
+[ info ] [ ROUTE ] array (
+)
+[ info ] [ HEADER ] array (
+  'host' => 'www.caomao.com',
+  'connection' => 'keep-alive',
+  'upgrade-insecure-requests' => '1',
+  'user-agent' => 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/100.0.4896.127 Safari/537.36',
+  'accept' => 'text/html,application/xhtml+xml,application/xml;q=0.9,image/avif,image/webp,image/apng,*/*;q=0.8,application/signed-exchange;v=b3;q=0.9',
+  'referer' => 'http://www.caomao.com/',
+  'accept-encoding' => 'gzip, deflate',
+  'accept-language' => 'zh-CN,zh;q=0.9',
+  'cookie' => 'Hm_lvt_dd05196a1abdf825fc7a76f577ec4144=1636596244,1636623988,1636683797,1637206457; user=think%3A%7B%22username%22%3A%222NywHCEVdQ12yudRNWVg74s%22%2C%22password%22%3A%22iozmHXUQcFkPlrUMOF475YlilU2tgfCadRpvZXpFcScg6p9llcTMRYkb9jK1jATQ%22%7D; PHPSESSID=iob8pstfnfhac7den1tlo98hi0; thinkphp_show_page_trace=0|0',
+)
+[ info ] [ PARAM ] array (
+  'category_id' => '160',
+)
+[ info ] [ DB ] INIT mysql
+[ info ] [ VIEW ] ../application/index/view/service\index.html [ array (
+  0 => 'service',
+  1 => 'menu',
+  2 => 'continents',
+  3 => 'controller',
+  4 => 'userid',
+  5 => 'username',
+  6 => 'nickname',
+  7 => 'avatar',
+  8 => 'time',
+  9 => 'toolbar',
+  10 => 'wechat',
+  11 => 'list',
+  12 => 'banner',
+) ]
+---------------------------------------------------------------
+
+[2022-04-22T09:28:32+08:00] 127.0.0.1 GET www.caomao.com/index/community
+[运行时间：0.358836s] [吞吐率：2.79req/s] [内存消耗：736.42kb] [文件加载：118]
+[ info ] [ ROUTE ] array (
+)
+[ info ] [ HEADER ] array (
+  'host' => 'www.caomao.com',
+  'connection' => 'keep-alive',
+  'upgrade-insecure-requests' => '1',
+  'user-agent' => 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/100.0.4896.127 Safari/537.36',
+  'accept' => 'text/html,application/xhtml+xml,application/xml;q=0.9,image/avif,image/webp,image/apng,*/*;q=0.8,application/signed-exchange;v=b3;q=0.9',
+  'referer' => 'http://www.caomao.com/index/service/index/category_id/160',
+  'accept-encoding' => 'gzip, deflate',
+  'accept-language' => 'zh-CN,zh;q=0.9',
+  'cookie' => 'Hm_lvt_dd05196a1abdf825fc7a76f577ec4144=1636596244,1636623988,1636683797,1637206457; user=think%3A%7B%22username%22%3A%222NywHCEVdQ12yudRNWVg74s%22%2C%22password%22%3A%22iozmHXUQcFkPlrUMOF475YlilU2tgfCadRpvZXpFcScg6p9llcTMRYkb9jK1jATQ%22%7D; PHPSESSID=iob8pstfnfhac7den1tlo98hi0; thinkphp_show_page_trace=0|0',
+)
+[ info ] [ PARAM ] array (
+)
+[ info ] [ DB ] INIT mysql
+[ info ] [ VIEW ] ../application/index/view/community\index.html [ array (
+  0 => 'service',
+  1 => 'menu',
+  2 => 'continents',
+  3 => 'controller',
+  4 => 'userid',
+  5 => 'username',
+  6 => 'nickname',
+  7 => 'avatar',
+  8 => 'time',
+  9 => 'toolbar',
+  10 => 'wechat',
+  11 => 'banner',
+  12 => 'list',
+) ]
+---------------------------------------------------------------
+
+[2022-04-22T09:28:34+08:00] 127.0.0.1 GET www.caomao.com/index/community/detail/id/29.html
+[运行时间：0.602409s] [吞吐率：1.66req/s] [内存消耗：829.91kb] [文件加载：122]
+[ info ] [ ROUTE ] array (
+)
+[ info ] [ HEADER ] array (
+  'host' => 'www.caomao.com',
+  'connection' => 'keep-alive',
+  'upgrade-insecure-requests' => '1',
+  'user-agent' => 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/100.0.4896.127 Safari/537.36',
+  'accept' => 'text/html,application/xhtml+xml,application/xml;q=0.9,image/avif,image/webp,image/apng,*/*;q=0.8,application/signed-exchange;v=b3;q=0.9',
+  'referer' => 'http://www.caomao.com/index/community',
+  'accept-encoding' => 'gzip, deflate',
+  'accept-language' => 'zh-CN,zh;q=0.9',
+  'cookie' => 'thinkphp_show_page_trace=0|0; Hm_lvt_dd05196a1abdf825fc7a76f577ec4144=1636596244,1636623988,1636683797,1637206457; user=think%3A%7B%22username%22%3A%222NywHCEVdQ12yudRNWVg74s%22%2C%22password%22%3A%22iozmHXUQcFkPlrUMOF475YlilU2tgfCadRpvZXpFcScg6p9llcTMRYkb9jK1jATQ%22%7D; PHPSESSID=iob8pstfnfhac7den1tlo98hi0; thinkphp_show_page_trace=0|0',
+)
+[ info ] [ PARAM ] array (
+  'id' => '29',
+)
+[ info ] [ DB ] INIT mysql
+[ info ] [ VIEW ] ../application/index/view/community\detail.html [ array (
+  0 => 'service',
+  1 => 'menu',
+  2 => 'continents',
+  3 => 'controller',
+  4 => 'userid',
+  5 => 'username',
+  6 => 'nickname',
+  7 => 'avatar',
+  8 => 'time',
+  9 => 'toolbar',
+  10 => 'wechat',
+  11 => 'community',
+) ]
+---------------------------------------------------------------
+
+[2022-04-22T09:28:43+08:00] 127.0.0.1 GET www.caomao.com/index/community/detail/id/29.html
+[运行时间：0.424469s] [吞吐率：2.36req/s] [内存消耗：759.76kb] [文件加载：120]
+[ info ] [ ROUTE ] array (
+)
+[ info ] [ HEADER ] array (
+  'host' => 'www.caomao.com',
+  'connection' => 'keep-alive',
+  'upgrade-insecure-requests' => '1',
+  'user-agent' => 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/100.0.4896.127 Safari/537.36',
+  'accept' => 'text/html,application/xhtml+xml,application/xml;q=0.9,image/avif,image/webp,image/apng,*/*;q=0.8,application/signed-exchange;v=b3;q=0.9',
+  'referer' => 'http://www.caomao.com/index/community',
+  'accept-encoding' => 'gzip, deflate',
+  'accept-language' => 'zh-CN,zh;q=0.9',
+  'cookie' => 'thinkphp_show_page_trace=0|0; thinkphp_show_page_trace=0|0; Hm_lvt_dd05196a1abdf825fc7a76f577ec4144=1636596244,1636623988,1636683797,1637206457; user=think%3A%7B%22username%22%3A%222NywHCEVdQ12yudRNWVg74s%22%2C%22password%22%3A%22iozmHXUQcFkPlrUMOF475YlilU2tgfCadRpvZXpFcScg6p9llcTMRYkb9jK1jATQ%22%7D; PHPSESSID=iob8pstfnfhac7den1tlo98hi0; thinkphp_show_page_trace=0|0',
+)
+[ info ] [ PARAM ] array (
+  'id' => '29',
+)
+[ info ] [ DB ] INIT mysql
+[ info ] [ VIEW ] ../application/index/view/community\detail.html [ array (
+  0 => 'service',
+  1 => 'menu',
+  2 => 'continents',
+  3 => 'controller',
+  4 => 'userid',
+  5 => 'username',
+  6 => 'nickname',
+  7 => 'avatar',
+  8 => 'time',
+  9 => 'toolbar',
+  10 => 'wechat',
+  11 => 'community',
+) ]
+---------------------------------------------------------------
+
+[2022-04-22T09:29:22+08:00] 127.0.0.1 GET www.caomao.com/index/community
+[运行时间：0.414678s] [吞吐率：2.41req/s] [内存消耗：821.12kb] [文件加载：120]
+[ info ] [ ROUTE ] array (
+)
+[ info ] [ HEADER ] array (
+  'host' => 'www.caomao.com',
+  'connection' => 'keep-alive',
+  'cache-control' => 'max-age=0',
+  'upgrade-insecure-requests' => '1',
+  'user-agent' => 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/100.0.4896.127 Safari/537.36',
+  'accept' => 'text/html,application/xhtml+xml,application/xml;q=0.9,image/avif,image/webp,image/apng,*/*;q=0.8,application/signed-exchange;v=b3;q=0.9',
+  'referer' => 'http://www.caomao.com/index/service/index/category_id/160',
+  'accept-encoding' => 'gzip, deflate',
+  'accept-language' => 'zh-CN,zh;q=0.9',
+  'cookie' => 'thinkphp_show_page_trace=0|0; Hm_lvt_dd05196a1abdf825fc7a76f577ec4144=1636596244,1636623988,1636683797,1637206457; user=think%3A%7B%22username%22%3A%222NywHCEVdQ12yudRNWVg74s%22%2C%22password%22%3A%22iozmHXUQcFkPlrUMOF475YlilU2tgfCadRpvZXpFcScg6p9llcTMRYkb9jK1jATQ%22%7D; PHPSESSID=iob8pstfnfhac7den1tlo98hi0; thinkphp_show_page_trace=0|0',
+)
+[ info ] [ PARAM ] array (
+)
+[ info ] [ DB ] INIT mysql
+[ info ] [ VIEW ] ../application/index/view/community\index.html [ array (
+  0 => 'service',
+  1 => 'menu',
+  2 => 'continents',
+  3 => 'controller',
+  4 => 'userid',
+  5 => 'username',
+  6 => 'nickname',
+  7 => 'avatar',
+  8 => 'time',
+  9 => 'toolbar',
+  10 => 'wechat',
+  11 => 'banner',
+  12 => 'list',
+) ]
+---------------------------------------------------------------
+
+[2022-04-22T09:29:24+08:00] 127.0.0.1 GET www.caomao.com/index/community/detail/id/29.html
+[运行时间：0.413719s] [吞吐率：2.42req/s] [内存消耗：758.63kb] [文件加载：120]
+[ info ] [ ROUTE ] array (
+)
+[ info ] [ HEADER ] array (
+  'host' => 'www.caomao.com',
+  'connection' => 'keep-alive',
+  'upgrade-insecure-requests' => '1',
+  'user-agent' => 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/100.0.4896.127 Safari/537.36',
+  'accept' => 'text/html,application/xhtml+xml,application/xml;q=0.9,image/avif,image/webp,image/apng,*/*;q=0.8,application/signed-exchange;v=b3;q=0.9',
+  'referer' => 'http://www.caomao.com/index/community',
+  'accept-encoding' => 'gzip, deflate',
+  'accept-language' => 'zh-CN,zh;q=0.9',
+  'cookie' => 'thinkphp_show_page_trace=0|0; thinkphp_show_page_trace=0|0; Hm_lvt_dd05196a1abdf825fc7a76f577ec4144=1636596244,1636623988,1636683797,1637206457; user=think%3A%7B%22username%22%3A%222NywHCEVdQ12yudRNWVg74s%22%2C%22password%22%3A%22iozmHXUQcFkPlrUMOF475YlilU2tgfCadRpvZXpFcScg6p9llcTMRYkb9jK1jATQ%22%7D; PHPSESSID=iob8pstfnfhac7den1tlo98hi0; thinkphp_show_page_trace=0|0',
+)
+[ info ] [ PARAM ] array (
+  'id' => '29',
+)
+[ info ] [ DB ] INIT mysql
+[ info ] [ VIEW ] ../application/index/view/community\detail.html [ array (
+  0 => 'service',
+  1 => 'menu',
+  2 => 'continents',
+  3 => 'controller',
+  4 => 'userid',
+  5 => 'username',
+  6 => 'nickname',
+  7 => 'avatar',
+  8 => 'time',
+  9 => 'toolbar',
+  10 => 'wechat',
+  11 => 'community',
+) ]

@@ -1,0 +1,183 @@
+.avatar {
+	width: 78px;
+	height: 78px;
+	border-radius: 50%;
+}
+
+.person-center .person-info {
+	background: #fdfdfd;
+}
+
+.person-center .person-info .info-list {
+	padding: 26px 30px;
+	border-bottom: 1px solid #f0f0f0;
+}
+
+.person-center .info-list .media-body {
+	padding-left: 15px;
+}
+
+.person-center .info-list .media-text {
+	margin: 7px 0;
+}
+
+.person-center .info-list .media-heading {
+	padding-top: 5px;
+}
+
+.person-center .info-list .phone-btn {
+	display: inline-block;
+	width: 86px;
+	height: 20px;
+	color: #fff;
+	font-size: 12px;
+	vertical-align: middle;
+	text-align: center;
+	line-height: 21px;
+}
+
+.person-center .info-list .phone-n {
+	background: #d9d9d9;
+}
+
+.person-center .info-list .phone-y {
+	background: #fecc7e;
+}
+
+.person-center .person-text {
+	padding: 10px 0;
+	border-bottom: 1px solid #f0f0f0;
+}
+
+.person-center .person-text .col-md-6 {
+	padding: 0 40px;
+}
+
+.person-center .person-text .col-md-6:first-child {
+	border-right: 1px solid #f0f0f0;
+}
+
+.person-center .person-text ul li {
+	text-align: center;
+	width: 88px;
+}
+
+.person-center .person-text ul li a {
+	display: inline-block;
+	position: relative;
+}
+
+.person-center .person-text ul li .a-tips span {
+	position: absolute;
+	right: -2px;
+	top: -7px;
+	content: '';
+	min-width: 16px;
+	height: 16px;
+	color: #fff;
+	font-size: 12px;
+	background: red;
+	-webkit-border-radius: 50%;
+	-moz-border-radius: 50%;
+	border-radius: 50%;
+}
+
+.person-center .person-text ul li div {
+	color: #999;
+	padding-top: 5px;
+}
+
+.person-center .person-text ul li:first-child {
+	font-size: 20px;
+	width: 50px;
+}
+/*鏈€鏂版秷鎭�*/
+.message-box .media-left {
+	width: 83px;
+}
+
+.person-center .new-message, .person-center .new-required {
+	margin-top: 20px;
+	padding: 0 40px;
+}
+
+.person-center .media-list {
+	padding: 15px 0;
+}
+
+.person-center .media-heading {
+	padding: 10px 0;
+}
+
+.person-center .media-list:first-child {
+	border-bottom: 1px solid #e5e5e5;
+}
+
+.person-center .new-message .media-object {
+	width: 73px;
+	height: 73px;
+	border-radius: 50%;
+	margin-left: 10px;
+}
+
+.person-center .new-message .media-left div {
+	text-align: center;
+	font-size: 16px;
+	padding-top: 5px;
+	overflow: hidden;
+	text-overflow: ellipsis;
+	white-space: nowrap;
+	width: 100px;
+}
+
+.person-center .media-body p {
+	color: #555;
+	line-height: 24px;
+	height: 72px;
+	margin-bottom: 8px;
+	overflow: hidden;
+	text-overflow: ellipsis;
+}
+.person-center .media-body p.task-p {
+	height: 46px;
+}
+
+.person-center  .bot_tips span {
+	color: #999;
+	font-size: 12px;
+}
+
+.person-center .pull-right .numbers {
+	color: #ff8400;
+}
+
+.person-center .new-message .del {
+	color: #ff8400;
+	font-size: 12px;
+}
+/*鏈€鏂伴渶姹�*/
+.person-center .new-required {
+	border-top: 1px solid #e5e5e5;
+	padding-top: 20px;
+}
+
+.person-center .new-required .tips-current {
+	color: #ff8400;
+}
+
+.person-center .new-required .pull-right {
+	display: inline-block;
+	font-size: 14px;
+	text-align: right;
+}
+
+.person-center .new-required img {
+    width: 20px;
+}
+
+.person-center .new-required .icon-name {
+	display: inline-block;
+	width: 16px;
+	height: 16px;
+	background: url(/img/icon.png) no-repeat -662px -108px;
+}

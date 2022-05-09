@@ -1,0 +1,60 @@
+{extend name="layout/base" /}
+{block name="title"}我的收藏{/block}
+{block name="load"}
+
+<!-- css -->
+<link rel="stylesheet" href="__MLAYUI__/css/layui.css">
+<link rel="stylesheet" href="__MCSS__/user_common.css">
+<style type="text/css">
+    .headerlist{
+        margin-top:10px !important;
+        height: 0.19rem !important;
+    }
+</style>
+
+<!-- js -->
+<script src="__MLAYUI__/layui.js"></script>
+<script src="__MJS__/user_common.js"></script>
+
+{/block}
+<!-- 主体内容 -->
+{block name="main"}
+    <div class="container">
+        <style>
+            .nav-title {
+                float: left;
+                width: 100%;
+                background: #eee;
+                font-size: 0.16rem;
+                display: block;
+            }
+            
+            .nav-title li {
+                float: left;
+                width: 50%;
+                height: 50px;
+                line-height: 50px;
+                text-align: center;
+            }
+            
+            .nav-title li.current {
+                background: #fff;
+                border-bottom: 2px solid #fc9d27;
+            }
+            
+            .data_ul .li_title h4 {
+                padding-left: 0px;
+            }
+        </style>
+        <ul class="nav-title fl">
+            <li class="article current" type="1" onclick="searchFilterSubmit(this)">文章</li>
+            <li class="article" type="2" onclick="searchFilterSubmit(this)">活动</li>
+        </ul>
+        <div class="data-list">
+            <ul class="data_ul"></ul>
+        </div>
+        <div id="laypage" class="laypage"></div>
+
+        <script type="text/javascript" src="__MJS__/collect.js"></script>
+    </div>
+{/block}

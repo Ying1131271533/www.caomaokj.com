@@ -1,0 +1,208 @@
+{extend name="layout/base" /}
+{block name="title"}{$logistics.title}{/block}
+{block name="load"}
+<!-- css -->
+<link rel="stylesheet" href="__MCSS__/main.css">
+<link rel="stylesheet" href="__MCSS__/service.css">
+<!-- <link rel="stylesheet" href="__MCSS__/easyui.css"> -->
+<link rel="stylesheet" href="__MCSS__/style-table.css">
+<link rel="stylesheet" href="__MCSS__/index.css" type="text/css">
+<link rel="stylesheet" href="__MCSS__/service-detail-new.css">
+<link rel="stylesheet" href="__MCSS__/inquire.css?{$time}">
+<style type="text/css">
+    .main .media span {
+        font-size: 0.14rem !important;
+        color: #555 !important;
+        font-family: PingFangSC-Regular, Microsoft YaHei, Helvetica !important;
+    }
+</style>
+<!-- js -->
+<script type="text/javascript" src="__MJS__/service.js"></script>
+<script type="text/javascript" src="__MJS__/inquire.js"></script>
+{/block}
+<!-- 主体内容 -->
+{block name="main"}
+    <div class="container">
+        <script>
+            $(document).ready(function(e) {
+                $(".service-nav li").click(function() {
+                    $(".service-nav li").eq($(this).index()).addClass("active").siblings().removeClass("active");
+                    $(".service-pane").hide().eq($(this).index()).show();
+                })
+            })
+        </script>
+        <div class="site-index">
+            <!-- 上方banner -->
+            <div class="search-div">
+                <div class="banner-img">
+                    <img class="media-object" src="{$logistics.thumb}" alt="{$logistics.title}">
+                    <div class="com-name">
+                        {$logistics.title}
+                        <div style="margin-top:10px;">
+                            <button class="btn btn-inquiry xun_btn_jzc" onclick="wechat('{$logistics.wechat}');">点击询盘</button>
+                        </div>
+                    </div>
+                    <div style="clear: both"></div>
+                </div>
+            </div>
+            <!-- 首页-->
+            <div class="find-company all-content clearfix">
+                <div class="main">
+                    <!-- 企业简介-->
+                    <div class="profile bg-white pl10">
+                        <div class="center-wrap">
+                            <div class="media all-banner toptab">
+                                <div class="media-body active" id="company-about">
+                                    <div class="service-call"><span><i class="fa fa-phone"></i></span><a href="https://www.kuajingyan.com/login">&nbsp;&nbsp;&nbsp;{$logistics.phone}</a></div>
+                                    <div class="service-call"><span><i class="fa fa-envelope"></i></span><span><a href="https://www.kuajingyan.com/login">&nbsp;&nbsp;{$logistics.email}</a></span></div>
+                                    <div class="service-call"><img src="__MIMG__/15814297314791.png">&nbsp;&nbsp;<a href="https://www.kuajingyan.com/login">{$logistics.address}</a></div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="company-added-service pl10">
+                        <div class="company_title_div"><img src="__MIMG__/15814738491078.png"> 物流详情</div>
+                        <div class="media all-banner toptab">
+                            <div class="media-body active" id="company-about" >{$logistics.content|raw}</div>
+                       </div>
+                    </div>
+
+                </div>
+                <ol class="crumbs">
+                    <li>
+                        <a href="/">
+                            <svg class="icon" aria-hidden="true">
+                                <use xlink:href="#icon-shouye2"></use>
+                            </svg> 首页
+                        </a>
+                    </li>
+                    <li>
+                        &gt;<a class="color9" href="{:url('logistics/index')}"> 找物流资源</a>
+                    </li>
+                    <!-- <li><a href="/warehouse">> 找海外仓</a></li> -->
+                    <li class="word-wrap"><a class="color-555 last_li" href="javascript:;">&gt;{$logistics.title}</a></li>
+                </ol>
+                <input type="hidden" id="isLogin" value="{$userid}">
+                <script>
+                    $(function() {
+
+                        var Accordion = function(el, multiple) {
+                            this.el = el || {};
+                            this.multiple = multiple || false;
+
+                            // Variables privadas
+                            var links = this.el.find('.link');
+                            // Evento
+                            links.on('click', {
+                                el: this.el,
+                                multiple: this.multiple
+                            }, this.dropdown)
+                        }
+                        Accordion.prototype.dropdown = function(e) {
+                            var $el = e.data.el;
+                            $this = $(this),
+                                $next = $this.next();
+
+                            $next.slideToggle();
+                            $this.parent().toggleClass('open');
+
+                            if (!e.data.multiple) {
+                                $el.find('.submenu').not($next).slideUp().parent().removeClass('open');
+                            };
+                        }
+                        var Accordion2 = function(el, multiple) {
+                            this.el = el || {};
+                            this.multiple = multiple || false;
+
+                            // Variables privadas
+                            var links = this.el.find('.link');
+                            // Evento
+                            links.on('click', {
+                                el: this.el,
+                                multiple: this.multiple
+                            }, this.dropdown)
+                        }
+                        Accordion2.prototype.dropdown = function(e) {
+                            var $el = e.data.el;
+                            $this = $(this),
+                                $next = $this.next();
+
+                            $next.slideToggle();
+                            $this.parent().toggleClass('open');
+
+                            if (!e.data.multiple) {
+                                $el.find('.submenu').not($next).slideUp().parent().removeClass('open');
+                            };
+                        }
+                        var accordion = new Accordion($('#accordion'), false);
+                        var accordion2 = new Accordion2($('#accordion2'), false);
+
+                        $(document).scroll(function() {
+                            var aa = $('.card-nav').offset().top;
+                            var _height = $(this).scrollTop();
+                            if (_height >= 485) {
+                                $('.card-nav').css('position', 'fixed').css('top', '50px');
+                            } else {
+                                $('.card-nav').css('position', '').css('top', "")
+                            }
+                        });
+                        $(document).on('click', 'ul.card-nav li', function() {
+                            $('.big-sale-nav').css('position', 'fixed').css('top', 0);
+                            $('.big-sale-nav ul li').removeClass('active');
+                            $(this).addClass('active');
+                            var nav_left_attr = $(this).attr('data-div');
+                            $('body').scrollTop(0);
+                            $("html, body").animate({
+                                scrollTop: $('#' + nav_left_attr).offset().top - 52 + "px"
+                            }, {
+                                duration: 500,
+                                easing: "swing"
+                            });
+                            return false;
+
+                        });
+                    });
+                </script>
+            </div>
+        </div>    
+{/block}
+{block name="script"}
+<script>
+    HOME_URL = "https://www.caomaokj.com";
+    wx.config({
+        appId: 'wxa0dfe525aa5c94fd',
+        timestamp: 1629796814,
+        nonceStr: 'r084cEbeVSUYE6XB',
+        signature: '54839797f0f4d86535492c787ca8d5273608de59',
+        jsApiList: [
+            'onMenuShareTimeline',
+            'onMenuShareAppMessage',
+            'chooseImage'
+        ]
+    });
+    wx.ready(function() {
+        wx.onMenuShareTimeline({
+            title: '深圳市中南通达国际物流有限公司 - 跨境眼',
+            link: window.location.href,
+            imgUrl: 'https://img.kuajingyan.com/uploadImg/warehouse/20180328/15222018566609.png',
+            success: function(res) {},
+            cancel: function(res) {},
+            fail: function(res) {
+                alert(JSON.stringify(res));
+            }
+        })
+        wx.onMenuShareAppMessage({
+            title: '深圳市中南通达国际物流有限公司 - 跨境眼', // 分享标题
+            desc: '<p>深圳市中南通达国际物流有限公司致力于打造中国最专业高效的美国FBA，澳大利亚FBA\欧盟FBA,头程运输，海外仓储，双清和二程派送完税到门服务。主要服务于...', // 分享描述
+            link: window.location.href, // 分享链接，该链接域名或路径必须与当前页面对应的公众号JS安全域名一致
+            imgUrl: 'https://img.kuajingyan.com/uploadImg/warehouse/20180328/15222018566609.png', // 分享图标
+            success: function() {
+                // 用户确认分享后执行的回调函数
+            },
+            cancel: function() {
+                // 用户取消分享后执行的回调函数
+            }
+        });
+    });
+</script>
+{/block}

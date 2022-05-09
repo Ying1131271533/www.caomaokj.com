@@ -1,0 +1,912 @@
+---------------------------------------------------------------
+
+[2022-04-18T10:20:22+08:00] 127.0.0.1 GET www.caomao.com/
+[运行时间：2.038450s] [吞吐率：0.49req/s] [内存消耗：2,231.36kb] [文件加载：125]
+[ info ] [ ROUTE ] array (
+)
+[ info ] [ HEADER ] array (
+  'host' => 'www.caomao.com',
+  'cache-control' => 'max-age=0',
+  'upgrade-insecure-requests' => '1',
+  'user-agent' => 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/100.0.4896.88 Safari/537.36',
+  'accept' => 'text/html,application/xhtml+xml,application/xml;q=0.9,image/avif,image/webp,image/apng,*/*;q=0.8,application/signed-exchange;v=b3;q=0.9',
+  'accept-encoding' => 'gzip, deflate',
+  'accept-language' => 'zh-CN,zh;q=0.9',
+  'cookie' => 'Hm_lvt_dd05196a1abdf825fc7a76f577ec4144=1636596244,1636623988,1636683797,1637206457',
+  'connection' => 'close',
+)
+[ info ] [ PARAM ] array (
+)
+[ info ] [ DB ] INIT mysql
+[ info ] [ VIEW ] ../application/index/view/index\index.html [ array (
+  0 => 'service',
+  1 => 'menu',
+  2 => 'continents',
+  3 => 'controller',
+  4 => 'userid',
+  5 => 'username',
+  6 => 'nickname',
+  7 => 'avatar',
+  8 => 'time',
+  9 => 'toolbar',
+  10 => 'wechat',
+  11 => 'serviceData',
+  12 => 'banner',
+  13 => 'hotArticle',
+  14 => 'category',
+  15 => 'leftArticle',
+  16 => 'activity',
+  17 => 'college',
+  18 => 'logistics',
+  19 => 'announcement',
+  20 => 'links',
+) ]
+---------------------------------------------------------------
+
+[2022-04-18T10:20:38+08:00] 127.0.0.1 GET www.caomao.com/index/college
+[运行时间：0.516429s] [吞吐率：1.94req/s] [内存消耗：949.08kb] [文件加载：123]
+[ info ] [ ROUTE ] array (
+)
+[ info ] [ HEADER ] array (
+  'host' => 'www.caomao.com',
+  'upgrade-insecure-requests' => '1',
+  'user-agent' => 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/100.0.4896.88 Safari/537.36',
+  'accept' => 'text/html,application/xhtml+xml,application/xml;q=0.9,image/avif,image/webp,image/apng,*/*;q=0.8,application/signed-exchange;v=b3;q=0.9',
+  'referer' => 'http://www.caomao.com/',
+  'accept-encoding' => 'gzip, deflate',
+  'accept-language' => 'zh-CN,zh;q=0.9',
+  'cookie' => 'Hm_lvt_dd05196a1abdf825fc7a76f577ec4144=1636596244,1636623988,1636683797,1637206457; PHPSESSID=c3edcu0555b97284o80pie9750; thinkphp_show_page_trace=0|0',
+  'connection' => 'close',
+)
+[ info ] [ PARAM ] array (
+)
+[ info ] [ DB ] INIT mysql
+[ info ] [ VIEW ] ../application/index/view/college\index.html [ array (
+  0 => 'service',
+  1 => 'menu',
+  2 => 'continents',
+  3 => 'controller',
+  4 => 'userid',
+  5 => 'username',
+  6 => 'nickname',
+  7 => 'avatar',
+  8 => 'time',
+  9 => 'toolbar',
+  10 => 'wechat',
+  11 => 'banner',
+  12 => 'category',
+  13 => 'college',
+) ]
+---------------------------------------------------------------
+
+[2022-04-18T10:39:51+08:00] 127.0.0.1 GET www.caomao.com/usezan
+[运行时间：0.084776s] [吞吐率：11.80req/s] [内存消耗：303.65kb] [文件加载：89]
+[ info ] [ LANG ] D:\Web\www.caomaokj.com\application\usezan\\lang\cn.php
+[ info ] [ ROUTE ] array (
+)
+[ info ] [ HEADER ] array (
+  'host' => 'www.caomao.com',
+  'connection' => 'keep-alive',
+  'upgrade-insecure-requests' => '1',
+  'user-agent' => 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/100.0.4896.88 Safari/537.36',
+  'accept' => 'text/html,application/xhtml+xml,application/xml;q=0.9,image/avif,image/webp,image/apng,*/*;q=0.8,application/signed-exchange;v=b3;q=0.9',
+  'accept-encoding' => 'gzip, deflate',
+  'accept-language' => 'zh-CN,zh;q=0.9',
+  'cookie' => 'Hm_lvt_dd05196a1abdf825fc7a76f577ec4144=1636596244,1636623988,1636683797,1637206457; PHPSESSID=c3edcu0555b97284o80pie9750; thinkphp_show_page_trace=0|0',
+)
+[ info ] [ PARAM ] array (
+)
+---------------------------------------------------------------
+
+[2022-04-18T10:39:51+08:00] 127.0.0.1 GET www.caomao.com/usezan/login/index.html
+[运行时间：0.108677s] [吞吐率：9.20req/s] [内存消耗：431.17kb] [文件加载：102]
+[ info ] [ LANG ] D:\Web\www.caomaokj.com\application\usezan\\lang\cn.php
+[ info ] [ ROUTE ] array (
+)
+[ info ] [ HEADER ] array (
+  'host' => 'www.caomao.com',
+  'connection' => 'keep-alive',
+  'upgrade-insecure-requests' => '1',
+  'user-agent' => 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/100.0.4896.88 Safari/537.36',
+  'accept' => 'text/html,application/xhtml+xml,application/xml;q=0.9,image/avif,image/webp,image/apng,*/*;q=0.8,application/signed-exchange;v=b3;q=0.9',
+  'accept-encoding' => 'gzip, deflate',
+  'accept-language' => 'zh-CN,zh;q=0.9',
+  'cookie' => 'Hm_lvt_dd05196a1abdf825fc7a76f577ec4144=1636596244,1636623988,1636683797,1637206457; PHPSESSID=c3edcu0555b97284o80pie9750; thinkphp_show_page_trace=0|0',
+)
+[ info ] [ PARAM ] array (
+)
+[ info ] [ VIEW ] ../application/usezan/view/login\index.html [ array (
+) ]
+---------------------------------------------------------------
+
+[2022-04-18T10:39:51+08:00] 127.0.0.1 GET www.caomao.com/usezan/login/captcha.html?type=pc&t=1650249591404
+[运行时间：0.187401s] [吞吐率：5.34req/s] [内存消耗：372.42kb] [文件加载：98]
+[ info ] [ LANG ] D:\Web\www.caomaokj.com\application\usezan\\lang\cn.php
+[ info ] [ ROUTE ] array (
+)
+[ info ] [ HEADER ] array (
+  'host' => 'www.caomao.com',
+  'connection' => 'keep-alive',
+  'accept' => 'application/json, text/javascript, */*; q=0.01',
+  'user-agent' => 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/100.0.4896.88 Safari/537.36',
+  'x-requested-with' => 'XMLHttpRequest',
+  'referer' => 'http://www.caomao.com/usezan/login/index.html',
+  'accept-encoding' => 'gzip, deflate',
+  'accept-language' => 'zh-CN,zh;q=0.9',
+  'cookie' => 'Hm_lvt_dd05196a1abdf825fc7a76f577ec4144=1636596244,1636623988,1636683797,1637206457; PHPSESSID=c3edcu0555b97284o80pie9750; thinkphp_show_page_trace=0|0',
+)
+[ info ] [ PARAM ] array (
+  'type' => 'pc',
+  't' => '1650249591404',
+)
+---------------------------------------------------------------
+
+[2022-04-18T10:40:17+08:00] 127.0.0.1 POST www.caomao.com/usezan/login/getlogin.html
+[运行时间：0.166173s] [吞吐率：6.02req/s] [内存消耗：553.41kb] [文件加载：105]
+[ info ] [ LANG ] D:\Web\www.caomaokj.com\application\usezan\\lang\cn.php
+[ info ] [ ROUTE ] array (
+)
+[ info ] [ HEADER ] array (
+  'host' => 'www.caomao.com',
+  'connection' => 'keep-alive',
+  'content-length' => '207',
+  'accept' => 'application/json, text/javascript, */*; q=0.01',
+  'x-requested-with' => 'XMLHttpRequest',
+  'user-agent' => 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/100.0.4896.88 Safari/537.36',
+  'content-type' => 'application/x-www-form-urlencoded; charset=UTF-8',
+  'origin' => 'http://www.caomao.com',
+  'referer' => 'http://www.caomao.com/usezan/login/index.html',
+  'accept-encoding' => 'gzip, deflate',
+  'accept-language' => 'zh-CN,zh;q=0.9',
+  'cookie' => 'thinkphp_show_page_trace=0|0; Hm_lvt_dd05196a1abdf825fc7a76f577ec4144=1636596244,1636623988,1636683797,1637206457; PHPSESSID=c3edcu0555b97284o80pie9750; thinkphp_show_page_trace=0|0',
+)
+[ info ] [ PARAM ] array (
+  'type' => 'pc',
+  'username' => 'shopcm',
+  'password' => 'shopcm@168a',
+  'geetest_challenge' => 'e0c9bdcb7507748f137b50264bf8ddfb7w',
+  'geetest_validate' => '9a440bc93221dd77eed708f0b969255f',
+  'geetest_seccode' => '9a440bc93221dd77eed708f0b969255f|jordan',
+)
+[ info ] [ DB ] INIT mysql
+---------------------------------------------------------------
+
+[2022-04-18T10:40:19+08:00] 127.0.0.1 GET www.caomao.com/usezan/index.html
+[运行时间：0.150272s] [吞吐率：6.65req/s] [内存消耗：876.34kb] [文件加载：115]
+[ info ] [ LANG ] D:\Web\www.caomaokj.com\application\usezan\\lang\cn.php
+[ info ] [ ROUTE ] array (
+)
+[ info ] [ HEADER ] array (
+  'host' => 'www.caomao.com',
+  'connection' => 'keep-alive',
+  'upgrade-insecure-requests' => '1',
+  'user-agent' => 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/100.0.4896.88 Safari/537.36',
+  'accept' => 'text/html,application/xhtml+xml,application/xml;q=0.9,image/avif,image/webp,image/apng,*/*;q=0.8,application/signed-exchange;v=b3;q=0.9',
+  'referer' => 'http://www.caomao.com/usezan/login/index.html',
+  'accept-encoding' => 'gzip, deflate',
+  'accept-language' => 'zh-CN,zh;q=0.9',
+  'cookie' => 'Hm_lvt_dd05196a1abdf825fc7a76f577ec4144=1636596244,1636623988,1636683797,1637206457; PHPSESSID=c3edcu0555b97284o80pie9750; thinkphp_show_page_trace=0|0',
+)
+[ info ] [ PARAM ] array (
+)
+[ info ] [ DB ] INIT mysql
+[ info ] [ VIEW ] ../application/usezan/view/index\index.html [ array (
+  0 => 'tree_id',
+  1 => 'category',
+  2 => 'current_url',
+  3 => 'extend_config',
+) ]
+---------------------------------------------------------------
+
+[2022-04-18T10:40:19+08:00] 127.0.0.1 GET www.caomao.com/usezan/index/welcomed.html
+[运行时间：0.122742s] [吞吐率：8.15req/s] [内存消耗：748.91kb] [文件加载：114]
+[ info ] [ LANG ] D:\Web\www.caomaokj.com\application\usezan\\lang\cn.php
+[ info ] [ ROUTE ] array (
+)
+[ info ] [ HEADER ] array (
+  'host' => 'www.caomao.com',
+  'connection' => 'keep-alive',
+  'upgrade-insecure-requests' => '1',
+  'user-agent' => 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/100.0.4896.88 Safari/537.36',
+  'accept' => 'text/html,application/xhtml+xml,application/xml;q=0.9,image/avif,image/webp,image/apng,*/*;q=0.8,application/signed-exchange;v=b3;q=0.9',
+  'referer' => 'http://www.caomao.com/usezan/index.html',
+  'accept-encoding' => 'gzip, deflate',
+  'accept-language' => 'zh-CN,zh;q=0.9',
+  'cookie' => 'Hm_lvt_dd05196a1abdf825fc7a76f577ec4144=1636596244,1636623988,1636683797,1637206457; PHPSESSID=c3edcu0555b97284o80pie9750; thinkphp_show_page_trace=0|0',
+)
+[ info ] [ PARAM ] array (
+)
+[ info ] [ DB ] INIT mysql
+[ info ] [ VIEW ] ../application/usezan/view/index\welcomed.html [ array (
+  0 => 'tree_id',
+  1 => 'category',
+  2 => 'current_url',
+  3 => 'extend_config',
+  4 => 'version',
+  5 => 'userinfo',
+  6 => 'server_info',
+) ]
+---------------------------------------------------------------
+
+[2022-04-18T10:40:21+08:00] 127.0.0.1 GET www.caomao.com/usezan/category/index?tree=56
+[运行时间：0.183326s] [吞吐率：5.45req/s] [内存消耗：1,033.77kb] [文件加载：115]
+[ info ] [ LANG ] D:\Web\www.caomaokj.com\application\usezan\\lang\cn.php
+[ info ] [ ROUTE ] array (
+)
+[ info ] [ HEADER ] array (
+  'host' => 'www.caomao.com',
+  'connection' => 'keep-alive',
+  'upgrade-insecure-requests' => '1',
+  'user-agent' => 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/100.0.4896.88 Safari/537.36',
+  'accept' => 'text/html,application/xhtml+xml,application/xml;q=0.9,image/avif,image/webp,image/apng,*/*;q=0.8,application/signed-exchange;v=b3;q=0.9',
+  'referer' => 'http://www.caomao.com/usezan/index.html',
+  'accept-encoding' => 'gzip, deflate',
+  'accept-language' => 'zh-CN,zh;q=0.9',
+  'cookie' => 'thinkphp_show_page_trace=0|0; Hm_lvt_dd05196a1abdf825fc7a76f577ec4144=1636596244,1636623988,1636683797,1637206457; PHPSESSID=c3edcu0555b97284o80pie9750; thinkphp_show_page_trace=0|0',
+)
+[ info ] [ PARAM ] array (
+  'tree' => '56',
+)
+[ info ] [ DB ] INIT mysql
+[ info ] [ VIEW ] ../application/usezan/view/category\index.html [ array (
+  0 => 'tree_id',
+  1 => 'auth_tree',
+  2 => 'category',
+  3 => 'current_url',
+  4 => 'extend_config',
+  5 => 'module',
+  6 => 'cate',
+) ]
+---------------------------------------------------------------
+
+[2022-04-18T10:40:22+08:00] 127.0.0.1 GET www.caomao.com/usezan/category/tree?tree=164
+[运行时间：0.110495s] [吞吐率：9.05req/s] [内存消耗：856.24kb] [文件加载：114]
+[ info ] [ LANG ] D:\Web\www.caomaokj.com\application\usezan\\lang\cn.php
+[ info ] [ ROUTE ] array (
+)
+[ info ] [ HEADER ] array (
+  'host' => 'www.caomao.com',
+  'connection' => 'keep-alive',
+  'upgrade-insecure-requests' => '1',
+  'user-agent' => 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/100.0.4896.88 Safari/537.36',
+  'accept' => 'text/html,application/xhtml+xml,application/xml;q=0.9,image/avif,image/webp,image/apng,*/*;q=0.8,application/signed-exchange;v=b3;q=0.9',
+  'referer' => 'http://www.caomao.com/usezan/index.html',
+  'accept-encoding' => 'gzip, deflate',
+  'accept-language' => 'zh-CN,zh;q=0.9',
+  'cookie' => 'thinkphp_show_page_trace=0|0; thinkphp_show_page_trace=0|0; Hm_lvt_dd05196a1abdf825fc7a76f577ec4144=1636596244,1636623988,1636683797,1637206457; PHPSESSID=c3edcu0555b97284o80pie9750; thinkphp_show_page_trace=0|0',
+)
+[ info ] [ PARAM ] array (
+  'tree' => '164',
+)
+[ info ] [ DB ] INIT mysql
+[ info ] [ VIEW ] ../application/usezan/view/category\tree.html [ array (
+  0 => 'tree_id',
+  1 => 'auth_tree',
+  2 => 'category',
+  3 => 'current_url',
+  4 => 'extend_config',
+  5 => 'module',
+  6 => 'ids',
+  7 => 'tree',
+) ]
+---------------------------------------------------------------
+
+[2022-04-18T10:40:27+08:00] 127.0.0.1 GET www.caomao.com/usezan/category/index?tree=56
+[运行时间：0.090700s] [吞吐率：11.03req/s] [内存消耗：941.70kb] [文件加载：113]
+[ info ] [ LANG ] D:\Web\www.caomaokj.com\application\usezan\\lang\cn.php
+[ info ] [ ROUTE ] array (
+)
+[ info ] [ HEADER ] array (
+  'host' => 'www.caomao.com',
+  'connection' => 'keep-alive',
+  'upgrade-insecure-requests' => '1',
+  'user-agent' => 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/100.0.4896.88 Safari/537.36',
+  'accept' => 'text/html,application/xhtml+xml,application/xml;q=0.9,image/avif,image/webp,image/apng,*/*;q=0.8,application/signed-exchange;v=b3;q=0.9',
+  'referer' => 'http://www.caomao.com/usezan/index.html',
+  'accept-encoding' => 'gzip, deflate',
+  'accept-language' => 'zh-CN,zh;q=0.9',
+  'cookie' => 'thinkphp_show_page_trace=0|0; thinkphp_show_page_trace=0|0; Hm_lvt_dd05196a1abdf825fc7a76f577ec4144=1636596244,1636623988,1636683797,1637206457; PHPSESSID=c3edcu0555b97284o80pie9750; thinkphp_show_page_trace=0|0',
+)
+[ info ] [ PARAM ] array (
+  'tree' => '56',
+)
+[ info ] [ DB ] INIT mysql
+[ info ] [ VIEW ] ../application/usezan/view/category\index.html [ array (
+  0 => 'tree_id',
+  1 => 'auth_tree',
+  2 => 'category',
+  3 => 'current_url',
+  4 => 'extend_config',
+  5 => 'module',
+  6 => 'cate',
+) ]
+---------------------------------------------------------------
+
+[2022-04-18T10:40:29+08:00] 127.0.0.1 GET www.caomao.com/usezan/category/tree?tree=164
+[运行时间：0.075938s] [吞吐率：13.17req/s] [内存消耗：826.13kb] [文件加载：112]
+[ info ] [ LANG ] D:\Web\www.caomaokj.com\application\usezan\\lang\cn.php
+[ info ] [ ROUTE ] array (
+)
+[ info ] [ HEADER ] array (
+  'host' => 'www.caomao.com',
+  'connection' => 'keep-alive',
+  'upgrade-insecure-requests' => '1',
+  'user-agent' => 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/100.0.4896.88 Safari/537.36',
+  'accept' => 'text/html,application/xhtml+xml,application/xml;q=0.9,image/avif,image/webp,image/apng,*/*;q=0.8,application/signed-exchange;v=b3;q=0.9',
+  'referer' => 'http://www.caomao.com/usezan/index.html',
+  'accept-encoding' => 'gzip, deflate',
+  'accept-language' => 'zh-CN,zh;q=0.9',
+  'cookie' => 'thinkphp_show_page_trace=0|0; thinkphp_show_page_trace=0|0; Hm_lvt_dd05196a1abdf825fc7a76f577ec4144=1636596244,1636623988,1636683797,1637206457; PHPSESSID=c3edcu0555b97284o80pie9750; thinkphp_show_page_trace=0|0',
+)
+[ info ] [ PARAM ] array (
+  'tree' => '164',
+)
+[ info ] [ DB ] INIT mysql
+[ info ] [ VIEW ] ../application/usezan/view/category\tree.html [ array (
+  0 => 'tree_id',
+  1 => 'auth_tree',
+  2 => 'category',
+  3 => 'current_url',
+  4 => 'extend_config',
+  5 => 'module',
+  6 => 'ids',
+  7 => 'tree',
+) ]
+---------------------------------------------------------------
+
+[2022-04-18T10:40:31+08:00] 127.0.0.1 GET www.caomao.com/usezan/category/index?tree=56
+[运行时间：0.086700s] [吞吐率：11.53req/s] [内存消耗：940.90kb] [文件加载：113]
+[ info ] [ LANG ] D:\Web\www.caomaokj.com\application\usezan\\lang\cn.php
+[ info ] [ ROUTE ] array (
+)
+[ info ] [ HEADER ] array (
+  'host' => 'www.caomao.com',
+  'connection' => 'keep-alive',
+  'upgrade-insecure-requests' => '1',
+  'user-agent' => 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/100.0.4896.88 Safari/537.36',
+  'accept' => 'text/html,application/xhtml+xml,application/xml;q=0.9,image/avif,image/webp,image/apng,*/*;q=0.8,application/signed-exchange;v=b3;q=0.9',
+  'referer' => 'http://www.caomao.com/usezan/index.html',
+  'accept-encoding' => 'gzip, deflate',
+  'accept-language' => 'zh-CN,zh;q=0.9',
+  'cookie' => 'thinkphp_show_page_trace=0|0; thinkphp_show_page_trace=0|0; Hm_lvt_dd05196a1abdf825fc7a76f577ec4144=1636596244,1636623988,1636683797,1637206457; PHPSESSID=c3edcu0555b97284o80pie9750; thinkphp_show_page_trace=0|0',
+)
+[ info ] [ PARAM ] array (
+  'tree' => '56',
+)
+[ info ] [ DB ] INIT mysql
+[ info ] [ VIEW ] ../application/usezan/view/category\index.html [ array (
+  0 => 'tree_id',
+  1 => 'auth_tree',
+  2 => 'category',
+  3 => 'current_url',
+  4 => 'extend_config',
+  5 => 'module',
+  6 => 'cate',
+) ]
+---------------------------------------------------------------
+
+[2022-04-18T10:40:31+08:00] 127.0.0.1 GET www.caomao.com/usezan/category/tree?tree=164
+[运行时间：0.092605s] [吞吐率：10.80req/s] [内存消耗：825.52kb] [文件加载：112]
+[ info ] [ LANG ] D:\Web\www.caomaokj.com\application\usezan\\lang\cn.php
+[ info ] [ ROUTE ] array (
+)
+[ info ] [ HEADER ] array (
+  'host' => 'www.caomao.com',
+  'connection' => 'keep-alive',
+  'upgrade-insecure-requests' => '1',
+  'user-agent' => 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/100.0.4896.88 Safari/537.36',
+  'accept' => 'text/html,application/xhtml+xml,application/xml;q=0.9,image/avif,image/webp,image/apng,*/*;q=0.8,application/signed-exchange;v=b3;q=0.9',
+  'referer' => 'http://www.caomao.com/usezan/index.html',
+  'accept-encoding' => 'gzip, deflate',
+  'accept-language' => 'zh-CN,zh;q=0.9',
+  'cookie' => 'thinkphp_show_page_trace=0|0; thinkphp_show_page_trace=0|0; Hm_lvt_dd05196a1abdf825fc7a76f577ec4144=1636596244,1636623988,1636683797,1637206457; PHPSESSID=c3edcu0555b97284o80pie9750; thinkphp_show_page_trace=0|0',
+)
+[ info ] [ PARAM ] array (
+  'tree' => '164',
+)
+[ info ] [ DB ] INIT mysql
+[ info ] [ VIEW ] ../application/usezan/view/category\tree.html [ array (
+  0 => 'tree_id',
+  1 => 'auth_tree',
+  2 => 'category',
+  3 => 'current_url',
+  4 => 'extend_config',
+  5 => 'module',
+  6 => 'ids',
+  7 => 'tree',
+) ]
+---------------------------------------------------------------
+
+[2022-04-18T10:40:44+08:00] 127.0.0.1 GET www.caomao.com/usezan/category/edit.html?id=110&title=%E7%A8%8E%E5%8A%A1%E5%90%88%E8%A7%84
+[运行时间：0.203917s] [吞吐率：4.90req/s] [内存消耗：829.62kb] [文件加载：119]
+[ info ] [ LANG ] D:\Web\www.caomaokj.com\application\usezan\\lang\cn.php
+[ info ] [ ROUTE ] array (
+)
+[ info ] [ HEADER ] array (
+  'host' => 'www.caomao.com',
+  'connection' => 'keep-alive',
+  'upgrade-insecure-requests' => '1',
+  'user-agent' => 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/100.0.4896.88 Safari/537.36',
+  'accept' => 'text/html,application/xhtml+xml,application/xml;q=0.9,image/avif,image/webp,image/apng,*/*;q=0.8,application/signed-exchange;v=b3;q=0.9',
+  'referer' => 'http://www.caomao.com/usezan/category/tree?tree=164',
+  'accept-encoding' => 'gzip, deflate',
+  'accept-language' => 'zh-CN,zh;q=0.9',
+  'cookie' => 'thinkphp_show_page_trace=0|0; thinkphp_show_page_trace=0|0; Hm_lvt_dd05196a1abdf825fc7a76f577ec4144=1636596244,1636623988,1636683797,1637206457; PHPSESSID=c3edcu0555b97284o80pie9750; thinkphp_show_page_trace=0|0',
+)
+[ info ] [ PARAM ] array (
+  'id' => '110',
+  'title' => '税务合规',
+)
+[ info ] [ DB ] INIT mysql
+[ info ] [ VIEW ] ../application/usezan/view/category\edit.html [ array (
+  0 => 'tree_id',
+  1 => 'category',
+  2 => 'current_url',
+  3 => 'extend_config',
+  4 => 'module',
+  5 => 'select_categorys',
+  6 => 'cate',
+) ]
+[ error ] [8]Trying to access array offset on value of type bool[D:\Web\www.caomaokj.com\runtime\temp\7296b2acb2a1c6bde6717d63930ca29d.php:168]
+---------------------------------------------------------------
+
+[2022-04-18T10:40:52+08:00] 127.0.0.1 GET www.caomao.com/usezan/article/index?tree=101
+[运行时间：0.207983s] [吞吐率：4.81req/s] [内存消耗：2,533.68kb] [文件加载：117]
+[ info ] [ LANG ] D:\Web\www.caomaokj.com\application\usezan\\lang\cn.php
+[ info ] [ ROUTE ] array (
+)
+[ info ] [ HEADER ] array (
+  'host' => 'www.caomao.com',
+  'connection' => 'keep-alive',
+  'upgrade-insecure-requests' => '1',
+  'user-agent' => 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/100.0.4896.88 Safari/537.36',
+  'accept' => 'text/html,application/xhtml+xml,application/xml;q=0.9,image/avif,image/webp,image/apng,*/*;q=0.8,application/signed-exchange;v=b3;q=0.9',
+  'referer' => 'http://www.caomao.com/usezan/index.html',
+  'accept-encoding' => 'gzip, deflate',
+  'accept-language' => 'zh-CN,zh;q=0.9',
+  'cookie' => 'thinkphp_show_page_trace=0|0; Hm_lvt_dd05196a1abdf825fc7a76f577ec4144=1636596244,1636623988,1636683797,1637206457; PHPSESSID=c3edcu0555b97284o80pie9750; thinkphp_show_page_trace=0|0',
+)
+[ info ] [ PARAM ] array (
+  'tree' => '101',
+)
+[ info ] [ DB ] INIT mysql
+[ info ] [ VIEW ] ../application/usezan/view/article\index.html [ array (
+  0 => 'tree_id',
+  1 => 'auth_tree',
+  2 => 'category',
+  3 => 'current_url',
+  4 => 'extend_config',
+  5 => 'list',
+  6 => 'ispos',
+  7 => 'hot_spot',
+) ]
+---------------------------------------------------------------
+
+[2022-04-18T10:41:16+08:00] 127.0.0.1 GET www.caomao.com/usezan/college/index?tree=109
+[运行时间：0.133371s] [吞吐率：7.50req/s] [内存消耗：938.34kb] [文件加载：118]
+[ info ] [ LANG ] D:\Web\www.caomaokj.com\application\usezan\\lang\cn.php
+[ info ] [ ROUTE ] array (
+)
+[ info ] [ HEADER ] array (
+  'host' => 'www.caomao.com',
+  'connection' => 'keep-alive',
+  'upgrade-insecure-requests' => '1',
+  'user-agent' => 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/100.0.4896.88 Safari/537.36',
+  'accept' => 'text/html,application/xhtml+xml,application/xml;q=0.9,image/avif,image/webp,image/apng,*/*;q=0.8,application/signed-exchange;v=b3;q=0.9',
+  'referer' => 'http://www.caomao.com/usezan/index.html',
+  'accept-encoding' => 'gzip, deflate',
+  'accept-language' => 'zh-CN,zh;q=0.9',
+  'cookie' => 'thinkphp_show_page_trace=0|0; Hm_lvt_dd05196a1abdf825fc7a76f577ec4144=1636596244,1636623988,1636683797,1637206457; PHPSESSID=c3edcu0555b97284o80pie9750; thinkphp_show_page_trace=0|0',
+)
+[ info ] [ PARAM ] array (
+  'tree' => '109',
+)
+[ info ] [ DB ] INIT mysql
+[ info ] [ VIEW ] ../application/usezan/view/college\index.html [ array (
+  0 => 'tree_id',
+  1 => 'auth_tree',
+  2 => 'category',
+  3 => 'current_url',
+  4 => 'extend_config',
+  5 => 'list',
+  6 => 'keys',
+) ]
+---------------------------------------------------------------
+
+[2022-04-18T10:50:08+08:00] 127.0.0.1 GET www.caomao.com/usezan/service/index?tree=146
+[运行时间：0.155932s] [吞吐率：6.41req/s] [内存消耗：969.45kb] [文件加载：117]
+[ info ] [ LANG ] D:\Web\www.caomaokj.com\application\usezan\\lang\cn.php
+[ info ] [ ROUTE ] array (
+)
+[ info ] [ HEADER ] array (
+  'host' => 'www.caomao.com',
+  'connection' => 'keep-alive',
+  'upgrade-insecure-requests' => '1',
+  'user-agent' => 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/100.0.4896.88 Safari/537.36',
+  'accept' => 'text/html,application/xhtml+xml,application/xml;q=0.9,image/avif,image/webp,image/apng,*/*;q=0.8,application/signed-exchange;v=b3;q=0.9',
+  'referer' => 'http://www.caomao.com/usezan/index.html',
+  'accept-encoding' => 'gzip, deflate',
+  'accept-language' => 'zh-CN,zh;q=0.9',
+  'cookie' => 'thinkphp_show_page_trace=0|0; Hm_lvt_dd05196a1abdf825fc7a76f577ec4144=1636596244,1636623988,1636683797,1637206457; PHPSESSID=c3edcu0555b97284o80pie9750; thinkphp_show_page_trace=0|0',
+)
+[ info ] [ PARAM ] array (
+  'tree' => '146',
+)
+[ info ] [ DB ] INIT mysql
+[ info ] [ VIEW ] ../application/usezan/view/service\index.html [ array (
+  0 => 'tree_id',
+  1 => 'auth_tree',
+  2 => 'category',
+  3 => 'current_url',
+  4 => 'extend_config',
+  5 => 'list',
+  6 => 'status',
+) ]
+---------------------------------------------------------------
+
+[2022-04-18T10:50:12+08:00] 127.0.0.1 GET www.caomao.com/usezan/service/edit/id/24.html
+[运行时间：0.139711s] [吞吐率：7.16req/s] [内存消耗：695.77kb] [文件加载：124]
+[ info ] [ LANG ] D:\Web\www.caomaokj.com\application\usezan\\lang\cn.php
+[ info ] [ ROUTE ] array (
+)
+[ info ] [ HEADER ] array (
+  'host' => 'www.caomao.com',
+  'connection' => 'keep-alive',
+  'upgrade-insecure-requests' => '1',
+  'user-agent' => 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/100.0.4896.88 Safari/537.36',
+  'accept' => 'text/html,application/xhtml+xml,application/xml;q=0.9,image/avif,image/webp,image/apng,*/*;q=0.8,application/signed-exchange;v=b3;q=0.9',
+  'referer' => 'http://www.caomao.com/usezan/service/index?tree=146',
+  'accept-encoding' => 'gzip, deflate',
+  'accept-language' => 'zh-CN,zh;q=0.9',
+  'cookie' => 'thinkphp_show_page_trace=0|0; thinkphp_show_page_trace=0|0; Hm_lvt_dd05196a1abdf825fc7a76f577ec4144=1636596244,1636623988,1636683797,1637206457; PHPSESSID=c3edcu0555b97284o80pie9750; thinkphp_show_page_trace=0|0',
+)
+[ info ] [ PARAM ] array (
+  'id' => '24',
+)
+[ info ] [ DB ] INIT mysql
+[ info ] [ VIEW ] ../application/usezan/view/service\edit.html [ array (
+  0 => 'tree_id',
+  1 => 'category',
+  2 => 'current_url',
+  3 => 'extend_config',
+  4 => 'service',
+) ]
+[ error ] [8]Trying to access array offset on value of type bool[D:\Web\www.caomaokj.com\runtime\temp\787ea12e996510e2fe0dca50967a4c87.php:139]
+---------------------------------------------------------------
+
+[2022-04-18T11:47:19+08:00] 127.0.0.1 GET www.caomao.com/index
+[运行时间：0.275131s] [吞吐率：3.63req/s] [内存消耗：1,787.88kb] [文件加载：126]
+[ info ] [ ROUTE ] array (
+)
+[ info ] [ HEADER ] array (
+  'host' => 'www.caomao.com',
+  'upgrade-insecure-requests' => '1',
+  'user-agent' => 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/100.0.4896.88 Safari/537.36',
+  'accept' => 'text/html,application/xhtml+xml,application/xml;q=0.9,image/avif,image/webp,image/apng,*/*;q=0.8,application/signed-exchange;v=b3;q=0.9',
+  'referer' => 'http://www.caomao.com/index/college',
+  'accept-encoding' => 'gzip, deflate',
+  'accept-language' => 'zh-CN,zh;q=0.9',
+  'cookie' => 'thinkphp_show_page_trace=0|0; Hm_lvt_dd05196a1abdf825fc7a76f577ec4144=1636596244,1636623988,1636683797,1637206457; PHPSESSID=c3edcu0555b97284o80pie9750; thinkphp_show_page_trace=0|0',
+  'connection' => 'close',
+)
+[ info ] [ PARAM ] array (
+)
+[ info ] [ DB ] INIT mysql
+[ info ] [ VIEW ] ../application/index/view/index\index.html [ array (
+  0 => 'service',
+  1 => 'menu',
+  2 => 'continents',
+  3 => 'controller',
+  4 => 'userid',
+  5 => 'username',
+  6 => 'nickname',
+  7 => 'avatar',
+  8 => 'time',
+  9 => 'toolbar',
+  10 => 'wechat',
+  11 => 'serviceData',
+  12 => 'banner',
+  13 => 'hotArticle',
+  14 => 'category',
+  15 => 'leftArticle',
+  16 => 'activity',
+  17 => 'college',
+  18 => 'logistics',
+  19 => 'announcement',
+  20 => 'links',
+) ]
+---------------------------------------------------------------
+
+[2022-04-18T11:47:46+08:00] 127.0.0.1 GET www.caomao.com/index/activity
+[运行时间：0.348559s] [吞吐率：2.87req/s] [内存消耗：850.22kb] [文件加载：120]
+[ info ] [ ROUTE ] array (
+)
+[ info ] [ HEADER ] array (
+  'host' => 'www.caomao.com',
+  'connection' => 'keep-alive',
+  'upgrade-insecure-requests' => '1',
+  'user-agent' => 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/100.0.4896.88 Safari/537.36',
+  'accept' => 'text/html,application/xhtml+xml,application/xml;q=0.9,image/avif,image/webp,image/apng,*/*;q=0.8,application/signed-exchange;v=b3;q=0.9',
+  'referer' => 'http://www.caomao.com/index',
+  'accept-encoding' => 'gzip, deflate',
+  'accept-language' => 'zh-CN,zh;q=0.9',
+  'cookie' => 'thinkphp_show_page_trace=0|0; Hm_lvt_dd05196a1abdf825fc7a76f577ec4144=1636596244,1636623988,1636683797,1637206457; PHPSESSID=c3edcu0555b97284o80pie9750; thinkphp_show_page_trace=0|0',
+)
+[ info ] [ PARAM ] array (
+)
+[ info ] [ DB ] INIT mysql
+[ info ] [ VIEW ] ../application/index/view/activity\index.html [ array (
+  0 => 'service',
+  1 => 'menu',
+  2 => 'continents',
+  3 => 'controller',
+  4 => 'userid',
+  5 => 'username',
+  6 => 'nickname',
+  7 => 'avatar',
+  8 => 'time',
+  9 => 'toolbar',
+  10 => 'wechat',
+  11 => 'title',
+  12 => 'banner',
+  13 => 'phoneBanner',
+  14 => 'category',
+  15 => 'keyword',
+  16 => 'typeName',
+  17 => 'timeName',
+  18 => 'activity',
+  19 => 'count',
+) ]
+---------------------------------------------------------------
+
+[2022-04-18T12:43:59+08:00] 127.0.0.1 GET www.caomao.com/usezan/category/tree?tree=164
+[运行时间：0.083616s] [吞吐率：11.96req/s] [内存消耗：825.52kb] [文件加载：112]
+[ info ] [ LANG ] D:\Web\www.caomaokj.com\application\usezan\\lang\cn.php
+[ info ] [ ROUTE ] array (
+)
+[ info ] [ HEADER ] array (
+  'host' => 'www.caomao.com',
+  'upgrade-insecure-requests' => '1',
+  'user-agent' => 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/100.0.4896.88 Safari/537.36',
+  'accept' => 'text/html,application/xhtml+xml,application/xml;q=0.9,image/avif,image/webp,image/apng,*/*;q=0.8,application/signed-exchange;v=b3;q=0.9',
+  'referer' => 'http://www.caomao.com/usezan/index.html',
+  'accept-encoding' => 'gzip, deflate',
+  'accept-language' => 'zh-CN,zh;q=0.9',
+  'cookie' => 'thinkphp_show_page_trace=0|0; thinkphp_show_page_trace=0|0; Hm_lvt_dd05196a1abdf825fc7a76f577ec4144=1636596244,1636623988,1636683797,1637206457; PHPSESSID=c3edcu0555b97284o80pie9750; thinkphp_show_page_trace=0|0',
+  'connection' => 'close',
+)
+[ info ] [ PARAM ] array (
+  'tree' => '164',
+)
+[ info ] [ DB ] INIT mysql
+[ info ] [ VIEW ] ../application/usezan/view/category\tree.html [ array (
+  0 => 'tree_id',
+  1 => 'auth_tree',
+  2 => 'category',
+  3 => 'current_url',
+  4 => 'extend_config',
+  5 => 'module',
+  6 => 'ids',
+  7 => 'tree',
+) ]
+---------------------------------------------------------------
+
+[2022-04-18T12:44:23+08:00] 127.0.0.1 GET www.caomao.com/usezan/category/index?tree=56
+[运行时间：0.088815s] [吞吐率：11.26req/s] [内存消耗：940.89kb] [文件加载：113]
+[ info ] [ LANG ] D:\Web\www.caomaokj.com\application\usezan\\lang\cn.php
+[ info ] [ ROUTE ] array (
+)
+[ info ] [ HEADER ] array (
+  'host' => 'www.caomao.com',
+  'upgrade-insecure-requests' => '1',
+  'user-agent' => 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/100.0.4896.88 Safari/537.36',
+  'accept' => 'text/html,application/xhtml+xml,application/xml;q=0.9,image/avif,image/webp,image/apng,*/*;q=0.8,application/signed-exchange;v=b3;q=0.9',
+  'referer' => 'http://www.caomao.com/usezan/index.html',
+  'accept-encoding' => 'gzip, deflate',
+  'accept-language' => 'zh-CN,zh;q=0.9',
+  'cookie' => 'thinkphp_show_page_trace=0|0; thinkphp_show_page_trace=0|0; Hm_lvt_dd05196a1abdf825fc7a76f577ec4144=1636596244,1636623988,1636683797,1637206457; PHPSESSID=c3edcu0555b97284o80pie9750; thinkphp_show_page_trace=0|0',
+  'connection' => 'close',
+)
+[ info ] [ PARAM ] array (
+  'tree' => '56',
+)
+[ info ] [ DB ] INIT mysql
+[ info ] [ VIEW ] ../application/usezan/view/category\index.html [ array (
+  0 => 'tree_id',
+  1 => 'auth_tree',
+  2 => 'category',
+  3 => 'current_url',
+  4 => 'extend_config',
+  5 => 'module',
+  6 => 'cate',
+) ]
+---------------------------------------------------------------
+
+[2022-04-18T12:44:42+08:00] 127.0.0.1 GET www.caomao.com/usezan/category/tree?tree=164
+[运行时间：0.075512s] [吞吐率：13.24req/s] [内存消耗：825.52kb] [文件加载：112]
+[ info ] [ LANG ] D:\Web\www.caomaokj.com\application\usezan\\lang\cn.php
+[ info ] [ ROUTE ] array (
+)
+[ info ] [ HEADER ] array (
+  'host' => 'www.caomao.com',
+  'upgrade-insecure-requests' => '1',
+  'user-agent' => 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/100.0.4896.88 Safari/537.36',
+  'accept' => 'text/html,application/xhtml+xml,application/xml;q=0.9,image/avif,image/webp,image/apng,*/*;q=0.8,application/signed-exchange;v=b3;q=0.9',
+  'referer' => 'http://www.caomao.com/usezan/index.html',
+  'accept-encoding' => 'gzip, deflate',
+  'accept-language' => 'zh-CN,zh;q=0.9',
+  'cookie' => 'thinkphp_show_page_trace=0|0; thinkphp_show_page_trace=0|0; Hm_lvt_dd05196a1abdf825fc7a76f577ec4144=1636596244,1636623988,1636683797,1637206457; PHPSESSID=c3edcu0555b97284o80pie9750; thinkphp_show_page_trace=0|0',
+  'connection' => 'close',
+)
+[ info ] [ PARAM ] array (
+  'tree' => '164',
+)
+[ info ] [ DB ] INIT mysql
+[ info ] [ VIEW ] ../application/usezan/view/category\tree.html [ array (
+  0 => 'tree_id',
+  1 => 'auth_tree',
+  2 => 'category',
+  3 => 'current_url',
+  4 => 'extend_config',
+  5 => 'module',
+  6 => 'ids',
+  7 => 'tree',
+) ]
+---------------------------------------------------------------
+
+[2022-04-18T14:53:07+08:00] 127.0.0.1 GET www.caomao.com/usezan/activity/index?tree=97
+[运行时间：0.175125s] [吞吐率：5.71req/s] [内存消耗：960.62kb] [文件加载：118]
+[ info ] [ LANG ] D:\Web\www.caomaokj.com\application\usezan\\lang\cn.php
+[ info ] [ ROUTE ] array (
+)
+[ info ] [ HEADER ] array (
+  'host' => 'www.caomao.com',
+  'upgrade-insecure-requests' => '1',
+  'user-agent' => 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/100.0.4896.88 Safari/537.36',
+  'accept' => 'text/html,application/xhtml+xml,application/xml;q=0.9,image/avif,image/webp,image/apng,*/*;q=0.8,application/signed-exchange;v=b3;q=0.9',
+  'referer' => 'http://www.caomao.com/usezan/index.html',
+  'accept-encoding' => 'gzip, deflate',
+  'accept-language' => 'zh-CN,zh;q=0.9',
+  'cookie' => 'thinkphp_show_page_trace=0|0; Hm_lvt_dd05196a1abdf825fc7a76f577ec4144=1636596244,1636623988,1636683797,1637206457; PHPSESSID=c3edcu0555b97284o80pie9750; thinkphp_show_page_trace=0|0',
+  'connection' => 'close',
+)
+[ info ] [ PARAM ] array (
+  'tree' => '97',
+)
+[ info ] [ DB ] INIT mysql
+[ info ] [ VIEW ] ../application/usezan/view/activity\index.html [ array (
+  0 => 'tree_id',
+  1 => 'auth_tree',
+  2 => 'category',
+  3 => 'current_url',
+  4 => 'extend_config',
+  5 => 'list',
+  6 => 'keys',
+) ]
+---------------------------------------------------------------
+
+[2022-04-18T14:53:09+08:00] 127.0.0.1 GET www.caomao.com/usezan/category/index?tree=56
+[运行时间：0.081756s] [吞吐率：12.23req/s] [内存消耗：940.89kb] [文件加载：113]
+[ info ] [ LANG ] D:\Web\www.caomaokj.com\application\usezan\\lang\cn.php
+[ info ] [ ROUTE ] array (
+)
+[ info ] [ HEADER ] array (
+  'host' => 'www.caomao.com',
+  'upgrade-insecure-requests' => '1',
+  'user-agent' => 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/100.0.4896.88 Safari/537.36',
+  'accept' => 'text/html,application/xhtml+xml,application/xml;q=0.9,image/avif,image/webp,image/apng,*/*;q=0.8,application/signed-exchange;v=b3;q=0.9',
+  'referer' => 'http://www.caomao.com/usezan/index.html',
+  'accept-encoding' => 'gzip, deflate',
+  'accept-language' => 'zh-CN,zh;q=0.9',
+  'cookie' => 'thinkphp_show_page_trace=0|0; thinkphp_show_page_trace=0|0; Hm_lvt_dd05196a1abdf825fc7a76f577ec4144=1636596244,1636623988,1636683797,1637206457; PHPSESSID=c3edcu0555b97284o80pie9750; thinkphp_show_page_trace=0|0',
+  'connection' => 'close',
+)
+[ info ] [ PARAM ] array (
+  'tree' => '56',
+)
+[ info ] [ DB ] INIT mysql
+[ info ] [ VIEW ] ../application/usezan/view/category\index.html [ array (
+  0 => 'tree_id',
+  1 => 'auth_tree',
+  2 => 'category',
+  3 => 'current_url',
+  4 => 'extend_config',
+  5 => 'module',
+  6 => 'cate',
+) ]
+---------------------------------------------------------------
+
+[2022-04-18T14:53:10+08:00] 127.0.0.1 GET www.caomao.com/usezan/category/add.html?tree=56
+[运行时间：0.100325s] [吞吐率：9.97req/s] [内存消耗：840.06kb] [文件加载：120]
+[ info ] [ LANG ] D:\Web\www.caomaokj.com\application\usezan\\lang\cn.php
+[ info ] [ ROUTE ] array (
+)
+[ info ] [ HEADER ] array (
+  'host' => 'www.caomao.com',
+  'upgrade-insecure-requests' => '1',
+  'user-agent' => 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/100.0.4896.88 Safari/537.36',
+  'accept' => 'text/html,application/xhtml+xml,application/xml;q=0.9,image/avif,image/webp,image/apng,*/*;q=0.8,application/signed-exchange;v=b3;q=0.9',
+  'referer' => 'http://www.caomao.com/usezan/category/index?tree=56',
+  'accept-encoding' => 'gzip, deflate',
+  'accept-language' => 'zh-CN,zh;q=0.9',
+  'cookie' => 'thinkphp_show_page_trace=0|0; thinkphp_show_page_trace=0|0; Hm_lvt_dd05196a1abdf825fc7a76f577ec4144=1636596244,1636623988,1636683797,1637206457; PHPSESSID=c3edcu0555b97284o80pie9750; thinkphp_show_page_trace=0|0',
+  'connection' => 'close',
+)
+[ info ] [ PARAM ] array (
+  'tree' => '56',
+)
+[ info ] [ DB ] INIT mysql
+[ info ] [ VIEW ] ../application/usezan/view/category\add.html [ array (
+  0 => 'tree_id',
+  1 => 'auth_tree',
+  2 => 'category',
+  3 => 'current_url',
+  4 => 'extend_config',
+  5 => 'module',
+  6 => 'select_categorys',
+  7 => 'inmd',
+) ]
+[ error ] [8]Trying to access array offset on value of type bool[D:\Web\www.caomaokj.com\runtime\temp\722eff7066922dfac6c45a7330757c80.php:165]
+---------------------------------------------------------------
+
+[2022-04-18T14:53:15+08:00] 127.0.0.1 GET www.caomao.com/usezan/category/index?tree=56
+[运行时间：0.087671s] [吞吐率：11.41req/s] [内存消耗：940.89kb] [文件加载：113]
+[ info ] [ LANG ] D:\Web\www.caomaokj.com\application\usezan\\lang\cn.php
+[ info ] [ ROUTE ] array (
+)
+[ info ] [ HEADER ] array (
+  'host' => 'www.caomao.com',
+  'upgrade-insecure-requests' => '1',
+  'user-agent' => 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/100.0.4896.88 Safari/537.36',
+  'accept' => 'text/html,application/xhtml+xml,application/xml;q=0.9,image/avif,image/webp,image/apng,*/*;q=0.8,application/signed-exchange;v=b3;q=0.9',
+  'referer' => 'http://www.caomao.com/usezan/index.html',
+  'accept-encoding' => 'gzip, deflate',
+  'accept-language' => 'zh-CN,zh;q=0.9',
+  'cookie' => 'thinkphp_show_page_trace=0|0; thinkphp_show_page_trace=0|0; Hm_lvt_dd05196a1abdf825fc7a76f577ec4144=1636596244,1636623988,1636683797,1637206457; PHPSESSID=c3edcu0555b97284o80pie9750; thinkphp_show_page_trace=0|0',
+  'connection' => 'close',
+)
+[ info ] [ PARAM ] array (
+  'tree' => '56',
+)
+[ info ] [ DB ] INIT mysql
+[ info ] [ VIEW ] ../application/usezan/view/category\index.html [ array (
+  0 => 'tree_id',
+  1 => 'auth_tree',
+  2 => 'category',
+  3 => 'current_url',
+  4 => 'extend_config',
+  5 => 'module',
+  6 => 'cate',
+) ]
+---------------------------------------------------------------
+
+[2022-04-18T14:53:18+08:00] 127.0.0.1 GET www.caomao.com/usezan/article/index?tree=101
+[运行时间：0.089268s] [吞吐率：11.20req/s] [内存消耗：2,400.38kb] [文件加载：115]
+[ info ] [ LANG ] D:\Web\www.caomaokj.com\application\usezan\\lang\cn.php
+[ info ] [ ROUTE ] array (
+)
+[ info ] [ HEADER ] array (
+  'host' => 'www.caomao.com',
+  'upgrade-insecure-requests' => '1',
+  'user-agent' => 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/100.0.4896.88 Safari/537.36',
+  'accept' => 'text/html,application/xhtml+xml,application/xml;q=0.9,image/avif,image/webp,image/apng,*/*;q=0.8,application/signed-exchange;v=b3;q=0.9',
+  'referer' => 'http://www.caomao.com/usezan/index.html',
+  'accept-encoding' => 'gzip, deflate',
+  'accept-language' => 'zh-CN,zh;q=0.9',
+  'cookie' => 'thinkphp_show_page_trace=0|0; thinkphp_show_page_trace=0|0; Hm_lvt_dd05196a1abdf825fc7a76f577ec4144=1636596244,1636623988,1636683797,1637206457; PHPSESSID=c3edcu0555b97284o80pie9750; thinkphp_show_page_trace=0|0',
+  'connection' => 'close',
+)
+[ info ] [ PARAM ] array (
+  'tree' => '101',
+)
+[ info ] [ DB ] INIT mysql
+[ info ] [ VIEW ] ../application/usezan/view/article\index.html [ array (
+  0 => 'tree_id',
+  1 => 'auth_tree',
+  2 => 'category',
+  3 => 'current_url',
+  4 => 'extend_config',
+  5 => 'list',
+  6 => 'ispos',
+  7 => 'hot_spot',
+) ]

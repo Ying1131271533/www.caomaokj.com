@@ -1,0 +1,681 @@
+.activity-detail .geek-banner {
+    background: #fff;
+    /* margin-top: 10px */
+}
+
+.activity-detail .geek-banner .banner-text {
+    padding: 0 10px
+}
+
+.activity-detail .price-text {
+    padding: 10px;
+    background: #fff;
+    /* margin: 10px 0; */
+    font-size: 0.14rem
+}
+
+.activity-detail .geek-banner .banner-img {
+    width: 100%
+}
+
+.activity-detail .geek-banner .banner-img img {
+    width: 100%;
+    height: 100%
+}
+
+.activity-detail .geek-banner .banner-text>h4 {
+    font-size: 0.18rem;
+    padding: 10px 0;
+    font-weight: normal;
+    color: #1b1b1b
+}
+
+.activity-detail .activity-text div {
+    padding: 8px 0;
+    font-size: 0.14rem;
+    border-bottom: 1px solid #eee
+}
+
+.activity-detail .activity-ticket {
+    width: 100%
+}
+
+.activity-detail .activity-ticket .ticket {
+    width: 40%;
+    height: 33px;
+    border: 1px solid #ddd;
+    color: #aaa;
+    padding: 2px 10px 5px;
+    margin-top: 10px;
+    position: relative
+}
+
+.activity-detail .activity-ticket .ticket div>span {
+    font-size: 0.14rem
+}
+
+.activity-ticket .selected {
+    border-color: #ff8d00
+}
+
+.activity-ticket .selected i {
+    width: 0;
+    height: 0;
+    border-bottom: 15px solid #ff8d00;
+    border-left: 15px solid transparent;
+    position: absolute;
+    right: 0;
+    bottom: 0
+}
+
+.activity-ticket .selected:before {
+    content: "\2713";
+    color: #fff;
+    font-size: 12px;
+    position: absolute;
+    right: 0;
+    bottom: -14px;
+    z-index: 999
+}
+
+.activity-detail .activity-ticket .disabled {
+    border: 1px dotted #ddd
+}
+
+.activity-detail .activity-btn {
+    width: 100%;
+    margin-top: 20px
+}
+
+.activity-detail .activity-btn .btn {
+    display: inline-block;
+    width: 40%;
+    height: 25px;
+    line-height: 28px;
+    text-align: center;
+    padding: 2px 10px 5px;
+    -webkit-border-radius: 2px;
+    -moz-border-radius: 2px;
+    border-radius: 2px
+}
+
+.activity-detail .activity-btn .btn-yellow {
+    background: #ff8d00;
+    color: #fff;
+    margin-right: 8px
+}
+
+.activity-detail .activity-btn .btn-pink {
+    background: #f5f5f5;
+    color: #aaa
+}
+
+.activity-detail .activity-btn .btn-pink .fa-heart {
+    display: inline-block;
+    width: 20px;
+    height: 14px
+}
+
+.activity-content p {
+    margin: 5px 0;
+    line-height: 1.8
+}
+
+.activity-content p * {
+    line-height: 1.8
+}
+
+.sharebox {
+    border-top: 2px solid #8a8a8a;
+    width: 90%;
+    height: 75px;
+    margin: 35px 15px 50px 15px
+}
+
+.sharebox ul {
+    width: 100%;
+    min-height: 20px;
+    overflow: hidden
+}
+
+.sharebox span {
+    width: 80px;
+    height: 45px;
+    font-size: 0.16rem;
+    background: #fff;
+    display: block;
+    margin: 0 auto;
+    margin-top: -23px;
+    text-align: center;
+    line-height: 45px
+}
+
+.sharebox ul li {
+    width: 25%;
+    float: left
+}
+
+.sharebox a {
+    width: 45px;
+    height: 45px;
+    display: block;
+    background: url(../images/m_share.jpg) no-repeat;
+    background-size: 270px;
+    background-position: 7px 0;
+    padding-right: 0;
+    margin-right: 0;
+    position: relative
+}
+
+.sharebox a {
+    background-position: -74px 0px
+}
+
+.sharebox a h4 {
+    font-size: 0.1rem;
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    height: 12px;
+    line-height: 12px;
+    width: 100%;
+    text-align: center;
+    color: #333
+}
+
+.sharebox ul li:nth-child(2) a {
+    background-position: -74px 0px
+}
+
+.sharebox ul li:nth-child(2) a,
+.sharebox ul li:nth-child(3) a {
+    margin: 0 auto
+}
+
+.sharebox ul li:nth-child(3) a {
+    background-position: -154px 0px
+}
+
+.sharebox ul li:nth-child(4) a {
+    background-position: -233px 0px
+}
+
+.sharebox ul li:nth-child(4) a {
+    float: right
+}
+
+.shareTips {
+    position: fixed;
+    top: 0px;
+    left: 0px;
+    display: none;
+    width: 100%;
+    height: 100%;
+    z-index: 999999;
+    background: rgba(0, 0, 0, 0.69);
+    max-width: 640px;
+    left: 50% !important;
+    right: auto;
+    -webkit-transform: translateX(-50%);
+    -moz-transform: translateX(-50%);
+    -ms-transform: translateX(-50%);
+    -o-transform: translateX(-50%);
+    transform: translateX(-50%);
+    width: 100%
+}
+
+.shareTips img {
+    width: 90%;
+    float: none;
+    margin-right: 0;
+    position: absolute;
+    top: 30%;
+    left: 11%;
+    margin-left: -0.128rem
+}
+
+.shareTips .tips_close {
+    position: absolute;
+    width: 68%;
+    height: 0.338rem;
+    line-height: 0.338rem;
+    text-align: center;
+    top: 54%;
+    left: 16%;
+    font-size: 0.16rem;
+    color: #fff;
+    border: 1px solid #fff;
+    border-radius: 0.03rem
+}
+
+.activity-detail .activity-content {
+    background: #fff;
+    margin-top: 10px;
+    padding: 10px;
+    font-size: 14px
+}
+
+.activity-detail .activity-content .tag {
+    padding: 15px 0 5px
+}
+
+.activity-detail .activity-content .tag a {
+    color: #f0a08c;
+    font-size: 0.14rem
+}
+
+.comment {
+    margin-top: 20px;
+    padding: 10px;
+    background: #fff
+}
+
+.comment-input {
+    height: 100px;
+    width: 100%;
+    border: 1px solid #ccc;
+    border-radius: 4px
+}
+
+.comment .sub-comment .sub-btn {
+    width: 80px;
+    background: #ff8d00;
+    color: #fff;
+    height: 34px;
+    border-radius: 2px;
+    float: right
+}
+
+.comment-div {
+    width: 100%;
+    min-height: 50px;
+    overflow: hidden;
+    margin-bottom: 50px
+}
+
+.crtit {
+    width: 100%;
+    height: 30px;
+    border-bottom: 1px solid #d2d2d2;
+    position: relative
+}
+
+.crtit span {
+    width: 95%;
+    border-left: 4px solid #ff6500;
+    height: 13px;
+    display: block;
+    font-size: 0.14rem;
+    line-height: 13px;
+    position: absolute;
+    top: 7px;
+    text-indent: 5px
+}
+
+.comment-div ul li {
+    width: 100%;
+    height: auto;
+    padding: 15px 0;
+    border-bottom: 1px solid #e0e0e0;
+    float: left
+}
+
+.pl-list-tit {
+    width: 100%;
+    float: left;
+    height: 37px
+}
+
+.pl-list-tit img {
+    width: 37px;
+    height: 37px;
+    border-radius: 40px;
+    overflow: hidden;
+    display: block;
+    float: left
+}
+
+img {
+    border: 0;
+    vertical-align: middle
+}
+
+.pl-list-wen {
+    width: 60%;
+    height: 30px;
+    float: left;
+    margin-left: 3%
+}
+
+.wen1 {
+    color: #000;
+    display: block;
+    font-size: 0.13rem !important;
+    float: left;
+    height: 14px;
+    width: 100%;
+    margin-bottom: 5px;
+    line-height: 14px !important
+}
+
+.pl-list-wen span.wen2,
+.xf .wen2 {
+    color: #9f9f9f;
+    display: block;
+    float: left;
+    width: 100%;
+    font-size: 0.1rem;
+    line-height: 15px
+}
+
+p.pl-wen {
+    width: 85%;
+    float: left;
+    margin-left: 45px;
+    font-size: 0.13rem;
+    color: #000;
+    line-height: 20px;
+    margin-top: 5px;
+    padding-bottom: 0
+}
+
+.ticket .af_price {
+    color: #555;
+}
+
+.sale div,
+.sale span {
+    color: #999;
+}
+
+.disabled div,
+.disabled span {
+    color: #ccc;
+}
+
+.yellow {
+    color: #ff8d00 !important;
+}
+
+.yellow .fa {
+    color: #aaa
+}
+
+.join-operation {
+    position: fixed;
+    bottom: 0;
+    background: #fafafa;
+    width: 100%;
+    max-width: 636px;
+    -webkit-box-sizing: border-box;
+    -moz-box-sizing: border-box;
+    box-sizing: border-box;
+    height: 50px
+}
+
+.btn-operation li {
+    display: initial
+}
+
+.btn-operation li:first-child::after {
+    content: '';
+    display: inline-block;
+    width: 0;
+    height: 24px;
+    border: 1px solid #ededed;
+    vertical-align: -webkit-baseline-middle
+}
+
+.btn-operation .btn {
+    height: 50px;
+    font-size: 14px;
+    color: #b1b1b1;
+    background: transparent;
+    min-width: 100px
+}
+
+.btn-operation .btn i {
+    font-size: 18px
+}
+
+.remain {
+    color: #999;
+    font-size: 12px
+}
+
+.btn-operation .btn-join {
+    background: #ff8d00;
+    color: #fff;
+    font-size: 16px
+}
+
+.btn-next {
+    width: 130px;
+    background: #ff8d00;
+    color: #fff;
+    font-size: 16px
+}
+
+.choose-price {
+    font-size: 14px;
+    background: #fff;
+    width: 100%;
+    max-width: 636px;
+    ;
+    position: fixed;
+    bottom: 0;
+    display: none
+}
+
+.choose-price .ticket-header {
+    line-height: 35px
+}
+
+.choose-price .ticket-header,
+.choose-price .activity-ticket {
+    padding: 0 10px
+}
+
+.activity-text .fa {
+    color: #aaa;
+    width: 16px
+}
+
+.choose-price .ticket-footer {
+    height: 45px;
+    line-height: 45px;
+    padding-left: 10px;
+    font-size: 16px
+}
+
+.choose-price .ticket-footer .btn-next {
+    height: 45px
+}
+
+.choose-price .ticket-list {
+    height: 40px;
+    line-height: 40px;
+    padding: 0 10px;
+    margin: 10px 0;
+    border: 1px solid #ededed;
+    position: relative;
+}
+
+.choose-price .ticket-list .t {
+    width: 50%;
+    display: inline-block;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+}
+
+.activity-original-price {
+    text-decoration: line-through;
+    color: #999;
+}
+
+.choose-price .ticket-list.selected {
+    border-color: #ff8d00
+}
+
+.vip-activity {
+    background: #fff;
+    padding: 10px;
+    margin: 10px 0
+}
+
+.vip-activity .vip-box {
+    background: #464a53;
+    border-radius: 8px;
+    height: 118px;
+    position: relative
+}
+
+.vip-activity .vip-tooltip {
+    position: absolute;
+    width: 52px
+}
+
+.vip-activity .vip-tooltip img {
+    width: 100%
+}
+
+.vip-activity .box-left {
+    line-height: 118px;
+    padding: 0 15px
+}
+
+.vip-activity .vip-logo {
+    width: 62px;
+    height: 62px;
+    border-radius: 50%
+}
+
+.vip-activity .box-main {
+    color: #fff;
+    font-size: 14px;
+    padding: 10px
+}
+
+.vip-activity .box-main .media-heading {
+    font-weight: bold;
+    margin-bottom: 6px
+}
+
+.vip-activity .box-main .media-text {
+    height: 44px;
+    line-height: 22px;
+    overflow: hidden;
+    margin-bottom: 6px
+}
+
+.vip-activity .box-main a {
+    color: #ff8d00;
+    margin-right: 30px
+}
+
+.container-foot div:last-child {
+    height: 60px
+}
+
+.comment-list {
+    margin: 0 10px;
+    width: auto;
+    color: #555;
+    font-size: 14px
+}
+
+.comment-list h4 {
+    border-bottom: 1px solid #ededed;
+    height: 40px;
+    line-height: 40px
+}
+
+.head_story {
+    padding-top: 10px
+}
+
+.comment-list ul li .head_story img {
+    width: 34px;
+    height: 34px;
+    border-radius: 34px;
+    float: left
+}
+
+.comment-list ul li .head_story>div>div {
+    float: left;
+    line-height: 34px;
+    padding-left: 10px;
+    color: #555
+}
+
+.head_story>.fr {
+    line-height: 34px;
+    color: #555
+}
+
+.Triangle {
+    background: #f5f5f5;
+    padding: 5px
+}
+
+.Triangle .name {
+    color: #272d2d;
+    padding: 5px 0 3px 0
+}
+
+.Triangle .comment_text {
+    color: #555
+}
+
+.story_c {
+    font-size: 0.14rem;
+    padding: 5px 0px 10px;
+    color: #555;
+    line-height: 0.18rem
+}
+
+.footer_story {
+    padding-bottom: 10px
+}
+
+.footer_story>.fr {
+    color: #555
+}
+
+.footer_story>.fr .comment {
+    margin-right: 10px
+}
+
+.footer_story .comment {
+    padding-left: 20px
+}
+
+.prompt {
+    width: 100%;
+    border: 1px solid #f5f5f5;
+    margin-top: 10px;
+    text-align: center;
+    line-height: 80px;
+    height: 80px
+}
+
+.prompt a {
+    color: #ff8d00;
+    font-size: 16px
+}
+
+.prompt span {
+    padding: 5px 20px;
+    color: #757575;
+    font-weight: normal;
+    background: #f5f5f5
+}
+
+.story_c .comment_text {
+    padding: 5px
+}
+
+.content_jzc img {
+    max-width: 100%;
+}

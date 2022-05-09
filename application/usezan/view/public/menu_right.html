@@ -1,0 +1,5 @@
+{if condition="isset($auth_tree) and $auth_tree"}
+{volist name="auth_tree" id="vo"}
+<a class="add-edit class-{$vo['id']}{if condition="$current_url eq $vo['name']"} onn{/if}" href="{:url($vo['name'])}?tree={$vo['parentid']}">[<b class="uzfont {$vo['uzico']}"></b>{$vo['title']}]</a>
+{/volist}
+{/if}

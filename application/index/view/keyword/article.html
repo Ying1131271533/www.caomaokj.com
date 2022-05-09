@@ -1,0 +1,234 @@
+{extend name="layout/base" /}
+{block name="title"}{$keyword.name}{/block}
+{block name="load"}
+<!-- css -->
+<link href="__ACSS__/home.css" rel="stylesheet" type="text/css">
+<link href="__ACSS__/keyword_article.css" rel="stylesheet" type="text/css">
+<link type="text/css" rel="stylesheet" href="__ACSS__/laypage.css" id="laypagecss">
+<!-- js -->
+<script type="text/javascript" src="__AJS__/jquery.lazyload.js"></script>
+<script type="text/javascript" src="__AJS__/laypage.js"></script>
+{/block}
+<!-- 主体内容 -->
+{block name="main"}
+<div class="container body-container">
+    <style>
+        .icon {
+            width: 28px;
+            height: 28px;
+            vertical-align: -0.5em;
+        }
+
+        .hot-article {
+            width: 100% !important;
+        }
+
+        .hot-article span {
+            padding-left: 15px !important;
+        }
+
+        .hot-user li {
+            padding: 15px 15px 10px 16px !important;
+        }
+    </style>
+    <div class="site-index">
+        <div style="width:100%;height: 25px;line-height: 50px;">
+            <span>
+                <a href="/"><svg class="icon" aria-hidden="true">
+                    <use xlink:href="#icon-shouye2"></use>
+                    </svg>首页 &gt;
+                </a>
+            </span>
+            <span><a href="{:url('keyword/index')}">全部热门话题</a> &gt;</span>
+            <span>{$keyword.name}</span>
+        </div>
+        <!--    <div class="keyword-header">
+        <h3>关键词"网易支付"</h3>
+    </div>-->
+        <input type="hidden" value="{$countList}" id="countList">
+        <input type="hidden" value="{$keyword.id}" id="keywordId">
+        <div class="left_cont">
+            <div class="keyword-header">
+                <div class="keywords-box">
+                    <div class="media">
+                        <div class="media-left">
+                            <a href="javascript:;">
+                                <img src="__ICON__/icon-title.png" width="90" height="90" alt="">
+                            </a>
+                        </div>
+                        <div class="media-body clearfix">
+                            <div class="title-left pull-left">
+                                <h3>{$keyword.name}</h3>
+                                <!-- <span class="sub-time">创建时间：</span> -->
+                            </div>
+                            <div class="hidden-box hidden-xs">
+                                <p class="font-gray keywords-detail clearfix">
+                                    草帽跨境旗下{$keyword.name}专栏，这里有关于{$keyword.name}行业资讯、新闻图片、跨境头条等内容，草帽跨境致力于为跨境电商卖家提供一个优质的跨境电商平台! </p>
+                                <p class="font-gray keywords-detail clearfix">以下是草帽跨境为您找到的所有关于
+                                    <a href="javascript:;" class="blue-color">"{$keyword.name}"</a> 的内容信息。
+                                </p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <ul class="article_body">
+
+                {foreach $articleList as $value}
+                <li class="article_li">
+                    <dl class="wz_info clearfix">
+                        <dt>
+                            <a href="{:url('home/article', ['id' => $value.id])}" title="{$value.title}">
+                                <img class="lazy" data-original="{$value.thumb}" src="{$value.thumb}" alt="{$value.title}" style="display: inline;">
+                            </a>
+                        </dt>
+                        <dd>
+                            <h4>
+                                <a href="{:url('home/article', ['id' => $value.id])}" title="{$value.title}">{$value.title}</a>
+                            </h4>
+                            <p>
+                                <a href="{:url('home/article', ['id' => $value.id])}" title="{$value.title}">{$value.description}</a>
+                            </p>
+                            <div class="bot_tips clearfix">
+                                <span class="post-label">
+                                    <span>草帽跨境</span>
+                                    <span class="margin_left10">{:postTime($value.createtime)}</span>
+                                    <span class="post-tags">
+                                    </span>
+                                </span>
+                            </div>
+                        </dd>
+                    </dl>
+                </li>
+                {/foreach}
+                
+            </ul>
+
+            <!-- 分页-->
+            <div id="laypage" class="laypage"></div>
+
+            <!--------底部关键词开始-------->
+            <!-- <div style="width: 100%;padding-bottom: 30px;margin-bottom: 30px;background: #fff;">
+                <div class="bottom_keywords">
+                    <div class="related_articles_tips">关注热点</div>
+                    <div class="keywords_list">
+                        <div class="keywords_title_jzc">
+                            <a target="_blank" href="https://www.caomaokj.com/keyword/1520">第三方支付 </a>
+                        </div>
+                        <div class="keywords_title_jzc">
+                            <a target="_blank" href="https://www.caomaokj.com/keyword/8872">ebay托管支付平台 </a>
+                        </div>
+                    </div>
+                </div>
+            </div> -->
+
+        </div>
+
+        <div class="index-right">
+
+            <!-- top10 -->
+            <!-- <div style="margin-top: 20px;"></div> -->
+            <div class="hot_article_list_right">
+                <div class="hot_spot">
+                    <div class="like_line">猜你喜欢</div>
+                </div>
+
+                {foreach $articleLike as $value}
+                <div class="hot_spot_list">
+                    <a href="{:url('home/article', ['id' => $value.id])}">{$value.title}</a>
+                    <p class="right_article_jzc_time">{:date('Y-m-d', $value.createtime)}</p>
+                </div>
+                {/foreach}
+
+            </div>
+            <!-- 文章热门标签 -->
+            <!--        <div style="margin-top: 20px;">-->
+            <!--            -->
+            <!--        </div>-->
+        </div>
+    </div>
+    <script>
+
+        $(function() {
+            var pageSize = 10;
+            laypage({
+                cont: 'laypage', //容器。值支持id名、原生dom对象，jquery对象。【如该容器为】：<div id="page1"></div>
+                pages: Math.ceil($("#countList").val() / pageSize), //通过后台拿到的总页数
+                curr: 1,
+                skin: '#fc9d27',
+                first: '首页', //若不显示，设置false即可
+                last: '尾页', //若不显示，设置false即可
+                prev: '<', //若不显示，设置false即可
+                next: '>', //若不显示，设置false即可
+                jump: function(obj, first) { //触发分页后的回调
+                    if (!first) { //点击跳页触发函数自身，并传递当前页：obj.curr
+                        getList(obj.curr);
+                    }
+                }
+            });
+
+            //如果当前页数是1页，则隐藏分页
+            var page_total = Math.ceil($("#countList").val() / pageSize);
+            if (page_total <= 1) {
+                $('#laypage').hide();
+            }
+        });
+
+        function getList(page) {
+            var loadding = layer.load();
+            $.ajax({
+                url: "/index/home_api/keywordArticle",
+                type: "POST",
+                data: {
+                    page: page,
+                    keywordId: $("#keywordId").val()
+                },
+                dataType: "json",
+                success: function(json) {
+                    layer.close(loadding);
+                    if (json.code == 200) {
+                        var html = '';
+                        $.each(json.data, function(key, val) {
+                            var url = '/index/home/article/id/' + val.al_id;
+                            html += '<li class="article_li">';
+                            html += '<dl class="wz_info clearfix">';
+                            if (val.al_thumb != '') {
+                                html += '<dt>';
+                                html += '<a href="' + url + '">';
+                                html += '<dt>';
+                                html += '<a href="' + url + '" title="' + val.al_title + '">';
+                                html += '<img class="lazy" src="' + val.al_thumb + '" alt="' + val.al_title + '" style="display: inline;">';
+                                html += '</a>';
+                                html += '</dt>';
+                                html += '<dd>';
+                            }
+                            html += '<h4>';
+                            html += '<a href="' + url + '" title="' + val.al_title + '">' + val.al_title + '</a>';
+                            html += '</h4>';
+                            html += '<p><a href="' + url + '" title="' + val.al_title + '">' + val.al_desc + '</a></p>';
+                            html += '<div class="bot_tips clearfix">';
+                            html += '<span class="post-label">';
+                            html += '<span>草帽跨境</span><span class="margin_left10">' + val.al_post_time; + '</span>';
+                            html += '<span class="post-tags">';
+                            html += '</span>';
+                            html += '</span>';
+                            html += '</div>';
+                            if (val.al_thumb != '') {
+                                html += '</dd>';
+                            }
+                            html += '</dl></li>';
+                        });
+                        $(".article_body").html(html);
+                    } else {
+                        layer.msg(data.msg);
+                    }
+                },
+                error: function() {
+                    layer.close(loadding);
+                    layer.msg('网络错误！');
+                }
+            });
+        }
+    </script>
+</div>
+{/block}

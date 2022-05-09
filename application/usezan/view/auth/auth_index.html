@@ -1,0 +1,56 @@
+{include file="public/header" /}
+<div class="mainbox animated fadeInRight">
+	<div class="mainnav_title">
+	    <a class="on">用户组列表</a>
+		{include file="public/menu_right" /}
+	    <a class="bth-rand fr" href="javascript:location.replace(location.href);" title="刷新"><b class="uzfont uzico-shuaxin"></b></a>
+    </div>
+<div class="table-list">
+    <table width="100%" cellspacing="0">
+        <thead>
+      		<tr>
+				<th width="40">ID</th>
+				<th align="left">{:lang('username')}</th>
+				<th  width="30">{:lang('status')}</th>
+				<th  width="160">{:lang('manage')}</th>
+      		</tr>
+      	</thead>
+      	<tbody>
+      		{volist name="ulist" id="v" key="k"}
+      		<tr>
+				<td align="center">{$v['id']}</td>
+				<td>{$v['title']}</td>
+				<td align="center">
+				{eq name="v['status']" value="1"}
+					{:lang('enable')}
+				{else /}
+					{:lang('disable')}
+				{/eq}
+				</td>
+				<td align="center">
+				  <a href="{:url('auth/auth_edit')}?id={$v['id']}&tree={$tree_id}">{:lang('edit')}</a> |{if condition="$v['id'] neq 1"}
+				  <a data-url="{:url('auth/auth_node')}?id={$v['id']}" class="role-node" href="javascript:;">授权列表</a> |
+				  <a href="javascript:confirm_delete('{:url(\'auth/del\')}?id={$v[\'id\']}&tree={$tree_id}')">{:lang('delete')}</a>
+				  {else /}--------------------{/if}
+              </td>      		
+      		</tr>
+      		{/volist}
+      	</tbody>
+    </table>
+</div>
+</div>
+<div id="pages" class="page">{$ulist|raw}</div>
+<script type="text/javascript">
+$(".role-node").on("click",function () {
+    var node_url = $(this).attr("data-url");
+    layer.open({
+        title:'权限分配[CD代表设置左侧权限菜单]',
+        type: 2,
+        closeBtn: false, //不显示关闭按钮
+        shift: 2,
+        shadeClose: true, //开启遮罩关闭
+        area: ['60%', '80%'],
+        content: node_url
+    });
+});
+</script>

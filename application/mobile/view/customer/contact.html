@@ -1,0 +1,30 @@
+{extend name="layout/base" /}
+{block name="title"}联系客服{/block}
+{block name="load"}
+<!-- css -->
+<link rel="stylesheet" href="__ACSS__/customer-service.css" media="all">
+{/block}
+<!-- 主体内容 -->
+{block name="main"}
+<div class="container body-container">
+    <div class="main-div">
+        <div class="main-box" style="width: 100%;margin-top: 50px;">
+            <div class="title-box">有任何问题都可以联系以下客服，我们将竭尽全力为你解决！</div>
+            <div class="content-box">
+                <div class="contact-box">
+                    <p class="phone-box"><img src="__AIMG__/15968575667085.png">&nbsp;&nbsp;&nbsp;&nbsp;联系电话：&nbsp;&nbsp;&nbsp;13829730554
+                    </p>
+                    <p class="qq-box"><img src="__AIMG__/15968576084420.png">&nbsp;&nbsp;&nbsp;客服QQ：&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;3004630833
+                    </p>
+                    <p class="email-box"><img src="__AIMG__/15968576438781.png">&nbsp;&nbsp;&nbsp;企业邮箱：&nbsp;&nbsp;&nbsp;3004630833@qq.com
+                    </p>
+                </div>
+                <p class="qr-code-box">
+                    <img src="__AIMG__/QR_code/code_caomao_public_big.jpg" alt="草帽跨境公众号">
+                    <span>了解更多资讯，关注草帽跨境公众号</span>
+                </p>
+            </div>
+        </div>
+    </div>
+</div>
+{/block}

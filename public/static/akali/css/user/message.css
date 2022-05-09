@@ -1,0 +1,82 @@
+/*
+To change this license header, choose License Headers in Project Properties.
+To change this template file, choose Tools | Templates
+and open the template in the editor.
+*/
+/*
+    Created on : 2017-5-12, 14:23:41
+    Author     : Administrator
+*/
+.message-box .media-list:first-child {
+	border-top: 1px solid #e5e5e5;
+}
+
+.message-box .media-list {
+	border-bottom: 1px solid #e5e5e5;
+}
+
+.message-box .media-list {
+	padding: 15px 0;
+}
+
+.message-box .media-left {
+	width: 83px;
+}
+
+.message-box .media-object {
+	width: 73px;
+	height: 73px;
+	border-radius: 50%;
+	margin-left: 10px;
+}
+
+.message-box .media-left div {
+	text-align: center;
+	font-size: 16px;
+	padding-top: 5px;
+	overflow: hidden;
+	text-overflow: ellipsis;
+	white-space: nowrap;
+	width: 100px;
+}
+
+.message-box .media-body p {
+	color: #555;
+	line-height: 24px;
+	height: 72px;
+	margin-bottom: 8px;
+	overflow: hidden;
+	text-overflow: ellipsis;
+}
+
+.message-box .bot_tips span {
+	color: #999;
+	font-size: 12px;
+}
+
+.message-box .pull-right .numbers {
+	color: #ff8400;
+}
+
+.message-box .new-message .del {
+	color: #ff8400;
+	font-size: 12px;
+}
+
+.message-box .bot_tips span.bubble-dot-red {
+	margin-top: 20px;
+	margin-right: 7px;
+	font-size: 12px;
+	min-width: 8px;
+	padding: 0 4px;
+	height: 10px;
+	line-height: 10px;
+	text-align: center;
+	border-radius: 50%;
+	background-color: #fe6431;
+	color: #fff;
+}
+
+.message-box p a:hover {
+	color: #1b1b1b;
+}

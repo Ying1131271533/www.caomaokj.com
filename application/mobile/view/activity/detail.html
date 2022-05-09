@@ -1,0 +1,122 @@
+{extend name="layout/base" /}
+{block name="title"}{$activity.title}{/block}
+{block name="load"}
+<!-- css -->
+<link href="__MCSS__/activity_detail.css?{$time}" rel="stylesheet" type="text/css">
+<style>
+    .footer {
+        padding-bottom: 0.2rem;
+    }
+</style>
+
+<!-- js -->
+<script src="__MJS__/activity.js?{$time}" type="text/javascript"></script>
+
+
+
+{/block}
+<!-- 主体内容 -->
+{block name="main"}
+<div class="container" style="margin-top: 5px;">
+    <div class="site-index">
+        <div class="activity-detail clearfix">
+            <input type="hidden" id="user_id" name="user_id" value="{$userid}">
+            <input type="hidden" id="id" name="id" value="{$activity.id}">
+            <div class="geek-banner">
+                <div class="banner-img" style="max-height: 350px; height: 216px;">
+                    <img style="max-width: 100%;max-height: 100%;" src="{$activity.thumb}" alt="{$activity.title}">
+                </div>
+                <div class="banner-text">
+                    <h4>{$activity.title}</h4>
+                    <div class="activity-text">
+                        <div>
+                            <i class="fa fa-clock-o"></i> 时间：<span>{:date('Y-m-d H:i:s', $activity.starttime)} 至
+                                {:date('Y-m-d H:i:s', $activity.endtime)}</span>
+                        </div>
+                        <div>
+                            <i class="fa fa-location-arrow"></i> 地点：<span>{$activity.address}</span>
+                        </div>
+                        <div>
+                            <i class="fa fa-user"></i> 人数：
+                            <span>剩余 <b>{$activity.tickets_num - $activity.apply_num}</b>名
+                            </span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="price-text">
+                <i class="fa fa-gg"></i> 票价：<a class="yellow">{$activity.discount <= 0 ? '免费咨询' : '￥'.$activity.discount} <!-- <i class="fa fa-angle-right"></i> --></a>
+            </div>
+
+            <!-- 活动内容-->
+            <div class="activity-content clearfix">
+                <div class="content_jzc">{$activity.content|raw}</div>
+                <div class="sharebox">
+                    <span>分享</span>
+                    <ul>
+                        <li><a data-app="weixinFriend" class="nativeShare">
+                                <h4>朋友圈</h4>
+                            </a></li>
+                        <li><a data-app="weixin" class="nativeShare">
+                                <h4>好友</h4>
+                            </a></li>
+                        <li class="weibo"><a data-app="sinaWeibo" class="nativeShare">
+                                <h4>微博</h4>
+                            </a></li>
+                        <li class="qzone"><a data-app="QZone" class="nativeShare">
+                                <h4>QQ空间</h4>
+                            </a></li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+        <div class="join-operation clearfix">
+            <ul class="btn-operation">
+                <li>
+                    <a href="{:url('user/activity')}">
+                        <button class="btn">
+                            <i id="collect" class="fa fa-ticket"></i>
+                            <div>我的门票</div>
+                        </button>
+                    </a>
+                </li>
+                <!-- <li>
+                    <a target="_blank" href="https://user.kuajingyan.com/activity/get-activity-poster?id=1049">
+                        <button class="btn">
+                            <i class="fa fa-share-square-o"></i>
+                            <div>转发</div>
+                        </button>
+                    </a>
+                </li> -->
+                <li>
+                    {if is_numeric($activity.join_num) and $activity.endtime > time() and $activity.status == 1}
+                    <a href="{:url('activity/join', ['id' => $activity.id])}">
+                        <button class="btn btn-join pull-right">我要报名</button>
+                    </a>
+                    {else/}
+                    <a class="btn btn-find baoming_btn"><button class="btn btn-join pull-right"
+                            style="background-color:rgba(153,153,153,1);">已结束</button></a>
+                    {/if}
+                </li>
+            </ul>
+        </div>
+
+        <div class="shareTips">
+            <img src="__MIMG__/m_share_tips.png"><a href="javascript:;" class="tips_close">我知道了</a>
+        </div>
+        <ol class="crumbs">
+            <li>
+                <a href="/">
+                    <svg class="icon" aria-hidden="true">
+                        <use xlink:href="#icon-shouye2"></use>
+                    </svg>
+                    首页
+                </a>
+            </li>
+            <li><a href="{:url('activity/index')}">&gt; 跨境活动</a></li>
+            <li class="word-wrap"><a href="javascript:;">&gt; {$activity.title}</a></li>
+        </ol>
+    </div>
+</div>
+
+{/block}

@@ -1,0 +1,105 @@
+{extend name="layout/base" /}
+{block name="title"}跨境电商入驻{/block}
+{block name="load"}
+<!-- css -->
+<link rel="stylesheet" href="__ACSS__/platform.css?{$time}" type="text/css">
+<link rel="stylesheet" href="__ZDCSS__/shop.css?{$time}" type="text/css">
+<!-- js -->
+{/block}
+<!-- 主体内容 -->
+{block name="main"}
+<div class="container body-container">
+    <a target="_blank" href="{$banner.url}">
+        <div class="p_logo" style="width:100%;border:0px solid;height: 300px;padding: 0;background: url({$banner.thumb});
+    background-position: center center;margin-top: 9px;"></div>
+    </a>
+    <div class="nav_div_huodong">
+    </div>
+    <div class="main-div">
+        <div class="p_detail" style="margin:0 0 3rem 0;">
+            <div class="type_platform">
+                <a href="{:url('platform/index')}"><span class="{$id == '' ? 'zhou_span_select' : ''}">全部</span></a>
+                {foreach $platform as $value}
+                <span data-id="{:url('platform/detail', ['id' => $value.id])}" class="{$id == $value.id ? 'zhou_span_select' : ''} type_span_zhou">{$value.name}</span>
+                {/foreach}
+            </div>
+            <div class="content_box">
+
+                <div class="platform-tabs el-tabs el-tabs--top">
+                    <div class="el-tabs__content">
+
+                        <div role="tabpanel" id="pane-0" aria-labelledby="tab-0" class="el-tab-pane" style="color: rgb(153, 153, 153);">
+
+                            <div class="article-list">
+                                <div class="platform-list">
+
+                                    {foreach $platform as $value}
+                                    <a target="_blank" href="{:url('detail', ['id' => $value.id])}" class="platform-item">
+                                        <div class="el-image"><img src="{$value.logo}" class="el-image__inner">
+                                            <!---->
+                                        </div>
+                                        <p class="platform-title">{$value.name}</p>
+                                        <p class="platform-content">{$value.title}</p>
+                                        <p class="platform-work"><span>24小时</span>下发注册链接
+                                        </p> <button>我要开店</button>
+                                    </a>
+
+                                    {/foreach}
+                                    
+                                </div>
+                            </div>
+                        </div>
+
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </div>
+    <script type="text/javascript">
+        $(function() {
+            $('#logistics-a').removeClass('active');
+            $('#resource-a').addClass('active').find('img').attr('src', "https://www.kuajingyan.com/img/home/xiajiantou2.png");
+            $('#logistics-a,.home_nav_baike').hover(function() {
+                $(this).find('img').attr('src', "https://www.kuajingyan.com/img/home/xiajiantou2.png");
+            }, function() {
+                $(this).find('img').attr('src', "https://www.kuajingyan.com/img/home/xiajiantou.png");
+            })
+            $(".logo_img").click(function() {
+                var oldP = $('.selected').attr("data-itme");
+                var newP = $(this).attr("data-itme");
+                $(".logo_div").find(".logo_img").removeClass('selected');
+                if (oldP && oldP == newP) {
+                    $(".partner_item").show();
+                } else {
+                    $(this).addClass("selected");
+                    var item = 'partber_' + newP;
+                    $(".partner_item").hide();
+                    $("." + item).show();
+                }
+            });
+        })
+    </script>
+    <script type="text/javascript">
+        $(function() {
+            var current_url = window.location.href;
+            if (current_url.indexOf("/s") != -1) {
+                var top = $('.type_span_zhou').offset().top - 295 + "px";
+                $("html, body").animate({
+                    scrollTop: top
+                }, {
+                    duration: 500,
+                    easing: "swing"
+                });
+            }
+            $('.type_span_zhou').click(function() {
+                var url = $(this).attr('data-id');
+                window.location.href = url + "";
+                return false;
+            })
+
+        })
+    </script>
+</div>
+</div>
+{/block}

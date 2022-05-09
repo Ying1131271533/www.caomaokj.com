@@ -1,0 +1,389 @@
+@CHARSET "UTF-8";
+
+.btn:focus, .btn:active:focus, .btn.active:focus, .btn.focus, .btn:active.focus,
+	.btn.active.focus {
+	outline: none;
+}
+
+.wrap {
+	min-height: 0;
+	/* background: url("../images/bg-login.png") no-repeat 100%; */
+	/* background: url("../images/bg-login2.jpg") no-repeat 100%; */
+	background: url("../images/bg-login5.jpg") no-repeat 100%;
+	/* background: url("../images/bg-login4.jpeg") no-repeat 100%; */
+	background-size: cover;
+	background-repeat: no-repeat;
+	background-position: bottom;
+	/*margin: 0;*/
+}
+
+.wrap>.container {
+	/*padding-bottom: 103px;*/
+	padding-bottom: 45px; /* 不出现滚动条*/
+}
+
+.footer {
+	border-top: none;
+}
+.site-signup-box{
+	width: 800px;
+	margin: 0 auto;
+	background: #fff;
+	color: #555;
+	-webkit-border-radius: 5px;
+	-moz-border-radius: 5px;
+	border-radius: 5px;
+}
+.site-login {
+	width: 410px;
+	margin: 105px auto 0;
+	background: #fff;
+	color: #555;
+	-webkit-border-radius: 5px;
+	-moz-border-radius: 5px;
+	border-radius: 5px;
+	overflow: hidden;
+}
+
+.site-login .tab-content {
+	margin: 25px 40px;
+}
+
+/*tab注册登录切换*/
+.site-login .nav-tabs {
+	display: flex;
+	justify-content: space-between;
+	border-bottom: 0px solid #ff7600;
+	margin: 0 40px;
+}
+
+.site-login .nav-tabs>li {
+	/*width: 202px;*/
+}
+
+.site-login .nav-tabs>li>a {
+	padding: 8px 0px;
+	font-size: 18px;
+}
+
+.site-login .nav-tabs>li>a:hover, .site-login .nav-tabs>li>a:focus {
+	border-color: transparent;
+	background-color: transparent;
+}
+
+.site-login .nav-tabs>li.active>a, .site-login .nav-tabs>li.active>a:hover,
+	.site-login .nav-tabs>li.active>a:focus {
+	border: 1px solid transparent;
+	/*font-size:14px;*/
+	/*font-weight:bold;*/
+	color:rgba(252,157,39,1);
+	border-bottom: 2px solid #ff7600;
+}
+
+/*.site-login .nav-tabs>li.active>a:after {*/
+	/*top: 70%;*/
+	/*left: 50%;*/
+	/*border: 8px solid transparent;*/
+	/*content: " ";*/
+	/*position: absolute;*/
+	/*pointer-events: none;*/
+	/*margin-left: -8px;*/
+	/*background: url("../images/arrow.png") no-repeat center;*/
+/*}*/
+
+/*登录*/
+.site-login form .input-icon {
+	position: relative;
+	margin-bottom: 20px;
+}
+
+.site-login form .form-control {
+	/*height: 52px;*/
+	/*padding-left: 45px;*/
+	padding-left: 12px;
+	height: 42px;
+}
+
+.site-login form i {
+	display: inline-block;
+	width: 18px;
+	height: 18px;
+	position: absolute;
+	top: 18px;
+	left: 16px;
+}
+
+.site-login .icon-user {
+	background: url("../images/icons.png") no-repeat -622px -108px;
+}
+
+.site-login .icon-psd {
+	background: url("../images/icons.png") no-repeat -663px -145px;
+}
+
+.site-login .form-actions {
+	margin-top: -9px;
+}
+
+.site-login .form-actions .checkbox {
+	margin-top: 0;
+	margin-bottom: 22px;
+}
+
+.site-login form a {
+	color: #555;
+}
+
+.site-login .btn-submit {
+	height: 42px;
+	background: #ff7600;
+	color: #fff;
+	font-size: 14px;
+	margin-bottom: 20px;
+}
+
+.site-login .other-way {
+	position: relative;
+	margin-bottom: 20px;
+	display: none;
+	font-size: 12px;
+	font-weight: bold;
+	color: rgba(153,153,153,1);
+}
+
+.site-login .other-way:before, .site-login .other-way:after {
+	content: '';
+	width: 130px;
+	border-top: 1px solid #c2c2c2;
+	position: absolute;
+	top: 50%;
+}
+
+.site-login .other-way:before {
+	left: 0;
+}
+
+.site-login .other-way:after {
+	right: 0;
+}
+
+.site-login .form-icons {
+	/*margin: 20px 0;*/
+}
+
+.site-login .form-icons a {
+	display: inline-block;
+	width: 44px;
+	height: 44px;
+	margin: 0 23px;
+}
+
+.site-login .form-icons .icon-sina {
+	background: url("../images/icons.png") no-repeat -306px -214px;
+}
+
+.site-login .form-icons .icon-qq {
+	background: url("../images/icons.png") no-repeat -363px -214px;
+}
+
+.site-login .form-icons .icon-weixin {
+	background: url("../images/icons.png") no-repeat -421px -214px;
+}
+
+/*注册*/
+.site-login form .btn-code {
+	height: 42px;
+	background: #ff7600;
+	color: #fff;
+	font-size: 16px;
+}
+
+.site-login form .icon-phone {
+	top: 21px;
+	background: url("../images/icons.png") no-repeat -662px -180px;
+}
+
+.site-login form .icon-email {
+	top: 21px;
+	background: url("../images/icons.png") no-repeat -622px -146px;
+}
+
+.site-login form .icon-code {
+	top: 20px;
+	background: url("../images/icons.png") no-repeat -624px -181px;
+	z-index: 9;
+}
+
+.site-login form .icon-name {
+	background: url("../images/icons.png") no-repeat -662px -108px;
+}
+
+.site-login form.register .form-actions .checkbox {
+	margin-bottom: 10px;
+}
+
+.site-login form a.agreement {
+	padding: 0 5px;
+	color: #ff7600;
+}
+
+.outregBox {
+	position: relative;
+	width: 469px;
+	height: 50px;
+	font-size: 14px;
+	margin: 0 10px;
+	padding-top: 20px;
+}
+
+.backtoindex {
+	position: absolute;
+	left: 0;
+}
+
+.outregBox a {
+	color: #ff7600;
+}
+
+.goLogin {
+	position: absolute;
+	right: 0;
+}
+
+.other {
+	/*margin: 25px 40px;*/
+}
+
+.wechat-div {
+	margin: 0px 40px;
+	text-align: center;
+}
+
+.wechat-div .title {
+	padding: 8px 15px;
+	font-size: 18px;
+	font-weight:bold;
+	color:rgba(85,85,85,1);
+	/*border-bottom: 1px solid #ff7600;*/
+}
+
+.wechat-div img {
+	margin-top: 20px;
+	height: 206px;
+}
+
+.wechat-div .tips {
+	margin: 8px 0;
+	font-size:14px;
+	font-weight:bold;
+	color:rgba(153,153,153,1);
+}
+
+.wechat-div .re {
+	color: #ff7600;
+	cursor: pointer;
+	margin-bottom: 36px;
+}
+
+.site-signup-box .site-signup{
+	width: 420px;
+	height: unset;
+}
+
+.site-signup-box .site-signup-title{
+	display: inline-flex;
+	justify-content: space-between;
+	align-content: center;
+	align-items: center;
+	width: 420px;
+}
+.site-signup-box .site-signup-title select{
+	border:1px solid rgba(238,238,238,1);
+	border-radius:2px;
+	background: #fff;
+	font-weight:bold;
+	font-size: 14px;
+	color:rgba(153,153,153,1);
+	margin-right: 11px;
+}
+.site-signup-box .site-signup-title>h4{
+	font-size:24px;
+	font-weight:bold;
+	color:rgba(51,51,51,1);
+}
+
+.site-signup-box  .site-signup-content{
+	margin: 0px;
+	margin-top: 45px;
+}
+.site-signup-box form .form-control{
+	padding-left: 12px;
+	height: 42px;
+}
+
+.site-signup-box form .site-signup-code{
+	height: 42px;
+}
+.site-signup-box .site-login form .input-icon{
+	margin-bottom: 5px;
+}
+.login-btn-a{
+	height: 42px;
+	display: inline-block;
+	line-height: 42px;
+	text-align: center;
+	border: 1px solid #ff7600;
+	width: 100%;
+	border-radius: 2px;
+	font-size:14px;
+	font-weight:bold;
+	color:#999999;
+}
+.login-btn-a span{
+	color: #ff7600;
+}
+.site-signup-box .site-login .btn-submit{
+   margin-bottom: 20px;
+}
+.site-signup-box .site-signup-desc{
+	padding: 30px 20px;
+	background:rgba(236,236,236,0.21);
+}
+.site-signup-box .site-signup-desc p{
+	font-size:13px;
+	font-weight:bold;
+	color:rgba(153,153,153,1);
+	line-height:21px;
+}
+.site-logo-box{
+	text-align: center;
+	padding-top:30px ;
+	padding-bottom: 45px;
+}
+.site-logo-box .logo-img-box{
+	padding-bottom: 10px;
+}
+.site-logo-box .logo-desc-box{
+	font-size:12px;
+	font-weight:400;
+	color:rgba(153,153,153,1);
+	line-height:17px;
+}
+.site-logo-desc{
+	text-align: center;
+	font-weight:bold;
+	color:rgba(153,153,153,1);
+	font-size:14px;
+}
+.site-logo-desc div span,.site-logo-desc div a{
+	color: #ff7600;
+	font-size:14px;
+}
+
+.logo-level-box{
+	padding: 20px;
+}
+.logo-agreement-box{
+    padding: 10px 20px;
+	background:rgba(244,244,244,1);
+}

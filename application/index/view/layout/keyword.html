@@ -1,0 +1,54 @@
+<!-- 关注热点 -->
+<div style="margin-top: 15px;">
+    <style>
+
+        .content_div {
+            min-width: 70px;
+            height: 25px;
+            float: left;
+            line-height: 23px;
+            text-align: center;
+            margin-left: 10px;
+            margin-top: 15px;
+            padding: 0px 8px;
+            border-radius: 20px;
+            border: 1px solid #e5e5e5e5;
+        }
+
+        .tab-content {
+            border: 0px solid red;
+            padding-bottom: 20px;
+        }
+
+        li.active {
+            width: 100%;
+        }
+
+        li.active a {
+            font-size: 16px;
+            display: inline-block;
+        }
+
+        .content_div:hover {
+            border: 1px solid #fc9d27;
+        }
+    </style>
+    <div class="hot-user">
+        <h4 class="top_hot_div">
+            <svg class="icon" aria-hidden="true" font-size="22px">
+              <use xlink:href="#icon-remen"></use>
+            </svg>&nbsp;
+            <span style="font-size: 16px;color: #282828;">关注热点</span>
+            <a style="color: #999999" href="{:url('keyword/index')}">更多&gt;</a>
+        </h4>
+        <div class="tab-content clearfix" style="border-top: 1px solid #eee;">
+            <div id="article" class="active clearfix">
+                {foreach $hotKeywords as $key => $value}
+                <div class="content_div">
+                    <a style="color: #777777" href="{:url('keyword/article', ['id' => $value.id])}">{$value.name}</a>
+                </div>
+                {/foreach}
+            </div>
+        </div>
+    </div>
+</div>

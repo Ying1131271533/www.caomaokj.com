@@ -1,0 +1,59 @@
+{extend name="layout/base" /}
+{block name="title"}草帽学院{/block}
+{block name="load"}
+<!-- css -->
+<link href="__MCSS__/course.css" rel="stylesheet" type="text/css">
+<link href="__MCSS__/main.css" rel="stylesheet" type="text/css">
+<style>
+    .laypageskin_molv a,
+    .laypageskin_molv span {
+        padding: 0 9px !important;
+    }
+</style>
+<!-- js -->
+<script src="__MJS__/course.js?{$time}" type="text/javascript"></script>
+<script src="__MJS__/activity_ad_click.js" type="text/javascript"></script>
+{/block}
+<!-- 主体内容 -->
+{block name="main"}
+
+    <div class="site-index">
+        <div class="select_course_div">
+            <ul class="select_course_ul search-cate-box">
+                <li class="active" cate-id="0">全部</li>
+                {foreach $category as $key => $value}
+                <li class="" cate-id="{$value.id}">{$value.catname}</li>
+                {/foreach}
+            </ul>
+        </div>
+
+        <div class="activity-item clearfix">
+            <input type="hidden" id="list_count" value="">
+            <input type="hidden" id="thisPage" value="1">
+            <div class="filter_con_jzc" style="overflow: hidden;"></div>
+            <div id="laypage" class="laypage"></div>
+            <ol class="crumbs">
+                <li>
+                    <a href="/">
+                        <svg class="icon" aria-hidden="true">
+                        <use xlink:href="#icon-shouye2"></use>
+                    </svg> 草帽跨境
+                    </a>
+                </li>
+                <li><a href="{:url('college/index')}">&gt; 草帽学院</a></li>
+            </ol>
+        </div>
+    </div>
+    
+    <div class="cover-pannel" style="display: none;">
+        <div class="cover-floor"></div>
+    </div>
+
+{/block}
+{block name="script"}
+
+<script>
+    HOME_URL = "https://www.caomaokj.com";
+</script>
+<div class="layui-layer-move"></div>
+{/block}

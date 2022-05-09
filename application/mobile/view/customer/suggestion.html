@@ -1,0 +1,32 @@
+{extend name="layout/base" /}
+{block name="title"}意见反馈{/block}
+{block name="load"}
+<!-- css -->
+<link rel="stylesheet" href="__ACSS__/customer-service.css" media="all">
+<!-- js -->
+<script type="text/javascript" src="__AJS__/customer-service.js"></script>
+{/block}
+<!-- 主体内容 -->
+{block name="main"}
+<div class="container body-container">
+    <div class="main-div">
+        <div class="main-box" style="width: 100%;margin-top: 50px;">
+            <div class="title-box">谢谢您留下宝贵意见和建议，您的每个意见都是我们不断改进的动力</div>
+            <form id="suggestion-form">
+                <div class="content-box">
+                    <div class="suggestion-item">
+                        <label>问题反馈：</label>
+                        <textarea class="form-control suggestion-desc-box" name="desc"></textarea>
+                    </div>
+                    <div class="suggestion-item">
+                        <label>您的微信/电话：</label>
+                        <input type="text" class="form-control suggestion-phone-box" name="phone">
+                    </div>
+                    <div class="suggestion-desc">留下真实电话，您将有机会获得我们送出的礼品</div>
+                    <div class="suggestion-btn-box"><a href="javascript:void(0)">提交</a></div>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
+{/block}

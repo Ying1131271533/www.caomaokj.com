@@ -1,0 +1,288 @@
+{extend name="layout/base" /}
+{block name="title"}我的资料{/block}
+{block name="load"}
+
+<!-- css -->
+<link href="__ACSS__/site.css" rel="stylesheet" type="text/css">
+<link href="__ACSS__/main.css" rel="stylesheet" type="text/css">
+<link href="__ALAYUI__/cropper/cropper.css" rel="stylesheet" type="text/css">
+<style>
+    .info-ul {
+        border-bottom: #ddd 1px solid;
+        padding-bottom: 30px;
+        margin: 0 20px;
+    }
+
+    .info-ul li {
+        min-height: 50px;
+        line-height: 50px;
+        background: #fff;
+        padding: 0 10px;
+        font-size: 1.6rem
+    }
+
+    .thumb-div {
+        padding: 15px 0;
+        float: left;
+    }
+
+    .thumb-div .user-thumb {
+        float: left;
+    }
+
+    .thumb-div .user-thumb img {
+        width: 81px;
+        height: 81px;
+        border-radius: 50%;
+    }
+
+    .thumb-div .tips {
+        float: left;
+        margin-left: 38px;
+        font-size: 16px;
+        line-height: 82px;
+    }
+
+    .info-ul .title {
+        width: 90px;
+        float: left;
+    }
+
+    .info-ul .data {
+        color: #999;
+        margin-left: 10px;
+    }
+
+    .info-ul li .desc {
+        line-height: 22px;
+        padding-top: 14px;
+    }
+
+    .btn-div {
+        /*text-align: center;*/
+        padding: 20px 10px;
+        background-color: #fff;
+        margin-left: 90px;
+    }
+
+    .btn-div .btn {
+        border-radius: 5px;
+        color: #fff;
+        width: 100px;
+        height: 35px;
+    }
+
+    .btn-div .btn-ok {
+        background-color: #fff;
+        border: 1px solid #fc9d27;
+        color: #fc9d27;
+    }
+
+    .info-ul li input {
+        height: 30px;
+        padding: 6px 12px;
+        font-size: 14px;
+        line-height: 1.42857143;
+        color: #555;
+        background-color: #fff;
+        background-image: none;
+        border: 1px solid #ccc;
+        border-radius: 4px;
+    }
+
+    .user_name,
+    .user_website {
+        width: 233px;
+    }
+
+    .user_desc {
+        padding: 6px 12px;
+        font-size: 14px;
+        line-height: 1.42857143;
+        color: #555;
+        background-color: #fff;
+        background-image: none;
+        border: 1px solid #ccc;
+        border-radius: 4px;
+        -webkit-box-shadow: inset 0 1px 1px rgba(0, 0, 0, .075);
+        box-shadow: inset 0 1px 1px rgba(0, 0, 0, .075);
+        -webkit-transition: border-color ease-in-out .15s, -webkit-box-shadow ease-in-out .15s;
+        -o-transition: border-color ease-in-out .15s, box-shadow ease-in-out .15s;
+        transition: border-color ease-in-out .15s, box-shadow ease-in-out .15s;
+    }
+
+    .avatar_img_jzc .avatar-view {
+        width: 150px;
+        height: 150px;
+        margin-left: 80px;
+    }
+</style>
+<!-- js -->
+{/block}
+
+<!-- 主体内容 -->
+{block name="main"}
+        <div class="container body-container">
+            <div class="site-body">
+                <!-- 左侧 -->
+                {include file="layout/user_nav" /}
+
+                <!-- 右侧 -->
+                <div class="left_cont">
+
+                    <div class="main-info">
+                        <h1 class="site-h1">个人资料</h1>
+                        <ul class="info-ul">
+
+                            <div class="title">&nbsp;用户头像：</div>
+                            <div class="ml20 mt20 avatar_img_jzc">
+                                <div id="crop-avatar">
+                                    <div class="avatar-view" data-original-title="" title="">
+                                        <img src="{$avatar}" id="srcimgurl" class="layui-upload-img" alt="点击修改头像" title="点击修改头像">
+                                    </div>
+                                </div>
+                            </div>
+
+                            <li style="margin-top: 10px;">
+                                <div class="title">登录帐号：</div>
+                                <div class="data">
+                                    <input class="user_code" disabled="disabled" value="{$username}">
+                                </div>
+                            </li>
+                            <li>
+                                <div class="title">用户昵称：</div>
+                                <div class="data">
+                                    <input class="user_name" value="{$user.nickname}">
+                                </div>
+                            </li>
+                            <li>
+                                <div class="title">简介：</div>
+                                <div class="data desc">
+                                    <textarea class="user_desc" rows="3" cols="70">{$user.introduction}</textarea>
+                                </div>
+                            </li>
+
+                            <div class="btn-div">
+                                <button type="button" class="btn btn-ok">确认修改</button>
+                            </div>
+                        </ul>
+
+                    </div>
+
+                    <div class="main-info">
+                        <h1 class="site-h1">账户安全</h1>
+                        <div class="info-list safe-list">
+                            <table class="table">
+                                <tbody>
+                                    <tr>
+                                        <td><a class="person-img per3" href="javascript:;"></a></td>
+                                        <td>
+                                            <ul>
+                                                <li><label>账户密码</label></li>
+                                                <li>用于保护账户信息和登录安全</li>
+                                            </ul>
+                                        </td>
+                                        <td>
+                                            <button onclick="changePwd(); "class="layui-btn layui-btn-warm layui-btn-sm">
+                                                <i class="layui-icon">&#xe642;</i>修改 
+                                            </button>
+                                        </td>
+                                    </tr>
+
+                                    <!-- <tr>
+                                        <td><a class="person-img per4" href="javascript:;"></a></td>
+                                        <td>
+                                            <ul>
+                                                <li><label>安全邮箱 <span class="safe-email"> 未绑定</span></label></li>
+                                                <li>安全邮箱可以重置密码</li>
+                                            </ul>
+                                        </td>
+                                        <td>
+                                            <button onclick="changeEmail();"
+                                                class="layui-btn layui-btn-warm layui-btn-sm"><i
+                                                    class="layui-icon"></i>修改 </button>
+                                        </td>
+                                    </tr> -->
+
+                                    <tr>
+                                        <td><a class="person-img per5" href="javascript:;"></a></td>
+                                        <td>
+                                            <ul>
+                                                <li><label>安全手机 <span vocab="safe-phone">{$user.phone} </span></label></li>
+                                                <li>安全手机可以用于登录跨境眼账号，重置密码</li>
+                                            </ul>
+                                        </td>
+                                        <td>
+                                            <button onclick="changePhone();" class="layui-btn layui-btn-warm layui-btn-sm">
+                                                <i class="layui-icon">&#xe642;</i>修改
+                                            </button>
+                                        </td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+
+                    <script type="text/javascript" src="__AJS__/security.js"></script>
+                    <script>
+                        $(function () {
+                            $(".btn-ok").click(function () {
+                                var userName = $(".user_name").val();
+                                if (!userName) {
+                                    layer.msg('用户昵称不能为空', { icon: 0 });
+                                }
+                                var loading = layer.load();
+                                $.ajax({
+                                    url: '/index/user_api/changeInfo',
+                                    type: "POST",
+                                    data: {
+                                        user_name: userName,
+                                        // user_website: $(".user_website").val(),
+                                        user_desc: $(".user_desc").val()
+                                    },
+                                    dataType: 'json',
+                                    error: function () {
+                                        layer.close(loading);
+                                        layer.msg('网络错误！', { icon: 2 });
+                                    },
+                                    success: function (json) {
+                                        layer.close(loading);
+                                        if (json.code == 200) {
+                                            layer.msg(json.msg, { icon: 1 });
+                                            // window.location.reload();
+                                        } else {
+                                            layer.msg(json.msg, { icon: 2 });
+                                        }
+                                    }
+                                });
+                            });
+                        });
+
+                        // 换头像
+                        layui.config({
+                            base: '__ALAYUI__/cropper/' // layui自定义layui组件目录
+                        }).use(['form', 'croppers'], function () {
+                            var $ = layui.jquery
+                                ,form = layui.form
+                                ,croppers = layui.croppers
+                                ,layer= layui.layer;
+
+                            // 创建一个头像上传组件
+                            var loadding = croppers.render({
+                                elem: '#srcimgurl'
+                                ,saveW:150 // 保存宽度
+                                ,saveH:150
+                                ,mark:1/1 // 选取比例
+                                ,area:'900px'  // 弹窗宽度
+                                ,url: "/index/user_api/updateAvatar"  // 图片上传接口返回和（layui 的upload 模块）返回的JOSN一样
+                                ,done: function(url){ // 上传完毕回调
+                                    $("#srcimgurl").attr('src', url);
+                                    $("#user-center img").attr('src', url);
+                                }
+                            });
+                        });
+                    </script>
+                </div>
+            </div>
+        </div>
+{/block}

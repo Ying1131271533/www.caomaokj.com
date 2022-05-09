@@ -1,0 +1,328 @@
+@CHARSET "UTF-8";
+
+.site-index {
+	background-color: #fff;
+	margin-top: 0px;
+	margin-bottom: 30px;
+	padding: 10rem 0;
+}
+.body-container {
+	margin-top: 157px !important;
+}
+.pay_suc_t {
+	overflow: hidden;
+	padding: 30px 0 20px;
+	text-align: center;
+}
+
+.pay_suc_t .iconTop {
+	height: 75px;
+}
+
+.pay_suc_t .iconTop .l {
+	width: 533px;
+	float: left;
+	padding-top: 10px;
+	text-align: right;
+}
+
+.pay_suc_t .iconTop .r1 {
+	height: 75px;
+	float: left;
+	margin-left: 15px;
+}
+
+.pay_suc_t p.tit {
+	width: 300px;
+	height: 213px;
+	text-align: center;
+	margin: 30px auto;
+}
+
+.pay_suc_t p.tit span {
+	display: inline-block;
+	width: 154px;
+	height: 154px;
+	margin-top: 16px;
+}
+
+.pay_suc_src {
+	overflow: hidden;
+	text-align: center;
+}
+
+.pay_suc_src a.first {
+	color: #ff7600;
+	border: 1px solid #ff7600;
+}
+
+.pay_suc_t .iconTop .r1 .f24 {
+	font-size: 24px;
+	text-align: left;
+	color: #ff7600;
+	line-height: 60px;
+}
+
+.pay_suc_src a {
+	width: 128px;
+	height: 34px;
+	display: inline-block;
+	margin: 0 55px;
+	line-height: 34px;
+	text-align: center;
+	font-size: 18px;
+	border-radius: 5px;
+}
+
+.pay_suc_src a.detail {
+	background-color: #ff7600;
+	border: 1px solid #ff7600;
+	color: #FFF;
+}
+
+.pay_suc_src .detail:hover {
+	background-color: #f19601;
+	border: 1px solid #f19601;
+}
+
+.release_success_l_wrap {
+	padding: 15px 0 0 32px;
+	position: relative;
+	width: 925px;
+	margin: 0px auto 0;
+	overflow: hidden;
+	height: 390px;
+}
+
+.release_success_l_wrap .center h4 {
+	text-align: left;
+	display: block;
+	position: absolute;
+	left: 257px;
+	top: 20px;
+}
+
+.release_success_l_wrap h4 {
+	font-size: 14px;
+	font-weight: normal;
+	color: #000;
+	padding-bottom: 20px;
+}
+
+.release_success_l_wrap .center .share_main .share_ma_outside {
+	float: left;
+}
+
+.release_success_l_wrap .center .share_main .share_ma_outside .k {
+	width: 190px;
+	height: 190px;
+	border: 1px solid #ddd;
+	border-radius: 5px;
+}
+
+.release_success_l_wrap .center .share_main .share_ma_outside .k img {
+	width: 170px;
+	height: 170px;
+	margin: 10px;
+}
+
+.release_success_l_wrap .center .share_main .share_ma_outside p {
+	line-height: 30px;
+	font-size: 14px;
+	color: #aaa;
+}
+
+.release_success_l_wrap .center .share_main .share_right {
+	/* 	width: 700px; */
+	height: 200px;
+	float: left;
+	margin: 50px 0 0 30px;
+}
+
+.share_list_ul {
+	float: left;
+}
+
+.share_list_ul .share_list_li {
+	float: left;
+	margin-right: 15px;
+}
+
+.share_list_ul .share_list_li a {
+	position: relative;
+}
+
+.share_list_ul .share_list_li a {
+	width: 60px;
+	display: inline-block;
+	font-size: 12px;
+	color: #444;
+	text-align: center;
+}
+
+.share_list_ul .share_list_li a.share_list_a01 span {
+	background-position: 0 0;
+}
+
+.share_list_ul .share_list_li a span {
+	width: 50px;
+	height: 50px;
+	display: inline-block;
+	background: url(/img/mana_icon_share.png);
+	margin: 0 5px 12px 5px;
+}
+
+.share_list_ul .share_list_li a .shadow {
+	width: 224px;
+	height: 254px;
+	position: absolute;
+	left: 0;
+	top: 82px;
+	display: none;
+}
+
+.center, .text-center {
+	text-align: center;
+}
+
+.share_list_ul .share_list_li a.share_list_a01:hover span {
+	background-position: 0 -60px;
+}
+
+.share_list_ul .share_list_li a.share_list_a03 span {
+	background-position: 0 -240px;
+}
+
+.share_list_ul .share_list_li a.share_list_a03:hover span {
+	background-position: 0 -300px;
+}
+
+.share_list_ul .share_list_li a.share_list_a02 span {
+	background-position: 0 -120px;
+}
+
+.share_list_ul .share_list_li a.share_list_a02:hover span {
+	background-position: 0 -180px;
+}
+
+.share_list_ul .share_list_li a.share_list_a04 span {
+	background-position: 0 -360px;
+}
+
+.share_list_ul .share_list_li a.share_list_a04:hover span {
+	background-position: 0 -420px;
+}
+
+.share_list_ul .share_list_li a.share_list_a05:hover span {
+	background-position: 0 -540px;
+}
+
+.share_list_ul .share_list_li a.share_list_a05 span {
+	background-position: 0 -480px;
+}
+
+.share_list_ul .share_list_li a.share_list_a08:hover span {
+	background-position: 0 -100px;
+}
+
+.share_list_ul .share_list_li a.share_list_a06:hover span {
+	background-position: 0 -660px;
+}
+
+.share_list_ul .share_list_li a.share_list_a07:hover span {
+	background-position: 0 -780px;
+}
+
+.share_list_ul .share_list_li a.share_list_a08 span {
+	background: url(/img/mana_icon_share2.png) repeat 0 0;
+}
+
+.share_list_ul .share_list_li a.share_list_a06 span {
+	background-position: 0 -600px;
+}
+
+.share_list_ul .share_list_li a.share_list_a07 span {
+	background-position: 0 -720px;
+}
+
+.outSide .share_right .share_copy {
+	margin-top: 20px;
+}
+
+.share_right .share_copy {
+	width: 658px;
+	margin: 38px 0 0 0;
+	float: left;
+}
+
+.share_right .share_copy #release_success_lj {
+	width: 515px;
+	height: 38px;
+	line-height: 36px;
+	background: #fff;
+	float: left;
+	border: 1px solid #ddd;
+	border-right: none;
+	font-size: 14px;
+	color: #444;
+	padding-left: 12px;
+}
+
+.share_right .share_copy a {
+	width: 124px;
+	height: 38px;
+	line-height: 38px;
+	text-align: center;
+	float: left;
+	font-size: 14px;
+	color: #fff;
+	background: #ff7600;
+}
+
+img {
+	/*vertical-align: top;*/
+	border: 0;
+}
+
+.lh-tips {
+	font-size: 14px;
+	line-height: 24px;
+}
+
+.lh-tips b {
+	color: #ff7600;
+}
+
+.lh-wechat {
+	margin-top: 10px;
+}
+
+.lh-wechat img {
+	width: 250px;
+}
+
+.share-lh {
+	padding: 15px;
+	width: 874px;
+	margin: 0px auto 0;
+	overflow: hidden;
+	margin-bottom: 10px;
+	line-height: 22px;
+	border-left: 5px solid #ff7600;
+	border-radius: 0 2px 2px 0;
+	background-color: #f5f5f5;
+}
+.share-lh b {
+	color: #ff7600;
+}
+.border_radius{
+	border-radius: 30px !important;
+}
+.erweima-div{
+	width: 50%;
+	margin:0 auto;
+	padding: 5px;
+	border:0px solid;
+	display: flex;
+	justify-content: space-around;
+}

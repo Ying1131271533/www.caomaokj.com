@@ -1,0 +1,294 @@
+@CHARSET "UTF-8";
+.doiphin-banner{
+height: 265px;
+width: 100%;
+}
+.doiphin-banner img{
+   margin: 0 auto;
+   height: 100%;
+   width: 100%;
+}
+/***************线上课程开始***********************/
+.train{
+    background:rgba(255,255,255,1);
+}
+.train .train-content{
+    margin-top: 40px;
+}
+.train .train-content-box{
+    display: inline-block;
+    width:585px;
+    height:180px;
+    overflow: hidden;
+    margin-bottom: 30px;
+}
+.train .train-content-box:nth-of-type(even){
+    margin-left: 20px;
+}
+.train .train-content-box .train-img,.train .train-content-box .train-content-desc{
+   float: left;
+}
+.train .train-content-box .train-img{
+    width: 330px;
+    height: 100%;
+
+}
+.train .train-content-box .train-img img{
+    width: 100%;
+    height: 100%;
+}
+.train .train-content-box .train-content-desc{
+    height: 100%;
+    width: 255px;
+    padding-left: 20px;
+    border:1px solid rgba(220,220,220,1);
+    border-left: 0px;
+}
+
+
+.train .train-content-box .train-content-desc .train-title{
+    margin-top: 40px;
+    font-size:24px;
+    font-weight:400;
+    color:rgba(51,51,51,1);
+}
+.train .train-content-box .train-content-desc .train-btn-p{
+    margin-top: 20px;
+}
+.train .train-content-box .train-content-desc .train-btn-p .train-btn-a{
+    display: inline-block;;
+    padding: 10px 30px;
+    font-size:14px;
+    font-weight:400;
+    color:rgba(85,85,85,1);
+    background:rgba(255,255,255,1);
+    border:1px solid rgba(220,220,220,1);
+}
+.course .course-box .course-content p{
+    margin-bottom: 20px;
+}
+
+.course .course-box .course-content .course-content-1{
+    font-size:28px;
+    font-weight:400;
+
+
+}
+.course .course-box .course-content .course-content-2{
+    font-size:24px;
+    font-weight:400;
+}
+.course .course-box .course-content .course-content-3 a{
+    font-size: 14px;
+    text-align: center;
+    width:120px;
+    height:35px;
+    background:rgba(0,137,255,1);
+    border-radius:4px;
+    color: #fff;
+    display: inline-block;
+    line-height: 35px;
+}
+.course .course-box .course-online{
+    color: rgba(0,137,255,1);
+}
+.course .course-box .course-downline .course-content-1{
+    color:rgba(51,51,51,1);
+}
+.course .course-box .course-downline .course-content-2{
+    color:rgba(85,85,85,1);
+}
+.course .course-box .course-downline .course-content-3 a{
+    background: #fff;
+    background:rgba(255,255,255,1);
+    border:1px solid rgba(210,210,210,1);
+    color:rgba(85,85,85,1);
+}
+/***************线上课程结束***********************/
+/***************你可以在这里获得什么开始***********************/
+.obtain{
+    background:rgba(255,255,255,1);
+}
+.doiphin-title{
+    margin-top: 50px;
+    font-size:32px;
+    font-weight:400;
+    color:rgba(40,40,40,1);
+    text-align: center;
+}
+.obtain .obtain-content{
+    margin-top: 80px;
+}
+.obtain .obtain-content div.obtain-content-box{
+    text-align: center;
+    width: 19.7%;
+    display: inline-block;
+}
+.obtain .obtain-content .obtain-content-box .obtain-title{
+    margin: 45px 0 60px;
+}
+/***************你可以在这里获得什么结束***********************/
+/***************课程实景开始***********************/
+.growth-case{
+    background:rgba(244,244,244,1);
+}
+.growth-case .growth-case-content{
+    margin-top: 45px;
+    height: 320px;
+    overflow: hidden;
+}
+.growth-case .growth-case-content .growth-case-box{
+    background:rgba(255,255,255,1);
+    text-align: center;
+    padding: 20px;
+    min-height: 340px;
+}
+.growth-case .growth-case-content .growth-case-box .growth-case-img{
+    height: 98px;
+    width: 98px;
+    border:1px solid rgba(220,220,220,1);
+    border-radius:50%;
+}
+.growth-case .growth-case-content .growth-case-box .growth-case-title{
+    font-size:16px;
+    font-weight:bold;
+    color:rgba(51,51,51,1);
+    margin: 20px 0;
+}
+.growth-case .growth-case-content .growth-case-box .growth-case-desc{
+    font-size:14px;
+    font-weight:400;
+    color:rgba(85,85,85,1);
+    text-align: center;
+    display: -webkit-box;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    word-wrap: break-word;
+    white-space: normal !important;
+    -webkit-line-clamp: 7;
+    -webkit-box-orient: vertical;
+}
+.growth-case .swiper-pagination{
+    position: relative;
+    margin: 30px 0 40px;
+    text-align: center;
+}
+.growth-case span.swiper-pagination-bullet{
+    width: 32px;
+    margin-right: 26px;
+    border-radius: 0;
+}
+.growth-case span.swiper-pagination-bullet:last-child{
+    margin-right: 0px;
+}
+/***************课程实景结束***********************/
+
+.circuit{
+    background:rgba(255,255,255,1);
+    text-align: center;
+}
+.circuit .circuit-img{
+    width: 975px;
+    height: 70px;
+    margin: 0 auto;
+    margin-bottom: 15px;
+    margin-top: 70px;
+}
+.circuit .circuit-img img{
+    width: 100%;
+    height: 100%;
+}
+.circuit .circuit-content-box{
+    margin-bottom: 90px;
+}
+.circuit .circuit-box{
+    width: 230px;
+    display: inline-block;
+    margin-right: 70px;
+}
+.circuit .circuit-box:last-child{
+    margin-right: 0px;
+}
+.circuit .circuit-box .circuit-title{
+    margin-bottom: 15px;
+    font-size:24px;
+    font-weight:400;
+    color:rgba(51,51,51,1);
+}
+.circuit .circuit-box .circuit-desc{
+    text-align: left;
+    font-size:14px;
+    font-weight:400;
+    color:rgba(85,85,85,1);
+}
+
+
+.demand .navbar-collapse{
+    background: #f4f4f4 url("http://img.kuajingyan.com/uploadImg/fw/warehouse/20200222/15823498501532.png") no-repeat;
+    background-size:100% 100%;
+    min-height: 540px;
+}
+.demand .navbar-collapse .demand-content{
+    margin: 0px auto;
+    width: 720px;
+    height: 480px;
+    background: url("http://img.kuajingyan.com/uploadImg/fw/warehouse/20200222/15823506149341.png") no-repeat ;
+    background-size:100% 480px;
+    padding: 40px 40px 0 40px;
+    margin-top: 45px;
+    margin-bottom: 65px;
+}
+.demand .navbar-collapse .demand-content .demand-content-box .input-div-box{
+     display: inline-block;
+     width: 260px;
+    margin-bottom: 10px;
+}
+.demand .navbar-collapse .demand-content .demand-content-box .demand-name{
+    font-size:14px;
+    font-weight:400;
+    color:rgba(85,85,85,1);
+    margin-bottom: 10px;
+}
+.demand .navbar-collapse .demand-content .demand-content-box input{
+    width: 260px;
+    height:30px;
+    background:rgba(255,255,255,1);
+    border:1px solid rgba(229,229,229,1);
+    padding-left: 10px;
+}
+.demand .navbar-collapse .demand-content .demand-content-box .input-div-box:nth-of-type(even){
+     margin-left: 115px;
+}
+.demand .navbar-collapse .demand-content .demand-content-box .textarea-div-box{
+    width: 100%;
+    min-height: 115px;
+    margin-bottom: 10px;
+}
+.demand .navbar-collapse .demand-content .demand-content-box .textarea-div-box textarea{
+    width: 100%;
+   height: 115px;
+    padding: 10px;
+}
+.btn-code{
+    margin-bottom: 5px;
+    width: 124px;
+    color: rgba(7,134,255,1);
+    border: 1px solid rgba(7,134,255,1);
+    padding: 4px 0px;
+    border-radius: 20px;
+    background: #fff;
+}
+.btn-code:hover {
+    background: rgba(7,134,255,1);
+    color:#fff;
+}
+.demand-btn .demand-btn-a{
+    padding: 4px 50px;
+    border-radius: 20px;
+    background: rgba(7,134,255,1);
+    display: inline-block;
+    color: #fff;
+
+    text-align: center;
+
+}

@@ -1,0 +1,129 @@
+{include file="public/header" /}
+<div class="mainbox animated fadeInRight">
+    <div class="mainnav_title">
+        <a class="on">内容添加</a>
+        <a class="add-edit" href="{:url('logistics/index')}?tree={$tree_id}">[<b class="uzfont uzico-fanhui"></b>返回列表]</a>
+        <a class="bth-rand fr" href="javascript:location.replace(location.href);" title="刷新"><b class="uzfont uzico-shuaxin"></b></a>
+    </div>
+    <form name="myform" id="myform" action="" method="post">
+        <table cellpadding=0 cellspacing=0 class="table_form" width="100%">
+            <tr>
+                <td width="90"><font color="red">*</font><label>所属分类：</label></td>
+                <td>
+                    <select class="catid" name="catid">
+                        {if condition="isset($select_categorys) and $select_categorys"}{$select_categorys|raw}{/if}
+                    </select>
+                </td>
+            </tr>
+            <tr>
+                <td width="90"><font color="red">*</font><label>标题：</label></td>
+                <td>
+                    <div class="thumb_box ">
+                        <div class="img-upload">
+                            <img class="cthumb" width="100" onclick="up_img('cthumb','thumb','jpg,gif,png,jpeg','10485760','290px',0);" src="__UIMG__/upload_thumb.png" alt="上传封面">
+                            <input type="hidden" class="thumb" name="thumb">
+                            <input type="text" class="input-text" name="title" size="50" placeholder="标题" validate="minlength:2,maxlength:80,required:true">
+                        </div>
+                    </div>
+                </td>
+            </tr>
+
+
+            <tr>
+                <td width="90"><label>手机：</label></td>
+                <td>
+                    <input type="text" class="input-text" name="phone" value="13829730146" size="50" placeholder="手机">
+                </td>
+            </tr>
+
+            <tr>
+                <td width="90"><label>QQ：</label></td>
+                <td>
+                    <input type="text" class="input-text" name="qq" value="2881930690" size="50" placeholder="QQ">
+                </td>
+            </tr>
+
+            <tr>
+                <td width="90"><label>邮箱：</label></td>
+                <td>
+                    <input type="text" class="input-text" name="email" value="2881930690@qq.com" size="50" placeholder="邮箱">
+                </td>
+            </tr>
+
+            <tr>
+                <td width="90" height="100"><font color="red">*</font><label>微信二维码：</label></td>
+                <td>
+                    <div>
+                        <div class="img-upload">
+                            <img class="cwechat" width="100" onclick="up_img('cwechat','wechat','jpg,gif,png,jpeg','10485760','290px',0);" src="/storage/20210705/61b902c0426bfb37cbe7a78a651ed35c.jpg" alt="上传封面" style="cursor:pointer;">
+                            <input type="hidden" class="wechat" name="wechat" value="/storage/20210705/61b902c0426bfb37cbe7a78a651ed35c.jpg" validate="required:true">
+                        </div>
+                    </div>
+                </td>
+            </tr>
+
+            <tr>
+                <td>走货属性：</td>
+                <td>
+                    {foreach $attributes as $value}
+                    <label><input type="checkbox" class="input_radio" name="attributes[{$value.id}]" value="{$value.id}"  /> {$value.name}&nbsp;&nbsp;</label>
+                    {/foreach}
+                </td>
+            </tr>
+
+            <tr>
+                <td>服务类型：</td>
+                <td>
+                    {foreach $seviceType as $value}
+                    <label><input type="checkbox" class="input_radio" name="service[{$value.id}]" value="{$value.id}"  /> {$value.name}&nbsp;&nbsp;</label>
+                    {/foreach}
+                </td>
+            </tr>
+            <tr>
+                <td width="90"><label>地址：</label></td>
+                <td>
+                    <input type="text" class="input-text" name="address" value="广州市白云区鹤边一路国妆电商大厦606" size="50" placeholder="地址">
+                </td>
+            </tr>
+            <tr>
+                <td>状态</td>
+                <td>
+                    <label><input type="radio" class="input_radio" name="status" checked value="1"> 开启</label>&nbsp;&nbsp;
+                    <label><input type="radio" class="input_radio" name="status" value="0"> 关闭</label>
+                </td>
+            </tr>
+
+            <!-- <tr>
+                <td width="90">主推服务</td>
+                <td style="width:1000px;">
+                    <fieldset class="images_box">
+                        <legend>图片上传</legend>
+                        <div id="pics_images" class="imagesList nopic album_more"></div>
+                    </fieldset>
+                    <input type="button" class="button" value="图片上传" onclick="up_img('imgs','imgs','jpg,gif,png,jpeg','2097152','390px',1);">
+                </td>
+            </tr> -->
+            
+            <tr class="editor">
+                <td>内容:</td>
+                <td style="width:1000px;"><script id="container" name="content" type="text/plain"></script></td>
+            </tr>
+            
+        </table>
+        <div id="bootline"></div>
+        <div id="btnbox" class="btn">
+            <input type="submit" value="{:lang('dosubmit')}" class="button" />
+            <input type="reset" value="{:lang('cancel')}" class="button" />
+        </div>
+    </form>
+</div>
+<script type="text/javascript" src="__UJS__/ueditor/ueditor.config.js"></script>
+<script type="text/javascript" src="__UJS__/ueditor/ueditor.all.min.js"></script>
+<script type="text/javascript" src="__UJS__/ueditor/lang/zh-cn/zh-cn.js"></script>
+<script type="text/javascript">
+    var ue = UE.getEditor('container', {
+        initialFrameHeight: 300,
+        allowDivTransToP:false,
+        autoClearEmptyNode:false
+    });
+</script>

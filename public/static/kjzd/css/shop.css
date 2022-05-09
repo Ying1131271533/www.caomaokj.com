@@ -1,0 +1,140 @@
+/***********************颜色变量**************************/
+/***********************文字大小变量**************************/
+/***********************宽度、间距变量**************************/
+/************************** 字体样式  **************************/
+/***********************文字大小变量**************************/
+/***********************宽度、间距变量**************************/
+a {
+  text-decoration: none;
+}
+
+.trde-platform {
+  width: 1200px;
+  height: 100%;
+  margin: 0 auto;
+  background-color: white;
+}
+.platform-tabs {
+  margin-left: 40px;
+}
+.platform-tabs .el-tabs__header .el-tabs__nav-wrap .el-tabs__nav-scroll .el-tabs__nav {
+  height: 50px;
+}
+.platform-tabs .el-tabs__header .el-tabs__nav-wrap::after {
+  height: 1px;
+}
+.trde-platform .el-tabs__item {
+  color: #999999;
+  font-size: 16px;
+  margin-left: 0px;
+}
+.platform-list {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  margin: 20px 0px 20px 0px;
+}
+.platform-item {
+  display: flex;
+  display: -webkit-flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  width: 260px;
+  font-size: 18px;
+  color: #222222;
+  border-color: #EEEEEE;
+  border-width: 1px;
+  border-style: solid;
+  background-color: white;
+  margin-bottom: 20px;
+  margin-right: 20px;
+}
+.platform-item:hover {
+  background: #ffffff;
+  box-shadow: 0px 4px 7px 0px #d4d4d4;
+}
+.lastitme {
+  margin-right: 0px;
+}
+.platform-item .el-image {
+  width: 320px;
+  height: 106px;
+  text-align: center;
+}
+.platform-item {
+  padding-top: 20px;
+}
+.platform-item img {
+  width: auto;
+  height: 106px;
+}
+.platform-item p {
+  color: #999999;
+}
+.platform-item p span {
+  color: #4790cf;
+  font-size: 12px;
+}
+.platform-item button {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 210px;
+  height: 40px;
+  margin-bottom: 20px;
+  color: #999999;
+  outline: none;
+  border: 1px solid #EEEEEE;
+  cursor: pointer;
+  background: #fff;
+  font-size: 14px;
+}
+.platform-item button:hover {
+  color: #fff;
+  border: 1px solid #ff7600;
+  background: #ff7600;
+}
+.platform-item .platform-title {
+  color: #222222;
+  width: 90%;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  text-align: center;
+}
+.platform-item .platform-title:hover {
+  color: #ff7600;
+}
+.platform-item .platform-content {
+  color: #999999;
+  font-size: 14px;
+  text-align: left;
+  margin: auto 20px;
+  width: 90%;
+  display: -webkit-box;
+  -webkit-box-orient: vertical;
+  -webkit-line-clamp: 2;
+  overflow: hidden;
+}
+.platform-item .platform-work {
+  display: inline-block;
+  font-size: 12px;
+  background-color: #EEEEEE;
+  margin: 20px auto;
+  padding-left: 10px;
+  padding-right: 10px;
+  border-radius: 12px;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+.platform-item .over {
+  background-color: #F676A6;
+  color: white;
+  box-shadow: 2px #F676A6;
+}
+
+#shop-section2 {
+  display: none;
+}

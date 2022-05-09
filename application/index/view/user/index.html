@@ -1,0 +1,87 @@
+{extend name="layout/base" /}
+{block name="title"}个人中心{/block}
+{block name="load"}
+<!-- css -->
+<link href="__ACSS__/site.css" rel="stylesheet">
+<link href="__ACSS__/user.css" rel="stylesheet" type="text/css">
+<link href="__ACSS__/message.css" rel="stylesheet" type="text/css">
+<link href="__ACSS__/laypage.css" type="text/css" rel="stylesheet" id="laypagecss">
+<!-- js -->
+<script type="text/javascript" src="__AJS__/index.js"></script>
+<script type="text/javascript" src="__AJS__/message.js"></script>
+<script type="text/javascript" src="__AJS__/laypage.js"></script>
+{/block}
+
+<!-- 主体内容 -->
+{block name="main"}
+    <div class="container body-container">
+        <div class="site-body">
+
+            <!-- 左边导航 -->
+            {include file="layout/user_nav" /}
+
+            <!-- 右侧 -->
+            <div class="left_cont">
+                <div class="person-center">
+                    <div class="person-info">
+                        <div class="info-list">
+                            <div class="media">
+                                <div class="media-left media-middle">
+                                    <a href="{:url('user/avatar')}" title="点击修改头像">
+                                        <img class="avatar" src="{$avatar}">
+                                    </a>
+                                </div>
+                                <div class="media-body w300">
+                                    <h4 class="media-heading pb0" style="font-size:16px;">{$nickname} </h4>
+                                    <div class="media-text">
+                                        <a href="{:url('user/security')}">
+                                            {empty name="$user.phone"}
+                                            <img alt="手机号未绑定" title="手机号未绑定" src="__AIMG__/693a2fe2aa07b6e3.png">
+                                            {else/}
+                                            <img alt="手机号已绑定" title="手机号已绑定" src="__AIMG__/cc35d298e1812787.png">
+                                            {/empty}
+                                        </a>
+                                        
+                                        <a href="{:url('user/security')}">
+                                            {empty name="$user.email"}
+                                            <img alt="邮箱未绑定" title="邮箱未绑定" src="__AIMG__/0f6a683bfc5ca222.png">
+                                            {else/}
+                                            <img alt="邮箱已绑定" title="邮箱已绑定" src="__AIMG__/844bf83bf8d89252.png">
+                                            {/empty}
+                                        </a>
+                                        <a href="{:url('user/security')}">
+                                            {empty name="$user.wechat"}
+                                            <img alt="微信未绑定" title="微信未绑定" src="__AIMG__/eda269e41ce11e51.png">
+                                            {else/}
+                                            <img alt="微信已绑定" title="微信已绑定" src="__AIMG__/eda269e4351df351.png">
+                                            {/empty}
+                                        </a>
+                                        <a href="{:url('user/security')}">
+                                            {empty name="$user.qq"}
+                                            <img alt="QQ未绑定" title="QQ未绑定" src="__AIMG__/68d6e3ac8a94581d.png">
+                                            {else/}
+                                            <img alt="QQ已绑定" title="QQ已绑定" src="__AIMG__/430a800cf2464b6e.png">
+                                            {/empty}
+                                        </a>
+
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="person-text clearfix"></div>
+                    </div>
+
+
+                    <!-- <div class="main-info">
+                        <h1 class="site-h1">我的私信</h1>
+                        <div class="message-box">
+                            <div class="media-list">暂无数据</div>
+                        </div>
+                        <div id="laypage" class="laypage"></div>
+                    </div> -->
+
+                </div>
+            </div>
+        </div>
+    </div>
+{/block}

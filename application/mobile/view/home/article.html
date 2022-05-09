@@ -1,0 +1,148 @@
+{extend name="layout/base" /}
+{block name="title"}{$article.title}{/block}
+{block name="load"}
+
+<!-- css -->
+<link rel="stylesheet" href="__MCSS__/article.css">
+
+<!-- js -->
+<script type="text/javascript" src="__MJS__/article.js"></script>
+<script type="text/javascript" src="__AJS__/jquery.lazyload.js"></script>
+
+{/block}
+<!-- 主体内容 -->
+{block name="main"}
+        <div class="container">
+            <div class="all_article">
+                <div class="title">
+                    <h1>{$article.title}</h1>
+                    <div class="author">
+                        <span class="a-text">
+                            <img src="__ICON__/icon-caomao-small.png">
+                            <a href="{:url('home/article', ['id' => $article.id])}">草帽跨境</a>
+                        </span>&nbsp;&nbsp;|&nbsp;&nbsp;
+                        <span class="navbar-time">{:date('Y-m-d', $article.createtime)}</span>
+                    </div>
+                </div>
+                <div class="article_content">{$article.content|raw}</div>
+
+                <div class="tag">
+                    <img src="__MIMG__/tag.png" alt="">
+                    {foreach $article -> keywords as $key => $value}
+                    {neq name="$key" value="0"}／{/neq}
+                    <a href="{:url('keyword/article', ['id' => $value.id])}">{$value.name}</a>
+                     {/foreach}
+                </div>
+
+
+                <!--下一篇-->
+                <div class="next-chapter">
+                    <h4 class="normal-title">下一篇</h4>
+                    <div class="next-article">
+                        <a class="alink" href="{$bottomArticle.id ? url('home/article', ['id' => $bottomArticle.id]) : 'javascript:;'}">
+                            <img alt="{$bottomArticle.title ? $bottomArticle.title : '没有了'}" src="__MIMG__/16296990909968.jpg">
+                        </a>
+                        <div class="art_con">
+                            <h2>
+                                <a class="title" href="{$bottomArticle.id ? url('home/article', ['id' => $bottomArticle.id]) : 'javascript:;'}">{$bottomArticle.title ? $bottomArticle.title : '没有了'}</a>
+                            </h2>
+                            <a href="https://www.kuajingyan.com/user/15">
+                                <img src="__ICON__/icon-caomao-small.png">
+                                <h3>草帽跨境</h3>
+                            </a>
+                            <span class="times">{:date('Y-m-d', $article.createtime)}</span>
+                        </div>
+                    </div>
+                </div>
+                <div style="padding: 10px;text-align: center;">
+                    <img src="{$banner.thumb}">
+                </div>
+
+                <!--  相关文章-->
+                <div class="related-articles">
+                    <h4 class="normal-title article-header">相关文章</h4>
+                    <ul class="list_article home-main">
+
+                        {foreach $relatedArticle as $value}
+                        <li>
+                            <a class="alink" href="{:url('home/article', ['id' => $value.id])}">
+                                <img class="lazy" alt="{$value.title}" data-original="{$value.thumb}">
+                            </a>
+                            <div class="art_con">
+                                <h2>
+                                    <a class="title" href="{:url('home/article', ['id' => $value.id])}">{$value.title}</a>
+                                </h2>
+                                <a href="{:url('home/article', ['id' => $value.id])}">
+                                    <img src="__ICON__/icon-caomao-small.png">
+                                    <h3>草帽跨境</h3>
+                                </a>
+                                <span class="times">{:date('Y-m-d', $article.createtime)} </span>
+                            </div>
+                        </li>
+                        {/foreach}
+
+                    </ul>
+                </div>
+                <div class="space"></div>
+
+                <!--  热门文章-->
+                <div class="related-articles">
+                    <h4 class="normal-title article-header">热门文章</h4>
+                    <ul class="list_article home-main">
+
+                        {foreach $hotArticle as $key => $value}
+                        <li>
+                            <a class="alink" href="{:url('home/article', ['id' => $value.id])}">
+                                <img class="lazy" alt="{$value.title}" data-original="{$value.thumb}">
+                            </a>
+                            <div class="art_con">
+                                <h2>
+                                    <a class="title" href="{:url('home/article', ['id' => $value.id])}">{$value.title}</a>
+                                </h2>
+                                <a href="{:url('home/article', ['id' => $value.id])}">
+                                    <img src="__ICON__/icon-caomao-small.png">
+                                    <h3>草帽跨境</h3>
+                                </a>
+                                <span class="times">{:date('Y-m-d', $article.createtime)}</span>
+                            </div>
+                        </li>
+                        {/foreach}
+
+                    </ul>
+                </div>
+                <ol class="crumbs">
+                    <li>
+                        <a href="/">
+                            <svg class="icon" aria-hidden="true">
+                                <use xlink:href="#icon-shouye2"></use>
+                            </svg> 首页
+                        </a>
+                    </li>
+                    <li><a href="https://www.kuajingyan.com/home">&gt; 跨境干货</a></li>
+                    <li class="word-wrap"><a class="color-555 last_li">&gt; {$article.title}</a></li>
+                </ol>
+            </div>
+            <div class="shareTips">
+                <img src="__MIMG__/m_share_tips.png"><a href="javascript:;" class="tips_close">我知道了</a>
+            </div>
+            <script>
+            $(function() {
+
+                $('body').click(function() {
+                    if ($('#commentDetail').hasClass('is-open')) {
+                        $('#commentInput').prop('disabled', false);
+                        $('#commentDetail').removeClass('is-open').slideToggle();
+                    }
+                });
+
+                $(".shareTips").on("click", function() {
+                    $(".shareTips").hide();
+                });
+
+                $(".nativeShare").on("click", function() {
+                    $(".shareTips").show();
+                });
+            });
+            </script>
+        </div>
+{/block}

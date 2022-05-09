@@ -1,0 +1,59 @@
+{extend name="layout/base" /}
+{block name="title"}全部热门话题{/block}
+{block name="load"}
+<!-- css -->
+<link href="__ACSS__/article_keywords.css" rel="stylesheet" type="text/css">
+{/block}
+<!-- 主体内容 -->
+{block name="main"}
+        <div class="container body-container">
+            <input class="getCsrfTokenJzc" type="hidden" value="">
+            <style>
+            .icon {
+                width: 28px;
+                height: 28px;
+                vertical-align: -0.5em;
+            }
+            </style>
+            <div class="site-index">
+                <div style="width:100%;height:40px;line-height:40px;padding-left: 10px;">
+                    <span>
+                        <a href="/">
+                            <svg class="icon" aria-hidden="true">
+                                <use xlink:href="#icon-shouye2"></use>
+                            </svg>首页 &gt;
+                        </a>
+                    </span>
+                    <span>全部热门话题</span>
+                </div>
+                <section class="section-bbs bbs-news" data-name="tags">
+                    <div class="container inner-container">
+                        <!-- 路径导航 -->
+                        <main class="main col-md-12 col-sm-12 tags-box">
+                            <div class="aside-title clearfix">
+                                <h4 class="pull-left" style="font-size:16px;">全部热门话题</h4>
+                            </div>
+
+                            {foreach $list as $key => $value}
+                            <div class="all-tags clearfix">
+                                <div class="blue-box">{$key}</div>
+                                <div class="tags-group clearfix">
+                                    {foreach $value as $val}
+                                    {notempty name="$val.articles_count"}
+                                    <div class="single-tag">
+                                        <a href="{:url('keyword/article', ['id' => $val.id])}">{$val.name}</a>
+                                        <span class="font-gray9 hidden-xs">{$val.articles_count}</span>
+                                    </div>
+                                    {/notempty}
+                                    {/foreach}
+                                </div>
+                            </div>
+                            {/foreach}
+
+                        </main>
+                    </div>
+                </section>
+            </div>
+        </div>
+    </div>
+{/block}

@@ -1,0 +1,76 @@
+{extend name="layout/base" /}
+{block name="title"}账户安全{/block}
+{block name="load"}
+
+<!-- css -->
+<link rel="stylesheet" href="__ACSS__/site.css">
+
+<!-- js -->
+<script type="text/javascript" src="__AJS__/security.js?{$time}"></script>
+{/block}
+
+<!-- 主体内容 -->
+{block name="main"}
+        <div class="container body-container">
+            <div class="site-body">
+                <!-- 左侧 -->
+                {include file="layout/user_nav" /}
+
+                <!-- 右侧 -->
+                <div class="left_cont">
+                    <div class="main-info">
+                        <h1 class="site-h1">账户安全</h1>
+                        <div class="info-list safe-list">
+                            <table class="table">
+                                <tbody>
+                                    <tr>
+                                        <td><a class="person-img per3" href="javascript:;"></a></td>
+                                        <td>
+                                            <ul>
+                                                <li><label>账户密码</label></li>
+                                                <li>用于保护账户信息和登录安全</li>
+                                            </ul>
+                                        </td>
+                                        <td>
+                                            <button onclick="changePwd();" class="layui-btn layui-btn-warm layui-btn-sm"><i class="layui-icon"></i>修改 </button>
+                                        </td>
+                                    </tr>
+
+                                    <!-- <tr>
+                                        <td><a class="person-img per4" href="javascript:;"></a></td>
+                                        <td>
+                                            <ul>
+                                                <li>
+                                                    <label>安全邮箱 <span class="safe-email"> 未绑定 </span></label>
+                                                </li>
+                                                <li>安全邮箱可以重置密码</li>
+                                            </ul>
+                                        </td>
+                                        <td>
+                                            <button onclick="changeEmail();" class="layui-btn layui-btn-warm layui-btn-sm"><i class="layui-icon"></i>修改 </button>
+                                        </td>
+                                    </tr> -->
+
+                                    <tr>
+                                        <td><a class="person-img per5" href="javascript:;"></a></td>
+                                        <td>
+                                            <ul>
+                                                <li>
+                                                    <label>安全手机 <span vocab="safe-phone" id="phone">{$user.phone}</span></label></li>
+                                                <li>安全手机可以用于登录跨境眼账号，重置密码</li>
+                                            </ul>
+                                        </td>
+                                        <td>
+                                            <button onclick="changePhone();" class="layui-btn layui-btn-warm layui-btn-sm"><i class="layui-icon"></i>修改</button>
+                                        </td>
+                                    </tr>
+                                    
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+        </div>
+{/block}

@@ -1,0 +1,16 @@
+<div id="leftMenuBox">
+	<div class="topmenu">
+		<ul>
+			{volist name=":Auth_Menu()" id="v"}
+			<li class="on">
+			    <span style="background: #2d75c3;"><a>{$v['title']}</a><i></i><b class="nav-ico"><em class="uzfont {$v['name']}"></em></b></span>
+				<div class="childer_none" {$v['id'] == 28 ?:'style="display: block;"'}>
+					{volist name="v['lower']" id="vv"}
+					<dd onclick="javascript:gourl($(this),'/usezan/{$vv["name"]}?tree={$vv['id']}')"><a>{$vv['title']}</a></dd>
+					{/volist}
+			    </div>
+			</li>
+			{/volist}
+		</ul>
+    </div>
+</div>

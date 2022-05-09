@@ -1,0 +1,167 @@
+{include file="public/header" /}
+<div class="mainbox animated fadeInRight">
+	<div class="mainnav_title">
+	    <a class="on">课程报名</a>
+	    <a class="bth-rand fr" href="javascript:location.replace(location.href);" title="刷新"><b class="uzfont uzico-shuaxin"></b></a>
+    </div>
+	<table  class="search_table" width="100%">
+		<tr>
+			<td class="search">
+				<form action="{:url('college/join')}" method="post">
+					<input id="title" type="text" class="input-text" name="college_id" placeholder="课程id搜索" value="{:input('college_id')}" style="float:left;">
+					<input id="title" type="text" class="input-text" name="title" placeholder="课程标题搜索" value="{:input('title/s')}" style="float:left;">
+					<input id="order_sn" type="text" class="input-text" name="order_sn" placeholder="订单号搜索" value="{:input('order_sn/s')}" style="float:left;">
+					<input id="phone" type="text" class="input-text" name="phone" placeholder="手机号码搜索" value="{:input('phone/s')}" style="float:left;">
+					<input id="member_id" type="text" class="input-text" name="member_id" placeholder="用户id搜索" value="{:input('member_id')}" style="float:left;">
+					<select class="catid" name="limit">
+						<option value="20" {eq name="$limit" value="20"}selected{/eq}>20 条/页</option>
+						<option value="50" {eq name="$limit" value="50"}selected{/eq}>50 条/页</option>
+						<option value="100" {eq name="$limit" value="100"}selected{/eq}>100 条/页</option>
+						<option value="200" {eq name="$limit" value="200"}selected{/eq}>200 条/页</option>
+					</select>
+					<select class="catid" name="pay_status">
+						<option value="" {eq name="$pay_status" value=""}selected{/eq}>支付状态</option>
+						<option value="0" {eq name="$pay_status" value="0"}selected{/eq}>未支付</option>
+						<option value="1" {eq name="$pay_status" value="1"}selected{/eq}>已支付</option>
+						<option value="2" {eq name="$pay_status" value="2"}selected{/eq}>退款</option>
+					</select>
+					<select class="catid" name="sms_status">
+						<option value="" {eq name="$sms_status" value=""}selected{/eq}>短信通知</option>
+						<option value="0" {eq name="$sms_status" value="0"}selected{/eq}>未通知</option>
+						<option value="1" {eq name="$sms_status" value="1"}selected{/eq}>已通知</option>
+					</select>
+					<select class="catid" name="connect_status">
+						<option value="" {eq name="$connect_status" value=""}selected{/eq}>联系状态</option>
+						<option value="0" {eq name="$connect_status" value="0"}selected{/eq}>未联系</option>
+						<option value="1" {eq name="$connect_status" value="1"}selected{/eq}>已联系</option>
+					</select>
+					<input type="hidden" name="tree" value="{$tree_id}"/>
+					<input type="submit" value="{:lang('chaxun')}" class="button" />
+					<a href="{:url('college/join')}" class="button">重置</a>
+					<a href="javascript:;" onclick="sms_send()" class="button">发送短信</a>
+					<a href="javascript:;" onclick="export_execl()" class="button">导出Execl表格</a>
+				</form>
+			</td>
+		</tr>
+	</table>
+	<form name="myform" id="myform" action="{:url('college/sendGroupMessage')}" method="post">
+		<div class="table-list">
+		    <table width="100%" cellspacing="0">
+				<thead>
+		            <tr>
+						<!-- <th width="20"><label><input type="checkbox" name="id">全选</label></th> -->
+						<th width="40"><label><input type="checkbox" name="id"> ID</label></th>
+						<th width="40">uid</th>
+						<th width="80">订单号</th>
+						<th width="50">姓名</th>
+						<th width="80">联系电话</th>
+						<th width="150" align="left">公司名称</th>
+						<th width="250" align="left">需求/问题</th>
+						<th width="40">数量</th>
+						<th width="50">支付状态</th>
+						<th width="50">短信通知</th>
+						<th width="230">课程名称</th>
+						<th width="50">联系状态</th>
+						<th width="150">报名时间</th>
+						<th width="20">操作</th>
+					</tr>
+		        </thead>
+		      	<tbody>
+					{foreach $list as $value}
+					<tr height="70">
+						<td align="center"><label><input type="checkbox" name="ids[]" value="{$value.id}"> {$value.id}</label></td>
+						<!-- <td align="center">{$value.id}</td> -->
+						<td align="center">{$value.member_id}</td>
+						<td align="center">{$value.order_sn}</td>
+						<td align="center">{$value.name}</td>
+						<td align="center">{$value.phone}</td>
+						<td align="left">{$value.company}</td>
+						<td align="left">{$value.demand}</td>
+						<td align="center">{$value.number}</td>
+
+						<td align="center">
+						{if $value.pay_status == 0}
+						<font color="red">未支付</font>
+						{elseif $value.pay_status == 1}
+						<font color="green">已支付</font>
+						{elseif $value.pay_status == 2}
+						<font color="#999">已退款</font>
+						{/if}
+						</td>
+
+						<td align="center">
+						{if $value.sms_status == 0}
+						<font color="red">未通知</font>
+						{elseif $value.sms_status == 1}
+						<font color="green">已通知</font>
+						{/if}
+						</td>
+						<td align="center"><a href="{:url('index/college/detail', ['id' => $value.college_id])}" target="_blank">{$value.title}</a></td>
+
+						<td align="center">
+		                    <a onclick="ajax_status(this)" data-id="{$value.id}" data-url="{:url('ajax/status', ['id' => $value.id, 'value' => $value.connect_status, 'field' => 'connect_status', 'db' => 'college_join'])}" class="bth-a ajax-status {$value.connect_status == 1 ? '' : 'error-c'}"></a>
+		                </td>
+
+						<td align="center">{$value.create_time}</td>
+						<td align="center" style="width: 30px;">
+							<input value="查看详情" data-url="{:url('college/joinDetail', ['id' => $value.id])}" class="keyword-article button">
+						</td>
+					</tr>
+					{/foreach}
+		      	</tbody>
+		    </table>
+		</div>
+	</form>
+</div>
+<div id="pages" class="page">{$list|raw}</div>
+
+<script type="text/javascript">
+
+
+
+function sms_send(){
+	layer.confirm('确定要发送短信吗', function(index){
+		$("#myform").submit();
+		layer.close(index);
+	});
+}
+
+// 导出execl
+function export_execl(){
+	layer.confirm('确定要导出吗', function(index){
+		$('#myform').attr('action', 'export');
+		$("#myform").submit();
+		layer.close(index);
+	});
+}
+
+$('input[name="id"]').click(function(){
+	var id_status = $('input[name="id"]').is(":checked");
+	$('input[name="ids[]"]').prop('checked', id_status);
+});
+
+$('input[name="ids[]"]').click(function(){
+	var length = $('input[name="ids[]"]').not("input:checked").length;
+	if(length < 1)
+	{
+		$('input[name="id"]').prop('checked', true);
+	}else
+	{
+		$('input[name="id"]').prop('checked', false);
+	}
+});
+
+
+$(".keyword-article").on("click",function () {
+    var node_url = $(this).attr("data-url");
+    layer.open({
+        title:'报名详情',
+        type: 2,
+        closeBtn: false, //不显示关闭按钮
+        shift: 2,
+        shadeClose: true, //开启遮罩关闭
+        area: ['60%', '80%'],
+        content: node_url
+    });
+});
+</script>

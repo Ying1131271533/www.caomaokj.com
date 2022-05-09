@@ -1,0 +1,152 @@
+{extend name="layout/base" /}
+{block name="title"}跨境电商入驻{/block}
+{block name="load"}
+
+<!-- css -->
+<link rel="stylesheet" href="__MCSS__/platform.css">
+
+<!-- js -->
+
+{/block}
+<!-- 主体内容 -->
+{block name="main"}
+    <div class="container">
+        <div class="b2c-main">
+            <div class="banner-img">
+                <a target="_blank" href="{$phoneBanner.url}">
+                    <img src="{$phoneBanner.thumb}">
+                </a>
+            </div>
+            <div class="center-title">平台入驻</div>
+            <div class="center-nav">
+                <ul class="center-nav-ul">
+                    <li data-id="0" class="{$id == '' ? 'nav-li' : ''}">全部</li>
+                    {foreach $platform as $value}
+                    <li>
+                        <a href="{:url('platform/detail', ['id' => $value.id])}">{$value.name}</a>
+                    </li>
+                    {/foreach}
+                </ul>
+            </div>
+            <div class="row-logo">
+                {foreach $platform as $value}
+                <div class="logo-box">
+                    <a href="{:url('platform/detail', ['id' => $value.id])}">
+                        <p class="logo_p"><img src="{$value.logo}"></p>
+                        <p class="name_p">{$value.name}</p>
+                        <p class="desc_p">{$value.title}</p>
+                    </a>
+                </div>
+                {/foreach}
+                
+                <div style="clear: both;"></div>
+            </div>
+        </div>
+        <script type="text/javascript">
+        $(function() {
+            $('.center-nav-ul li').click(function() {
+                $('.center-nav-ul li').removeClass('nav-li');
+                $(this).addClass('nav-li');
+                getList();
+            })
+        })
+        //数据列表请求
+        function getList() {
+            var loadding = layer.load(0, {
+                shade: false
+            });
+            var data_id = $('.center-nav-ul .nav-li').attr('data-id');
+            $.ajax({
+                url: "/index/platform_api/index",
+                type: "POST",
+                async: false,
+                data: {
+                    c_id: data_id,
+                },
+                dataType: "json",
+                success: function(json) {
+                    layer.close(loadding);
+                    if (json.code == 200) {
+                        var html = '';
+                        if (json.data != '') {
+                            $.each(json.data, function(key, val) {
+                                html += '<div class="logo-box">';
+                                html += '<a href="/index/platform/detail/id/' + val.id + '">';
+                                html += '<p class="logo_p"><img src="' + val.logo + '"/></p>';
+                                html += '<p class="name_p">' + val.name + '</p>';
+                                html += '<p class="desc_p">' + val.descrip + '</p>';
+                                html += '</a>';
+                                html += '</div>';
+                            });
+                        }
+                        html += '<div style="clear: both;" ></div>';
+                        $(".row-logo").html(html);
+                    } else {
+                        layer.msg(json.msg);
+                    }
+                },
+                error: function() {
+                    layer.close(loadding);
+                    layer.msg('网络错误！');
+                }
+            });
+        }
+        </script>
+    </div>
+{/block}
+
+{block name="script"}
+    <script>
+        HOME_URL = "https://www.caomaokj.com";
+        $('#cnzz_stat_icon_1276964401').find('a').css('color', '#fff');
+
+        wx.config({
+            appId: 'wxa0dfe525aa5c94fd',
+            timestamp: 1629702638,
+            nonceStr: 'RtLQO4qGarh5DtZL',
+            signature: '10b62d67aa4dde7f3740026b9407741015ec6a06',
+            jsApiList: [
+                'onMenuShareTimeline',
+                'onMenuShareAppMessage',
+                'chooseImage',
+                'onMenuShareQQ'
+            ]
+        });
+        wx.ready(function() {
+            wx.onMenuShareTimeline({
+                title: '跨境电商平台_跨境电商平台排名_跨境电商平台有哪些—草帽跨境',
+                link: window.location.href,
+                imgUrl: 'http://www.caomaokj.com/static/icon/icon-caomao-small.png',
+                success: function(res) {},
+                cancel: function(res) {},
+                fail: function(res) {
+                    alert(JSON.stringify(res));
+                }
+            })
+            wx.onMenuShareAppMessage({
+                title: '跨境电商平台_跨境电商平台排名_跨境电商平台有哪些—草帽跨境', // 分享标题
+                desc: '跨境电商平台_跨境电商平台排名_跨境电商平台有哪些—草帽跨境', // 分享描述
+                link: window.location.href, // 分享链接，该链接域名或路径必须与当前页面对应的公众号JS安全域名一致
+                imgUrl: 'http://www.caomaokj.com/img/icon-caomao-small.png', // 分享图标
+                success: function() {
+                    // 用户确认分享后执行的回调函数
+                },
+                cancel: function() {
+                    // 用户取消分享后执行的回调函数
+                }
+            });
+            wx.onMenuShareQQ({
+                title: '跨境电商平台_跨境电商平台排名_跨境电商平台有哪些—草帽跨境', // 分享标题
+                desc: '跨境电商平台_跨境电商平台排名_跨境电商平台有哪些—草帽跨境', // 分享描述
+                link: window.location.href, // 分享链接，该链接域名或路径必须与当前页面对应的公众号JS安全域名一致
+                imgUrl: 'http://www.caomaokj.com/img/icon-caomao-small.png', // 分享图标
+                success: function() {
+                    // 用户确认分享后执行的回调函数
+                },
+                cancel: function() {
+                    // 用户取消分享后执行的回调函数
+                }
+            });
+        });
+    </script>
+{/block}

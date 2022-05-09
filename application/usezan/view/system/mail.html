@@ -1,0 +1,51 @@
+{include file="public/header" /}
+<div class="mainbox animated fadeInRight">
+	<div class="mainnav_title">
+		<a href="{:url('system/index')}" class="on">站点配置</a>
+		{include file="public/menu_right" /}
+		<a class="bth-rand fr" href="javascript:location.replace(location.href);" title="刷新"><b class="uzfont uzico-shuaxin"></b></a>
+    </div>
+<form method='post' id="form1" action="{:url('system/update')}" enctype="multipart/form-data">
+<table cellpadding="0" cellspacing="0" width="100%" class="table_form" >
+	<tbody>
+	    {volist name="system" id="v"}
+	        {switch name="v['type']"}
+	            {case value="1"}
+	            	<tr>
+						<th width="120">{$v['info']}:</th>
+						<td><input type="text" class="input-text" name="{$v['varname']}" value="{$v['value']}" size="{$v['size']}">&nbsp;{$v['remark'] ? $v['remark'] : $v['varname']}</td>
+					</tr>
+	            {/case}
+	            {case value="2"}
+		            <!-- <tr>
+						<th width="140">{$v['info']}:</th>
+						<td><textarea rows="4" style="width:432px;" name="{$v['varname']}">{$v['value']}</textarea>&nbsp;{$v['varname']}</td>
+				    </tr> -->
+	            {/case}
+	            {case value="5"}
+	            	<tr>
+					    <th>{$v['info']}</th>
+					    <td>
+					        <input name="{$v['varname']}" {if condition="$v['value']"}checked{/if} value="1" type="radio">开启&nbsp;&nbsp;&nbsp;&nbsp;
+					        <input name="{$v['varname']}" {if condition="!$v['value']"}checked{/if} value="0" type="radio">关闭
+					    </td>
+				    </tr>
+	            {/case}
+	            {case value="6"}
+	            	<tr>
+						<th width="120">{$v['info']}:</th>
+						<td><input type="password" class="input-text" name="{$v['varname']}" value="{$v['value']}" size="{$v['size']}">&nbsp;{$v['varname']}</td>
+					</tr>
+	            {/case}
+	        {/switch}
+	    {/volist}
+	    <tr><th width="120">邮箱设置文档:</th><td><a style="color:#498CD0;" download="emailsys" target="_blank" href="/public/static/uploads/sys/email.docx">下载帮助文档</a></td></tr>
+	</tbody>
+</table>
+<div class="btn">
+    <input type="hidden" name="groupid" value="3" />
+	<input type="submit" value="{:lang('save')}" class="button" />
+	<input type="reset"  value="{:lang('reset')}" class="button" />
+</div>
+</form>
+</div>

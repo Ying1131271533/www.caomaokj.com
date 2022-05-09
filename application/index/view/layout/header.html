@@ -1,0 +1,102 @@
+<!-- 头部文件 -->
+<header class="header">
+    <nav class="nav-menu navbar-fixed-top navbar" style="height:100px;">
+        <!-- 最顶部 -->
+        {include file="layout/top" /}
+        <!-- 导航栏 -->
+        {include file="layout/menu" /}
+    </nav>
+</header>
+
+<!-- 如果是首页 则显示 -->
+{notempty name="$announcement"}
+{eq name="$announcement['status']" value="1"}
+<a class="activity_href" target="_blank" href="{$announcement.url}">
+    <div class="bottom_banner_ad_jzc hidden-sm hidden-xs" style="position: fixed; bottom: 0px; height: 80px; line-height: 80px; font-size: 30px; width: 100%; z-index: 2147483647; background: url({$announcement['thumb']}) center center / 100%; opacity: 0.8; color: rgb(255, 255, 255); display: none;">
+        <img class="close_btn_img_jzc" style="width: 25px;height: 25px;float: right;margin-right: 20px;margin-top:10px;" src="__AIMG__/7794af16170aebcd.png">
+    </div>
+</a>
+{/eq}
+{/notempty}
+
+
+<!-- 公众号矩阵 -->
+<script src="__AJS__/jquery.cookie.js"></script>
+<script>
+    var showOfficial = false;
+    $(".official-dropdown").hover(function() {
+        if (!showOfficial) {
+            $(".officials").css("display", "block");
+            $(".officialText").css("color", "#ff7600");
+            showOfficial = true;
+        }
+
+    });
+    $(".official-dropdown").mouseleave(function() {
+        if (showOfficial) {
+            $(".officials").css("display", "none");
+            $(".officialText").css("color", "#333");
+            showOfficial = false;
+        }
+    });
+    $(".user-menu-container").hover(function() {
+        $(this).children(".user-menu-top").css("display", "flex")
+    });
+    $(".user-menu-container").mouseleave(function() {
+        $(this).children(".user-menu-top").css("display", "none")
+    })
+    var host = window.location.href;
+    var url_home = "https://www.kuajingyan.com";
+    var url_home1 = "https://www.kuajingyan.com" + '/';
+    var domain = ".kuajingyan.com";
+    if ((host == url_home) || (host == url_home1)) {
+        // 弹窗公告
+        showTips();
+    } else {
+        // 弹窗公告
+        if ($.cookie("isShowTips") != '1') {
+            showTips();
+        }
+    }
+
+    $('.close_btn_img_jzc').click(function() {
+        $('.activity_href').removeAttr('href');
+        $('.bottom_banner_ad_jzc').fadeOut(1000);
+    })
+
+    // 显示公告
+    function showTips() {
+        $('.bottom_banner_ad_jzc').show();
+        $.cookie("isShowTips", "1", { expires: 1, path: '/', domain: domain });
+    }
+
+    $(window).scroll(function() {
+        if ($(document).scrollTop() >= 3500) {
+            $('.bottom_banner_ad_jzc').fadeOut(1000);
+        }
+    })
+
+    var user_type = $('.user_type').val();
+    var user_service_id = $('.user_service_id').val();
+    var is_posted_jzc_service = localStorage.getItem("is_posted_jzc_service");
+    var is_posted_jzc_company = localStorage.getItem("is_posted_jzc_company");
+
+    if (!user_service_id || user_service_id == 'undefined') {
+        localStorage.removeItem("is_posted_jzc_service");
+        localStorage.removeItem("is_posted_jzc_company");
+    }
+
+    if ((user_type != 'undefined' && user_type < 2 && user_service_id != 'undefined' && user_service_id > 0) || is_posted_jzc_service == 1 || is_posted_jzc_company == 1) {
+        $('.service_href').attr('href', "https://www.caomaokj.com/site/service-tips?v=service_href");
+        $('.company_href').attr('href', "https://www.caomaokj.com/site/service-tips?v=company_href");
+    } else if (user_type != 'undefined' && user_type == 3 && user_service_id != 'undefined' && user_service_id > 0) {
+        $('.service_href').attr('href', "https://user.kuajingyan.com/warehouse/info");
+        $('.company_href').attr('href', "https://user.kuajingyan.com/warehouse/info");
+    } else {
+        var href = $('.service_href').attr('data-href');
+        $('.service_href').attr('href', href);
+
+        var company_href = $('.company_href').attr('data-href');
+        $('.company_href').attr('href', company_href);
+    }
+</script>1

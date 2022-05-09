@@ -1,0 +1,59 @@
+{include file="public/header" /}
+<div class="mainbox animated fadeInRight">
+	<div class="mainnav_title">
+	    <a class="on">权限节点修改</a>
+	    <a class="add-edit" href="{:url('auth/auth_rule')}?tree={$tree_id}">[<b class="uzfont uzico-fanhui"></b>返回列表]</a>
+	    <a class="bth-rand fr" href="javascript:location.replace(location.href);" title="刷新"><b class="uzfont uzico-shuaxin"></b></a>
+    </div>
+	<form id="myform" action="" method="post">
+		<table cellpadding="0" cellspacing="0" class="table_form" width="100%">
+		<tr>
+			<td width="120">分组</td>
+			<td>
+				<select name="parentid">
+					<option value="0">一级分组</option>
+					{$rule|raw}
+				</select>
+			</td>
+		</tr>
+		<tr>
+			<td width="120">标题</td>
+			<td><input type="text" class="input-text" name="title" value="{$rule_list['title']}" validate="required:true,minlength:2, maxlength:50"/>{操作名称,例如：用户列表}</td>
+		</tr>
+		<tr>
+			<td width="120">权限方法</td>
+			<td><input type="text" class="input-text" name="name" value="{$rule_list['name']}" validate="required:true,minlength:2, maxlength:50"/>{控制器/方法,例如：user/index}</td>
+		</tr>
+		<tr>
+			<td width="120">Ico图标</td>
+			<td><input type="text" class="input-text" name="uzico" value="{$rule_list['uzico']}"/></td>
+		</tr>
+		{if condition="$rule_list['level'] gt 2"}
+		<tr>
+			<td>三级菜单</td>
+			<td>
+				<select name="issub">
+					<option value="0" {eq name="rule_list['issub']" value="0"}selected{/eq}>禁用</option>
+					<option value="1" {eq name="rule_list['issub']" value="1"}selected{/eq}>显示</option>
+				</select>
+			</td>
+		</tr>
+		{/if}
+		<tr>
+			<td>状态</td>
+			<td>
+			<select name="status">
+				<option value="1" {eq name="rule_list['status']" value="1"}selected{/eq} />启用</option>
+				<option value="0" {eq name="rule_list['status']" value="0"}selected{/eq} />禁用</option>
+			</select>
+			</td>
+		</tr>
+	</table>
+	<div class="btn">
+		<input type="hidden" name="id" value="{$rule_list['id']}" />
+		<input type="hidden" name="tree" value="{$tree_id}" />
+		<input type="submit" value="{:lang('dosubmit')}" class="button" />
+		<input type="reset"  value="{:lang('cancel')}" class="button" />
+	</div>
+	</form>
+</div>

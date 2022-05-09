@@ -1,0 +1,192 @@
+{extend name="layout/base" /}
+{block name="title"}{$activity.title}{/block}
+{block name="load"}
+
+<!-- css -->
+<link href="__ACSS__/font-awesome.min.css" rel="stylesheet" type="text/css">
+
+<!-- js -->
+<script type="text/javascript" src="__AJS__/share_article.js?{$time}"></script>
+<script type="text/javascript" src="__AJS__/activity.js?{$time}"></script>
+{/block}
+
+<!-- 主体内容 -->
+{block name="main"}
+<div class="container body-container">
+    <link href="__ACSS__/activity_detail.css" rel="stylesheet" type="text/css">
+    <div class="site-index">
+        <div class="nav_div_huodong_detail">
+            <span>
+                <a class="color9" href="/">
+                    <svg class="icon" aria-hidden="true">
+                        <use xlink:href="#icon-shouye2"></use>
+                    </svg>首页 &gt;
+                </a>
+            </span>
+            <span>
+                <a class="color9" href="{:url('activity/index')}">跨境活动 &gt;</a>
+            </span>
+            <span>
+                <a class="color5" href="javascript:void(0)">{$activity.title}</a>
+            </span>
+        </div>
+        <div class="activity-detail">
+            <div class="col-md-9 main">
+                <div class="activity-title bordered">
+                    <div class="img">
+                        <img class="lazy" id="share_img" src="{$activity.thumb}" style="border-radius:10px;width:350px;height:190px;display: inline;">
+                    </div>
+                    <div class="desc">
+                        <input type="hidden" id="user_id" value="{$userid}">
+                        <input type="hidden" id="activityId" value="{:input('id/d')}">
+                        <input type="hidden" id="shareContent" value="{$activity.title}">
+                        <div>
+                            <h1>{$activity.title}</h1>
+                            <p><span>报名人数：</span>
+                                {if is_numeric($activity.join_num)}
+                                剩余 {$activity.tickets_num - $activity.apply_num} 名
+                                {else/}
+                                <font color="#ff7600">{$activity.join_num}</font>
+                                {/if}
+                            </p>
+                            <p><span>时间：</span>{:date('Y-m-d H:i:s', $activity.starttime)} 至 {:date('Y-m-d H:i:s', $activity.endtime)}</p>
+                            <p><span>地点：</span>{$activity.address}</p>
+                        </div>
+                        <div class="activity-action">
+                            <div style="float:left;">
+                                <span class="input-group-btn">
+                                    {empty name="$collect"}
+                                    <button onclick="collect({$activity.id})" class="btn btn-collect" type="button">
+                                        <span id="collect" class="glyphicon fa fa-heart-o"></span>
+                                        <span>收藏</span>
+                                    </button>
+                                    {else/}
+                                    <button onclick="collect({$activity.id})" class="btn btn-collect" type="button">
+                                        <span id="collect" class="glyphicon fa fa-heart red"></span>
+                                        <span>已收藏</span>
+                                    </button>
+                                    {/empty}
+                                </span>
+                            </div>
+                            <div class="bdsharebuttonbox bdshare-button-style1-16" data-bd-bind="1620209157378">
+                                <span style="color: #757575">分享：</span>
+                                <a onclick="shareTo('sina')" class="bds bds_tsina" title="分享到新浪微博"></a>
+                                <a data-cmd="weixin" class="bds bds_weixin" title="分享到微信"></a>
+                                <a onclick="shareTo('qq')" class="bds bds_sqq" title="分享到QQ好友"></a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="activity_fee">
+                    <div class="row" style="width: 100%;margin-top:15px;">
+                        <div class="col-md-2 select_fee_left color3" style="">门票类型：</div>
+                        <div class="col-md-10" style="width: 88%;padding-right: 0px">
+
+                            <div class="clearfix choose_div_jzc  sale" af_title="单人价" af_price="{:sprintf("%.2f", $activity.discount)}" af_id="1179" data-type="单人价">
+                                <div style="width: 70%;float: left;" class="row fee_select_div sale" af_title="单人价" af_price="{:sprintf("%.2f", $activity.discount)}" af_id="1179" data-type="单人价">
+                                    <div style="width: 40%" class="pull-left">价格：<span class="price_color">{$activity.discount <= 0 ? '免费咨询' : sprintf("%.2f", $activity.discount).'元'}</span></div>
+                                    <div style="width: 18%" class="pull-left"> 余票：{$activity.tickets_num - $activity.apply_num} </div>
+                                </div>
+                                <div class=" end_time_style" style="width:30%;">截止时间：{:date('Y-m-d H:i:s', $activity.endtime)}</div>
+                            </div>
+                            
+                        </div>
+                    </div>
+
+                    <div class="join_btn_div">
+                        {if is_numeric($activity.join_num) and $activity.endtime > time() and $activity.status == 1}
+                        <a class="btn btn-find baoming_btn" href="{:url('activity/join', ['id' => $activity.id])}">我要报名</a>
+                        {else/}
+                        <a class="btn btn-find baoming_btn" style="background-color:rgba(153,153,153,1);">已结束</a>
+                        {/if}
+                    </div>
+                </div>
+
+                <div class="content_clear"></div>
+                <div class="activity-content">
+                    <div class="content content_jzc">
+                        {$activity.content|raw}
+                    </div>
+                    <!-- 标签/分享/点赞 -->
+                    <div class="article-after">
+                        <div class="share-div">
+                            <div class="bdsharebuttonbox bdshare-button-style1-16" data-bd-bind="1620209157378">
+                                <span>分享到：</span>
+                                <a data-cmd="tsina" class="bds bds_tsina" title="分享到新浪微博"></a>
+                                <a data-cmd="weixin" class="bds bds_weixin" title="分享到微信"></a>
+                            </div>
+                        </div>
+                        <div class="like">
+                            <a href="javascript:void(0)" title="收藏" onclick="collect({$activity.id})">
+                                <span class="glyphicon fa fa-heart-o"></span><span class="al_collect_num">{$activity.collect_num}</span>
+                            </a>
+                            <a href="javascript:void(0)" title="点赞" onclick="like({$activity.id})">
+                                <span class="glyphicon fa fa-thumbs-o-up"></span><span class="al_like_num">{$activity.like_num}</span>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+                
+            </div>
+
+            <!-- 右侧-->
+            <div class="col-md-3 common-right">
+                <!-- 主办方介绍 -->
+                <!-- <div class="detail_r_pc_Up detail_sporsor">
+                    <div class="detail_party_aside_topR">
+                        <p class="aside_topR_pic">
+                            <a class="detail_sporsor_vip" href="javascript:void(0);">
+                                <img src="__ICON__/icon-caomao-small.png">
+                            </a>
+                            <b></b>
+                        </p>
+                        <div class="aside_topR_tit">
+                            <a href="javascript:void(0);" class="name_vip">草帽跨境</a>
+                            <p>跨境卖家综合服务平台。找海外仓、找专线、找海外资源、找干货、找活动...</p>
+                        </div>
+                    </div>
+                    <div class="detail_sponsor_icon"></div>
+                    <div class="party_join">
+                        <div class="fl num_vip">举办活动<p class="num">{$activityNum}</p>
+                        </div>
+                        <div class="fr num_vip">参与人数<p class="num">{$activityPeople}</p>
+                        </div>
+                    </div>
+                </div> -->
+                
+                <div class="panel panel-default recommend" style="margin-top: 0px;">
+                    <!-- 推荐活动 -->
+                    <div class="panel-heading" style="margin-top: 0px;">您可能还会关注</div>
+                    <div class="panel-body">
+                        {foreach $likeactivity as $value}
+                        <p>
+                            <a title="{$value.title}" target="_blank" href="{:url('activity/detail', ['id' => $value.id])}">
+                                <img src="{$value.thumb}" alt="{$value.title}">
+                            </a>
+                        </p>
+                        {/foreach}
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <script>
+    window._bd_share_config = {
+        "common": {
+            "bdSnsKey": {
+                "tsina": "3429961073"
+            },
+            "bdText": $("#shareContent").val(),
+            "bdMini": "2",
+            "bdMiniList": false,
+            "bdPic": "",
+            "bdStyle": "1",
+            "bdSize": "24"
+        },
+        "share": {}
+    };
+    with(document) 0[(getElementsByTagName('head')[0] || body).appendChild(createElement('script')).src = 'https://www.caomaokj.com/static/akali/js/share.js?v=89860593.js?cdnversion=' + ~(-new Date() / 36e5)];
+    </script>
+</div>
+{/block}

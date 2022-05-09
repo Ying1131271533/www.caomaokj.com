@@ -1,0 +1,543 @@
+.aside > .btn-primary {
+    display: none;
+}
+
+/*注释掉了图文列表板块的发帖框，回复的时候，去掉这一行就可以了*/
+.bus_loop {
+    width: calc(100% - .8rem);
+    margin: 10px 0 25px;
+    padding-bottom: 20px;
+    margin-bottom:0 !important;
+    position: relative;
+    float: none;
+}
+
+.bus_loop:hover {
+    background: #fff !important;
+    box-shadow: 0 0 7px 0 rgba(0, 0, 0, .15);
+}
+
+/*.card-body {*/
+/*    padding: 0 !important;*/
+/*}*/
+
+.bus_loop .content {
+    overflow: hidden;
+    float: left;
+    margin: 0 2%;
+    width: 278.3px;
+    height: 172.5px
+}
+
+.bus_loop .content_body .mobanbus-cover img {
+    display: block;
+    max-height: 300px;
+    width: 100%;
+    -webkit-transition: all .3s;
+    -moz-transition: all .3s;
+    transition: all .3s
+}
+
+.bus_loop .content_body {
+    width: 260px;
+    float: left;
+    margin: 0;
+    display: block;
+    overflow: hidden
+}
+
+.bus_loop .content_body .thumb {
+    width: 260px;
+    height: 156px;
+    border-radius: 3px;
+}
+
+.bus_loop .content_infor {
+    color: #888;
+    font-size: 12px;
+    padding: 0 0 0 15px;
+    line-height: 27px;
+    overflow: hidden;
+    display: block;
+}
+
+.bus_loop .content_infor h2 {
+    font-size: 18px;
+    line-height: 25px;
+    color: #f66
+}
+
+.bus_loop .content_infor h2 span a {
+    line-height: 25px;
+    margin: 0 10px 0 0;
+    display: block;
+    float: left;
+    border: 1px solid #8d8d8d;
+    color: #555;
+    border-radius: 2px;
+    font-size: 12px;
+    padding: 0 10px;
+}
+
+.bus_loop .content_infor h2 span a:hover {
+    color: #fff;
+    background: #f66;
+    border: 1px solid #f66;
+}
+
+.bus_loop .content_infor h2 a {
+    color: #2a3342;
+    line-height: 25px;
+    font-size: 20px;
+    display: -webkit-box;
+    -webkit-box-orient: vertical;
+    -webkit-line-clamp: 2;
+    overflow: hidden;
+}
+
+.bus_loop .content_infor h2 a:hover {
+    color: #f66;
+}
+
+.bus_loop .content_infor p {
+    font-size: 14px;
+    color: #999;
+    overflow: hidden;
+    height: 44px;
+    margin: 10px 0;
+    line-height: 22px;
+}
+
+.bus_loop .content_infor a {
+    color: #888
+}
+
+.bus_loop .content_infor span, #article .bus_loop .content_infor .auther {
+    float: left
+}
+
+@media (max-width: 576px) {
+    .aaca .auther {
+        display: -webkit-box;
+        -webkit-box-orient: vertical;
+        -webkit-line-clamp: 1;
+        overflow: hidden;
+        width: 55%;
+        word-break: break-all;
+    }
+
+    .aaca .more {
+        margin-left: 0 !important;
+        float: right !important
+    }
+
+    /*.aaca .auther a{*/
+    /*display: -webkit-box;*/
+    /*-webkit-box-orient: vertical;*/
+    /*-webkit-line-clamp: 1;*/
+    /*overflow: hidden;*/
+    /*}*/
+}
+
+.bus_loop .more {
+    margin-left: 10px;
+    float: right !important
+}
+
+.bus_loop .content_infor .avatar {
+    width: 30px;
+    border-radius: 15px;
+    height: auto;
+    margin-right: 10px;
+    float: left
+}
+
+.bus_loop .content_infor .auther img {
+    width: 30px;
+    border-radius: 15px;
+    height: auto;
+    margin-right: 10px;
+    float: left
+}
+
+.bus_loop2 {
+    width: 100%;
+    margin: 0 0 20px 0;
+    padding-bottom: 20px;
+    float: left;
+    background: #FFF;
+    position: relative;
+    border-bottom: 1px solid #eee;
+}
+
+.bus_loop2 .content_body {
+    overflow: hidden;
+    float: left;
+    margin: 0 15px 0 0;
+    width: 160px;
+    height: 160px
+}
+
+.bus_loop2 .content_body img {
+    border-radius: 3px;
+    width: 160px;
+    height: 160px
+}
+
+.bus_loop2 .content_infor {
+    width: 100%;
+    float: left;
+    color: #888;
+    font-size: 12px;
+    padding: 12px 0 0 0;
+    line-height: 27px;
+    overflow: hidden;
+    display: block;
+}
+
+.bus_loop2 .content_infor h2 {
+    font-size: 18px;
+    line-height: 25px;
+    color: #f66
+}
+
+.bus_loop2 .content_infor h2 span a {
+    display: block;
+    float: left;
+    border: 1px solid #8d8d8d;
+    color: #555;
+    border-radius: 2px;
+    font-size: 12px;
+    padding: 0 10px;
+}
+
+.bus_loop2 .content_infor h2 span a:hover {
+    color: #fff;
+    background: #f66;
+    border: 1px solid #f66;
+}
+
+.bus_loop2 .content_infor h2 a {
+    color: #555;
+    line-height: 25px;
+    font-size: 24px;
+    display: block;
+    white-space: nowrap;
+    text-overflow: ellipsis;
+    overflow: hidden;
+}
+
+.bus_loop2 .content_infor h2 a:hover {
+    color: #f66;
+}
+
+.bus_loop2 .content_infor p {
+    font-size: 14px;
+    color: #555;
+    margin: 10px 0
+}
+
+.bus_loop2 .content_infor a {
+    color: #888
+}
+
+.bus_loop2 .content_infor span, #article .bus_loop .content_infor .auther {
+    margin-right: 10px;
+    float: left
+}
+
+.bus_loop2 .more {
+    margin-left: 10px;
+    float: right !important
+}
+
+.bus_loop2 .content_infor .avatar {
+    width: 30px;
+    border-radius: 15px;
+    height: auto;
+    margin-right: 10px;
+    float: left
+}
+
+.bus_loop2 .content_infor .auther img {
+    width: 30px;
+    border-radius: 15px;
+    height: auto;
+    margin-right: 10px;
+    float: left
+}
+
+#portal_block_428_content {
+    margin-right: -3%;
+}
+
+.bus_loop3 {
+    width: 31.5%;
+    margin: 30px 1.5% 40px 0;
+    float: left;
+    position: relative;
+    overflow: hidden;
+    border-radius: 3px;
+}
+
+.bus_loop3.lsatone {
+    margin: 30px 0 30px 0;
+}
+
+.bus_loop3 .content_infor {
+    float: left;
+    width: 100%;
+    height: 160px
+}
+
+.bus_loop3 .content_infor img {
+    width: 100%;
+    height: 160px;
+    border-radius: 3px;
+}
+
+.bus_loop3 .content_infor .bus_loop3tag {
+    position: absolute;
+    color: #fff;
+    left: 0;
+    top: 10px;
+    border-radius: 0 2px 2px 0;
+    padding: 3px 10px;
+    background-color: #f66;
+    z-index: 2;
+}
+
+.bus_loop3 .content_infor a span {
+    position: absolute;
+    width: 94%;
+    padding: 10px 3%;
+    height: 40px;
+    line-height: 20px;
+    font-size: 16px;
+    color: #fff;
+    left: 0px;
+    bottom: 0px;
+    z-index: 1;
+    background: url(../img/1600/bus_jb.png) bottom repeat-x;
+}
+
+.bus_loop4 {
+    width: 100%;
+    margin: 0 0 25px 0;
+    padding-bottom: 20px;
+    float: left;
+    position: relative;
+    overflow: hidden;
+    border-bottom: 1px solid #eee;
+}
+
+.bus_loop4 .content_infor h2 {
+    font-size: 18px;
+    line-height: 25px;
+    color: #f66
+}
+
+.bus_loop4 .content_infor h2 span a {
+    line-height: 25px;
+    margin: 13px 10px 12px 0;
+    display: block;
+    float: left;
+    border: 1px solid #8d8d8d;
+    color: #555;
+    border-radius: 2px;
+    font-size: 12px;
+    padding: 0 10px;
+}
+
+.bus_loop4 .content_infor h2 span a:hover {
+    color: #fff;
+    background: #f66;
+    border: 1px solid #f66;
+}
+
+.bus_loop4 .content_infor h2 a {
+    color: #555;
+    line-height: 50px;
+    font-size: 20px;
+    display: block;
+    white-space: nowrap;
+    text-overflow: ellipsis;
+    overflow: hidden;
+}
+
+.bus_loop4 .content_infor h2 a:hover {
+    color: #f66;
+}
+
+.bus_loop4 .content_infor .bus_w100 img {
+    width: 24%;
+    height: 115px;
+    border-radius: 3px;
+    margin: 0 0.5% 5px 0.5%;
+    float: left;
+}
+
+.bus_loop4 .content_infor {
+    color: #888;
+    font-size: 12px;
+    padding: 0 0 0 0;
+    line-height: 27px;
+    overflow: hidden;
+    display: block;
+    clear: both
+}
+
+.bus_loop4 .content_infor a {
+    color: #888
+}
+
+.bus_loop4 .content_infor span, #article .bus_loop .content_infor .auther {
+    margin-right: 10px;
+    float: left
+}
+
+.bus_loop4 .more {
+    margin-left: 10px;
+    float: right !important
+}
+
+.bus_loop4 .content_infor .avatar {
+    width: 30px;
+    border-radius: 15px;
+    height: auto;
+    margin-right: 10px;
+    float: left
+}
+
+.bus_loop4 .content_infor .auther img {
+    width: 30px;
+    border-radius: 15px;
+    height: auto;
+    margin-right: 10px;
+    float: left
+}
+
+.bus_more {
+    display: block;
+    width: 100%;
+    float: left;
+}
+
+.bus_more a {
+    display: block;
+    width: 50%;
+    text-align: center;
+    font-size: 20px;
+    font-weight: 700;
+    margin: 20px auto 0;
+    height: 35px;
+    line-height: 35px;
+}
+
+.bus_sidebox {
+    margin-bottom: 25px;
+    border-radius: 5px;
+    background: #f7f7f7;
+    float: left;
+    clear: both;
+    font-size: 12px;
+    width: 90%;
+    position: relative;
+    border-top: 2px solid #f66;
+    border-left: 1px solid #eee;
+    border-right: 1px solid #eee;
+    border-bottom: 1px solid #eee;
+    padding: 0 5%;
+}
+
+.bus_sidebox h2, h2.panelTitle {
+    padding: 3px 0;
+    line-height: 35px;
+    text-transform: none;
+    clear: both;
+    font-size: 20px;
+    color: #333;
+    font-weight: bolder;
+    border-bottom: 1px solid #ddd
+}
+
+#portal_block_434_content ul li span {
+    font-size: 30px;
+    width: 5px;
+    height: 15px;
+    float: left;
+    line-height: 15px;
+}
+
+.thread {
+    padding: 20px .8rem !important;
+}
+
+.bus_loop .content_infor {
+    height: 156px;
+    overflow: hidden;
+    position: relative;
+}
+
+.aaca {
+    position: absolute;
+    bottom: 12px;
+    right: 0;
+    width: 98%
+}
+
+@media (max-width: 576px) {
+    .bus_loop .content_body {
+        width: 33%;
+        float: left;
+        margin: 0;
+        display: block;
+        overflow: hidden;
+    }
+
+    .bus_loop .content_body .thumb {
+        display: block;
+        max-width: 100%;
+        height: 6rem;
+    }
+
+    .bus_loop .content_infor h2 a {
+        font-size: 15px;
+        color: #2a3342;
+        height: 45px
+    }
+
+    .avatar {
+        display: none
+    }
+
+    .pjj {
+        display: none
+    }
+
+    .fbsa {
+        display: none
+    }
+
+    .bus_loop {
+        margin: 0 !important;
+        padding-top: 0.85rem !important;
+        padding-bottom: 0.85rem !important;
+    }
+
+    .hy {
+        display: none
+    }
+
+    .bus_loop .content_infor {
+        height: 6.5rem;
+    }
+
+    .aaca {
+        position: absolute;
+        bottom: 0;
+        right: 0;
+        width: 95%
+    }
+
+}

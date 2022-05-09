@@ -1,0 +1,95 @@
+{extend name="layout/base" /}
+{block name="title"}课程费用支付{/block}
+{block name="load"}
+<link href="__ACSS__/confirm.css" rel="stylesheet" type="text/css">
+{/block}
+<!-- 主体内容 -->
+{block name="main"}
+    <div class="container body-container">
+        <div class="site-index" style="margin-top:50px;margin-bottom: 100px;">
+            <input type="hidden" id="order_id" value="{$order.id}">
+            <div class="top_img_div">
+                <img src="__AIMG__/157052763173691.png">
+            </div>
+            <div class="pay_info_div pt10" style="border:0px solid;background: #fff;">
+                <p class="hedui_p">请核对订单信息</p>
+                <div class="list_question_div">
+                    <span class="c_name ml90">姓名：</span><span class="c_content">{$join.name}</span>
+                    <span class="c_name ml90">公司名：</span><span class="c_content">{$join.company}</span>
+                    <span class="c_name ml90">手机：</span><span class="c_content">{$join.phone}</span>
+                    <!-- <span class="c_name ml90">您的电子邮箱（需要发送报告）：</span><span class="c_content">1131271533@qq.com</span> -->
+                </div>
+                <p class="hedui_p">订单状态</p>
+                <div class="list_question_div">
+                    <span class="c_name ml90">订单状态：</span><span class="c_content">待付款</span>
+                    <span class="c_name ml90">订单状态：</span><span class="c_content">{$order.order_sn}</span>
+                    <span class="c_name ml90">下单时间：</span><span class="c_content">{$order.create_time}</span>
+                </div>
+                <p class="hedui_p">交易信息</p>
+                <div class="transaction_info">
+                    <table class="table border table_transaction_info">
+                        <thead>
+                            <tr style="background: #F6F6F8;">
+                                <th width="20%">课程名称</th>
+                                <th width="15%">课程时间</th>
+                                <th width="20%">票种名称</th>
+                                <th width="20%">课程地址</th>
+                                <th width="15%">单价</th>
+                                <th width="10%">小计</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td><a href="{:url('college/detail', ['id' => $college['id']])}"> {$college.title}</a></td>
+                                <td>{:date('Y-m-d H:i:s', $college.start_time)} <br>至<br> {:date('Y-m-d H:i:s', $college.end_time)}</td>
+                                <td>{$tickets.name}</td>
+                                <td>{$college.address}</td>
+                                <td class="fee_price_color">
+                                    <span class="activity-original-price">￥{:sprintf("%.2f", $order.original_price)}x{$order.number} </span>
+                                    ￥{:sprintf("%.2f", $order.shop_price)}x{$order.number} </td>
+                                <td class="fee_price_color">￥{:sprintf("%.2f", $order.total)}</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                    <p class="hedui_p" style="padding-left: 0;">选择支付方式</p>
+                    <div class="orderPayPcWrap" style="width: 100%;padding-left: 0;">
+                        <ul class="payType" style="border:0px solid;width: 100%;margin:0 auto;">
+                            <!-- <li id="weixin" class="thisOver"><img src="__AIMG__/weixin_pay.jpg" alt="微信支付"></li> -->
+                            <li id="alipay"><img src="__AIMG__/zhifubao.jpg" alt="支付宝"></li>
+                        </ul>
+                        <div class="actual_payment">
+                            <div class="pull-right">
+                                <p class="actual_payment_span pull-left">实付款：<span class="actual_price">¥ {:sprintf("%.2f", $order.total)}</span></p>
+                                <p class="actual_payment_span pull-left"><button class="next_btn" onclick="confirmPay()">去支付</button></p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <script>
+        $(function() {
+            $('.orderPayPcWrap .payType li').click(function(event) { //支付方式
+                $(this).addClass('thisOver').siblings().removeClass('thisOver');
+            });
+        });
+
+        function confirmPay() {
+            var payType = $(".payType").find(".thisOver").attr("id");
+            if(!payType){
+                layer.msg("请选择支付方式", {icon:2});
+                return false;
+            }
+
+            layer.msg("正在跳转支付");
+            if (payType === 'weixin') {
+                location.href = "/index/college_pay/wechat?order_id=" + $("#order_id").val();
+            }else if (payType === 'alipay') {
+                location.href = "/index/college_pay/alipay?order_id=" + $("#order_id").val();
+            }
+            
+            // location.href = "/index/pay/submit?order_id=" + $("#order_id").val() + "&pay=" + payType + "&type=" + 2;
+        }
+        </script>
+    </div>
+{/block}

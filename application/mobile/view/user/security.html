@@ -1,0 +1,80 @@
+{extend name="layout/base" /}
+{block name="title"}账户安全{/block}
+{block name="load"}
+
+<!-- css -->
+
+<!-- js -->
+<!-- <script src="__MJS__/11.0.1.js" id="sozz"></script> -->
+<!-- <script charset="utf-8" src="https://s.ssl.qhres.com/ssl/ab77b6ea7f3fbf79.js"></script> -->
+
+{/block}
+<!-- 主体内容 -->
+{block name="main"}
+    <div class="container">
+        <style>
+            .data-list {
+                margin-top: 0;
+                font-size: 0.14rem;
+            }
+            
+            .se-ul li {
+                height: 50px;
+                line-height: 50px;
+                border-bottom: 1px solid #eee;
+                background: #fff;
+                padding: 0 10px;
+            }
+            
+            .se-ul .fr {
+                font-size: 20px;
+            }
+            
+            .se-ul .fa {
+                line-height: 50px;
+            }
+            
+            .se-ul .data {
+                color: #8c8c8c;
+                margin-left: 40px;
+            }
+            
+            .se-ul .btn-xg {
+                position: absolute;
+                color: #ff8400;
+                height: 28px;
+                border-radius: 2px;
+                width: 60px;
+                border: 1px solid #fc9d27;
+                background-color: #fff;
+                right: 33px;
+                margin-top: 10px;
+            }
+        </style>
+        <div class="data-list">
+            <ul class="se-ul">
+                <li>密码修改 <span class="data">********</span>
+                    <a href="{:url('user/changePwd')}"><button type="button" class="btn-xg">修改</button></a>
+                    <i class="fa fa-angle-right fr"></i>
+                </li>
+
+                <!-- <li style="margin-top: 10px;">邮箱绑定 <span class="data">1131271533@qq.com</span>
+                    <a href="https://user.kuajingyan.com/home/change-email"><button type="button" class="btn-xg">修改</button></a>
+                    <i class="fa fa-angle-right fr"></i>
+                </li> -->
+
+                <li>手机绑定 <span class="data">{$user.phone}</span>
+                    <a href="{:url('user/changePhone')}"><button type="button" class="btn-xg">修改</button></a>
+                    <i class="fa fa-angle-right fr"></i>
+                </li>
+
+                <!-- <li>微信绑定<span class="data">未绑定</span><i class="fa fa-angle-right fr"></i></li>
+
+                <li>微博绑定<span class="data">未绑定</span><i class="fa fa-angle-right fr"></i></li>
+
+                <li>QQ绑定<span style="margin-left: 46px;" class="data">未绑定</span><i class="fa fa-angle-right fr"></i></li> -->
+
+            </ul>
+        </div>
+    </div>
+{/block}

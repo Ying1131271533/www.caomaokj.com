@@ -1,0 +1,159 @@
+{extend name="layout/base" /}
+{block name="title"}{$platform.name}{/block}
+{block name="load"}
+<!-- css -->
+<link rel="stylesheet" href="__ACSS__/platform_detail.css?{$time}" type="text/css">
+<style>
+    body .layui-layer-btn .layui-layer-btn0 {
+        border-color: #ff7600;
+        background-color: #ff8400;
+    }
+    .layer_div {
+        padding: 20px;
+        line-height: 22px;
+        font-weight: 300;
+    }
+    .type_content img{
+        max-width: 100%;
+    }
+</style>
+<!-- js -->
+{/block}
+<!-- 主体内容 -->
+{block name="main"}
+<div class="container body-container">
+    <div class="nav_div_zwl" style="line-height: 50px;height:50px;">
+        <span>
+            <a class="color9" href="/"><svg class="icon" aria-hidden="true">
+                    <use xlink:href="#icon-shouye2"></use>
+                </svg>首页 &gt;</a>
+        </span>
+        <span>
+            <a href="{:url('platform/index')}" class="color5">跨境平台 &gt;</a>
+        </span>
+        <span>
+            <a class="color5">{$platform.name}</a>
+        </span>
+    </div>
+    <div class="main-div">
+        <div class="p_logo" style="width:100%;border:0px solid;height: 227px;">
+            <div class="img_div_left">
+                <img src="{$platform.logo}">
+            </div>
+            <div class="desc_div_right">
+                <p class="name_p">{$platform.name}</p>
+                <p class="desc_p">{$platform.descrip} </p>
+                <div class=" row">
+                    <div class="col-md-3 join_detail" style="width: 20%;">
+                        <h5 class="platform_more_type">咨询详情</h5>
+                        <a style="cursor:pointer" onclick="wechat('{$platform.wechat}');">
+                            <button type="button" class="btn_submit">点击联系</button>
+                        </a>
+                    </div>
+                    <div class="col-md-3 join_detail">
+                        <h5 class="platform_more_type">官方入驻</h5>
+                        <a href="{:url('platform/join', ['id' => $platform.id])}">
+                            <button type="button" class="btn_submit">入驻通道</button>
+                        </a>
+                    </div>
+                </div>
+                <!--<p class="btn_submit">立即入驻</p>-->
+            </div>
+        </div>
+        <div class="p_detail">
+            <div class="nav_div">
+                {foreach $detailType as $value}
+                {notempty name="$details[$value.id]"}<span class="type_span" data-index="{$value.id}">{$value.name}</span>{/notempty}
+                {/foreach}
+            </div>
+            
+            <div class="info_detail">
+
+                {foreach $detailType as $value}
+                {notempty name="$details[$value.id]"}
+                <p class="detail_span detail_{$value.id}">{$value.name}</p>
+                <div class="type_content">
+                    <p><img src="{$details[$value.id]}" title="{$value.name}.png" alt="{$value.name}.png"></p>
+                </div>
+                {/notempty}
+                {/foreach}
+
+                <div class="mt50" style="border:0px solid;height: 60px;">
+                    <div class="col-md-2 join_detail">
+                        <h5 class="platform_more_type">官方入住</h5>
+                        <a href="{:url('platform/join', ['id' => $platform.id])}">
+                            <button type="button" class="btn_submit">入驻通道</button>
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+</div>
+<script type="text/javascript">
+
+function wechat(wechat_img) {
+	var isLogin = $("#isLogin").val();
+	var html = '';
+	html += '<div class="layer_div">';
+	html += '<img src="' + wechat_img + '" width="250" height="250"/>';
+	html += '<div class="layui-layer-title" style="padding: 0 5px;font-size:17px;">添加草帽客服微信号，了解详情</div>';
+	html += '</div>';
+	layerWechat(html);
+}
+
+function layerWechat(html) {
+	// 示范一个公告层
+	var index = layer.open({
+		type : 1,
+		title : "询盘", // 不显示标题栏
+		area : '300px;',
+		shade : 0.8,
+		id : 'LAY_layuipro', // 设定一个id，防止重复弹出
+		resize : false,
+		btn : [ '关闭窗口' ],
+		btnAlign : 'c',
+		content : html,
+		cancel : function() {
+			// 右上角关闭回调
+			
+		}
+	});
+}
+
+$(function() {
+    $('.type_span').click(function() {
+        if ($(this).index() == 0) {
+            $('.nav_div').css({ 'position': 'static' });
+            $(this).addClass('selected').siblings().removeClass('selected');
+            $("html,body").animate({ scrollTop: 0 }, 1000); //回到顶端
+        } else {
+            $('.nav_div').css({ 'position': 'fixed', 'top': '148px', 'width': '1180px', 'margin': '0 auto' });
+            $(this).addClass('selected').siblings().removeClass('selected');
+            var top = $('.detail_' + $(this).attr('data-index')).offset().top - 250 + "px";
+            $("html, body").animate({
+                scrollTop: top
+            }, {
+                duration: 1000,
+                easing: "swing"
+            });
+        }
+
+
+        return false;
+    })
+
+    $(window).scroll(function() {
+        var top = $(window).scrollTop();
+        if (top < 260) {
+            $('.nav_div').css({ 'position': 'static' });
+        } else {
+            $('.nav_div').css({ 'position': 'fixed', 'top': '148px', 'width': '1180px', 'margin': '0 auto' });
+        }
+    });
+
+})
+</script>
+</div>
+</div>
+</div>
+{/block}

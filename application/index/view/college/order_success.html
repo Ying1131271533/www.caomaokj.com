@@ -1,0 +1,61 @@
+{extend name="layout/base" /}
+{block name="title"}报名成功{/block}
+{block name="load"}
+<link href="__ACSS__/success.css" rel="stylesheet" type="text/css">
+{/block}
+
+<!-- 主体内容 -->
+{block name="main"}
+    <div class="container body-container">
+
+        <div style="width: 100%;text-align: center;/*margin-top:3rem;*/margin-bottom: -50px;">
+            <img src="__AIMG__/157173267134901.png">
+        </div>
+
+        <div class="site-index" style="height: 600px;">
+            <div class="pay_suc_t">
+                <div class="iconTop">
+                    <div class="l">
+                        <!--<img src="/img/icon_dui_06.png">-->
+                    </div>
+                    <div class="r1">
+                        <p class="f24">报名成功！</p>
+                    </div>
+                </div>
+
+                <div class="erweima-div text-center">
+
+                    <!-- <div class="son-div">
+                        <div class="lh-tips">入会场签到凭此二维码签到</div>
+                        <div class="lh-wechat">
+                            <img style="width: 160px;" class="share_ma" src="__AIMG__/get-scan-qr.jpg">
+                        </div>
+                        <div class="lh-tips">
+                        </div>
+                    </div> -->
+
+                    <div class="son-div">
+                        <!-- 扫码入群 -->
+                        <div class="lh-tips">请<b>扫描二维码</b>进微信群</div>
+
+                        <div class="lh-wechat">
+                            <img style="width: 160px;" class="share_ma" src="__AIMG__/QR_code/code_yongqi.jpg">
+                        </div>
+                    </div>
+                </div>
+
+
+
+
+            </div>
+
+            <div class="pay_suc_src" style="margin-top:30px;padding-bottom: 40px;">
+                <a class="first border_radius" href="{:url('college/detail', ['id' => $college_id])}">返回课程</a>
+                <a class="detail border_radius" href="{:url('user/college')}">查看订单</a>
+            </div>
+        </div>
+    </div>
+{/block}
+                
+
+   

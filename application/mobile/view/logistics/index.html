@@ -1,0 +1,264 @@
+{extend name="layout/base" /}
+{block name="title"}找物流资源{/block}
+{block name="load"}
+<!-- css -->
+<link rel="stylesheet" href="__MCSS__/lcd-enter.css" type="text/css">
+<link rel="stylesheet" href="__MCSS__/logistics_common.css" type="text/css">
+<link rel="stylesheet" href="__MCSS__/logistics_index.css" type="text/css">
+<style>
+    .header-sort {
+        padding: 0;
+    }
+    
+    .find-lists .select-border {
+        border: none;
+    }
+</style>
+<!-- js -->
+
+<script type="text/javascript" src="__MJS__/post.js?{$time}"></script>
+<script src="__MJS__/jquery-ui.js"></script>
+<link rel="stylesheet" href="__MCSS__/jquery-ui.css">
+{/block}
+<!-- 主体内容 -->
+{block name="main"}
+        <div class="container">
+            <!-- 找海外仓-->
+            <div class="find-oversea">
+                <div class="main">
+                    <div class="top-pannel">
+                        <div class="find-lists">
+                            <div class="find-select clearfix">
+                                <ul class="select-items clearfix">
+                                    <li class="sel-btn" data-type="cate">
+                                        <span class="outside-span">
+                                            <a class="a-box" href="javascript:;">渠道类型<span class="cart"></span></a>
+                                        </span>
+                                    </li>
+                                    <li class="sel-btn" data-type="attr">
+                                        <span class="outside-span">
+                                            <a class="a-box" href="javascript:;">走货属性<span class="cart"></span></a>
+                                        </span>
+                                    </li>
+                                    <li class="sel-btn" data-type="type">
+                                        <span class="outside-span">
+                                            <a class="a-box" href="javascript:;">服务类型<span class="cart"></span></a>
+                                        </span>
+                                    </li>
+                                </ul>
+
+                                <div class="dropdown-box select_textul" id="cate">
+                                    <input type="hidden" id="z_val" value="0">
+                                    <div class="continent-ul">
+                                    <ul class="dropdown-items clearfix">
+                                        <li>
+                                            <ul class="dropdown-sub clearfix">
+                                                <li data-id="0" class="types-menu {:input('?cate') ?: 'cur'}">
+                                                    <div class="menu-text">全部</div>
+                                                    <span class="icon-checkmark"></span>
+                                                </li>
+                                                {foreach $categoryData as $value}
+                                                <li data-id="{$value.id}" class="types-menu {$value.id != $cate ?: 'cur'}">
+                                                    <div class="menu-text">{$value.catname}</div>
+                                                    <span class="icon-checkmark"></span>
+                                                </li>
+                                                {/foreach}
+                                            </ul>
+                                        </li>
+                                    </ul>
+                                    </div>
+                                    
+                                    <div class="dropdown-btn btn-ok btn-block">
+                                        <a href="javascript:;" class="btn-ok btn-block">确定</a>
+                                    </div>
+                                </div>
+
+                                <div class="dropdown-box" id="attr">
+                                    <ul class="dropdown-items clearfix">
+                                        <li>
+                                            <ul class="dropdown-sub clearfix">
+                                                <li data-id="0" class="types-menu {:input('?attr') ?: 'cur'}">
+                                                    <div class="menu-text">全部</div>
+                                                    <span class="icon-checkmark"></span>
+                                                </li>
+                                                {foreach $attributesData as $value}
+                                                <li data-id="{$value.id}" class="types-menu {$value.id != $attr ?: 'cur'}">
+                                                    <div class="menu-text">{$value.name}</div>
+                                                    <span class="icon-checkmark"></span>
+                                                </li>
+                                                {/foreach}
+                                            </ul>
+                                        </li>
+                                    </ul>
+                                    <div class="dropdown-btn btn-ok btn-block">
+                                        <a href="javascript:;" class="btn-ok btn-block">确定</a>
+                                    </div>
+                                </div>
+                                <div class="dropdown-box" id="type">
+                                    <ul class="dropdown-items clearfix">
+                                        <li>
+                                            <ul class="dropdown-sub clearfix">
+                                                <li data-id="0" class="types-menu {:input('?type') ?: 'cur'}">
+                                                    <div class="menu-text">全部</div>
+                                                    <span class="icon-checkmark"></span>
+                                                </li>
+                                                {foreach $seviceTypeData as $value}
+                                                <li data-id="{$value.id}" class="types-menu {$value.id != $type ?: 'cur'}">
+                                                    <div class="menu-text">{$value.name}</div>
+                                                    <span class="icon-checkmark"></span>
+                                                </li>
+                                                {/foreach}
+                                            </ul>
+                                        </li>
+                                    </ul>
+                                    <div class="dropdown-btn btn-ok btn-block">
+                                        <a href="javascript:;" class="btn-ok btn-block">确定</a>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <!--  排序类型  -->
+                    <!-- 海外仓详情-->
+                    <div class="list-detail" style="margin-top:60px;">
+                        <input type="hidden" id="count" value="{$count}">
+                        <input type="hidden" id="thisPage" value="{$page}">
+                        <ul>
+
+                            {foreach $logistics as $value}
+                            <li class="media media-side service_post_jzc clearfix" data-url="{:url('logistics/detail', ['id' => $value.id])}">
+                                <div class="media-box">
+                                    <div class="media-cell media-top">
+                                        <a href="{:url('logistics/detail', ['id' => $value.id])}">
+                                            <img class="logo" src="{$value.thumb}" alt="{$value.title}">
+                                        </a>
+                                        <!-- LCD会员 -->
+                                        <!-- <svg class="icon icon-tuijian" aria-hidden="true">
+                                            <use xlink:href="#icon-LCDhuiyuan"></use>
+                                        </svg> -->
+                                    </div>
+                                    <div class="look-warehouse-border-box"></div>
+                                    <div class="media-cell media-body clearfix">
+                                        <h4 class="media-heading"><a href="{:url('logistics/detail', ['id' => $value.id])}">{$value.title}</a></h4>
+                                        <!-- <p>
+                                            <span class="title">专线服务：</span>
+                                            <span class="data">英国专线</span>
+                                            <span class="data">加拿大专线</span>
+                                            <span class="data">美国专线</span>
+                                        </p> -->
+                                        <p>
+                                            <span class="title">揽货范围：</span>
+                                            <span class="data">全国</span>
+                                        </p>
+                                        <p class="info">
+                                            <span><i class="fa fa-envelope"></i></span><span>{$value.email}</span>
+                                        </p>
+                                        <p class="info">
+                                            <span><i class="fa fa-phone"></i></span><span>{$value.phone}</span>
+                                        </p>
+                                        <p class="info">
+                                            <span><i class="fa fa-qq"></i></span>
+                                            <span>
+                                                <a target="_blank" class="contactqq" data-id="{$value.id}" data-qq="{$value.phone}" href="http://wpa.qq.com/msgrd?v=3&amp;uin={$value.phone}&amp;site=caomaokj.com&amp;menu=yes"><img border="0" src="http://wpa.qq.com/pa?p=2:627208015:51" alt="点击这里给我发消息" title="点击这里给我发消息"></a>
+                                            </span>
+                                        </p>
+                                    </div>
+                                </div>
+                            </li>
+                            {/foreach}
+
+                            
+                        </ul>
+                        <div id="laypage" class="laypage"></div>
+                    </div>
+
+                    <!-- <div class="top-warehouse">
+                        <p>推荐专线服务商</p>
+                        <div>
+                            <a href="http://wpa.qq.com/msgrd?v=3&amp;uin=3004630833&amp;site=caomaokj.com&amp;menu=yes">
+                                <img src="__MIMG__/16228000055260.jpg">
+                            </a>
+                        </div>
+                    </div> -->
+                </div>
+            </div>
+            <ol class="crumbs">
+                <li>
+                    <a href="/">
+                        <svg class="icon" aria-hidden="true">
+                            <use xlink:href="#icon-shouye2"></use>
+                        </svg> 首页
+                    </a>
+                </li>
+                <li><a href="{:url('logistics/index')}">&gt; 找物流资源</a></li>
+            </ol>
+            <div class="cover-pannel">
+                <div class="cover-floor"></div>
+            </div>
+
+            <style>
+                .ui-front {
+                    z-index: 1000;
+                }
+            </style>
+        </div>
+
+{/block}
+{block name="script"}
+<script>
+    HOME_URL = "https://www.kuajingyan.com";
+    $('#cnzz_stat_icon_1276964401').find('a').css('color', '#fff');
+
+    wx.config({
+        appId: 'wxa0dfe525aa5c94fd',
+        timestamp: 1629788556,
+        nonceStr: 'mWEVEmQZkeOyBaI0',
+        signature: '90249711bf4a3a63dd4b86dd7bb9cea22729477f',
+        jsApiList: [
+            'onMenuShareTimeline',
+            'onMenuShareAppMessage',
+            'chooseImage',
+            'onMenuShareQQ'
+        ]
+    });
+    wx.ready(function() {
+        wx.onMenuShareTimeline({
+            title: '找专线_国际海陆空运专线_跨境物流公司查询-跨境眼',
+            link: window.location.href,
+            imgUrl: 'http://www.kuajingyan.com/img/logo120.png',
+            success: function(res) {},
+            cancel: function(res) {},
+            fail: function(res) {
+                alert(JSON.stringify(res));
+            }
+        })
+        wx.onMenuShareAppMessage({
+            title: '找专线_国际海陆空运专线_跨境物流公司查询-跨境眼', // 分享标题
+            desc: '找专线_国际海陆空运专线_跨境物流公司查询-跨境眼', // 分享描述
+            link: window.location.href, // 分享链接，该链接域名或路径必须与当前页面对应的公众号JS安全域名一致
+            imgUrl: 'http://www.kuajingyan.com/img/logo120.png', // 分享图标
+            success: function() {
+                // 用户确认分享后执行的回调函数
+            },
+            cancel: function() {
+                // 用户取消分享后执行的回调函数
+            }
+        });
+        wx.onMenuShareQQ({
+            title: '找专线_国际海陆空运专线_跨境物流公司查询-跨境眼', // 分享标题
+            desc: '找专线_国际海陆空运专线_跨境物流公司查询-跨境眼', // 分享描述
+            link: window.location.href, // 分享链接，该链接域名或路径必须与当前页面对应的公众号JS安全域名一致
+            imgUrl: 'http://www.kuajingyan.com/img/logo120.png', // 分享图标
+            success: function() {
+                // 用户确认分享后执行的回调函数
+            },
+            cancel: function() {
+                // 用户取消分享后执行的回调函数
+            }
+        });
+    });
+</script>
+<ul class="ui-autocomplete ui-front ui-menu ui-widget ui-widget-content" id="ui-id-1" tabindex="0" style="display: none;">
+</ul>
+<span role="status" aria-live="assertive" aria-relevant="additions" class="ui-helper-hidden-accessible"></span>
+{/block}

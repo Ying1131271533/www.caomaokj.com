@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+	<title>{block name="title"}跨境电商综合服务平台{/block} - 草帽跨境</title>
+
+    <meta name="description" content="{block name="description"}草帽跨境致力于为跨境电商卖家提供一个优质的跨境电商平台，实时的给跨境电商卖家带来高质量的跨境物流公司，跨境电商活动，跨境电商资讯，跨境电商直播等内容服务。{/block}">
+    
+	<meta name="keywords" content="跨境电商平台,跨境电商物流,跨境电商活动,跨境电商资讯,跨境电商直播,草帽跨境">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="baidu-site-verification" content="EgoanGgarr">
+    <meta name="applicable-device" content="pc">
+	
+    <link rel="shortcut icon" href="__ICON__/icon.ico" />
+    <link rel="canonical" href="{:url()}" >
+    
+	<!-- css -->
+    <link rel="stylesheet" href="__ACSS__/font-awesome.css">
+    <link rel="stylesheet" href="__ACSS__/bootstrap.min.css">
+    <link rel="stylesheet" href="__ACSS__/share_style1_16.css">
+    
+    <!-- js -->
+    <script src="https://zz.bdstatic.com/linksubmit/push.js"></script>
+    <script src="https://hm.baidu.com/hm.js"></script>
+    <script src="__AJS__/jquery.js"></script>
+    <script src="__AJS__/common.js"></script>
+    <script src="__AJS__/yii.js"></script>
+    <script src="__AJS__/font_606323_nw08h605yuj.js"></script>
+    <script src="__AJS__/jquery.min.js"></script>
+    <script src="__AJS__/bootstrap.min.js"></script>
+    <script src="__AJS__/kjy.js"></script>
+    <script src="__AJS__/jquery.cookie.js"></script>
+    <script src="__AJS__/chosen.jquery.js"></script>
+
+    <!-- 网页二维码生产 -->
+    <script type="text/javascript" src="__AJS__/jquery.qrcode.min.js"></script>
+	
+	<!-- layer -->
+    <script src="__ALAYER__/layer.js"></script>
+	
+	<!-- layui -->
+    <link rel="stylesheet" href="__ALAYUI__/css/layui.css">
+    <script src="__ALAYUI__/layui.js"></script>
+    
+    <link rel="stylesheet" href="__ACSS__/kjy.css?{$time}">
+    
+	<!-- 修改底部搜索类型下拉layui样式 -->
+	<style>
+        .layui-form-item{
+            margin-bottom: 0px;
+        }
+        .layui-form-item input {
+            /*border-radius: 20px 0 0 20px;*/
+            height: 35px;
+            /*border: 1px solid #ff7600;*/
+            /*border-right:none;*/
+            border: 0px;
+        }
+        
+        .layui-form-select dl dd.layui-this {
+            background-color: #fff;
+            color: #ff7600;
+        }
+		
+        .layui-form-select dl dd:hover{
+            background-color: #d2d2d2;
+        }
+
+        .layui-form-select dl dd {
+            text-align: left;
+        }
+    </style>
+
+    <!-- iconfont -->
+    <link rel="stylesheet" href="__AIF__/iconfont.css">
+    <script src="__AIF__/iconfont.js"></script>
+    <style>
+        .icon{font-size: 22px;}
+        .icon {
+            width: 1em;
+            height: 1em;
+            vertical-align: -0.15em;
+            fill: currentColor;
+            overflow: hidden;
+        }
+    </style>
+	
+	{block name="load"}{/block}
+</head>
+<body>
+    <div class="wrap">
+        <!-- 头部文件载入 -->
+        {include file="layout/header" /}
+        
+        <!-- 主体内容 -->
+        {block name="main"}{/block}
+        
+        <!-- 右边工具栏 -->
+        {include file="layout/toolbar" /}
+
+        <!-- 底部文件载入 -->
+        {include file="layout/footer" /}
+    </div>
+    <!-- 打开图片 -->
+    {include file="layout/open_img" /}
+</body>
+</html>

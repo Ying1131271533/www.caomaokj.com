@@ -1,0 +1,633 @@
+{extend name="layout/base" /}
+{block name="title"}首页{/block}
+{block name="load"}
+<!-- css -->
+    <link href="__ACSS__/swiper.css" rel="stylesheet">
+    <link rel="stylesheet" href="__ACSS__/company.css" type="text/css">
+    <link rel="stylesheet" href="__ACSS__/service-detail.css" type="text/css">
+    <link rel="stylesheet" href="__ACSS__/service-detail-new.css" type="text/css">
+<!-- js -->
+    <script src="__AJS__/swiper.js"></script>
+{/block}
+<!-- 主体内容 -->
+{block name="main"}
+<div class="container body-container">
+    <script>
+        //优惠券选项卡切换
+                $(document).ready(function (e) {
+                    $(".discount_span").click(function () {
+                        $(this).addClass('orange_color').siblings().removeClass('orange_color');
+                        //$(".discount_ul li").eq($(this).index()).addClass("active").siblings().removeClass("active");
+                        $(".card-pane").hide().eq($(this).index()).show();
+                    })
+                })
+                //企业服务选项卡切换
+                $(document).ready(function (e) {
+                    $(".service-nav li").click(function () {
+                        $(".service-nav li").eq($(this).index()).addClass("active").siblings().removeClass("active");
+                        $(".service-pane").hide().eq($(this).index()).show();
+                    })
+                });
+                $(document).ready(function () {
+                    $('.actionWarehouseSarch').on('click', function () {
+                        //标识是否清空选项区
+                        var region_sgin = $(this).parent().is('.country-more-box');
+                        if (region_sgin) {
+                            $('.warehouse_country>.actionWarehouseSarch').removeClass('orange_color')
+                        } else {
+                            $('.country-more-box .actionWarehouseSarch').removeClass('orange_color');
+                        }
+
+
+                        let weaId = $(this).attr('data-id');
+                        $(this).addClass('orange_color').siblings().removeClass('orange_color');
+                        if (weaId == 0) {
+                            $('.warehouseAct').show();
+                            return false;
+                        }
+                        $('.warehouseAct').each(function (k, v) {
+                            let thanId = $(v).attr('data-list');
+                            if (weaId.indexOf(thanId) < 0) {
+                                $(v).hide();
+                            } else {
+                                $(v).show();
+                            }
+                        });
+                    });
+                    $('.actionLineSarch').on('click', function () {
+                        //标识是否清空选项区
+                        var region_sgin = $(this).parent().is('.country-more-box');
+                        if (region_sgin) {
+                            $('.warehouse_country>.actionLineSarch').removeClass('orange_color')
+                        } else {
+                            $('.country-more-box .actionLineSarch').removeClass('orange_color');
+                        }
+                        $(this).addClass('orange_color').siblings().removeClass('orange_color');
+                        var num = $(this).attr('data-id');
+                        if (num != '') {
+                            $('.key_list_box .key_list_con > div').eq(num).addClass('showIn').siblings().removeClass('showIn');
+                            $('.key_list_box .key_nav li').eq(num).find('a').addClass('on').parent().siblings().find('a').removeClass('on');
+                        } else {
+                            $('.key_list_box .key_nav li').eq(0).find('a').addClass('on').parent().siblings().find('a').removeClass('on');
+                        }
+
+                    });
+                });
+
+
+
+            </script>
+    <div class="nav_div_service mb5">
+        <span>
+            <a class="color9" href="https://www.kuajingyan.com/"><svg class="icon" aria-hidden="true">
+                    <use xlink:href="#icon-shouye2"></use>
+                </svg>首页 &gt;</a>
+        </span>
+        <span>
+            <a class="color9" href="https://fw.kuajingyan.com/warehouse">找海外仓 &gt;</a>
+        </span>
+        <span>
+            <a class="color-main" href="javascript:void(0)">深圳市宏益国际跨境电商服务有限公司</a>
+        </span>
+    </div>
+    <div class="main-div all-content main-wrap">
+        <div class="service-box">
+            <div class="l-service-box">
+                <div class="l-company-img">
+                    <img class="company-img" src="__AIMG__/15590948739888.jpg" alt="深圳市宏益国际跨境电商服务有限公司">
+                </div>
+            </div>
+            <div class="c-service-box">
+                <div class="c-info-top">
+                    <h4 class="media-heading">
+                        深圳市宏益国际跨境电商服务有限公司 <a target="_blank" href="https://fw.kuajingyan.com/lcd/member">
+                            <div class="lcd_vip">
+                                <div class="vip_level_div">
+                                    <img class="vip_level_style" src="__AIMG__/4c38f1a2c7bd586e.png" title="1617356347905581.png" alt="image.png">
+                                </div>
+                            </div>
+                        </a>
+                    </h4>
+                    <div class="c-info-div-box">
+                        <p><img src="__AIMG__/15897666976170.png">
+                            18926065409 </p>
+                        <p><img src="__AIMG__/15880614893090.png">
+                            hygj01@szhygj.cn </p>
+                    </div>
+                </div>
+                <div class="c-service-div-box">
+                    <div class="c-service-div-title">服务类型:</div>
+                    <div class="c-service-div-desc">
+                        <span>退货处理</span>
+                        <span>退货检测</span>
+                        <span>海外售后维修</span>
+                        <span>一件代发</span>
+                        <span>中转服务</span>
+                        <span>退货换标</span>
+                        <span>保税仓储</span>
+                        <span>定制化物流仓储管理</span>
+                        <span>FBA中转</span>
+                        <span>退货回国 </span>
+                        <span>更换包装</span>
+                        <span>退货换包装</span>
+                        <span>尾程渠道</span>
+                        <span>分货贴标</span>
+                        <span>可亚马逊自提</span>
+                        <span>清关服务</span>
+                        <span>清仓处理</span>
+                        <span>海外公司注册</span>
+                        <span>商标注册</span>
+                        <span>卖家售后中心</span>
+                    </div>
+                </div>
+                <div class="c-service-btn-box">
+                    <a class="xun-btn " href="javascrpt:void(0)" onclick="sendAsk(594);">点击询盘</a>
+                    <a class="login" target="_blank" data-id="594" data-qq="3590587615" href="http://wpa.qq.com/msgrd?v=3&amp;uin=3590587615&amp;site=kuajingyan.com&amp;menu=yes">QQ咨询</a>
+                </div>
+                <!--            <div class="r-company-bottom">-->
+                <!--                客服平均响应：<span class="color-main">8</span>分钟-->
+                <!--            </div>-->
+            </div>
+        </div>
+        <!--优惠券开始-->
+        <!--优惠券开始-->
+        <div class="youshi-advantage bg-white" style="border:1px solid #fff;">
+            <div class="company_title_div">我们的优势</div>
+            <div class="company_info padding10 font_color555 five_advantage_div_box">
+                <div class="five_advantage_div pt20">
+                    <div class="text-center"><img src="__AIMG__/834d9d2d5901d956.png"> </div>
+                    <div class="text-center mt20"></div>
+                </div>
+                <div class="five_advantage_div pt20">
+                    <div class="text-center"><img src="__AIMG__/4215394731adb99e.png"> </div>
+                    <div class="text-center mt20"></div>
+                </div>
+                <div class="five_advantage_div pt20">
+                    <div class="text-center"><img src="__AIMG__/ea12346cdfc05eb0.png"> </div>
+                    <div class="text-center mt20"></div>
+                </div>
+                <div class="five_advantage_div pt20">
+                    <div class="text-center"><img src="__AIMG__/0b910333133dd945.png"> </div>
+                    <div class="text-center mt20"></div>
+                </div>
+                <div class="five_advantage_div pt20">
+                    <div class="text-center"><img src="__AIMG__/6b6d50c4a0645416.png"> </div>
+                    <div class="text-center mt20"></div>
+                </div>
+            </div>
+        </div>
+        <!-- 优势 -->
+        <div class="youshi-advantage bg-white" style="border:1px solid #fff;">
+            <div class="company_title_div">企业详情</div>
+            <div class="company_info padding10 font_color555">
+                <p><span style="font-size: 14px;">深圳市宏益跨境电商服务有限公司又名深圳市宏益国际电子商务有限公司。公司前身以Amazon
+                        Ebay、Wish、lazada电商平台销售为主。于2017开始从事仓储物流服务。现公司已有美国洛杉矶、休斯敦、亚特兰大、纽约、加拿大多伦多、德国法兰克福、英国曼彻斯特、西班牙马德里、法国加尔达讷、日本大阪、澳大利亚悉尼、意大利戈里齐亚等站点提供大货周转、仓储、物流等服务。为了更好的服务客户，公司新增了欧洲VAT注册，代理报税等业务，一站式解决您的后顾之忧。</span><br>
+                </p>
+            </div>
+        </div>
+        <div class=" bg-white warehouse-div" style="border:1px solid #fff;">
+            <div class="company_title_div">
+                <div class="pull-left">海外仓服务</div>
+                <div class="pull-right warehouse_country">
+                    <span class="parent-type actionWarehouseSarch country_span orange_color" data-id="0">全部</span>
+                    <b style="display: none">874_</b>
+                    <b style="display: none">874_875_</b>
+                    <b style="display: none">874_875_876_</b>
+                    <b style="display: none">874_875_876_877_</b>
+                    <span class="parent-type actionWarehouseSarch country_span" data-id="874_875_876_877">
+                        美国 (4)
+                    </span>
+                    <b style="display: none">880_</b>
+                    <span class="parent-type actionWarehouseSarch country_span" data-id="880">
+                        英国 (1)
+                    </span>
+                    <b style="display: none">883_</b>
+                    <span class="parent-type actionWarehouseSarch country_span" data-id="883">
+                        意大利 (1)
+                    </span>
+                    <b style="display: none">884_</b>
+                    <span class="parent-type actionWarehouseSarch country_span" data-id="884">
+                        德国 (1)
+                    </span>
+                    <b style="display: none">885_</b>
+                    <span class="parent-type actionWarehouseSarch country_span" data-id="885">
+                        西班牙 (1)
+                    </span>
+                </div>
+                <div style="clear: both"></div>
+            </div>
+            <div class="warehouse_info ">
+                <div class="father_div warehouseAct" data-list="877" style="display: block">
+                    <div class="warehouse_list">
+                        <p class="p_img"><a href="https://fw.kuajingyan.com/warehouse/877"><img src="__AIMG__/15535863832032.jpg" alt="" width="280" height="132"></a></p>
+                        <p class="p_title">
+                            <span class="pull-left warehouse_country"><a href="https://fw.kuajingyan.com/warehouse/877">美西大货转运仓</a></span>
+                            <span class="pull-right warehouse_area">7000㎡</span>
+                        </p>
+                        <div class="p_desc">
+                            <div class="country-p-desc">国家：美国 <span class="warehouse-daily-order">订单处理量：10000</span></div>
+                            <div class="contact-p-desc">咨询：
+                                <span class="qq-icon">QQ
+                                    <div class="contact-icon-div-box">
+                                        <div class="shixin"></div>
+                                        <a target="_blank" class="contactqq" data-id="594" data-qq="3590587615" href="http://wpa.qq.com/msgrd?v=3&amp;uin=3590587615&amp;site=kuajingyan.com&amp;menu=yes">
+                                            3590587615</a>
+                                    </div>
+                                </span>
+                                <span class="phone-icon">电话
+                                    <div class="contact-icon-div-box">
+                                        <div class="shixin"></div>
+                                        18926065409
+                                    </div>
+                                </span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="father_div warehouseAct" data-list="880" style="display: block">
+                    <div class="warehouse_list">
+                        <p class="p_img"><a href="https://fw.kuajingyan.com/warehouse/880"><img src="__AIMG__/15536549481508.jpg" alt="" width="280" height="132"></a></p>
+                        <p class="p_title">
+                            <span class="pull-left warehouse_country"><a href="https://fw.kuajingyan.com/warehouse/880">英国仓</a></span>
+                            <span class="pull-right warehouse_area">800㎡</span>
+                        </p>
+                        <div class="p_desc">
+                            <div class="country-p-desc">国家：英国 <span class="warehouse-daily-order">订单处理量：2000</span></div>
+                            <div class="contact-p-desc">咨询：
+                                <span class="qq-icon">QQ
+                                    <div class="contact-icon-div-box">
+                                        <div class="shixin"></div>
+                                        <a target="_blank" class="contactqq" data-id="594" data-qq="3590587615" href="http://wpa.qq.com/msgrd?v=3&amp;uin=3590587615&amp;site=kuajingyan.com&amp;menu=yes">
+                                            3590587615</a>
+                                    </div>
+                                </span>
+                                <span class="phone-icon">电话
+                                    <div class="contact-icon-div-box">
+                                        <div class="shixin"></div>
+                                        18926065409
+                                    </div>
+                                </span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="father_div warehouseAct" data-list="883" style="display: block">
+                    <div class="warehouse_list">
+                        <p class="p_img"><a href="https://fw.kuajingyan.com/warehouse/883"><img src="__AIMG__/15536558782198.jpg" alt="" width="280" height="132"></a></p>
+                        <p class="p_title">
+                            <span class="pull-left warehouse_country"><a href="https://fw.kuajingyan.com/warehouse/883">意大利仓</a></span>
+                            <span class="pull-right warehouse_area">500㎡</span>
+                        </p>
+                        <div class="p_desc">
+                            <div class="country-p-desc">国家：意大利 <span class="warehouse-daily-order">订单处理量：1000</span></div>
+                            <div class="contact-p-desc">咨询：
+                                <span class="qq-icon">QQ
+                                    <div class="contact-icon-div-box">
+                                        <div class="shixin"></div>
+                                        <a target="_blank" class="contactqq" data-id="594" data-qq="3590587615" href="http://wpa.qq.com/msgrd?v=3&amp;uin=3590587615&amp;site=kuajingyan.com&amp;menu=yes">
+                                            3590587615</a>
+                                    </div>
+                                </span>
+                                <span class="phone-icon">电话
+                                    <div class="contact-icon-div-box">
+                                        <div class="shixin"></div>
+                                        18926065409
+                                    </div>
+                                </span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="father_div warehouseAct" data-list="884" style="display: block">
+                    <div class="warehouse_list">
+                        <p class="p_img"><a href="https://fw.kuajingyan.com/warehouse/884"><img src="__AIMG__/15977325380872.jpg" alt="" width="280" height="132"></a></p>
+                        <p class="p_title">
+                            <span class="pull-left warehouse_country"><a href="https://fw.kuajingyan.com/warehouse/884">德国仓</a></span>
+                            <span class="pull-right warehouse_area">800㎡</span>
+                        </p>
+                        <div class="p_desc">
+                            <div class="country-p-desc">国家：德国 <span class="warehouse-daily-order">订单处理量：1000</span></div>
+                            <div class="contact-p-desc">咨询：
+                                <span class="qq-icon">QQ
+                                    <div class="contact-icon-div-box">
+                                        <div class="shixin"></div>
+                                        <a target="_blank" class="contactqq" data-id="594" data-qq="3590587615" href="http://wpa.qq.com/msgrd?v=3&amp;uin=3590587615&amp;site=kuajingyan.com&amp;menu=yes">
+                                            3590587615</a>
+                                    </div>
+                                </span>
+                                <span class="phone-icon">电话
+                                    <div class="contact-icon-div-box">
+                                        <div class="shixin"></div>
+                                        18926065409
+                                    </div>
+                                </span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="father_div warehouseAct" data-list="885" style="display: block">
+                    <div class="warehouse_list">
+                        <p class="p_img"><a href="https://fw.kuajingyan.com/warehouse/885"><img src="__AIMG__/15536561474107.jpg" alt="" width="280" height="132"></a></p>
+                        <p class="p_title">
+                            <span class="pull-left warehouse_country"><a href="https://fw.kuajingyan.com/warehouse/885">西班牙仓</a></span>
+                            <span class="pull-right warehouse_area">300㎡</span>
+                        </p>
+                        <div class="p_desc">
+                            <div class="country-p-desc">国家：西班牙 <span class="warehouse-daily-order">订单处理量：1000</span></div>
+                            <div class="contact-p-desc">咨询：
+                                <span class="qq-icon">QQ
+                                    <div class="contact-icon-div-box">
+                                        <div class="shixin"></div>
+                                        <a target="_blank" class="contactqq" data-id="594" data-qq="3590587615" href="http://wpa.qq.com/msgrd?v=3&amp;uin=3590587615&amp;site=kuajingyan.com&amp;menu=yes">
+                                            3590587615</a>
+                                    </div>
+                                </span>
+                                <span class="phone-icon">电话
+                                    <div class="contact-icon-div-box">
+                                        <div class="shixin"></div>
+                                        18926065409
+                                    </div>
+                                </span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="father_div warehouseAct" data-list="874" style="display: block">
+                    <div class="warehouse_list">
+                        <p class="p_img"><a href="https://fw.kuajingyan.com/warehouse/874"><img src="__AIMG__/15536774373717.jpg" alt="" width="280" height="132"></a></p>
+                        <p class="p_title">
+                            <span class="pull-left warehouse_country"><a href="https://fw.kuajingyan.com/warehouse/874">美国亚特兰大仓</a></span>
+                            <span class="pull-right warehouse_area">1000㎡</span>
+                        </p>
+                        <div class="p_desc">
+                            <div class="country-p-desc">国家：美国 <span class="warehouse-daily-order">订单处理量：10000</span></div>
+                            <div class="contact-p-desc">咨询：
+                                <span class="qq-icon">QQ
+                                    <div class="contact-icon-div-box">
+                                        <div class="shixin"></div>
+                                        <a target="_blank" class="contactqq" data-id="594" data-qq="3590587615" href="http://wpa.qq.com/msgrd?v=3&amp;uin=3590587615&amp;site=kuajingyan.com&amp;menu=yes">
+                                            3590587615</a>
+                                    </div>
+                                </span>
+                                <span class="phone-icon">电话
+                                    <div class="contact-icon-div-box">
+                                        <div class="shixin"></div>
+                                        18926065409
+                                    </div>
+                                </span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="father_div warehouseAct" data-list="875" style="display: block">
+                    <div class="warehouse_list">
+                        <p class="p_img"><a href="https://fw.kuajingyan.com/warehouse/875"><img src="__AIMG__/15536773197257.jpg" alt="" width="280" height="132"></a></p>
+                        <p class="p_title">
+                            <span class="pull-left warehouse_country"><a href="https://fw.kuajingyan.com/warehouse/875">美国休斯顿仓</a></span>
+                            <span class="pull-right warehouse_area">1000㎡</span>
+                        </p>
+                        <div class="p_desc">
+                            <div class="country-p-desc">国家：美国 <span class="warehouse-daily-order">订单处理量：10000</span></div>
+                            <div class="contact-p-desc">咨询：
+                                <span class="qq-icon">QQ
+                                    <div class="contact-icon-div-box">
+                                        <div class="shixin"></div>
+                                        <a target="_blank" class="contactqq" data-id="594" data-qq="3590587615" href="http://wpa.qq.com/msgrd?v=3&amp;uin=3590587615&amp;site=kuajingyan.com&amp;menu=yes">
+                                            3590587615</a>
+                                    </div>
+                                </span>
+                                <span class="phone-icon">电话
+                                    <div class="contact-icon-div-box">
+                                        <div class="shixin"></div>
+                                        18926065409
+                                    </div>
+                                </span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="father_div warehouseAct" data-list="876" style="display: block">
+                    <div class="warehouse_list">
+                        <p class="p_img"><a href="https://fw.kuajingyan.com/warehouse/876"><img src="__AIMG__/15536756363284.jpg" alt="" width="280" height="132"></a></p>
+                        <p class="p_title">
+                            <span class="pull-left warehouse_country"><a href="https://fw.kuajingyan.com/warehouse/876">美西换标代发仓</a></span>
+                            <span class="pull-right warehouse_area">800㎡</span>
+                        </p>
+                        <div class="p_desc">
+                            <div class="country-p-desc">国家：美国 <span class="warehouse-daily-order">订单处理量：5000</span></div>
+                            <div class="contact-p-desc">咨询：
+                                <span class="qq-icon">QQ
+                                    <div class="contact-icon-div-box">
+                                        <div class="shixin"></div>
+                                        <a target="_blank" class="contactqq" data-id="594" data-qq="3590587615" href="http://wpa.qq.com/msgrd?v=3&amp;uin=3590587615&amp;site=kuajingyan.com&amp;menu=yes">
+                                            3590587615</a>
+                                    </div>
+                                </span>
+                                <span class="phone-icon">电话
+                                    <div class="contact-icon-div-box">
+                                        <div class="shixin"></div>
+                                        18926065409
+                                    </div>
+                                </span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div style="clear: both"></div>
+            </div>
+        </div>
+        <div class="bg-white news-div" style="border:1px solid #fff;">
+            <div class="company_title_div  mt15">
+                <div class="pull-left" style="display: inline-block;">新闻中心</div>
+                <div class="pull-right show_more" style="display: inline-block;"><a target="_blank" href="https://fw.kuajingyan.com/news/594">查看更多</a></div>
+            </div>
+            <div class="news_list_box">
+                <div class="news_father_div">
+                    <div class="weui-panel__bd">
+                        <a href="javascript:void(0);" class="weui-media-box weui-media-box_appmsg">
+                        </a>
+                        <div class="weui-media-box__hd pull-left"><a href="javascript:void(0);" class="weui-media-box weui-media-box_appmsg">
+                            </a><a href="https://fw.kuajingyan.com/article/17064">
+                                <img class="weui-media-box__thumb" src="__AIMG__/16182749753314.jpg" alt="">
+                            </a>
+                        </div>
+                        <div class="weui-media-box__bd pull-right">
+                            <h4 class="weui-media-box__title"><a href="https://fw.kuajingyan.com/article/17064">2021亚马逊全球开店新卖家抢驻计划--日本站</a>
+                            </h4>
+                            <p class="weui-media-box__desc">2021亚马逊全球开店新卖家抢驻计划--日本站..</p>
+                            <h5 class="weui-media-box__time">发布于：2021-04-13 09:11:57</h5>
+                        </div>
+                    </div>
+                </div>
+                <div class="news_father_div">
+                    <div class="weui-panel__bd">
+                        <a href="javascript:void(0);" class="weui-media-box weui-media-box_appmsg">
+                        </a>
+                        <div class="weui-media-box__hd pull-left"><a href="javascript:void(0);" class="weui-media-box weui-media-box_appmsg">
+                            </a><a href="https://fw.kuajingyan.com/article/17074">
+                                <img class="weui-media-box__thumb" src="__AIMG__/16182958127559.jpg" alt="">
+                            </a>
+                        </div>
+                        <div class="weui-media-box__bd pull-right">
+                            <h4 class="weui-media-box__title"><a href="https://fw.kuajingyan.com/article/17074">VAT是什么？你了解吗？</a></h4>
+                            <p class="weui-media-box__desc">
+                                VAT是什么？什么情况下需要注册欧洲VAT并缴纳欧洲增值税？亚马逊欧洲站vat的基本情况，如何布局亚马逊欧洲站vat..</p>
+                            <h5 class="weui-media-box__time">发布于：2021-04-13 17:34:32</h5>
+                        </div>
+                    </div>
+                </div>
+                <div class="news_father_div">
+                    <div class="weui-panel__bd">
+                        <a href="javascript:void(0);" class="weui-media-box weui-media-box_appmsg">
+                        </a>
+                        <div class="weui-media-box__hd pull-left"><a href="javascript:void(0);" class="weui-media-box weui-media-box_appmsg">
+                            </a><a href="https://fw.kuajingyan.com/article/17078">
+                                <img class="weui-media-box__thumb" src="__AIMG__/16183645144183.jpg" alt="">
+                            </a>
+                        </div>
+                        <div class="weui-media-box__bd pull-right">
+                            <h4 class="weui-media-box__title"><a href="https://fw.kuajingyan.com/article/17078">新手亚马逊的卖家比较注意的几个点-海外仓跟FBA</a>
+                            </h4>
+                            <p class="weui-media-box__desc">海外仓是什么？FBA又是什么？各自的优缺点..</p>
+                            <h5 class="weui-media-box__time">发布于：2021-04-14 13:35:58</h5>
+                        </div>
+                    </div>
+                </div>
+                <div class="news_father_div">
+                    <div class="weui-panel__bd">
+                        <a href="javascript:void(0);" class="weui-media-box weui-media-box_appmsg">
+                        </a>
+                        <div class="weui-media-box__hd pull-left"><a href="javascript:void(0);" class="weui-media-box weui-media-box_appmsg">
+                            </a><a href="https://fw.kuajingyan.com/article/17093">
+                                <img class="weui-media-box__thumb" src="__AIMG__/16184557175652.jpg" alt="">
+                            </a>
+                        </div>
+                        <div class="weui-media-box__bd pull-right">
+                            <h4 class="weui-media-box__title"><a href="https://fw.kuajingyan.com/article/17093">关于FBA的常见问题，你遇到了哪些？</a></h4>
+                            <p class="weui-media-box__desc">在使用亚马逊的时候，关于FBA的常见问题，你遇到了哪些？我们会遇到什么问题？..</p>
+                            <h5 class="weui-media-box__time">发布于：2021-04-15 11:24:33</h5>
+                        </div>
+                    </div>
+                </div>
+                <div class="news_father_div">
+                    <div class="weui-panel__bd">
+                        <a href="javascript:void(0);" class="weui-media-box weui-media-box_appmsg">
+                        </a>
+                        <div class="weui-media-box__hd pull-left"><a href="javascript:void(0);" class="weui-media-box weui-media-box_appmsg">
+                            </a><a href="https://fw.kuajingyan.com/article/17108">
+                                <img class="weui-media-box__thumb" src="__AIMG__/16185425679767.jpg" alt="">
+                            </a>
+                        </div>
+                        <div class="weui-media-box__bd pull-right">
+                            <h4 class="weui-media-box__title"><a href="https://fw.kuajingyan.com/article/17108">跨境电商出口物流的选择和优势在哪里？</a></h4>
+                            <p class="weui-media-box__desc">跨境电商的物流问题..</p>
+                            <h5 class="weui-media-box__time">发布于：2021-04-16 14:00:43</h5>
+                        </div>
+                    </div>
+                </div>
+                <div class="news_father_div">
+                    <div class="weui-panel__bd">
+                        <a href="javascript:void(0);" class="weui-media-box weui-media-box_appmsg">
+                        </a>
+                        <div class="weui-media-box__hd pull-left"><a href="javascript:void(0);" class="weui-media-box weui-media-box_appmsg">
+                            </a><a href="https://fw.kuajingyan.com/article/17121">
+                                <img class="weui-media-box__thumb" src="__AIMG__/16188114285649.jpg" alt="">
+                            </a>
+                        </div>
+                        <div class="weui-media-box__bd pull-right">
+                            <h4 class="weui-media-box__title"><a href="https://fw.kuajingyan.com/article/17121">Amazon亚马逊退货换标的小tips</a></h4>
+                            <p class="weui-media-box__desc">Amazon退货换标的小tips
+                                ,关于退货换标服务,原因,海外仓退货换标的优点，FBA申请产品移出或许会遇到的问题..</p>
+                            <h5 class="weui-media-box__time">发布于：2021-04-19 19:17:31</h5>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div style="height: 20px;width: 100%"></div>
+    </div>
+    <input type="hidden" id="address_Longitude" value="">
+    <input type="hidden" id="address_Latitude" value="">
+    <input type="hidden" id="isLogin" value="1">
+    <script type="text/javascript" src="__AJS__/laypage.js"></script>
+    <script type="text/javascript" src="__AJS__/service.js"></script>
+    <!--引用百度地图API-->
+    <script type="text/javascript" src="__AJS__/api.js"></script>
+    <script src="__AJS__/service-detail.js"></script>
+    <script>
+    var swiper = new Swiper('.swiper_photo', {
+        slidesPerView: 4,
+        spaceBetween: 15,
+        // init: false,
+        pagination: {
+            el: '.swiper-pagination',
+            clickable: true,
+        },
+        navigation: {
+            nextEl: '.swiper-button-next_photo',
+            prevEl: '.swiper-button-prev_photo',
+        },
+    });
+
+    var swiper1 = new Swiper('.swiper-container_printing', {
+        slidesPerView: 4,
+        spaceBetween: 15,
+        // init: false,
+        pagination: {
+            el: '.swiper-pagination',
+            clickable: true,
+        },
+        navigation: {
+            nextEl: '.swiper-button-next_printing',
+            prevEl: '.swiper-button-prev_printing',
+        },
+    });
+    var swiper = new Swiper('.pick-swiper-container', {
+        slidesPerView: 3,
+        spaceBetween: 8,
+        pagination: {
+            el: '.swiper-pagination',
+            clickable: true,
+        },
+        navigation: {
+            nextEl: '.pick-swiper-button-next',
+            prevEl: '.pick-swiper-button-prev',
+        },
+        loop: true
+
+    });
+    //图片切换
+    $(document).on('click', '.l-min-img div.swiper-slide', function() {
+        var pic_attr = $(this).attr('pic_attr');
+        $('.l-max-img img').attr('src', pic_attr);
+    });
+
+
+    // 最近浏览
+    var latest_view = new Object();
+    latest_view.service_id = "594";
+    latest_view.service_name = "深圳市宏益国际跨境电商服务有限公司";
+    latest_view.service_logo = "https://img.kuajingyan.com/uploadImg/fw/company/20190529/15590948739888.jpg";
+
+    var latest_views = localStorage.getItem('service_latest_views') ?
+        JSON.parse(localStorage.getItem('service_latest_views')) : new Array();
+
+    // 浏览记录去重，相同的两次只保留最近的一次
+    // 由于splice函数会改变数组长度，所以数组长度需要实时获取，不能使用$.each()函数遍历，也不能在for中初始化数组长度 for (var i = 0, len = latest_views.length; i < len; i++)
+    for (var i = 0; i < latest_views.length; i++) {
+        if (latest_views[i].service_id == 594) {
+            latest_views.splice(i, 1);
+        }
+    }
+
+    // 最保留最近5条数据
+    if (latest_views.length > 4) {
+        latest_views.pop();
+    }
+
+    latest_views.unshift(latest_view);
+    localStorage.setItem('service_latest_views', JSON.stringify(latest_views));
+    </script>
+</div>
+</div>
+{/block}

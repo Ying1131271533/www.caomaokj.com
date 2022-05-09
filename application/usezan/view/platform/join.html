@@ -1,0 +1,76 @@
+{include file="public/header" /}
+<div class="mainbox animated fadeInRight">
+	<div class="mainnav_title">
+	    <a class="on">电商入驻申请</a>
+	    <a class="bth-rand fr" href="javascript:location.replace(location.href);" title="刷新"><b class="uzfont uzico-shuaxin"></b></a>
+    </div>
+	<table  class="search_table" width="100%">
+		<tr>
+			<td class="search">
+				<form action="{:url('platform/join')}" method="post">
+					<select class="catid" name="platform_id">
+						<option value="" {eq name="$platform_id" value=""}selected{/eq}>电商平台</option>
+						{foreach $platform as $value}
+						<option value="{$value.id}" {eq name="$platform_id" value="$value.id"}selected{/eq}>{$value.name}</option>
+						{/foreach}
+					</select>
+					<select class="catid" name="status">
+						<option value="" {eq name="$status" value=""}selected{/eq}>联系状态</option>
+						<option value="1" {eq name="$status" value="1"}selected{/eq}>未联系</option>
+						<option value="2" {eq name="$status" value="2"}selected{/eq}>已联系</option>
+					</select>
+					<input type="hidden" name="tree" value="{$tree_id}"/>
+					<input type="submit" value="{:lang('chaxun')}"  class="button" />
+					<a href="{:url('platform/join')}" class="button">重置</a>
+				</form>
+			</td>
+		</tr>
+	</table>
+	<form name="myform" id="myform" action="" method="post">
+		<div class="table-list">
+		    <table width="100%" cellspacing="0">
+				<thead>
+		            <tr>
+						<th width="20">ID</th>
+						<th width="50">姓名</th>
+						<th width="80">联系电话</th>
+						<th width="80" align="left">公司名称</th>
+						<th width="350" align="left">联系邮箱</th>
+						<th width="80">电商平台</th>
+						<th width="80">电商平台logo</th>
+						<th width="50">联系状态</th>
+						<th width="150">{:lang('createtime')}</th>
+					</tr>
+		        </thead>
+		      	<tbody>
+					{foreach $list as $value}
+					<tr height="70">
+						<td width="20" align="center">{$value.id}</td>
+
+						<td align="center">{$value.name}</td>
+
+						<td align="center">{$value.phone}</td>
+
+						<td align="left">{$value.company}</td>
+
+						<td align="left">{$value.email}</td>
+
+						<td align="center">{$value.platform.name}</td>
+
+						<td align="center">
+							<img src="{$value.platform.logo}" width="130" style="cursor:pointer;" onclick="open_img(this)" />
+						</td>
+
+						<td align="center">
+		                    <a onclick="ajax_status(this)" data-id="{$value.id}" data-url="{:url('ajax/status', ['id' => $value.id, 'value' => $value.status, 'field' => 'status', 'db' => 'platform_join'])}" class="bth-a ajax-status {$value.status == 1 ?: 'error-c'}"></a>
+		                </td>
+
+						<td align="center">{$value.create_time}</td>
+					</tr>
+					{/foreach}
+		      	</tbody>
+		    </table>
+		</div>
+	</form>
+</div>
+<div id="pages" class="page">{$list|raw}</div>

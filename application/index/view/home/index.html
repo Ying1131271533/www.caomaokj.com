@@ -1,0 +1,439 @@
+{extend name="layout/base" /}
+
+{block name="title"}跨境头条{/block}
+
+{block name="load"}
+
+<!-- css -->
+<link rel="stylesheet" href="__ACSS__/swiper.min.css">
+<link rel="stylesheet" type="text/css" href="__ACSS__/home.css">
+<link rel="stylesheet" type="text/css" href="__ACSS__/styles.css">
+<link rel="stylesheet" type="text/css" href="__ACSS__/touchTouch.css">
+
+<!-- js -->
+<script type="text/javascript" src="__AJS__/touchTouch.jquery.js"></script>
+<script type="text/javascript" src="__AJS__/home.js"></script>
+<script src="__AJS__/swiper.min.js"></script>
+<script src="__AJS__/afterSign.js"></script>
+<script src="__AJS__/banner_click.js"></script>
+<script type="text/javascript" src="__AJS__/jquery.lazyload.js"></script>
+
+
+
+{/block}
+
+<!-- 主体内容 -->
+{block name="main"}
+<div class="container body-container">
+    <style>
+        .hot-user li {
+            float: left;
+            padding: 15px 15px 10px 16px !important;
+        }
+
+        .hot-article {
+            width: 300px !important;
+            display: inline-block;
+            /* padding: 15px 0 0; */
+            /* border-bottom: 2px solid #eee; */
+            background: #fff;
+            padding-top: 15px !important;
+        }
+
+        .hot-article span {
+            padding-left: 15px !important;
+        }
+
+        .container_div {
+            margin-top: 0px;
+        }
+
+        .top {
+            padding-bottom: 20px;
+            background: #F6F6F8;
+        }
+
+        .body-container {
+            width: 100%;
+            min-width: 1000px;
+            background: #fff !important;
+        }
+
+        .topContainer {
+            width: 1200px;
+            margin: 0 auto;
+
+        }
+
+        .topMain {
+            display: flex;
+        }
+
+        .swiper-container {
+            flex: 1;
+        }
+
+        .tuijian_div {
+            width: 480px;
+            height: 420px;
+            margin: 0px;
+            margin-top: 15px;
+            background: none;
+            margin-left: 19px;
+        }
+
+        .tuijian_div .tuijian_content_div {
+            width: 230px;
+            height: 200px;
+            float: left;
+            margin-left: 0;
+            position: relative;
+            border-radius: 4px;
+            overflow: hidden;
+            /* margin-left:19px; */
+        }
+
+        .tuijian_div .tuijian_content_div:nth-child(2n) {
+            margin-left: 20px;
+        }
+
+        .tuijian_div .tuijian_content_div:nth-child(3),
+        .tuijian_div .tuijian_content_div:nth-child(4) {
+            margin-top: 20px;
+        }
+
+        .tuijian_img {
+            height: 100%;
+        }
+
+        .tuijian_img a img {
+            width: 100%;
+            height: 100%;
+            transition: all 1s;
+        }
+
+        .tuijian_div .tuijian_content_div:hover .tuijian_img a img {
+            transform: scale(1.12);
+        }
+
+        .tuijian_title {
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-image: linear-gradient(-180deg, hsla(0, 0%, 74.9%, 0), rgba(0, 0, 0, .78) 97%);
+            transition: all .5s;
+        }
+
+        .tuijian_title a {
+            font-size: 13px;
+            line-height: 18px;
+            color: #fff;
+            text-align: justify;
+            padding: 0 10px;
+            max-height: 36px;
+            position: absolute;
+            bottom: 6px;
+            overflow: hidden;
+            transition: bottom .5s;
+            -webkit-line-clamp: 2;
+            line-clamp: 2;
+            font-weight: 400;
+        }
+
+        .tuijian_div .tuijian_content_div:hover .tuijian_title a {
+            font-size: 14px;
+            line-height: 18px;
+            color: #fff;
+            text-align: justify;
+            padding: 0 10px;
+            max-height: 98px;
+            position: absolute;
+            bottom: 98px;
+            overflow: hidden;
+            font-weight: 500;
+            transform: translateY(50%);
+            opacity: 1;
+            -webkit-line-clamp: 4;
+            line-clamp: 4;
+        }
+
+        @-webkit-keyframes bgdonghua
+
+        /* Safari and Chrome */
+            {
+            0% {
+                background-color: rgba(0, 0, 0, 0.1);
+            }
+
+            100% {
+                background-color: rgba(0, 0, 0, 0.5);
+            }
+        }
+
+        @keyframes bgdonghua {
+            0% {
+                background-color: rgba(0, 0, 0, 0.1);
+            }
+
+            100% {
+                background-color: rgba(0, 0, 0, 0.5);
+            }
+        }
+
+        .title-text {
+            word-break: break-all;
+            overflow: hidden;
+            text-overflow: ellipsis;
+            display: -webkit-box;
+            -webkit-box-orient: vertical;
+        }
+
+        .star_and_top_jzc {
+            border: 1px solid #F5F5F5;
+        }
+
+        .hot_title_jzc .active {
+            border-bottom: 3px solid #ff7600 !important;
+        }
+    </style>
+    <!-- 左侧导航栏 -->
+    <!-- <div class="left_cont"> -->
+    <!-- <div style="clear: both;"></div> -->
+    <div class="top clearfix">
+        <div class="topContainer">
+
+            <div class="topMain">
+
+                <div class="swiper-container swiper-container-horizontal swiper-container-fade" style="margin-top:15px;">
+
+                    <!-- 轮播图 -->
+                    <div class="swiper-wrapper" style="transition-duration: 0ms;">
+
+                        {foreach $banner as $key => $value}
+                        <div class="swiper-slide" data-swiper-slide-index="{$key}">
+                            <img alt="草帽跨境" style="width:100%;width:100%;cursor: pointer;" class="banner_href" data-type="pc" data-id="157" data-url="{$value.url}" src="{$value.thumb}">
+                        </div>
+                        {/foreach}
+
+                    </div>
+
+                    <!-- 轮播图下方的圈圈 -->
+                    <div class="swiper-pagination swiper-pagination-white swiper-pagination-clickable swiper-pagination-bullets">
+
+                        {foreach $banner as $key => $value}
+                        <span class="swiper-pagination-bullet">
+                            <svg width="24" height="24" viewBox="0 0 24 24">
+                                <circle cx="12" cy="12" r="10" stroke-width="2" stroke="rgba(255,255,255,0.5)" fill="none"></circle>
+                                <circle cx="12" cy="12" r="10" stroke-width="2" stroke="#fff" fill="none" transform="matrix(0,-1,1,0,0,24)" stroke-dasharray="0 62.83185307179586"></circle>
+                            </svg>
+                        </span>
+                        {foreach}
+
+                    </div>
+                </div>
+
+                <!-- 首页推荐文章 -->
+                <div class="tuijian_div">
+
+                    {foreach $article as $value}
+                    <div class="tuijian_content_div">
+                        <div class="tuijian_img"><a href="{:url('home/article', ['id' => $value.id])}"><img src="{$value.thumb}"></a></div>
+                        <div class="tuijian_title tuijian-bg2"><a class="title-text ellipsis-2" href="{:url('home/article', ['id' => $value.id])}">{$value.title}</a></div>
+                    </div>
+                    {/foreach}
+
+                </div>
+                <div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="container_div">
+
+        <!-- 左侧跨境干货文章列表 -->
+        {include file="layout/left_article" /}
+        
+        <!-- 右侧推进内容卡片 -->
+        <div class="index-right">
+
+            {empty name="$college_list"}
+            <div class="officialAdvert" style="margin-bottom:20px;">
+                <a href="{:url('index/home/article', ['id' => 67])}">
+                    <img src="__AIMG__/article_01.jpg" title="戳我领资料" alt="戳我领资料">
+                </a>
+            </div>
+
+            {else /}
+            <div class="layui-carousel" id="test1">
+                <div carousel-item>
+                  {foreach $college_list as $key => $value}
+                  <div><a href="{$value.url}"><img src="{$value.thumb}" style="width:100%;"></a></div>
+                  {/foreach}
+                </div>
+            </div>
+
+            <script>
+                layui.use('carousel', function(){
+                    var carousel = layui.carousel;
+                    //建造实例
+                    carousel.render({
+                        elem: '#test1'
+                        ,width: '100%' //设置容器宽度
+                        ,height: '160' //设置容器高度
+                        //,arrow: 'always' //始终显示箭头
+                        //,anim: 'updown' //切换动画方式
+                        // ,indicator: 'none'
+                    });
+                });
+            </script>
+            {/empty}
+
+            {include file="layout/article" /}
+
+            <!-- 文章热门标签 -->
+        </div>
+        <!-- </div> -->
+        <script type="text/javascript">
+        var category = "0";
+        $(function() {
+            var isFixed = false;
+            //滚动事件
+            $(window).scroll(function() {
+                var scrollTop = $(this).scrollTop();
+                if (scrollTop >= 570) {
+                    if (!isFixed) {
+                        $(".wenzhang_nav").addClass('wenzhang_navFexid');
+                        $(".wz_nav_title").addClass('wz_titleFexid');
+                        $(".navbar-fixed-top").css("display", "none");
+                        $(".kua_menu_div").css("display", "none");
+                        isFixed = true;
+                    }
+                } else {
+                    isFixed = false;
+                    $(".wenzhang_nav").removeClass('wenzhang_navFexid');
+                    $(".wz_nav_title").removeClass('wz_titleFexid');
+                    $(".navbar-fixed-top").css("display", "");
+                    $(".kua_menu_div").css("display", "");
+                }
+            });
+
+            if (category > 0) {
+                $("#category_" + category).click();
+            }
+
+            $('.lev').each(function() {
+                var title = $(this).children('a').attr('class');
+                console.log(title);
+            })
+
+        });
+        </script>
+        <script>
+        var perimeter = Math.PI * 2 * 10;
+        var timer = null;
+        var value = 0;
+
+        function circleSvg() {
+            value = 0;
+            clearInterval(timer);
+
+            var circle1 = $(".swiper-pagination-bullet");
+            //console.log(circle1.valueOf());
+            $.each(circle1, function(i, v) {
+                $(v).html('<svg width="24" height="24" viewbox="0 0 24 24">\
+            <circle cx="12" cy="12" r="10" stroke-width="2" stroke="rgba(255,255,255,0.5)" fill="none"></circle>\
+                <circle cx="12" cy="12" r="10" stroke-width="2" stroke="#fff" fill="none" transform="matrix(0,-1,1,0,0,24)" stroke-dasharray="0 ' + perimeter + '"></circle>\
+        </svg>');
+                // console.log("=========" + i, v)
+            })
+            var circle = document.querySelectorAll(".swiper-pagination-bullet-active circle")[1];
+            if (circle) {
+
+                timer = setInterval(function() {
+                    value++;
+                    if (value == 102) {
+                        value = 0;
+                        circle.setAttribute('stroke-dasharray', 0 + " " + perimeter);
+                        clearInterval(timer);
+                        return false;
+                    }
+                    var percent = value / 100;
+                    circle.setAttribute('stroke-dasharray', perimeter * percent + " " + perimeter * (1 - percent));
+
+                }, 50)
+            }
+        }
+
+        var swiper = new Swiper('.swiper-container', {
+            pagination: '.swiper-pagination',
+            paginationClickable: true,
+            paginationBulletRender: function(swiper, index, className) {
+                return '<span class="' + className + '">' +
+                    '<svg width="24" height="24" viewbox="0 0 24 24">\
+                <circle cx="12" cy="12" r="10" stroke-width="2" stroke="rgba(255,255,255,0.5)" fill="none"></circle>\
+                    <circle cx="12" cy="12" r="10" stroke-width="2" stroke="#fff" fill="none" transform="matrix(0,-1,1,0,0,24)" stroke-dasharray="0 ' + perimeter + '"></circle>\
+        </svg>' +
+                    '</span>';
+            },
+
+            spaceBetween: 30,
+            effect: 'fade',
+            loop: true,
+            autoplay: 5000,
+            autoplayDisableOnInteraction: false,
+            onInit: function(swiper) {
+                //Swiper初始化了
+                //alert(swiper.activeIndex);提示Swiper的当前索引
+                circleSvg();
+            },
+            onSlideChangeStart: function(swiper) {
+                value = 0;
+                //  console.log(swiper.activeIndex + '');
+                // swiper.activeIndex 这个就是索引， 从 0 开始！ 可看一共有多少元素！
+                circleSvg();
+            },
+        });
+
+        $(function() {
+            var h = $(".find-item>.table").height();
+            $(".find-label_img").height(h + 2);
+        })
+        </script>
+        <style>
+        circle {
+            -webkit-transition: stroke-dasharray .25s;
+            transition: stroke-dasharray .25s;
+        }
+
+        body .swiper-pagination-white .swiper-pagination-bullet-active,
+        body .swiper-pagination-white .swiper-pagination-bullet {
+            background: transparent;
+        }
+
+        body .swiper-container-horizontal>.swiper-pagination-bullets,
+        body .swiper-pagination-custom,
+        .swiper-pagination-fraction {
+            background: rgba(0, 0, 0, .15);
+            opacity: 1;
+            width: auto;
+            left: 50%;
+            transform: translateX(-50%);
+            padding: 4px 4%;
+            border-radius: 20px;
+            -webkit-border-radius: 20px;
+            -moz-border-radius: 20px;
+        }
+
+        body .swiper-container-horizontal>.swiper-pagination-bullets .swiper-pagination-bullet {
+            margin: 0 12px;
+        }
+
+        body .swiper-container-horizontal>.swiper-pagination-bullets .swiper-pagination-bullet:first-child {
+            margin-left: 0;
+        }
+        </style>
+    </div>
+</div>
+{/block}

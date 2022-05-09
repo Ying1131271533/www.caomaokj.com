@@ -1,0 +1,184 @@
+/*common*/
+.home .nav-title {
+	float: left;
+	width: 100%;
+	background: #eee;
+	font-size: 0.16rem;
+	display: flex;
+	justify-content: space-around;
+}
+
+.home .nav-title li {
+	float: left;
+	flex: 1;
+	height: 50px;
+	line-height: 50px;
+	text-align: center;
+}
+
+.home .nav-title li a {
+	display: inline-block;
+	width: 100%;
+	height: 100%;
+	overflow: hidden;
+}
+
+.home .nav-title li a span {
+	padding-left: 10px;
+}
+
+.home .nav-title li a i {
+	display: inline-block;
+	width: 20px;
+	height: 22px;
+	vertical-align: middle;
+	padding-right: 10px;
+}
+
+.home .nav-title li a.tab1 i {
+	background: url("../../img/icons.png") no-repeat -12px -106px;
+}
+
+.home .nav-title li a.tab2 i {
+	background: url("../../img/icons.png") no-repeat -47px -106px;
+}
+
+.home .nav-title li a.tab3 i {
+	background: url("../../img/icons.png") no-repeat -81px -106px;
+}
+/*主体内容*/
+.main .media {
+	background: #fff;
+	/*margin-top: 10px;*/
+	padding: 10px;
+}
+
+.main .media h4 {
+	font-size: 0.13rem;
+}
+
+.main .media span {
+	font-size: 0.12rem;
+}
+
+.main .media .media-img {
+	padding: 10px 0;
+}
+
+.main .media .img-div {
+	flex: 1;
+}
+
+.main .media .media-img .img-div+.img-div {
+	margin-left: 10px;
+}
+
+.main .media .media-img img {
+	width: 100%;
+}
+
+.main .media .navbar-nav a img {
+	width: 16%;
+}
+
+.main .media .navbar-nav a span.a-text {
+	color: #f7cec5;
+}
+
+.main .nav-tabs {
+	width: 100%;
+	background: #fafafa;
+	font-size: 0.13rem;
+	color: #444;
+	margin-top: 10px;
+}
+
+.main .nav-tabs>li {
+	float: left;
+	text-align: center;
+	height: 22px;
+	line-height: 22px;
+	margin: 8px 0;
+	border-right: 1px solid #ddd;
+	width: 33%;
+}
+
+.main .nav-tabs>li {
+	border-right: 1px solid #ddd;
+}
+
+.main .nav-tabs>li:last-child {
+	border: none;
+}
+
+.main .media .media-left {
+	flex: 0 0 31.4%;
+	padding-right: 10px;
+}
+
+.main .media .media-left a img {
+	width: 100%;
+}
+
+.main .media-side .navbar-nav {
+	padding: 5px 0 0;
+}
+
+.geek-camp {
+	width: 100%;
+	color: #555;
+}
+
+.geek-camp h4 {
+	color: #555;
+	font-size: 0.16rem;
+	line-height: 24px;
+}
+
+.navbar a {
+	color: #999;
+	font-size: 0.14rem;
+	line-height: 24px;
+}
+
+.geek-camp h4.title {
+	font-weight: normal;
+	font-size: 0.16rem;
+	color: #555;
+}
+
+.geek-camp .geek-banner, .geek-camp .geek-banner, .geek-camp .end-event
+	{
+	background: #fff;
+	padding: 10px;
+	margin-top: 10px;
+}
+/*banner*/
+.geek-camp .geek-banner .banner-img, .geek-camp .geek-banner .banner-img img
+	{
+	width: 100%;
+	height: 100%;
+}
+
+.geek-camp .geek-banner .banner-text {
+	padding-top: 20px;
+}
+
+.geek-camp .geek-banner .banner-text h4 {
+	font-weight: bold;
+	font-size: 0.16rem;
+}
+
+.geek-camp .geek-banner .banner-text p {
+	padding: 5px 0;
+	line-height: 20px;
+	font-size: 0.14rem;
+}
+
+.footer .container div:last-child {
+	height: 60px;
+}
+
+.red {
+	color: red;
+}

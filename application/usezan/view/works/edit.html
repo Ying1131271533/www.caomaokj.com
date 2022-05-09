@@ -1,0 +1,102 @@
+{include file="public/header" /}
+<div class="mainbox animated fadeInRight">
+    <div class="mainnav_title">
+        <a class="on">内容修改</a>
+        <a class="add-edit" href="{:url('works/index')}?tree={$tree_id}">[<b class="uzfont uzico-fanhui"></b>返回列表]</a>
+        <a class="bth-rand fr" href="javascript:location.replace(location.href);" title="刷新"><b class="uzfont uzico-shuaxin"></b></a>
+    </div>
+    <form name="myform" id="myform" action="" method="post">
+        <table cellpadding=0 cellspacing=0 class="table_form" width="100%">
+            <tr>
+                <td width="90"><font color="red">*</font><label>所属分类：</label></td>
+                <td>
+                    <select class="catid" name="catid">
+                        {if condition="isset($select_categorys) and $select_categorys"}{$select_categorys|raw}{/if}
+                    </select>
+                </td>
+            </tr>
+            <tr>
+                <td width="90"><font color="red">*</font><label>标题：</label></td>
+                <td>
+                    <div class="thumb_box ">
+                        <div class="img-upload">
+                            <img class="cthumb thumb" width="100" onclick="up_img('cthumb','thumb','jpg,gif,png,jpeg','10485760','290px',0);" src="{if condition="$list['thumb']"}{$list['thumb']}{else /}__UIMG__/upload_thumb.png{/if}" alt="上传封面">
+                            <input type="hidden" class="thumb" name="thumb" value="">
+                            <input type="text" class="input-text" name="title" value="{$list['title']}" size="50" placeholder="标题" validate="minlength:2,maxlength:80,required:true">
+                            {if condition="$list['thumb']"}<a title="移除" class="del-pic con-del" onclick="del_img('$list[\'thumb\']',{$list['id']},0,this,'thumb')" href="javascript:;"></a>{/if}
+                        </div>
+                    </div>
+                </td>
+            </tr>
+            <tr>
+                <td width="90"><label>副标题：</label></td>
+                <td>
+                    <input type="text" class="input-text" name="subtitle" value="{$list['subtitle']}" size="50" placeholder="副标题">
+                </td>
+            </tr>
+            <tr>
+                <td width="90"><label>关键字：</label></td>
+                <td>
+                    <input type="text" class="input-text" name="keyword" value="{$list['keyword']}" size="50" placeholder="关键字">
+                </td>
+            </tr>
+            <tr>
+                <td width="90"><label>描述：</label></td>
+                <td>
+                    <textarea rows="4" cols="58" name="description" placeholder="内容描述">{$list['description']}</textarea>
+                </td>
+            </tr>
+            <tr class="editor">
+                <td>内容:</td>
+                <td style="width:1000px;"><script id="container" name="content" type="text/plain">{$list['content']|raw}</script></td>
+            </tr>
+            <tr>
+                <td width="90"><label>浏览数：</label></td>
+                <td>
+                    <input type="text" class="input-text" name="view" value="{$list['view']}" size="6" placeholder="默认随机">
+                </td>
+            </tr>
+            <tr>
+                <td><font color="red"> </font><label>热门：</label></td>
+                <td>
+                    <select class="ishot" name="ishot">
+                        <option value="0" {eq name="list['ishot']" value="0"}selected{/eq}>默认</option>
+                        <option value="1" {eq name="list['ishot']" value="1"}selected{/eq}>热门</option>
+                    </select>
+                </td>
+            </tr>
+            <tr>
+                <td><font color="red"> </font><label>是否显示：</label></td>
+                <td>
+                    <select class="select" name="status">
+                        <option value="1" {eq name="list['status']" value="1"}selected{/eq}>显示</option>
+                        <option value="0" {eq name="list['status']" value="0"}selected{/eq}>隐藏</option>
+                    </select>
+                </td>
+            </tr>
+            <tr>
+                <td>添加时间</td>
+                <td>
+                    <input class="Wdate input-text" name="createtime" type="text" size="25" onfocus="WdatePicker({dateFmt:'yyyy-MM-dd HH:mm:ss'})" value="{:date('Y-m-d H:i:s',$list['createtime'])}">
+                </td>
+            </tr>
+        </table>
+        <div id="bootline"></div>
+        <div id="btnbox" class="btn">
+            <input type="hidden" name="id" value="{$list['id']}">
+            <input type="hidden" name="oldthumb" value="{$list['thumb']}">
+            <input type="submit" value="{:lang('dosubmit')}" class="button" />
+            <input type="reset" value="{:lang('cancel')}" class="button" />
+        </div>
+    </form>
+</div>
+<script type="text/javascript" src="__UJS__/ueditor/ueditor.config.js"></script>
+<script type="text/javascript" src="__UJS__/ueditor/ueditor.all.min.js"></script>
+<script type="text/javascript" src="__UJS__/ueditor/lang/zh-cn/zh-cn.js"></script>
+<script type="text/javascript">
+    var ue = UE.getEditor('container', {
+        initialFrameHeight: 300,
+        allowDivTransToP:false,
+        autoClearEmptyNode:false
+    });
+</script>

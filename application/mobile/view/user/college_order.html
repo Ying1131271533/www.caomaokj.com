@@ -1,0 +1,253 @@
+{extend name="layout/base" /}
+{block name="title"}报名详情{/block}
+{block name="load"}
+
+<!-- css -->
+
+<!-- js -->
+
+{/block}
+<!-- 主体内容 -->
+{block name="main"}
+    <div class="container">
+        <style>
+            .moreApplyConfirm .order_detail_sponsor {
+                height: 40px;
+                line-height: 40px;
+                font-size: 14px;
+                color: #999;
+                background: #fff;
+                padding: 0 10px
+            }
+            
+            .moreApplyConfirm .order_detail_sponsor span {
+                width: 100%;
+                height: 100%;
+                display: block;
+                color: #999
+            }
+            
+            .order_detail_t {
+                background-color: #f8f8f8;
+                padding: 10px;
+                overflow: hidden
+            }
+            
+            .order_detail_t .all-q {
+                height: 22px;
+                line-height: 22px
+            }
+            
+            .order_detail_t .c_name {
+                line-height: 18px;
+                color: #999;
+                padding: 3px 0
+            }
+            
+            .order_detail_t .c_content {
+                line-height: 18px;
+                color: #444;
+                padding: 3px 0
+            }
+            
+            .m-color {
+                color: #fc9d27
+            }
+            
+            .order_detail_t dt {
+                float: left;
+                display: inline-block;
+                width: 120px;
+                height: 68px;
+                margin-right: 10px
+            }
+            
+            .order_detail_t dt img {
+                width: 120px;
+                height: 68px
+            }
+            
+            .order_detail_t dd {
+                display: block;
+                width: calc(100% - 140px);
+                height: 70px;
+                float: left
+            }
+            
+            .order_detail_t dd .party_price {
+                height: 32px;
+                line-height: 16px;
+                color: #000;
+                font-size: 14px;
+                white-space: nowrap;
+                text-overflow: ellipsis;
+                -o-text-overflow: ellipsis;
+                overflow: hidden
+            }
+            
+            .order_detail_t dd .party_cate {
+                color: #aaa;
+                font-size: 12px;
+                line-height: 20px;
+                white-space: nowrap;
+                text-overflow: ellipsis;
+                -o-text-overflow: ellipsis;
+                overflow: hidden
+            }
+            
+            .order_detail_t dd .party_cate span {
+                display: inline-block;
+                color: #aaa;
+                font-size: 12px;
+                line-height: 16px
+            }
+            
+            .coupon_list_ordercount .all-q {
+                height: 25px
+            }
+            
+            .order_detail_t .money .c_content {
+                color: #fc9d27;
+                font-size: 20px
+            }
+            
+            .m-color-div {
+                background-color: #fc9d27;
+                padding: 0 10px 10px 10px
+            }
+            
+            .m-color-div .order_detail_sponsor {
+                color: #fff;
+                background-color: #fc9d27;
+                padding: 0
+            }
+            
+            .m-color-div .order_detail_sponsor span {
+                color: #fff
+            }
+            
+            .share_num {
+                height: 73px;
+                overflow: hidden
+            }
+            
+            .share_num .l,
+            .share_num .r {
+                width: 50%;
+                height: 100%;
+                text-align: center;
+                border-bottom: 1px solid #eee;
+                margin-bottom: 10px
+            }
+            
+            .share_num .l {
+                float: left
+            }
+            
+            .share_num .r {
+                float: right
+            }
+            
+            .share_num span {
+                color: #fff;
+                font-size: 16px
+            }
+            
+            .share_num .num {
+                color: #fff;
+                font-size: 24px;
+                padding-right: 10px;
+                font-weight: 600
+            }
+            
+            .share-tips {
+                background-color: #fff;
+                padding: 5px;
+                line-height: 24px
+            }
+            
+            .share-tips b {
+                color: #fc9d27;
+                font-weight: 500
+            }
+            
+            .share-tips .m-red {
+                color: red;
+                font-weight: 600
+            }
+        </style>
+        <div class="moreApplyConfirm">
+            <div class="order_detail_sponsor">
+                <span>个人信息</span>
+            </div>
+            <div class="order_detail_t">
+                <div class="all-q">
+                    <span class="c_name">姓名：</span> <span class="c_content">{$join.name}</span>
+                </div>
+                <div class="all-q">
+                    <span class="c_name">公司名：</span> <span class="c_content">{$join.company}</span>
+                </div>
+                <div class="all-q">
+                    <span class="c_name">手机：</span> <span class="c_content">{$join.phone}</span>
+                </div>
+                <div class="all-q">
+                    <span class="c_name">您的管理需求/问题？：</span> <span class="c_content">{$join.demand}</span>
+                </div>
+            </div>
+
+            <div class="order_detail_sponsor">
+                <span>订单状态</span>
+            </div>
+            <div class="order_detail_t">
+                <div class="all-q">
+                    <span class="c_name">当前状态：</span> <span class="c_content m-color">{:order_status($order.order_status)}</span>
+                </div>
+                <div class="all-q">
+                    <span class="c_name">订单编号：</span> <span class="c_content">{$order.order_sn}</span>
+                </div>
+                <div class="all-q">
+                    <span class="c_name">下单时间：</span> <span class="c_content">{$order.create_time}</span>
+                </div>
+            </div>
+
+
+            <div class="order_detail_sponsor">
+                <span>课程信息<i class="fr">进行中</i></span>
+            </div>
+            <div class="order_detail_t">
+                <a href="{:url('college/detail', ['id' => $college.id])}" target="_blank">
+                    <dl>
+                        <dt>
+                			<img src="{$college.thumb}">
+                		</dt>
+                        <dd>
+                            <p class="party_price">{$college.title}</p>
+                            <p class="party_cate">{:date('Y-m-d H:i:s', $college.start_time)}} 开始</p>
+                            <p class="party_cate">
+                                <span>{$college.address}</span>
+                            </p>
+                        </dd>
+                    </dl>
+                </a>
+            </div>
+
+            <div class="order_detail_t">
+                <!-- <img class="share_ma" style="width:100%;" src="__AIMG__/QR_code/code_yongqi.jpg"> -->
+            </div>
+
+            <div class="order_detail_sponsor">
+                <span>报名详情</span>
+            </div>
+            <div class="order_detail_t coupon_list_ordercount">
+                <div class="all-q money-all">
+                    <span class="c_name fl">订单金额：</span>
+                    <span class="c_content fr">¥ {:sprintf("%.2f", $order.shop_price * $order.number)}</span>
+                </div>
+                <div class="all-q money">
+                    <span class="c_name fl">支付金额：</span>
+                    <span class="c_content fr money-realley">¥ {:sprintf("%.2f", $order.total)}</span>
+                </div>
+            </div>
+        </div>
+    </div>
+{/block}

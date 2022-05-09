@@ -1,0 +1,723 @@
+{extend name="layout/base" /}
+{block name="title"}草帽跨境 - 跨境卖家综合服务平台{/block}
+{block name="load"}
+<!-- css -->
+<link rel="stylesheet" href="__ACSS__/index.css">
+<link rel="stylesheet" type="text/css" href="__ACSS__/home.css">
+<link rel="stylesheet" type="text/css" href="__ACSS__/laypage.css">
+<link rel="stylesheet" type="text/css" href="__ACSS__/search.css?{$time}">
+
+{/block}
+
+<!-- 主体内容 -->
+{block name="main"}
+        <div class="container body-container">
+            <div class="nav_div_service mb5">
+                <span>
+                    <a class="color9" href="/">
+                        <svg class="icon" aria-hidden="true">
+                            <use xlink:href="#icon-shouye2"></use>
+                        </svg>首页 &gt;
+                    </a>
+                </span>
+                <span>
+                    <a class="color9" href="javascript:void(0)"> 全站结果&gt;</a>
+                </span>
+                <span>
+                    <a class="color-main" href="javascript:void(0)">{$keyword}</a>
+                </span>
+            </div>
+
+            <div class="container_div">
+                <!-- 左侧导航栏 -->
+                <div class="left_cont">
+                    <div class="clear"></div>
+                    <div class="wenzhang_nav" style="margin-bottom: 0;">
+                        <div class='fenlei_article_style searth_list_type_jzc {eq name="$select_type" value="0"}current_select_type{/eq}' data-type="0">全部
+                        </div>
+                        <div class='fenlei_article_style searth_list_type_jzc {eq name="$select_type" value="1"}current_select_type{/eq}' data-type="1">头条</div>
+                        <div class='fenlei_article_style searth_list_type_jzc {eq name="$select_type" value="2"}current_select_type{/eq}' data-type="2">活动</div>
+                        <div class='fenlei_article_style searth_list_type_jzc {eq name="$select_type" value="3"}current_select_type{/eq}' data-type="3">学院</div>
+                    </div>
+                    <div class="clear" style="clear:both;background: #F5F5F5;"></div>
+                    <div class="" style="height:50px;line-height:50px;width:100%;background:#fff;margin-bottom:0px;">
+                        <div style="text-align: left;padding-left: 20px; color: #555555;">
+                            共找到 <span style="color:#ff7600;">{$count} </span>条包含“<span style="color:#ff7600;">{$keyword}</span>”的内容
+                        </div>
+                    </div>
+
+                    <!-- 判断选择类型 -->
+                    {if $select_type == 0}
+
+
+                    <div class="search-all">
+                        <p class="cate-title" style="display: inline-block">相关资讯</p>
+                        <div class="header-sort bordered">
+                            <dl>
+                                <dd class="" data-type="2">发布时间</dd>
+                            </dl>
+                        </div>
+
+                        <div class="article-list">
+
+                            {foreach $articleList as $value}
+                            <div class="article-box layui-row">
+                                <div class="article-img layui-inline">
+                                    <a href="{:url('home/article', ['id' => $value.id])}">
+                                        <img src="{$value.thumb}" alt="{$value.title|raw}">
+                                    </a>
+                                </div>
+                                <div class="article-info layui-inline">
+                                    <p class="article-title">
+                                        <a href="{:url('home/article', ['id' => $value.id])}">{$value.title|raw}</a>
+                                    </p>
+                                    <p class="article-author">
+                                        <span>草帽跨境</span>
+                                        <span style="display: inline-block;margin-left: 30px;color: #888">发布于 : {:date('Y-m-d', $value.createtime)} </span>
+                                    </p>
+                                    <p class="article-desc">{$value.description|raw}</p>
+                                    <p class="article-tags">
+                                        {foreach $value.keywords as $val}
+                                        <span class="keyword_span"><a href="{:url('keyword/article', ['id' => $val.id])}">{$val.name}</a> </span>
+                                        {/foreach}
+                                    </p>
+                                </div>
+                            </div>
+                            {/foreach}
+                            
+                            <div class="more-box">
+                                {empty name="$articleList"}
+                                <a href="{:url('home/index')}">找不到相关头条 &gt;</a>
+                                {else/}
+                                <a href="{:url('home/search', ['keyword' => $keyword, 'select_type' => 1])}">查看更多相关头条 &gt;</a>
+                                {/empty}
+                            </div>
+                        </div>
+
+                        
+                        <p class="cate-title mb20">相关活动</p>
+                        <div class="activity-list">
+
+                            {foreach $activityList as $value}
+                            <div class="activity-box">
+                                <div class="activity-img">
+                                    <a href="{:url('activity/detail', ['id' => $value.id])}">
+                                        <img src="{$value.thumb}" alt="{$value.title|raw}">
+                                    </a>
+                                </div>
+                                <div class="activity-info">
+                                    <p class="title">
+                                        <a href="{:url('activity/detail', ['id' => $value.id])}">{$value.title|raw}</a>
+                                    </p>
+                                    <p class="status">
+                                        <i class="fa fa-clock-o"></i>
+                                        {$value.endtime > time() ? '进行中' : '已结束'}
+                                    </p>
+                                    <p class="extra-info">
+                                        <span class="address" title="{$value.address}">
+                                            <i class="fa fa-map-marker"></i>{$value.address} </span>
+                                        <span class="price">{:empty($value.discount) ? '免费' : "￥" . $value.discount}</span>
+                                    </p>
+                                </div>
+                            </div>
+                            {/foreach}
+
+                        </div>
+                        <div class="more-box">
+                            {empty name="$activityList"}
+                            <a href="{:url('activity/index')}">找不到相关活动 &gt;</a>
+                            {else/}
+                            <a href="{:url('home/search', ['keyword' => $keyword, 'select_type' => 2])}">查看更多相关活动 &gt;</a>
+                            {/empty}
+                        </div>
+
+                        
+                        <p class="cate-title mb20">相关培训</p>
+                        <div class="activity-list">
+
+                            {foreach $collegeList as $value}
+                            <div class="activity-box">
+                                <div class="activity-img">
+                                    <a href="{:url('activity/detail', ['id' => $value.id])}">
+                                        <img src="{$value.thumb}" alt="{$value.title|raw}">
+                                    </a>
+                                </div>
+                                <div class="activity-info">
+                                    <p class="title">
+                                        <a href="{:url('activity/detail', ['id' => $value.id])}">{$value.title|raw}</a>
+                                    </p>
+                                    <p class="status">
+                                        <i class="fa fa-clock-o"></i>
+                                        {$value.end_time > time() ? '进行中' : '已结束'}
+                                    </p>
+                                    <p class="extra-info">
+                                        <span class="address" title="{$value.address}">
+                                            <i class="fa fa-map-marker"></i>{$value.address} </span>
+                                        <span class="price">{:empty($value.discount) ? '免费' : "￥" . $value.discount}</span>
+                                    </p>
+                                </div>
+                            </div>
+                            {/foreach}
+
+                         
+                        </div>   
+                        <div class="more-box">
+                            {empty name="$collegeList"}
+                            <a href="{:url('college/index')}">找不到相关培训 &gt;</a>
+                            {else/}
+                            <a href="{:url('home/search', ['keyword' => $keyword, 'select_type' => 3])}">查看更多相关培训 &gt;</a>
+                            {/empty}
+                        </div>
+                    </div>
+
+
+                    {elseif $select_type == 1 /}
+
+
+                    <div class="search-all">
+                        <p class="cate-title" style="display: inline-block">相关头条</p>
+                        <div class="header-sort bordered">
+                            <dl>
+                                <dd class="" data-type="1"> 发布时间
+                                </dd>
+                            </dl>
+                        </div>
+
+                        <div class="article-list">
+
+                            {foreach $articleList as $value}
+                            <div class="article-box layui-row">
+                                <div class="article-img layui-inline">
+                                    <a href="{:url('home/article', ['id' => $value.id])}">
+                                        <img src="{$value.thumb}" alt="{$value.title|raw}">
+                                    </a>
+                                </div>
+                                <div class="article-info layui-inline">
+                                    <p class="article-title">
+                                        <a href="{:url('home/article', ['id' => $value.id])}">{$value.title|raw}</a>
+                                    </p>
+                                    <p class="article-author">
+                                        <span>草帽跨境</span>
+                                        <span style="display: inline-block;margin-left: 30px;color: #888">发布于 : {:postTime($value.createtime)} </span>
+                                    </p>
+                                    <p class="article-desc">{$value.description|raw}</p>
+                                    <p class="article-tags">
+                                        {foreach $value.keywords as $val}
+                                        <span class="keyword_span"><a href="{:url('keyword/article', ['id' => $val.id])}">{$val.name}</a> </span>
+                                        {/foreach}
+                                    </p>
+                                </div>
+                            </div>
+                            {/foreach}
+
+                            {empty name="$articleList"}
+                            <div class="more-box">
+                                <a href="{:url('home/index')}">找不到相关头条 &gt;</a>
+                            </div>
+
+                            {else/}
+                            
+                            <div class="load-more-article" data-keyword="{:input('keyword/s', '')}" data-type="1">加载更多</div>
+                            {/empty}
+                        </div>
+                    </div>
+
+
+                    {elseif $select_type == 2 /}
+
+
+                    <div class="search-all">
+                        <p class="cate-title mb20">相关活动</p>
+                        <div class="activity-list">
+
+                            {foreach $activityList as $value}
+                            <div class="activity-box">
+                                <div class="activity-img">
+                                    <a href="{:url('activity/detail', ['id' => $value.id])}">
+                                        <img src="{$value.thumb}" alt="{$value.title|raw}">
+                                    </a>
+                                </div>
+                                <div class="activity-info">
+                                    <p class="title">
+                                        <a href="{:url('activity/detail', ['id' => $value.id])}">{$value.title|raw}</a>
+                                    </p>
+                                    <p class="status">
+                                        <i class="fa fa-clock-o"></i>
+                                        {$value.endtime > time() ? '进行中' : '已结束'}
+                                    </p>
+                                    <p class="extra-info">
+                                        <span class="address" title="{$value.address}">
+                                            <i class="fa fa-map-marker"></i>{$value.address} </span>
+                                        <span class="price">{:empty($value.discount) ? '免费' : "￥" . $value.discount}</span>
+                                    </p>
+                                </div>
+                            </div>
+                            {/foreach}
+
+                            <input type="hidden" id="count" value="{$count}">
+                            <input type="hidden" id="thisPage" value="1">
+
+                        </div>
+
+                        <div class="page-box">
+                            <div id="laypage_search" class="laypage" style="margin-bottom: 20px;"></div>
+                        </div>
+                    </div>
+
+
+                    {elseif $select_type == 3 /}
+
+
+                    <div class="search-all">
+                        <p class="cate-title mb20">相关学院</p>
+                        <div class="activity-list">
+
+                            {foreach $collegeList as $value}
+                            <div class="activity-box">
+                                <div class="activity-img">
+                                    <a href="{:url('activity/detail', ['id' => $value.id])}">
+                                        <img src="{$value.thumb}" alt="{$value.title|raw}">
+                                    </a>
+                                </div>
+                                <div class="activity-info">
+                                    <p class="title">
+                                        <a href="{:url('college/detail', ['id' => $value.id])}">{$value.title|raw}</a>
+                                    </p>
+                                    <p class="status">
+                                        <i class="fa fa-clock-o"></i>
+                                        {$value.end_time > time() ? '进行中' : '已结束'}
+                                    </p>
+                                    <p class="extra-info">
+                                        <span class="address" title="{$value.address}">
+                                            <i class="fa fa-map-marker"></i>{$value.address} </span>
+                                        <span class="price">{:empty($value.discount) ? '免费' : "￥" . $value.discount}</span>
+                                    </p>
+                                </div>
+                            </div>
+                            {/foreach}
+
+                            <input type="hidden" id="count" value="{$count}">
+                            <input type="hidden" id="thisPage" value="1">
+                            
+                        </div>
+
+                        <div class="page-box">
+                            <div id="laypage_search" class="laypage" style="margin-bottom: 20px;"></div>
+                        </div>
+                    </div>
+
+
+                    {/if}
+
+
+
+                    <div style="clear: both; height: 20px; background: #F6F6F8;"></div>
+                    
+                </div>
+                <div class="index-right" style="margin-top:0px;">
+                    
+                    <!-- warehouse海外仓 -->
+                    <div>
+                        <style>
+                            .hot-user {
+                                width: 260px;
+                                padding: 15px 0 10px;
+                                display: inline-block;
+                                border-bottom: 2px solid #eee;
+                                background: #fff
+                            }
+
+                            .hot-user li {
+                                float: left;
+                                padding: 6px 10px 5px 10px
+                            }
+
+                            .hot-user-img img {
+                                width: 70px;
+                                height: 70px
+                            }
+
+                            .hot-user-info h5 {
+                                text-overflow: ellipsis;
+                                font-weight: bold;
+                                text-align: center;
+                                padding: 8px 0
+                            }
+
+                            .hot-user-info h6 {
+                                text-overflow: ellipsis;
+                                text-align: center;
+                                color: #aaaaaa
+                            }
+
+                            .hot-user h4 a {
+                                font-size: 12px;
+                                float: right;
+                                line-height: 17px;
+                                color: #999999
+                            }
+
+                            /** 添加淡入淡出的css start ***/
+                            .carousel-fade .carousel-inner .item {
+                                transition-property: opacity;
+                            }
+
+                            .carousel-fade .carousel-inner .item,
+
+                            .carousel-fade .carousel-inner .active.left,
+
+                            .carousel-fade .carousel-inner .active.right {
+                                opacity: 0;
+                            }
+
+                            .carousel-fade .carousel-inner .active,
+
+                            .carousel-fade .carousel-inner .next.left,
+
+                            .carousel-fade .carousel-inner .prev.right {
+                                opacity: 1;
+                            }
+
+                            .carousel-fade .carousel-inner .next,
+
+                            .carousel-fade .carousel-inner .prev,
+
+                            .carousel-fade .carousel-inner .active.left,
+
+                            .carousel-fade .carousel-inner .active.right {
+                                left: 0;
+                                transform: translate3d(0, 0, 0);
+                            }
+
+                            .carousel-fade .carousel-control {
+                                z-index: 2;
+                            }
+
+                            .banner_href_warehouse {
+                                width: 100% !important;
+                            }
+
+                            /** 添加淡入淡出的css end ***/
+                        </style>
+                        <div class="hot-user">
+                            <h4>
+                                <img src="__AIMG__/64657b4234750e23.png" title="1606891420137236.png" alt="推荐海外仓">
+                                <span style="font-size: 16px;color: #282828;">推荐培训</span>
+                                <a style="color: #999999" href="{:url('college/index')}">更多&gt;</a>
+                            </h4>
+                            <div id="myCarousel" class="carousel slide carousel-fade" style="margin:0 auto;margin-top:10px;cursor: pointer;">
+                                <!-- 轮播（Carousel）项目 -->
+                                <div class="carousel-inner">
+                                    <div class="item active">
+                                        <img class="banner_href_warehouse" data-url="{:url('college/detail', ['id' => $college.id])}" src="{$college.thumb}">
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <script>
+                        $('#myCarousel').carousel({
+                            interval: 3000
+                        })
+                        </script>
+                        <script src="__AJS__/warehouse_ad_click.js"></script>
+                    </div>
+                    <!-- warehouse专线 -->
+                    <div style="margin-top: 20px;">
+                        <style>
+                            .hot-user {
+                                width: 260px;
+                                padding: 15px 0 10px;
+                                display: inline-block;
+                                border-bottom: 2px solid #eee;
+                                background: #fff
+                            }
+
+                            .hot-user li {
+                                float: left;
+                                padding: 6px 10px 5px 10px
+                            }
+
+                            .hot-user-img img {
+                                width: 70px;
+                                height: 70px
+                            }
+
+                            .hot-user-info h5 {
+                                text-overflow: ellipsis;
+                                font-weight: bold;
+                                text-align: center;
+                                padding: 8px 0
+                            }
+
+                            .hot-user-info h6 {
+                                text-overflow: ellipsis;
+                                text-align: center;
+                                color: #aaaaaa
+                            }
+
+                            .hot-user h4 a {
+                                font-size: 12px;
+                                float: right;
+                                line-height: 17px;
+                                color: #fc9d27
+                            }
+
+                            /** 添加淡入淡出的css start ***/
+                            .carousel-fade .carousel-inner .item {
+                                transition-property: opacity;
+                            }
+
+                            .carousel-fade .carousel-inner .item,
+
+                            .carousel-fade .carousel-inner .active.left,
+
+                            .carousel-fade .carousel-inner .active.right {
+                                opacity: 0;
+                            }
+
+                            .carousel-fade .carousel-inner .active,
+
+                            .carousel-fade .carousel-inner .next.left,
+
+                            .carousel-fade .carousel-inner .prev.right {
+                                opacity: 1;
+                            }
+
+                            .carousel-fade .carousel-inner .next,
+
+                            .carousel-fade .carousel-inner .prev,
+
+                            .carousel-fade .carousel-inner .active.left,
+
+                            .carousel-fade .carousel-inner .active.right {
+                                left: 0;
+                                transform: translate3d(0, 0, 0);
+                            }
+
+                            .carousel-fade .carousel-control {
+                                z-index: 2;
+                            }
+
+                            .banner_href_line {
+                                width: 100%;
+                            }
+
+                            /** 添加淡入淡出的css end ***/
+                        </style>
+                        <link rel="stylesheet" href="__ACSS__/swiper.min.css">
+                        <div class="hot-user">
+                            <h4>
+                                <img src="__AIMG__/cd3e5a99bd0a09f8.png" title="1606894447547063.png" alt="推荐专线.png">
+                                <span style="font-size: 16px;color: #282828;">推荐专线</span>
+                                <a style="color: #999999" href="{:url('logistics/index')}">更多&gt;</a>
+                            </h4>
+                            <div id="myCarousel_line" class="carousel slide carousel-fade" style="margin:0 auto;margin-top:10px;cursor: pointer;">
+                                <!-- 轮播（Carousel）项目 -->
+                                <div class="carousel-inner">
+                                    <div class="item active">
+                                        <img class="banner_href_line" data-url="{:url('logistics/detail', ['id' => $logistics.id])}" src="{$logistics.thumb}">
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <script>
+                        $('#myCarousel_line').carousel({
+                            interval: 3500
+                        })
+                        </script>
+                        <script src="__AJS__/line_ad_click.js"></script>
+                    </div>
+
+                    <!-- 热门活动 -->
+                    <div style="margin-top: 20px;">
+                        <style>
+                            .hot-user {
+                                width: 260px;
+                                padding: 15px 0 10px;
+                                display: inline-block;
+                                border-bottom: 2px solid #eee;
+                                background: #fff
+                            }
+
+                            .hot-user li {
+                                float: left;
+                                padding: 6px 10px 5px 10px
+                            }
+
+                            .hot-user-img img {
+                                width: 70px;
+                                height: 70px
+                            }
+
+                            .hot-user-info h5 {
+                                text-overflow: ellipsis;
+                                font-weight: bold;
+                                text-align: center;
+                                padding: 8px 0
+                            }
+
+                            .hot-user-info h6 {
+                                text-overflow: ellipsis;
+                                text-align: center;
+                                color: #aaaaaa
+                            }
+
+                            .hot-user h4 a {
+                                font-size: 12px;
+                                float: right;
+                                line-height: 17px;
+                                color: #fc9d27
+                            }
+
+                            #myCarousel_activity img {
+                                width: 100%;
+                                height: 148px
+                            }
+
+                            /** 添加淡入淡出的css start ***/
+
+                            .carousel-fade .carousel-inner .item {
+                                transition-property: opacity;
+                            }
+
+                            .carousel-fade .carousel-inner .item,
+
+                            .carousel-fade .carousel-inner .active.left,
+
+                            .carousel-fade .carousel-inner .active.right {
+                                opacity: 0;
+                            }
+
+                            .carousel-fade .carousel-inner .active,
+
+                            .carousel-fade .carousel-inner .next.left,
+
+                            .carousel-fade .carousel-inner .prev.right {
+                                opacity: 1;
+                            }
+
+                            .carousel-fade .carousel-inner .next,
+
+                            .carousel-fade .carousel-inner .prev,
+
+                            .carousel-fade .carousel-inner .active.left,
+
+                            .carousel-fade .carousel-inner .active.right {
+                                left: 0;
+                                transform: translate3d(0, 0, 0);
+                            }
+
+                            .carousel-fade .carousel-control {
+                                z-index: 2;
+                            }
+
+                            /** 添加淡入淡出的css end ***/
+                        </style>
+                        <div class="hot-activity">
+                            <h4>
+                                <img src="__AIMG__/dcb1eda8b919cf5c.png" title="热门活动.png" alt="热门活动.png">
+                                <span style="font-size: 16px;color: #282828;">热门活动</span>
+                                <a style="color: #999999" href="{:url('activity/index')}">更多&gt;</a>
+                            </h4>
+                            <div class="activityContainer">
+                                <ul class="activityItems" id="activityItems">
+                                    <li class="activityItem">
+                                        <a target="_blank" href="{:url('activity/detail', ['id' => $activity.id])}">
+                                            <img class="activityImg" src="{$activity.thumb}">
+                                            <p>{$activity.title}</p>
+                                            <span>免费</span>
+                                        </a>
+                                    </li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- 头条热门关键词 -->
+                    {include file="layout/keyword" /}
+
+                </div>
+            </div>
+            <script type="text/javascript" src="__AJS__/laypage.js"></script>
+            <script type="text/javascript" src="__AJS__/jquery.cookie.js"></script>
+            <script src="__AJS__/afterSign.js"></script>
+            <script src="__AJS__/banner_click.js"></script>
+            <script type="text/javascript" src="__AJS__/home.js"></script>
+            <script>
+            flag = 1;
+
+            $(function() {
+                first_url();
+                $(".header-sort dd").click(function() {
+
+                    url = window.location;
+                    var thisClass = $(this).attr("class");
+                    $(this).parent().children("dd").removeClass();
+                    if (thisClass == 'desc') {
+                        $(this).addClass("asc");
+                        localStorage.setItem("this_class", 'asc');
+                        url = funcUrlDel('sort');
+                        flag = 2;
+                        window.location.href = url + '&sort=asc';
+                    } else {
+                        $(this).addClass("desc");
+                        localStorage.setItem("this_class", 'desc');
+                        url = funcUrlDel('sort');
+                        flag = 2;
+                        window.location.href = url + '&sort=desc';
+                    }
+
+                });
+            })
+
+            function funcUrlDel(names) {
+                if (typeof(names) == 'string') {
+                    names = [names];
+                }
+                var loca = window.location;
+                var obj = {}
+                var arr = loca.search.substr(1).split("&");
+                //获取参数转换为object
+                for (var i = 0; i < arr.length; i++) {
+                    arr[i] = arr[i].split("=");
+                    obj[arr[i][0]] = arr[i][1];
+                };
+                //删除指定参数
+                for (var i = 0; i < names.length; i++) {
+                    delete obj[names[i]];
+                }
+                //重新拼接url
+                var url = loca.origin + loca.pathname + "?" + JSON.stringify(obj).replace(/[\"\{\}]/g, "").replace(/\:/g, "=").replace(/\,/g, "&");
+                return url;
+            }
+
+            function first_url() {
+                url_jzc = window.location;
+
+                url = funcUrlDel('sort');
+                history.pushState(null, null, url);
+
+                var patt1 = new RegExp("sort");
+                var result = patt1.test(url_jzc);
+
+                var this_class = localStorage.getItem("this_class");
+                if (this_class == 'asc') {
+                    $(".header-sort dd").addClass("asc");
+                    $(".header-sort").css({ 'color': '#ff7600' });
+                }
+                if (this_class == 'desc') {
+                    $(".header-sort dd").addClass("desc");
+                    $(".header-sort").css({ 'color': '#ff7600' });
+                }
+                localStorage.removeItem("this_class");
+                if (result && !this_class) {
+                    url = funcUrlDel('sort');
+                    window.location.href = url;
+                }
+            }
+            </script>
+        </div>
+    </div>
+
+
+{/block}

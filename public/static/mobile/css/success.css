@@ -1,0 +1,103 @@
+@CHARSET "UTF-8";
+
+.site-index {
+	background: #fff;
+	padding-bottom: 20px;
+	text-align: center;
+}
+
+.iconTop {
+	height: 45px;
+	padding: 20px 0;
+	text-align: center;
+}
+
+.iconTop .l {
+	padding-top: 8px;
+    display: inline-block;
+}
+
+.iconTop .l img {
+	width: 33px;
+	height: 33px;
+}
+
+.iconTop .r1 {
+	height: 45px;
+	display: inline-block;
+    margin-left: 11px;
+}
+
+.iconTop .r1 .f24 {
+	font-size: 20px;
+	text-align: left;
+	color: #233040;
+	line-height: 45px;
+}
+
+.join_info_btn {
+	width: 100%;
+	height: 40px;
+	background: #fff;
+	padding-top: 30px;
+}
+
+.join_info_btn .btn_right_1 {
+	width: calc(100% - 84px);
+	height: 40px;
+	border: 1px solid #ff8d00;
+	color: #fff;
+	background: #ff8d00;
+	margin: 0 42px;
+	text-align: center;
+	line-height: 40px;
+	font-size: 15px;
+	border-radius: 4px;
+}
+
+.join_info_btn a {
+	width: calc(50% - 33px);
+	height: 40px;
+	border: 1px solid #1e87e5;
+	display: inline-block;
+	font-size: 15px;
+	border-radius: 4px;
+	text-align: center;
+	line-height: 40px;
+	float: left;
+}
+
+.lh-tips {
+	font-size: 14px;
+	line-height: 24px;
+	padding: 0 15px;
+}
+
+.lh-tips b {
+	color: #ff8d00;
+}
+
+.lh-wechat {
+	margin-top: 10px;
+	text-align: center;
+}
+
+.lh-wechat img {
+	width: 250px;
+}
+
+.share-lh {
+	padding: 15px;
+	width: 874px;
+	margin: 0px auto 0;
+	overflow: hidden;
+	margin-bottom: 10px;
+	line-height: 22px;
+	border-left: 5px solid #ff8d00;
+	border-radius: 0 2px 2px 0;
+	background-color: #f5f5f5;
+}
+
+.share-lh b {
+	color: #ff8d00;
+}

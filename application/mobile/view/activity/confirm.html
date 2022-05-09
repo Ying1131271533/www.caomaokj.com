@@ -1,0 +1,93 @@
+{extend name="layout/base" /}
+{block name="title"}活动费用支付{/block}
+{block name="load"}
+<!-- css -->
+<link href="__MCSS__/confirm.css?{$time}" rel="stylesheet" type="text/css">
+<style>
+    .footer{
+        padding-bottom:0.2rem;
+    }
+</style>
+
+<!-- js -->
+<script type="text/javascript" src="__MJS__/jweixin-1.2.0.js"></script>
+
+{/block}
+<!-- 主体内容 -->
+{block name="main"}
+    <div class="container">
+        <div class="site-index">
+            <div class="infoMation">
+                <div class="publishName">
+                    <span class="publish14">草帽跨境活动精选</span>
+                    <input type="hidden" id="order_id" value="{$order.id}">
+                    <input type="hidden" id="isWeixin" value="0">
+                </div>
+                <div class="partyMess">
+                    <div class="img">
+                        <img src="__MIMG__/16337637476622.jpg">
+                    </div>
+                    <div class="messTxt">
+                        <div class="title">{$activity.title}</div>
+                        <div class="time">时间：{:date('Y-m-d H:i:s', $activity.starttime)} 开始</div>
+                        <div class="addr">地点：{$activity.address}</div>
+                    </div>
+                </div>
+                <div class="ticketBox">
+                    <ul>
+                        <li><span class="name">费用</span>
+                            <span class="price">
+                                <span class="activity-original-price">￥{:sprintf("%.2f", $order.original_price)}x{$order.number}</span>&nbsp;￥{:sprintf("%.2f", $order.shop_price)}x{$order.number}
+                            </span>
+                        </li>
+                    </ul>
+                </div>
+                <div class="order_detail_pay">
+                    <p class="zfb " ontouchstart="">
+                        <img src="__MIMG__/order_mb_zfb_icon.png">支付宝
+                        <span class="btn"><img src="__MIMG__/ok_icon.png"></span>
+                    </p>
+                </div>
+            </div>
+            <div class="itemBottom">
+                <span class="price">合计
+                    <i>￥{:sprintf("%.2f", $order.total)}</i></span>
+                <a class="link " href="javascript:void(0)" onclick="confirmPay()" ontouchstart="">马上支付</a>
+            </div>
+        </div>
+        <script>
+            var payType = 2;
+
+            $(function() {
+                history.pushState(null, null, "/index/activity/confirm?order_id={$order.id}");
+
+                $('.order_detail_pay p').click(function() {
+                    $('.order_detail_pay .btn img').attr({ 'src': '__MIMG__/no_icon.png' });
+                    $(this).children('.btn').children('img').attr({ 'src': '__MIMG__/ok_icon.png' });
+                    if ($(this).attr('class') == 'wx') {
+                        payType = '1'; // 微信1
+                    } else {
+                        payType = '2'; // 支付宝2
+                    }
+                });
+            });
+
+            function confirmPay() {
+                if ($("#isWeixin").val() == '1') {
+                    //微信内
+                    if (payType == '1') {
+                        jsApiCall();
+                    } else {
+                        location.href = "/index/activity/wechat?order_id=" + $("#order_id").val();
+                    }
+                } else {
+                    if (payType == '1') {
+                        jsApiCall();
+                    } else {
+                        location.href = "/index/activity_pay/wapalipay?order_id=" + $("#order_id").val();
+                    }
+                }
+            }
+        </script>
+    </div>
+{/block}

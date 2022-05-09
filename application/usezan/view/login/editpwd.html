@@ -1,0 +1,26 @@
+{include file="public/header" /}
+<div class="mainbox animated fadeInRight">
+	<div class="mainnav_title">
+	    <a class="on">修改密码</a>
+	    <a class="bth-rand fr" href="javascript:location.replace(location.href);" title="刷新"><b class="glyphicons refresh"></b></a>
+    </div>
+<form id="myform" method='post' action="">
+	<table cellpadding="0" cellspacing="0" class="table_form" width="100%">
+		<tr>
+		    <td width="140">{:lang('oldpassword')}</td>
+		    <td><input type="password" class="input-text" name="oldpassword" autocomplete="off" validate="required:true,minlength:5,maxlength:20"></td>
+		</tr>
+		<tr>
+		    <td>{:lang('newpassword')}</td>
+		    <td><input type="password" class="input-text" name="password" autocomplete="off" id="password" validate="required:true,minlength:5,maxlength:20"></td>
+		</tr>
+		<tr>
+		    <td>{:lang('repassword')}</td>
+		    <td><input type="password" class="input-text" name="repassword" autocomplete="off" validate="required:true,equalTo:'#password',minlength:5,maxlength:20"></td>
+		</tr>
+	</table>
+<div class="btn">
+<input type="submit" value="{:lang('dosubmit')}" class="button" />
+<input type="reset"  value="{:lang('cancel')}" class="button" />
+</div>
+</form>

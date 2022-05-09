@@ -1,0 +1,411 @@
+.uscontainer{
+    margin:0 auto;
+    position: relative;
+    background-color: #fff;
+ }
+ .rotate-size{
+    zoom: 0.8;
+    -moz-transform: rotate(0.8);
+    -webkit-transform: rotate(0.8);
+    transform: rotate(0.8);
+ }
+ .usmax{
+     width:100%;
+ }
+ .usmax_img{
+     height:auto;
+     width: 100%;
+ }
+ .usmin{
+    width:1200px;
+    margin:0 auto;
+ }
+ .titleText{
+    font-size:38px;
+    color:#333;
+    font-weight: 500;
+ }
+ .kjy-right__desc{
+     line-height: 35px;
+ }
+ .subText{
+    font-size:18px;
+    color:#888;
+ }
+ .mainText{
+     font-size:20px;
+     color:#333;
+ }
+ .kjy_con{
+     margin-top:90px;
+     margin-bottom: 60px;
+ }
+ .kjy-t{
+    height:360px;
+    display:flex;
+ }
+ .kjy-t__right{
+     display: flex;
+     flex-direction: column;
+     justify-content: space-between;
+ }
+ .kjy-t__img{
+    height:360px;
+    margin-right:54px;
+ }
+ .kjy-right__img{
+     /* height: 79px;
+     width: 277px; */
+     height: 98px;
+     width: 344px;
+ }
+.kjy-right__tag{
+    float: left;
+    margin-right: 30px;
+}
+.kjy-b{
+    display: flex;
+    justify-content: space-around;
+    margin-top:70px;
+}
+.kjy-cell{
+  text-align: center;
+}
+.kjy-cell__hd{
+  font-size: 44px;
+  font-weight: 500;
+  color: #333333;
+  margin-bottom: 10px;
+}
+.haitun_con{
+    background-image:url('https://img.kuajingyan.com/home/2021-01-13/cfcf45c16d76a08e.png');
+    background-repeat: no-repeat;
+    background-size:cover;
+    height: 900px;
+    display: flex;
+    justify-content: center;
+}
+.haitun_main{
+    width: 1200px;
+    margin-top:60px;
+    margin-bottom:70px;
+    text-align: center;
+}
+.haitun_logo{
+  width: 232px;
+}
+.haitun-cards{
+    margin-top:52px;
+    margin-bottom: 103px;
+    display: flex;
+    justify-content: space-around;
+}
+.haitun-card{
+    text-align: center;
+    width: 319px;
+    height: 412px;
+    background: #fff;
+    box-shadow: 0px 0px 48px 0px rgba(0, 0, 0, 0.2);
+    border-radius: 8px;
+}
+.haitun-card__img{
+    width: 100px;
+    height: 100px;
+    margin-top:60px;
+    margin-bottom: 58px;
+}
+.haitun-card__title{
+  font-size:28px;
+  color:#333;
+  margin-bottom:15px;
+}
+.haitun-card__desc{
+    /* font-size:18px; */
+    font-size:20px;
+    color:#555;
+}
+.haitun-desc{
+    text-align: left;
+    margin-left:140px
+}
+.haitun-desc_cell{
+    /* font-size:16px; */
+    font-size:20px;
+    color:#333;
+    margin-bottom: 8px;
+}
+.haitun-desc_xuhao{
+    color:#fff;
+    width: 24px;
+    height: 24px;
+    border-radius: 50%;
+    background-color:#ff9a00;
+    display: inline-block;
+    margin-right:4px;
+    text-align: center;
+}
+.haitunhd_title{
+    text-align: center;
+    margin-top:66px;
+    margin-bottom: 46px;
+}
+.haitunhd_main img{
+    float: left;
+    margin-bottom: 20px;
+}
+.clearfix:after{/*伪元素是行内元素 正常浏览器清除浮动方法*/
+    content: "";
+    display: block;
+    height: 0;
+    clear:both;
+    visibility: hidden;
+}
+.clearfix{
+    *zoom: 1;/*ie6清除浮动的方式 *号只有IE6-IE7执行，其他浏览器不执行*/
+}
+
+.hd-left__img{
+   margin-right: 20px;
+}
+.haitunhd_main span{
+    float: left;
+    display: inline-block;
+    width: 766px;
+}
+.guangcha_con{
+    margin-top:89px;
+    text-align: center;
+}
+.guangcha-hd__desc{
+    /* font-size: 16px; */
+    font-size: 18px;
+    color:#555;
+    margin-top:15px;
+}
+.guangcha-card{
+    display: flex;
+    height: 202px;
+    margin-bottom: 18px;
+}
+.guangcha-main{
+    margin-top:86px;
+}
+.guangcha-card__l{
+    background-image: url('https://img.kuajingyan.com/home/2021-01-13/38127728b61cb277.png');
+    width: 612px;
+    height: 141px;
+    position: relative;
+    display: flex;
+    align-items: center;
+}
+.guangcha-card__l img,.guangcha-card__r img{
+    height:60px;
+    display: inline-block;
+    margin-left:35px;
+}
+.guangcha-card__r img{
+    margin-left:63px;
+}
+.guangcha-card__r{
+    background-image: url('https://img.kuajingyan.com/home/2021-01-13/c478d7d6922a8dab.png');
+    width: 612px;
+    height: 141px;
+    margin-top:60px;
+    margin-left:-30px;
+    position: relative;
+    display: flex;
+    align-items: center;
+}
+.guangcha-subText{
+    /* font-size:14px; */
+    font-size:16px;
+    color:#888;
+    margin-top:15px;
+}
+.guangcha-card__text{
+    text-align: left;
+    height: 60px;
+    margin-left:18px;
+}
+.guangcha-card__xuhao{
+    font-size: 100px;
+    font-family: Geometr706 BlkCn BT;
+    font-weight: 900;
+    color: #333333;
+    line-height: 35px;
+    opacity: 0.08;
+    position: absolute;
+    top:30px;
+}
+.guangcha-card__r .guangcha-card__xuhao {
+   right: 36px;
+}
+.guangcha-card__l .guangcha-card__xuhao {
+    right: 48px;
+ }
+ .gc_wx{
+     margin-top:83px;
+     margin-bottom: 103px;
+ }
+ .lcd_con{
+    background-image: url('https://img.kuajingyan.com/home/2021-01-13/f3bfc91224801b10.png');
+    background-repeat: no-repeat;
+    background-size: cover;
+    height: 730px;
+ }
+ .lcd1_main{
+    width: 1200px;
+    margin:0 auto;
+    text-align: center;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
+  .lcd1_title{
+      padding-top:60px;
+  }
+  .lcd1-m{
+    border: 2px transparent solid;
+    margin-top:123px;
+    width: 1016px;
+    height: 132px;
+    opacity: 0.9;
+    border-radius: 8px;
+    position: relative;
+    display: flex;
+    align-items: center;
+  }
+  .line_r{
+    top:0;
+    right: 3px;
+    position: absolute;
+    height: 122px;
+    width: 166px;
+    border-top-right-radius: 8px;
+    border-top: 2px solid rgba(179,195,199,0.5);
+   }
+   .line_r:after{
+    content: '';
+    position: absolute;
+    top: 2px;
+    right: 1px;
+    height: 122px;
+    width: 2px;
+    background: linear-gradient(-135deg,rgba(179,195,199,0.3), rgba(255,255,255,0));
+   }
+  .lcd1-m:before{
+    width: 836px;
+    height:2px;
+    content: '';
+    position: absolute;
+    top: 0px;
+    left: 8px;
+    background: linear-gradient(-135deg,rgba(179,195,199,0.7), rgba(255,255,255,0));
+    border-radius: 8px;
+    content: '';
+    z-index: -1;
+ }
+ .lcd1-m:after{
+    width: 770px;
+    content:'';
+    position: absolute;
+    bottom: 0px;
+    right: 0px;
+    background: linear-gradient(to right, rgba(179,195,199,0.1) 0%, rgba(179,195,199,0.7) 50%, rgba(179,195,199,0) 100%);
+    border-radius: 8px;
+    content: '';
+    z-index: -1;
+    height:2px;
+ }
+  .lcd1_logo{
+   width: 325px;
+   height: 114px;
+   top:42px;
+   position: absolute;
+   left: -60px;
+  }
+  .lcd1-text{
+      text-align: left;
+      margin-left:302px;
+  }
+  .lcd1-zu{
+    /* font-size: 20px; */
+    font-size: 22px;
+    font-family: Microsoft YaHei;
+    font-weight: bold;
+    color: #333;
+    line-height: 35px;
+  }
+  .lcd1-sub{
+    /* font-size: 20px; */
+    font-size: 22px;
+    font-family: Microsoft YaHei;
+    color: #333;
+  }
+  .lcd1_b{
+    margin-top:173px;
+    margin-bottom: 80px;
+    width: 1200px;
+  }
+  .lcd1-line{
+    display: inline-block;
+    color:#333;
+  }
+  .lcd1-fh__l{
+    position: absolute;
+    top: 10px;
+    left: 5px;
+  }
+  .lcd1-fh__r{
+    position: absolute;
+    bottom: -43px;
+    right: 20px;
+  }
+  .lcd1-fh{
+    width: 40px;
+    height: 38px;
+    font-size: 100px;
+    /* font-family: FZZhengHeiS-EB-GB; */
+    font-family: Arial;
+    letter-spacing: 5px;
+    font-weight: 400;
+    color: #FF9A00;
+    line-height: 35px;
+  }
+
+  .lcd2_title{
+      text-align: center;
+      margin-top:60px;
+      margin-bottom: 50px;
+  }
+  .lcd2-hd__title{
+    margin-top:110px;
+    margin-bottom: 50px;
+    text-align: center;
+  }
+  .lcd_huodong img{
+    float: left;
+    margin-bottom: 20px;
+  }
+  .huodong-img__left{
+      margin-right: 20px;
+  }
+  .usfooter{
+      height: 160px;
+      text-align: right;
+      padding-right: 64px;
+  }
+  .usfooter_text1{
+    /* font-size: 48px; */
+    font-size: 22px;
+    color: #333;
+    line-height: 30px;
+    padding-top:30px;
+  }
+  .usfooter_text2{
+    /* font-size: 20px; */
+    font-size: 22px;
+    color: #333;
+    line-height: 30px;
+    margin-top:25px;
+  }

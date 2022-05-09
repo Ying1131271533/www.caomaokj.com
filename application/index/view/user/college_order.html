@@ -1,0 +1,155 @@
+{extend name="layout/base" /}
+{block name="title"}报名的课程{/block}
+{block name="load"}
+
+<!-- css -->
+<link rel="stylesheet" href="__ACSS__/site.css">
+<link rel="stylesheet" type="text/css" href="__ACSS__/chosen.css">
+<link href="__ACSS__/activity.css" rel="stylesheet" type="text/css">
+
+<!-- js -->
+<script src="__AJS__/chosen.jquery.js"></script>
+<script src="__AJS__/yii.js"></script>
+{/block}
+
+<!-- 主体内容 -->
+{block name="main"}
+    <div class="container body-container">
+        <div class="site-body">
+
+            <!-- 左边导航 -->
+            {include file="layout/user_nav" /}
+
+            <!-- 右侧 -->
+            <div class="left_cont">
+                <div class="main-info">
+                    <h1 class="site-h1">报名详情<span onclick="history.go(-1);">返回上一级</span></h1>
+
+                    <div class="activity_user_detail">
+                        <div class="layui-row">
+
+                            <div class="layui-col-md6" style="margin-top: 15px;padding-right: 20px;">
+                                <span class="c_name">姓名：</span><span class="c_content">{$join.name}</span>
+                            </div>
+                            <div class="layui-col-md6" style="margin-top: 15px;padding-right: 20px;">
+                                <span class="c_name">公司名：</span><span class="c_content">{$join.company}</span>
+                            </div>
+                            <div class="layui-col-md6" style="margin-top: 15px;padding-right: 20px;">
+                                <span class="c_name">手机：</span><span class="c_content">{$join.phone}</span>
+                            </div>
+                            <div class="layui-col-md6" style="margin-top: 15px;padding-right: 20px;">
+                                <span class="c_name">您的管理需求/问题？：</span><span class="c_content">{$join.demand}</span>
+                            </div>
+
+                        </div>
+
+                        <h2>订单状态</h2>
+                        <div class="layui-row order">
+                            <div class="layui-col-md4">
+                                <span class="c_name">当前状态：</span><span class="c_content color-main">{:order_status($order.order_status)}</span>
+                            </div>
+                            <div class="layui-col-md4">
+                                <span class="c_name">订单编号：</span><span class="c_content">{$order.order_sn}</span>
+                            </div>
+                            <div class="layui-col-md4">
+                                <span class="c_name">下单时间：</span><span class="c_content">{$order.create_time}</span>
+                            </div>
+                        </div>
+
+                        <h2>课程信息</h2>
+                        <div class="hd_list_K list_Main_party ">
+                            <ul class="hd_list_Ul">
+                                <li class="hd_list_Li">
+                                    <a href="{:url('college/detail', ['id' => $college.id])}" target="_blank"><img src="{$college.thumb}" class="hd_list_Pic"></a>
+                                    <div class="hd_list_titK">
+                                        <div class="hd_list_title">
+                                            <p><a href="{:url('college/detail', ['id' => $college.id])}" target="_blank">{$college.title}</a></p>
+                                        </div>
+                                        <div class="hd_list_time_joinNum">
+                                            <span class="hd_list_time"><i class="fa fa-clock-o"></i>{:date('Y-m-d H:i:s', $college.start_time)} ~ {:date('Y-m-d H:i:s', $college.end_time)}</span>
+                                        </div>
+                                        <div class="hd_list_time_joinNum">
+                                            <span class="hd_list_time"><i class="fa fa-map-marker"></i>{$college.address}</span>
+                                        </div>
+                                    </div>
+                                    <div class="hd_list_zt">
+                                        {if $college.status == 1 && $college.end_time > time()}
+                                        <span>进行中</span>
+                                        {else/}
+                                        <a>已结束</a>
+                                        {/if}
+                                    </div>
+                                </li>
+                            </ul>
+                        </div>
+
+                        <h2>课程分享<span class="share-tips">转发课程链接，和小伙伴们一起来参加吧！</span></h2>
+                        <div class="share_copy">
+                            <div>
+                                <input type="text" id="release_success_lj" readonly="readonly" value="{:url('college/detail', ['id' => $college.id, 'ref_user' => $userid], 'html', true)}">
+                            </div>
+                            <a href="javascript:void(0)" onclick="_jsCopy()">复制课程链接</a>
+                        </div>
+
+                        <div class="share_num">
+                            <div class="l">
+                                <span class="num">{$clickNum}</span><span>IP</span><br>
+                                <span>我转发带来的点击量</span>
+                            </div>
+                            <div class="r">
+                                <span class="num">{$joinNum}</span><span>个</span><br>
+                                <span>我转发带来的报名</span>
+                            </div>
+                        </div>
+
+                        <h2>报名详情</h2>
+                        <div>
+                            <table class="layui-table">
+                                <thead>
+                                    <tr>
+                                        <!-- <th>二维码</th> -->
+                                        <th>姓名</th>
+                                        <th>手机</th>
+                                        <th>票种</th>
+                                        <th>票价(元)</th>
+                                        <th>数量</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <tr>
+                                        <!-- <td><img class="share_ma" src="__AIMG__/get-activity-sign.png"></td> -->
+                                        <td>{$join.name}</td>
+                                        <td>{$join.phone}</td>
+                                        <td>{$tickets.name}</td>
+                                        <td>¥ {:sprintf("%.2f", $order.shop_price)}</td>
+                                        <td>{$order.number}</td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </div>
+
+                        <div class="coupon_list_ordercount">
+                            <div class="all_money"><span>订单金额：</span>
+                                <p>¥ {:sprintf("%.2f", $order.shop_price * $order.number)}</p>
+                            </div>
+                            <div class="money"><span>实付金额：</span>
+                                <p>¥ {:sprintf("%.2f", $order.total)}</p>
+                            </div>
+                        </div>
+
+                    </div>
+                </div>
+
+                <script>
+                    var _jsCopy = function() {
+                        $('#release_success_lj').select();
+                        document.execCommand("Copy");
+                        layer.msg("您已复制，快去分享吧", {
+                            "icon": 1
+                        });
+                    };
+                </script>
+            </div>
+        </div>
+    </div>
+{/block}

@@ -1,0 +1,210 @@
+@charset "utf-8";
+
+.uleft,.uright{ border-radius: 10px;overflow: hidden; }
+
+/** uleft **/
+
+.uleft{ float: left; width: 190px; }
+
+.uleft h5{ height: 65px;line-height: 65px; background: #fc8713;font-size: 20px;color: #fff;padding: 0 20px; }
+
+.uleft ul li{ height: 59px;line-height: 59px;border-bottom: 1px solid #ebebeb;text-indent: 20px; }
+
+.uleft ul li:last-child{ border-bottom: 0; }
+
+.uleft ul li:hover a,
+
+.uleft ul li.on a{ color: #fc8713;font-weight: bold; }
+
+/** uright **/
+
+.uright{ float: right; width: 985px;min-height: calc(100vh - 182px); }
+
+.uright h5{
+
+    position: relative;
+
+    font-size: 16px;
+
+    color: #000;
+
+    line-height: 65px;
+
+    padding: 0 20px;
+
+    font-weight: bold;
+
+    border-bottom: 1px solid #ebebeb;
+
+}
+
+.uright h5 .rname{ display: block;float: left; }
+
+/** form **/
+
+.user-li { padding: 20px 20px 50px;position: relative; }
+
+.user-li ul li { position: relative; height: 40px;line-height: 40px;margin-bottom: 15px; }
+
+.user-li ul li label {
+
+    width: 75px;
+
+    float: left;
+
+    color: #999;
+
+    text-align: right;
+
+    margin-right: 10px;
+
+}
+
+.user-li ul li input[type=text],
+
+.user-li ul li input[type=password],
+
+.user-li ul li select {
+
+    height: 40px;
+
+    line-height: 40px;
+
+    border-radius: 5px;
+
+    padding: 0 10px;
+
+    border: 1px solid #eee;
+
+}
+
+.user-li ul li input[type=radio] { vertical-align: middle; }
+
+.user-li .textarea { height: 107px; }
+
+.user-li ul li textarea {
+
+    padding: 5px;
+
+    width: 468px;
+
+    color: #666;
+
+    border-radius: 5px;
+
+    border: 1px solid #eee;
+
+    resize: none;
+
+}
+
+.user-li ul li.number input[type=text]{ width: 90px; }
+
+.user-li ul li.number button {
+
+    position: absolute;
+
+    top: 0;
+
+    left: 210px;
+
+    width: 118px;
+
+    height: 41px;
+
+    line-height: 41px;
+
+    background: #fc8713;
+
+    border: 0;
+
+    color: #fff;
+
+    border-radius: 5px;
+
+    cursor: pointer;
+
+}
+
+.u-submit{ display: block;width: 140px;height: 50px;background: #fc8713;border-radius: 5px;border: 0;font-weight: bold;color: #fff;cursor: pointer;
+
+    margin-left: 85px;
+
+}
+
+/** notice-list **/
+
+.notice-type{ float: left; margin-left: 70px; }
+
+.notice-type .radios{ float: left; display: block; font-size: 15px;color: #666;font-weight: normal;margin-right: 15px;cursor: pointer; }
+
+.notice-type .radios em{ position: relative; float: left; display: block;width: 12px;height: 12px;border: 1px solid #dbdbdb;border-radius: 65px;margin: 26px 5px 0 0; }
+
+.notice-type .radios em b{ display: block;width: 6px;height: 6px;background: #fff;border-radius: 65px;margin: 3px 0 0 3px; }
+
+.notice-type .radios.on{ font-weight: bold;color: #fc8713; }
+
+.notice-type .radios.on em{ background: #fc8713; }
+
+.all-du{ float: right; display: block;padding-right: 20px;font-size: 12px;color: #e88f3a;cursor: pointer; }
+
+/** list **/
+
+.notice-list ul li{ padding: 0 20px;height: 64px;line-height: 64px;border-bottom: 1px solid #ebebeb; }
+
+.notice-list ul li h6{ display: inline-block;width: calc(100% - 130px); }
+
+.notice-list ul li h6 a{ color: #333; }
+
+.notice-list ul li .time{ float: right;color: #999; }
+
+.notice-list ul li:hover h6 a{ color: #fc8713; }
+
+/** activity-list **/
+
+.uactivity-list{ padding: 20px; }
+
+.uactivity-list ul li{ float: left; width: 300px;margin:0 22px 30px 0; }
+
+.uactivity-list ul li:nth-of-type(3n){ margin-right: 0; }
+
+.uactivity-list ul li img{ display: block;width: 100%;border-radius: 8px; }
+
+.uactivity-list ul li .remark h6{ padding-top: 10px;color: #000;font-size: 16px;text-overflow: ellipsis;white-space: nowrap;overflow: hidden; }
+
+.uactivity-list ul li:hover .remark h6{ color: #fc8713; }
+
+/** ucollection-list **/
+
+.ucollection-list ul li{ display: flex;align-items: center;padding: 15px 20px;border-bottom: 1px solid #dbdbdb; }
+
+.ucollection-list ul li img{ display: block;width: 100px;margin-right: 15px;border-radius: 8px;overflow: hidden; }
+
+.ucollection-list ul li .remark{ width: calc(100% - 115px); }
+
+.ucollection-list ul li .remark h6 a{ font-size: 16px;color: #000; }
+
+.ucollection-list ul li .remark h6 .time{ float: right;color: #666;font-size: 14px; }
+
+.ucollection-list ul li .remark .rcollection{ display: inline-block;margin-top: 10px;color: #333;cursor: pointer; }
+
+.ucollection-list ul li .remark .rcollection:hover{ color: #fc8713; }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

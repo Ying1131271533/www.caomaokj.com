@@ -1,0 +1,61 @@
+{extend name="layout/base" /}
+{block name="title"}我的收藏{/block}
+{block name="load"}
+
+<!-- css -->
+<link rel="stylesheet" href="__ACSS__/site.css">
+
+<!-- js -->
+<script src="__AJS__/yii.js"></script>
+{/block}
+
+<!-- 主体内容 -->
+{block name="main"}
+        <div class="container body-container">
+            <div class="site-body">
+
+                <!-- 左侧 -->
+                {include file="layout/user_nav" /}
+
+                <!-- 右侧 -->
+                <div class="left_cont">
+
+                    <div class="main-info">
+                        <h1 class="site-h1">我的收藏</h1>
+                        <div class="data-list">
+                            <div class="select-div">
+                                <input type="hidden" class="home_url" value="/index">
+                                <input type="hidden" class="hd_url" value="/index">
+                                <dl>
+                                    <dt>收藏类型：</dt>
+                                    <dd class="selected" data-id="1">
+                                        <a href="javascript:void(0)">文章</a>
+                                    </dd>
+                                    <dd data-id="2">
+                                        <a href="javascript:void(0)">活动</a>
+                                    </dd>
+                                    <dd data-id="3">
+                                        <a href="javascript:void(0)">课程</a>
+                                    </dd>
+                                </dl>
+                            </div>
+                            <table class="layui-table" id="table-list">
+                                <thead>
+                                    <tr>
+                                        <th width="5%">No.</th>
+                                        <th width="55%">标题</th>
+                                        <th width="15%">收藏时间</th>
+                                        <th width="10%">类型</th>
+                                        <th width="15%">操作</th>
+                                    </tr>
+                                </thead>
+                                <tbody></tbody>
+                            </table>
+                        </div>
+                        <div id="laypage" class="laypage"></div>
+                    </div>
+                    <script type="text/javascript" src="__AJS__/collect.js?{$time}"></script>
+                </div>
+            </div>
+        </div>
+{/block}

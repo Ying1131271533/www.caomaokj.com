@@ -1,0 +1,273 @@
+{extend name="layout/base" /}
+{block name="title"}草帽跨境 - 跨境卖家综合服务平台{/block}
+{block name="load"}
+
+<!-- css -->
+<link rel="stylesheet" href="__MCSS__/swiper.min.css">
+<link rel="stylesheet" href="__MCSS__/index.css?{$time}">
+
+<!-- js -->
+<script src="__MJS__/home.js?{$time}"></script>
+<script src="__MJS__/swiper.min.js"></script>
+<script src="__MJS__/banner_click.js"></script>
+<script type="text/javascript" src="__AJS__/jquery.lazyload.js"></script>
+
+
+
+{/block}
+<!-- 主体内容 -->
+{block name="main"}
+    <div class="container">
+        <div class="home">
+            <!-- banner-->
+            <div class="banner-swiper">
+                <div class="swiper-container swiper-container-horizontal swiper-container-fade swiper-container-android">
+                    <div class="swiper-wrapper" style="transition-duration: 0ms;">
+
+                        {foreach $banner as $key => $value}
+                        <div class="swiper-slide" data-swiper-slide-index="{$key}">
+                            <a href="{$value.url}">
+                                <img alt="草帽跨境" style="cursor: pointer;" class="banner_href" data-type="mobile" data-id="{$value.id}" data-url="{$value.url}" src="{$value.thumb}">
+                            </a>
+                        </div>
+                        {/foreach}
+
+                    </div>
+                    <div class="swiper-pagination swiper-pagination-white swiper-pagination-clickable swiper-pagination-bullets">
+                        {foreach $banner as $key => $value}
+                        <span class="swiper-pagination-bullet">
+                            <svg width="24" height="24" viewBox="0 0 24 24">
+                                <circle cx="12" cy="12" r="10" stroke-width="2" stroke="rgba(255,255,255,0.5)" fill="none"></circle>
+                                <circle cx="12" cy="12" r="10" stroke-width="2" stroke="#fff" fill="none" transform="matrix(0,-1,1,0,0,24)" stroke-dasharray="0 62.83185307179586"></circle>
+                            </svg>
+                        </span>
+                        {foreach}
+                    </div>
+                </div>
+            </div>
+
+            <!--item--->
+            <div id="home-item">
+                <ul class="home-item-ul">
+                    <li>
+                        <a href="{:url('activity/index')}">
+                            <svg class="icon" aria-hidden="true">
+                              <use xlink:href="#icon-jiangzhang"></use>
+                            </svg>
+                            <p>跨境活动</p>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="{:url('platform/index')}">
+                            <svg class="icon" aria-hidden="true">
+                              <use xlink:href="#icon-dianpu"></use>
+                            </svg>
+                            <p>平台招商</p>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="{:url('college/index')}">
+                            <svg class="icon" aria-hidden="true">
+                              <use xlink:href="#icon-canjiapeixun"></use>
+                            </svg>
+                            <p>培训孵化</p>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="{:url('logistics/index')}">
+                            <svg class="icon" aria-hidden="true">
+                              <use xlink:href="#icon-dahuoche"></use>
+                            </svg>
+                            <p>跨境物流</p>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="{:url('service/index#s110')}">
+                            <svg class="icon" aria-hidden="true">
+                              <use xlink:href="#icon-biaoqian"></use>
+                            </svg>
+                            <p>商标税务</p>
+                        </a>
+                    </li>
+                </ul>
+            </div>
+            <div style="clear: both;"></div>
+            <!--warehouse and line-->
+            <!--    主体-->
+            <div class="home-main">
+                <!-- 最新新闻-->
+                <div class="new-article">
+                    <nav class="navbar navbar-title">
+                        <ul class="navbar-title-ul">
+                            <li class="navbar-title-li" id="category_0">
+                                <a class="navbar-title-li-a-default" category="0" href="javascript:void(0)">全部</a>
+                            </li>
+                            {foreach $category as $key => $value}
+                            <li class="navbar-title-li" id="category_{$value.id}">
+                                <a category="{$value.id}" href="javascript:void(0)">{$value.catname}</a>
+                            </li>
+                            {/foreach}
+                        </ul>
+                    </nav>
+                    <div class="akali" style="height: 0.6rem;width: 100%;background: #ffffff;display: none;"></div>
+                    <div class="home-news-title">热门文章</div>
+                    <ul class="list_article clearfix">
+
+                        {foreach $leftArticle as $key => $value}
+                        <li>
+                            <a class="alink" href="{:url('home/article', ['id' => $value.id])}">
+                                <img alt="{$value.title}" class="lazy" data-original="{$value.thumb}" style="display: inline;">
+                            </a>
+                            <div class="art_con">
+                                <h2>
+                                    <a class="title" href="{:url('home/article', ['id' => $value.id])}">{$value.title}</a>
+                                </h2>
+                                <a href="{:url('home/article', ['id' => $value.id])}">
+                                    <img src="__ICON__/icon-caomao-small.png">
+                                    <h3>草帽跨境</h3>
+                                </a>
+                                <span class="times">{:postTime($value.createtime)}</span>
+                            </div>
+                        </li>
+                        {/foreach}
+
+                    </ul>
+                    <!-- 加载更多-->
+                    <a id="index_more" class="btn-full more" href="javascript:void(0)" onclick="getMoreArticle()">加载更多...</a>
+                </div>
+            </div>
+        </div>
+        <script>
+            $(function() {
+                var isFixed = false;
+                var swiperHeight = $(".banner-swiper").height();
+                var searchHeight = $("#home-search").height();
+                var itemHeight = $("#home-item").height();
+                // var topContentHeight = 288;
+                var topContentHeight = swiperHeight + searchHeight + itemHeight;
+                //  滚动首页逻辑
+                var handleScroll = function($this, $document) {
+                    var scrollTop = $this.scrollTop();
+                    if (scrollTop >= topContentHeight) {
+                        if (!isFixed) {
+                            $(".navbar-title").addClass('new-article-fixed');
+                            $('.akali').css("display", "block");
+                            isFixed = true;
+                        }
+                    } else {
+                        isFixed = false;
+                        $(".navbar-title").removeClass('new-article-fixed');
+                        $('.akali').css("display", "none");
+                    }
+                    var scrollHeight = $document.height() - 20;
+                    var windowHeight = $this.height();
+                    if (scrollTop + windowHeight >= scrollHeight) {
+                        getMoreArticle();
+                    }
+                }
+                var handleThrottle = throttleTool(handleScroll, 500);
+                //滚动事件
+                $(window).scroll(function() {
+                    handleThrottle($(this), $(document));
+                });
+
+                $(".home-warehouse-line-title a").click(function() {
+                    $('.home-warehouse-content-div').removeClass("content-div-default");
+                    if ($(this).attr('type_warehouse-line') == 'warehouse') {
+                        $(this).children().children().html('<use xlink:href="#icon-haiwaicang_1-copy-copy"></use>');
+                        $('[type_warehouse_line_content="warehouse"]').addClass("content-div-default");
+                    } else {
+                        $('[type_warehouse-line="warehouse"]').children().children().html('<use xlink:href="#icon-haiwaicang_1-copy"></use>');
+                    }
+                    if ($(this).attr('type_warehouse-line') == 'line') {
+                        $(this).children().children().html('<use xlink:href="#icon-zhuanxian-copy-copy"></use>');
+                        $('[type_warehouse_line_content="line"]').addClass("content-div-default");
+                    } else {
+                        $('[type_warehouse-line="line"]').children().children().html('<use xlink:href="#icon-zhuanxian-copy"></use>');
+                    }
+                    $(this).addClass("warehouse-line-default").siblings().removeClass("warehouse-line-default");
+                });
+                //文本框输入
+                $(document).on('keyup', '.select-div p input', function() {
+                    $(this).parent().parent().find('ul li').hide().filter(":contains('" + ($(this).val()) + "')").show();
+                });
+                //找海外仓 下拉框选择
+                $(document).on('click', '.select-div ul li', function() {
+                    var html = $(this).find('.select-label').html();
+                    var _id = $(this).attr('li_id');
+                    $(this).parent().parent().parent().find('.name-country-span1').html(html);
+                    $(this).parent().parent().parent().find('input:hidden').val(_id);
+                    $('.select-div ul li span').html('<svg class="icon" aria-hidden="true"><use xlink:href="#icon-weixuanzhong"></use></svg>');
+                    $(this).find('.icon').html('<use xlink:href="#icon-xuanzhong"></use>');
+                    $(this).parents().find('.select-div').hide();
+                });
+                $('#name-country-a').click(function() {
+                    $(this).children('.select-div').show();
+                })
+                $('#name-service-a').click(function() {
+                    $(this).children('.select-div').show();
+                })
+                $('#name-city-a').click(function() {
+                    $(this).children('.select-div').show();
+                })
+                $('#name-city-line-a').click(function() {
+                    $(this).children('.select-div').show();
+                })
+                //点击查询
+                $('.home-warehouse-sub-p').click(function() {
+                    var str_url = '';
+                    var type = $('.warehouse-line-default').attr('type_warehouse-line');
+                    if (type == 'warehouse') { //海外仓
+                        var _country_id = $("#home-country-id").val();
+                        var _service_type_id = $("#home-service-type-id").val();
+                        if (_country_id <= 0 && _service_type_id <= 0) {
+                            return alert('请选择查询条件');
+                        }
+                        if (_country_id > 0 && _service_type_id > 0) {
+                            str_url = 'c=' + _country_id + '&' + 's=' + _service_type_id;
+                        } else if (_country_id > 0) {
+                            str_url = 'c=' + _country_id;
+                        } else if (_service_type_id > 0) {
+                            str_url = 's=' + _service_type_id;
+                        }
+                        window.location.href = HOME_URL + '/warehouse?' + str_url;
+                    } else { //找专线
+
+                        var _city_id = $("#home-city-id").val();
+                        var _content_id = $("#home-service-content-id").val();
+                        if (_city_id <= 0 && _content_id <= 0) {
+                            return alert('请选择查询条件');
+                        }
+                        if (_city_id > 0 && _content_id > 0) {
+                            str_url = 'a=' + _city_id + '&' + 'p=' + _content_id;
+                        } else if (_city_id > 0) {
+                            str_url = 'a=' + _city_id;
+                        } else if (_content_id > 0) {
+                            str_url = 'p=' + _content_id;
+                        }
+                        window.location.href = FW_URL + '/post?' + str_url;
+                    }
+                })
+            });
+            var swiper = new Swiper('.swiper-container', {
+                pagination: '.swiper-pagination',
+                paginationClickable: '.swiper-pagination',
+                spaceBetween: 30,
+                effect: 'fade',
+                loop: true,
+                autoplay: 5000,
+            });
+        </script>
+    </div>
+{/block}
+{block name="script"}
+<script>
+    HOME_URL = "https://www.caomaokj.com";
+    
+    $('#cnzz_stat_icon_1276964401').find('a').css('color', '#fff');
+    // 弹出框 穿透问题;
+    $(".nav_service").bind("touchmove", function(event) {
+        event.preventDefault();
+    });
+</script>
+{/block}

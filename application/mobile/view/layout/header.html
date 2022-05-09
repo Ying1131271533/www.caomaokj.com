@@ -1,0 +1,93 @@
+<link rel="stylesheet" href="__ACSS__/customer-service.css" media="all">
+<!--search--->
+<div id="home-search" style="position: fixed;width: 96%;">
+    <div class="home-search-left-img">
+        <a href="/">
+            <img src="__AIMG__/logo.png" class="icon" alt="草帽跨境">
+        </a>
+    </div>
+    <div class="home-right-search">
+        <form id="search-form" onsubmit="return false" method="post">
+            <p class="home-right-search-p">
+                <input id="keyword_search" class="search-text-input" name="keyword" type="search" value="{$keyword_search ? $keyword_search : ''}" placeholder="找跨境服务，就上草帽跨境" style="margin-left: 1.5em;width: 75%">
+                <a id="fangdajing" class="search-right-icon" href="javascript:void (0)" style="float: right;line-height: 30px">
+                    <svg class="icon" aria-hidden="true">
+                        <use xlink:href="#icon-sousuo2"></use>
+                    </svg>
+                </a>
+            </p>
+        </form>
+    </div>
+    <a class="headerlist header_r left-nav-close" id="header_menu" style="margin-top:5px;width: 0.22rem;height: 0.28rem;display: inline-block;overflow: hidden;float: right;padding-right: 0.1rem;">
+        <img class="header-menu" src="__MIMG__/15815268659565.png" style="display: inline;">
+        <img class="header-colse" src="__MIMG__/15815270686723.png">
+    </a>
+</div>
+<div class="home-header-bg"></div>
+
+<!-- 微信自定义参数 - 隐藏表单 -->
+<div style="display: none;">
+    <!-- 微信配置参数 -->
+    <input type="hidden" id="appid" name="appid" value="{$wechat.appid}">
+    <input type="hidden" id="timestamp" name="timestamp" value="{$wechat.timestamp}">
+    <input type="hidden" id="nonceStr" name="nonceStr" value="{$wechat.nonceStr}">
+    <input type="hidden" id="signature" name="signature" value="{$wechat.signature}">
+
+    <!-- 自定义分享参数 -->
+    <input type="hidden" id="link" name="link" value="{:empty($link) ? $wechat.link : $link}">
+    <input type="hidden" id="imgUrl" name="imgUrl" value="{:empty($imgUrl) ? $wechat.imgUrl : $imgUrl}">
+    <input type="hidden" id="title" name="title" value="{:empty($title) ? $wechat.title : $title}">
+    <input type="hidden" id="desc" name="desc" value="{:empty($desc) ? $wechat.desc : $desc}">
+</div>
+<!-- 导航栏展开 -->
+<div class="nav nav_menu" style="display: none;">
+    <ul class="mobile-home-info-ul">
+
+        <li class="current">
+            {empty name="$userid"}  
+            <div class="mobile-home-info-box">
+                <div class="head-box">
+                    <img class="head-box-img" src="__ICON__/avatar-caomao.png">
+                </div>
+                <div class="login-box">
+                    <a href="{:url('login/index')}">登录</a>
+                    &nbsp;&nbsp;&nbsp;
+                    <a href="{:url('login/register')}">注册</a>
+                </div>
+            </div>
+            {else/}
+            <div class="mobile-home-info-box">
+                <div class="head-box">
+                    <a href="{:url('user/index')}">
+                        <img class="head-box-img" src="{$avatar}">
+                    </a>
+                </div>
+                <div class="login-box">
+                    <a href="{:url('user/index')}">个人主页（{$nickname}）</a>
+                </div>
+            </div>
+            {/empty}
+        </li>
+    </ul>
+    <div style="clear: both"></div>
+
+    <div class="mobile-home-choice-box">
+        <div class="main-box" style="width: 100%;margin:0 0;">
+            <div class="title-box">有任何问题都可以联系以下客服，我们将竭尽全力为你解决！</div>
+            <div class="content-box">
+                <div class="contact-box">
+                    <p class="phone-box"><img src="__AIMG__/15968575667085.png">&nbsp;&nbsp;&nbsp;&nbsp;联系电话：&nbsp;&nbsp;&nbsp;13829730554
+                    </p>
+                    <p class="qq-box"><img src="__AIMG__/15968576084420.png">&nbsp;&nbsp;&nbsp;客服QQ：&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;3004630833
+                    </p>
+                    <p class="email-box"><img src="__AIMG__/15968576438781.png">&nbsp;&nbsp;&nbsp;企业邮箱：&nbsp;&nbsp;&nbsp;3004630833@qq.com
+                    </p>
+                </div>
+                <p class="qr-code-box">
+                    <img src="__AIMG__/QR_code/code_caomao_public_big.jpg" alt="草帽跨境公众号">
+                    <span>了解更多资讯，关注草帽跨境公众号</span>
+                </p>
+            </div>
+        </div>
+    </div>
+</div>

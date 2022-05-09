@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="zh-CN" style="height: auto; overflow: auto;">
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    <title>{block name="title"}{/block} - 草帽跨境</title>
+    <meta http-equiv="x-dns-prefetch-control" content="on">
+    <meta itemprop="image" content="__ICON__/icon-caomao-small.png">
+    <meta name="viewport" content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+
+    <link rel="shortcut icon" href="__ICON__/icon.ico" />
+    <link rel="canonical" href="{:url()}" >
+
+    <!-- css -->
+    <link rel="stylesheet" href="__MCSS__/font-awesome.min.css">
+    <link rel="stylesheet" href="__MCSS__/kjy.css?{$time}">
+    <link rel="stylesheet" href="__MCSS__/common.css?{$time}">
+    <link type="text/css" rel="stylesheet" href="__MCSS__/laypage.css" id="laypagecss">
+
+    <!-- js -->
+    <script src="https://zz.bdstatic.com/linksubmit/push.js"></script>
+    <script src="https://hm.baidu.com/hm.js"></script>
+    <script src="__MJS__/font_606323_9czf2ax9nor.js"></script>
+    <script src="__MJS__/font_606323_6c0bmsdp8n.js"></script>
+    <script src="__MJS__/jquery2.1.1.min.js"></script>
+    <script src="__MJS__/common.js"></script>
+    <script src="__MJS__/jweixin-1.2.0.js"></script>
+    <script src="__MJS__/header.js"></script>
+
+    <!-- layer -->
+    <script src="__MLAYER__/layer.js"></script>
+    <script src="__MJS__/tool.js"></script>
+
+    <script src="__MJS__/laypage.js"></script>
+
+    <!-- iconfont -->
+    <script src="__AIF__/iconfont.js"></script>
+    <style>
+        .icon {
+            width: 1em;
+            height: 1em;
+            vertical-align: -0.15em;
+            fill: currentColor;
+            overflow: hidden;
+        }
+    </style>
+
+    
+
+    {block name="load"}{/block}
+</head>
+<body style="height: auto; /*overflow: auto;*/">
+    <div class="wrap">
+        <!-- 头部文件载入 -->
+        {include file="layout/header" /}
+        
+        <!-- 主体内容 -->
+        {block name="main"}{/block}
+
+        <!-- 底部 -->
+        {include file="layout/footer" /}
+        
+        <!-- 底部导航 -->
+        {include file="layout/toolbar" /}
+    </div>
+    {block name="script"}
+    <script>
+        HOME_URL = "https://www.caomaokj.com";
+    </script>
+    {/block}
+    <script type="text/javascript" src="__MJS__/search.js?{$time}"></script>
+    <!-- 微信分享自定义 -->
+    <script type="text/javascript" src="https://res.wx.qq.com/open/js/jweixin-1.6.0.js"></script>
+    <script type="text/javascript" src="__MJS__/wechat_share.js?{$time}"></script>
+</body>
+
+</html>

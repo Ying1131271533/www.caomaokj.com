@@ -1,0 +1,47 @@
+{include file="public/header" /}
+<div class="mainbox animated fadeInRight">
+	<div class="mainnav_title">
+	    <a class="on">导航列表</a>
+		{include file="public/menu_right" /}
+	    <a class="bth-rand fr" href="javascript:location.replace(location.href);" title="刷新"><b class="uzfont uzico-shuaxin"></b></a>
+    </div>
+<form name="myform" id="myform" action="" method="post">
+<div class="table-list">
+    <table width="100%" cellspacing="0">
+		<thead>
+            <tr>
+			<th width="20">ID</th>
+            <th width="80">排序</th>
+			<th width="200" align="left">导航名称</th>
+            <th width="50">状态</th>
+			<th align="left">管理操作</th>
+            </tr>
+        </thead>
+      	<tbody>
+      		{volist name="menu" id="v"}
+      		<tr>
+			<td width="20" align="center">{$v['id']}</td>
+			<td  width="50" align='center'><input name='listorders[{$v.id}]' type='text' size='3' value='{$v.listorder}' class='input-text-c'></td>
+			<td align="left">{$v['title']}</td>
+      		<td align="center">
+	            {eq name="v['status']" value="1"}
+	        		<a class="bth-a ajax-status" onclick="StatusAjax(this);" data-href="{:url('ajax/statusajax')}?do=hot&id={$v['id']}&status=0"></a>
+	        	{else /}
+	        		<a class="bth-a error-c ajax-status" onclick="StatusAjax(this);" data-href="{:url('ajax/statusajax')}?do=hot&id={$v['id']}&status=1"></a>
+	        	{/eq}
+            </td>
+			<td align="left">
+				<a href="{:url('menu/hotedit')}?id={$v['id']}&tree={$tree_id}">{:lang('edit')}</a> |
+				<a href="javascript:confirm_delete('{:url(\'menu/del\')}?id={$v[\'id\']}&type=2&tree={$tree_id}')">{:lang('delete')}</a>
+			</td>
+      		</tr>
+      		{/volist}
+      	</tbody>
+    </table>
+    <div class="btn">
+		<input type="hidden" name="type" value="2"/>
+	    <input  type="button" class="button" name="dosubmit" value="{:lang('listorder')}" onclick="myform.action='{:url(\'menu/listorder\')}';$('#myform').submit();" />
+    </div>
+</div>
+</form>
+</div>

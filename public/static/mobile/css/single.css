@@ -1,0 +1,32 @@
+@CHARSET "UTF-8";
+
+.site-index {
+	padding: 20px;
+}
+.site-index .c_til {
+    font-size: 20px;
+	padding-top: 20px;
+}
+.c_til {
+    color: #454545;
+    border-bottom: solid 1px #CCC;
+    line-height: 40px;
+    font-size: 24px;
+    font-weight: normal;
+}
+.main .about_con {
+    margin-top: 10px;
+}
+.about_con {
+    min-height: 480px;
+    padding: 15px 0;
+}
+.site-index .about_con p {
+    font-size: 14px;
+    text-indent: 2em;
+}
+.about_con p {
+    padding: 10px 0;
+    line-height: 30px;
+    font-size: 14px;
+}

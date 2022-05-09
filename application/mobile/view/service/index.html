@@ -1,0 +1,102 @@
+{extend name="layout/base" /}
+{block name="title"}找服务{/block}
+{block name="load"}
+
+<!-- css -->
+<link href="__MCSS__/swiper.min.css" rel="stylesheet" type="text/css">
+<link href="__MCSS__/font_2020772_ylpwq57cfto.css" rel="stylesheet" type="text/css">
+<link href="__MCSS__/wuliu.css?{$time}" rel="stylesheet" type="text/css">
+<link href="__MCSS__/wuliu_4g.css?{$time}" rel="stylesheet" type="text/css">
+
+<!-- js -->
+<script src="__MJS__/swiper.min.js" type="text/javascript"></script>
+<script src="__MJS__/jquery-3.1.0.js" type="text/javascript"></script>
+
+{/block}
+<!-- 主体内容 -->
+{block name="main"}
+    <main id="body">
+        <div class="container">
+            
+            <div class="navmenu">
+                <nav class="nav-wrap" id="nav-wrap">
+                    <div class="swiper-container swiper-container-initialized swiper-container-horizontal" style="height: 60px;margin-bottom: 0">
+                        <ul class="swiper-wrapper" style="transform: translate3d(0px, 0px, 0px); transition-duration: 0ms;">
+                            {foreach $list as $key => $value}
+                            <li class="swiper-slide {$key == 0 ? 'active' : ''}">
+                                <a href="#s{$value.id}"><img src="__MIMG__/service_icon_{$value.id}.png">{$value.catname} </a>
+                            </li>
+                            {/foreach}
+                        </ul>
+                        <span class="swiper-notification" aria-live="assertive" aria-atomic="true"></span>
+                    </div>
+                </nav>
+            </div>
+            <div class="akali" style="height: 0.61rem;width: 100%;background: #ffffff;display: none;"></div>
+
+            <div class="content">
+                <div class="container">
+
+                    {foreach $list as $value}
+                    <div class="catetitle" id="s{$value.id}">{$value.catname}</div>
+                    <div class="find-r-box">
+                        <div class="databox">
+
+                            {foreach $value.services as $val}
+                            <div class="theme-item shoplist">
+                                <a href="{:url('service/detail', ['id' => $val.id])}" target="_blank">
+                                    <div class="img">
+                                        <img src="{$val.image}">
+                                    </div>
+                                    <div class="titlename"> {$val.name} </div>
+                                    <div class="desc">
+                                        <p>{$val.description}</p>
+                                    </div>
+                                    <div class="zixun duijie">
+                                        <div class="btn">我要对接</div>
+                                    </div>
+                                </a>
+                            </div>
+                            {/foreach}
+                        </div>
+                            
+                    </div>
+                    {/foreach}
+
+                </div>
+            </div>
+        </div>
+    </main>
+{/block}
+{block name="script"}
+    <script>
+
+        // 滚动固定顶部的导航
+        $(window).scroll(function() {
+            var top = $(window).scrollTop();
+            $('#home-search').css("position", "absolute");
+            if(top > 49){
+                $('.navmenu').addClass('fixed');
+                $('.akali').css("display", "block");
+            } else {
+                $('.navmenu').removeClass('fixed');
+                $('.akali').css("display", "none");
+            }
+        });
+
+        var swiper = new Swiper('.swiper-container', {
+            slidesPerView: 'auto',
+            calculateHeight: true,
+            direction: 'horizontal',
+        });
+        $('.fitem').click(function() {
+            window.open($(this).attr('dhref'));
+        });
+    </script>
+    <script src="__MJS__/nav.js"></script>
+    <script>
+        $('.nav-wrap').navScroll({
+            scrollSpy: true
+        });
+    </script>
+{/block}

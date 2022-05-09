@@ -1,0 +1,346 @@
+{extend name="layout/base" /}
+{block name="title"}{$article.title}{/block}
+{block name="description"}{$article.description}{/block}
+{block name="load"}
+<!-- css -->
+<link rel="stylesheet" type="text/css" href="__ACSS__/article.css">
+<!-- js -->
+<!-- 暂时不做评论、点赞等等操作 -->
+<script type="text/javascript" src="__AJS__/article.js?{$time}"></script>
+<script type="text/javascript" src="__AJS__/share_article.js?{$time}"></script>
+<script type="text/javascript" src="__AJS__/jquery.lazyload.js"></script>
+{/block}
+<!-- 主体内容 -->
+{block name="main"}
+<div class="container body-container">
+    <style>
+        .star-and-top {
+            background: #fff;
+            clear: both;
+            border-bottom: 1px solid #ddd;
+            width: 260px !important;
+        }
+    </style>
+    <div class="site-index">
+        <ol class="crumbs">
+            <li>
+                <a href="/">
+                    <svg class="icon" aria-hidden="true">
+                        <use xlink:href="#icon-shouye2"></use>
+                    </svg>
+                    首页
+                </a>
+            </li>
+            <li><a href="{:url('/index/home')}"> 干货 </a></li>
+            <li><a class="color-555"> {$article.title} </a></li>
+        </ol>
+        <div class="article-detail clearfix">
+            <h1>{$article.title}</h1>
+            <input type="hidden" id="user_id" value="{$userid}">
+            <input type="hidden" id="al_id" value="{$article.id}">
+            <input type="hidden" id="shareContent" value="【{$article.title}】{$article.description}">
+            <div class="article-tips clearfix color-aaa">
+                <div class="sub-tips fl">
+                    <span class="pr15 ">作者：草帽跨境</span>
+                    <span class="pl15 color-aaa">发布于：{:date('Y-m-d', $article.createtime)}</span>
+                </div>
+                <div class="like">
+                    <!-- <a href="javascript:void(0)" title="评论" onclick="goComment()">
+                        <span class="fa fa-comment-o"></span>
+                        <span class="al_comment_num">{$article.comment_num}</span>
+                    </a> -->
+                    <a href="javascript:void(0)" title="收藏" alt="收藏" onclick="collect({$article.id})">
+                        <span class="fa fa-heart-o"></span>
+                        <span class="al_collect_num">{$article.collect_num}</span>
+                    </a>
+                    <a href="javascript:void(0)" title="点赞" alt="点赞" onclick="articlelike({$article.id})">
+                        <span class="fa fa-thumbs-o-up"></span>
+                        <span class="al_like_num">{$article.like_num}</span>
+                    </a>
+
+                    <!-- 分享 -->
+                    <a href="javascript:void(0)" title="分享" alt="分享" class="share_div">
+                        <span><img src="__AIMG__/1558936301648195.png" style="width: 40px;"></span>
+                    </a>
+
+                    <div class="bdsharebuttonbox share_jzc bdshare-button-style1-16" style="display: none;height:50px;margin-top: -10px;" data-bd-bind="1620294840738">
+                        <span>分享到：</span>
+                        <a onclick="shareTo('sina')" class="bds bds_tsina" title="分享到新浪微博"></a>
+                        <!-- <a onclick="shareTo('wechat')" class="bds bds_weixin" title="分享到微信"></a> -->
+                        <a data-cmd="weixin" class="bds bds_weixin" title="分享到微信"></a>
+                        <div id="qrcode_akali" style="display: none; width: 350px; height: 350px;background-color: #fff;border: #757575;"><div id="qrcode"></div></div>
+                        <a onclick="shareTo('qzone')" class="bds bds_qzone" title="分享到QQ空间"></a>
+                        <a onclick="shareTo('qq')" class="bds bds_sqq" title="分享到QQ好友"></a>
+                    </div>
+                    
+                    <!-- <div class="bdsharebuttonbox share_jzc bdshare-button-style1-16" style="display: none;height:50px;margin-top: -10px;" data-bd-bind="1620294840738">
+                        <span>分享到：</span>
+                        <a data-cmd="tsina" class="bds bds_tsina" title="分享到新浪微博"></a>
+                        <a data-cmd="weixin" class="bds bds_weixin" title="分享到微信"></a>
+                        <a data-cmd="qzone" class="bds bds_qzone" title="分享到QQ空间"></a>
+                        <a data-cmd="sqq" class="bds bds_sqq" title="分享到QQ好友"></a>
+                        <a data-cmd="renren" class="bds bds_renren" title="分享到人人网"></a>
+                        <a data-cmd="fbook" class="bds bds_fbook" title="分享到Facebook"></a>
+                        <a data-cmd="twi" class="bds bds_twi" title="分享到Twitter"></a>
+                        <a data-cmd="evernotecn" class="bds bds_evernotecn" title="分享到印象笔记"></a>
+                        <a data-cmd="linkedin" class="bds bds_linkedin" title="分享到linkedin"></a>
+                    </div> -->
+                    
+                </div>
+                <div class="tag" style="clear: both;margin-top: 30px;text-align: left;">
+                    {foreach $article -> keywords as $key => $value}
+                    {neq name="$key" value="0"}／{/neq}
+                    <a style="border:1px solid #ddd;color:#757575;border-radius: 20px;padding: 2px 10px;" href="{:url('keyword/article', ['id' => $value.id])}">{$value.name}</a>
+                    {/foreach}
+                </div>
+            </div>
+            <!-- 内容部分 -->
+            <div class="sub-text">{$article.description}</div>
+            <div class="article-content" style="align-items: center; text-align: center;">
+                <img id="share_img" src="{$article.thumb}">
+            </div>
+            <div class="article-content clearfix">{$article.content|raw}</div>
+
+            <!--上一篇 & 下一篇-->
+            <div class="page-turning clearfix bordered">
+
+                <a class="col-md-6 text-center page-prev" href="{$topArticle.id ? url('home/article', ['id' => $topArticle.id]) : 'javascript:;'}">
+                    <div class="page-title">
+                        <i class="fa fa-angle-left"></i> <span>上一篇</span>
+                    </div>
+                    <div class="article-title"> {$topArticle.title ? $topArticle.title : '没有了'} </div>
+                </a>
+
+                <a class="col-md-6 text-center page-next" href="{$bottomArticle.id ? url('home/article', ['id' => $bottomArticle.id]) : 'javascript:;'}">
+                    <div class="page-title">
+                        <span>下一篇</span> <i class="fa fa-angle-right"></i>
+                    </div>
+                    <div class="article-title"> {$bottomArticle.title ? $bottomArticle.title : '没有了'} </div>
+                </a>
+
+            </div>
+
+            {notempty name="$banner.thumb"}
+            <div style="padding: 0px;text-align: center;">
+                <img style="width: 64%;" src="{$banner.thumb}">
+            </div>
+            {/notempty}
+
+            <!-- <div class="statement_jzc">
+                <center>
+                    <p class="font15 mb10" style="font-weight: bold">免责声明</p>
+                </center>
+                1、凡本网注明来源：草帽跨境www.caomaokj.com的所有作品，版权均属草帽跨境所有，转载请注明来源，违者本网将追究相关法律责任。<br>
+                2、本网其他来源作品，均转载自其他媒体，目的在于传递更多信息，不表明证实其描述或赞同其观点，文章内容仅供参考不构成投资建议，投资者据此操作，风险自担。<br>
+                3、若因《{$article.title}》版权等问题需要与本网联络，请在30日内联系我们，联系电子邮件：3004630833@qq.com，我们会在第一时间删除。
+            </div> -->
+
+            <!-- 打开下面那个专题时，删除这里 -->
+            <div class="article-after clearfix"></div>
+
+            <!--所属专题-->
+            <!-- <div class="article-after clearfix">
+                <span class="included_span">本文被以下专题收录：</span>
+                <div class="included_div">
+                    <div class="included_img">
+                        <a href="https://www.caomaokj.com/subject/439">
+                            <img src="__AIMG__/659c657b145961c1.jpg" style="width: 100%;height: 100%;">
+                        </a>
+                    </div>
+                    <div class="included_desc_div">
+                        <div class="included_title_div">
+                            <a href="https://www.caomaokj.com/subject/439">shopee马来西亚站</a>
+                        </div>
+                        <div class="included_desc">
+                            <a href="https://www.caomaokj.com/subject/439">shopee马来西亚站专题汇集了shopee马来西亚卖家开店流程与运营技巧，收集了关于马来西亚地区shopee平台最新的时事热点及政策规则。</a>
+                        </div>
+                    </div>
+                    <div class="included_btn_div">
+                        <a href="https://www.caomaokj.com/subject/439">
+                            <button class="zhuanti_btn">进入专题</button>
+                        </a>
+                    </div>
+                </div>
+            </div> -->
+
+            <div class="erweima-box clearfix"></div>
+            <div class="stories_bg"></div>
+
+            <!-- 评论区 -->
+            <!-- 未登录显示 -->
+            {empty name="$userid"}
+            <!-- <div class="comment-textarea-div">
+                <div class="prompt">
+                    <span><a href="/login">登录</a>后参与评论</span>
+                </div>
+            </div> -->
+
+            <!-- 登录时显示 -->
+            {else/}
+            <!-- <div class="comment-textarea-div">
+                <textarea class="input-text" type="text" id="comment" name="comment" placeholder="说点什么吧..."></textarea>
+                <div class="clearfix">
+                    <div class="Avatar">
+                        <img src="__AIMG__/avatar.jpg" class="fl">
+                        <div class="c_aaa fl"> 樱之节 </div>
+                    </div>
+                    <div class="fr sub-btn" onclick="comment('16907', 0)">发表评论</div>
+                </div>
+            </div> -->
+            {/empty}
+
+            <!-- 评论区容器 -->
+            <!-- <div class="comment_stories_list" style="display: none;">
+                <div class="h16 bg-color"></div>
+                <div class="comment-div">
+                    <ul class="stories_list">
+                    </ul>
+                </div>
+            </div>
+            
+            <div class="h16 bg-color"></div> -->
+
+            <!-- 相关阅读 -->
+            <div class="related-reading">
+                <h4>相关阅读</h4>
+                <div class="media media-side clearfix">
+
+                    {foreach $relatedArticle as $value}
+                    <div class="media-box col-md-4">
+                        <div class="media-menu media_box_about">
+                            <div class="media-cell media-top">
+                                <a href="{:url('home/article', ['id' => $value.id])}" title="{$value.title}">
+                                    <img class="warehouse_logo lazy" data-original="{$value.thumb}" alt="{$value.title}" style="display: inline;">
+                                </a>
+                            </div>
+                            <div class="media-cell media-body clearfix text-center">
+                                <p class="warehouses about_title_jzc" style="height: 45px;text-align: left">
+                                    <span><a href="{:url('home/article', ['id' => $value.id])}">{$value.title}</a></span>
+                                </p>
+                                <p class="about_desc">
+                                    <span><a href="{:url('home/article', ['id' => $value.id])}" >{$value.description}</a></span>
+                                </p>
+                            </div>
+                        </div>
+                    </div>
+                    {/foreach}
+
+                </div>
+            </div>
+        </div>
+
+        <div class="index-right">
+
+            <div class="right-company">
+
+                <!-- <a class="hot-img">
+                    <img src="__ICON__/icon-caomao-small.png" alt="草帽跨境">
+                </a>
+                <div class="hot-text">
+                    <h4>草帽跨境</h4>
+                    <div class="subs">跨境卖家综合服务平台。找海外仓、找专线、找海外资源、找干货、找活动、找平台，就上草帽跨境</div>
+                </div> -->
+
+                {foreach $rightArticle as $value}
+                <div class="media">
+                    <div class="media-left">
+                        <a href="{:url('home/article', ['id' => $value.id])}">
+                            <div class="media-object media_object" style="position:relative;width:80px;height: 55px;background: url({$value.thumb}) no-repeat;background-size: cover;background-position: center center;">
+                                <span class="article_tag">{:getCateName($value.catid)}</span>
+                            </div>
+                        </a>
+                    </div>
+                    <div class="media-body media_body">
+                        <a href="{:url('home/article', ['id' => $value.id])}">
+                            <p class="media-heading media_title">{$value.title}</p>
+                        </a>
+                        <p class="media_time">
+                            <img src="__AIMG__/57295c19757d0a2a.jpg">&nbsp;
+                            {:postTime($value.createtime)}
+                        </p>
+                    </div>
+                </div>
+                {/foreach}
+                <!-- <div class="hot-btn mt20">
+                    <a target="_blank" class="look-btn" href="https://www.caomaokj.com/user/105794">查看他的主页</a>
+                </div> -->
+
+            </div>
+            <!-- star -->
+            <div style="margin-top: 20px;">
+            </div>
+
+            {include file="layout/article" /}
+            <div style="margin-top: 20px;border:1px solid #fff;background: #fff;padding:0px 0 10px 0">
+                <div class="guest_you_like">
+                    <div class="like_line">猜你喜欢</div>
+                </div>
+
+                {foreach $likeArticle as $value}
+                <div class="right_article_jzc">
+                    <a href="{:url('home/article', ['id' => $value.id])}"> {$value.title} </a>
+                    <p class="right_article_jzc_time">{:postTime($value.createtime)}</p>
+                </div>
+                {/foreach}
+
+            </div>
+
+            <!-- 文章热门标签 -->
+            {include file="layout/keyword" /}
+        </div>
+</div>
+<style>
+    .star_and_top {
+        background: #fff;
+        clear: both;
+        border-bottom: 1px solid #ddd;
+        width: 260px;
+        margin-bottom: 2rem;
+    }
+</style>
+<script>
+    $(function() {
+        $(".share_div,.share_jzc").mouseover(function() {
+            $(".share_jzc").show();
+
+        }).mouseout(function() {
+            $(".share_jzc").hide();
+        });
+
+
+    })
+    window._bd_share_config = {
+        "common": {
+            "bdSnsKey": {
+                "tsina": "3429961073"
+            },
+            "bdText": $("#shareContent").val(),
+            "bdMini": "2",
+            "bdMiniList": false,
+            "bdPic": "",
+            "bdStyle": "1",
+            "bdSize": "24"
+        },
+        "share": {}
+    };
+</script>
+<script>
+    window._bd_share_config = {
+        "common": {
+            "bdSnsKey": {
+                "tsina": "3429961073"
+            },
+            "bdText": $("#shareContent").val(),
+            "bdMini": "2",
+            "bdMiniList": false,
+            "bdPic": "",
+            "bdStyle": "1",
+            "bdSize": "24"
+        },
+        "share": {}
+    };
+    with(document) 0[(getElementsByTagName('head')[0] || body).appendChild(createElement('script')).src = 'https://www.caomaokj.com/static/akali/js/share.js?v=89860593.js?cdnversion=' + ~(-new Date() / 36e5)];
+    </script>
+</div>
+</div>
+{/block}

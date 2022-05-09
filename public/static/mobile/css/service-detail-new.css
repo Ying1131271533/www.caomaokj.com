@@ -1,0 +1,816 @@
+.site-index{
+
+}
+.services{
+    background: #fff;
+}
+.service-call img{
+    margin-right: 5px;
+}
+.service-call{
+    color: #999;
+}
+.service-call a{
+    color: #999;
+}
+.company-added-service{
+    background: #fff;
+    margin-bottom: 10px;
+    padding-bottom: 10px;
+}
+.company-added-service .company_title_div{
+    color:rgba(40,40,40,1);
+    font-weight:bold;
+    font-size: 18px;
+    padding: 10px 0;
+}
+.main .media .media-left{
+    padding-left: 10px;
+    padding-right: 0px;
+}
+.articles .art-group{
+    background: rgba(255,255,255,1);
+    box-shadow: 0px 0px 7.5px 2px rgba(0,0,0,0.12);
+    border-radius: 8px;
+}
+.border-line-box{
+    border: 0.5px solid #eeeeee;
+    margin: 0 10px;
+}
+/* 面包屑 */
+.breadcrumb-wrap {
+    width: 1200px;
+    margin: 0 auto;
+}
+
+.breadcrumb {
+    padding: 8px 15px;
+    margin-bottom: 0;
+    list-style: none;
+    background-color: #f5f5f5;
+    border-radius: 4px;
+}
+
+.breadcrumb>li {
+    display: inline-block;
+}
+
+.breadcrumb>li+li:before {
+    padding: 0 5px;
+    color: #ccc;
+    content: "\003E";
+}
+
+.breadcrumb-wrap .breadcrumb a {
+    font-size: 12px;
+    color: #999;
+}
+
+.breadcrumb-wrap .breadcrumb .active {
+    font-size: 12px;
+    color: #555;
+}
+
+
+/* banner */
+.search-div {
+    background-size: 100% 100%;
+    position: relative;
+}
+
+.banner-img {
+    background:rgba(255,255,255,1);
+    box-shadow:0px 1px 5px 2.5px rgba(0,0,0,0.1);
+    border-radius:15px;
+    position: relative;
+    z-index: 2;
+    margin: 10px 10px;
+    padding: 10px;
+    font-weight:800;
+    color:rgba(40,40,40,1);
+}
+
+.banner-img .media-object {
+    width: 60px;
+    height: 60px;
+    border-radius: 50%;
+    border: 1px solid #e5e5e5;
+}
+
+.banner-img .btn {
+    min-width: 69px;
+    padding: 3px 12px;
+    border-radius: 2px;
+    margin: 0 12px;
+}
+
+.banner-img .com-name {
+    float: right;
+    color: #333;
+    font-size: 0.18rem;
+    width: 74%;
+}
+
+.banner-bot {
+    position: relative;
+    margin-top: -32px;
+}
+
+.banner-bot img {
+    width: 100%;
+}
+
+.banner-text {
+    background: #fff;
+    text-align: center;
+    padding: 18px 0;
+    padding-top: 35px;
+}
+
+.xun {
+    background: transparent;
+    color: #fff;
+    border: 1px solid rgba(137, 137, 137, .3);
+    width: 112px;
+    color: #333;
+    border-radius: 0;
+}
+
+/* 优势 */
+.bg-white {
+    background: #fff;
+}
+
+
+
+.main h2 {
+    font-size: 20px;
+    font-weight: normal;
+    text-align: center;
+}
+
+.hrs {
+    width: 56px;
+    height: 2px;
+    background: #ccc;
+    margin: 15px auto;
+}
+
+.col-five {
+    width: 48%;
+    float: left;
+    text-align: center;
+    background: #fff;
+    margin: 5px 3px;
+    height: 196px;
+}
+
+.col-full {
+    width: 98%;
+}
+
+.youshi-adv-list .icon-box {
+    margin: 10px auto;
+}
+
+.youshi-adv-list .youshi-adv-text {
+    font-size: 14px;
+
+    color: #555;
+    padding: 10px;
+    line-height: 18px;
+}
+
+.toptab .img-box {
+    text-align: center;
+}
+
+.toptab .banner-about {
+    /*height: 93px;*/
+    height: 15px;
+    font-size: 10px;
+    color:rgba(102,102,102,1);
+}
+
+.toptab .unfold {
+    height: 26px;
+    line-height: 26px
+}
+
+.banner-auto {
+    height: auto !important
+}
+
+.main .media {
+    background: #fff !important;
+    margin-bottom: 10px;
+}
+.company_title_div{
+    font-size: 18px;
+    font-weight:bold;
+    color:rgba(40,40,40,1);
+}
+.company_info_business .value_content_div{
+    display: inline-block;
+    font-size: 15px;
+    font-weight:500;
+    color:rgba(85,85,85,1);
+    margin-right: 15px;
+}
+
+/* 优惠专区 */
+.card-list .card-tabs {
+    font-size: 14px;
+    color: #555;
+    margin: 30px auto;
+    text-align: center;
+    padding: 0 0.1rem;
+}
+
+.card-list .card-tabs .card-nav {
+    background: #fff;
+    padding: 10px 5px;
+    box-shadow: 0px 0px 7px 2px rgba(191, 191, 191, 0.5);
+}
+
+.card-list .card-nav>li>a {
+    padding: 0 15px;
+}
+
+.nav>li>a:hover,
+.nav>li>a:focus {
+    background: transparent;
+}
+
+.nav-pills>li.active>a,
+.nav-pills>li.active>a:focus,
+.nav-pills>li.active>a:hover {
+    background: transparent;
+    color: #ff8d00;
+}
+
+.card-nav>li {
+    display: inline-block;
+}
+
+.card-nav>li.active a {
+    color: #ff8d00;
+    font-weight: bold;
+    position: relative;
+}
+
+.card-nav>li.active a:after {
+    content: '';
+    color: #ff8d00;
+    position: absolute;
+    top: 136%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    border: 1px solid #ff8d00;
+    width: 60px;
+}
+
+.tab-content .row {
+    /* font-size: 0; */
+    margin: 0;
+}
+
+.tab-content>.tab-pane {
+    padding: 0;
+    background: transparent;
+}
+
+.tab-content .cards {
+    width: 94%;
+    display: inline-block;
+    color: #fff;
+    margin: 0 3%;
+    margin-bottom: 10px;
+}
+
+.tab-content .cards .card-group {
+    background: url("/img/card/card1.png") no-repeat center;
+    height: 170px;
+    position: relative;
+    color: #fff;
+    box-shadow: 0px 0px 11px 2px rgba(218, 218, 218, 0.4);
+}
+
+.lcd-card-group-out {
+    background: url("/img/card/card1-out.png") no-repeat center !important;
+}
+
+.tab-content .cards .cards-left {
+    width: 70%;
+    position: absolute;
+    left: 0;
+    top: 30px;
+    padding: 0 5px;
+}
+
+.tab-content .cards .cards-right {
+    width: 25%;
+    position: absolute;
+    right: 0;
+    top: 35px;
+    text-align: center;
+}
+
+.tab-content .cards h3 {
+    font-size: 20px;
+    font-weight: 600;
+    line-height: 32px;
+    margin-bottom: 20px;
+    height: 64px;
+}
+
+.progress-title {
+    font-size: 12px;
+}
+
+.progress {
+    width: 172px;
+    height: 6px;
+    background: #e5e5e5;
+    border-radius: 3px;
+    box-shadow: none;
+    margin-bottom: 10px;
+    margin-top: 5px;
+}
+
+.progress-bar {
+    background: #fff;
+    box-shadow: none;
+}
+
+.tab-content .cards .img-box {
+    margin-bottom: 15px;
+}
+
+.cards-right img {
+    width: 64px;
+    height: 64px;
+    border-radius: 50%;
+}
+
+.tab-content .cards .cards-btn {
+    font-size: 14px;
+    background: #fff;
+    color: #ff8d00;
+    padding: 3px 5px;
+    border-radius: 2px;
+    white-space: nowrap;
+}
+
+.special-area .cards .cards-left {
+    color: #555;
+}
+
+.special-area .cards .card-group {
+    background: url(/img/card/card2.png) no-repeat center;
+    border-radius: 8px;
+}
+
+.normal-card-group-out {
+    background: url("/img/card/card2-out.png") no-repeat center !important;
+}
+
+.special-area .progress-bar {
+    background: #ff8d00;
+}
+
+.tab-content>.tab-pane {
+    display: none;
+}
+
+/* 企业服务 */
+.main .services .pl10.toptab.all-article {
+    padding-right: 0.1rem;
+}
+.toptab>.tab-ul {
+    text-align: center;
+    background: #fff;
+    line-height: 40px;
+    border-bottom: solid 1px rgba(238,238,238,1);
+    width: 100%;
+    z-index: 999;
+}
+
+.toptab .tab-ul li {
+    width: 25%;
+    height: 100%
+}
+
+.toptab .tab-ul li.active a {
+    padding-bottom: 0;
+    border-bottom: none;
+}
+
+.youshi-advantages {
+    background: #fff;
+    margin: 10px 0
+}
+
+.youshi-advantages .list-inline li {
+    float: left;
+    width: 50%;
+    color: #555;
+    padding: 12px 0
+}
+
+.youshi-advantages .list-inline li div {
+    padding-left: 10px
+}
+
+.youshi-advantages>h4 {
+    height: 40px;
+    line-height: 40px;
+    padding: 0 10px;
+    font-size: 0.16rem;
+    color: #272d2d;
+    border-bottom: 1px solid #d2d2d2
+}
+
+.main .pl10.toptab {
+    background: transparent;
+    margin-top: 0;
+    padding-top: 0
+}
+
+.all-article .tab-pane {
+    background: #fff
+}
+
+.tab-pane.post {
+    padding: 0
+}
+
+.tab-pane.post .best {
+    background: #f5f5f5;
+    padding-top: 5px
+}
+/* 海外仓 */
+.serv-group .type-item {
+	margin-bottom: 10px;
+}
+.serv-group .type-item img {
+    width: 100%;
+ }
+.serv-group .ser-title {
+	border-bottom: 1px solid #f5f5f5;
+}
+.serv-group .ser-title .fl {
+	font-size: 16px;
+}
+.serv-group .ser-title .fr {
+	color: #ff8d00;
+}
+.serv-text span {
+	padding: 10px ;
+}
+.serv-text .ser-sub {
+	color: #999;
+}
+/* 专线服务 */
+.area-post-div {
+    background: #fff;
+    margin: 10px 0;
+    color: #555;
+    padding-bottom: 20px;
+    box-shadow: 0px 0px 6px 2px rgba(213,213,213,0.5);
+}
+.area-post-div h4 {
+    padding: 10px;
+    font-size: 16px;
+    border-bottom: 1px solid #f5f5f5;
+    font-weight: normal;
+}
+.area-post-div h4 img {
+    vertical-align: top;
+}
+.area-post-div div {
+    padding: 10px;
+}
+/* 企业直播 */
+.services .tab-ul.card-nav>li.active a:after {
+	width: 100%;
+}
+.live-group .col-md-3 {
+    width: 50%;
+    float: left;
+    box-sizing: border-box;
+}
+.live-group .col-md-3:nth-child(odd) {
+    padding-right: 5px;
+}
+.live-group .col-md-3:nth-child(even) {
+    padding-left: 5px;
+}
+.live-group .serv-text {
+    overflow: hidden;
+	text-overflow: ellipsis;
+	display: -webkit-box;
+	-webkit-box-orient: vertical;
+	-webkit-line-clamp: 2;
+}
+
+.tab-content .post .all,
+.tab-content .area {
+    background: #fff
+}
+
+.toptab .media-body {
+    display: none;
+    margin-bottom: 10px;
+}
+
+.toptab div.active {
+    display: block
+}
+
+.youshi-advantages .list-inline li:last-child {
+    width: 100%
+}
+
+.platform_service {
+    border-bottom: 1px solid #f0f0f0
+}
+
+.ways {
+    min-height: 24px;
+    line-height: 24px;
+    margin: 10px 0
+}
+
+.accordion {
+    margin: 5px 0 0;
+    background: #FFF;
+    -webkit-border-radius: 0;
+    -moz-border-radius: 0;
+    border-radius: 8px;
+    border: none;
+    box-shadow:0px 0px 7px 2px rgba(203,203,203,0.5);
+}
+
+.accordion .link {
+    cursor: pointer;
+    display: block;
+    padding: 10px;
+    color: #333;
+    font-size: 0.14rem;
+
+    border-bottom: 1px solid #d2d2d2;
+    position: relative;
+    -webkit-transition: all 0.4s ease;
+    -o-transition: all 0.4s ease;
+    transition: all 0.4s ease
+}
+
+.accordion li:last-child .link {
+    border-bottom: 0
+}
+
+.accordion li i {
+    position: absolute;
+    top: 11px;
+    left: 12px;
+    font-size: 0.18rem;
+    color: #595959;
+    -webkit-transition: all 0.4s ease;
+    -o-transition: all 0.4s ease;
+    transition: all 0.4s ease
+}
+
+.accordion li i.fa-angle-down {
+    right: 10px;
+    left: auto;
+    font-size: 0.16rem
+}
+
+/*.accordion li.open .link {*/
+/*    color: #fff;*/
+/*    background: #fca130*/
+/*}*/
+
+/*.accordion li.open i,*/
+/*.accordion li.open .sub-text {*/
+/*    color: #fff*/
+/*}*/
+div.warehouse-desc p{
+    float: left;
+}
+span.data{
+    display: inline-block;
+    color:rgba(96,96,96,1);
+    border-radius: 2px;
+    padding: 0px 5px;
+    border: 1px solid rgba(151,151,151, 0.19);
+}
+div.clear {
+    clear: both;
+}
+
+
+div.warehouse-title{
+    font-size: 18px;
+    font-weight:bold;
+    color:rgba(40,40,40,1);
+    margin: 10px 0;
+}
+div.warehouse-title img{
+    margin-right: 10px;
+}
+.accordion li.open i.fa-angle-down {
+    -webkit-transform: rotate(180deg);
+    -ms-transform: rotate(180deg);
+    -o-transform: rotate(180deg);
+    transform: rotate(180deg)
+}
+
+.accordion li .sub-text {
+    padding-right: 18px;
+    font-size: 0.12rem;
+    color: #888;
+    padding-top: 2px
+}
+
+.submenu {
+    display: none;
+    font-size: 0.14rem;
+    padding: 15px 10px
+}
+
+.submenu .p_icon p {
+    margin: 0 0 10px;
+    color: #555
+}
+
+.submenu .p_icon .p-menu {
+    color: #757575;
+    font-size: 0.14rem;
+    line-height: 180%
+}
+
+/*.p_icon p span {*/
+/*    width: 8px;*/
+/*    height: 8px;*/
+/*    border: 1px solid #b5b5b5;*/
+/*    background: #f7f8fa;*/
+/*    float: left;*/
+/*    margin-top: 5px;*/
+/*    margin-right: 8px;*/
+/*    border-radius: 10px*/
+/*}*/
+
+
+.special .center-wrap,
+.services .center-wrap {
+    padding-bottom: 0;
+}
+
+/* 客户案例 */
+.cases .col-five {
+    height: 78px;
+}
+
+.cases .col-five img {
+    width: 100%;
+}
+
+
+/* 企业文章 */
+.art-group .media-body,
+.art-group .media-left {
+    display: table-cell;
+    vertical-align: top;
+}
+
+.art-group .media-body .media-heading {
+    margin: 5px 0;
+}
+
+.main .art-group .media {
+    padding: 4px 10px;
+}
+
+.main .art-group .media .media-left a img {
+    width: auto;
+    border-radius: 0;
+}
+
+.art-group .media .media-body .art-txt {
+    overflow: hidden;
+    text-overflow: ellipsis;
+    display: -webkit-box;
+    -webkit-box-orient: vertical;
+    -webkit-line-clamp: 2;
+    color: #555;
+    line-height: 20px;
+    margin-bottom: 5px;
+}
+
+.art-group .media .media-body .art-sub {
+    color: #999;
+    font-size: 12px;
+}
+
+.art-group .text-center {
+    text-align: center;
+    margin: 0 2%;
+}
+
+.art-group .look-more {
+    display: inline-block;
+    width: 96%;
+    background: #fff;
+    border: 1px solid #ddd;
+    color: #555;
+    padding: 5px;
+}
+.lcd_vip {
+    width: 90px;
+    background: #FD9D26;
+    padding: 2px 5px;
+    font-size: 14px;
+    color: #000;
+}
+.service_case_div{
+    overflow: hidden;
+}
+.service_case_div_item{
+    float: left;
+    margin: 1.5%;
+    width: 45%;
+    height: 80px;
+}
+.five_advantage_div{
+    float: left;
+    width:47.5%;
+    margin: 1%;
+    border:0px solid;
+    min-height: 190px;
+    text-align: center;
+    background: #fff;
+}
+.five_advantage_div div:last-child{
+    margin-top: 20px;
+}
+.five_advantage_div:last-child{
+    margin-left:25%;
+}
+.five_advantage_div_box{
+    overflow: hidden;
+    text-align: center;
+     margin:0 auto;
+}
+.qa_name {
+    position: relative;
+    font-size: 16px;
+    line-height: 18px;
+    color: #333;
+    padding-left: 35px;
+    margin-top: 20px;
+}
+.qa_name:before {
+    display: block;
+    content: "Q";
+    position: absolute;
+    left: 0;
+    top: 0;
+    width: 24px;
+    height: 24px;
+    background: #43487c;
+    border-radius: 4px;
+    font-size: 14px;
+    line-height: 24px;
+    text-align: center;
+    color: #fff;
+}
+.param {
+    position: relative;
+    font-size: 14px;
+    line-height: 26px;
+    text-align: justify;
+    color: #666;
+    padding-left: 35px;
+    margin-top:10px;
+}
+.param:before {
+    display: block;
+    content: "A";
+    position: absolute;
+    left: 0;
+    top: 0;
+    width: 24px;
+    height: 24px;
+    background: #ff8031;
+    border-radius: 4px;
+    font-size: 14px;
+    line-height: 24px;
+    text-align: center;
+    color: #fff;
+}
+.question_ask{
+    box-shadow: 0px 0px 7px 2px rgba(203,203,203,0.5);
+    margin-top:20px;
+}

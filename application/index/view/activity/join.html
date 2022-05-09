@@ -1,0 +1,132 @@
+{extend name="layout/base" /}
+{block name="title"}{$activity.title}{/block}
+{block name="load"}
+
+<!-- css -->
+<link rel="stylesheet" href="__ACSS__/activity_join.css">
+<link rel="stylesheet" href="__ACSS__/custom.css">
+
+<!-- js -->
+<script type="text/javascript" src="__AJS__/icheck.min.js"></script>
+{/block}
+
+<!-- 主体内容 -->
+{block name="main"}
+        <div class="container body-container">
+            <div class="site-index">
+                <div class="text-center"><img src="__AIMG__/15717296785511.png"> </div>
+                <div class="col-md-12 main">
+                    <form class="joinForm">
+
+                        <!-- <input type="hidden" name="af_id" value="1433" title="票种名称"> -->
+                        <input type="hidden" name="activity_id" value="{$activity.id}">
+
+                        <div class="group">
+                            <div class="" style="width: 97%;margin:0 auto;">
+                                <div class="fee-tips font_weight">填写报名人信息</div>
+                                <div style="border: 1px solid #EEEEEE;width: 100%;margin: 0 auto;padding: 20px;">
+                                    <div style="border: 0px solid #ddd;width: 50%;">
+                                        <div class="form-group clearfix">
+                                            <div class="q"><span class="red">*</span>1.姓名</div>
+                                            <div class="v">
+                                                <!-- 输入框 -->
+                                                <input type="text" placeholder="请输入您的姓名" name="name" class="form-control type_name">
+                                            </div>
+                                        </div>
+                                        <div class="form-group clearfix">
+                                            <div class="q"><span class="red">*</span>2.公司名</div>
+                                            <div class="v">
+                                                <!-- 输入框 -->
+                                                <input type="text" placeholder="请输入您的公司名" name="company" class="form-control type_name">
+                                            </div>
+                                        </div>
+                                        <div class="form-group clearfix">
+                                            <div class="q"><span class="red">*</span>3.手机</div>
+                                            <div class="v">
+                                                <!-- 输入框 -->
+                                                <input type="text" placeholder="请输入您的手机号码" name="phone" class="form-control type_phone" value="">
+                                            </div>
+                                        </div>
+                                        <div class="form-group clearfix">
+                                            <div class="v">
+                                                <input class="form-control" style="width:68%;display: inline" placeholder="请输入验证码" type="text" name="code">
+                                                <button class="btn btn-code" type="button" onclick="getCode();">获取验证码</button>
+                                            </div>
+                                        </div>
+                                        <div class="form-group clearfix">
+                                            <div class="q"><span class="red">*</span>4.您的需求/问题？</div>
+                                            <div class="v">
+                                                <!-- 输入框 -->
+                                                <input type="text" placeholder="请输入您的需求/问题？" name="demand" class="form-control type_other">
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+
+                        <div class="join_info_sure_div">
+                            <div class="transaction_info" style="width:100%;padding-left: 15px;padding-right: 15px;">
+                                <p class="transaction_p" style="border-left: 3px solid #ff7600;height: 25px;line-height: 25px;padding-left: 10px;margin-bottom: 20px;">交易信息</p>
+                                <table class="table table_transaction_info">
+                                    <thead>
+                                        <tr style="background: #F6F6F8;">
+                                            <th width="20%">活动名称</th>
+                                            <th width="15%">活动时间</th>
+                                            <th width="10%">票种名称</th>
+                                            <th width="20%">活动地址</th>
+                                            <th width="9%">单价</th>
+                                            {gt name="$activity.shop_num" value="1"}<th width="7%">数量</th>{/gt}
+                                            <th width="9%">小计</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        <tr>
+                                            <td>{$activity.title}</td>
+                                            <td>{:date('Y-m-d H:i:s', $activity.starttime)} <br> 至 <br> {:date('Y-m-d H:i:s', $activity.endtime)}</td>
+                                            <td class="price_color">---</td>
+                                            <td>{$activity.address}</td>
+                                            <td class="price_color">¥ {:sprintf("%.2f", $activity.discount)}</td>
+                                            {gt name="$activity.shop_num" value="1"}
+                                            <td class="price_color">
+                                                <input type="number" class="number_up" name="number" min="1" max="{$activity.shop_num}" style="width: 40px;" value="1">
+                                            </td>
+                                            {/gt}
+                                            <td class="price_color total">¥ {:sprintf("%.2f", $activity.discount)}</td>
+                                        </tr>
+                                    </tbody>
+                                </table>
+                            </div>
+
+                            <div class="actual_payment width100" style="padding-right: 20px;">
+                                <div class="pull-right">
+                                    <input type="hidden" value="{:sprintf("%.2f", $activity.discount)}" class="amount_jzc">
+                                    <p class="actual_payment_span pull-left">实付款：<span class="actual_price">¥ {:sprintf("%.2f", $activity.discount)}</span></p>
+                                    <p class="actual_payment_span pull-left"><button type="button" class="next_btn" onclick="join({$activity.id})">下一步</button></p>
+
+                                    <div class="form-check text-right mt50">
+                                        <label class="form-check-label">
+                                        <input type="checkbox" class="form-check-input is_check" value=""> <span style="font-weight: normal;vertical-align:top;">我已阅读，理解并接受<a style="color: #ff7600;" target="_blank" href="{:url('activity/agreement')}">《草帽跨境服务协议》</a></span>
+                                    </label>
+                                    </div>
+                                </div>
+
+
+                            </div>
+                        </div>
+
+
+
+                    </form>
+
+                </div>
+
+            </div>
+
+
+
+        </div>
+
+        <script type="text/javascript" src="__AJS__/activity_join.js?{$time}"></script>
+{/block}

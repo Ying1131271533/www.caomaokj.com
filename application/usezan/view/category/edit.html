@@ -1,0 +1,118 @@
+{include file="public/header" /}
+<style type="text/css">
+.wap-upload{margin-left:100px;}
+.img-upload.wap-upload .del-pic{left:70px;}
+.wap-banner{display:block;float:left;line-height: 113px;margin-right:10px;}
+</style>
+<div class="mainbox animated fadeInRight">
+  <div class="mainnav_title">
+      <a class="on">栏目修改</a>
+      <a class="add-edit" href="{:url('category/index')}?tree={$tree_id}">[<b class="uzfont uzico-fanhui"></b>栏目列表]</a>
+      <a class="bth-rand fr" href="javascript:location.replace(location.href);" title="刷新"><b class="uzfont uzico-shuaxin"></b></a>
+    </div>
+<form name="myform" id="myform" action="{:url('category/edit')}" method="post">
+<div id="tabs" style="margin-top:10px;">
+<div class="title">
+	<ul style="margin-left:30px;">
+		<li class="on"><a href="javascript:void(0);">基本设置</a></li>
+		<li style="margin-left:10px;"><a href="javascript:void(0);">SEO设置</a></li>
+    </ul>
+</div>
+<div class="content_2">
+	<div class="tabbox" style="display:block;">
+		<table cellpadding="0" cellspacing="0" class="table_form" width="100%">
+			<tr>
+				<td width="90">栏目分类</td>
+				<td>
+					<select name="parentid">
+					<option value="">一级栏目</option>
+					{$select_categorys|raw}
+					</select>
+				</td>
+			</tr>
+			<tr>
+				<td width="90">模型分类</td>
+				<td>
+					<select name="module">
+						{volist name="module" id="vo"}
+						<option value="{$key}" {if condition="$key eq $cate['module']"}selected{/if}>{$vo['name']}</option>
+						{/volist}
+					</select>
+				</td>
+			</tr>
+			<tr>
+				<td>栏目名称</td>
+				<td><input type="text" name="catname" value="{$cate['catname']}" id="catname" class="input-text required" minlength="1" maxlength="30"/></td>
+			</tr>
+			<tr id="module_url">
+				<td>栏目路径</td>
+				<td><input type="text" id="url" name="url" value="{$cate['url']}" class="input-text" /></td>
+			</tr>
+			<tr>
+				<td>封面图</td>
+				<td style="position:relative;">
+					<div class="img-upload">
+						<img class="up_iconimg curpic iconimg" width="50" onclick="up_img('up_iconimg','iconimg','jpg,gif,png,jpeg','10485760','290px',0);" src="{if condition="$cate['iconimg']"}{$cate['iconimg']}{else /}__UIMG__/upload_thumb.png{/if}" alt="上传封面" />
+						<input type="hidden" class="iconimg" name="iconimg" value="{$cate['iconimg']}"/>
+						{if condition="$cate['iconimg']"}<a title="移除" class="del-pic" onclick="del_img('{$cate[\'iconimg\']}',{$cate['id']},0,this,'iconimg')" href="javascript:;"></a>{/if}
+					</div>
+				</td>
+			</tr>
+			<tr>
+				<td>自定义链接</td>
+				<td><input type="text" name="custom" value="{$cate['custom']}" class="input-text" /></td>
+			</tr>
+			<tr>
+				<td>css类名</td>
+				<td><input type="text" name="class" value="{$cate['class']}" class="input-text" /></td>
+			</tr>
+			<tr>
+				<td>打开方式</td>
+				<td>
+					<select name="target">
+						<option value="_self" {if condition="$cate['target'] eq '_self'"}selected{/if}>本窗口</option>
+						<option value="_blank" {if condition="$cate['target'] eq '_blank'"}selected{/if}>新窗口</option>
+					</select>
+				</td>
+			</tr>
+		</table>
+	</div>
+<!-- SEO 设置 -->
+	<div class="tabbox" style="display:none;">
+		<table cellpadding="0" cellspacing="0" class="table_form"width="100%">
+		<tr>
+		    <td>SEO栏目标题</td>
+		    <td style="width:90%"><input name='seo_title' value="{$cate['seo_title']}" type='text' class="input-text" size='60' maxlength='150'></td>
+		</tr>
+		<tr>
+		    <td>SEO栏目关键词</td>
+		    <td><input name='seo_keywords' type='text' value="{$cate['seo_keywords']}" class="input-text" size='60' maxlength='150'></td>
+		</tr>
+		<tr>
+		    <td>SEO栏目简介</td>
+		    <td><textarea name='seo_description' rows="5" cols="60">{$cate['seo_description']}</textarea></td>
+		</tr>
+		</table>
+	</div>
+<!-- /SEO 设置 -->	
+</div>
+<div class="btn">
+    <input type="hidden" name="id" value="{$cate['id']}" />
+	<input type="hidden" name="tree" value="{$tree_id}" />
+	<input type="submit" value="{:lang('dosubmit')}" class="button" />
+	<input type="reset"  value="{:lang('cancel')}" class="button" />
+</div>
+</div>
+</form>
+</div>
+<script type="text/javascript" src="__UJS__/pinyin.js"></script>
+<script type="text/javascript">
+$(function () {
+//拼音转换
+    $("#catname").keyup(function () {
+        $("#url").val(pinyin.go($(this).val(), 1));
+    });
+//tab切换
+    new Tabs("#tabs", ".title ul li", ".content_2", ".tabbox", "on", 1);
+})
+</script>

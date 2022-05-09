@@ -1,0 +1,486 @@
+.clear{
+    clear: both;
+}
+.body-container{
+    width: 100%;
+}
+.bg-lease-banner{
+
+    background: url(http://img.kuajingyan.com/uploadImg/home/banner/20190724/15639611022247.png) no-repeat;
+    background-size: 100%;
+    height: 260px;
+    width: 100%;
+    /* margin-top: 35px; */
+}
+.nav_div{
+    margin: auto;
+}
+.main-div {
+    overflow: hidden;
+    background: #fff;
+    width: 1200px;
+    margin-right: auto;
+    margin-left: auto;
+    /*margin-bottom: 20px;*/
+}
+.select-main-div{
+    padding: 20px 0;
+    width: 100%;
+}
+.select-div {
+    width: 1200px;
+    margin: 0 auto;
+    background: #fff;
+    margin-bottom: 15px;
+    border-bottom: none;
+}
+.select-div .cutover{
+    width: 100%;
+    height: 29px;
+}
+.select-div .cutover a{
+    width:80px;
+    height:29px;
+    text-align: center;
+    line-height: 29px;
+    background:rgba(255,255,255,1);
+    border:1px solid rgba(229,229,229,1);
+    border-bottom: 0px;
+    float: left;
+}
+.select-div .cutover .cutover_type{
+    color: #ffffff;
+    background:rgba(252,157,39,1);
+}
+.select-div .cutover .cutover-text{
+     float: right;
+    font-size:12px;
+    font-weight:400;
+    height:29px;
+    text-align: center;
+    line-height: 29px;
+    color:rgba(153,153,153,1);
+
+}
+.select {
+    padding: 5px 10px;
+    border: #ddd 0px solid;
+    border-radius: 4px;
+    margin: 0 auto;
+    font-size: 12px;
+}
+.default_select{
+    display: block;
+    border:1px solid rgba(229,229,229,1);
+    overflow: hidden;
+    /*height: 212px;*/
+}
+
+.select .selected a {
+    background: #fff;
+    color: #fca130;
+    background: #fff
+}
+.select a {
+    display: inline-block;
+    white-space: nowrap;
+    padding: 0 10px;
+    text-decoration: none;
+    border-radius: 2px;
+    background: #fff;
+    font-size: 14px;
+    color: #555;
+    font-size: 14px;
+    height: 28px
+}
+
+.select .select-list {
+    position: relative;
+    padding: 0;
+    overflow: hidden;
+    width: 100%;
+    padding: 5px 0 5px 10px;
+}
+.select-list .label-left {
+    float: left;
+    line-height: 30px;
+    font-size: 14px;
+    color: #666;
+    font-weight: 700;
+    width: 140px;
+    text-align: right;
+}
+.select-list .list-area {
+    overflow: hidden;
+    margin-right: 60px;
+    line-height: 30px;
+}
+.select-list .btn-area {
+    position: absolute;
+    right: 0;
+    top: 0;
+}
+.select-list .button {
+    padding: 4px 8px;
+    font-size:12px;
+    font-family:MicrosoftYaHei;
+    font-weight:400;
+    color:rgba(85,85,85,1);
+
+}
+
+.select-list .btn-area {
+    right: 7px;
+    top: 0px;
+}
+.select-list .more-2 {
+    max-height: 90px;
+}
+.select-list .list-area .selected a {
+    color: #f60;
+    background-color: #f3edc2
+}
+.select-div-more{
+    width: 100%;
+    text-align: center;
+    height:24px;
+    color: #E5E5E5;
+}
+.select-div-more a{
+    background:rgba(255,255,255,1);
+    border:1px solid rgba(229,229,229,1);
+    padding: 5px 10px;
+    border-top: 0px;
+    display: inline-block;
+}
+.lease-mian-ul .lease-mian-img,.lease-mian-ul .lease-mian-content,.lease-mian-ul .lease-mian-price{
+    float: left;
+
+}
+
+.lease-mian-price strong{
+    display: inline-block;
+    white-space: nowrap;
+    overflow:hidden;
+    text-overflow:ellipsis;
+    width:146px;
+}
+
+.lease-mian-ul li{
+    padding: 20px 20px;
+    height: 240px;
+    border-bottom: 2px #F6F6F8 solid;
+
+}
+.lease-mian-ul .lease-mian-a{
+    display: block;
+    clear: both;
+    width: 100%;
+    height: 100%;
+}
+.lease-mian-ul li a .lease-mian-content{
+    padding-left: 33px;
+    width: 672px;
+}
+.lease-mian-img img{
+    width:298px;
+    height:200px;
+}
+.lease-mian-content .lease-mian-title{
+    height:24px;
+    font-size:24px;
+    line-height: 24px;
+    font-family:MicrosoftYaHei-Bold;
+    font-weight:bold;
+    color:rgba(85,85,85,1);
+    margin-bottom: 30px;
+}
+.lease-mian-content .lease-mian-info span{
+    display: inline-block;
+    width: 43%;
+    font-size:14px;
+    font-family:MicrosoftYaHei;
+    font-weight:400;
+    color:rgba(102,102,102,1);
+    margin-bottom: 20px;
+}
+
+.lease-mian-tag span{
+    display: inline-block;
+    text-align: center;
+    width:68px;
+    height:24px;
+    font-size:14px;
+    line-height: 24px;
+    background:rgba(242,243,247,1);
+    color:rgba(102,102,102,1);
+    margin-right: 5px;
+}
+.lease-mian-price{
+    text-align: right;
+    line-height: 200px;
+    height: 200px;
+    width: 190px;
+    font-size:28px;
+    font-family:MicrosoftYaHei-Bold;
+    color:rgba(252,157,39,1);
+}
+.lease-price-unit{
+    font-size:18px;
+    color: #555;
+    float: right;
+}
+.laypage{
+    text-align: center;
+}
+.tag-one{
+    margin-right: 10px;
+}
+/*****详情****/
+.main-div-detail{
+    /*margin-top: 45px;*/
+    padding: 28px 20px;
+}
+.nav-div-detail{
+    margin-top: 45px
+}
+.main-div-detail-top{
+    clear: both;
+}
+.main-div-detail-bottom{
+    clear: both;
+}
+.main-div-detail-top .detail-top-left,.main-div-detail-top .detail-top-right{
+    float: left;
+
+}
+.detail-top-left{
+    height: 485px;
+    width: 600px;
+    margin-right: 25px;
+}
+.detail-top-right{
+    height: 485px;
+    width: 535px;
+}
+
+.detail-top-pic{
+    margin-top: 10px;
+    width: 600px;
+    height:82px;
+    position: relative;
+}
+.detail-right-title .detail-title-p{
+
+    /*height:30px;*/
+    font-size:22px;
+    font-family:MicrosoftYaHei-Bold;
+    font-weight:bold;
+    color:rgba(51,51,51,1);
+    line-height:30px;
+    margin-top: 30px;
+
+}
+.detail-right-tag {
+    padding: 12px 0;
+}
+.detail-right-tag span{
+    width:68px;
+    height:24px;
+    background:rgba(242,243,247,1);
+    text-align: center;
+    display: inline-block;
+    margin-right: 5px;
+
+}
+.detail-right-price{
+    height: 76px;
+    line-height: 76px;
+}
+.detail-right-price .detail-price-name{
+    font-size:14px;
+    font-weight:400;
+    color:#555555;
+}
+.detail-right-price .detail-price{
+    font-size:18px;
+    font-family:MicrosoftYaHei-Bold;
+    font-weight:bold;
+    color:rgba(252,157,39,1);
+}
+.detail-right-info-title{
+
+    font-family:MicrosoftYaHei;
+    font-weight:400;
+    color:rgba(85,85,85,1);
+    line-height:67px;
+    height: 67px;
+
+}
+.detail-right-info-title span{
+    font-size:14px;
+    height: 14px;
+    border-left: 2px solid #ff7600;
+    padding-left: 6px;
+}
+.detail-right-info-content span{
+    display: inline-block;
+    width: 30%;
+    height:30px;
+    font-size:14px;
+    color:rgba(85,85,85,1);
+    line-height:30px;
+
+}
+.detail-right-info-content span:nth-child(even){
+    width:60%;
+}
+.detail-contact .detail-phone{
+    width:535px;
+    height:44px;
+    background:rgba(252,157,39,1);
+    text-align: center;
+    line-height: 44px;
+    color: #ffffff;
+    font-size:16px;
+    margin-top: 35px;
+}
+.detail-contact .detail-phone img{
+    margin-right: 15px;
+}
+.detail-contact{
+    position: relative;
+}
+.detail-contact-info{
+    margin: 15px 0;
+}
+.detail-contact-info img{
+    margin-right: 10px;
+}
+.detail-contact-info a{
+    display: inline-block;
+    width:166px;
+    height:44px;
+    background:rgba(255,255,255,1);
+    border:1px solid rgba(210,210,210,1);
+    line-height: 44px;
+    font-size:14px;
+    color:rgba(85,85,85,1);
+    text-align: center;
+    margin-right: 14px;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+a.detail-contact-wechat{
+    margin-right: 0px;
+}
+.main-div-detail-bottom{
+    margin-top: 14px;
+
+}
+.main-div-detail-bottom .detail-nav{
+    height: 50px;
+    border-bottom: 2px #F6F6F8 solid;
+
+}
+.main-div-detail-bottom{
+    clear: both;
+}
+.main-div-detail-bottom .detail-nav a{
+    float: left;
+    height: 50px;
+    line-height: 50px;
+    text-align: center;
+    font-size:16px;
+    margin-right: 55px;
+
+
+}
+.main-div-detail-bottom .detail-nav .detail-nav-a{
+    border-bottom:2px solid #ff7600;
+    font-weight:bold;
+    color: #ff7600;
+    padding: 0 5px;
+}
+.detail-right-title,.detail-right-price,detail-right-info{
+    border-bottom: 1px #EEEEEE solid ;
+}
+.detail-nav-content{
+    padding: 20px 5px;
+    font-size:14px;
+    line-height:36px;
+    color:#555555;
+    display: none;
+}
+.detail-content1{
+    display: block;
+}
+.swiper-container{
+    height: 82px;
+    width: 542px;
+}
+.swiper-slide{
+    width: 20%;
+}
+.swiper-slide img{
+    width: 100%;
+}
+.swiper-button-prev {
+    width: 32px;
+    height: 82px;
+    background-image: url(http://img.kuajingyan.com/uploadImg/home/article/20190703/1562156945115837.png);
+    left: -3px;
+    top: 27%;
+    right: auto;
+    background-size: 45px 110px;
+}
+.swiper-button-next {
+    width: 32px;
+    height: 82px;
+    background-image: url(http://img.kuajingyan.com/uploadImg/home/article/20190703/1562156961276756.png);
+    right: -3px;
+    left: auto;
+    top: 27%;
+    background-size: 40px 110px;
+}
+.weChatImg{
+  width: 147px;
+  height: 140px;
+  position: absolute;
+ text-align: center;
+ padding-top:10px;
+ right: 10px;
+ background:rgba(255,255,255,1);
+ box-shadow:0px 3px 10px 0px rgba(104,104,104,0.76);
+    top: 110px;
+    display: none;
+}
+
+.ContactEmail{
+
+    position: absolute;
+    top: 110px;
+    left: 10px;
+    font-size: 20px;
+    background:rgba(255,255,255,1);
+    box-shadow:0px 3px 10px 0px rgba(104,104,104,0.76);
+    display: none;;
+}
+
+.weChatImg img{
+    width: 98px;
+    height: 98px;
+
+}
+.weChatImg span{
+    height:14px;
+    font-size:14px;
+    font-family:MicrosoftYaHei;
+    color:#555555;
+    display: block;
+    text-align: center;
+
+
+}
+
