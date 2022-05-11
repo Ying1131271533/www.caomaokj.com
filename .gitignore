@@ -1,7 +1,7 @@
-#/.idea
-/.vscode
-#/vendor
+# 禁止那些文件夹或者文件上传到GitHub
+/.idea
+#/.vscode
 /runtime
 #.log
-#.env
-#数据和文档
+.env
+/.DS_Store
