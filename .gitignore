@@ -1,7 +1,7 @@
-# 禁止那些文件夹或者文件上传到GitHub
+# 禁止上传的文件
 /.idea
 /.vscode
+#/vendor
+*.log
+#.env
 /runtime
-#.log
-.env
-/.DS_Store
