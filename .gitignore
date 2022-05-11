@@ -1,6 +1,6 @@
 # 禁止那些文件夹或者文件上传到GitHub
 /.idea
-#/.vscode
+/.vscode
 /runtime
 #.log
 .env
