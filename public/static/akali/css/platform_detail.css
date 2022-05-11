@@ -304,7 +304,7 @@
 }
 .img_div_left img{
 	width: 100%;
-	margin-top: calc((227px - 100px)/2);
+	margin-top: calc((150px - 100px)/2);
 	/* height: 100%; */
 }
 .desc_div_right{
