@@ -11,6 +11,6 @@ class AkaliApi
     {
         // $memcache = Cache::store('redis')->set('akali', '阿卡丽');
         // halt($memcache);
-        echo '神织恋 - index';
+        echo '神织恋 - 首页';
     }
 }
