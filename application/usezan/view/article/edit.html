@@ -2,10 +2,21 @@
 <div class="mainbox animated fadeInRight">
     <div class="mainnav_title">
         <a class="on">内容修改</a>
-        <a class="add-edit" href="{:url('article/index')}?tree={$tree_id}">[<b class="uzfont uzico-fanhui"></b>返回列表]</a>
+
+        {if input('type') == 0}
+        <a class="add-edit" href="{:url('article/index')}">
+            [<b class="uzfont uzico-fanhui"></b>返回列表]
+        </a>
+        {elseif input('type') == 1 /}
+        <a class="add-edit" href="{:url('logistics/article')}">
+            [<b class="uzfont uzico-fanhui"></b>返回列表]
+        </a>
+        {/if}
+
         <a class="bth-rand fr" href="javascript:location.replace(location.href);" title="刷新"><b class="uzfont uzico-shuaxin"></b></a>
     </div>
-    <form name="myform" id="myform" action="" method="post">
+    <form name="myform" id="myform" action="{:url('article/edit')}" method="post">
+        <input type="hidden" name="type" value="{:input('type', 0)}">
         <table cellpadding=0 cellspacing=0 class="table_form" width="100%">
             <tr>
                 <td width="90"><font color="red">*</font><label>所属分类：</label></td>

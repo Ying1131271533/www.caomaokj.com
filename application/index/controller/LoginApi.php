@@ -28,20 +28,20 @@ class LoginApi extends BaseApi
             return $this->create(400, '登录类型不能为空');
         }
         // 验签
-        $signResult = Crypt::verify(config('app.sign'), $data['sign'], $data['publickey']);
-        empty($signResult) and $this->create(400, '验签不通过！');
+        // $signResult = Crypt::verify(config('app.sign'), $data['sign'], $data['publickey']);
+        // empty($signResult) and $this->create(400, '验签不通过！');
 
         // 获取解密数据
         $cryptData = [
             'usercode'       => $data['usercode'],
             'password'       => $data['password'],
-            'publickey'      => $data['publickey'],
-            'web_privatekey' => $data['web_privatekey'],
+            // 'publickey'      => $data['publickey'],
+            // 'web_privatekey' => $data['web_privatekey'],
         ];
-        $cryptData = Crypt::decrypt($cryptData);
+        // $cryptData = Crypt::decrypt($cryptData);
         empty($cryptData) and $this->create(400, '数据解密失败！');
-        $data['usercode'] = $cryptData['usercode'];
-        $data['password'] = $cryptData['password'];
+        // $data['usercode'] = $cryptData['usercode'];
+        // $data['password'] = $cryptData['password'];
 
         /**********************   检查图片验证码   **********************/
         $captcha     = new Captcha();
@@ -137,8 +137,8 @@ class LoginApi extends BaseApi
         ];
 
         // 获取加密数据返回用户端
-        $resultData = Crypt::encrypt($resultData, $data['web_privatekey']);
-        empty($resultData) and $this->create(400, '数据加密失败！');
+        // $resultData = Crypt::encrypt($resultData, $data['web_privatekey']);
+        // empty($resultData) and $this->create(400, '数据加密失败！');
 
         /**********************   生成登录信息token   **********************/
         $token               = (new Jwttoken)->createJwt($user['id'], $user['username'], 14400);

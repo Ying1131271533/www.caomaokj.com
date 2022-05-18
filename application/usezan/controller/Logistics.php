@@ -1,6 +1,7 @@
 <?php
 namespace app\usezan\controller;
 
+use app\common\model\Article;
 use app\common\model\Attributes as A;
 use app\common\model\Logistics as L;
 use app\common\model\LogisticsAttributes as LA;
@@ -296,5 +297,31 @@ class Logistics extends Base
             jinx('删除失败');
         }
 
+    }
+
+    // 草帽物流文章列表
+    public function article()
+    {
+        $where = [];
+        if (request()->isPost()) {
+            $data                                 = input();
+            !empty($data['keyword']) and $where[] = ['title', 'like', '%' . $data['keyword'] . '%'];
+
+            if (!empty($data['ispos'])) {
+                $data['ispos'] == "1" ? $where[] = ['ispos', '=', 0] : $where[] = ['ispos', '=', 1];
+            }
+
+            if (!empty($data['hot_spot'])) {
+                $data['hot_spot'] == "1" ? $where[] = ['hot_spot', '=', 0] : $where[] = ['hot_spot', '=', 1];
+            }
+
+        }
+        $where[] = ['type', '=', 1];
+        $list = Article::where($where)->order(['id' => 'desc'])->paginate(30);
+
+        $this->assign("list", $list);
+        $this->assign('ispos', input('ispos/d', ''));
+        $this->assign('hot_spot', input('hot_spot/d', ''));
+        return $this->fetch();
     }
 }

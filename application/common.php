@@ -880,6 +880,12 @@ function getCateName($cid)
         case $cid == 59:
             $text = '热点资讯';
             break;
+        case $cid == 121:
+            $text = '俄罗斯海外仓';
+            break;
+        case $cid == 157:
+            $text = '海外仓';
+            break;
     }
 
     return $text;

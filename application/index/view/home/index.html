@@ -296,143 +296,143 @@
         </div>
         <!-- </div> -->
         <script type="text/javascript">
-        var category = "0";
-        $(function() {
-            var isFixed = false;
-            //滚动事件
-            $(window).scroll(function() {
-                var scrollTop = $(this).scrollTop();
-                if (scrollTop >= 570) {
-                    if (!isFixed) {
-                        $(".wenzhang_nav").addClass('wenzhang_navFexid');
-                        $(".wz_nav_title").addClass('wz_titleFexid');
-                        $(".navbar-fixed-top").css("display", "none");
-                        $(".kua_menu_div").css("display", "none");
-                        isFixed = true;
+            var category = "0";
+            $(function() {
+                var isFixed = false;
+                //滚动事件
+                $(window).scroll(function() {
+                    var scrollTop = $(this).scrollTop();
+                    if (scrollTop >= 570) {
+                        if (!isFixed) {
+                            $(".wenzhang_nav").addClass('wenzhang_navFexid');
+                            $(".wz_nav_title").addClass('wz_titleFexid');
+                            $(".navbar-fixed-top").css("display", "none");
+                            $(".kua_menu_div").css("display", "none");
+                            isFixed = true;
+                        }
+                    } else {
+                        isFixed = false;
+                        $(".wenzhang_nav").removeClass('wenzhang_navFexid');
+                        $(".wz_nav_title").removeClass('wz_titleFexid');
+                        $(".navbar-fixed-top").css("display", "");
+                        $(".kua_menu_div").css("display", "");
                     }
-                } else {
-                    isFixed = false;
-                    $(".wenzhang_nav").removeClass('wenzhang_navFexid');
-                    $(".wz_nav_title").removeClass('wz_titleFexid');
-                    $(".navbar-fixed-top").css("display", "");
-                    $(".kua_menu_div").css("display", "");
+                });
+
+                if (category > 0) {
+                    $("#category_" + category).click();
                 }
+
+                $('.lev').each(function() {
+                    var title = $(this).children('a').attr('class');
+                    console.log(title);
+                })
+
             });
-
-            if (category > 0) {
-                $("#category_" + category).click();
-            }
-
-            $('.lev').each(function() {
-                var title = $(this).children('a').attr('class');
-                console.log(title);
-            })
-
-        });
         </script>
         <script>
-        var perimeter = Math.PI * 2 * 10;
-        var timer = null;
-        var value = 0;
+            var perimeter = Math.PI * 2 * 10;
+            var timer = null;
+            var value = 0;
 
-        function circleSvg() {
-            value = 0;
-            clearInterval(timer);
+            function circleSvg() {
+                value = 0;
+                clearInterval(timer);
 
-            var circle1 = $(".swiper-pagination-bullet");
-            //console.log(circle1.valueOf());
-            $.each(circle1, function(i, v) {
-                $(v).html('<svg width="24" height="24" viewbox="0 0 24 24">\
-            <circle cx="12" cy="12" r="10" stroke-width="2" stroke="rgba(255,255,255,0.5)" fill="none"></circle>\
-                <circle cx="12" cy="12" r="10" stroke-width="2" stroke="#fff" fill="none" transform="matrix(0,-1,1,0,0,24)" stroke-dasharray="0 ' + perimeter + '"></circle>\
-        </svg>');
-                // console.log("=========" + i, v)
-            })
-            var circle = document.querySelectorAll(".swiper-pagination-bullet-active circle")[1];
-            if (circle) {
-
-                timer = setInterval(function() {
-                    value++;
-                    if (value == 102) {
-                        value = 0;
-                        circle.setAttribute('stroke-dasharray', 0 + " " + perimeter);
-                        clearInterval(timer);
-                        return false;
-                    }
-                    var percent = value / 100;
-                    circle.setAttribute('stroke-dasharray', perimeter * percent + " " + perimeter * (1 - percent));
-
-                }, 50)
-            }
-        }
-
-        var swiper = new Swiper('.swiper-container', {
-            pagination: '.swiper-pagination',
-            paginationClickable: true,
-            paginationBulletRender: function(swiper, index, className) {
-                return '<span class="' + className + '">' +
-                    '<svg width="24" height="24" viewbox="0 0 24 24">\
+                var circle1 = $(".swiper-pagination-bullet");
+                //console.log(circle1.valueOf());
+                $.each(circle1, function(i, v) {
+                    $(v).html('<svg width="24" height="24" viewbox="0 0 24 24">\
                 <circle cx="12" cy="12" r="10" stroke-width="2" stroke="rgba(255,255,255,0.5)" fill="none"></circle>\
                     <circle cx="12" cy="12" r="10" stroke-width="2" stroke="#fff" fill="none" transform="matrix(0,-1,1,0,0,24)" stroke-dasharray="0 ' + perimeter + '"></circle>\
-        </svg>' +
-                    '</span>';
-            },
+            </svg>');
+                    // console.log("=========" + i, v)
+                })
+                var circle = document.querySelectorAll(".swiper-pagination-bullet-active circle")[1];
+                if (circle) {
 
-            spaceBetween: 30,
-            effect: 'fade',
-            loop: true,
-            autoplay: 5000,
-            autoplayDisableOnInteraction: false,
-            onInit: function(swiper) {
-                //Swiper初始化了
-                //alert(swiper.activeIndex);提示Swiper的当前索引
-                circleSvg();
-            },
-            onSlideChangeStart: function(swiper) {
-                value = 0;
-                //  console.log(swiper.activeIndex + '');
-                // swiper.activeIndex 这个就是索引， 从 0 开始！ 可看一共有多少元素！
-                circleSvg();
-            },
-        });
+                    timer = setInterval(function() {
+                        value++;
+                        if (value == 102) {
+                            value = 0;
+                            circle.setAttribute('stroke-dasharray', 0 + " " + perimeter);
+                            clearInterval(timer);
+                            return false;
+                        }
+                        var percent = value / 100;
+                        circle.setAttribute('stroke-dasharray', perimeter * percent + " " + perimeter * (1 - percent));
 
-        $(function() {
-            var h = $(".find-item>.table").height();
-            $(".find-label_img").height(h + 2);
-        })
+                    }, 50)
+                }
+            }
+
+            var swiper = new Swiper('.swiper-container', {
+                pagination: '.swiper-pagination',
+                paginationClickable: true,
+                paginationBulletRender: function(swiper, index, className) {
+                    return '<span class="' + className + '">' +
+                        '<svg width="24" height="24" viewbox="0 0 24 24">\
+                    <circle cx="12" cy="12" r="10" stroke-width="2" stroke="rgba(255,255,255,0.5)" fill="none"></circle>\
+                        <circle cx="12" cy="12" r="10" stroke-width="2" stroke="#fff" fill="none" transform="matrix(0,-1,1,0,0,24)" stroke-dasharray="0 ' + perimeter + '"></circle>\
+            </svg>' +
+                        '</span>';
+                },
+
+                spaceBetween: 30,
+                effect: 'fade',
+                loop: true,
+                autoplay: 5000,
+                autoplayDisableOnInteraction: false,
+                onInit: function(swiper) {
+                    //Swiper初始化了
+                    //alert(swiper.activeIndex);提示Swiper的当前索引
+                    circleSvg();
+                },
+                onSlideChangeStart: function(swiper) {
+                    value = 0;
+                    //  console.log(swiper.activeIndex + '');
+                    // swiper.activeIndex 这个就是索引， 从 0 开始！ 可看一共有多少元素！
+                    circleSvg();
+                },
+            });
+
+            $(function() {
+                var h = $(".find-item>.table").height();
+                $(".find-label_img").height(h + 2);
+            })
         </script>
         <style>
-        circle {
-            -webkit-transition: stroke-dasharray .25s;
-            transition: stroke-dasharray .25s;
-        }
+            circle {
+                -webkit-transition: stroke-dasharray .25s;
+                transition: stroke-dasharray .25s;
+            }
 
-        body .swiper-pagination-white .swiper-pagination-bullet-active,
-        body .swiper-pagination-white .swiper-pagination-bullet {
-            background: transparent;
-        }
+            body .swiper-pagination-white .swiper-pagination-bullet-active,
+            body .swiper-pagination-white .swiper-pagination-bullet {
+                background: transparent;
+            }
 
-        body .swiper-container-horizontal>.swiper-pagination-bullets,
-        body .swiper-pagination-custom,
-        .swiper-pagination-fraction {
-            background: rgba(0, 0, 0, .15);
-            opacity: 1;
-            width: auto;
-            left: 50%;
-            transform: translateX(-50%);
-            padding: 4px 4%;
-            border-radius: 20px;
-            -webkit-border-radius: 20px;
-            -moz-border-radius: 20px;
-        }
+            body .swiper-container-horizontal>.swiper-pagination-bullets,
+            body .swiper-pagination-custom,
+            .swiper-pagination-fraction {
+                background: rgba(0, 0, 0, .15);
+                opacity: 1;
+                width: auto;
+                left: 50%;
+                transform: translateX(-50%);
+                padding: 4px 4%;
+                border-radius: 20px;
+                -webkit-border-radius: 20px;
+                -moz-border-radius: 20px;
+            }
 
-        body .swiper-container-horizontal>.swiper-pagination-bullets .swiper-pagination-bullet {
-            margin: 0 12px;
-        }
+            body .swiper-container-horizontal>.swiper-pagination-bullets .swiper-pagination-bullet {
+                margin: 0 12px;
+            }
 
-        body .swiper-container-horizontal>.swiper-pagination-bullets .swiper-pagination-bullet:first-child {
-            margin-left: 0;
-        }
+            body .swiper-container-horizontal>.swiper-pagination-bullets .swiper-pagination-bullet:first-child {
+                margin-left: 0;
+            }
         </style>
     </div>
 </div>

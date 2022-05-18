@@ -1,4 +1,4 @@
-<?php /*a:9:{s:42:"../application/index/view/index\index.html";i:1650940056;s:42:"../application/index/view/layout\base.html";i:1645521738;s:44:"../application/index/view/layout\header.html";i:1645066486;s:41:"../application/index/view/layout\top.html";i:1646990834;s:42:"../application/index/view/layout\menu.html";i:1647832070;s:50:"../application/index/view/layout\left_article.html";i:1650941597;s:45:"../application/index/view/layout\toolbar.html";i:1624259554;s:44:"../application/index/view/layout\footer.html";i:1642580253;s:46:"../application/index/view/layout\open_img.html";i:1645170607;}*/ ?>
+<?php /*a:9:{s:42:"../application/index/view/index\index.html";i:1652509834;s:42:"../application/index/view/layout\base.html";i:1652509834;s:44:"../application/index/view/layout\header.html";i:1645066486;s:41:"../application/index/view/layout\top.html";i:1646990834;s:42:"../application/index/view/layout\menu.html";i:1647832070;s:50:"../application/index/view/layout\left_article.html";i:1650941597;s:45:"../application/index/view/layout\toolbar.html";i:1624259554;s:44:"../application/index/view/layout\footer.html";i:1652509779;s:46:"../application/index/view/layout\open_img.html";i:1645170607;}*/ ?>
 <!DOCTYPE html>
 <html lang="zh-CN">
 <head>
@@ -43,7 +43,7 @@
     <link rel="stylesheet" href="/static/akali/layui/css/layui.css">
     <script src="/static/akali/layui/layui.js"></script>
     
-    <link rel="stylesheet" href="/static/akali/css/kjy.css?<?php echo htmlentities($time); ?>">
+    <link rel="stylesheet" href="/static/akali/css/kjy.css">
     
 	<!-- 修改底部搜索类型下拉layui样式 -->
 	<style>
@@ -90,20 +90,20 @@
 
 <!-- css -->
 <link rel="stylesheet" href="/static/akali/css/swiper.min.css">
-<link rel="stylesheet" href="/static/akali/css/index.css?<?php echo htmlentities($time); ?>">
+<link rel="stylesheet" href="/static/akali/css/index.css">
 <link rel="stylesheet" href="/static/akali/css/home.css">
 
 <!-- js -->
 <script type="text/javascript" src="/static/akali/js/1575032615.js"></script>
 <script src="/static/akali/js/swiper.min.js"></script>
-<script src="/static/akali/js/banner_click.js?<?php echo time(); ?>"></script>
-<script type="text/javascript" src="/static/akali/js/home.js?<?php echo time(); ?>"></script>
+<script src="/static/akali/js/banner_click.js"></script>
+<script type="text/javascript" src="/static/akali/js/home.js"></script>
 <script src="/static/akali/js/afterSign.js"></script>
 <script type="text/javascript" src="/static/akali/js/jquery.lazyload.js"></script>
 <script src="/static/akali/js/warehouse_ad_click.js"></script>
 
 <!-- 推荐服务 - 换一批 -->
-<script src="/static/akali/js/pc-main.js?<?php echo htmlentities($time); ?>"></script>
+<script src="/static/akali/js/pc-main.js"></script>
 
 <style type="text/css">
 
@@ -637,7 +637,7 @@
     <!-- 中间部分 -->
     <!--推荐服务-->
     
-    <link rel="stylesheet" href="/static/akali/css/main-pc-kant.css?<?php echo htmlentities($time); ?>">
+    <link rel="stylesheet" href="/static/akali/css/main-pc-kant.css">
     <div class="px1200">
         <div class="reMfuw">
             <div class="fuwu_bt">
@@ -1200,7 +1200,7 @@
         });
     });
 </script>
-<script type="text/javascript" src="/static/akali/js/search.js?<?php echo time(); ?>"></script>
+<script type="text/javascript" src="/static/akali/js/search.js"></script>
 </body>
 
 </html>

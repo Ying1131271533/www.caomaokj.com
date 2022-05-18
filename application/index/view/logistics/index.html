@@ -3,7 +3,7 @@
 {block name="load"}
 <!-- css -->
 <link type="text/css" rel="stylesheet" href="__ACSS__/laypage.css" id="laypagecss">
-<link rel="stylesheet" href="__ACSS__/resources-index.css?{$time}" type="text/css">
+<link rel="stylesheet" href="__ACSS__/resources-index.css" type="text/css">
 <link rel="stylesheet" href="__ACSS__/lcd-enter.css" type="text/css">
 <style>
     .search-div {
@@ -96,35 +96,17 @@
         background: #a2a2a2;
     }
 </style>
+<link type="text/css" rel="stylesheet" href="__ACSS__/logistics_article.css?{$time}">
 <!-- js -->
 <script src="__AJS__/font_606323_0z1x61qzo3u.js"></script>
 <script src="__AJS__/warehouse_ad_click.js"></script>
+<script type="text/javascript" src="__AJS__/home.js"></script>
 <script type="text/javascript" src="__AJS__/laypage.js"></script>
+<script type="text/javascript" src="__AJS__/jquery.lazyload.js"></script>
 {/block}
 <!-- 主体内容 -->
 {block name="main"}
 <div class="container body-container">
-
-    <!-- lcd入口 -->
-    <!-- <div class="lcd-entrance">
-        <a class="entrance-btn" href="" target="_blank"></a>
-    </div> -->
-    <!-- 上方搜索区域 -->
-    <!-- <div class="search-div nav-menu bordered">
-
-        <div class="form-inline" style="width: 1200px;margin: 0 auto;border: 1px solid #fc9d27;border-right: none;border-radius: 20px;padding:0 0 0 20px">
-            <div class="input-group" style="width: 100%">
-                <input type="text" style="width: 100%;border: none" id="keyword" class="form-control input-box ui-autocomplete-input" placeholder="找物流，服务等关键字..." autocomplete="off">
-                <span class="input-group-btn" style="width: 60px;border: none;">
-                    <button class="btn btn-search" type="button" style="font-size: 18px;border-radius: 0 20px 20px 0">
-                        <svg class="icon" aria-hidden="true" style="position: relative;top: -3px;">
-                            <use xlink:href="#icon-sousuo1-copy"></use>
-                        </svg>
-                    </button>
-                </span>
-            </div>
-        </div>
-    </div> -->
 
     <div class="main-div">
         <div class="nav_div_zwl" style="height:30px; line-height: 30px;">
@@ -151,33 +133,6 @@
                     </div>
                 </li>
 
-                <!--走货属性-->
-                <li class="select-list" id="attr">
-                    <div>
-                        <span class="label-left">走货属性：</span>
-                        <div class="list-area">
-                            <span class="search selected" data-id="0"><a href="javascript:void(0)">全部</a></span>
-                            {foreach $attributesData as $value}
-                            <span class="search {$value.id != $attr ?: 'selected'}" data-id="{$value.id}"><a href="javascript:void(0)">{$value.name}</a></span>
-                            {/foreach}
-                        </div>
-                    </div>
-                </li>
-
-                <!--增值服务-->
-                <li class="select-list" id="type">
-                    <div>
-                        <span class="label-left">服务类型：</span>
-                        <div class="list-area">
-                            <span class="search selected" data-id="0"><a href="javascript:void(0)">全部</a></span>
-
-                            {foreach $seviceTypeData as $value}
-                            <span class="search {$value.id != $type ?: 'selected'}" data-id="{$value.id}"><a href="javascript:void(0)">{$value.name}</a></span>
-                            {/foreach}
-                        </div>
-                    </div>
-                </li>
-
             </ul>
         </div>
         <div class="main-list-group">
@@ -185,18 +140,6 @@
                 <!-- 仓库列表 -->
                 <div class="data-div">
 
-                    <!-- 分页数据 -->
-                    <input type="hidden" id="count" value="{$count}">
-                    <input type="hidden" id="thisPage" value="{$page}">
-
-                    <!-- 排序 -->
-                    <!-- <div class="header-sort bordered">
-                        <dl>
-                            <dt>排序:</dt>
-                            <dd class="selected" data-type="1"><a href="javascript:void(0)">公司排序</a></dd>
-                            <dd data-type="3"><a href="javascript:void(0)">LCD会员</a></dd>
-                        </dl>
-                    </div> -->
                     {foreach $logistics as $value}
                     <div class="media bordered">
                         <div class="media-left">
@@ -208,11 +151,6 @@
                             <h4 class="media-heading">
                                 <a href="{:url('logistics/detail', ['id' => $value.id])}">{$value.title}</a>
                             </h4>
-                            <!-- <p class="font14">
-                                <span>专线服务：</span>
-                                <span>欧洲专线</span>
-                                <span>美国专线</span>
-                            </p> -->
                             <p class="font14">
                                 <span>揽货范围：</span>
                                 <span>全国</span>
@@ -237,10 +175,61 @@
                         </div>
                     </div>
                     {/foreach}
-
                     
                 </div>
+                
+
+                <!-- 分页数据 -->
+                {notempty name="article"}
+                <input type="hidden" id="count" value="{$count}">
+                <input type="hidden" id="thisPage" value="{$page}">
+                <ul class="article_body" style="margin-top: 30px;">
+
+                    {foreach $article as $key => $value}
+                    <li class="article_li">
+                        <dl class="wz_info clearfix">
+                            <dt>
+                                <span class="labelBg{$value.catid} categoryLabel">{:getCateName($value.catid)}</span>
+                                <a href="{:url('home/article', ['id' => $value.id])}" title="{$value.title}" data-ac="{:getCateName($value.catid)}">
+                                    <img class="lazy" data-original="{$value.thumb}" alt="{$value.title}" style="display: inline;">
+                                </a>
+                            </dt>
+                            <dd>
+                                <h4>
+                                    {eq name="$value.hot_spot" value="1"}<span class="hot_title" style="margin-right: 5px;">热门</span>{/eq}
+                                    <a href="{:url('home/article', ['id' => $value.id])}" title="{$value.title}">{$value.title}</a>
+                                </h4>
+                                <div class="bot_tips">
+                                    <span class="color-aaa font12">
+                                        <!-- 作者 -->
+                                        <a href="{:url('home/article', ['id' => $value.id])}" class="pr15 a-small">草帽跨境</a>
+                                        <!-- <a href="{:url('user/detail', ['id' => 124])}" class="pr15 a-small">草帽跨境</a> -->
+                                        <span class="fr pr10">
+                                        </span>
+                                    </span>
+                                </div>
+                                <p><a href="{:url('home/article', ['id' => $value.id])}" title="{$value.title}">{$value.description}</a></p>
+                                <div class="tags_div_jzc tags_and_time">
+                                    <div class="tagItems">
+                                        {foreach $value.keywords as $val}
+                                        <span class="keyword_span"><a href="{:url('keyword/article', ['id' => $val.id])}">{$val.name}</a> </span>
+                                        {/foreach}
+                                    </div>
+                                    <div class="publish_time">
+                                        <img class="publish_time-img" style="" src="__AIMG__/6b13cde4eec0be19.png" title="发布时间.png" alt="发布时间.png">
+                                        <span>{:postTime($value.createtime)}<span>
+                                            </span></span>
+                                    </div>
+                                </div>
+                            </dd>
+                        </dl>
+                    </li>
+                    {/foreach}
+            
+                </ul>
                 <div id="laypage" class="laypage"></div>
+                {/notempty}
+                
             </div>
 
             <div class="col-md-3 right" id="right-sidebar" style="top: 0px;">
@@ -264,7 +253,7 @@
             </div>
         </div>
     </div>
-    <script type="text/javascript" src="__AJS__/post.js?{$time}"></script>
+    <script type="text/javascript" src="__AJS__/post.js"></script>
     <link rel="stylesheet" href="__ACSS__/jquery-ui.css">
     <script src="__AJS__/jquery-ui.js"></script>
     <script type="text/javascript">

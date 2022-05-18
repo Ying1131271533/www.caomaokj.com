@@ -7,7 +7,7 @@
 <!-- js -->
 <!-- 暂时不做评论、点赞等等操作 -->
 <script type="text/javascript" src="__AJS__/article.js?{$time}"></script>
-<script type="text/javascript" src="__AJS__/share_article.js?{$time}"></script>
+<script type="text/javascript" src="__AJS__/share_article.js"></script>
 <script type="text/javascript" src="__AJS__/jquery.lazyload.js"></script>
 {/block}
 <!-- 主体内容 -->
@@ -63,16 +63,20 @@
                         <span><img src="__AIMG__/1558936301648195.png" style="width: 40px;"></span>
                     </a>
 
-                    <div class="bdsharebuttonbox share_jzc bdshare-button-style1-16" style="display: none;height:50px;margin-top: -10px;" data-bd-bind="1620294840738">
+                    <div class="bdsharebuttonbox share_jzc bdshare-button-style1-16"
+                        style="display: none;height:50px;margin-top: -10px;" data-bd-bind="1620294840738">
                         <span>分享到：</span>
                         <a onclick="shareTo('sina')" class="bds bds_tsina" title="分享到新浪微博"></a>
                         <!-- <a onclick="shareTo('wechat')" class="bds bds_weixin" title="分享到微信"></a> -->
                         <a data-cmd="weixin" class="bds bds_weixin" title="分享到微信"></a>
-                        <div id="qrcode_akali" style="display: none; width: 350px; height: 350px;background-color: #fff;border: #757575;"><div id="qrcode"></div></div>
+                        <div id="qrcode_akali"
+                            style="display: none; width: 350px; height: 350px;background-color: #fff;border: #757575;">
+                            <div id="qrcode"></div>
+                        </div>
                         <a onclick="shareTo('qzone')" class="bds bds_qzone" title="分享到QQ空间"></a>
                         <a onclick="shareTo('qq')" class="bds bds_sqq" title="分享到QQ好友"></a>
                     </div>
-                    
+
                     <!-- <div class="bdsharebuttonbox share_jzc bdshare-button-style1-16" style="display: none;height:50px;margin-top: -10px;" data-bd-bind="1620294840738">
                         <span>分享到：</span>
                         <a data-cmd="tsina" class="bds bds_tsina" title="分享到新浪微博"></a>
@@ -85,12 +89,13 @@
                         <a data-cmd="evernotecn" class="bds bds_evernotecn" title="分享到印象笔记"></a>
                         <a data-cmd="linkedin" class="bds bds_linkedin" title="分享到linkedin"></a>
                     </div> -->
-                    
+
                 </div>
                 <div class="tag" style="clear: both;margin-top: 30px;text-align: left;">
                     {foreach $article -> keywords as $key => $value}
                     {neq name="$key" value="0"}／{/neq}
-                    <a style="border:1px solid #ddd;color:#757575;border-radius: 20px;padding: 2px 10px;" href="{:url('keyword/article', ['id' => $value.id])}">{$value.name}</a>
+                    <a style="border:1px solid #ddd;color:#757575;border-radius: 20px;padding: 2px 10px;"
+                        href="{:url('keyword/article', ['id' => $value.id])}">{$value.name}</a>
                     {/foreach}
                 </div>
             </div>
@@ -101,17 +106,53 @@
             </div>
             <div class="article-content clearfix">{$article.content|raw}</div>
 
+            <div class="h16 bg-color"></div>
+
+            <!-- 评论区 -->
+            <!-- 未登录显示 -->
+            {empty name="$userid"}
+            <div class="comment-textarea-div">
+                <div class="prompt">
+                    <span><a href="{:url('login/index')}">登录</a>后参与评论</span>
+                </div>
+            </div>
+
+            <!-- 登录时显示 -->
+            {else/}
+            <div class="comment-textarea-div">
+                <textarea class="input-text" type="text" id="comment" name="comment" placeholder="说点什么吧..."></textarea>
+                <div class="clearfix">
+                    <div class="Avatar">
+                        <img src="{$avatar}" class="fl">
+                        <div class="c_aaa fl"> {$nickname} </div>
+                    </div>
+                    <div class="fr sub-btn" onclick="comment({$article.id}, 0)">发表评论</div>
+                </div>
+            </div>
+            {/empty}
+
+            <!-- 评论区容器 -->
+            <div class="comment_stories_list" style="display: none;">
+                <div class="comment-div">
+                    <ul class="stories_list"></ul>
+                </div>
+            </div>
+
+            <div class="h16 bg-color"></div>
+
             <!--上一篇 & 下一篇-->
             <div class="page-turning clearfix bordered">
 
-                <a class="col-md-6 text-center page-prev" href="{$topArticle.id ? url('home/article', ['id' => $topArticle.id]) : 'javascript:;'}">
+                <a class="col-md-6 text-center page-prev"
+                    href="{$topArticle.id ? url('home/article', ['id' => $topArticle.id]) : 'javascript:;'}">
                     <div class="page-title">
                         <i class="fa fa-angle-left"></i> <span>上一篇</span>
                     </div>
                     <div class="article-title"> {$topArticle.title ? $topArticle.title : '没有了'} </div>
                 </a>
 
-                <a class="col-md-6 text-center page-next" href="{$bottomArticle.id ? url('home/article', ['id' => $bottomArticle.id]) : 'javascript:;'}">
+                <a class="col-md-6 text-center page-next"
+                    href="{$bottomArticle.id ? url('home/article', ['id' => $bottomArticle.id]) : 'javascript:;'}">
                     <div class="page-title">
                         <span>下一篇</span> <i class="fa fa-angle-right"></i>
                     </div>
@@ -126,79 +167,15 @@
             </div>
             {/notempty}
 
-            <!-- <div class="statement_jzc">
-                <center>
-                    <p class="font15 mb10" style="font-weight: bold">免责声明</p>
-                </center>
-                1、凡本网注明来源：草帽跨境www.caomaokj.com的所有作品，版权均属草帽跨境所有，转载请注明来源，违者本网将追究相关法律责任。<br>
-                2、本网其他来源作品，均转载自其他媒体，目的在于传递更多信息，不表明证实其描述或赞同其观点，文章内容仅供参考不构成投资建议，投资者据此操作，风险自担。<br>
-                3、若因《{$article.title}》版权等问题需要与本网联络，请在30日内联系我们，联系电子邮件：3004630833@qq.com，我们会在第一时间删除。
-            </div> -->
 
             <!-- 打开下面那个专题时，删除这里 -->
             <div class="article-after clearfix"></div>
 
-            <!--所属专题-->
-            <!-- <div class="article-after clearfix">
-                <span class="included_span">本文被以下专题收录：</span>
-                <div class="included_div">
-                    <div class="included_img">
-                        <a href="https://www.caomaokj.com/subject/439">
-                            <img src="__AIMG__/659c657b145961c1.jpg" style="width: 100%;height: 100%;">
-                        </a>
-                    </div>
-                    <div class="included_desc_div">
-                        <div class="included_title_div">
-                            <a href="https://www.caomaokj.com/subject/439">shopee马来西亚站</a>
-                        </div>
-                        <div class="included_desc">
-                            <a href="https://www.caomaokj.com/subject/439">shopee马来西亚站专题汇集了shopee马来西亚卖家开店流程与运营技巧，收集了关于马来西亚地区shopee平台最新的时事热点及政策规则。</a>
-                        </div>
-                    </div>
-                    <div class="included_btn_div">
-                        <a href="https://www.caomaokj.com/subject/439">
-                            <button class="zhuanti_btn">进入专题</button>
-                        </a>
-                    </div>
-                </div>
-            </div> -->
 
             <div class="erweima-box clearfix"></div>
             <div class="stories_bg"></div>
 
-            <!-- 评论区 -->
-            <!-- 未登录显示 -->
-            {empty name="$userid"}
-            <!-- <div class="comment-textarea-div">
-                <div class="prompt">
-                    <span><a href="/login">登录</a>后参与评论</span>
-                </div>
-            </div> -->
 
-            <!-- 登录时显示 -->
-            {else/}
-            <!-- <div class="comment-textarea-div">
-                <textarea class="input-text" type="text" id="comment" name="comment" placeholder="说点什么吧..."></textarea>
-                <div class="clearfix">
-                    <div class="Avatar">
-                        <img src="__AIMG__/avatar.jpg" class="fl">
-                        <div class="c_aaa fl"> 樱之节 </div>
-                    </div>
-                    <div class="fr sub-btn" onclick="comment('16907', 0)">发表评论</div>
-                </div>
-            </div> -->
-            {/empty}
-
-            <!-- 评论区容器 -->
-            <!-- <div class="comment_stories_list" style="display: none;">
-                <div class="h16 bg-color"></div>
-                <div class="comment-div">
-                    <ul class="stories_list">
-                    </ul>
-                </div>
-            </div>
-            
-            <div class="h16 bg-color"></div> -->
 
             <!-- 相关阅读 -->
             <div class="related-reading">
@@ -210,15 +187,18 @@
                         <div class="media-menu media_box_about">
                             <div class="media-cell media-top">
                                 <a href="{:url('home/article', ['id' => $value.id])}" title="{$value.title}">
-                                    <img class="warehouse_logo lazy" data-original="{$value.thumb}" alt="{$value.title}" style="display: inline;">
+                                    <img class="warehouse_logo lazy" data-original="{$value.thumb}" alt="{$value.title}"
+                                        style="display: inline;">
                                 </a>
                             </div>
                             <div class="media-cell media-body clearfix text-center">
                                 <p class="warehouses about_title_jzc" style="height: 45px;text-align: left">
-                                    <span><a href="{:url('home/article', ['id' => $value.id])}">{$value.title}</a></span>
+                                    <span><a
+                                            href="{:url('home/article', ['id' => $value.id])}">{$value.title}</a></span>
                                 </p>
                                 <p class="about_desc">
-                                    <span><a href="{:url('home/article', ['id' => $value.id])}" >{$value.description}</a></span>
+                                    <span><a
+                                            href="{:url('home/article', ['id' => $value.id])}">{$value.description}</a></span>
                                 </p>
                             </div>
                         </div>
@@ -245,7 +225,8 @@
                 <div class="media">
                     <div class="media-left">
                         <a href="{:url('home/article', ['id' => $value.id])}">
-                            <div class="media-object media_object" style="position:relative;width:80px;height: 55px;background: url({$value.thumb}) no-repeat;background-size: cover;background-position: center center;">
+                            <div class="media-object media_object"
+                                style="position:relative;width:80px;height: 55px;background: url({$value.thumb}) no-repeat;background-size: cover;background-position: center center;">
                                 <span class="article_tag">{:getCateName($value.catid)}</span>
                             </div>
                         </a>
@@ -288,58 +269,58 @@
             <!-- 文章热门标签 -->
             {include file="layout/keyword" /}
         </div>
-</div>
-<style>
-    .star_and_top {
-        background: #fff;
-        clear: both;
-        border-bottom: 1px solid #ddd;
-        width: 260px;
-        margin-bottom: 2rem;
-    }
-</style>
-<script>
-    $(function() {
-        $(".share_div,.share_jzc").mouseover(function() {
-            $(".share_jzc").show();
+    </div>
+    <style>
+        .star_and_top {
+            background: #fff;
+            clear: both;
+            border-bottom: 1px solid #ddd;
+            width: 260px;
+            margin-bottom: 2rem;
+        }
+    </style>
+    <script>
+        $(function () {
+            $(".share_div,.share_jzc").mouseover(function () {
+                $(".share_jzc").show();
 
-        }).mouseout(function() {
-            $(".share_jzc").hide();
-        });
+            }).mouseout(function () {
+                $(".share_jzc").hide();
+            });
 
 
-    })
-    window._bd_share_config = {
-        "common": {
-            "bdSnsKey": {
-                "tsina": "3429961073"
+        })
+        window._bd_share_config = {
+            "common": {
+                "bdSnsKey": {
+                    "tsina": "3429961073"
+                },
+                "bdText": $("#shareContent").val(),
+                "bdMini": "2",
+                "bdMiniList": false,
+                "bdPic": "",
+                "bdStyle": "1",
+                "bdSize": "24"
             },
-            "bdText": $("#shareContent").val(),
-            "bdMini": "2",
-            "bdMiniList": false,
-            "bdPic": "",
-            "bdStyle": "1",
-            "bdSize": "24"
-        },
-        "share": {}
-    };
-</script>
-<script>
-    window._bd_share_config = {
-        "common": {
-            "bdSnsKey": {
-                "tsina": "3429961073"
+            "share": {}
+        };
+    </script>
+    <script>
+        window._bd_share_config = {
+            "common": {
+                "bdSnsKey": {
+                    "tsina": "3429961073"
+                },
+                "bdText": $("#shareContent").val(),
+                "bdMini": "2",
+                "bdMiniList": false,
+                "bdPic": "",
+                "bdStyle": "1",
+                "bdSize": "24"
             },
-            "bdText": $("#shareContent").val(),
-            "bdMini": "2",
-            "bdMiniList": false,
-            "bdPic": "",
-            "bdStyle": "1",
-            "bdSize": "24"
-        },
-        "share": {}
-    };
-    with(document) 0[(getElementsByTagName('head')[0] || body).appendChild(createElement('script')).src = 'https://www.caomaokj.com/static/akali/js/share.js?v=89860593.js?cdnversion=' + ~(-new Date() / 36e5)];
+            "share": {}
+        };
+        with (document) 0[(getElementsByTagName('head')[0] || body).appendChild(createElement('script')).src = 'https://www.caomaokj.com/static/akali/js/share.js?v=89860593.js?cdnversion=' + ~(-new Date() / 36e5)];
     </script>
 </div>
 </div>

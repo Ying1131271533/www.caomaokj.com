@@ -266,10 +266,10 @@ class Activity extends Base
      *
      * success
      */
-    public function orderSuccess($order_id)
+    public function orderSuccess($order_sn)
     {
         // 找出订单
-        $order = AO::with('join')->where(['order_status' => 1])->find($order_id);
+        $order = AO::with('join')->where(['order_sn' => $order_sn, 'order_status' => 1])->find();
 
         // 订单是否存在
         empty($order) and akali('订单不存在');

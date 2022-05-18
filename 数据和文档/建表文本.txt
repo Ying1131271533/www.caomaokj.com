@@ -1,0 +1,256 @@
+
+
+caomaokjos - 草帽跨境
+
+
+company - 公司
+
+id int id
+name char(30) 公司名称
+logo char(120) 公司logo
+phone char(20) 电话
+qq bigint QQ
+email char(50) 邮箱
+address char(60) 公司地址
+type tinyint(1) 公司类型：1 企业 2 物流服务商
+
+多对多
+
+service_type - 公司服务类型
+id int id
+name char(30) 服务名称
+sort int 排序
+
+
+
+company_detail - 公司详情
+
+id int id
+content text 内容
+company_id int 公司id
+
+
+
+platform - 电商平台
+
+id int(11) id
+name char(30) 平台名称
+logo char(120) 平台logo
+title char(50) 标题
+descrip char(255) 描述
+url char(50) 网址
+status tinyint(1) 状态：0 不显示 1 显示
+sort int 排序
+create_time int 创建时间
+company_id int 公司id
+
+
+continent - 属于哪个六大洲
+type tinyint(2) 
+
+platform_detail - 电商平台详情
+
+id int id
+type tinyint(1) 详情类型
+image char(120) 详情图片
+platform_id int 电商平台id
+
+
+
+platform_join - 电商平台入驻申请
+
+id int id
+name char(20) 姓名
+phone char(20) 手机号码
+company char(30) 公司名称
+email char(50) 邮箱
+status tinyint(1) 状态：0 未查看 1 已查看
+create_time int 创建时间
+platform_id int 电商平台id
+
+
+
+article_like - 文章点赞 多对多 用户表
+article_id int 文章id
+member_id int 用户id
+
+
+
+
+
+
+customer_service 客服联系表 单独表
+id int id
+name char 20 名称
+phone char 20 电话
+qq bigint 20 QQ
+email char 50 邮箱
+wechat char 120 微信二维码
+remarks char 30 备注
+create_time int 创建时间
+
+
+wechat_code 网站二维码 单独表
+id int id
+name char 20 名称
+wechat char 120 微信二维码
+remarks char 30 用处备注
+create_time int 创建时间
+
+
+website 网站表 单独表
+id int id
+url char 网址
+logo char 120 网站logo
+phone char 20 电话
+email char 50 邮箱
+address char 60 地址
+wechat_one char 150 底部第一张微信二维码
+wechat_two char 150 底部第一张微信二维码
+update_time int 修改时间
+
+
+
+activity_order 活动订单表
+
+id int(10) id
+order_sn char(25) 订单编号
+original_price double(10,2) 原价
+shop_prcie double(10,2) 购买价
+number smallint(5) 数量
+total double(10,2) 总价
+need_pay tinyint(1) 支付需求 0 不需要 1 需要
+order_status tinyint(1) 订单状态 0 待付款 1 已付款 2 取消订单
+pay_status tinyint(1) 支付状态 0 未支付 1 已支付 2 已退款
+pay_time int 支付时间
+create_time int 创建时间
+member_id int 用户id
+activity_id int 活动id
+
+
+
+activity_ref 活动推荐表
+
+id int(10) id
+activity_id int 被推荐的活动id
+ip char(45) 被推荐人的ip地址
+member_id int 推荐用户id
+create_time int 创建时间
+
+
+
+活动订单发票表
+
+id int id
+seller char(50) 销售方
+type tinyint(1) 发票类型：1 电子发票 2 纸质发票
+shop_type tinyint(1) 购方类型：1 企业 2 个人
+buyer_name char(50) 购买方名字
+tax_number char(30) 税号
+phone char(20) 接收发票手机
+email char(50) 接收发票邮箱
+create_time int 创建时间
+activity_order_id 活动订单id
+
+
+
+tickets 门票表
+
+id int id
+name char(30) 门票名称
+people_number smallint(5) 人数
+price double(10,2) 价格
+discount_prcie double(10,2) 折后价格
+create_time int 创建时间
+
+
+college_tickets 课程门票
+
+college_id int 课程id
+tickets_id int 门票id
+
+
+
+
+行业社群
+community
+
+id int id
+name char(30) 名称
+logo char(100) logo
+description char(120) 描述
+introduction char(255) 简介
+connect char(20) 联系方式
+address char(60) 地址
+sort int 排序
+status tinyint(1) 状态
+create_time int(10) 创建时间
+category_id int 分类id
+
+
+
+行业社群 - 详情
+community_detail
+
+id int id
+featured text 精选
+community_id int 行业社群id
+
+
+行业社群 - 图片
+community_img
+
+id int id
+path char(100)
+community_id int 行业社群id
+
+
+logistics_article 物流文章
+
+id int id
+title char(50) 标题
+thumb char(100) 封面
+description char(255) 描述
+views int 浏览次数
+url char(250)
+collect_num int 文章收藏次数
+comment_num int 文章评论次数
+sort int 排序
+hot_spot tinyint(1) 热门文章：0 否 1 是
+ispos tinyint(1) 首页推荐文章：0 否 1 是
+status tinyint(1) 状态
+create_time int 创建时间
+logistics_id int 物流渠道id
+
+
+logistics_article_desc 物流文章内容详情
+
+logistics_article_id int id
+content text 详情
+
+
+logistics_article_collect 物流文章收藏
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

@@ -36,7 +36,7 @@ class Article extends Base
             }
 
         }
-
+        $where[] = ['type', '=', 0];
         $list = A::where($where)->order(['id' => 'desc'])->paginate(30);
 
         $this->assign("list", $list);
@@ -48,6 +48,7 @@ class Article extends Base
     //添加
     public function add()
     {
+
         if (request()->isPost()) {
             $data     = input();
             $keywords = input('keywords/a');
@@ -102,10 +103,12 @@ class Article extends Base
         $select_categorys = $tree->get_tree(0, $str, 0);
         $this->assign('select_categorys', $select_categorys);
         }*/
-
+        
+        $category_id = input('category_id/d', 0);
+        empty($category_id) and jinx('分类id不能为空');
         // 分类
         $category = C::field('id, catname')
-            ->where(['parentid' => 38, 'status' => 1])
+            ->where(['parentid' => $category_id, 'status' => 1])
             ->order(['listorder' => 'desc', 'id' => 'asc'])
             ->select();
 
@@ -121,54 +124,11 @@ class Article extends Base
         return $this->fetch();
     }
 
-    //添加
-    public function akali()
-    {
-        if (request()->isPost()) {
-            $data     = input();
-            $validate = validate('Article');
-            if (!$validate->check($data)) {
-                return jinx($validate->getError());
-            }
-
-            $aid = $this->article->save_type($data, false);
-            if ($aid) {
-                $this->setUrl($data['catid'], $aid);
-                jinx('添加成功');
-            } else {
-                jinx('添加失败');
-            }
-        }
-
-        //栏目
-        /*$categorys = $this->category ? $this->category : [];
-        if ($categorys) {
-        foreach ($categorys as $vo) {
-        if ($vo['status'] && intval($vo['module']) === $this->module) {
-        $array[] = $vo;
-        }
-        continue;
-        }
-        $str              = "<option value='\$id' \$selected>\$spacer \$catname</option>";
-        $tree             = new Tree($array);
-        $select_categorys = $tree->get_tree(0, $str, 0);
-        $this->assign('select_categorys', $select_categorys);
-        }*/
-
-        // 分类
-        $category = C::field('id, catname')
-            ->where(['parentid' => 38, 'status' => 1])
-            ->order(['listorder' => 'desc', 'id' => 'asc'])
-            ->select();
-
-        View::assign("category", $category);
-        return $this->fetch();
-    }
-
     //修改
     public function edit()
     {
         $id = input("get.id");
+
         if (request()->isPost()) {
             $data = input();
             // halt($data);
@@ -209,9 +169,11 @@ class Article extends Base
         $select_categorys = $tree->get_tree(0, $str, $article['catid']);
         $this->assign('select_categorys', $select_categorys);*/
 
+        $category_id = input('category_id/d', 0);
+        empty($category_id) and jinx('分类id不能为空');
         // 分类
         $category = C::field('id, catname')
-            ->where(['parentid' => 38, 'status' => 1])
+            ->where(['parentid' => $category_id, 'status' => 1])
             ->order(['listorder' => 'desc', 'id' => 'asc'])
             ->select();
 

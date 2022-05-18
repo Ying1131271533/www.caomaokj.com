@@ -45,7 +45,7 @@
 .fl{float:left}
 .comment_input input{width:100%;padding-left:10px;height:36px;border:1px solid #eee;margin:15px 0px}
 .Reply_btn{float:right;background:#ff7600;color:#fff;border:none;padding:5px 20px;cursor:pointer}
-.tools2 .comment{background:url(/img/forum/comment.png) left center no-repeat;padding-left:18px;margin-right:16px;cursor:pointer}
+.tools2 .comment{background:url(/static/akali/images/comment.png) left center no-repeat;padding-left:18px;margin-right:16px;cursor:pointer}
 .stories_list .stories_con{width:93%}
 .comment-div .tools2 .comment{padding-top:0;padding-bottom:0}
 .clearfix{clear:both}

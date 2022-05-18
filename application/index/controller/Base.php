@@ -41,7 +41,7 @@ class Base extends Controller
         $this->menu = C::field('id, catname, parentid, url, iconimg, target, class')
             ->where(["status" => 1, 'is_menu' => 1])
             ->order("listorder", "asc")
-            ->cache(false, cache_time('one_week'))
+            ->cache(cache_time('one_week'))
             ->select()
             ->toArray();
         $this->time = time();
@@ -62,7 +62,6 @@ class Base extends Controller
         /**********************   自定义微信分享   **********************/
         $url       = 'https://www.caomaokj.com' . request()->url();
         $rand_char = get_rand_char(32);
-        // dump($rand_char);
         $signature = (new WechatApplet($this->time, $rand_char, $url))->getWxSignature();
         $wechat    = [
             'link'      => $url,

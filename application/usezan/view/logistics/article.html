@@ -1,0 +1,106 @@
+{include file="public/header" /}
+<div class="mainbox animated fadeInRight">
+	<div class="mainnav_title">
+	    <a class="on">内容列表</a>
+		<a class="add-edit " href="{:url('article/add', ['category_id' => 48, 'type' => 1])}">
+			[<b class="uzfont uzico-add"></b>物流文章添加]
+		</a>
+	    <a class="bth-rand fr" href="javascript:location.replace(location.href);" title="刷新"><b class="uzfont uzico-shuaxin"></b></a>
+    </div>
+<table  class="search_table" width="100%">
+	<tr>
+		<td class="search">
+			<form action="{:url('logistics/article')}" method="post">
+				<input id="title" type="text" class="input-text" name="keyword" placeholder="关键字搜索" value="{:input('keyword')}" />
+				<select class="ispos" name="ispos">
+					<option value="" {eq name="ispos" value=""}selected{/eq}>首页推荐</option>
+					<option value="2" {eq name="ispos" value="2"}selected{/eq}>是</option>
+					<option value="1" {eq name="ispos" value="1"}selected{/eq}>否</option>
+				</select>
+				<select class="catid" name="hot_spot">
+					<option value="" {eq name="hot_spot" value=""}selected{/eq}>热门文章</option>
+					<option value="2" {eq name="hot_spot" value="2"}selected{/eq}>是</option>
+					<option value="1" {eq name="hot_spot" value="1"}selected{/eq}>否</option>
+				</select>
+				<input type="hidden" name="tree" value="{$tree_id}"/>
+				<input type="submit" value="{:lang('chaxun')}"  class="button" />
+				<!-- <input type="reset" value="{:lang('reset')}" class="button"  /> -->
+				<a href="{:url('logistics/article')}" class="button">重置</a>
+			</form>
+		</td>
+	</tr>
+</table>
+<form name="myform" id="myform" action="" method="post">
+<div class="table-list">
+    <table width="100%" cellspacing="0">
+		<thead>
+            <tr>
+				<th width="20">ID</th>
+				<th width="50">{:lang('listorder')}</th>
+				<th width="50">首页推荐</th>
+				<th width="80" align="left">封面/ICON</th>
+				<th width="350" align="left">标题</th>
+				<th width="100" align="center">栏目分类</th>
+				<th width="50">热门文章</th>
+				<th width="150">{:lang('createtime')}</th>
+				<th width="50">{:lang('STATUS')}</th>
+				<th align="left">{:lang('manage')}</th>
+			</tr>
+        </thead>
+      	<tbody>
+			{foreach $list as $value}
+			<tr>
+				<td width="20" align="center">{$value['id']}</td>
+				<td  width="50" align='center'><input name='listorders[{$value.id}]' type='text' size='3' value='{$value.listorder}' class='input-text-c'></td>
+
+				<td align="center">
+                    <a onclick="ajax_status(this)" data-id="{$value.id}" data-url="{:url('ajax/status', ['id' => $value.id, 'value' => $value.ispos, 'field' => 'ispos', 'db' => 'article'])}" class="bth-a ajax-status {$value.ispos == 1 ?: 'error-c'}"></a>
+                </td>
+
+				<td align="left"><img width="50" src="{$value['thumb']?$value['thumb']:'__UIMG__/nodata.svg'}" style="cursor:pointer;" onclick="open_img(this)" /></td>
+				<td align="left">{$value['title']}</td>
+				<td align="center">{:isset($category[$value['catid']]) ? $category[$value['catid']]['catname'] : '<font color="red">已删除</font>'}</td>
+
+				<td align="center">
+                    <a onclick="ajax_status(this)" data-id="{$value.id}" data-url="{:url('ajax/status', ['id' => $value.id, 'value' => $value.hot_spot, 'field' => 'hot_spot', 'db' => 'article'])}" class="bth-a ajax-status {$value.hot_spot == 1 ?: 'error-c'}"></a>
+                </td>
+
+				<td align="center">{$value['createtime']}</td>
+				<td align="center">
+					{eq name="$value.status" value="1"}
+					<a class="bth-a ajax-status" onclick="StatusAjax(this);" data-href="{:url('ajax/statusajax')}?id={$value['id']}&status=0"></a>
+					{else /}
+					<a class="bth-a error-c ajax-status" onclick="StatusAjax(this);" data-href="{:url('ajax/statusajax')}?id={$value['id']}&status=1"></a>
+					{/eq}
+				</td>
+				<td align="left">
+					<a href="{:url('article/edit')}?id={$value['id']}&tree={$tree_id}&type=1&category_id=48}">{:lang('edit')}</a> |
+	            	<a data-url="{:url('keyword/articleKeyword', ['id' => $value.id])}" class="keyword-article" href="javascript:;">关键词列表</a> | 
+					<a href="javascript:confirm_delete('{:url(\'article/del\')}?id={$value[\'id\']}&tree={$tree_id}')">{:lang('delete')}</a>
+				</td>
+			</tr>
+			{/foreach}
+      	</tbody>
+    </table>
+    <div class="btn">
+	    <input  type="button" class="button" value="{:lang('listorder')}" onclick="myform.action='{:url(\'article/listorder\')}';$('#myform').submit();" />
+    </div>
+</div>
+</form>
+</div>
+<div id="pages" class="page">{$list|raw}</div>
+
+<script type="text/javascript">
+$(".keyword-article").on("click",function () {
+    var node_url = $(this).attr("data-url");
+    layer.open({
+        title:'关键词分配',
+        type: 2,
+        closeBtn: false, //不显示关闭按钮
+        shift: 2,
+        shadeClose: true, //开启遮罩关闭
+        area: ['60%', '80%'],
+        content: node_url
+    });
+});
+</script>

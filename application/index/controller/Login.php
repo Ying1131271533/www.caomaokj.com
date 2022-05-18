@@ -29,7 +29,6 @@ class Login extends Controller
             ->order("listorder", "asc")
             ->select()
             ->toArray();
-
         /**********************   自定义微信分享   **********************/
         $url       = 'https://www.caomaokj.com' . request()->url();
         $rand_char = get_rand_char(32);

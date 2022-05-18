@@ -72,8 +72,8 @@ $(function () {
 		}
 	});
 
-	// 账户密码登录
-	$("#sub-login").click(function () {
+	// 账户密码登录 - 密钥 舍弃
+	$("#sub-login-JSEncrypt").click(function () {
 		var usercode = $("#usercode").val();
 		var password = $("#password").val();
 		var verifyCode = $("#verifyCode_username").val();
@@ -176,6 +176,70 @@ $(function () {
 					layer.msg("网络错误！", {icon: 2});
 				}
 			});
+		});
+		
+		
+	});
+
+	$("#sub-login").click(function () {
+		var usercode = $("#usercode").val();
+		var password = $("#password").val();
+		var verifyCode = $("#verifyCode_username").val();
+		if (usercode == '' || password == '') {
+			layer.msg('请输入登录信息', {icon: 0});
+			return false;
+		}
+
+		if(verifyCode == ''){
+			layer.msg('请输入图片验证码', {icon: 0});
+			return false;
+		}
+
+		if($('.rember').is(':checked')){
+			rember = true;
+		}else{
+			rember = false;
+		}
+
+		var loadding = layer.load();
+		
+		
+		$.ajax({
+			url: "/index/login_api/login",
+			type: "POST",
+			data: {
+				usercode: usercode,
+				password: password,
+				rember: rember,
+				verifyCode:verifyCode,
+				type: 2,
+				lasturl: $('#lasturl').val(),
+			},
+			dataType: "json",
+			jsonp: "callback",
+			success: function (json) {
+				layer.close(loadding);
+				
+				if (json.code == 200) {
+					// 保存jwt
+					storage('token', json.data.token);
+					console.log('token：'+json.data.token);
+					delete json.data.token;
+					
+					layer.msg('登录成功，正在跳转页面...', {icon: 1});
+					setTimeout(function () {
+						window.location.href = $('#lasturl').val();
+					}, 500);
+				} else {
+					$('#captcha_login').trigger('click');
+					layer.msg(json.msg, {icon: 2});
+				}
+			},
+			error: function () {
+				// $('#sub-login').trigger('click');
+				layer.close(loadding);
+				layer.msg("网络错误！", {icon: 2});
+			}
 		});
 		
 		

@@ -1,4 +1,4 @@
-<?php /*a:8:{s:42:"../application/index/view/login\index.html";i:1638857920;s:42:"../application/index/view/layout\base.html";i:1645521738;s:44:"../application/index/view/layout\header.html";i:1645066486;s:41:"../application/index/view/layout\top.html";i:1646990834;s:42:"../application/index/view/layout\menu.html";i:1647832070;s:45:"../application/index/view/layout\toolbar.html";i:1624259554;s:44:"../application/index/view/layout\footer.html";i:1642580253;s:46:"../application/index/view/layout\open_img.html";i:1645170607;}*/ ?>
+<?php /*a:8:{s:42:"../application/index/view/login\index.html";i:1652509834;s:42:"../application/index/view/layout\base.html";i:1652509834;s:44:"../application/index/view/layout\header.html";i:1645066486;s:41:"../application/index/view/layout\top.html";i:1646990834;s:42:"../application/index/view/layout\menu.html";i:1647832070;s:45:"../application/index/view/layout\toolbar.html";i:1624259554;s:44:"../application/index/view/layout\footer.html";i:1652509779;s:46:"../application/index/view/layout\open_img.html";i:1645170607;}*/ ?>
 <!DOCTYPE html>
 <html lang="zh-CN">
 <head>
@@ -43,7 +43,7 @@
     <link rel="stylesheet" href="/static/akali/layui/css/layui.css">
     <script src="/static/akali/layui/layui.js"></script>
     
-    <link rel="stylesheet" href="/static/akali/css/kjy.css?<?php echo htmlentities($time); ?>">
+    <link rel="stylesheet" href="/static/akali/css/kjy.css">
     
 	<!-- 修改底部搜索类型下拉layui样式 -->
 	<style>
@@ -87,9 +87,9 @@
     </style>
 	
 	
-<link href="/static/akali/css/login.css?<?php echo htmlentities($time); ?>" rel="stylesheet" type="text/css">
-<script type="text/javascript" src="/static/akali/js/login.js?<?php echo time(); ?>"></script>
-<script src="https://cdn.bootcdn.net/ajax/libs/jsencrypt/3.2.1/jsencrypt.js"></script>
+<link href="/static/akali/css/login.css" rel="stylesheet" type="text/css">
+<script type="text/javascript" src="/static/akali/js/login.js"></script>
+<!-- <script src="https://cdn.bootcdn.net/ajax/libs/jsencrypt/3.2.1/jsencrypt.js"></script> -->
 
 </head>
 <body>
@@ -650,7 +650,7 @@
         });
     });
 </script>
-<script type="text/javascript" src="/static/akali/js/search.js?<?php echo time(); ?>"></script>
+<script type="text/javascript" src="/static/akali/js/search.js"></script>
 </body>
 
 </html>

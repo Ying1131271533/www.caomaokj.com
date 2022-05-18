@@ -39,6 +39,7 @@ class HomeApi extends BaseApi
         /**********************   获取文章数据   **********************/
         $where              = [];
         $where[]            = ['status', '=', 1];
+        $where[]            = ['type', '=', 0];
         $catid and $where[] = ['catid', '=', $catid];
         $article            = A::where($where)->limit($this->pageSize)->page($this->page)->field('*')->with(['keywords' => function ($query) {
             $query->field('id, name');
@@ -124,15 +125,38 @@ class HomeApi extends BaseApi
      */
     public function articleComment(Request $request)
     {
-        /**********************   是否有登录   **********************/
+        // 是否有登录
         if (empty($this->userid)) {
-            return $this->create(400, '请先登录');
+            return $this->create(300, '请先登录');
         }
 
-        $id = $request->param('id/d', 0);
-        if (empty($id)) {
-            return $this->create(400, '缺少参数');
+        // 接收参数
+        $params = $request->param();
+
+        // 找出文章
+        $article = Article::find($params['id']);
+        if (!$article) {
+            return $this->create(400, '文章不存在');
         }
+
+        // 组装数据
+        $data = [
+            'content'     => $params['comment'],
+            'parentid'    => $params['pid'],
+            'status'      => 1,
+            'create_time' => time(),
+            'member_id'   => $this->userid,
+        ];
+
+        // 保存评论
+        $result = $article->comments()->save($data);
+        if (!$result) {
+            return $this->create(400, '评论发表失败~');
+        }
+
+        // 返回数据
+        return $this->create(200, '评论发表成功');
+
     }
 
     /**

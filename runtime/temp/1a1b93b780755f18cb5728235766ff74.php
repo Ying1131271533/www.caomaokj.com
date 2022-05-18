@@ -1,4 +1,4 @@
-<?php /*a:10:{s:43:"../application/index/view/home\article.html";i:1647503621;s:42:"../application/index/view/layout\base.html";i:1645521738;s:44:"../application/index/view/layout\header.html";i:1645066486;s:41:"../application/index/view/layout\top.html";i:1646990834;s:42:"../application/index/view/layout\menu.html";i:1647832070;s:45:"../application/index/view/layout\article.html";i:1637220567;s:45:"../application/index/view/layout\keyword.html";i:1637217498;s:45:"../application/index/view/layout\toolbar.html";i:1624259554;s:44:"../application/index/view/layout\footer.html";i:1642580253;s:46:"../application/index/view/layout\open_img.html";i:1645170607;}*/ ?>
+<?php /*a:10:{s:43:"../application/index/view/home\article.html";i:1652855706;s:42:"../application/index/view/layout\base.html";i:1652509834;s:44:"../application/index/view/layout\header.html";i:1645066486;s:41:"../application/index/view/layout\top.html";i:1646990834;s:42:"../application/index/view/layout\menu.html";i:1647832070;s:45:"../application/index/view/layout\article.html";i:1652757357;s:45:"../application/index/view/layout\keyword.html";i:1637217498;s:45:"../application/index/view/layout\toolbar.html";i:1624259554;s:44:"../application/index/view/layout\footer.html";i:1652509779;s:46:"../application/index/view/layout\open_img.html";i:1645170607;}*/ ?>
 <!DOCTYPE html>
 <html lang="zh-CN">
 <head>
@@ -43,7 +43,7 @@
     <link rel="stylesheet" href="/static/akali/layui/css/layui.css">
     <script src="/static/akali/layui/layui.js"></script>
     
-    <link rel="stylesheet" href="/static/akali/css/kjy.css?<?php echo htmlentities($time); ?>">
+    <link rel="stylesheet" href="/static/akali/css/kjy.css">
     
 	<!-- 修改底部搜索类型下拉layui样式 -->
 	<style>
@@ -91,8 +91,8 @@
 <link rel="stylesheet" type="text/css" href="/static/akali/css/article.css">
 <!-- js -->
 <!-- 暂时不做评论、点赞等等操作 -->
-<script type="text/javascript" src="/static/akali/js/article.js?<?php echo htmlentities($time); ?>"></script>
-<script type="text/javascript" src="/static/akali/js/share_article.js?<?php echo htmlentities($time); ?>"></script>
+<script type="text/javascript" src="/static/akali/js/article.js"></script>
+<script type="text/javascript" src="/static/akali/js/share_article.js"></script>
 <script type="text/javascript" src="/static/akali/js/jquery.lazyload.js"></script>
 
 </head>
@@ -480,6 +480,78 @@
                 <img id="share_img" src="<?php echo htmlentities($article['thumb']); ?>">
             </div>
             <div class="article-content clearfix"><?php echo $article['content']; ?></div>
+
+
+            <!-- 评论区 -->
+            <div class="article-detail">
+                <div class="h16 bg-color"></div>
+                <!-- 评论框 -->
+                <div class="comment-textarea-div">
+                    <textarea class="input-text" type="text" id="comment" name="comment"
+                        placeholder="说点什么吧..."></textarea>
+                    <div class="clearfix">
+                        <div class="Avatar">
+                            <img src="<?php echo htmlentities($avatar); ?>" class="fl">
+                            <div class="c_aaa fl">
+                                神织知更 </div>
+                        </div>
+                        <div class="fr sub-btn" onclick="comment(20210, 0)">发表评论</div>
+                    </div>
+                </div>
+
+                <div class="comment_stories_list" style="display: block;">
+                    <div class="comment-div">
+                        <ul class="stories_list">
+                            <li class="clearfix">
+                                <div class="Avatar fl"><img src="<?php echo htmlentities($avatar); ?>">
+                                </div>
+                                <div class="fr stories_con">
+                                    <div class="blockquote_wrap"><a target="_blank"
+                                            href="https://www.kuajingyan.com/user/167556">神织知更</a> : 文章写得不错
+                                    </div>
+                                    <div class="comment_subt">刚好需要</div>
+                                    <div class="clearfix tools">
+                                        <div class="fl">
+                                            <div class="name fl mr30"><a
+                                                    href="https://www.kuajingyan.com/user/167556">神织知更</a></div>
+                                            <div class="time fl">发布于刚刚</div>
+                                        </div>
+                                        <div class="fr tools2">
+                                            <div class="comment" data-id="754">回复</div>
+                                        </div>
+                                    </div>
+                                    <div class="comment_input comment_input_754"><input
+                                        type="text" id="comment_754" placeholder="回复　神织知更："
+                                        class="c_input"><button class="Reply_btn"
+                                        onclick="comment(20210, 754)">回复</button>
+                                    </div>
+                                </div>
+                            </li>
+                            <li class="clearfix">
+                                <div class="Avatar fl"><img src="<?php echo htmlentities($avatar); ?>">
+                                </div>
+                                <div class="fr stories_con">
+                                    <div class="comment_subt">文章写得不错</div>
+                                    <div class="clearfix tools">
+                                        <div class="fl">
+                                            <div class="name fl mr30"><a
+                                                    href="https://www.kuajingyan.com/user/167556">神织知更</a></div>
+                                            <div class="time fl">发布于2分钟前</div>
+                                        </div>
+                                        <div class="fr tools2">
+                                            <div class="comment" data-id="753">回复</div>
+                                        </div>
+                                    </div>
+                                    <div class="comment_input comment_input_753"><input
+                                            type="text" id="comment_753" placeholder="回复　神织知更："
+                                            class="c_input"><button class="Reply_btn"
+                                            onclick="comment(20210,753)">回复</button></div>
+                                </div>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
 
             <!--上一篇 & 下一篇-->
             <div class="page-turning clearfix bordered">
@@ -1075,7 +1147,7 @@
         });
     });
 </script>
-<script type="text/javascript" src="/static/akali/js/search.js?<?php echo time(); ?>"></script>
+<script type="text/javascript" src="/static/akali/js/search.js"></script>
 </body>
 
 </html>

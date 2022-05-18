@@ -26,9 +26,10 @@ class Login extends Controller
         if (session('?user')) {
             return $this->redirect(lastUrl());
         } else if (cookie('?user')) {
+            $cookie = cookie('user');
             $user = U::where([
-                'username' => encrypt_akali(cookie('user.username')['username'], 'D', config('app.encrypt_key')),
-                'password' => encrypt_akali(cookie('user.password')['password'], 'D', config('app.encrypt_key')),
+                'username' => encrypt_akali($cookie['username'], 'D', config('app.encrypt_key')),
+                'password' => encrypt_akali($cookie['password'], 'D', config('app.encrypt_key')),
                 // 'username' => encrypt_akali(cookie('user')['username'], 'D', config('app.encrypt_key')),
                 // 'password' => encrypt_akali(cookie('user')['password'], 'D', config('app.encrypt_key')),
             ])->find();
