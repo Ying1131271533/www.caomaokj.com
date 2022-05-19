@@ -12,7 +12,7 @@ class Article extends Model
 
     public function comments()
     {
-        return $this->belongsToMany('Member', 'ArticleComment');
+        return $this->hasMany('ArticleComment');
     }
 
     public function collects()

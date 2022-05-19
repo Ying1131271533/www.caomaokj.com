@@ -148,43 +148,44 @@ class HomeApi extends BaseApi
 
         /**********************   找出文章   **********************/
         $article = Article::with(['comments' => function ($query) {
-            $query->field('member.id,username,avatar');
-        }])->order('id', 'desc')->get($id);
+            $query->order('id', 'desc');
+        }])->get($id);
+        // halt($article);
         if (empty($article)) {
             return $this->create(400, '文章不存在');
         }
 
-        $comments = [];
-        foreach ($article->comments as $key => $value) {
-            $comments[$key] = [
-                'acom_add_time'  => date('Y-m-d', $value['pivot']['create_time']),
-                'acom_comment'   => $value['pivot']['content'],
-                'acom_id'        => $value['pivot']['id'],
-                'acom_parent_id' => $value['pivot']['parentid'],
+        $commentsData = [];
+        foreach ($article->comments as $key => $comment) {
+            $comment -> member;
+            $commentsData[$key] = [
+                'acom_add_time'  => date('Y-m-d', $comment['create_time']),
+                'acom_comment'   => $comment['content'],
+                'acom_id'        => $comment['id'],
+                'acom_parent_id' => $comment['parentid'],
                 'al_id'          => $article['id'],
-                'user_id'        => $value['id'],
-                'user_name'      => $value['username'],
-                'time'           => postTime($value['pivot']['create_time']),
-                'user_head'      => $value['avatar'],
+                'user_id'        => $comment['member']['id'],
+                'user_name'      => $comment['member']['username'],
+                'time'           => postTime($comment['create_time']),
+                'user_head'      => $comment['member']['avatar'],
             ];
-
+            
+            $commentsData[$key]['parent'] = [];
             foreach ($article->comments as $val) {
-                if ($value['pivot']['parentid'] == $val['id']) {
-                    $comments[$key]['parent'] = [
-                        'user_id'      => $val['id'],
-                        'user_name'    => $val['username'],
-                        'acom_comment' => $value['pivot']['content'],
+                if ($comment['parentid'] == $val['id']) {
+                    $commentsData[$key]['parent'] = [
+                        'user_id'      => $val['member']['id'],
+                        'user_name'    => $val['member']['username'],
+                        'acom_comment' => $val['content'],
                     ];
-                } else {
-
-                    $comments[$key]['parent'] = [];
+                    continue;
                 }
             }
         }
-
+        
         $resultData = [
-            'count'    => count($comments),
-            'comments' => array_reverse($comments),
+            'count'    => count($commentsData),
+            'comments' => $commentsData,
         ];
         return $this->create(200, '获取成功', $resultData);
     }

@@ -1,9 +1,17 @@
 <?php
 namespace app\common\model;
 
-use think\model\Pivot;
-
-class ArticleComment extends Pivot
+class ArticleComment extends BaseModel
 {
+    protected $autoWriteTimestamp = false;
 
+    public function article()
+    {
+        return $this->belongsTo('article');
+    }
+
+    public function member()
+    {
+        return $this->belongsTo('member');
+    }
 }

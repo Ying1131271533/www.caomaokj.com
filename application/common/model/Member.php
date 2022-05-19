@@ -30,7 +30,7 @@ class Member extends Model
 
     public function comments()
     {
-        return $this->belongsToMany('Article', 'ArticleComment');
+        return $this->hasMany('ArticleComment');
     }
 
     public function collects()
