@@ -3,8 +3,8 @@ declare (strict_types = 1);
 namespace app\index\controller;
 
 use app\common\model\Article;
-use app\common\model\Article as A;
 use app\common\model\ArticleCollect as AC;
+use app\common\model\ArticleComment;
 use app\common\model\ArticleLike as AL;
 use app\common\model\Category as C;
 use app\common\model\Keyword as K;
@@ -41,12 +41,12 @@ class HomeApi extends BaseApi
         $where[]            = ['status', '=', 1];
         $where[]            = ['type', '=', 0];
         $catid and $where[] = ['catid', '=', $catid];
-        $article            = A::where($where)->limit($this->pageSize)->page($this->page)->field('*')->with(['keywords' => function ($query) {
+        $article            = Article::where($where)->limit($this->pageSize)->page($this->page)->field('*')->with(['keywords' => function ($query) {
             $query->field('id, name');
         }])->order('createtime', 'desc')->select();
 
         /**********************   获取文章总条数   **********************/
-        $count = $leftArticle = A::where($where)->count();
+        $count = $leftArticle = Article::where($where)->count();
 
         /**********************   重组文章数据 适应前端   **********************/
         $articleData = [];
@@ -91,33 +91,6 @@ class HomeApi extends BaseApi
     }
 
     /**
-     * 获取文章评论
-     *
-     * @param
-     * @return json
-     */
-    public function getArticleComment(Request $request)
-    {
-        $id = $request->param('id/d', 0);
-        if (empty($id)) {
-            return $this->create(400, '获取失败');
-        }
-
-        /**********************   找出文章   **********************/
-        $article = A::get($id);
-
-        foreach ($article->comments as $value) {
-
-        }
-
-        $resultData = [
-            'count'    => $article['comment_num'],
-            'comments' => $article->comments,
-        ];
-        return $this->create(200, '获取成功', $resultData);
-    }
-
-    /**
      * 评论文章 评论/回复
      *
      * @param
@@ -135,6 +108,7 @@ class HomeApi extends BaseApi
 
         // 找出文章
         $article = Article::find($params['id']);
+        // halt($article);
         if (!$article) {
             return $this->create(400, '文章不存在');
         }
@@ -145,11 +119,11 @@ class HomeApi extends BaseApi
             'parentid'    => $params['pid'],
             'status'      => 1,
             'create_time' => time(),
-            'member_id'   => $this->userid,
+            'article_id'  => $params['id'],
         ];
 
         // 保存评论
-        $result = $article->comments()->save($data);
+        $result = $article->comments()->attach($this->userid, $data);
         if (!$result) {
             return $this->create(400, '评论发表失败~');
         }
@@ -157,6 +131,62 @@ class HomeApi extends BaseApi
         // 返回数据
         return $this->create(200, '评论发表成功');
 
+    }
+
+    /**
+     * 获取文章评论
+     *
+     * @param
+     * @return json
+     */
+    public function getArticleComment(Request $request)
+    {
+        $id = $request->param('id/d', 0);
+        if (empty($id)) {
+            return $this->create(400, '获取失败');
+        }
+
+        /**********************   找出文章   **********************/
+        $article = Article::with(['comments' => function ($query) {
+            $query->field('member.id,username,avatar');
+        }])->order('id', 'desc')->get($id);
+        if (empty($article)) {
+            return $this->create(400, '文章不存在');
+        }
+
+        $comments = [];
+        foreach ($article->comments as $key => $value) {
+            $comments[$key] = [
+                'acom_add_time'  => date('Y-m-d', $value['pivot']['create_time']),
+                'acom_comment'   => $value['pivot']['content'],
+                'acom_id'        => $value['pivot']['id'],
+                'acom_parent_id' => $value['pivot']['parentid'],
+                'al_id'          => $article['id'],
+                'user_id'        => $value['id'],
+                'user_name'      => $value['username'],
+                'time'           => postTime($value['pivot']['create_time']),
+                'user_head'      => $value['avatar'],
+            ];
+
+            foreach ($article->comments as $val) {
+                if ($value['pivot']['parentid'] == $val['id']) {
+                    $comments[$key]['parent'] = [
+                        'user_id'      => $val['id'],
+                        'user_name'    => $val['username'],
+                        'acom_comment' => $value['pivot']['content'],
+                    ];
+                } else {
+
+                    $comments[$key]['parent'] = [];
+                }
+            }
+        }
+
+        $resultData = [
+            'count'    => count($comments),
+            'comments' => array_reverse($comments),
+        ];
+        return $this->create(200, '获取成功', $resultData);
     }
 
     /**
@@ -177,7 +207,7 @@ class HomeApi extends BaseApi
         }
 
         /**********************   找出文章   **********************/
-        $article = A::get($id);
+        $article = Article::get($id);
         if (empty($article)) {
             return $this->create(400, '文章不存在');
         }
@@ -225,7 +255,7 @@ class HomeApi extends BaseApi
         }
 
         /**********************   找出文章   **********************/
-        $article = A::get($id);
+        $article = Article::get($id);
         if (empty($article)) {
             return $this->create(400, '文章不存在');
         }
@@ -271,7 +301,7 @@ class HomeApi extends BaseApi
         $where   = [];
         $where[] = ['status', '=', 1];
         $where[] = ['catid', '=', 68];
-        $article = A::where($where)
+        $article = Article::where($where)
             ->field('id, title')
             ->limit(10)
             ->order(['listorder' => 'desc', 'id' => 'desc'])
@@ -358,7 +388,7 @@ class HomeApi extends BaseApi
         }
 
         /**********************   文章   **********************/
-        $articleData = A::with(['keywords' => function ($query) {
+        $articleData = Article::with(['keywords' => function ($query) {
             $query->field('id, name');
         }])
             ->field('id, title, thumb, description, createtime')
@@ -372,7 +402,7 @@ class HomeApi extends BaseApi
         }
 
         /**********************   条数   **********************/
-        $count = A::where($where)->order($order)->count();
+        $count = Article::where($where)->order($order)->count();
 
         /**********************   重组文章数据 适应前端   **********************/
         $articleList = [];
