@@ -123,7 +123,7 @@ class HomeApi extends BaseApi
         ];
 
         // 保存评论
-        $result = $article->comments()->attach($this->userid, $data);
+        $result = $article->comments()->save($data);
         if (!$result) {
             return $this->create(400, '评论发表失败~');
         }
