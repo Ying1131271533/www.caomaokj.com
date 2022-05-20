@@ -9,6 +9,7 @@ $(function () {
     $(document).on("click", ".comment", function () {
         var id = $(this).attr("data-id");
         var user_id = $('#user_id').val();
+        if(!user_id) layer.msg('请先登录');
         if (user_id > 0) {
             $(".comment_input_" + id).toggle();
         }
@@ -62,6 +63,7 @@ function comment(id, acid) {
 }
 
 $('.comment_stories_list').hide();
+
 function getArticleComment() {
     var id = $("#al_id").val();
     if (id == '') {
@@ -92,14 +94,16 @@ function getArticleComment() {
                     html += '<div class="fr stories_con">';
                     if (val.parent.user_id) {
                         html += '<div class="blockquote_wrap">';
-                        html += '<a target="_blank" href="/user/' + val.parent.user_id + '">' + val.parent.user_name + '</a> : ' + val.parent.acom_comment;
+                        html += '<a href="javascript:;">' + val.parent.user_name + '</a> : ' + val.parent.acom_comment;
+                        // html += '<a target="_blank" href="/user/' + val.parent.user_id + '">' + val.parent.user_name + '</a> : ' + val.parent.acom_comment;
                         html += '</div>';
                     }
                     html += '<div class="comment_subt">' + val.acom_comment + '</div>';
                     html += '<div class="clearfix tools">';
                     html += '<div class="fl">';
                     html += '<div class="name fl mr30">';
-                    html += '<a href="/user/' + val.user_id + '">' + val.user_name + '</a>';
+                    html += '<a href="javascript:;">' + val.user_name + '</a>';
+                    // html += '<a href="/user/' + val.user_id + '">' + val.user_name + '</a>';
                     html += '</div>';
                     html += '<div class="time fl">';
                     html += '发布于' + val.time;

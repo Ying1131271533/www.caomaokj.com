@@ -33,6 +33,16 @@ class Member extends Model
         return $this->hasMany('ArticleComment');
     }
 
+    public function activityComments()
+    {
+        return $this->hasMany('ActivityComment');
+    }
+
+    public function collegeComments()
+    {
+        return $this->hasMany('CollegeComment');
+    }
+
     public function collects()
     {
         return $this->belongsToMany('Article', 'ArticleCollect');
@@ -41,11 +51,6 @@ class Member extends Model
     public function likes()
     {
         return $this->belongsToMany('Article', 'ArticleLike');
-    }
-
-    public function activityComments()
-    {
-        return $this->belongsToMany('Activity', 'ActivityComment');
     }
 
     public function activityCollects()

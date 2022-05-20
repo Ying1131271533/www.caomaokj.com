@@ -22,26 +22,12 @@ class LoginApi extends BaseApi
     {
         /**********************   接收参数   **********************/
         $data = $request->param();
+        $data['phone'] = $data['usercode'];
 
         /**********************   登录类型   **********************/
         if (empty($data['type'])) {
             return $this->create(400, '登录类型不能为空');
         }
-        // 验签
-        // $signResult = Crypt::verify(config('app.sign'), $data['sign'], $data['publickey']);
-        // empty($signResult) and $this->create(400, '验签不通过！');
-
-        // 获取解密数据
-        $cryptData = [
-            'usercode'       => $data['usercode'],
-            'password'       => $data['password'],
-            // 'publickey'      => $data['publickey'],
-            // 'web_privatekey' => $data['web_privatekey'],
-        ];
-        // $cryptData = Crypt::decrypt($cryptData);
-        empty($cryptData) and $this->create(400, '数据解密失败！');
-        // $data['usercode'] = $cryptData['usercode'];
-        // $data['password'] = $cryptData['password'];
 
         /**********************   检查图片验证码   **********************/
         $captcha     = new Captcha();
@@ -49,7 +35,7 @@ class LoginApi extends BaseApi
         if (!$valiCaptcha) {
             return $this->create(400, '图片验证码错误');
         }
-
+        
         /**********************   1 手机验证码登录 2 帐号、密码登录   **********************/
         switch ($data['type']) {
             case 1:

@@ -8,11 +8,12 @@ $(function() {
 		anim: 5 //0-6的选择，指定弹出图片动画类型，默认随机（请注意，3.0之前的版本用shift参数）
 	});
 
-	// getArticleComment();
+	getArticleComment();
 
 	$(document).on("click", ".comment", function() {
 		var id = $(this).attr("data-id");
 		var user_id = $('#user_id').val();
+        if(!user_id) layer.msg('请先登录');
 		if (user_id > 0) {
 			$(".comment_input_" + id).toggle();
 		}
@@ -33,6 +34,127 @@ $(function() {
 
 });
 
+
+
+// 评论/回复
+function comment(id, acid) {
+    var pid = 0;
+    var comment = '';
+    if (acid) {
+        pid = acid;
+        comment = $("#comment_" + acid).val();
+    } else {
+        comment = $("#comment").val();
+    }
+    if (comment == '') {
+        layer.msg('评论内容不能为空');
+        return;
+    }
+    var loading = layer.load();
+    $.ajax({
+        url: "/index/college_api/collegeComment",
+        type: "POST",
+        data: {
+            comment: comment,
+            id: id,
+            pid: pid
+        },
+        dataType: "json",
+        success: function (json) {
+            layer.close(loading);
+            if (json.code == 200) {
+                layer.msg(json.msg, { icon: 1 });
+                window.location.reload();
+            } else if (json.code == 300) {
+                window.location.href = '/index/login/index';
+                layer.msg(json.msg, { icon: 0 });
+            } else {
+                layer.msg(json.msg, { icon: 2 });
+            }
+        },
+        error: function () {
+            layer.close(loading);
+            layer.msg('网络错误！', {
+                icon: 2
+            });
+        }
+    });
+}
+
+$('.comment_stories_list').hide();
+
+function getArticleComment() {
+    var id = $("#al_id").val();
+    if (id == '') {
+        layer.msg('inner error.');
+        return;
+    }
+    /*//<div class="mod-footer">\
+    <div class="meta">\
+    <span class="pull-right text-color-999">'+ val.acom_add_time +'</span>\
+    <a>举报</a>\
+    <a>回复</a>\
+</div>\*/
+    $.ajax({
+        url: "/index/college_api/getCollegeComment",
+        type: "POST",
+        data: { id: id },
+        dataType: "json",
+        success: function (json) {
+            if (json.code == 200) {
+                $('.comment_stories_list').show();
+                var html = '';
+                //刷新评论内容
+                $.each(json.data.comments, function (key, val) {
+                    html += '<li class="clearfix">';
+                    html += '<div class="Avatar fl">';
+                    html += '<img src="' + val.user_head + '">';
+                    html += '</div>';
+                    html += '<div class="fr stories_con">';
+                    if (val.parent.user_id) {
+                        html += '<div class="blockquote_wrap">';
+                        html += '<a href="javascript:;">' + val.parent.user_name + '</a> : ' + val.parent.acom_comment;
+                        // html += '<a target="_blank" href="/user/' + val.parent.user_id + '">' + val.parent.user_name + '</a> : ' + val.parent.acom_comment;
+                        html += '</div>';
+                    }
+                    html += '<div class="comment_subt">' + val.acom_comment + '</div>';
+                    html += '<div class="clearfix tools">';
+                    html += '<div class="fl">';
+                    html += '<div class="name fl mr30">';
+                    html += '<a href="javascript:;">' + val.user_name + '</a>';
+                    // html += '<a href="/user/' + val.user_id + '">' + val.user_name + '</a>';
+                    html += '</div>';
+                    html += '<div class="time fl">';
+                    html += '发布于' + val.time;
+                    html += '</div>';
+                    html += '</div>';
+                    html += '<div class="fr tools2">';
+                    html += '<div class="comment" data-id="' + val.acom_id + '">回复</div>';
+                    html += '</div>';
+                    html += '</div>';
+                    html += '<div class="comment_input comment_input_' + val.acom_id + '" style="display: none;">';
+                    html += '<input type="text" id="comment_' + val.acom_id + '" placeholder="回复　' + val.user_name + '：" class="c_input">';
+                    html += '<button class="Reply_btn" onclick="comment(' + val.al_id + ',' + val.acom_id + ')">回复</button>';
+                    html += '</div>';
+                    html += '</div>';
+                    html += '</li>';
+
+                });
+
+            } else {
+                $('.comment_stories_list').hide();
+                //html = '<li class="clearfix">暂无评论，来说点什么吧</li>';
+            }
+            $(".stories_list").html(html);
+            $(".al_comment_num").text(json.data.count);
+        },
+        error: function () {
+            layer.msg('网络错误！');
+        }
+    });
+}
+
+
 // 报名
 function join(){
 
@@ -47,110 +169,6 @@ function join(){
 		return false;
 	}
 	window.location.href = '/index/college/join/college_id/'+id+'/tickets_id/'+tickets_id;
-}
-
-// 评论/回复
-function comment(id, acid) {
-	var pid = 0;
-	var comment = '';
-	if (acid) {
-		pid = acid;
-		comment = $("#comment_" + acid).val();
-	} else {
-		comment = $("#comment").val();
-	}
-	if (comment == '') {
-		layer.msg('评论内容不能为空');
-		return;
-	}
-	if (id == '') {
-		layer.msg('inner error.');
-		return;
-	}
-	var loadding = layer.load();
-	$.ajax({
-		url: "/api/activity-comment",
-		type: "POST",
-		data: {
-			comment: comment,
-			id: id,
-			pid: pid
-		},
-		dataType: "json",
-		success: function(json) {
-			layer.close(loadding);
-			if (json.code == 200) {
-				$("#comment").val("");
-				layer.msg(json.msg, {icon:1});
-				getArticleComment();
-			} else {
-				layer.msg(json.msg, {icon:2});
-			}
-		},
-		error: function() {
-			layer.close(loadding);
-			layer.msg('网络错误！');
-		}
-	});
-}
-
-function getArticleComment() {
-	var id = $("#activityId").val();
-	if (id == '') {
-		layer.msg('inner error.');
-		return;
-	}
-	$.ajax({
-		url: "/api/get-activity-comment",
-		type: "POST",
-		data: {
-			id: id
-		},
-		dataType: "json",
-		success: function(json) {
-			if (json.code == 200) {
-				var html = '';
-				//刷新评论内容
-				$.each(json.data, function(key, val) {
-					html += '<li class="clearfix">';
-					html += '<div class="Avatar fl">';
-					html += '<img src="/default/avatar?userId=' + val.user_id + '">';
-					html += '</div>';
-					html += '<div class="fr stories_con">';
-					if (val.parent.user_id) {
-						html += '<div class="blockquote_wrap">';
-						html += '<a target="_blank" href="/user/' + val.parent.user_id + '">' + val.parent.user_name + '</a> : ' + val.parent.acom_comment;
-						html += '</div>';
-					}
-					html += '<div class="comment_subt">' + val.acom_comment + '</div>';
-					html += '<div class="clearfix tools">';
-					html += '<div class="fl">';
-					html += '<div class="name fl mr30">';
-					html += '<a href="/user/' + val.user_id + '">' + val.user_name + '</a>';
-					html += '</div>';
-					html += '<div class="time fl">';
-					html += '发布于' + val.add_time;
-					html += '</div>';
-					html += '</div>';
-					html += '<div class="fr tools2">';
-					html += '<div class="comment" data-id="' + val.acom_id + '"><span class="glyphicon fa fa-comment-o"></span></div>';
-					html += '</div>';
-					html += '</div>';
-					html += '<div class="comment_input comment_input_' + val.acom_id + '" style="display: none;">';
-					html += '<input type="text" id="comment_' + val.acom_id + '" placeholder="回复　' + val.user_name + '：" class="c_input">';
-					html += '<button class="Reply_btn" onclick="comment(' + val.activity_id + ',' + val.acom_id + ')">回复</button>';
-					html += '</div>';
-					html += '</div>';
-					html += '</li>';
-				});
-			} else {
-				html = '<li class="clearfix">暂无评论，来说点什么吧</li>';
-			}
-			$(".stories_list").html(html);
-			$(".al_comment_num").text(json.count);
-		},
-		error: function() {}
-	});
 }
 
 function joinActivity(id) {

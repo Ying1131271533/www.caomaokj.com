@@ -2,7 +2,7 @@
 declare (strict_types = 1);
 namespace app\index\controller;
 
-use app\common\model\College as CollegeModel;
+use app\common\model\College;
 use app\common\model\CollegeJoin as J;
 use app\common\model\CollegeRef as CR;
 use app\common\model\Member as U;
@@ -29,14 +29,14 @@ class CollegeApi extends BaseApi
         $cateId and $where = ['catid' => $cateId, 'status' => 1];
 
         // 找出数据
-        $college = CollegeModel::with('tickets')
+        $college = College::with('tickets')
             ->where($where)
             ->order(['listorder' => 'asc', 'id' => 'asc'])
             ->limit(10)
             ->page($page)
             ->select();
         // return $this->create(200, '获取成功', $college);
-        $count = CollegeModel::where($where)->count();
+        $count = College::where($where)->count();
 
         // 组装数据
         $resultData = [
@@ -48,6 +48,114 @@ class CollegeApi extends BaseApi
         // 返回数据
         return $this->create(200, '获取成功', $resultData);
     }
+
+    /**
+     * 评论文章 评论/回复
+     *
+     * @param
+     * @return \think\Response
+     */
+    public function collegeComment(Request $request)
+    {
+        // 是否有登录
+        if (empty($this->userid)) {
+            return $this->create(300, '请先登录');
+        }
+
+        // 接收参数
+        $params = $request->param();
+
+        // 找出文章
+        $college = College::find($params['id']);
+        // halt($college);
+        if (!$college) {
+            return $this->create(400, '文章不存在');
+        }
+        
+        // 评论长度
+        if(mb_strlen($params['comment']) > 255){
+            return $this->create(400, '评论长度不能超过255个字符');
+        }
+
+        // 组装数据
+        $data = [
+            'content'     => $params['comment'],
+            'parentid'    => $params['pid'],
+            'status'      => 1,
+            'create_time' => time(),
+            // 'college_id'  => $params['id'],
+            'member_id'   => $this->userid,
+        ];
+
+        // 保存评论
+        $result = $college->comments()->save($data);
+        if (!$result) {
+            return $this->create(400, '评论发表失败~');
+        }
+
+        // 返回数据
+        return $this->create(200, '评论发表成功');
+
+    }
+
+    /**
+     * 获取文章评论
+     *
+     * @param
+     * @return json
+     */
+    public function getCollegeComment(Request $request)
+    {
+        $id = $request->param('id/d', 0);
+        if (empty($id)) {
+            return $this->create(400, '获取失败');
+        }
+
+        // 找出活动
+        $college = College::with(['comments' => function ($query) {
+            $query->order('id', 'desc');
+        }])->get($id);
+        // halt($college);
+        if (empty($college)) {
+            return $this->create(400, '活动不存在');
+        }
+
+        $commentsData = [];
+        foreach ($college->comments as $key => $comment) {
+            $comment->member;
+            $commentsData[$key] = [
+                'acom_add_time'  => date('Y-m-d', $comment['create_time']),
+                'acom_comment'   => $comment['content'],
+                'acom_id'        => $comment['id'],
+                'acom_parent_id' => $comment['parentid'],
+                'al_id'          => $college['id'],
+                'user_id'        => $comment['member']['id'],
+                'user_name'      => $comment['member']['username'],
+                'time'           => postTime($comment['create_time']),
+                'user_head'      => $comment['member']['avatar'],
+            ];
+
+            $commentsData[$key]['parent'] = [];
+            foreach ($college->comments as $val) {
+                if ($comment['parentid'] == $val['id']) {
+                    $commentsData[$key]['parent'] = [
+                        'user_id'      => $val['member']['id'],
+                        'user_name'    => $val['member']['username'],
+                        'acom_comment' => $val['content'],
+                    ];
+                    continue;
+                }
+            }
+        }
+
+        $resultData = [
+            'count'    => count($commentsData),
+            'comments' => $commentsData,
+        ];
+        return $this->create(200, '获取成功', $resultData);
+    }
+
+
     /**
      * 课程收藏
      *
@@ -66,7 +174,7 @@ class CollegeApi extends BaseApi
         }
 
         /**********************   找出课程   **********************/
-        $college = CollegeModel::get($id);
+        $college = College::get($id);
         if (empty($college)) {
             return $this->create(400, '文章不存在');
         }
@@ -115,7 +223,7 @@ class CollegeApi extends BaseApi
         }
 
         /**********************   找出文章   **********************/
-        $college = CollegeModel::get($id);
+        $college = College::get($id);
         if (empty($college)) {
             return $this->create(400, '文章不存在');
         }
@@ -160,7 +268,7 @@ class CollegeApi extends BaseApi
         $data = $request->param();
 
         /**********************   找出课程   **********************/
-        $college = CollegeModel::where(['status' => 1, 'id' => $data['college_id']])->find();
+        $college = College::where(['status' => 1, 'id' => $data['college_id']])->find();
         if (empty($college)) return $this->create(204, '课程不存在');
 
         // 找出门票

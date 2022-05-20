@@ -7,7 +7,7 @@
 
 <!-- js -->
 <script type="text/javascript" src="__AJS__/share_article.js"></script>
-<script type="text/javascript" src="__AJS__/college.js"></script>
+<script type="text/javascript" src="__AJS__/college.js?{$time}"></script>
 <style>
     .activity-original-price{
         text-decoration: line-through;
@@ -44,7 +44,8 @@
                     </div>
                     <div class="desc">
                         <input type="hidden" id="user_id" value="{$userid}">
-                        <input type="hidden" id="activityId" value="{:input('id/d')}">
+                        <input type="hidden" id="al_id" value="{$college.id}">
+                        <input type="hidden" id="collegeId" value="{:input('id/d')}">
                         <input type="hidden" id="shareContent" value="{$college.title}">
                         <div>
                             <h1>{$college.title}</h1>
@@ -139,9 +140,10 @@
                     <div class="article-after">
                         <div class="share-div">
                             <div class="bdsharebuttonbox bdshare-button-style1-16" data-bd-bind="1620209157378">
-                                <span>分享到：</span>
-                                <a data-cmd="tsina" class="bds bds_tsina" title="分享到新浪微博"></a>
+                                <span style="color: #757575">分享：</span>
+                                <a onclick="shareTo('sina')" class="bds bds_tsina" title="分享到新浪微博"></a>
                                 <a data-cmd="weixin" class="bds bds_weixin" title="分享到微信"></a>
+                                <a onclick="shareTo('qq')" class="bds bds_sqq" title="分享到QQ好友"></a>
                             </div>
                         </div>
                         <div class="like">
@@ -153,6 +155,44 @@
                             </a>
                         </div>
                     </div>
+                </div>
+
+
+                <div style="margin-top: 16px;">
+
+                    <!-- 评论区 -->
+                    <!-- 未登录显示 -->
+                    {empty name="$userid"}
+                    <div class="comment-textarea-div">
+                        <div class="prompt">
+                            <span><a href="{:url('login/index')}">登录</a>后参与评论</span>
+                        </div>
+                    </div>
+    
+                    <!-- 登录时显示 -->
+                    {else/}
+                    <div class="comment-textarea-div">
+                        <textarea class="input-text" type="text" id="comment" name="comment" placeholder="说点什么吧..."></textarea>
+                        <div class="clearfix">
+                            <div class="Avatar">
+                                <img src="{$avatar}" class="fl">
+                                <div class="c_aaa fl"> {$nickname} </div>
+                            </div>
+                            <div class="fr sub-btn" onclick="comment({$college.id}, 0)">发表评论</div>
+                        </div>
+                    </div>
+                    {/empty}
+    
+                    <!-- 评论区容器 -->
+                    <div class="comment_stories_list" style="display: none;">
+                        <div class="comment-div">
+                            <ul class="stories_list"></ul>
+                        </div>
+                    </div>
+    
+                    <div class="h16 bg-color"></div>
+    
+                    
                 </div>
             </div>
 

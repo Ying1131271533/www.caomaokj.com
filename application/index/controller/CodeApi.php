@@ -45,7 +45,7 @@ class CodeApi extends BaseApi
         }
 
         /**********************   是否以获取过验证码 判断是否已过一分钟   **********************/
-        $codeCache = Cache::store('sms')->get('sms-' . $data['type'] . '-' . $data['phone']);
+        $codeCache = Cache::get('sms-' . $data['type'] . '-' . $data['phone']);
         if (!empty($codeCache) && time() - $codeCache['create_tiem'] < 60) {
             // 剩余时间 - 秒数
             $timeLeft = 60 - (time() - $codeCache['create_tiem']);
@@ -65,7 +65,7 @@ class CodeApi extends BaseApi
             ];
 
             /**********************   缓存短信信息   **********************/
-            Cache::store('sms')->set('sms-' . $data['type'] . '-' . $data['phone'], $smsData);
+            Cache::set('sms-' . $data['type'] . '-' . $data['phone'], $smsData);
             return $this->create(200, '短信发生成功，请注意查收');
         } else {
             return $this->create(400, '短信发送失败，请稍候获取');
@@ -93,7 +93,7 @@ class CodeApi extends BaseApi
         }
 
         /**********************   是否以获取过验证码 判断是否已过一分钟   **********************/
-        $codeCache = Cache::store('sms')->get('sms-' . $data['type'] . '-' . $data['phone']);
+        $codeCache = Cache::get('sms-' . $data['type'] . '-' . $data['phone']);
 
         // 是否未超过一分钟
         if (!empty($codeCache) && time() - $codeCache['create_tiem'] < 60) {
@@ -115,7 +115,7 @@ class CodeApi extends BaseApi
             ];
 
             /**********************   缓存短信信息   **********************/
-            Cache::store('sms')->set('sms-' . $data['type'] . '-' . $data['phone'], $smsData);
+            Cache::set('sms-' . $data['type'] . '-' . $data['phone'], $smsData);
             return $this->create(200, '短信发生成功，请注意查收');
         } else {
             return $this->create(400, '短信发送失败，请稍候获取');
@@ -133,7 +133,7 @@ class CodeApi extends BaseApi
     public function checkCode($phone, $code, $type = 1)
     {
         /**********************   获取短信缓存   **********************/
-        $phoneCache = Cache::store('sms')->get('sms-' . $type . '-' . $phone);
+        $phoneCache = Cache::get('sms-' . $type . '-' . $phone);
         if (empty($phoneCache)) {
             return ['code' => 10001, 'msg' => '请重新发送验证码'];
         }
@@ -144,7 +144,7 @@ class CodeApi extends BaseApi
         }else{
             // 短信验证次数加一
             $phoneCache['verify_number'] += 1;
-            Cache::store('sms')->set('sms-' . $type . '-' . $phone, $phoneCache);
+            Cache::set('sms-' . $type . '-' . $phone, $phoneCache);
         }
 
         /**********************   检查验证码   **********************/

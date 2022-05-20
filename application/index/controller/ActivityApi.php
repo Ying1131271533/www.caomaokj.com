@@ -2,7 +2,7 @@
 declare (strict_types = 1);
 namespace app\index\controller;
 
-use app\common\model\Activity as A;
+use app\common\model\Activity;
 use app\common\model\ActivityJoin as J;
 use app\common\model\ActivityRef as AR;
 use app\common\model\Member as U;
@@ -68,7 +68,7 @@ class ActivityApi extends BaseApi
         $ing and $where[] = ['endtime', '>', time()];
 
         /**********************   获取活动数据   **********************/
-        $activity = A::where($where)
+        $activity = Activity::where($where)
             ->limit(12)
             ->page($page)
             ->field('id, endtime,starttime,address,thumb,title,discount,endtime')
@@ -76,7 +76,7 @@ class ActivityApi extends BaseApi
             ->select();
 
         /**********************   获取文章总条数   **********************/
-        $count = A::where($where)->count();
+        $count = Activity::where($where)->count();
 
         /**********************   重组文章数据 适应前端   **********************/
         $data = [];
@@ -102,6 +102,112 @@ class ActivityApi extends BaseApi
         ];
         return $this->create(200, '获取成功', $resultData);
     }
+    
+    /**
+     * 评论文章 评论/回复
+     *
+     * @param
+     * @return \think\Response
+     */
+    public function activityComment(Request $request)
+    {
+        // 是否有登录
+        if (empty($this->userid)) {
+            return $this->create(300, '请先登录');
+        }
+
+        // 接收参数
+        $params = $request->param();
+
+        // 找出文章
+        $activity = Activity::find($params['id']);
+        // halt($activity);
+        if (!$activity) {
+            return $this->create(400, '文章不存在');
+        }
+        
+        // 评论长度
+        if(mb_strlen($params['comment']) > 255){
+            return $this->create(400, '评论长度不能超过255个字符');
+        }
+
+        // 组装数据
+        $data = [
+            'content'     => $params['comment'],
+            'parentid'    => $params['pid'],
+            'status'      => 1,
+            'create_time' => time(),
+            // 'activity_id'  => $params['id'],
+            'member_id'   => $this->userid,
+        ];
+
+        // 保存评论
+        $result = $activity->comments()->save($data);
+        if (!$result) {
+            return $this->create(400, '评论发表失败~');
+        }
+
+        // 返回数据
+        return $this->create(200, '评论发表成功');
+
+    }
+
+    /**
+     * 获取文章评论
+     *
+     * @param
+     * @return json
+     */
+    public function getactivityComment(Request $request)
+    {
+        $id = $request->param('id/d', 0);
+        if (empty($id)) {
+            return $this->create(400, '获取失败');
+        }
+
+        // 找出活动
+        $activity = Activity::with(['comments' => function ($query) {
+            $query->order('id', 'desc');
+        }])->get($id);
+        // halt($activity);
+        if (empty($activity)) {
+            return $this->create(400, '活动不存在');
+        }
+
+        $commentsData = [];
+        foreach ($activity->comments as $key => $comment) {
+            $comment->member;
+            $commentsData[$key] = [
+                'acom_add_time'  => date('Y-m-d', $comment['create_time']),
+                'acom_comment'   => $comment['content'],
+                'acom_id'        => $comment['id'],
+                'acom_parent_id' => $comment['parentid'],
+                'al_id'          => $activity['id'],
+                'user_id'        => $comment['member']['id'],
+                'user_name'      => $comment['member']['username'],
+                'time'           => postTime($comment['create_time']),
+                'user_head'      => $comment['member']['avatar'],
+            ];
+
+            $commentsData[$key]['parent'] = [];
+            foreach ($activity->comments as $val) {
+                if ($comment['parentid'] == $val['id']) {
+                    $commentsData[$key]['parent'] = [
+                        'user_id'      => $val['member']['id'],
+                        'user_name'    => $val['member']['username'],
+                        'acom_comment' => $val['content'],
+                    ];
+                    continue;
+                }
+            }
+        }
+
+        $resultData = [
+            'count'    => count($commentsData),
+            'comments' => $commentsData,
+        ];
+        return $this->create(200, '获取成功', $resultData);
+    }
 
     /**
      * 活动收藏
@@ -122,7 +228,7 @@ class ActivityApi extends BaseApi
         }
 
         /**********************   找出活动   **********************/
-        $activity = A::get($id);
+        $activity = Activity::get($id);
         if (empty($activity)) {
             return $this->create(400, '活动不存在');
         }
@@ -173,7 +279,7 @@ class ActivityApi extends BaseApi
         }
 
         /**********************   找出文章   **********************/
-        $activity = A::get($id);
+        $activity = Activity::get($id);
         if (empty($activity)) {
             return $this->create(400, '文章不存在');
         }
@@ -218,7 +324,7 @@ class ActivityApi extends BaseApi
         $data = $request->param();
 
         /**********************   找出活动   **********************/
-        $activity = A::where(['status' => 1, 'id' => $data['activity_id']])->find();
+        $activity = Activity::where(['status' => 1, 'id' => $data['activity_id']])->find();
         if (empty($activity)) {
             return $this->create(204, '该活动不存在');
         }

@@ -113,13 +113,19 @@ class HomeApi extends BaseApi
             return $this->create(400, '文章不存在');
         }
 
+        // 评论长度
+        if(count($params['comment']) > 255){
+            return $this->create(400, '评论长度不能超过255个字符');
+        }
+
         // 组装数据
         $data = [
             'content'     => $params['comment'],
             'parentid'    => $params['pid'],
             'status'      => 1,
             'create_time' => time(),
-            'article_id'  => $params['id'],
+            // 'article_id'  => $params['id'],
+            'member_id'   => $this->userid,
         ];
 
         // 保存评论
@@ -157,7 +163,7 @@ class HomeApi extends BaseApi
 
         $commentsData = [];
         foreach ($article->comments as $key => $comment) {
-            $comment -> member;
+            $comment->member;
             $commentsData[$key] = [
                 'acom_add_time'  => date('Y-m-d', $comment['create_time']),
                 'acom_comment'   => $comment['content'],
@@ -169,7 +175,7 @@ class HomeApi extends BaseApi
                 'time'           => postTime($comment['create_time']),
                 'user_head'      => $comment['member']['avatar'],
             ];
-            
+
             $commentsData[$key]['parent'] = [];
             foreach ($article->comments as $val) {
                 if ($comment['parentid'] == $val['id']) {
@@ -182,7 +188,7 @@ class HomeApi extends BaseApi
                 }
             }
         }
-        
+
         $resultData = [
             'count'    => count($commentsData),
             'comments' => $commentsData,

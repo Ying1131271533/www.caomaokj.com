@@ -20,7 +20,7 @@ class Activity extends Model
 
     public function comments()
     {
-        return $this->belongsToMany('Member', 'ActivityComment');
+        return $this->hasMany('ActivityComment');
     }
 
     public function collects()

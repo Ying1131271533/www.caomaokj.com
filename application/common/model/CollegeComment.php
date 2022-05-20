@@ -1,14 +1,14 @@
 <?php
 namespace app\common\model;
 
-class ActivityComment extends BaseModel
+class CollegeComment extends BaseModel
 {
     protected $autoWriteTimestamp = false;
 
     // 文章
-    public function activity()
+    public function college()
     {
-        return $this->belongsTo('activity');
+        return $this->belongsTo('college');
     }
 
     public function member()

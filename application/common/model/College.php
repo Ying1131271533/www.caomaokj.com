@@ -18,7 +18,7 @@ class College extends Model
 
     public function comments()
     {
-        return $this->belongsToMany('Member', 'CollegeComment');
+        return $this->hasMany('CollegeComment');
     }
 
     public function collects()
