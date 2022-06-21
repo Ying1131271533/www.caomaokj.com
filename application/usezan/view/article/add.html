@@ -59,7 +59,7 @@
                         <div>
                             <div class="img-upload">
                                 <img class="cthumb" width="100" onclick="up_img('cthumb','thumb','jpg,gif,png,jpeg','10485760','290px',0);" src="__UIMG__/upload_thumb.png" alt="上传thumb" style="cursor:pointer;">
-                                <input type="hidden" class="thumb" name="thumb" value="" >
+                                <input type="hidden" class="thumb" name="thumb" id="thumb" value="" >
                             </div>
                         </div>
                     </td>
@@ -68,7 +68,7 @@
                 <tr>
                     <td width="90"><font color="red">*</font><label>关键字：</label></td>
                     <td>
-                        <input type="text" class="input-text" name="keyword" size="50" placeholder="例如：电商、开店、海外仓等等" validate="minlength:2,maxlength:10,required:true">
+                        <input type="text" class="input-text" name="keyword" size="50" placeholder="例如：电商、开店、海外仓等等" id="keyword" validate="minlength:2,maxlength:10,required:true">
                     </td>
                 </tr>
 
@@ -163,4 +163,21 @@ $(".cd-two").on("click", function() {
     var parents = $(this).parents(".cd-left");
     parents.find(".i-checks").prop("checked", this.checked);
 });
+
+
+$("#myform").submit(function(){
+
+	var thumb = $("#thumb").val();
+    if(!thumb){
+        layer.msg('封面不能为空', {icon:2}, 1);
+        return false;
+    }
+
+	var keyword = $("#keyword").val();
+    if(!keyword){
+        layer.msg('关键词不能为空', {icon:2}, 1);
+        return false;
+    }
+});
+
 </script>
