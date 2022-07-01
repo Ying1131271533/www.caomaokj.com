@@ -1,4 +1,4 @@
-<?php /*a:8:{s:45:"../application/index/view/service\detail.html";i:1645413612;s:42:"../application/index/view/layout\base.html";i:1645521738;s:44:"../application/index/view/layout\header.html";i:1645066486;s:41:"../application/index/view/layout\top.html";i:1646990834;s:42:"../application/index/view/layout\menu.html";i:1647832070;s:45:"../application/index/view/layout\toolbar.html";i:1624259554;s:44:"../application/index/view/layout\footer.html";i:1642580253;s:46:"../application/index/view/layout\open_img.html";i:1645170607;}*/ ?>
+<?php /*a:8:{s:45:"../application/index/view/service\detail.html";i:1645413612;s:42:"../application/index/view/layout\base.html";i:1652509834;s:44:"../application/index/view/layout\header.html";i:1645066486;s:41:"../application/index/view/layout\top.html";i:1656321539;s:42:"../application/index/view/layout\menu.html";i:1647832070;s:45:"../application/index/view/layout\toolbar.html";i:1624259554;s:44:"../application/index/view/layout\footer.html";i:1652509779;s:46:"../application/index/view/layout\open_img.html";i:1645170607;}*/ ?>
 <!DOCTYPE html>
 <html lang="zh-CN">
 <head>
@@ -43,7 +43,7 @@
     <link rel="stylesheet" href="/static/akali/layui/css/layui.css">
     <script src="/static/akali/layui/layui.js"></script>
     
-    <link rel="stylesheet" href="/static/akali/css/kjy.css?<?php echo htmlentities($time); ?>">
+    <link rel="stylesheet" href="/static/akali/css/kjy.css">
     
 	<!-- 修改底部搜索类型下拉layui样式 -->
 	<style>
@@ -166,7 +166,8 @@
                     商务合作 <svg class="icon" style="width:14px;height:12px;" aria-hidden="true">
                         <use xlink:href="#icon-arrowdown"></use>
                     </svg>
-                    <div class="header-drop-down-list-box" style="width: 90px; display: none;">
+                    <div class="header-drop-down-list-box" style="width: 105px; display: none;">
+                        <a href="<?php echo url('service/enter'); ?>">服务商入驻</a>
                         <a href="<?php echo url('customer/contact'); ?>">商务对接</a>
                         <a href="<?php echo url('customer/platform'); ?>">电商入驻</a>
                         <a href="<?php echo url('customer/activity'); ?>">活动报名</a>
@@ -792,7 +793,7 @@
         });
     });
 </script>
-<script type="text/javascript" src="/static/akali/js/search.js?<?php echo time(); ?>"></script>
+<script type="text/javascript" src="/static/akali/js/search.js"></script>
 </body>
 
 </html>

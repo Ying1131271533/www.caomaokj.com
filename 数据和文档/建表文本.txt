@@ -233,6 +233,65 @@ logistics_article_collect 物流文章收藏
 
 
 
+服务商入驻 
+service_enter
+
+id int id
+category_id int 分类id
+logo char(100) logo
+thumb char(100) 封面
+name char(20) 公司名称
+introduction char(255) 公司简介
+
+operator_name char(15) 运营人姓名
+phone char(20) 手机号
+customer_qr_code char(100) 客服二维码
+business_license char(100) 营业执照
+authorization_letter char(100) 授权函
+business_introduction char(100) 业务介绍
+image char(100) null 业务介绍主图片
+
+
+
+服务商入驻 - 公司介绍
+service_enter_introduce
+一对一
+id int id
+content text 文字介绍
+service_enter_id int 服务商入驻id
+
+
+
+服务商入驻 - 主推服务
+service_enter_featured
+一对多
+id int id
+path char(100) 介绍图片
+service_enter_id 服务商入驻id
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 

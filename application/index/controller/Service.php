@@ -78,4 +78,14 @@ class Service extends Base
         return view();
     }
 
+    /*
+     * 服务商入驻
+     *
+     * enter
+     */
+    public function enter()
+    {
+        // 视图
+        return view();
+    }
 }

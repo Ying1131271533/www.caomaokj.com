@@ -1,4 +1,4 @@
-<?php /*a:9:{s:42:"../application/index/view/index\index.html";i:1652509834;s:42:"../application/index/view/layout\base.html";i:1652509834;s:44:"../application/index/view/layout\header.html";i:1645066486;s:41:"../application/index/view/layout\top.html";i:1646990834;s:42:"../application/index/view/layout\menu.html";i:1647832070;s:50:"../application/index/view/layout\left_article.html";i:1650941597;s:45:"../application/index/view/layout\toolbar.html";i:1624259554;s:44:"../application/index/view/layout\footer.html";i:1652509779;s:46:"../application/index/view/layout\open_img.html";i:1645170607;}*/ ?>
+<?php /*a:9:{s:42:"../application/index/view/index\index.html";i:1652509834;s:42:"../application/index/view/layout\base.html";i:1652509834;s:44:"../application/index/view/layout\header.html";i:1645066486;s:41:"../application/index/view/layout\top.html";i:1656321539;s:42:"../application/index/view/layout\menu.html";i:1647832070;s:50:"../application/index/view/layout\left_article.html";i:1650941597;s:45:"../application/index/view/layout\toolbar.html";i:1624259554;s:44:"../application/index/view/layout\footer.html";i:1652509779;s:46:"../application/index/view/layout\open_img.html";i:1645170607;}*/ ?>
 <!DOCTYPE html>
 <html lang="zh-CN">
 <head>
@@ -314,7 +314,8 @@
                     商务合作 <svg class="icon" style="width:14px;height:12px;" aria-hidden="true">
                         <use xlink:href="#icon-arrowdown"></use>
                     </svg>
-                    <div class="header-drop-down-list-box" style="width: 90px; display: none;">
+                    <div class="header-drop-down-list-box" style="width: 105px; display: none;">
+                        <a href="<?php echo url('service/enter'); ?>">服务商入驻</a>
                         <a href="<?php echo url('customer/contact'); ?>">商务对接</a>
                         <a href="<?php echo url('customer/platform'); ?>">电商入驻</a>
                         <a href="<?php echo url('customer/activity'); ?>">活动报名</a>

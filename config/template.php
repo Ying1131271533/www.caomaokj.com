@@ -90,6 +90,11 @@ return [
         '__ZDCSS__'    => '/static/kjzd/css',
         '__ZDJS__'     => '/static/kjzd/js',
         '__ZDIMG__'    => '/static/kjzd/images',
+
+        // 卖家之家
+        '__MJCSS__'    => '/static/mjzj/css',
+        '__MJJS__'     => '/static/mjzj/js',
+        '__MJIMG__'    => '/static/mjzj/images',
     ],
 
 ];

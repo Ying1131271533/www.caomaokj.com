@@ -1,0 +1,462 @@
+{extend name="layout/base" /}
+{block name="title"}服务商入驻{/block}
+{block name="load"}
+
+<!-- css -->
+
+<link href="__MJCSS__/layout.css" rel="stylesheet" type="text/css">
+<link href="__MJCSS__/all.min.css" rel="stylesheet" type="text/css">
+<link href="__MJCSS__/weui.min.css" rel="stylesheet" type="text/css">
+<link href="__MJCSS__/serviceCommon.css" type="text/css" rel="stylesheet">
+<link href="__MJCSS__/serviceEnter.css" type="text/css" rel="stylesheet">
+<style>
+    #img {
+        height: 100px;
+        width: auto;
+        display: none;
+    }
+    #demo2 img{
+        width: 140px;
+    }
+    .test{
+        display: none;
+    }
+
+    .layui-btn {
+        background-color: #ff7600;
+    }
+</style>
+<!-- js -->
+{/block}
+
+<!-- 主体内容 -->
+{block name="main"}
+
+<!-- <header class="navbar navbar-expand-lg navbar-dark bg-dark" id="header"></header> -->
+<main id="body" style="margin-top: 150px;">
+    <div class="container service-enter">
+        <!---->
+        <p class="serveice-tip">服务商入驻</p>
+        <div class="display-flex flex-warp content-wrap">
+            <span class="display-flex justify-end align-center content-name">
+                <i class="fa fa-star icon" aria-hidden="true"></i>
+                <span class="content-field">服务类别：</span>
+            </span>
+            <div class="content-right">
+                <select class="service-select">
+                    <option value="-1">请选择服务商类别</option>
+                    <option value="161">跨境VAT税务</option>
+                    <option value="162">跨境知识产权</option>
+                    <option value="163">ERP工具</option>
+                    <option value="164">跨境金融</option>
+                </select>
+            </div>
+        </div>
+
+
+        <div class="display-flex flex-warp content-wrap">
+            <span class="display-flex justify-end align-center content-name">
+                <i class="fa fa-star icon" aria-hidden="true"></i>
+                <span class="content-field">上传logo：</span>
+            </span>
+            <div class="content-right" style="min-height: 70px;">
+                <div class="img-btn-warp">
+
+                    <div class="layui-upload">
+                        <button type="button" class="layui-btn" onclick="upload_img(this)">上传图片</button>
+                        <button type="button" class="layui-btn test" id="logo">上传图片</button>
+                        <input type="hidden" name="logo" id="demoInput" value="">
+                        <div class="layui-upload-list">
+                            <img class="layui-upload-img" id="img">
+                            <p id="demoText"></p>
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+        </div>
+
+        <div class="display-flex flex-warp content-wrap">
+            <span class="display-flex justify-end align-center content-name">
+                <i class="fa fa-star icon" aria-hidden="true"></i>
+                <span class="content-field">上传封面：</span>
+            </span>
+            <div class="content-right" style="min-height: 70px;">
+                <div class="img-btn-warp">
+
+                    <div class="layui-upload">
+                        <button type="button" class="layui-btn" onclick="upload_img(this)">上传图片</button>
+                        <button type="button" class="layui-btn test" id="thumb">上传图片</button>
+                        <input type="hidden" name="thumb" id="demoInput" value="">
+                        <div class="layui-upload-list">
+                            <img class="layui-upload-img" id="img">
+                            <p id="demoText"></p>
+                        </div>
+                    </div>
+                    
+                </div>
+            </div>
+        </div>
+        <div class="display-flex flex-warp content-wrap">
+            <span class="display-flex justify-end align-center content-name">
+                <i class="fa fa-star icon" aria-hidden="true"></i>
+                <span class="content-field">公司名称：</span>
+            </span>
+            <div class="content-right"><input type="text" placeholder="建议20个字以内，如果超过字数可用公司或品牌简称" maxlength="20" class="input-commom" name="name"></div>
+        </div>
+        <div class="display-flex flex-warp content-wrap">
+            <span class="display-flex justify-end align-center content-name">
+                <i class="fa fa-star icon" aria-hidden="true"></i>
+                <span class="content-field">公司简介：</span>
+            </span>
+            <div class="content-right"><textarea maxlength="200" placeholder="请输入公司简介(200个字以内)" class="input-commom content-textarea" name="introduction"></textarea></div>
+        </div>
+        <div class="display-flex flex-warp content-wrap">
+            <span class="display-flex justify-end align-center content-name">
+                <i class="fa fa-star icon" aria-hidden="true"></i>
+                <span class="content-field">运营人姓名：</span>
+            </span>
+            <div class="content-right"><input type="text" name="operator_name" placeholder="请输入运营人姓名" maxlength="10" class="input-commom">
+            </div>
+        </div>
+        <div class="display-flex flex-warp content-wrap">
+            <span class="display-flex justify-end align-center content-name">
+                <i class="fa fa-star icon" -hidden="true"></i><span class="content-field">手机号：</span>
+            </span>
+            <div class="content-right"><input type="text" name="phone" placeholder="请输入手机号" maxlengt class="input-commom">
+            </div>
+        </div>
+        <div class="display-flex flex-warp content-wrap">
+            <span class="display-flex justify-end align-center content-name"><i class="fa fa-star icon"
+                    aria-hidden="true"></i><span class="content-field">客服二维码：</span></span>
+            <div class="content-right display-flex justify-start" style="min-height: 70px;">
+                <div class="img-btn-warp">
+                    <div class="layui-upload">
+                        <button type="button" class="layui-btn" onclick="upload_img(this)">上传图片</button>
+                        <button type="button" class="layui-btn test" id="customer_qr_code">上传图片</button>
+                        <input type="hidden" name="customer_qr_code" id="demoInput" value="">
+                        <div class="layui-upload-list">
+                            <img class="layui-upload-img" id="img">
+                            <p id="demoText"></p>
+                        </div>
+                    </div>
+                    <p style="width: 100%; text-align: center; color: red; padding-top: 6px;">建议尺寸 1:1</p>
+                </div>
+            </div>
+        </div>
+        <div class="display-flex flex-warp content-wrap">
+            <span class="display-flex justify-end align-center content-name">
+                <i class="fa fa-star icon" aria-hidden="true"></i>
+                <span class="content-field">营业执照：</span>
+            </span>
+            <div class="content-right" style="min-height: 70px;">
+                <div class="img-btn-warp">
+                    <div class="layui-upload">
+                        <button type="button" class="layui-btn" onclick="upload_img(this)">上传图片</button>
+                        <button type="button" class="layui-btn test" id="business_license">上传图片</button>
+                        <input type="hidden" name="business_license" id="demoInput" value="">
+                        <div class="layui-upload-list">
+                            <img class="layui-upload-img" id="img">
+                            <p id="demoText"></p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="display-flex flex-warp content-wrap">
+            <span class="display-flex justify-end align-center content-name">
+                <i class="fa fa-star icon" -hidden="true"></i><span class="content-field">授权函：</span></span>
+            <div class="content-right" style="min-height: 70px;">
+                <div class="img-btn-warp">
+                    <div class="layui-upload">
+                        <button type="button" class="layui-btn" onclick="upload_img(this)">上传图片</button>
+                        <button type="button" class="layui-btn test" id="authorization_letter">上传图片</button>
+                        <input type="hidden" name="authorization_letter" id="demoInput" value="">
+                        <div class="layui-upload-list">
+                            <img class="layui-upload-img" id="img">
+                            <p id="demoText"></p>
+                        </div>
+                    </div>
+                </div>
+                <a class="get-model" title="授权函模板下载" onclick="window.open(9, 'akali.doc')"> 《授权函模板下载》 </a>
+            </div>
+        </div>
+        <div class="display-flex flex-warp content-wrap">
+            <span class="display-flex justify-end align-center content-name">
+                <i class="fa fa-star icon" aria-hidden="true"></i>
+                <span class="content-field">主推服务：</span>
+            </span>
+            <div class="content-right display-flex justify-start flex-wrap" style="min-height: 100px;">
+                <div class="img-btn-warp" style="width:600px;">
+
+                    <div class="layui-upload">
+                        <button type="button" class="layui-btn" id="test2">多图片上传</button>
+                        <blockquote class="layui-elem-quote layui-quote-nm" style="margin-top: 10px;">
+                            预览图：
+                            <div class="layui-upload-list" id="demo2"></div>
+                        </blockquote>
+                    </div>
+
+                    <p style="width: 100%; text-align: left; padding-top: 10px;">(实力展示)最多4张,</p>
+                    <p style="width: 100%; text-align: left; color: red; font-weight: bold;">不可带二维码或其他联系方式</p>
+                    <p style="width: 100%; text-align: left; color: red;">建议：460像素 x 240像素</p>
+                </div>
+            </div>
+        </div>
+        <div class="display-flex flex-warp content-wrap">
+            <span class="display-flex justify-end align-center content-name">
+                <i class="fa fa-star icon" aria-hidden="true"></i>
+                <span class="content-field">服务介绍：</span>
+            </span>
+            <div class="content-right">
+                <textarea maxlength="500" name="business_introduction" placeholder="请输入服务介绍(500个字以内)" class="input-commom content-textarea"></textarea>
+            </div>
+        </div>
+        <div class="display-flex flex-warp content-wrap" style="margin-top: 66px;"
+            class="display-flex justify-end content-name">
+            <span class="display-flex justify-end content-name"></span>
+            <div class="content-right" style="height: 136px;">
+                <div style="height: 50px;"><span class="submit-btn">提交申请</span></div>
+                <p class="submit-tip">审核时间为1-3个工作日</p>
+                <p class="submit-tip" style="color: red;">加急审核请加微信：13829730554</p>
+            </div>
+        </div>
+    </div>
+</main>
+
+<script>
+    var buttonObj = '';
+    var demoInputObj = '';
+    function upload_img(obj) {
+        // 触发点击上传图片
+        $(obj).parents('.layui-upload').find(".test").click();
+        buttonObj = obj;
+        demoInputObj = $(obj).parents('.layui-upload').find("#demoInput");
+    }
+
+    layui.use(['upload', 'element', 'layer'], function () {
+        var $ = layui.jquery
+            , upload = layui.upload
+            , element = layui.element
+            , layer = layui.layer
+
+        // logo
+        var uploadInst = upload.render({
+            elem: '#logo'
+            , url: '/index/upload/uploadImg'
+            , size: 1024*2 //限定大小
+            , before: function (obj) {
+                // 显示预览
+                $(buttonObj).parents('.layui-upload').find('#img').show();
+                // 预读本地文件示例，不支持ie8
+                obj.preview(function (index, file, result) {
+                    $(buttonObj).parents('.layui-upload').find('#img').attr('src', result);
+                });
+            }
+            , done: function (res) {
+                //如果上传失败
+                if (res.code != 200) {
+                    return layer.msg('上传失败');
+                }
+                //上传成功的一些操作
+                $(demoInputObj).val(res.data);
+                return layer.msg(res.msg);
+            }
+            , error: function () {
+                //演示失败状态，并实现重传
+                var demoText = $('#demoText');
+                demoText.html('<span style="color: #FF5722;">上传失败</span> <a class="layui-btn layui-btn-xs demo-reload">重试</a>');
+                demoText.find('.demo-reload').on('click', function () {
+                    uploadInst.upload();
+                });
+            }
+        });
+
+        // thumb
+        var uploadInst = upload.render({
+            elem: '#thumb'
+            , url: '/index/upload/uploadImg'
+            , size: 1024*2 //限定大小
+            , before: function (obj) {
+                // 显示预览
+                $(buttonObj).parents('.layui-upload').find('#img').show();
+                // 预读本地文件示例，不支持ie8
+                obj.preview(function (index, file, result) {
+                    $(buttonObj).parents('.layui-upload').find('#img').attr('src', result); //图片链接（base64）
+                });
+            }
+            , done: function (res) {
+                //如果上传失败
+                if (res.code != 200) {
+                    return layer.msg('上传失败');
+                }
+                //上传成功的一些操作
+                $(demoInputObj).val(res.data);
+                return layer.msg(res.msg);
+            }
+            , error: function () {
+                //演示失败状态，并实现重传
+                var demoText = $('#demoText');
+                demoText.html('<span style="color: #FF5722;">上传失败</span> <a class="layui-btn layui-btn-xs demo-reload">重试</a>');
+                demoText.find('.demo-reload').on('click', function () {
+                    uploadInst.upload();
+                });
+            }
+        });
+
+        // customer_qr_code
+        var uploadInst = upload.render({
+            elem: '#customer_qr_code'
+            , url: '/index/upload/uploadImg'
+            , size: 1024*2 //限定大小
+            , before: function (obj) {
+                // 显示预览
+                $(buttonObj).parents('.layui-upload').find('#img').show();
+                // 预读本地文件示例，不支持ie8
+                obj.preview(function (index, file, result) {
+                    $(buttonObj).parents('.layui-upload').find('#img').attr('src', result); //图片链接（base64）
+                });
+            }
+            , done: function (res) {
+                //如果上传失败
+                if (res.code != 200) {
+                    return layer.msg('上传失败');
+                }
+                //上传成功的一些操作
+                $(demoInputObj).val(res.data);
+                return layer.msg(res.msg);
+            }
+            , error: function () {
+                //演示失败状态，并实现重传
+                var demoText = $('#demoText');
+                demoText.html('<span style="color: #FF5722;">上传失败</span> <a class="layui-btn layui-btn-xs demo-reload">重试</a>');
+                demoText.find('.demo-reload').on('click', function () {
+                    uploadInst.upload();
+                });
+            }
+        });
+
+        // customer_qr_code
+        var uploadInst = upload.render({
+            elem: '#customer_qr_code'
+            , url: '/index/upload/uploadImg'
+            , size: 1024*2 //限定大小
+            , before: function (obj) {
+                // 显示预览
+                $(buttonObj).parents('.layui-upload').find('#img').show();
+                // 预读本地文件示例，不支持ie8
+                obj.preview(function (index, file, result) {
+                    $(buttonObj).parents('.layui-upload').find('#img').attr('src', result); //图片链接（base64）
+                });
+            }
+            , done: function (res) {
+                //如果上传失败
+                if (res.code != 200) {
+                    return layer.msg('上传失败');
+                }
+                //上传成功的一些操作
+                $(demoInputObj).val(res.data);
+                return layer.msg(res.msg);
+            }
+            , error: function () {
+                //演示失败状态，并实现重传
+                var demoText = $('#demoText');
+                demoText.html('<span style="color: #FF5722;">上传失败</span> <a class="layui-btn layui-btn-xs demo-reload">重试</a>');
+                demoText.find('.demo-reload').on('click', function () {
+                    uploadInst.upload();
+                });
+            }
+        });
+
+        // business_license
+        var uploadInst = upload.render({
+            elem: '#business_license'
+            , url: '/index/upload/uploadImg'
+            , size: 1024*2 //限定大小
+            , before: function (obj) {
+                // 显示预览
+                $(buttonObj).parents('.layui-upload').find('#img').show();
+                // 预读本地文件示例，不支持ie8
+                obj.preview(function (index, file, result) {
+                    $(buttonObj).parents('.layui-upload').find('#img').attr('src', result); //图片链接（base64）
+                });
+            }
+            , done: function (res) {
+                //如果上传失败
+                if (res.code != 200) {
+                    return layer.msg('上传失败');
+                }
+                //上传成功的一些操作
+                $(demoInputObj).val(res.data);
+                return layer.msg(res.msg);
+            }
+            , error: function () {
+                //演示失败状态，并实现重传
+                var demoText = $('#demoText');
+                demoText.html('<span style="color: #FF5722;">上传失败</span> <a class="layui-btn layui-btn-xs demo-reload">重试</a>');
+                demoText.find('.demo-reload').on('click', function () {
+                    uploadInst.upload();
+                });
+            }
+        });
+
+        // authorization_letter
+        var uploadInst = upload.render({
+            elem: '#authorization_letter'
+            , url: '/index/upload/uploadImg'
+            , size: 1024*2 //限定大小
+            , before: function (obj) {
+                // 显示预览
+                $(buttonObj).parents('.layui-upload').find('#img').show();
+                // 预读本地文件示例，不支持ie8
+                obj.preview(function (index, file, result) {
+                    $(buttonObj).parents('.layui-upload').find('#img').attr('src', result); //图片链接（base64）
+                });
+            }
+            , done: function (res) {
+                //如果上传失败
+                if (res.code != 200) {
+                    return layer.msg('上传失败');
+                }
+                //上传成功的一些操作
+                $(demoInputObj).val(res.data);
+                return layer.msg(res.msg);
+            }
+            , error: function () {
+                //演示失败状态，并实现重传
+                var demoText = $('#demoText');
+                demoText.html('<span style="color: #FF5722;">上传失败</span> <a class="layui-btn layui-btn-xs demo-reload">重试</a>');
+                demoText.find('.demo-reload').on('click', function () {
+                    uploadInst.upload();
+                });
+            }
+        });
+        
+        //多图片上传
+        upload.render({
+            elem: '#test2'
+            , url: '/index/upload/uploadImg' //此处配置你自己的上传接口即可
+            , size: 1024*3 //限定大小
+            , multiple: true
+            , before: function (obj) {
+                // 显示多图预览
+                $('#demo2').show();
+                //预读本地文件示例，不支持ie8
+                obj.preview(function (index, file, result) {
+                    $('#demo2').append('<img src="' + result + '" alt="' + file.name + '" class="layui-upload-img">');
+                });
+            }
+            , done: function (res) {
+                if(res.code != 200){
+                    alert('上传失败');
+                    return false;
+                }
+                //上传完毕
+                $('#demo2').append('<input type="hidden" name=featuredImgs[] value="' + res.data + '" >');
+            }
+        });
+
+    });
+</script>
+
+{/block}
