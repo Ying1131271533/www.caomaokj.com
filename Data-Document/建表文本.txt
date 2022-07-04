@@ -258,7 +258,7 @@ category_id int 分类id (一对多)
 service_enter_introduce
 一对一
 id int id
-content text 内容
+content text 服务介绍内容
 service_enter_id int 服务商入驻id
 
 
