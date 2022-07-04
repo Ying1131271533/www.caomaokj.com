@@ -26,6 +26,11 @@ class Category extends Model
         return $this->hasMany('Service');
     }
 
+    public function serviceEnter()
+    {
+        return $this->hasMany('ServiceEnter');
+    }
+
     // 获取分类列表缓存
     public static function getCategoryList($where = [], $field = true, $cache = true, $order = ['listorder' => 'desc', 'id' => 'asc']){
         $data = self::where($where)

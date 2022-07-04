@@ -17,9 +17,4 @@ class Upload extends BaseApi
             return $this->create(400, $file->getError());
         }
     }
-    
-    // 上传多张图片
-    public function uploadImgs(){
-        return $this->create(200, '阿卡丽');
-    }
 }

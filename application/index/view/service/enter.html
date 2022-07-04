@@ -15,10 +15,12 @@
         width: auto;
         display: none;
     }
-    #demo2 img{
+
+    #demo2 img {
         width: 140px;
     }
-    .test{
+
+    .test {
         display: none;
     }
 
@@ -43,7 +45,7 @@
                 <span class="content-field">服务类别：</span>
             </span>
             <div class="content-right">
-                <select class="service-select">
+                <select class="service-select" name="category_id">
                     <option value="-1">请选择服务商类别</option>
                     <option value="161">跨境VAT税务</option>
                     <option value="162">跨境知识产权</option>
@@ -93,7 +95,7 @@
                             <p id="demoText"></p>
                         </div>
                     </div>
-                    
+
                 </div>
             </div>
         </div>
@@ -102,28 +104,31 @@
                 <i class="fa fa-star icon" aria-hidden="true"></i>
                 <span class="content-field">公司名称：</span>
             </span>
-            <div class="content-right"><input type="text" placeholder="建议20个字以内，如果超过字数可用公司或品牌简称" maxlength="20" class="input-commom" name="name"></div>
+            <div class="content-right"><input type="text" placeholder="建议20个字以内，如果超过字数可用公司或品牌简称" maxlength="20"
+                    class="input-commom" name="name"></div>
         </div>
         <div class="display-flex flex-warp content-wrap">
             <span class="display-flex justify-end align-center content-name">
                 <i class="fa fa-star icon" aria-hidden="true"></i>
                 <span class="content-field">公司简介：</span>
             </span>
-            <div class="content-right"><textarea maxlength="200" placeholder="请输入公司简介(200个字以内)" class="input-commom content-textarea" name="introduction"></textarea></div>
+            <div class="content-right"><textarea maxlength="200" placeholder="请输入公司简介(200个字以内)"
+                    class="input-commom content-textarea" name="introduction"></textarea></div>
         </div>
         <div class="display-flex flex-warp content-wrap">
             <span class="display-flex justify-end align-center content-name">
                 <i class="fa fa-star icon" aria-hidden="true"></i>
                 <span class="content-field">运营人姓名：</span>
             </span>
-            <div class="content-right"><input type="text" name="operator_name" placeholder="请输入运营人姓名" maxlength="10" class="input-commom">
+            <div class="content-right"><input type="text" name="operator_name" placeholder="请输入运营人姓名" maxlength="15"
+                    class="input-commom">
             </div>
         </div>
         <div class="display-flex flex-warp content-wrap">
             <span class="display-flex justify-end align-center content-name">
                 <i class="fa fa-star icon" -hidden="true"></i><span class="content-field">手机号：</span>
             </span>
-            <div class="content-right"><input type="text" name="phone" placeholder="请输入手机号" maxlengt class="input-commom">
+            <div class="content-right"><input type="text" name="phone" placeholder="请输入手机号" maxlength="20" class="input-commom">
             </div>
         </div>
         <div class="display-flex flex-warp content-wrap">
@@ -209,14 +214,14 @@
                 <span class="content-field">服务介绍：</span>
             </span>
             <div class="content-right">
-                <textarea maxlength="500" name="business_introduction" placeholder="请输入服务介绍(500个字以内)" class="input-commom content-textarea"></textarea>
+                <textarea maxlength="500" name="service_introduction" placeholder="请输入服务介绍(500个字以内)" class="input-commom content-textarea"></textarea>
             </div>
         </div>
         <div class="display-flex flex-warp content-wrap" style="margin-top: 66px;"
             class="display-flex justify-end content-name">
             <span class="display-flex justify-end content-name"></span>
             <div class="content-right" style="height: 136px;">
-                <div style="height: 50px;"><span class="submit-btn">提交申请</span></div>
+                <div style="height: 50px;"><span class="submit-btn" onclick="submit()">提交申请</span></div>
                 <p class="submit-tip">审核时间为1-3个工作日</p>
                 <p class="submit-tip" style="color: red;">加急审核请加微信：13829730554</p>
             </div>
@@ -244,7 +249,7 @@
         var uploadInst = upload.render({
             elem: '#logo'
             , url: '/index/upload/uploadImg'
-            , size: 1024*2 //限定大小
+            , size: 1024 * 2 //限定大小
             , before: function (obj) {
                 // 显示预览
                 $(buttonObj).parents('.layui-upload').find('#img').show();
@@ -272,11 +277,11 @@
             }
         });
 
-        // thumb
+        // 封面
         var uploadInst = upload.render({
             elem: '#thumb'
             , url: '/index/upload/uploadImg'
-            , size: 1024*2 //限定大小
+            , size: 1024 * 2 //限定大小
             , before: function (obj) {
                 // 显示预览
                 $(buttonObj).parents('.layui-upload').find('#img').show();
@@ -304,11 +309,11 @@
             }
         });
 
-        // customer_qr_code
+        // 客服二维码
         var uploadInst = upload.render({
             elem: '#customer_qr_code'
             , url: '/index/upload/uploadImg'
-            , size: 1024*2 //限定大小
+            , size: 1024 * 2 //限定大小
             , before: function (obj) {
                 // 显示预览
                 $(buttonObj).parents('.layui-upload').find('#img').show();
@@ -336,43 +341,11 @@
             }
         });
 
-        // customer_qr_code
-        var uploadInst = upload.render({
-            elem: '#customer_qr_code'
-            , url: '/index/upload/uploadImg'
-            , size: 1024*2 //限定大小
-            , before: function (obj) {
-                // 显示预览
-                $(buttonObj).parents('.layui-upload').find('#img').show();
-                // 预读本地文件示例，不支持ie8
-                obj.preview(function (index, file, result) {
-                    $(buttonObj).parents('.layui-upload').find('#img').attr('src', result); //图片链接（base64）
-                });
-            }
-            , done: function (res) {
-                //如果上传失败
-                if (res.code != 200) {
-                    return layer.msg('上传失败');
-                }
-                //上传成功的一些操作
-                $(demoInputObj).val(res.data);
-                return layer.msg(res.msg);
-            }
-            , error: function () {
-                //演示失败状态，并实现重传
-                var demoText = $('#demoText');
-                demoText.html('<span style="color: #FF5722;">上传失败</span> <a class="layui-btn layui-btn-xs demo-reload">重试</a>');
-                demoText.find('.demo-reload').on('click', function () {
-                    uploadInst.upload();
-                });
-            }
-        });
-
-        // business_license
+        // 营业执照
         var uploadInst = upload.render({
             elem: '#business_license'
             , url: '/index/upload/uploadImg'
-            , size: 1024*2 //限定大小
+            , size: 1024 * 2 //限定大小
             , before: function (obj) {
                 // 显示预览
                 $(buttonObj).parents('.layui-upload').find('#img').show();
@@ -400,11 +373,11 @@
             }
         });
 
-        // authorization_letter
+        // 授权函
         var uploadInst = upload.render({
             elem: '#authorization_letter'
             , url: '/index/upload/uploadImg'
-            , size: 1024*2 //限定大小
+            , size: 1024 * 2 //限定大小
             , before: function (obj) {
                 // 显示预览
                 $(buttonObj).parents('.layui-upload').find('#img').show();
@@ -431,12 +404,12 @@
                 });
             }
         });
-        
-        //多图片上传
+
+        //主推服务
         upload.render({
             elem: '#test2'
             , url: '/index/upload/uploadImg' //此处配置你自己的上传接口即可
-            , size: 1024*3 //限定大小
+            , size: 1024 * 3 //限定大小
             , multiple: true
             , before: function (obj) {
                 // 显示多图预览
@@ -447,7 +420,7 @@
                 });
             }
             , done: function (res) {
-                if(res.code != 200){
+                if (res.code != 200) {
                     alert('上传失败');
                     return false;
                 }
@@ -457,6 +430,84 @@
         });
 
     });
+
+    // 提交
+    function submit(){
+        var category_id = $('select[name="category_id"]').val();
+        var logo = $('input[name="logo"]').val();
+        var thumb = $('input[name="thumb"]').val();
+        var name = $('input[name="name"]').val();
+        var introduction = $('textarea[name="introduction"]').val();
+        var operator_name = $('input[name="operator_name"]').val();
+        var phone = $('input[name="phone"]').val();
+        var customer_qr_code = $('input[name="customer_qr_code"]').val();
+        var business_license = $('input[name="business_license"]').val();
+        var authorization_letter = $('input[name="authorization_letter"]').val();
+        var service_introduction = $('textarea[name="service_introduction"]').val();
+        var featuredImgs = $('input[name="featuredImgs[]"]').val();
+        // 主推服务图片数组
+        var service_enter_featured = [];
+        $("input[name='featuredImgs[]']").each(function(i){
+            // console.log(this.value);
+            service_enter_featured.push(this.value);
+        });
+
+        let errorMsg = "";
+        if(category_id < 0){
+            errorMsg = '请选择服务类别';
+        }
+        else if(logo == ''){
+            errorMsg = '请上传公司Logo';
+        }
+        else if(thumb == ''){
+            errorMsg = '请上传封面';
+        }
+        else if(name == ''){
+            errorMsg = '请输入公司名称';
+        }
+        else if(introduction == ''){
+            errorMsg = '请输入公司简介';
+        }
+        else if(operator_name == ''){
+            errorMsg = '请输入运营人姓名';
+        }
+        else if(phone == ''){
+            errorMsg = '请输入手机号';
+        }
+        else if(customer_qr_code == ''){
+            errorMsg = '请输入客服二维码';
+        }
+        else if(business_license == ''){
+            errorMsg = '请上传营业执照';
+        }
+        else if(authorization_letter == ''){
+            errorMsg = '请上传授权函';
+        }
+        else if(service_enter_featured.length == 0){
+            errorMsg = '请上传主推服务';
+        }
+        
+        var data = {
+            category_id: category_id,
+            logo: logo,
+            thumb: thumb,
+            name: name,
+            introduction: introduction,
+            operator_name: operator_name,
+            phone: phone,
+            customer_qr_code: customer_qr_code,
+            business_license: business_license,
+            authorization_letter: authorization_letter,
+            service_introduction: service_introduction,
+            service_enter_featured: service_enter_featured,
+        };
+        $.post('/index/service_api/index', data, function(res){
+            if(res.code != 200){
+                layer.msg(res.msg, {icon:2});
+            }
+        });
+    }
+
 </script>
 
 {/block}
