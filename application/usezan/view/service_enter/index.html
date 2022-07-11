@@ -1,0 +1,146 @@
+{include file="public/header" /}
+<div class="mainbox animated fadeInRight">
+	<div class="mainnav_title">
+	    <a class="on">服务商入驻</a>
+	    <a class="bth-rand fr" href="javascript:location.replace(location.href);" title="刷新"><b class="uzfont uzico-shuaxin"></b></a>
+    </div>
+	<table  class="search_table" width="100%">
+		<tr>
+			<td class="search">
+				<form action="{:url('service_enter/index')}" method="post">
+					<input id="name" type="text" class="input-text" name="name" placeholder="公司名称搜索" value="{:input('name/s')}" style="float:left;">
+					<input id="phone" type="text" class="input-text" name="phone" placeholder="手机号码搜索" value="{:input('phone/s')}" style="float:left;">
+					<select class="catid" name="limit">
+						<option value="20" {eq name="$limit" value="20"}selected{/eq}>20 条/页</option>
+						<option value="50" {eq name="$limit" value="50"}selected{/eq}>50 条/页</option>
+						<option value="100" {eq name="$limit" value="100"}selected{/eq}>100 条/页</option>
+						<option value="200" {eq name="$limit" value="200"}selected{/eq}>200 条/页</option>
+					</select>
+					<select class="catid" name="status">
+						<option value="-1" {eq name="$status" value="-1"}selected{/eq}>审核状态</option>
+						<option value="0" {eq name="$status" value="0"}selected{/eq}>未审核</option>
+						<option value="1" {eq name="$status" value="1"}selected{/eq}>已通过</option>
+						<option value="2" {eq name="$status" value="2"}selected{/eq}>未通过</option>
+					</select>
+					<input type="hidden" name="tree" value="{$tree_id}"/>
+					<input type="submit" value="{:lang('chaxun')}" class="button" />
+					<a href="{:url('service_enter/index')}" class="button">重置</a>
+				</form>
+			</td>
+		</tr>
+	</table>
+	<form name="myform" id="myform" action="{:url('activity/sendGroupMessage')}" method="post">
+		<div class="table-list">
+		    <table width="100%" cellspacing="0">
+				<thead>
+		            <tr>
+						<th width="40">ID</th>
+						<th width="80">分类</th>
+						<th width="80">logo</th>
+						<!-- <th width="80">封面</th> -->
+						<th width="150" align="left">公司名称</th>
+						<!-- <th width="250" align="left">公司简介</th> -->
+						<th width="60">运营人姓名</th>
+						<th width="50">手机号</th>
+						<th width="80">客服二维码</th>
+						<!-- <th width="80">营业执照</th> -->
+						<!-- <th width="80">授权函</th> -->
+						<!-- <th width="80">业务介绍主图片</th> -->
+						<th width="100">审核状态</th>
+						<th width="100">审核操作</th>
+						<th width="150">报名时间</th>
+						<th width="100">操作</th>
+					</tr>
+		        </thead>
+		      	<tbody>
+					{foreach $list as $value}
+					<tr height="70">
+						<td align="center">{$value.id}</td>
+						<td align="center">{$value.category.catname}</td>
+						<td align="center">
+							<img height="70" src="{$value['logo'] ? $value['logo'] : '__UIMG__/nodata.svg'}" style="cursor:pointer;" onclick="open_img(this)" />
+						</td>
+						<!-- <td align="center">
+							<img height="70" src="{$value['thumb'] ? $value['thumb'] : '__UIMG__/nodata.svg'}" style="cursor:pointer;" onclick="open_img(this)" />
+						</td> -->
+						<td align="left">{$value.name}</td>
+						<!-- <td align="left">{$value.introduction}</td> -->
+						<td align="center">{$value.operator_name}</td>
+						<td align="center">{$value.phone}</td>
+						<td align="center">
+							<img height="70" src="{$value['customer_qr_code'] ? $value['customer_qr_code'] : '__UIMG__/nodata.svg'}" style="cursor:pointer;" onclick="open_img(this)" />
+						</td>
+						<!-- <td align="center">
+							<img height="70" src="{$value['business_license'] ? $value['business_license'] : '__UIMG__/nodata.svg'}" style="cursor:pointer;" onclick="open_img(this)" />
+						</td> -->
+						<!-- <td align="center">
+							<img height="70" src="{$value['authorization_letter'] ? $value['authorization_letter'] : '__UIMG__/nodata.svg'}" style="cursor:pointer;" onclick="open_img(this)" />
+						</td> -->
+						<!-- <td align="center">
+							<img height="70" src="{$value['image'] ? $value['image'] : '__UIMG__/nodata.svg'}" style="cursor:pointer;" onclick="open_img(this)" />
+						</td> -->
+
+						<td align="center">
+						{if $value.status == 0}
+						<font color="red">未审核</font>
+						{elseif $value.status == 1}
+						<font color="green">已通过</font>
+						{elseif $value.status == 2}
+						<font color="#999">未通过</font>
+						{/if}
+						</td>
+
+						{if $value.status == 0}
+						<td align="center">
+		                    <div style="float: left; margin-left: 40px;"><a onclick="status({$value.id}, 1)" class="bth-a ajax-status"></a></div>
+		                    <div style="float: left; margin-left: 10px;"><a onclick="status({$value.id}, 2)" class="bth-a ajax-status error-c"></a></div>
+		                </td>
+						{else/}
+						<td align="center">--</td>
+						{/if}
+						<td align="center">{$value.create_time}</td>
+						<td align="center" style="width: 30px;">
+							<a href="{:url('service_enter/detail', ['id' => $value.id])}" class="keyword-article button">查看详情</a>
+							<!-- <input value="查看详情" data-url="{:url('service_enter/detail', ['id' => $value.id])}" class="keyword-article button"> -->
+						</td>
+					</tr>
+					{/foreach}
+		      	</tbody>
+		    </table>
+		</div>
+	</form>
+</div>
+<div id="pages" class="page">{$list|raw}</div>
+
+<script type="text/javascript">
+
+	function status(id, status){
+		var msg = '';
+		status == 1 ? msg = '是否审核通过' : msg = '是否审核不通过';
+		layer.confirm(msg, function(index){
+			
+			$.post("{:url('status')}", {id: id, status: status}, function(res){
+				if(res.status != 20000){
+					layer.msg(res.msg, {icon: 2});
+				}
+				layer.msg(res.msg, {icon: 1});
+				location.reload();
+			}, 'json');
+
+			layer.close(index);
+		});
+	}
+
+	/* $(".keyword-article").on("click",function () {
+		var node_url = $(this).attr("data-url");
+		layer.open({
+			title:'服务商详情',
+			type: 2,
+			closeBtn: false, //不显示关闭按钮
+			shift: 2,
+			shadeClose: true, //开启遮罩关闭
+			area: ['80%', '90%'],
+			content: node_url
+		});
+	}); */
+</script>

@@ -2,7 +2,7 @@
 namespace app\index\controller;
 
 use app\common\model\Category as C;
-use app\common\model\Service as S;
+use app\common\model\Service as ModelService;
 use app\common\model\Slide;
 use think\facade\View;
 
@@ -54,7 +54,8 @@ class Service extends Base
         empty($id) and akali('参数不能为空');
 
         // 找出服务
-        $service = S::get($id, 'detail');
+        $service = ModelService::cache(cache_time())->get($id, 'detail');
+        // halt($service);
         empty($id) and akali('数据不存在');
 
         // 主推服务
@@ -86,6 +87,7 @@ class Service extends Base
     public function enter()
     {
         // 视图
+        // halt('服务商入驻');
         return view();
     }
 }

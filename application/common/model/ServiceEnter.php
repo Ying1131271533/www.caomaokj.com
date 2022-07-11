@@ -14,6 +14,11 @@ class ServiceEnter extends Model
 
     public function featureds()
     {
-        return $this->hasMany('ServiceEnterIntroduce');
+        return $this->hasMany('ServiceEnterFeatured');
+    }
+
+    public function category()
+    {
+        return $this->belongsTo('category');
     }
 }

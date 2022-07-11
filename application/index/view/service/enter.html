@@ -73,12 +73,12 @@
                             <p id="demoText"></p>
                         </div>
                     </div>
-
+                    <p style="width: 100%; text-align: center; color: red; padding-top: 6px;">建议尺寸 1:1</p>
                 </div>
             </div>
         </div>
 
-        <div class="display-flex flex-warp content-wrap">
+        <!-- <div class="display-flex flex-warp content-wrap">
             <span class="display-flex justify-end align-center content-name">
                 <i class="fa fa-star icon" aria-hidden="true"></i>
                 <span class="content-field">上传封面：</span>
@@ -98,7 +98,8 @@
 
                 </div>
             </div>
-        </div>
+        </div> -->
+
         <div class="display-flex flex-warp content-wrap">
             <span class="display-flex justify-end align-center content-name">
                 <i class="fa fa-star icon" aria-hidden="true"></i>
@@ -110,10 +111,16 @@
         <div class="display-flex flex-warp content-wrap">
             <span class="display-flex justify-end align-center content-name">
                 <i class="fa fa-star icon" aria-hidden="true"></i>
+                <span class="content-field">官网：</span>
+            </span>
+            <div class="content-right"><input type="text" placeholder="网站链接" maxlength="250" class="input-commom" name="url"></div>
+        </div>
+        <div class="display-flex flex-warp content-wrap">
+            <span class="display-flex justify-end align-center content-name">
+                <i class="fa fa-star icon" aria-hidden="true"></i>
                 <span class="content-field">公司简介：</span>
             </span>
-            <div class="content-right"><textarea maxlength="200" placeholder="请输入公司简介(200个字以内)"
-                    class="input-commom content-textarea" name="introduction"></textarea></div>
+            <div class="content-right"><textarea maxlength="200" placeholder="请输入公司简介(200个字以内)" class="input-commom content-textarea" name="introduction"></textarea></div>
         </div>
         <div class="display-flex flex-warp content-wrap">
             <span class="display-flex justify-end align-center content-name">
@@ -149,7 +156,8 @@
                 </div>
             </div>
         </div>
-        <div class="display-flex flex-warp content-wrap">
+
+        <!-- <div class="display-flex flex-warp content-wrap">
             <span class="display-flex justify-end align-center content-name">
                 <i class="fa fa-star icon" aria-hidden="true"></i>
                 <span class="content-field">营业执照：</span>
@@ -167,8 +175,9 @@
                     </div>
                 </div>
             </div>
-        </div>
-        <div class="display-flex flex-warp content-wrap">
+        </div> -->
+
+        <!-- <div class="display-flex flex-warp content-wrap">
             <span class="display-flex justify-end align-center content-name">
                 <i class="fa fa-star icon" -hidden="true"></i><span class="content-field">授权函：</span></span>
             <div class="content-right" style="min-height: 70px;">
@@ -185,10 +194,10 @@
                 </div>
                 <a class="get-model" title="授权函模板下载" onclick="window.open(9, 'akali.doc')"> 《授权函模板下载》 </a>
             </div>
-        </div>
+        </div> -->
         <div class="display-flex flex-warp content-wrap">
             <span class="display-flex justify-end align-center content-name">
-                <i class="fa fa-star icon" aria-hidden="true"></i>
+                <!-- <i class="fa fa-star icon" aria-hidden="true"></i> -->
                 <span class="content-field">主推服务：</span>
             </span>
             <div class="content-right display-flex justify-start flex-wrap" style="min-height: 100px;">
@@ -202,13 +211,13 @@
                         </blockquote>
                     </div>
 
-                    <p style="width: 100%; text-align: left; padding-top: 10px;">(实力展示)最多4张,</p>
+                    <p style="width: 100%; text-align: left; padding-top: 10px;">(实力展示)最多4张，可以不上传</p>
                     <p style="width: 100%; text-align: left; color: red; font-weight: bold;">不可带二维码或其他联系方式</p>
-                    <p style="width: 100%; text-align: left; color: red;">建议：460像素 x 240像素</p>
+                    <p style="width: 100%; text-align: left; color: red;">建议尺寸 2:1</p>
                 </div>
             </div>
         </div>
-        <div class="display-flex flex-warp content-wrap">
+        <!-- <div class="display-flex flex-warp content-wrap">
             <span class="display-flex justify-end align-center content-name">
                 <i class="fa fa-star icon" aria-hidden="true"></i>
                 <span class="content-field">服务介绍：</span>
@@ -216,7 +225,36 @@
             <div class="content-right">
                 <textarea maxlength="500" name="service_introduction" placeholder="请输入服务介绍(500个字以内)" class="input-commom content-textarea"></textarea>
             </div>
+        </div> -->
+        <!-- <div class="display-flex flex-warp content-wrap">
+            <span class="display-flex justify-end align-center content-name">
+                <i class="fa fa-star icon" aria-hidden="true"></i>
+                <span class="content-field">服务介绍：</span>
+            </span>
+            <div class="content-right" style="min-height: 70px;">
+                <div class="img-btn-warp">
+                    <div class="layui-upload">
+                        <button type="button" class="layui-btn" onclick="upload_img(this)">上传图片</button>
+                        <button type="button" class="layui-btn test" id="image">上传图片</button>
+                        <input type="hidden" name="image" id="demoInput" value="">
+                        <div class="layui-upload-list">
+                            <img class="layui-upload-img" id="img">
+                            <p id="demoText"></p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div> -->
+        <div class="display-flex flex-warp content-wrap">
+            <span class="display-flex justify-end align-center content-name">
+                <i class="fa fa-star icon" aria-hidden="true"></i>
+                <span class="content-field">服务介绍：</span>
+            </span>
+            <div class="content-right">
+                <textarea id="demo" name="service_introduce" style="display: none;"></textarea>
+            </div>
         </div>
+
         <div class="display-flex flex-warp content-wrap" style="margin-top: 66px;"
             class="display-flex justify-end content-name">
             <span class="display-flex justify-end content-name"></span>
@@ -409,7 +447,7 @@
         upload.render({
             elem: '#test2'
             , url: '/index/upload/uploadImg' //此处配置你自己的上传接口即可
-            , size: 1024 * 3 //限定大小
+            , size: 1024 * 2 //限定大小
             , multiple: true
             , before: function (obj) {
                 // 显示多图预览
@@ -429,6 +467,43 @@
             }
         });
 
+        // 服务介绍
+        /* var uploadInst = upload.render({
+            elem: '#image'
+            , url: '/index/upload/uploadImg'
+            , size: 1024 * 5 //限定大小
+            , before: function (obj) {
+                // 显示预览
+                $(buttonObj).parents('.layui-upload').find('#img').show();
+                // 预读本地文件示例，不支持ie8
+                obj.preview(function (index, file, result) {
+                    $(buttonObj).parents('.layui-upload').find('#img').attr('src', result); //图片链接（base64）
+                });
+            }
+            , done: function (res) {
+                //如果上传失败
+                if (res.code != 200) {
+                    return layer.msg('上传失败');
+                }
+                //上传成功的一些操作
+                $(demoInputObj).val(res.data);
+                return layer.msg(res.msg);
+            }
+            , error: function () {
+                //演示失败状态，并实现重传
+                var demoText = $('#demoText');
+                demoText.html('<span style="color: #FF5722;">上传失败</span> <a class="layui-btn layui-btn-xs demo-reload">重试</a>');
+                demoText.find('.demo-reload').on('click', function () {
+                    uploadInst.upload();
+                });
+            }
+        }); */
+    });
+
+    // 富文本
+    layui.use('layedit', function(){
+        var layedit = layui.layedit;
+        layedit.build('demo'); //建立编辑器
     });
 
     // 提交
@@ -437,20 +512,24 @@
         var logo = $('input[name="logo"]').val();
         var thumb = $('input[name="thumb"]').val();
         var name = $('input[name="name"]').val();
+        var url = $('input[name="url"]').val();
         var introduction = $('textarea[name="introduction"]').val();
         var operator_name = $('input[name="operator_name"]').val();
         var phone = $('input[name="phone"]').val();
         var customer_qr_code = $('input[name="customer_qr_code"]').val();
         var business_license = $('input[name="business_license"]').val();
         var authorization_letter = $('input[name="authorization_letter"]').val();
-        var service_introduction = $('textarea[name="service_introduction"]').val();
+        
         var featuredImgs = $('input[name="featuredImgs[]"]').val();
         // 主推服务图片数组
         var service_enter_featured = [];
+        var featured = $("input[name='featuredImgs[]']").val();
         $("input[name='featuredImgs[]']").each(function(i){
             // console.log(this.value);
             service_enter_featured.push(this.value);
         });
+        // 富文本 - 服务介绍
+        var service_introduce = $('textarea[name="service_introduce"]').val();
 
         let errorMsg = "";
         if(category_id < 0){
@@ -483,8 +562,14 @@
         else if(authorization_letter == ''){
             errorMsg = '请上传授权函';
         }
-        else if(service_enter_featured.length == 0){
-            errorMsg = '请上传主推服务';
+        // else if(service_enter_featured.length == 0){
+        //     errorMsg = '请上传主推服务';
+        // }
+        // else if(image == ''){
+        //     errorMsg = '请上传服务介绍';
+        // }
+        else if(service_introduce == ''){
+            errorMsg = '请填写服务介绍';
         }
         
         var data = {
@@ -492,19 +577,24 @@
             logo: logo,
             thumb: thumb,
             name: name,
+            url: url,
             introduction: introduction,
             operator_name: operator_name,
             phone: phone,
             customer_qr_code: customer_qr_code,
             business_license: business_license,
             authorization_letter: authorization_letter,
-            service_introduction: service_introduction,
             service_enter_featured: service_enter_featured,
+            service_introduce: service_introduce,
+            // image: image,
         };
+        
         $.post('/index/service_api/index', data, function(res){
             if(res.code != 200){
                 layer.msg(res.msg, {icon:2});
+                return false;
             }
+            layer.msg(res.msg, {icon:1});
         });
     }
 

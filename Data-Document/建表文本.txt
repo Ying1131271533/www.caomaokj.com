@@ -272,7 +272,19 @@ service_enter_id 服务商入驻id
 
 
 
+article_comment - 文章评论
 
+id int id
+content char(255) 评论内容 
+user_id int 评论人用户id
+parent_id int 0 上级ID，如果为0表示文章的顶级评论
+nickname char(20) 评论人昵称
+like_num int 点赞数
+reply_num int 回复数
+status tinyint(1) 状态: 0 不可见 1 可见
+update_time int 更新时间
+create_time int 创建时间
+delete_time int null 删除时间
 
 
 
