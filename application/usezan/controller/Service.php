@@ -4,7 +4,7 @@ namespace app\usezan\controller;
 use app\common\model\Attributes as A;
 use app\common\model\Category as C;
 use app\common\model\Logistics as L;
-use app\common\model\Service as S;
+use app\common\model\Service as ServiceModel;
 use app\common\model\ServiceDetail as SD;
 use libs\Tree;
 use think\facade\View;
@@ -31,7 +31,7 @@ class Service extends Base
             }
         }
 
-        $list = S::field('id, name, image, sort, status, recommend, create_time')
+        $list = ServiceModel::field('id, name, image, sort, status, recommend, create_time')
             ->where($where)->order(['sort' => 'desc', 'id' => 'desc'])
             ->paginate(30);
 
@@ -56,29 +56,29 @@ class Service extends Base
 
             // 服务详情数据组装
             $detailData = [
-                'featured' => input('imgs', ''), // 主推服务
+                'featured' => $data['imgs'], // 主推服务
                 // 'company'  => input('company', ''), // 企业介绍
                 'content'  => input('content', ''), // 服务介绍
             ];
-
+            // halt($detailData);
             // dump($data);return;
             // 开启事务
-            S::startTrans();
-            $service = S::create($data);
+            ServiceModel::startTrans();
+            $service = ServiceModel::create($data);
             $service->detail()->save($detailData);
 
             // 提交事务
-            S::commit();
+            ServiceModel::commit();
             jinx('添加成功');
             try {
-                $service = S::create($data);
+                $service = ServiceModel::create($data);
                 $service->detail()->save($detailData);
                 // 提交事务
-                S::commit();
+                ServiceModel::commit();
                 jinx('添加成功');
             } catch (\Exception $e) {
                 // 回滚事务
-                S::rollback();
+                ServiceModel::rollback();
                 jinx('添加失败');
             }
 
@@ -102,7 +102,7 @@ class Service extends Base
         empty($id) and jinx('参数不能为空');
 
         // 找出服务
-        $service = S::get($id, 'detail');
+        $service = ServiceModel::get($id, 'detail');
         empty($id) and jinx('该服务不存在');
 
         // 保存数据
@@ -116,26 +116,31 @@ class Service extends Base
                 $data['imgs'] = $this->checkPics($data);
                 unset($data['imgs_order'], $data['imgs_title'], $data['imgs_remark']);
             }
-
+            
             // 服务详情数据组装
             $detailData = [
-                'id'       => $service['detail']['id'], // id
-                'featured' => input('imgs', ''), // 主推服务
+                // 'id'       => $service['detail']['id'], // id
+                'featured' => $data['imgs'], // 主推服务
                 // 'company'  => $data['company'], // 企业介绍
                 'content'  => $data['content'], // 服务介绍
             ];
+            // halt($detailData);
+            /* $service->save($data);
+            $service->detail()->save($detailData);
+            // 提交事务
+            jinx('修改成功'); */
 
             // 开启事务
-            S::startTrans();
+            $service::startTrans();
             try {
-                $service = S::update($data);
-                $service->detail()->update($detailData);
+                $service->save($data);
+                $service->detail()->save($detailData);
                 // 提交事务
-                S::commit();
+                ServiceModel::commit();
                 jinx('修改成功');
             } catch (\Exception $e) {
                 // 回滚事务
-                S::rollback();
+                ServiceModel::rollback();
                 jinx('修改失败');
             }
 
@@ -215,21 +220,21 @@ class Service extends Base
         empty($id) and jinx('参数不能为空');
 
         // 找出服务
-        $service = S::get($id, ['detail' => function ($query) {
+        $service = ServiceModel::get($id, ['detail' => function ($query) {
             $query->field('id, content, service_id');
         }]);
         empty($service) and jinx('该数据不存在');
 
         // 开启事务
-        S::startTrans();
+        ServiceModel::startTrans();
         try {
             $service->together('detail')->delete();
             // 提交事务
-            S::commit();
+            ServiceModel::commit();
             jinx('删除成功');
         } catch (\Exception $e) {
             // 回滚事务
-            S::rollback();
+            ServiceModel::rollback();
             jinx('删除失败');
         }
 
