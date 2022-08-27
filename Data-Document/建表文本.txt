@@ -287,6 +287,353 @@ create_time int 创建时间
 delete_time int null 删除时间
 
 
+—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
+
+跨境招聘
+
+
+分类----------------------------------------------
+
+
+job_platform - 平台要求
+
+id int id
+name char(20) 平台名称
+status tinyint(1) 状态：0 开启 1 关闭
+
+
+job_position - 意向职位
+
+id int id
+position char(10) 职位
+status tinyint(1) 状态：0 开启 1 关闭
+
+
+
+china_places - 中国地区表
+网络获取
+
+
+
+固定函数---------------------------------------------
+
+
+看common.php
+
+
+主表---------------------------------------------
+
+
+job - 招聘
+
+id int id
+name char(50) 职位名称
+address char(50) 公司地址
+city_value int 发布城市
+work_experience tinyint(1) 工作经验
+duty_time tinyint(1) 到岗时间
+platform tinyint(2) 平台要求
+salary_min int 最低月薪
+salary_max int 最高月薪
+welfare char(130) null 福利
+position tinyint(2) 意向职位
+education_background tinyint(1) 学历背景
+company char(50) 公司名称
+logo char(100) 公司logo
+phone char(25) 联系方式
+people_number tinyint(2) 公司人数
+enterprise_type tinyint(1) 企业类型
+famous_brand tinyint(1) 0 名牌企业 0:否 1:是
+views int 0 浏览次数
+check_status tinyint(1) 0 审核状态 0:未审核 1:通过 2:未通过
+status tinyint(1) 状态 0:关闭 1:开启
+create_time int 创建时间
+update_time int 更新时间
+delete_time int null 删除时间
+
+
+job_detail - 公司简介和职位描述
+
+id int id
+job_description text 职位描述
+company_introduction text 公司简介
+job_id int 关联主键
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 

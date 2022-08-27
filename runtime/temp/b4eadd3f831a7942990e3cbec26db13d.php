@@ -1,4 +1,4 @@
-<?php /*a:10:{s:41:"../application/index/view/home\index.html";i:1645243108;s:42:"../application/index/view/layout\base.html";i:1645521738;s:44:"../application/index/view/layout\header.html";i:1645066486;s:41:"../application/index/view/layout\top.html";i:1646990834;s:42:"../application/index/view/layout\menu.html";i:1647832070;s:50:"../application/index/view/layout\left_article.html";i:1650941597;s:45:"../application/index/view/layout\article.html";i:1637220567;s:45:"../application/index/view/layout\toolbar.html";i:1624259554;s:44:"../application/index/view/layout\footer.html";i:1642580253;s:46:"../application/index/view/layout\open_img.html";i:1645170607;}*/ ?>
+<?php /*a:10:{s:41:"../application/index/view/home\index.html";i:1652757253;s:42:"../application/index/view/layout\base.html";i:1652509834;s:44:"../application/index/view/layout\header.html";i:1645066486;s:41:"../application/index/view/layout\top.html";i:1656321539;s:42:"../application/index/view/layout\menu.html";i:1647832070;s:50:"../application/index/view/layout\left_article.html";i:1650941597;s:45:"../application/index/view/layout\article.html";i:1652757357;s:45:"../application/index/view/layout\toolbar.html";i:1624259554;s:44:"../application/index/view/layout\footer.html";i:1652509779;s:46:"../application/index/view/layout\open_img.html";i:1645170607;}*/ ?>
 <!DOCTYPE html>
 <html lang="zh-CN">
 <head>
@@ -43,7 +43,7 @@
     <link rel="stylesheet" href="/static/akali/layui/css/layui.css">
     <script src="/static/akali/layui/layui.js"></script>
     
-    <link rel="stylesheet" href="/static/akali/css/kjy.css?<?php echo htmlentities($time); ?>">
+    <link rel="stylesheet" href="/static/akali/css/kjy.css">
     
 	<!-- 修改底部搜索类型下拉layui样式 -->
 	<style>
@@ -171,7 +171,8 @@
                     商务合作 <svg class="icon" style="width:14px;height:12px;" aria-hidden="true">
                         <use xlink:href="#icon-arrowdown"></use>
                     </svg>
-                    <div class="header-drop-down-list-box" style="width: 90px; display: none;">
+                    <div class="header-drop-down-list-box" style="width: 105px; display: none;">
+                        <a href="<?php echo url('service/enter'); ?>">服务商入驻</a>
                         <a href="<?php echo url('customer/contact'); ?>">商务对接</a>
                         <a href="<?php echo url('customer/platform'); ?>">电商入驻</a>
                         <a href="<?php echo url('customer/activity'); ?>">活动报名</a>
@@ -892,143 +893,143 @@
         </div>
         <!-- </div> -->
         <script type="text/javascript">
-        var category = "0";
-        $(function() {
-            var isFixed = false;
-            //滚动事件
-            $(window).scroll(function() {
-                var scrollTop = $(this).scrollTop();
-                if (scrollTop >= 570) {
-                    if (!isFixed) {
-                        $(".wenzhang_nav").addClass('wenzhang_navFexid');
-                        $(".wz_nav_title").addClass('wz_titleFexid');
-                        $(".navbar-fixed-top").css("display", "none");
-                        $(".kua_menu_div").css("display", "none");
-                        isFixed = true;
+            var category = "0";
+            $(function() {
+                var isFixed = false;
+                //滚动事件
+                $(window).scroll(function() {
+                    var scrollTop = $(this).scrollTop();
+                    if (scrollTop >= 570) {
+                        if (!isFixed) {
+                            $(".wenzhang_nav").addClass('wenzhang_navFexid');
+                            $(".wz_nav_title").addClass('wz_titleFexid');
+                            $(".navbar-fixed-top").css("display", "none");
+                            $(".kua_menu_div").css("display", "none");
+                            isFixed = true;
+                        }
+                    } else {
+                        isFixed = false;
+                        $(".wenzhang_nav").removeClass('wenzhang_navFexid');
+                        $(".wz_nav_title").removeClass('wz_titleFexid');
+                        $(".navbar-fixed-top").css("display", "");
+                        $(".kua_menu_div").css("display", "");
                     }
-                } else {
-                    isFixed = false;
-                    $(".wenzhang_nav").removeClass('wenzhang_navFexid');
-                    $(".wz_nav_title").removeClass('wz_titleFexid');
-                    $(".navbar-fixed-top").css("display", "");
-                    $(".kua_menu_div").css("display", "");
+                });
+
+                if (category > 0) {
+                    $("#category_" + category).click();
                 }
+
+                $('.lev').each(function() {
+                    var title = $(this).children('a').attr('class');
+                    console.log(title);
+                })
+
             });
-
-            if (category > 0) {
-                $("#category_" + category).click();
-            }
-
-            $('.lev').each(function() {
-                var title = $(this).children('a').attr('class');
-                console.log(title);
-            })
-
-        });
         </script>
         <script>
-        var perimeter = Math.PI * 2 * 10;
-        var timer = null;
-        var value = 0;
+            var perimeter = Math.PI * 2 * 10;
+            var timer = null;
+            var value = 0;
 
-        function circleSvg() {
-            value = 0;
-            clearInterval(timer);
+            function circleSvg() {
+                value = 0;
+                clearInterval(timer);
 
-            var circle1 = $(".swiper-pagination-bullet");
-            //console.log(circle1.valueOf());
-            $.each(circle1, function(i, v) {
-                $(v).html('<svg width="24" height="24" viewbox="0 0 24 24">\
-            <circle cx="12" cy="12" r="10" stroke-width="2" stroke="rgba(255,255,255,0.5)" fill="none"></circle>\
-                <circle cx="12" cy="12" r="10" stroke-width="2" stroke="#fff" fill="none" transform="matrix(0,-1,1,0,0,24)" stroke-dasharray="0 ' + perimeter + '"></circle>\
-        </svg>');
-                // console.log("=========" + i, v)
-            })
-            var circle = document.querySelectorAll(".swiper-pagination-bullet-active circle")[1];
-            if (circle) {
-
-                timer = setInterval(function() {
-                    value++;
-                    if (value == 102) {
-                        value = 0;
-                        circle.setAttribute('stroke-dasharray', 0 + " " + perimeter);
-                        clearInterval(timer);
-                        return false;
-                    }
-                    var percent = value / 100;
-                    circle.setAttribute('stroke-dasharray', perimeter * percent + " " + perimeter * (1 - percent));
-
-                }, 50)
-            }
-        }
-
-        var swiper = new Swiper('.swiper-container', {
-            pagination: '.swiper-pagination',
-            paginationClickable: true,
-            paginationBulletRender: function(swiper, index, className) {
-                return '<span class="' + className + '">' +
-                    '<svg width="24" height="24" viewbox="0 0 24 24">\
+                var circle1 = $(".swiper-pagination-bullet");
+                //console.log(circle1.valueOf());
+                $.each(circle1, function(i, v) {
+                    $(v).html('<svg width="24" height="24" viewbox="0 0 24 24">\
                 <circle cx="12" cy="12" r="10" stroke-width="2" stroke="rgba(255,255,255,0.5)" fill="none"></circle>\
                     <circle cx="12" cy="12" r="10" stroke-width="2" stroke="#fff" fill="none" transform="matrix(0,-1,1,0,0,24)" stroke-dasharray="0 ' + perimeter + '"></circle>\
-        </svg>' +
-                    '</span>';
-            },
+            </svg>');
+                    // console.log("=========" + i, v)
+                })
+                var circle = document.querySelectorAll(".swiper-pagination-bullet-active circle")[1];
+                if (circle) {
 
-            spaceBetween: 30,
-            effect: 'fade',
-            loop: true,
-            autoplay: 5000,
-            autoplayDisableOnInteraction: false,
-            onInit: function(swiper) {
-                //Swiper初始化了
-                //alert(swiper.activeIndex);提示Swiper的当前索引
-                circleSvg();
-            },
-            onSlideChangeStart: function(swiper) {
-                value = 0;
-                //  console.log(swiper.activeIndex + '');
-                // swiper.activeIndex 这个就是索引， 从 0 开始！ 可看一共有多少元素！
-                circleSvg();
-            },
-        });
+                    timer = setInterval(function() {
+                        value++;
+                        if (value == 102) {
+                            value = 0;
+                            circle.setAttribute('stroke-dasharray', 0 + " " + perimeter);
+                            clearInterval(timer);
+                            return false;
+                        }
+                        var percent = value / 100;
+                        circle.setAttribute('stroke-dasharray', perimeter * percent + " " + perimeter * (1 - percent));
 
-        $(function() {
-            var h = $(".find-item>.table").height();
-            $(".find-label_img").height(h + 2);
-        })
+                    }, 50)
+                }
+            }
+
+            var swiper = new Swiper('.swiper-container', {
+                pagination: '.swiper-pagination',
+                paginationClickable: true,
+                paginationBulletRender: function(swiper, index, className) {
+                    return '<span class="' + className + '">' +
+                        '<svg width="24" height="24" viewbox="0 0 24 24">\
+                    <circle cx="12" cy="12" r="10" stroke-width="2" stroke="rgba(255,255,255,0.5)" fill="none"></circle>\
+                        <circle cx="12" cy="12" r="10" stroke-width="2" stroke="#fff" fill="none" transform="matrix(0,-1,1,0,0,24)" stroke-dasharray="0 ' + perimeter + '"></circle>\
+            </svg>' +
+                        '</span>';
+                },
+
+                spaceBetween: 30,
+                effect: 'fade',
+                loop: true,
+                autoplay: 5000,
+                autoplayDisableOnInteraction: false,
+                onInit: function(swiper) {
+                    //Swiper初始化了
+                    //alert(swiper.activeIndex);提示Swiper的当前索引
+                    circleSvg();
+                },
+                onSlideChangeStart: function(swiper) {
+                    value = 0;
+                    //  console.log(swiper.activeIndex + '');
+                    // swiper.activeIndex 这个就是索引， 从 0 开始！ 可看一共有多少元素！
+                    circleSvg();
+                },
+            });
+
+            $(function() {
+                var h = $(".find-item>.table").height();
+                $(".find-label_img").height(h + 2);
+            })
         </script>
         <style>
-        circle {
-            -webkit-transition: stroke-dasharray .25s;
-            transition: stroke-dasharray .25s;
-        }
+            circle {
+                -webkit-transition: stroke-dasharray .25s;
+                transition: stroke-dasharray .25s;
+            }
 
-        body .swiper-pagination-white .swiper-pagination-bullet-active,
-        body .swiper-pagination-white .swiper-pagination-bullet {
-            background: transparent;
-        }
+            body .swiper-pagination-white .swiper-pagination-bullet-active,
+            body .swiper-pagination-white .swiper-pagination-bullet {
+                background: transparent;
+            }
 
-        body .swiper-container-horizontal>.swiper-pagination-bullets,
-        body .swiper-pagination-custom,
-        .swiper-pagination-fraction {
-            background: rgba(0, 0, 0, .15);
-            opacity: 1;
-            width: auto;
-            left: 50%;
-            transform: translateX(-50%);
-            padding: 4px 4%;
-            border-radius: 20px;
-            -webkit-border-radius: 20px;
-            -moz-border-radius: 20px;
-        }
+            body .swiper-container-horizontal>.swiper-pagination-bullets,
+            body .swiper-pagination-custom,
+            .swiper-pagination-fraction {
+                background: rgba(0, 0, 0, .15);
+                opacity: 1;
+                width: auto;
+                left: 50%;
+                transform: translateX(-50%);
+                padding: 4px 4%;
+                border-radius: 20px;
+                -webkit-border-radius: 20px;
+                -moz-border-radius: 20px;
+            }
 
-        body .swiper-container-horizontal>.swiper-pagination-bullets .swiper-pagination-bullet {
-            margin: 0 12px;
-        }
+            body .swiper-container-horizontal>.swiper-pagination-bullets .swiper-pagination-bullet {
+                margin: 0 12px;
+            }
 
-        body .swiper-container-horizontal>.swiper-pagination-bullets .swiper-pagination-bullet:first-child {
-            margin-left: 0;
-        }
+            body .swiper-container-horizontal>.swiper-pagination-bullets .swiper-pagination-bullet:first-child {
+                margin-left: 0;
+            }
         </style>
     </div>
 </div>
@@ -1173,7 +1174,7 @@
         });
     });
 </script>
-<script type="text/javascript" src="/static/akali/js/search.js?<?php echo time(); ?>"></script>
+<script type="text/javascript" src="/static/akali/js/search.js"></script>
 </body>
 
 </html>

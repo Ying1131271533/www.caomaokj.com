@@ -1,0 +1,183 @@
+{include file="public/header" /}
+<div class="mainbox animated fadeInRight">
+	<div class="mainnav_title">
+		<a class="on">招聘岗位</a>
+		<a class="bth-rand fr" href="javascript:location.replace(location.href);" title="刷新"><b
+				class="uzfont uzico-shuaxin"></b></a>
+	</div>
+	<table class="search_table" width="100%">
+		<tr>
+			<td class="search">
+				<form action="{:url('job/index')}" method="post">
+					<input id="company" type="text" class="input-text" name="company" placeholder="公司名称搜索"
+						value="{:input('company/s')}" style="float:left;">
+					<input id="phone" type="text" class="input-text" name="phone" placeholder="手机号码搜索"
+						value="{:input('phone/s')}" style="float:left;">
+
+					<select class="catid" name="limit">
+						<option value="20" {eq name="$limit" value="20" }selected{/eq}>20 条/页</option>
+						<option value="50" {eq name="$limit" value="50" }selected{/eq}>50 条/页</option>
+						<option value="100" {eq name="$limit" value="100" }selected{/eq}>100 条/页</option>
+						<option value="200" {eq name="$limit" value="200" }selected{/eq}>200 条/页</option>
+					</select>
+
+					<select class="catid" name="position">
+						<option value="0" {eq name="$position" value="0" }selected{/eq}>职位类型</option>
+						<option value="1" {eq name="$position" value="1" }selected{/eq}>运营</option>
+						<option value="2" {eq name="$position" value="2" }selected{/eq}>客服</option>
+						<option value="3" {eq name="$position" value="3" }selected{/eq}>会计</option>
+						<option value="4" {eq name="$position" value="4" }selected{/eq}>HR</option>
+						<option value="5" {eq name="$position" value="5" }selected{/eq}>行政</option>
+						<option value="6" {eq name="$position" value="6" }selected{/eq}>产品开发</option>
+						<option value="7" {eq name="$position" value="7" }selected{/eq}>采购</option>
+						<option value="8" {eq name="$position" value="8" }selected{/eq}>物流</option>
+					</select>
+
+					<select class="catid" name="check_status">
+						<option value="-1" {eq name="$check_status" value="-1" }selected{/eq}>审核状态</option>
+						<option value="0" {eq name="$check_status" value="0" }selected{/eq}>未审核</option>
+						<option value="1" {eq name="$check_status" value="1" }selected{/eq}>已通过</option>
+						<option value="2" {eq name="$check_status" value="2" }selected{/eq}>未通过</option>
+					</select>
+					<select class="catid" name="status">
+						<option value="-1" {eq name="$status" value="-1" }selected{/eq}>状态</option>
+						<option value="1" {eq name="$status" value="1" }selected{/eq}>开启</option>
+						<option value="0" {eq name="$status" value="0" }selected{/eq}>关闭</option>
+					</select>
+					<input type="hidden" name="tree" value="{$tree_id}" />
+					<input type="submit" value="{:lang('chaxun')}" class="button" />
+					<a href="{:url('job/index')}" class="button">重置</a>
+				</form>
+			</td>
+		</tr>
+	</table>
+	<form name="myform" id="myform" action="{:url('activity/sendGroupMessage')}" method="post">
+		<div class="table-list">
+			<table width="100%" cellspacing="0">
+				<thead>
+					<tr>
+						<th width="40">ID</th>
+						<th width="150">职位名称</th>
+						<th width="80">职位类型</th>
+						<th width="80">logo</th>
+						<th width="150" align="left">公司名称</th>
+						<th width="80">地区</th>
+						<th width="50">手机号</th>
+						<th width="60">审核状态</th>
+						<th width="80">审核操作</th>
+						<th width="60">状态</th>
+						<th width="120">发布时间</th>
+						<th width="100">操作</th>
+					</tr>
+				</thead>
+				<tbody>
+					{foreach $list as $value}
+					<tr height="70" id="tr_{$value.id}">
+						<td align="center">{$value.id}</td>
+						<td align="center">{$value.name}</td>
+						<td align="center">{:job_position($value.position)}</td>
+						<td align="center">
+							<img height="70" src="{$value['logo'] ? $value['logo'] : '__UIMG__/nodata.svg'}"
+								style="cursor:pointer;" onclick="open_img(this)" />
+						</td>
+						<td align="left">{$value.company}</td>
+						<td align="center">{$value.place}</td>
+						<td align="center">{$value.phone}</td>
+
+						<td align="center">
+							{if $value.check_status == 0}
+							<font color="red">未审核</font>
+							{elseif $value.check_status == 1}
+							<font color="green">已通过</font>
+							{elseif $value.check_status == 2}
+							<font color="#999">未通过</font>
+							{/if}
+						</td>
+
+						{if $value.check_status == 0}
+						<td align="center">
+							<div style="float: left; margin-left: 30px;"><a onclick="check_status({$value.id}, 1)"
+									class="bth-a ajax-status"></a></div>
+							<div style="float: left; margin-left: 10px;"><a onclick="check_status({$value.id}, 2)"
+									class="bth-a ajax-status error-c"></a></div>
+						</td>
+						{else/}
+						<td align="center">--</td>
+						{/if}
+
+						<td align="center">
+							{if $value.check_status == 2}
+							--
+							{else/}
+							<a onclick="ajax_status(this)" data-id="{$value.id}"
+								data-url="{:url('ajax/status', ['id' => $value.id, 'value' => $value.status, 'field' => 'status', 'db' => 'job'])}"
+								class="bth-a ajax-status {$value.status == 1 ?: 'error-c'}"></a>
+
+							{/if}
+						</td>
+
+						<td align="center">{$value.create_time}</td>
+						<td align="center" style="width: 30px;">
+							<!-- <a href="{:url('job/detail', ['id' => $value.id])}" class="keyword-article button">查看详情</a> -->
+							<a data-url="{:url('job/detail', ['id' => $value.id])}" class="job_detail button">查看详情</a>
+							<a onclick="del({$value.id})" class="keyword-article button"
+								style="background-color: #FF5722;border: solid 1px #FF5722;">删除</a>
+						</td>
+					</tr>
+					{/foreach}
+				</tbody>
+			</table>
+		</div>
+	</form>
+</div>
+<div id="pages" class="page">{$list|raw}</div>
+
+<script type="text/javascript">
+
+	function check_status(id, check_status) {
+		var msg = '';
+		check_status == 1 ? msg = '是否审核通过' : msg = '是否审核不通过';
+		layer.confirm(msg, function (index) {
+			// 审核
+			$.post("{:url('check')}", { id: id, check_status: check_status }, function (res) {
+				if (res.status != 20000) {
+					layer.msg(res.msg, { icon: 2 });
+					return false;
+				}
+				layer.msg(res.msg, { icon: 1 });
+				location.reload();
+			}, 'json');
+
+			layer.close(index);
+		});
+	}
+
+	function del(id) {
+		layer.confirm('是否删除？', function (index) {
+			$.get("{:url('delete')}", { id: id }, function (res) {
+				if (res.status != 20000) {
+					layer.msg(res.msg, { icon: 2 });
+					return false;
+				}
+				layer.msg(res.msg, { icon: 1 });
+				// location.reload();
+				$('#tr_' + id).remove();
+			}, 'json');
+
+			layer.close(index);
+		});
+	}
+
+	$(".job_detail").on("click",function () {
+		var node_url = $(this).attr("data-url");
+		layer.open({
+			title:'服务商详情',
+			type: 2,
+			closeBtn: false, //不显示关闭按钮
+			shift: 2,
+			shadeClose: true, //开启遮罩关闭
+			area: ['80%', '90%'],
+			content: node_url
+		});
+	});
+</script>

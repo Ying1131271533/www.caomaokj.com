@@ -14,7 +14,7 @@ class ServiceApi extends BaseApi
      * @param Request $request
      * @return \think\Response
      */
-    public function index(Request $request)
+    public function enter(Request $request)
     {
         // 接收参数
         $param = $request->param();

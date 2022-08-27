@@ -564,70 +564,6 @@ if (!function_exists('encrypt_akali')) {
 
 }
 
-/**
- * 页面缓存
- * param srting $data
- * return srting
- */
-function akaliCache($data = '')
-{
-    // 基本参数
-    $request    = request();
-    $module     = $request->module(); // 模块名
-    $controller = $request->controller(); // 控制器名
-    $action     = $request->action(); // 方法名
-    $param      = $request->param(); // 参数
-
-    $cache_name = 'akali_cache';
-    /*
-    [
-    'module' => [
-    'controller' => [
-    'action' => [
-    'key' => 'url',
-    'key' => 'url',
-    'key' => 'url',
-    'key' => 'url',
-    'key' => 'url',
-    ],
-    ],
-    ],
-    ]
-     */
-
-    $key = url($module . '/' . $controller . '/' . $action, $param); //'模块/控制器/方法名/参数';
-
-    if (!empty($data)) {
-        // 保存缓存
-        $result = cache(md5($key), $data);
-
-        // 读取管理缓存数组数据
-        $gl                                           = cache($cache_name);
-        $gl[$module][$controller][$action][md5($key)] = $key;
-
-        // 保存缓存名
-        cache($cache_name, $gl);
-        return $result;
-    }
-
-    // 取出页面缓存
-    $cache = cache(md5($key));
-    return $cache;
-
-/*     用法
-// 读取缓存
-if(empty($this -> data))
-{
-// 逻辑代码
-
-$this -> data = $this -> fetch();
-akali_cache($this -> data);
-}
-
-return $this -> data;
- */
-}
-
 // 递归
 function getChild($array, $pid = 0)
 {
@@ -1129,12 +1065,33 @@ function check_param($root = 'usezan')
 }
 
 /**
+ * 返回api接口数据
+ *
+ * @param  string    $smg       描述信息
+ * @param  int       $code      http状态码
+ * @param  int       $status    程序状态码
+ * @param  notype    $data      返回的数据
+ * @return json                 api返回的json数据
+ */
+function show(string $msg, int $code = 200, int $status = 20000, $data = [])
+{
+    // 组装数据
+    $resultData = [
+        'status' => $status,
+        'msg'    => $msg,
+        'data'   => $data,
+    ];
+    // 返回数据
+    return json($resultData, $code);
+}
+
+/**
  * 返回成功的api接口数据
  *
- * @param  notype    $data      返回的数据
- * @param  string    $smg       描述信息
- * @param  int       $status    程序状态码
- * @param  int       $code      http状态码
+ * @param  array|string|int     $data      返回的数据
+ * @param  string               $smg       描述信息
+ * @param  int                  $status    程序状态码
+ * @param  int                  $code      http状态码
  * @return json                 api返回的json数据
  */
 function success($data = [], int $status = 20000, int $code = 200, string $msg = '成功')
@@ -1144,7 +1101,7 @@ function success($data = [], int $status = 20000, int $code = 200, string $msg =
         $resultData = [
             'status' => $status,
             'msg'    => $data,
-            'data'   => [],
+            // 'data'   => [],
         ];
     }else{
         $resultData = [
@@ -1193,7 +1150,7 @@ function get_child($data, $pid = 0)
 {
     $tmp = [];
     foreach ($data as $value) {
-        if ($value['parentid'] == $pid) {
+        if ($value['parent_id'] == $pid) {
             $value['child'] = get_child($data, $value['id']);
             $tmp[] = $value;
         }
@@ -1241,31 +1198,47 @@ function get_child_tree_data($data, $parentid = 0, $spread = false)
 function cache_time(string $type = 'dawn_rand_time')
 {
     switch ($type) {
+        // 6小时
+        case 'six_hour':
+            $time = 3600 * 6;
+            break;
+        // 12小时 半天
+        case 'half_day':
+            $time = 3600 * 12;
+            break;
+        // 一天
         case 'one_day':
             $time = 3600 * 24;
             break;
+        // 一周
         case 'one_week':
             $time = 3600 * 24 * 7;
             break;
+        // 一个月
         case 'one_month':
             $time = 3600 * 24 * 30;
             break;
+        // 一年
         case 'one_year':
             $time = 3600 * 24 * 365;
             break;
+        // 随机 3-9 小时
         case 'rand_time':
-            $time = rand(3600 * 24 * 3, 3600 * 24 * 9);
+            $time = rand(3600 * 3, 3600 * 9);
             break;
+        // 凌晨0点
         case 'over_day':
             $time = 86400 - (time() + 8 * 3600) % 86400;
             break;
+        // 凌晨3点
         case 'dawn_time':
             $time = 86400 - (time() + 8 * 3600) % 86400 + 3600 * 3;
             break;
+        // 凌晨3点 + 随机时间
         case 'dawn_rand_time':
             $time = 86400 - (time() + 8 * 3600) % 86400 + 3600 * 3 + rand(1, 3600);
             break;
-
+        // 默认：凌晨3点 + 随机时间
         default:
             $time = 86400 - (time() + 8 * 3600) % 86400 + 3600 * 3 + rand(1, 3600);
             break;
@@ -1285,4 +1258,289 @@ function dawn_time($id)
     $number = substr(crc32($id), 6);
     $time = 86400 - (strtotime(date('Ymd H:i:30')) + 8 * 3600) % 86400 + 3600 * 3 + (int)$number;
     return $time;
+}
+
+
+/*********************************** Job招聘 ***********************************/
+
+// 月薪范围
+function job_salary_range($var){
+    $string = '';
+    switch ($var) {
+        case 1:
+            $string = '3000以下';
+            break;
+        case 2:
+            $string = '3000-5000';
+            break;
+        case 3:
+            $string = '高中';
+            break;
+        case 4:
+            $string = '大专';
+            break;
+        case 5:
+            $string = '本科';
+            break;
+        case 6:
+            $string = '硕士';
+            break;
+        case 7:
+            $string = '博士';
+            break;
+        default:
+            $string = '学历不限';
+            break;
+    }
+    return $string;
+}
+// 学历要求
+function job_education_background($var)
+{
+    $string = '';
+    switch ($var) {
+        case 1:
+            $string = '学历不限';
+            break;
+        case 2:
+            $string = '高中以下';
+            break;
+        case 3:
+            $string = '高中';
+            break;
+        case 4:
+            $string = '大专';
+            break;
+        case 5:
+            $string = '本科';
+            break;
+        case 6:
+            $string = '硕士';
+            break;
+        case 7:
+            $string = '博士';
+            break;
+        default:
+            $string = '学历不限';
+            break;
+    }
+    return $string;
+}
+// 工作经验
+function job_work_experience($var)
+{
+    $string = '';
+    switch ($var) {
+        case 1:
+            $string = '经验不限';
+            break;
+        case 2:
+            $string = '应届毕业生';
+            break;
+        case 3:
+            $string = '1年以上';
+            break;
+        case 4:
+            $string = '2年以上';
+            break;
+        case 5:
+            $string = '3年以上';
+            break;
+        case 6:
+            $string = '5年以上';
+            break;
+        case 7:
+            $string = '8年以上';
+            break;
+        case 8:
+            $string = '10年以上';
+            break;
+        default:
+            $string = '经验不限';
+            break;
+    }
+    return $string;
+}
+// 到岗时间
+function job_duty_time($var)
+{
+    $string = '';
+    switch ($var) {
+        case 0:
+            $string = '不限';
+            break;
+        case 1:
+            $string = '1周以内';
+            break;
+        case 2:
+            $string = '2周以内';
+            break;
+        case 3:
+            $string = '3周以内';
+            break;
+        case 4:
+            $string = '1个月之内';
+            break;
+        case 5:
+            $string = '随时到岗';
+            break;
+        case 6:
+            $string = '待定';
+            break;
+        default:
+            $string = '不限';
+            break;
+    }
+    return $string;
+}
+// 更新时间
+function job_update_time($var)
+{
+    $string = '';
+    switch ($var) {
+        case 1:
+            $string = '今天';
+            break;
+        case 2:
+            $string = '最近3天';
+            break;
+        case 3:
+            $string = '最近7天';
+            break;
+        case 4:
+            $string = '最近1个月';
+            break;
+        case 5:
+            $string = '最近3个月';
+            break;
+        default:
+            $string = '今天';
+            break;
+    }
+    return $string;
+}
+// 企业类型
+function job_enterprise_type($var)
+{
+    $string = '';
+    switch ($var) {
+        case 1:
+            $string = '个体工商户';
+            break;
+        case 2:
+            $string = '民营企业';
+            break;
+        case 3:
+            $string = '合资企业';
+            break;
+        case 4:
+            $string = '国有企业';
+            break;
+        case 5:
+            $string = '行政与事业单位';
+            break;
+    }
+    return $string;
+}
+// 公司人数
+function job_people_number($var)
+{
+    $string = '';
+    switch ($var) {
+        case 1:
+            $string = '1-10';
+            break;
+        case 2:
+            $string = '10-50';
+            break;
+        case 3:
+            $string = '50-100';
+            break;
+        case 4:
+            $string = '100-200';
+            break;
+        case 5:
+            $string = '200-500';
+            break;
+        case 6:
+            $string = '500-1000';
+            break;
+        case 7:
+            $string = '1000-2000';
+            break;
+        case 8:
+            $string = '2000-10000';
+            break;
+        case 9:
+            $string = '10000-100000';
+            break;
+    }
+    return $string;
+}
+// 平台要求
+function job_platform($var)
+{
+    $string = '';
+    switch ($var) {
+        case 1:
+            $string = 'Amazon';
+            break;
+        case 2:
+            $string = 'Wish';
+            break;
+        case 3:
+            $string = 'eBay';
+            break;
+        case 4:
+            $string = 'Lazada';
+            break;
+        case 5:
+            $string = 'Shopee';
+            break;
+        case 6:
+            $string = '独立站';
+            break;
+        case 7:
+            $string = '速卖通';
+            break;
+        case 8:
+            $string = 'Alibaba';
+            break;
+        case 9:
+            $string = '其他';
+            break;
+    }
+    return $string;
+}
+// 工作职位
+function job_position($var)
+{
+    $string = '';
+    switch ($var) {
+        case 1:
+            $string = '运营';
+            break;
+        case 2:
+            $string = '客服';
+            break;
+        case 3:
+            $string = '会计';
+            break;
+        case 4:
+            $string = 'HR';
+            break;
+        case 5:
+            $string = '行政';
+            break;
+        case 6:
+            $string = '产品开发';
+            break;
+        case 7:
+            $string = '采购';
+            break;
+        case 8:
+            $string = '物流';
+            break;
+    }
+    return $string;
 }

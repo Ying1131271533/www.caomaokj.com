@@ -99,7 +99,7 @@
 <link type="text/css" rel="stylesheet" href="__ACSS__/logistics_article.css?{$time}">
 <!-- js -->
 <script src="__AJS__/font_606323_0z1x61qzo3u.js"></script>
-<script src="__AJS__/warehouse_ad_click.js"></script>
+<!-- <script src="__AJS__/warehouse_ad_click.js"></script> -->
 <script type="text/javascript" src="__AJS__/home.js"></script>
 <script type="text/javascript" src="__AJS__/laypage.js"></script>
 <script type="text/javascript" src="__AJS__/jquery.lazyload.js"></script>
@@ -119,8 +119,8 @@
                 <li class="select-list" id="cate">
                     <div id="less-city" class="show-info show">
                         <span class="label-left">渠道类型：</span>
-                        <div class="list-area" style="height: ;">
-                            <span class="search selected" data-id="0">
+                        <div class="list-area">
+                            <span class="search {$cate != '' ?: 'selected'}" data-id="0">
                                 <a href="javascript:void(0)">全部</a>
                             </span>
 
@@ -276,13 +276,13 @@
             "Express Mail Service",
         ];
 
-        $("#keyword").autocomplete({
+        /* $("#keyword").autocomplete({
             source: CompanyName,
             select: function(event, ui) {
                 $("#keyword").val(ui.item.value);
                 submitSearch();
             }
-        });
+        }); */
 
         var request = getParams();
 

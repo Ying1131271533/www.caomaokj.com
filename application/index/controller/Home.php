@@ -28,9 +28,10 @@ class Home extends Base
             ->select();
 
         /**********************   右边的四个推荐文章   **********************/
-        $article = A::where(['ispos' => 1, 'status' => 1])
+        $article = A::where(['status' => 1])
+        // $article = A::where(['ispos' => 1, 'status' => 1])
             ->field('id, title, thumb')
-            ->order(['listorder' => 'desc', 'createtime' => 'desc'])
+            ->order(['createtime' => 'desc'])
             ->limit(4)
             ->select();
 

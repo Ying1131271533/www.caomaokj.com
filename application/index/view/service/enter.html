@@ -105,8 +105,7 @@
                 <i class="fa fa-star icon" aria-hidden="true"></i>
                 <span class="content-field">公司名称：</span>
             </span>
-            <div class="content-right"><input type="text" placeholder="建议20个字以内，如果超过字数可用公司或品牌简称" maxlength="20"
-                    class="input-commom" name="name"></div>
+            <div class="content-right"><input type="text" placeholder="建议20个字以内，如果超过字数可用公司或品牌简称" maxlength="20" class="input-commom" name="name"></div>
         </div>
         <div class="display-flex flex-warp content-wrap">
             <span class="display-flex justify-end align-center content-name">
@@ -571,6 +570,10 @@
         else if(service_introduce == ''){
             errorMsg = '请填写服务介绍';
         }
+        if(errorMsg){
+            layer.alert(errorMsg);
+            return false;
+        }
         
         var data = {
             category_id: category_id,
@@ -589,7 +592,7 @@
             // image: image,
         };
         
-        $.post('/index/service_api/index', data, function(res){
+        $.post('/index/service_api/enter', data, function(res){
             if(res.code != 200){
                 layer.msg(res.msg, {icon:2});
                 return false;

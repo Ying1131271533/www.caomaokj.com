@@ -1,0 +1,561 @@
+{extend name="layout/base" /}
+{block name="title"}发布岗位{/block}
+{block name="load"}
+
+<!-- css -->
+<link href="__MJCSS__/layout.css" rel="stylesheet" type="text/css">
+<link href="__MJCSS__/all.min.css" rel="stylesheet" type="text/css">
+<link href="__MJCSS__/weui.min.css" rel="stylesheet" type="text/css">
+<link href="__MJCSS__/serviceCommon.css" type="text/css" rel="stylesheet">
+<link href="__MJCSS__/serviceEnter.css" type="text/css" rel="stylesheet">
+<link href="__ACSS__/ZdCascader.css" rel="stylesheet" type="text/css">
+<link href="__ACSS__/tab.css" rel="stylesheet" type="text/css">
+<style>
+    #img {
+        height: 100px;
+        width: auto;
+        display: none;
+    }
+
+    #demo2 img {
+        width: 140px;
+    }
+
+    .test {
+        display: none;
+    }
+</style>
+<!-- js -->
+{/block}
+
+<!-- 主体内容 -->
+{block name="main"}
+
+<!-- <header class="navbar navbar-expand-lg navbar-dark bg-dark" id="header"></header> -->
+<main id="body" style="margin-top: 150px;">
+    <div class="container service-enter">
+        <!-- 职位名称 -->
+        <div class="display-flex flex-warp content-wrap">
+            <span class="display-flex justify-end align-center content-name">
+                <i class="fa fa-star icon" aria-hidden="true"></i>
+                <span class="content-field">职位名称：</span>
+            </span>
+            <div class="content-right"><input type="text" placeholder="请输入" maxlength="50" class="input-commom" name="name"></div>
+        </div>
+        <!-- 职位描述 -->
+        <div class="display-flex flex-warp content-wrap">
+            <span class="display-flex justify-end align-center content-name">
+                <i class="fa fa-star icon" aria-hidden="true"></i>
+                <span class="content-field">职位描述：</span>
+            </span>
+            <div class="content-right">
+                <textarea maxlength="40000" placeholder="请输入岗位职责、任职要求等，建议使用短句并分条列出，示例如下
+岗位职责：
+1、 ...
+2、 ... " class="input-commom content-textarea" name="job_description"
+                    style="resize: none; min-height: 157px; height: 157px;"></textarea>
+            </div>
+        </div>
+        <!-- 上班地址 -->
+        <div class="display-flex flex-warp content-wrap">
+            <span class="display-flex justify-end align-center content-name">
+                <i class="fa fa-star icon" aria-hidden="true"></i>
+                <span class="content-field">上班地址：</span>
+            </span>
+            <div class="content-right"><input type="text" placeholder="请输入" maxlength="50" class="input-commom"
+                    name="address"></div>
+        </div>
+        <!-- 发布城市 -->
+        <div class="display-flex flex-warp content-wrap">
+            <span class="display-flex justify-end align-center content-name">
+                <i class="fa fa-star icon" aria-hidden="true"></i>
+                <span class="content-field">发布城市：</span>
+            </span>
+            
+            <div class="content-right">
+                <input type="text" id="test" name="city_value" placeholder="请选择城市" />
+            </div>
+            <script src="__AJS__/ZdCascader.js"></script>
+            <script>
+                // 获取中国地区数据
+                $.get("{:url('get_china_places')}", {}, function(res){
+                    if(res.status != 20000){
+                        layer.msg('地区数据更新失败，请刷新页面', {icon: 2});
+                        return false;
+                    }
+                    $('#test').zdCascader({
+                        data: res.data
+                    });
+                });
+                // let _data = [];
+                // console.log(_data);
+                /* $(function () {
+                    $('#test').zdCascader({
+                        data: _data
+                    });
+                }) */
+            </script>
+        </div>
+        <!-- 工作经验 -->
+        <div class="display-flex flex-warp content-wrap">
+            <span class="display-flex justify-end align-center content-name">
+                <i class="fa fa-star icon" aria-hidden="true"></i>
+                <span class="content-field">工作经验：</span>
+            </span>
+            <div class="content-right">
+                <select class="service-select" name="work_experience">
+                    <option value="0">选择工作经验</option>
+                    <option value="1">经验不限</option>
+                    <option value="2">应届毕业生</option>
+                    <option value="3">1年以上</option>
+                    <option value="4">2年以上</option>
+                    <option value="5">3年以上</option>
+                    <option value="6">5年以上</option>
+                    <option value="7">8年以上</option>
+                    <option value="8">10年以上</option>
+                </select>
+            </div>
+        </div>
+        <!-- 最低学历 -->
+        <div class="display-flex flex-warp content-wrap">
+            <span class="display-flex justify-end align-center content-name">
+                <i class="fa fa-star icon" aria-hidden="true"></i>
+                <span class="content-field">最低学历：</span>
+            </span>
+            <div class="content-right">
+                <select class="service-select" name="education_background">
+                    <option value="0">选择最低学历要求</option>
+                    <option value="1">学历不限</option>
+                    <option value="2">高中以下</option>
+                    <option value="3">高中</option>
+                    <option value="4">大专</option>
+                    <option value="5">本科</option>
+                    <option value="6">硕士</option>
+                    <option value="7">博士</option>
+                </select>
+            </div>
+        </div>
+        <!-- 到岗时间 -->
+        <div class="display-flex flex-warp content-wrap">
+            <span class="display-flex justify-end align-center content-name">
+                <i class="fa fa-star icon" aria-hidden="true"></i>
+                <span class="content-field">到岗时间：</span>
+            </span>
+            <div class="content-right">
+                <select class="service-select" name="duty_time">
+                    <option value="0">选择到岗时间</option>
+                    <option value="1">1周以内</option>
+                    <option value="2">2周以内</option>
+                    <option value="3">3周以内</option>
+                    <option value="4">1个月之内</option>
+                    <option value="5">随时到岗</option>
+                    <option value="6">待定</option>
+                </select>
+            </div>
+        </div>
+        <!-- 平台要求 -->
+        <div class="display-flex flex-warp content-wrap">
+            <span class="display-flex justify-end align-center content-name">
+                <i class="fa fa-star icon" aria-hidden="true"></i>
+                <span class="content-field">选择平台</span>
+            </span>
+            <div class="content-right">
+                <select class="service-select" name="platform">
+                    <option value="0">选择平台</option>
+                    <option value="1">Amazon</option>
+                    <option value="2">Wish</option>
+                    <option value="3">eBay</option>
+                    <option value="4">Lazada</option>
+                    <option value="5">Shopee</option>
+                    <option value="6">独立站</option>
+                    <option value="6">速卖通</option>
+                    <option value="6">Alibaba</option>
+                    <option value="6">其他</option>
+                </select>
+            </div>
+        </div>
+        <!-- 工作职位 -->
+        <div class="display-flex flex-warp content-wrap">
+            <span class="display-flex justify-end align-center content-name">
+                <i class="fa fa-star icon" aria-hidden="true"></i>
+                <span class="content-field">工作职位</span>
+            </span>
+            <div class="content-right">
+                <select class="service-select" name="position">
+                    <option value="0">选择工作职位</option>
+                    <option value="1">运营</option>
+                    <option value="2">客服</option>
+                    <option value="3">会计</option>
+                    <option value="4">HR</option>
+                    <option value="5">行政</option>
+                    <option value="6">产品开发</option>
+                    <option value="6">采购</option>
+                    <option value="6">物流</option>
+                </select>
+            </div>
+        </div>
+        <!-- 月薪 -->
+        <div class="display-flex flex-warp content-wrap">
+            <span class="display-flex justify-end align-center content-name">
+                <i class="fa fa-star icon" aria-hidden="true"></i>
+                <span class="content-field">月薪：</span>
+            </span>
+            <div class="content-right">
+                <input type="text" placeholder="最低月薪" maxlength="9" class="input-commom" name="salary_min"
+                    style="width: 200px;">
+                -
+                <input type="text" placeholder="最高月薪" maxlength="9" class="input-commom" name="salary_max"
+                    style="width: 200px;">
+            </div>
+        </div>
+        <!-- 福利 -->
+        <div class="display-flex flex-warp content-wrap">
+            <span class="display-flex justify-end align-center content-name">
+                <i class="fa fa-star icon" aria-hidden="true"></i>
+                <span class="content-field">福利：</span>
+            </span>
+            <div class="content-right">
+                <div class="demo">
+                    <div class="plus-tag tagbtn clearfix" id="myTags"></div>
+                    <div class="plus-tag-add">
+                        <ul class="Form FancyForm">
+                            <li>
+                                <!-- <input id="" name="" type="text" class="stext" maxlength="20" /> -->
+                                <input type="text" placeholder="输入自定义福利：请输入6个中文字或12个英文字母以内的福利" maxlength="12"
+                                    class="input-commom">
+                                <!-- <label>输入福利</label> -->
+                                <span class="fff"></span>
+                            </li>
+                            <li>
+                                <button type="button" class="layui-btn layui-btn-normal">添加自定义福利</button>
+                                <a href="javascript:void(0);" class="plus">收起推荐福利</a>
+                            </li>
+                        </ul>
+                    </div>
+                    <!--plus-tag-add end-->
+
+                    <div id="mycard-plus" style="display:block;margin-top: -25px;">
+                        <div class="default-tag tagbtn">
+                            <div class="clearfix">
+                                <a value="-1" title="五险一金" href="javascript:void(0);"><span>五险一金</span><em></em></a>
+                                <a value="-1" title="法定节假日" href="javascript:void(0);"><span>法定节假日</span><em></em></a>
+                                <a value="-1" title="补充医疗保险" href="javascript:void(0);"><span>补充医疗保险</span><em></em></a>
+                                <a value="-1" title="补充公积金" href="javascript:void(0);"><span>补充公积金</span><em></em></a>
+                                <a value="-1" title="广告" href="javascript:void(0);"><span>员工旅游</span><em></em></a>
+                                <a value="-1" title="交通补贴" href="javascript:void(0);"><span>交通补贴</span><em></em></a>
+                                <a value="-1" title="餐饮补贴" href="javascript:void(0);"><span>餐饮补贴</span><em></em></a>
+                                <a value="-1" title="通讯补贴" href="javascript:void(0);"><span>通讯补贴</span><em></em></a>
+                                <a value="-1" title="专业培训" href="javascript:void(0);"><span>专业培训</span><em></em></a>
+                                <a value="-1" title="出国机会" href="javascript:void(0);"><span>出国机会</span><em></em></a>
+                                <a value="-1" title="绩效奖金" href="javascript:void(0);"><span>绩效奖金</span><em></em></a>
+                                <a value="-1" title="年终奖金" href="javascript:void(0);"><span>年终奖金</span><em></em></a>
+                                <a value="-1" title="股票期权" href="javascript:void(0);"><span>股票期权</span><em></em></a>
+                                <a value="-1" title="弹性工作" href="javascript:void(0);"><span>弹性工作</span><em></em></a>
+                                <a value="-1" title="定期体检" href="javascript:void(0);"><span>定期体检</span><em></em></a>
+                            </div>
+                            <div class="clearfix" style="display:none;"><a value="-1" title="媒体"
+                                    href="javascript:void(0);"><span>媒体</span><em></em></a></div>
+                            <div class="clearfix" style="display:none;"><a value="-1" title="网络营销"
+                                    href="javascript:void(0);"><span>网络营销</span><em></em></a></div>
+                        </div>
+                        <!-- <div align="right"><a href="javascript:void(0);" id="change-tips" style="color:#3366cc;">换一换</a></div> -->
+                    </div>
+                    <!--mycard-plus end-->
+                    <!-- <input type="button" value="获取" onclick="get_tag_title()"> -->
+                </div>
+
+            </div>
+            <script src="__AJS__/tab.js"></script>
+        </div>
+
+        <!-- 公司名称 -->
+        <div class="display-flex flex-warp content-wrap">
+            <span class="display-flex justify-end align-center content-name">
+                <i class="fa fa-star icon" aria-hidden="true"></i>
+                <span class="content-field">公司名称：</span>
+            </span>
+            <div class="content-right"><input type="text" placeholder="请输入" maxlength="50" class="input-commom"
+                    name="company"></div>
+        </div>
+        <!-- 公司logo -->
+        <div class="display-flex flex-warp content-wrap">
+            <span class="display-flex justify-end align-center content-name">
+                <i class="fa fa-star icon" aria-hidden="true"></i>
+                <span class="content-field">上传logo：</span>
+            </span>
+            <div class="content-right" style="min-height: 70px;">
+                <div class="img-btn-warp">
+
+                    <div class="layui-upload">
+                        <button type="button" class="layui-btn layui-btn-normal"
+                            onclick="upload_img(this)">上传图片</button>
+                        <button type="button" class="layui-btn test" id="logo">上传图片</button>
+                        <input type="hidden" name="logo" id="demoInput" value="">
+                        <div class="layui-upload-list">
+                            <img class="layui-upload-img" id="img">
+                            <p id="demoText"></p>
+                        </div>
+                    </div>
+                    <p style="width: 100%; text-align: center; color: red; padding-top: 6px;">建议尺寸 1:1</p>
+                </div>
+            </div>
+        </div>
+
+        <!-- 联系方式 -->
+        <div class="display-flex flex-warp content-wrap">
+            <span class="display-flex justify-end align-center content-name">
+                <i class="fa fa-star icon" aria-hidden="true"></i>
+                <span class="content-field">联系电话</span>
+            </span>
+            <div class="content-right"><input type="text" placeholder="请输入" maxlength="50" class="input-commom" name="phone"></div>
+        </div>
+        <!-- 公司简介 -->
+        <div class="display-flex flex-warp content-wrap">
+            <span class="display-flex justify-end align-center content-name">
+                <i class="fa fa-star icon" aria-hidden="true"></i>
+                <span class="content-field">公司简介：</span>
+            </span>
+            <div class="content-right">
+                <textarea maxlength="40000" placeholder="请输入公司简介" class="input-commom content-textarea"
+                    name="company_introduction" style="resize: none; min-height: 157px; height: 157px;"></textarea>
+            </div>
+        </div>
+        <!-- 公司人数 -->
+        <div class="display-flex flex-warp content-wrap">
+            <span class="display-flex justify-end align-center content-name">
+                <i class="fa fa-star icon" aria-hidden="true"></i>
+                <span class="content-field">公司人数：</span>
+            </span>
+            <div class="content-right">
+                <select class="service-select" name="people_number">
+                    <option value="0">选择公司人数</option>
+                    <option value="1">1-10</option>
+                    <option value="2">10-50</option>
+                    <option value="3">50-100</option>
+                    <option value="4">100-200</option>
+                    <option value="5">200-500</option>
+                    <option value="6">500-1000</option>
+                    <option value="7">1000-2000</option>
+                    <option value="8">2000-10000</option>
+                    <option value="9">10000-100000</option>
+                </select>
+            </div>
+        </div>
+        <!-- 企业类型 -->
+        <div class="display-flex flex-warp content-wrap">
+            <span class="display-flex justify-end align-center content-name">
+                <i class="fa fa-star icon" aria-hidden="true"></i>
+                <span class="content-field">企业类型 ：</span>
+            </span>
+            <div class="content-right">
+                <select class="service-select" name="enterprise_type">
+                    <option value="0">选择企业类型 </option>
+                    <option value="1">个体工商户</option>
+                    <option value="2">民营企业</option>
+                    <option value="3">合资企业</option>
+                    <option value="4">国有企业</option>
+                    <option value="5">行政与事业单位</option>
+                </select>
+            </div>
+        </div>
+
+        <div class="display-flex flex-warp content-wrap" style="margin-top: 66px;"
+            class="display-flex justify-end content-name">
+            <span class="display-flex justify-end content-name"></span>
+            <div class="content-right" style="height: 136px;">
+                <div style="height: 50px;"><span class="submit-btn" onclick="submit()">发布岗位</span></div>
+                <p class="submit-tip">审核时间为1-3个工作日</p>
+                <p class="submit-tip" style="color: red;">加急审核请加微信：13829730554</p>
+            </div>
+        </div>
+    </div>
+</main>
+
+<script>
+    var buttonObj = '';
+    var demoInputObj = '';
+    function upload_img(obj) {
+        // 触发点击上传图片
+        $(obj).parents('.layui-upload').find(".test").click();
+        buttonObj = obj;
+        demoInputObj = $(obj).parents('.layui-upload').find("#demoInput");
+    }
+
+    layui.use(['upload', 'element', 'layer'], function () {
+        var $ = layui.jquery
+            , upload = layui.upload
+            , element = layui.element
+            , layer = layui.layer
+
+        // logo
+        var uploadInst = upload.render({
+            elem: '#logo'
+            , url: '/index/upload/uploadImg'
+            , size: 1024 * 2 //限定大小
+            , before: function (obj) {
+                // 显示预览
+                $(buttonObj).parents('.layui-upload').find('#img').show();
+                // 预读本地文件示例，不支持ie8
+                obj.preview(function (index, file, result) {
+                    $(buttonObj).parents('.layui-upload').find('#img').attr('src', result);
+                });
+            }
+            , done: function (res) {
+                //如果上传失败
+                if (res.code != 200) {
+                    return layer.msg('上传失败');
+                }
+                //上传成功的一些操作
+                $(demoInputObj).val(res.data);
+                return layer.msg(res.msg);
+            }
+            , error: function () {
+                //演示失败状态，并实现重传
+                var demoText = $('#demoText');
+                demoText.html('<span style="color: #FF5722;">上传失败</span> <a class="layui-btn layui-btn-xs demo-reload">重试</a>');
+                demoText.find('.demo-reload').on('click', function () {
+                    uploadInst.upload();
+                });
+            }
+        });
+    });
+
+    // 提交
+    function submit() {
+        // 职位名称
+        var name = $('input[name="name"]').val();
+        // 职位描述
+        var job_description = $('textarea[name="job_description"]').val();
+        // 上班地址
+        var address = $('input[name="address"]').val();
+        // 发布城市
+        var city_value = $('input[name="city_value"]').val();
+        // 工作经验
+        var work_experience = $('select[name="work_experience"]').val();
+        // 最低学历
+        var education_background = $('select[name="education_background"]').val();
+        // 到岗时间
+        var duty_time = $('select[name="duty_time"]').val();
+        // 平台要求
+        var platform = $('select[name="platform"]').val();
+        // 工作职位
+        var position = $('select[name="position"]').val();
+        // 最低月薪
+        var salary_min = $('input[name="salary_min"]').val();
+        // 最高月薪
+        var salary_max = $('input[name="salary_max"]').val();
+        // 福利
+        var welfare = [];
+        $("a", ".plus-tag").each(function () {
+            welfare.push($(this).attr("title"))
+        });
+        // 公司名称
+        var company = $('input[name="company"]').val();
+        // 公司logo
+        var logo = $('input[name="logo"]').val();
+        // 联系方式
+        var phone = $('input[name="phone"]').val();
+        // 公司简介
+        var company_introduction = $('textarea[name="company_introduction"]').val();
+        // 公司人数
+        var people_number = $('select[name="people_number"]').val();
+        // 企业类型
+        var enterprise_type = $('select[name="enterprise_type"]').val();
+        
+        // 错误信息
+        let errorMsg = '';
+        if (name == '') {
+            errorMsg = '请输入职位名称';
+        }
+        else if (job_description == '') {
+            errorMsg = '请输入职位描述';
+        }
+        else if (address == '') {
+            errorMsg = '请输入上班地址';
+        }
+        else if (city_value == '') {
+            errorMsg = '请选择发布城市';
+        }
+        else if (work_experience == '') {
+            errorMsg = '请选择工作经验';
+        }
+        else if (education_background == '') {
+            errorMsg = '请选择最低学历';
+        }
+        else if (duty_time == '') {
+            errorMsg = '请选择到岗时间';
+        }
+        else if (platform == '') {
+            errorMsg = '请选择平台要求';
+        }
+        else if (phone == '') {
+            errorMsg = '请输入联系方式';
+        }
+        else if (position == '') {
+            errorMsg = '请选择工作职位';
+        }
+        else if (salary_min == '') {
+            errorMsg = '请输入最低月薪';
+        }
+        else if (salary_max == '') {
+            errorMsg = '请输入最高月薪';
+        }
+        else if (logo == '') {
+            errorMsg = '请上传logo';
+        }
+        else if (company == '') {
+            errorMsg = '请输入公司名称';
+        }
+        else if (company_introduction == '') {
+            errorMsg = '请输入公司简介';
+        }
+        else if (people_number == '') {
+            errorMsg = '请选择公司人数';
+        }
+        else if (enterprise_type == '') {
+            errorMsg = '请选择企业类型';
+        }
+        // else if (welfare.length < 0) {
+        //     errorMsg = '请输入福利';
+        // }
+
+        // 错误信息
+        if (errorMsg) {
+            layer.alert(errorMsg);
+            return false;
+        }
+
+        var data = {
+            name: name,
+            job_description: job_description,
+            address: address,
+            city_value: city_value,
+            work_experience: work_experience,
+            education_background: education_background,
+            duty_time: duty_time,
+            platform: platform,
+            position: position,
+            phone: phone,
+            salary_min: salary_min,
+            salary_max: salary_max,
+            welfare: welfare,
+            company: company,
+            logo: logo,
+            company_introduction: company_introduction,
+            people_number: people_number,
+            enterprise_type: enterprise_type
+        };
+
+        $.post('/index/job/save_release', data, function (res) {
+            if (res.status != 20000) {
+                layer.msg(res.msg, { icon: 2 });
+                return false;
+            }
+            layer.msg(res.msg, { icon: 1 });
+            window.location.href="{:url('job/index')}"; 
+        });
+    }
+
+</script>
+
+{/block}

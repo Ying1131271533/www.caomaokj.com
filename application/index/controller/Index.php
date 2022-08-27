@@ -33,7 +33,8 @@ class Index extends Base
             ->select();
 
         /**********************   轮播图右边 两个推荐文章   **********************/
-        $hotArticle = Article::where(['ispos' => 1, 'status' => 1])
+        $hotArticle = Article::where(['status' => 1])
+        // $hotArticle = Article::where(['ispos' => 1, 'status' => 1])
             ->field('id, title, thumb')
             ->order(['id' => 'desc'])
             ->limit(2)

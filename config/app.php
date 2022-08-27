@@ -13,6 +13,8 @@
 // | 应用设置
 // +----------------------------------------------------------------------
 
+use think\facade\Env;
+
 return [
     // 应用名称
     'app_name'                => '',
@@ -191,4 +193,18 @@ return [
 
     'page' => 1,
     'size' => 20,
+
+    // rabbitmq连接配置
+    'rabbitmq'         => [
+        'host'     => '106.52.77.54',
+        // 'host'     => '127.0.0.1',
+        // 'host'     => '172.16.0.9',
+        // 'host'     => 'rabbitmq',
+        'port'     => 5672,
+        // 'port'     => 5673,
+        // 'port'     => 5674,
+        'login'    => 'akali',
+        'password' => 'O8idPl^iY?i4/3d@n.T-idGkL22jE',
+        'vhost'    => '/',
+    ],
 ];
