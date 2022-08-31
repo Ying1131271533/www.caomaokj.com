@@ -273,7 +273,8 @@ function del_oldthumb($path)
  * @param  array    $data   参数数组
  * @return array    $data   处理好的参数
  */
-function del_old_img($data){
+function del_old_img($data)
+{
     if ($data['oldthumb'] === $data['thumb']) {
         unset($data['thumb']);
     } else {
@@ -305,7 +306,7 @@ function del_img($old_image, $new_image)
 function del_imgs($old_images, $new_images)
 {
     $del_images = array_diff($old_images, $new_images);
-    foreach($del_images as $value){
+    foreach ($del_images as $value) {
         del_oldthumb($value);
     }
 }
@@ -1097,13 +1098,13 @@ function show(string $msg, int $code = 200, int $status = 20000, $data = [])
 function success($data = [], int $status = 20000, int $code = 200, string $msg = '成功')
 {
     // 组装数据
-    if (is_string($data) && (int)($data) == 0) {
+    if (is_string($data) && (int) ($data) == 0) {
         $resultData = [
             'status' => $status,
             'msg'    => $data,
             // 'data'   => [],
         ];
-    }else{
+    } else {
         $resultData = [
             'status' => $status,
             'msg'    => $msg,
@@ -1142,9 +1143,9 @@ function fail(string $msg = '失败', int $status = 30000, int $code = 200)
  *
  * 递归找子级数据
  *
- * @param  array    $data		二维数组
- * @param  int      $pid		父级id
- * @return array				返回处理好的数组
+ * @param  array    $data        二维数组
+ * @param  int      $pid        父级id
+ * @return array                返回处理好的数组
  */
 function get_child($data, $pid = 0)
 {
@@ -1152,7 +1153,7 @@ function get_child($data, $pid = 0)
     foreach ($data as $value) {
         if ($value['parent_id'] == $pid) {
             $value['child'] = get_child($data, $value['id']);
-            $tmp[] = $value;
+            $tmp[]          = $value;
         }
     }
     return $tmp;
@@ -1165,10 +1166,10 @@ function get_child($data, $pid = 0)
  *
  * layui的树形图数据处理
  *
- * @param  array    $data		    二维数组
- * @param  int      $parentid	    父级id
- * @param  bool     $spread		    节点是否全部展开
- * @return string				    返回处理好的字符串
+ * @param  array    $data            二维数组
+ * @param  int      $parentid        父级id
+ * @param  bool     $spread            节点是否全部展开
+ * @return string                    返回处理好的字符串
  */
 function get_child_tree_data($data, $parentid = 0, $spread = false)
 {
@@ -1177,16 +1178,19 @@ function get_child_tree_data($data, $parentid = 0, $spread = false)
         if ($value['parentid'] == $parentid) {
             $tmp .= "{";
             $tmp .= "label: '{$value['catname']}', id: {$value['id']}, pid: {$parentid},";
-            if($spread) $tmp .= 'spread: true,';
+            if ($spread) {
+                $tmp .= 'spread: true,';
+            }
+
             $child = get_child_tree_data($data, $value['id']);
-            if($child){
+            if ($child) {
                 $tmp .= 'children:[' . $child . ']';
             }
-            
+
             $tmp .= "},";
         }
     }
-    
+
     return $tmp;
 }
 
@@ -1256,15 +1260,15 @@ function cache_time(string $type = 'dawn_rand_time')
 function dawn_time($id)
 {
     $number = substr(crc32($id), 6);
-    $time = 86400 - (strtotime(date('Ymd H:i:30')) + 8 * 3600) % 86400 + 3600 * 3 + (int)$number;
+    $time   = 86400 - (strtotime(date('Ymd H:i:30')) + 8 * 3600) % 86400 + 3600 * 3 + (int) $number;
     return $time;
 }
-
 
 /*********************************** Job招聘 ***********************************/
 
 // 月薪范围
-function job_salary_range($var){
+function job_salary_range($var)
+{
     $string = '';
     switch ($var) {
         case 1:
@@ -1274,208 +1278,56 @@ function job_salary_range($var){
             $string = '3000-5000';
             break;
         case 3:
-            $string = '高中';
+            $string = '5000-10000';
             break;
         case 4:
-            $string = '大专';
+            $string = '10000-15000';
             break;
         case 5:
-            $string = '本科';
+            $string = '15000-20000';
             break;
         case 6:
-            $string = '硕士';
-            break;
-        case 7:
-            $string = '博士';
-            break;
-        default:
-            $string = '学历不限';
+            $string = '20000以上';
             break;
     }
     return $string;
 }
-// 学历要求
-function job_education_background($var)
+// 获取月薪范围条件
+function where_salary_range(int $var)
 {
-    $string = '';
+    $array = [];
+    // $string = '';
     switch ($var) {
         case 1:
-            $string = '学历不限';
+            // $string = 'salary_min<=3000';
+            $array[] = ['salary_min', '<=', 3000];
             break;
         case 2:
-            $string = '高中以下';
+            // $string = 'salary_min>=3000 or salary_max<=5000';
+            $array[] = ['salary_min', '>=', 3000];
+            $array[] = ['salary_max', '<=', 5000];
             break;
         case 3:
-            $string = '高中';
+            // $string = 'salary_min>=5000 or salary_max<=10000';
+            $array[] = ['salary_min', '>=', 5000];
+            $array[] = ['salary_max', '<=', 10000];
             break;
         case 4:
-            $string = '大专';
+            // $string = 'salary_min>=10000 or salary_max<=15000';
+            $array[] = ['salary_min', '>=', 10000];
+            $array[] = ['salary_max', '<=', 15000];
             break;
         case 5:
-            $string = '本科';
+            // $string = 'salary_min>=15000 or salary_max<=20000';
+            $array[] = ['salary_min', '>=', 15000];
+            $array[] = ['salary_max', '<=', 20000];
             break;
         case 6:
-            $string = '硕士';
-            break;
-        case 7:
-            $string = '博士';
-            break;
-        default:
-            $string = '学历不限';
+            // $string = 'salary_max>=20000';
+            $array[] = ['salary_min', '>=', 20000];
             break;
     }
-    return $string;
-}
-// 工作经验
-function job_work_experience($var)
-{
-    $string = '';
-    switch ($var) {
-        case 1:
-            $string = '经验不限';
-            break;
-        case 2:
-            $string = '应届毕业生';
-            break;
-        case 3:
-            $string = '1年以上';
-            break;
-        case 4:
-            $string = '2年以上';
-            break;
-        case 5:
-            $string = '3年以上';
-            break;
-        case 6:
-            $string = '5年以上';
-            break;
-        case 7:
-            $string = '8年以上';
-            break;
-        case 8:
-            $string = '10年以上';
-            break;
-        default:
-            $string = '经验不限';
-            break;
-    }
-    return $string;
-}
-// 到岗时间
-function job_duty_time($var)
-{
-    $string = '';
-    switch ($var) {
-        case 0:
-            $string = '不限';
-            break;
-        case 1:
-            $string = '1周以内';
-            break;
-        case 2:
-            $string = '2周以内';
-            break;
-        case 3:
-            $string = '3周以内';
-            break;
-        case 4:
-            $string = '1个月之内';
-            break;
-        case 5:
-            $string = '随时到岗';
-            break;
-        case 6:
-            $string = '待定';
-            break;
-        default:
-            $string = '不限';
-            break;
-    }
-    return $string;
-}
-// 更新时间
-function job_update_time($var)
-{
-    $string = '';
-    switch ($var) {
-        case 1:
-            $string = '今天';
-            break;
-        case 2:
-            $string = '最近3天';
-            break;
-        case 3:
-            $string = '最近7天';
-            break;
-        case 4:
-            $string = '最近1个月';
-            break;
-        case 5:
-            $string = '最近3个月';
-            break;
-        default:
-            $string = '今天';
-            break;
-    }
-    return $string;
-}
-// 企业类型
-function job_enterprise_type($var)
-{
-    $string = '';
-    switch ($var) {
-        case 1:
-            $string = '个体工商户';
-            break;
-        case 2:
-            $string = '民营企业';
-            break;
-        case 3:
-            $string = '合资企业';
-            break;
-        case 4:
-            $string = '国有企业';
-            break;
-        case 5:
-            $string = '行政与事业单位';
-            break;
-    }
-    return $string;
-}
-// 公司人数
-function job_people_number($var)
-{
-    $string = '';
-    switch ($var) {
-        case 1:
-            $string = '1-10';
-            break;
-        case 2:
-            $string = '10-50';
-            break;
-        case 3:
-            $string = '50-100';
-            break;
-        case 4:
-            $string = '100-200';
-            break;
-        case 5:
-            $string = '200-500';
-            break;
-        case 6:
-            $string = '500-1000';
-            break;
-        case 7:
-            $string = '1000-2000';
-            break;
-        case 8:
-            $string = '2000-10000';
-            break;
-        case 9:
-            $string = '10000-100000';
-            break;
-    }
-    return $string;
+    return $array;
 }
 // 平台要求
 function job_platform($var)
@@ -1540,6 +1392,311 @@ function job_position($var)
             break;
         case 8:
             $string = '物流';
+            break;
+    }
+    return $string;
+}
+// 学历要求
+function job_education_background($var)
+{
+    $string = '';
+    switch ($var) {
+        case 1:
+            $string = '学历不限';
+            break;
+        case 2:
+            $string = '高中以下';
+            break;
+        case 3:
+            $string = '高中';
+            break;
+        case 4:
+            $string = '大专';
+            break;
+        case 5:
+            $string = '本科';
+            break;
+        case 6:
+            $string = '硕士';
+            break;
+        case 7:
+            $string = '博士';
+            break;
+        default:
+            $string = '学历不限';
+            break;
+    }
+    return $string;
+}
+// 用学历文字，获取学历值
+function education_background_val(string $string)
+{
+    switch ($string) {
+        case '学历不限':
+            $val = 1;
+            break;
+        case '高中以下':
+            $val = 2;
+            break;
+        case '高中':
+            $val = 3;
+            break;
+        case '大专':
+            $val = 4;
+            break;
+        case '本科':
+            $val = 5;
+            break;
+        case '硕士':
+            $val = 6;
+            break;
+        case '博士':
+            $val = 7;
+            break;
+        default:
+            $val = 0;
+            break;
+    }
+    return $val;
+}
+// 工作经验
+function job_work_experience($var)
+{
+    $string = '';
+    switch ($var) {
+        case 1:
+            $string = '经验不限';
+            break;
+        case 2:
+            $string = '应届毕业生';
+            break;
+        case 3:
+            $string = '1年以上';
+            break;
+        case 4:
+            $string = '2年以上';
+            break;
+        case 5:
+            $string = '3年以上';
+            break;
+        case 6:
+            $string = '5年以上';
+            break;
+        case 7:
+            $string = '8年以上';
+            break;
+        case 8:
+            $string = '10年以上';
+            break;
+        default:
+            $string = '经验不限';
+            break;
+    }
+    return $string;
+}
+// 用工作经验文字获取值
+function work_experience_val($string)
+{
+    switch ($string) {
+        case '经验不限':
+            $val = 1;
+            break;
+        case '应届毕业生':
+            $val = 2;
+            break;
+        case '1年以上':
+            $val = 3;
+            break;
+        case '2年以上':
+            $val = 4;
+            break;
+        case '3年以上':
+            $val = 5;
+            break;
+        case '5年以上':
+            $val = 6;
+            break;
+        case '8年以上':
+            $val = 7;
+            break;
+        case '10年以上':
+            $val = 8;
+            break;
+        default:
+            $val = 0;
+            break;
+    }
+    return $val;
+}
+// 到岗时间
+function job_duty_time($var)
+{
+    $string = '';
+    switch ($var) {
+        case 0:
+            $string = '不限';
+            break;
+        case 1:
+            $string = '1周以内';
+            break;
+        case 2:
+            $string = '2周以内';
+            break;
+        case 3:
+            $string = '3周以内';
+            break;
+        case 4:
+            $string = '1个月之内';
+            break;
+        case 5:
+            $string = '随时到岗';
+            break;
+        case 6:
+            $string = '待定';
+            break;
+        default:
+            $string = '不限';
+            break;
+    }
+    return $string;
+}
+// 用到岗时间文字获取值
+function duty_time_val($string)
+{
+    switch ($string) {
+        case '不限':
+            $val = 1;
+            break;
+        case '1周以内':
+            $val = 2;
+            break;
+        case '2周以内':
+            $val = 3;
+            break;
+        case '3周以内':
+            $val = 4;
+            break;
+        case '1个月之内':
+            $val = 5;
+            break;
+        case '随时到岗':
+            $val = 6;
+            break;
+        case '待定':
+            $val = 7;
+            break;
+        default:
+            $val = 0;
+            break;
+    }
+    return $val;
+}
+// 更新时间
+function job_update_time($var)
+{
+    $string = '';
+    switch ($var) {
+        case 1:
+            $string = '今天';
+            break;
+        case 2:
+            $string = '最近3天';
+            break;
+        case 3:
+            $string = '最近7天';
+            break;
+        case 4:
+            $string = '最近1个月';
+            break;
+        case 5:
+            $string = '最近3个月';
+            break;
+        default:
+            $string = '更新时间';
+            break;
+    }
+    return $string;
+}
+// 用更新时间文字获取时间戳值
+function update_time_val($string)
+{
+    $today = strtotime(date("Y-m-d"), time());
+    switch ($string) {
+        case '今天':
+            $val = $today;
+            break;
+        case '最近3天':
+            $val = $today - 86400 * 3;
+            break;
+        case '最近7天':
+            $val =  $today - 86400 * 7;
+            break;
+        case '最近1个月':
+            $val =  $today - 86400 * 30;
+            break;
+        case '最近3个月':
+            $val =  $today - 86400 * 90;
+            break;
+        default:
+            $val = time();
+            break;
+    }
+    return $val;
+}
+// 企业类型
+function job_enterprise_type($var)
+{
+    $string = '';
+    switch ($var) {
+        case 1:
+            $string = '个体工商户';
+            break;
+        case 2:
+            $string = '民营企业';
+            break;
+        case 3:
+            $string = '合资企业';
+            break;
+        case 4:
+            $string = '国有企业';
+            break;
+        case 5:
+            $string = '行政与事业单位';
+            break;
+    }
+    return $string;
+}
+// 公司人数
+function job_people_number($var)
+{
+    $string = '';
+    switch ($var) {
+        case 1:
+            $string = '1-10';
+            break;
+        case 2:
+            $string = '10-50';
+            break;
+        case 3:
+            $string = '50-100';
+            break;
+        case 4:
+            $string = '100-200';
+            break;
+        case 5:
+            $string = '200-500';
+            break;
+        case 6:
+            $string = '500-1000';
+            break;
+        case 7:
+            $string = '1000-2000';
+            break;
+        case 8:
+            $string = '2000-10000';
+            break;
+        case 9:
+            $string = '10000-100000';
             break;
     }
     return $string;

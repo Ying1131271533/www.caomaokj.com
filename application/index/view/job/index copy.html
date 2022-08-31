@@ -3,10 +3,12 @@
 {block name="load"}
 
 <!-- css -->
+<link type="text/css" rel="stylesheet" href="__ACSS__/laypage.css" id="laypagecss">
 <link rel="stylesheet" href="__ACSS__/job.css">
 
 <!-- js -->
 <script src="__AJS__/job_post.js"></script>
+<script type="text/javascript" src="__AJS__/laypage.js"></script>
 <!-- <script src="__AJS__/manifest.js"></script> -->
 <!-- <script src="__AJS__/job.js"></script> -->
 {/block}
@@ -766,25 +768,9 @@
                                 </div>
                             </div>
                         </div>
-                        <div data-v-25fc4253="" class="clear"></div>
 
-                        <div data-v-25fc4253="" class="pagination el-pagination is-background"><button type="button"
-                                disabled="disabled" class="btn-prev"><span>上一页</span></button>
-                            <ul class="el-pager">
-                                <li class="number active">1</li>
-                                <!---->
-                                <li class="number">2</li>
-                                <li class="number">3</li>
-                                <li class="number">4</li>
-                                <li class="number">5</li>
-                                <li class="number">6</li>
-                                <li class="el-icon more btn-quicknext el-icon-more"></li>
-                                <li class="number">30</li>
-                            </ul><button type="button" class="btn-next"><span>下一页</span></button>
-                            <slot><button data-v-25fc4253="" class="btn-next" style="margin-left: 10px;">最后一页</button>
-                            </slot>
-                        </div>
-                        
+                        <div id="laypage" class="laypage"></div>
+
                     </div>
                     <div data-v-25fc4253="" class="yun_job_list_right">
                         <div data-v-25fc4253="" class="yun_job_list_right_banner"><a data-v-25fc4253=""

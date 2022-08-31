@@ -137,8 +137,18 @@
         </div>
         <div class="main-list-group">
             <div class="col-md-9 left">
+
                 <!-- 仓库列表 -->
                 <div class="data-div">
+
+                    <!-- 排序 -->
+                    <!-- <div class="header-sort bordered">
+                        <dl>
+                            <dt>排序:</dt>
+                            <dd class="selected" data-type="1"><a href="javascript:void(0)">公司排序</a></dd>
+                            <dd data-type="3"><a href="javascript:void(0)">LCD会员</a></dd>
+                        </dl>
+                    </div> -->
 
                     {foreach $logistics as $value}
                     <div class="media bordered">
@@ -259,31 +269,6 @@
     <script type="text/javascript">
     $(function() {
 
-        var CompanyName = [
-            "美国海外仓",
-            "FBA头程美森快船",
-            "UPS快递 2-3签收",
-            "Fedex",
-            "荷兰小包",
-            "中国邮政航空小包（China Post Air Mail）",
-            "DHL",
-            "俄罗斯海外仓",
-            "东南亚专线",
-            "中东专线",
-            "外邮/马邮",
-            "国际EUB",
-            "ETK",
-            "Express Mail Service",
-        ];
-
-        /* $("#keyword").autocomplete({
-            source: CompanyName,
-            select: function(event, ui) {
-                $("#keyword").val(ui.item.value);
-                submitSearch();
-            }
-        }); */
-
         var request = getParams();
 
         // 为您推荐
@@ -341,6 +326,5 @@
         return request;
     }
     </script>
-</div>
 </div>
 {/block}
