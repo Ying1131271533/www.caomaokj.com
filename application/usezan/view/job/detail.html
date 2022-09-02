@@ -23,7 +23,7 @@
             <tr>
                 <td width="100"><label>职位描述：</label></td>
                 <td width="1000">
-                    <textarea rows="12" cols="70" name="description" placeholder="职位描述">{$job.detail.job_description}</textarea>
+                    <script id="container" name="content" type="text/plain">{$job.detail.job_description|raw}</script></td>
                 </td>
                 </td>
             </tr>
@@ -65,7 +65,7 @@
 
             <tr>
                 <td width="100"><label>月薪范围：</label></td>
-                <td>{$job.salary_min - $job.salary_max}</td>
+                <td>{$job.salary_min} - {$job.salary_max}</td>
             </tr>
 
             <tr>

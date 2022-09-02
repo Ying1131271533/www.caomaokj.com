@@ -17,7 +17,7 @@ abstract class BaseModel extends model
         return self::where($where)->order($order)->paginate($limit);
     }
     // 获取数据分页 - 前端接口用
-    public static function getListData(array $where = [], array $order = ['id' => 'desc'], $limit = false)
+    public static function getListData(array $where = [], $limit = false, array $order = ['id' => 'desc'])
     {
         return self::where($where)->limit($limit)->order($order)->select();
     }

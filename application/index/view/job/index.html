@@ -61,11 +61,14 @@
         font-size: 14px;
         color: #333;
     }
+    
 </style>
 <!-- js -->
 <script type="text/javascript" src="__AJS__/laypage.js"></script>
 <script type="text/javascript" src="__AJS__/jquery.lazyload.js"></script>
-<script src="__AJS__/ZdCascader.js"></script>
+<script type="text/javascript" src="__AJS__/job_post.js?{$time}"></script>
+<script src="__AJS__/ZdCascader.js?{$time}"></script>
+<script src="__AJS__/job_ZdCascader.js?{$time}"></script>
 {/block}
 
 <!-- 主体内容 -->
@@ -240,7 +243,7 @@
             <!-- 工作经验 -->
             <div class="display-flex flex-warp content-wrap" id="work_experience">
                 <div class="content-right">
-                    <input type="text" id="test3" placeholder="工作经验" />
+                    <input type="text" id="test3" placeholder="{$work_experience == '' ? '工作经验' : $work_experience}" />
                     <input type="hidden" id="val" name="work_experience" value="{$work_experience}" />
                 </div>
                 <script>
@@ -290,7 +293,7 @@
             <!-- 到岗时间 -->
             <div class="display-flex flex-warp content-wrap" id="duty_time">
                 <div class="content-right">
-                    <input type="text" id="test4" placeholder="到岗时间" />
+                    <input type="text" id="test4" placeholder="{$duty_time == '' ? '到岗时间' : $duty_time}" />
                     <input type="hidden" id="val" name="duty_time" value="{$duty_time}" />
                 </div>
                 <script>
@@ -332,7 +335,7 @@
             <!-- 更新时间 -->
             <div class="display-flex flex-warp content-wrap" id="update_time">
                 <div class="content-right">
-                    <input type="text" id="test5" placeholder="更新时间" />
+                    <input type="text" id="test5" placeholder="{$update_time == '' ? '更新时间' : $update_time}" />
                     <input type="hidden" id="val" name="update_time" value="{$update_time}" />
                 </div>
                 <script>
@@ -366,38 +369,11 @@
             <!-- 发布城市 -->
             <div class="display-flex flex-warp content-wrap" id="city_value">
                 <div class="content-right">
-                    <input type="text" id="test1" placeholder="发布城市" />
+                    <input type="text" id="test1" placeholder="{$city_value == '' ? '发布城市' : $city_value}" />
                     <input type="hidden" id="val" name="city_value" value="{$city_value}" />
                 </div>
                 <script>
-                    // 获取本地缓存
-                    /* var china_places = storage('china_places');
-                    console.log(china_places);
-                    // 缓存不存在时，获取中国地区数据
-                    if(!china_places){
-                        $.get("{:url('get_china_places')}", {}, function (res) {
-                            if (res.status != 20000) {
-                                layer.msg('地区数据更新失败，请刷新页面', { icon: 2 });
-                                return false;
-                            }
-                            china_places = res.data;
-                            // 缓存到本地
-                            storage('china_places', Array.from(china_places));
-                        });
-                    }
-                    $('#test1').zdCascader({
-                        data: china_places
-                    }); */
-                    $.get("{:url('get_china_places')}", {}, function (res) {
-                        if (res.status != 20000) {
-                            layer.msg('地区数据更新失败，请刷新页面', { icon: 2 });
-                            return false;
-                        }
-                        $('#test1').zdCascader({
-                            data: res.data
-                        });
-                    });
-                    
+                    $('#test1').ZdCascaderJob({ data: china_places });
                 </script>
             </div>
 
@@ -502,63 +478,26 @@
                                 <div data-v-25fc4253="" class="job_recommendation">
                                     <div data-v-25fc4253="" class="job_recommendation_title"><span data-v-25fc4253=""
                                             class="job_recommendation_span"><i data-v-25fc4253=""
-                                                class="job_recommendation_span_line"></i>精选职位推荐</span></div>
+                                                class="job_recommendation_span_line"></i>精选职位推荐</span>
+                                    </div>
                                     <ul data-v-25fc4253="" class="job_recommendation_list">
-                                        <li data-v-25fc4253=""><a data-v-25fc4253=""
-                                                href="https://www.caomaokj.com/job/info?id=17"
-                                                class="job_recommendation_jobname" title="亚马逊运营">
-                                                <font data-v-25fc4253="" color="red">亚马逊运营</font>
-                                            </a> <a data-v-25fc4253="" href="javascript:void(0)"
-                                                class="job_recommendation_Comname">深圳市众维网络科技有限公司</a>
-                                            <div data-v-25fc4253="" class="job_recommendation_msg"><span
-                                                    data-v-25fc4253=""><em data-v-25fc4253=""
-                                                        class="job_right_box_list_c">6000-11000 </em></span>
+
+                                        {foreach $featuredJob as $value}
+                                        <li data-v-25fc4253="">
+                                            <a data-v-25fc4253="" href="{:url('detail', ['id'=>$value.id])}">
+                                                <font data-v-25fc4253="" color="red">{:job_position($value.position)}</font>
+                                            </a>
+                                            <a data-v-25fc4253="" href="javascript:void(0)"
+                                                class="job_recommendation_Comname">{$value.company}
+                                            </a>
+                                            <div data-v-25fc4253=""  class="job_recommendation_msg">
+                                                <span data-v-25fc4253="">
+                                                    <em data-v-25fc4253="" class="job_right_box_list_c">{$value.salary_min}-{$value.salary_max} </em>
+                                                </span>
                                             </div>
                                         </li>
-                                        <li data-v-25fc4253=""><a data-v-25fc4253=""
-                                                href="https://www.caomaokj.com/job/info?id=33"
-                                                class="job_recommendation_jobname" title="Facebook推广">
-                                                <font data-v-25fc4253="" color="red">Facebook推广</font>
-                                            </a> <a data-v-25fc4253="" href="javascript:void(0)"
-                                                class="job_recommendation_Comname">广州承光电子科技有限公司</a>
-                                            <div data-v-25fc4253="" class="job_recommendation_msg"><span
-                                                    data-v-25fc4253=""><em data-v-25fc4253=""
-                                                        class="job_right_box_list_c">15000-20000 </em></span>
-                                            </div>
-                                        </li>
-                                        <li data-v-25fc4253=""><a data-v-25fc4253=""
-                                                href="https://www.caomaokj.com/job/info?id=95"
-                                                class="job_recommendation_jobname" title="视觉算法工程师">
-                                                <font data-v-25fc4253="" color="red">视觉算法工程师</font>
-                                            </a> <a data-v-25fc4253="" href="javascript:void(0)"
-                                                class="job_recommendation_Comname">浙江国贸数字科技有限公司</a>
-                                            <div data-v-25fc4253="" class="job_recommendation_msg"><span
-                                                    data-v-25fc4253=""><em data-v-25fc4253=""
-                                                        class="job_right_box_list_c">30000-60000 </em></span>
-                                            </div>
-                                        </li>
-                                        <li data-v-25fc4253=""><a data-v-25fc4253=""
-                                                href="https://www.caomaokj.com/job/info?id=105"
-                                                class="job_recommendation_jobname" title="跨境采购">
-                                                <font data-v-25fc4253="" color="red">跨境采购</font>
-                                            </a> <a data-v-25fc4253="" href="javascript:void(0)"
-                                                class="job_recommendation_Comname">义乌市乐友缇智能科技有限公司</a>
-                                            <div data-v-25fc4253="" class="job_recommendation_msg"><span
-                                                    data-v-25fc4253=""><em data-v-25fc4253=""
-                                                        class="job_right_box_list_c">9000-14000 </em></span>
-                                            </div>
-                                        </li>
-                                        <li data-v-25fc4253=""><a data-v-25fc4253=""
-                                                href="https://www.caomaokj.com/job/info?id=187"
-                                                class="job_recommendation_jobname" title="跨境电商运营主管">
-                                                <font data-v-25fc4253="" color="red">跨境电商运营主管</font>
-                                            </a> <a data-v-25fc4253="" href="javascript:void(0)"
-                                                class="job_recommendation_Comname">莆田市顺荣网络科技有限公司</a>
-                                            <div data-v-25fc4253="" class="job_recommendation_msg"><span
-                                                    data-v-25fc4253=""><em data-v-25fc4253=""
-                                                        class="job_right_box_list_c">10000-15000 </em></span>
-                                            </div>
-                                        </li>
+                                        {/foreach}
+                                        
                                     </ul>
                                 </div>
                             </div>
@@ -571,7 +510,6 @@
             </div>
         </div>
     </div>
-    <script type="text/javascript" src="__AJS__/job_post.js?{$time}"></script>
     <script type="text/javascript">
         $(function () {
             var request = getParams();

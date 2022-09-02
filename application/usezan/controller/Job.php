@@ -36,11 +36,10 @@ class Job extends Base
         return view('', $view_data);
     }
 
-    public function detail()
+    public function detail(int $id)
     {
-        $job = ModelJob::get(input('id/d'), 'detail');
-        // 分割福利
-        if(!empty($job['welfare'])) $job['welfare'] = explode(',', $job['welfare']);
+        if(!$id) return fail('id不能为空');
+        $job = ModelJob::get($id, 'detail');
         return view('', ['job' => $job]);
     }
 

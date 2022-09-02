@@ -1293,41 +1293,34 @@ function job_salary_range($var)
     return $string;
 }
 // 获取月薪范围条件
-function where_salary_range(int $var)
+function where_salary_range(array &$where, int $var)
 {
-    $array = [];
-    // $string = '';
     switch ($var) {
         case 1:
-            // $string = 'salary_min<=3000';
-            $array[] = ['salary_min', '<=', 3000];
+            $where[] = ['salary_min', '<=', 3000];
+            $where[] = ['salary_max', '<=', 3000];
             break;
         case 2:
-            // $string = 'salary_min>=3000 or salary_max<=5000';
-            $array[] = ['salary_min', '>=', 3000];
-            $array[] = ['salary_max', '<=', 5000];
+            $where[] = ['salary_max', '>=', 3000];
+            $where[] = ['salary_min', '<=', 5000];
             break;
         case 3:
-            // $string = 'salary_min>=5000 or salary_max<=10000';
-            $array[] = ['salary_min', '>=', 5000];
-            $array[] = ['salary_max', '<=', 10000];
+            $where[] = ['salary_max', '>=', 5000];
+            $where[] = ['salary_min', '<=', 10000];
             break;
         case 4:
-            // $string = 'salary_min>=10000 or salary_max<=15000';
-            $array[] = ['salary_min', '>=', 10000];
-            $array[] = ['salary_max', '<=', 15000];
+            $where[] = ['salary_max', '>=', 10000];
+            $where[] = ['salary_min', '<=', 15000];
             break;
         case 5:
-            // $string = 'salary_min>=15000 or salary_max<=20000';
-            $array[] = ['salary_min', '>=', 15000];
-            $array[] = ['salary_max', '<=', 20000];
+            $where[] = ['salary_max', '>=', 15000];
+            $where[] = ['salary_min', '<=', 20000];
             break;
         case 6:
-            // $string = 'salary_max>=20000';
-            $array[] = ['salary_min', '>=', 20000];
+            $where[] = ['salary_min', '>=', 20000];
+            $where[] = ['salary_max', '>=', 20000];
             break;
     }
-    return $array;
 }
 // 平台要求
 function job_platform($var)
@@ -1392,6 +1385,24 @@ function job_position($var)
             break;
         case 8:
             $string = '物流';
+            break;
+        case 9:
+            $string = '业务';
+            break;
+        case 10:
+            $string = '销售';
+            break;
+        case 11:
+            $string = '财务';
+            break;
+        case 12:
+            $string = '前台';
+            break;
+        case 13:
+            $string = '操作';
+            break;
+        case 14:
+            $string = '其他';
             break;
     }
     return $string;

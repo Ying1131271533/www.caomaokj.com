@@ -20,6 +20,7 @@ class Job extends Validate
         'people_number|公司人数'        => 'require|number|gt:0',
         'platform|平台'                 => 'require|number|gt:0',
         'position|工作职位'             => 'require|number|gt:0',
+        'job_number|招聘人数'           => 'require|number|gt:0',
         'salary_min|最低月薪'           => 'require|number',
         'salary_max|最高月薪'           => 'require|number|egt:salary_min',
         'work_experience|工作经验'      => 'require|number|gt:0',
@@ -31,6 +32,8 @@ class Job extends Validate
         'salary_min.number'  => '最低月薪必须为整数',
         // 最高月薪
         'salary_max.egt'     => '最高月薪必需大于等于最低月薪',
+        // 到岗时间
+        'duty_time.gt' => '请选择到岗时间'
     ];
 
 }
