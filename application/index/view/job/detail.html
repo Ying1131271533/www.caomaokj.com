@@ -63,7 +63,7 @@
               <div data-v-ca2ddf4c="" class="job_details_describe"><span data-v-ca2ddf4c=""
                   class="job_details_describe_yq">招聘人数：{$job.job_number}人</span> <span data-v-ca2ddf4c=""
                   class="job_details_describe_yq">到岗时间：{:job_education_background($job.education_background)}</span>
-                <p data-v-ca2ddf4c="">{$job.detail.job_description}</p>
+                <p data-v-ca2ddf4c="">{$job.detail.job_description|raw}</p>
                 <div data-v-ca2ddf4c="" class="clear"></div>
                 <div data-v-ca2ddf4c="" class="job_details_tip">
                   求职提醒：求职过程请勿缴纳费用，谨防诈骗！若信息不实请举报。
