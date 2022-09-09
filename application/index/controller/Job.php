@@ -19,7 +19,7 @@ class Job extends Base
         // 招聘数据
         $data = LogicJob::getJobPageList($request);
         // 精选职位推荐
-        $featuredJob = ModelJob::getListData([], 5, ['views' => 'desc', 'id' => 'desc']);
+        $featuredJob = ModelJob::getListData(['status' => 1], 5, ['views' => 'desc', 'id' => 'desc']);
         $data['featuredJob'] = $featuredJob;
         // 返回数据
         return view('', $data);
