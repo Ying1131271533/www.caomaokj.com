@@ -15,7 +15,7 @@ class Community
     {
         $where = ['status' => 1];
         $order = ['sort' => 'desc', 'id' => 'desc'];
-        $list = ModelCommunity::getListData($where, $order);
+        $list = ModelCommunity::getListData($where, 10, $order);
         return $list;
     }
 }
