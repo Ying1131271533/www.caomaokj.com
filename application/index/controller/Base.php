@@ -36,12 +36,12 @@ class Base extends Controller
     public function initialize()
     {
         parent::initialize();
-
+        
         /**********************   导航菜单   **********************/
         $this->menu = C::field('id, catname, parentid, url, iconimg, target, class')
             ->where(["status" => 1, 'is_menu' => 1])
             ->order("listorder", "asc")
-            ->cache(cache_time('one_week'))
+            // ->cache(cache_time('one_week'))
             ->select()
             ->toArray();
         $this->time = time();

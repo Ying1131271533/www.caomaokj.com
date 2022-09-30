@@ -1990,7 +1990,7 @@ class Query
             $expire = $key;
             $key    = true;
         }
-
+        
         if (false !== $key) {
             $this->options['cache'] = ['key' => $key, 'expire' => $expire, 'tag' => $tag];
         }

@@ -1,4 +1,4 @@
-<?php /*a:9:{s:42:"../application/index/view/index\index.html";i:1652509834;s:42:"../application/index/view/layout\base.html";i:1652509834;s:44:"../application/index/view/layout\header.html";i:1645066486;s:41:"../application/index/view/layout\top.html";i:1656321539;s:42:"../application/index/view/layout\menu.html";i:1647832070;s:50:"../application/index/view/layout\left_article.html";i:1650941597;s:45:"../application/index/view/layout\toolbar.html";i:1624259554;s:44:"../application/index/view/layout\footer.html";i:1652509779;s:46:"../application/index/view/layout\open_img.html";i:1645170607;}*/ ?>
+<?php /*a:9:{s:42:"../application/index/view/index\index.html";i:1652509834;s:42:"../application/index/view/layout\base.html";i:1652509834;s:44:"../application/index/view/layout\header.html";i:1645066486;s:41:"../application/index/view/layout\top.html";i:1662445147;s:42:"../application/index/view/layout\menu.html";i:1664508049;s:50:"../application/index/view/layout\left_article.html";i:1650941597;s:45:"../application/index/view/layout\toolbar.html";i:1624259554;s:44:"../application/index/view/layout\footer.html";i:1652509779;s:46:"../application/index/view/layout\open_img.html";i:1645170607;}*/ ?>
 <!DOCTYPE html>
 <html lang="zh-CN">
 <head>
@@ -307,7 +307,9 @@
             </div>
 
         </li>
-        <li class="task-li taskliMenu" style="width:150px;">
+        
+        <li class="task-li taskliMenu" style="margin-left:20px;">
+        <!-- <li class="task-li taskliMenu"> -->
             <div class="header-right-nav-box rightNav-box">
 
                 <span class="header-drop-down-a select-dropdown">
@@ -352,6 +354,21 @@
                         </div>
                     </div>
                 </span> -->
+            </div>
+        </li>
+
+        <li class="task-li taskliMenu" style="width:100px;">
+            <div class="header-right-nav-box rightNav-box">
+
+                <span class="header-drop-down-a select-dropdown">
+                    电商职位 <svg class="icon" style="width:14px;height:12px;" aria-hidden="true">
+                        <use xlink:href="#icon-arrowdown"></use>
+                    </svg>
+                    <div class="header-drop-down-list-box" style="width: 105px; display: none;">
+                        <a href="<?php echo url('job/release'); ?>">发布职位</a>
+                        <a href="<?php echo url('job/index'); ?>">电商求职</a>
+                    </div>
+                </span>
             </div>
         </li>
         
@@ -438,7 +455,6 @@
                     <img src="/static/akali/images/xia-copy.png" style="width: 15px;margin-left: 5px;margin-top:-3px;">
                 </span>
             </a>
-            <div class="kua-home-nav-bottom"></div>
             <ul class="dropdown-menu menu_dropdown_jzc" style="display: none;">
                 <?php foreach($value['child'] as $k => $val): ?>
                 <li><a href="<?php echo url($val['url']); ?>"><?php echo htmlentities($val['catname']); ?></a></li>

@@ -19,19 +19,19 @@ return [
     //default
     'default'  => [
         // 文件
-        // 'type'   => 'File',
-        // 'path'   => '',
-        // 'prefix' => '',
-        // 'expire' => cache_time('one_month'),
+        'type'   => 'File',
+        'path'   => '',
+        'prefix' => '',
+        'expire' => cache_time('one_week'),
 
         // redis
-        'type'   => 'redis',
+        // 'type'   => 'redis',
         // 服务器地址
-        'host'       => '127.0.0.1',
+        // 'host'       => '127.0.0.1',
         // 密码
         // 'password'  => "Ak-12]al^iY?i4/3@n.!gdTxP]al^jMGZBX2Ac/3@n.cMh",
         // 过期时间
-        'expire' => cache_time('one_month'),
+        // 'expire' => cache_time('one_week'),
     ],
     //category
     'category' => [
