@@ -13,15 +13,15 @@ return [
     // 数据库类型
     'type'            => 'mysql',
     // 服务器地址
-    // 'hostname'        => '106.52.77.54',
     'hostname'        => '127.0.0.1',
+    // 'hostname'        => '106.52.77.54',
     // 数据库名
     'database'        => 'www_caomaokj_com',
     // 用户名
     'username'        => 'root',
     // 密码
-    // 'password'        => 'iW7p8ceal^iY?i4/3@n.T!BjTL22jE',
     'password'        => '',
+    // 'password'        => 'iW7p8ceal^iY?i4/3@n.T!BjTL22jE',
     // 端口
     'hostport'        => '3306',
     // 连接dsn
