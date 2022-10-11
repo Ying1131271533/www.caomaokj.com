@@ -4023,7 +4023,12 @@ h4 {
     border:0px solid;float: left;cursor: pointer;padding: 0 40px;text-align: center;
 }
 .menu_haiwaicang_div{
-    border:0px solid;float: left;cursor: pointer;padding: 0 25px;text-align: center;
+    border:0px solid;
+    float: left;
+    cursor: pointer;
+    /* padding: 0 25px; */
+    padding: 0 23px;
+    text-align: center;
 }
 .menu_zhuanxian_div{
     border:0px solid;float: left;cursor: pointer;padding: 0 34px;text-align: center;
@@ -4193,9 +4198,7 @@ input:-ms-input-placeholder { /* Internet Explorer 10+ */
 
 }
 ::-webkit-search-cancel-button { display: none;}
-.home-nav-hover span{
-    color:#ffffff !important;
-}
+
 a.color_fff:focus{
     color:#ffffff !important;
 }

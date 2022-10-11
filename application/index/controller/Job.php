@@ -36,12 +36,12 @@ class Job extends Base
             return akali('id不能为空');
         }
 
-        $job = ModelJob::get($id, 'detail');
-        // 查看次数加1
-        $job->setInc('views');
+        $job = ModelJob::with('detail')->where(['id' => $id, 'status' => 1])->find();
         if (!$job) {
             return akali('职位数据不存在');
         }
+        // 查看次数加1
+        $job->setInc('views');
 
         return view('', ['job' => $job]);
     }
@@ -61,7 +61,7 @@ class Job extends Base
     {
         // 接收数据
         $params = $request->param();
-
+        
         // 验证数据
         $validate = validate('Job');
         if (!$validate->check($params)) {

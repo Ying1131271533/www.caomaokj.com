@@ -4,6 +4,7 @@
 <div class="kua_menu_div">
     <div class="kua_menu_div_box">
         <input type="hidden" id="home_url" value="/index">
+        
         <a class="color_333" href="/index">
             <div class="shouye_div">
                 <svg class="icon" aria-hidden="true">
@@ -22,9 +23,10 @@
             </div>
         </a>
         {else/}
-        <div class="{$value.url != $controller ?: 'menu_active'} {$value.class} dropdown dropdown_jzc home-nav-hover">
-            <a href="/index/{$value.url}" class="dropdown-toggle color_333" target="{$value.target}">
+        <div class="{$value.url != $controller ?: 'menu_active'} {$value.class} menu_haiwaicang_div dropdown dropdown_jzc home-nav-hover">
+            <a href="javascript:;" class="color_333">
                 <span>
+                <!-- <span style="color:#525252;"> -->
                     {$value.catname}
                     <img src="__AIMG__/xia-copy.png" style="width: 15px;margin-left: 5px;margin-top:-3px;">
                 </span>

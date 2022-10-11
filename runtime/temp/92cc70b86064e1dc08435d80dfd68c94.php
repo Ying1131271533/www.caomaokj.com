@@ -1,4 +1,4 @@
-<?php /*a:9:{s:42:"../application/index/view/index\index.html";i:1652509834;s:42:"../application/index/view/layout\base.html";i:1652509834;s:44:"../application/index/view/layout\header.html";i:1645066486;s:41:"../application/index/view/layout\top.html";i:1662445147;s:42:"../application/index/view/layout\menu.html";i:1664529892;s:50:"../application/index/view/layout\left_article.html";i:1650941597;s:45:"../application/index/view/layout\toolbar.html";i:1624259554;s:44:"../application/index/view/layout\footer.html";i:1652509779;s:46:"../application/index/view/layout\open_img.html";i:1645170607;}*/ ?>
+<?php /*a:9:{s:42:"../application/index/view/index\index.html";i:1652509834;s:42:"../application/index/view/layout\base.html";i:1652509834;s:44:"../application/index/view/layout\header.html";i:1645066486;s:41:"../application/index/view/layout\top.html";i:1662445147;s:42:"../application/index/view/layout\menu.html";i:1665366535;s:50:"../application/index/view/layout\left_article.html";i:1650941597;s:45:"../application/index/view/layout\toolbar.html";i:1624259554;s:44:"../application/index/view/layout\footer.html";i:1652509779;s:46:"../application/index/view/layout\open_img.html";i:1645170607;}*/ ?>
 <!DOCTYPE html>
 <html lang="zh-CN">
 <head>
@@ -431,6 +431,7 @@
 <div class="kua_menu_div">
     <div class="kua_menu_div_box">
         <input type="hidden" id="home_url" value="/index">
+        
         <a class="color_333" href="/index">
             <div class="shouye_div">
                 <svg class="icon" aria-hidden="true">
@@ -448,12 +449,13 @@
             </div>
         </a>
         <?php else: ?>
-        <div class="<?php echo $value['url']!=$controller ? htmlentities($value['url']) : 'menu_active'; ?> <?php echo htmlentities($value['class']); ?> dropdown dropdown_jzc home-nav-hover">
-            <a href="/index/<?php echo htmlentities($value['url']); ?>" class="dropdown-toggle color_333" target="<?php echo htmlentities($value['target']); ?>">
-                <span>
+        <div class="<?php echo $value['url']!=$controller ? htmlentities($value['url']) : 'menu_active'; ?> <?php echo htmlentities($value['class']); ?> menu_haiwaicang_div dropdown dropdown_jzc home-nav-hover">
+            <a href="" class="dropdown-toggle color_333">
+                <div>
+                <!-- <span style="color:#525252;"> -->
                     <?php echo htmlentities($value['catname']); ?>
                     <img src="/static/akali/images/xia-copy.png" style="width: 15px;margin-left: 5px;margin-top:-3px;">
-                </span>
+                </div>
             </a>
             <ul class="dropdown-menu menu_dropdown_jzc" style="display: none;">
                 <?php foreach($value['child'] as $k => $val): ?>

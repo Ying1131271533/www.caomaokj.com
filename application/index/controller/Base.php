@@ -45,7 +45,7 @@ class Base extends Controller
             ->select()
             ->toArray();
         $this->time = time();
-        halt($this->menu);
+        
         if (session('?user')) {
             $user           = U::get(session('user.id'));
             $this->userid   = $user['id'];

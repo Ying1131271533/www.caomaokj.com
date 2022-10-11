@@ -40,8 +40,7 @@
                 <i class="fa fa-star icon" aria-hidden="true"></i>
                 <span class="content-field">职位名称：</span>
             </span>
-            <div class="content-right"><input type="text" placeholder="请输入" maxlength="50"
-                    class="input-commom input-value" title="职位名称：" name="name"></div>
+            <div class="content-right"><input type="text" placeholder="请输入" maxlength="50" class="input-commom input-value" name="name"></div>
         </div>
         <!-- 职位描述 -->
         <div class="display-flex flex-warp content-wrap">
@@ -50,17 +49,16 @@
                 <span class="content-field">职位描述：</span>
             </span>
             <div class="content-right">
-                <textarea id="demo" maxlength="40000" class="input-commom input-value content-textarea" title="职位描述"
-                    name="job_description" style="resize: none; min-height: 157px; height: 157px;color:#444746">请输入岗位职责、任职要求等，建议使用短句并分条列出，示例如下<br>
+                <textarea id="demo" maxlength="40000" class="input-commom input-value content-textarea" name="job_description" style="resize: none; min-height: 157px; height: 157px;color:#444746">请输入岗位职责、任职要求等，建议使用短句并分条列出，示例如下<br>
                 岗位职责：<br>
                     1、 ...<br>
                     2、 ... <br>
                 </textarea>
-            </div>
-
+             </div>
+             
             <script>
                 // 富文本
-                layui.use('layedit', function () {
+                layui.use('layedit', function(){
                     var layedit = layui.layedit;
                     layedit.build('demo'); //建立编辑器
                 });
@@ -72,8 +70,7 @@
                 <i class="fa fa-star icon" aria-hidden="true"></i>
                 <span class="content-field">上班地址：</span>
             </span>
-            <div class="content-right"><input type="text" placeholder="请输入" maxlength="50"
-                    class="input-commom input-value" title="上班地址" name="address"></div>
+            <div class="content-right"><input type="text" placeholder="请输入" maxlength="50" class="input-commom input-value" name="address"></div>
         </div>
         <!-- 发布城市 -->
         <div class="display-flex flex-warp content-wrap">
@@ -81,9 +78,9 @@
                 <i class="fa fa-star icon" aria-hidden="true"></i>
                 <span class="content-field">发布城市：</span>
             </span>
-
+            
             <div class="content-right">
-                <input class="input-value" title="发布城市" type="text" id="test" name="city_value" placeholder="请选择城市" />
+                <input class="input-value" type="text" id="test" name="city_value" placeholder="请选择城市" />
             </div>
             <script src="__AJS__/ZdCascader.js"></script>
             <script>
@@ -111,7 +108,7 @@
                 <span class="content-field">工作经验：</span>
             </span>
             <div class="content-right">
-                <select class="service-select input-value" title="工作经验" name="work_experience">
+                <select class="service-select input-value" name="work_experience">
                     <option value="0">选择工作经验</option>
                     <option value="1">经验不限</option>
                     <option value="2">应届毕业生</option>
@@ -131,7 +128,7 @@
                 <span class="content-field">最低学历：</span>
             </span>
             <div class="content-right">
-                <select class="service-select input-value" title="最低学历" name="education_background">
+                <select class="service-select input-value" name="education_background">
                     <option value="0">选择最低学历要求</option>
                     <option value="1">学历不限</option>
                     <option value="2">高中以下</option>
@@ -150,7 +147,7 @@
                 <span class="content-field">到岗时间：</span>
             </span>
             <div class="content-right">
-                <select class="service-select input-value" title="到岗时间" name="duty_time">
+                <select class="service-select input-value" name="duty_time">
                     <option value="0">选择到岗时间</option>
                     <option value="1">1周以内</option>
                     <option value="2">2周以内</option>
@@ -168,7 +165,7 @@
                 <span class="content-field">选择平台</span>
             </span>
             <div class="content-right">
-                <select class="service-select input-value" title="平台要求" name="platform">
+                <select class="service-select input-value" name="platform">
                     <option value="0">选择平台</option>
                     <option value="1">Amazon</option>
                     <option value="2">Wish</option>
@@ -189,7 +186,7 @@
                 <span class="content-field">工作职位</span>
             </span>
             <div class="content-right">
-                <select class="service-select input-value" title="工作职位" name="position">
+                <select class="service-select input-value" name="position">
                     <option value="0">选择工作职位</option>
                     <option value="1">运营</option>
                     <option value="2">客服</option>
@@ -215,8 +212,7 @@
                 <span class="content-field">招聘人数：</span>
             </span>
             <div class="content-right">
-                <input type="text" placeholder="请输入" maxlength="5" class="input-commom input-value" title="招聘人数"
-                    name="job_number" style="width:200px">
+                <input type="text" placeholder="请输入" maxlength="5" class="input-commom input-value" name="job_number" style="width:200px">
             </div>
         </div>
         <!-- 月薪 -->
@@ -226,17 +222,17 @@
                 <span class="content-field">月薪：</span>
             </span>
             <div class="content-right">
-                <input type="text" placeholder="最低月薪" maxlength="9" class="input-commom input-value" title="最低月薪"
-                    name="salary_min" style="width: 200px;">
+                <input type="text" placeholder="最低月薪" maxlength="9" class="input-commom input-value" name="salary_min"
+                    style="width: 200px;">
                 -
-                <input type="text" placeholder="最高月薪" maxlength="9" class="input-commom input-value" title="最高月薪"
-                    name="salary_max" style="width: 200px;">
+                <input type="text" placeholder="最高月薪" maxlength="9" class="input-commom input-value" name="salary_max"
+                    style="width: 200px;">
             </div>
         </div>
         <!-- 福利 -->
         <div class="display-flex flex-warp content-wrap">
             <span class="display-flex justify-end align-center content-name">
-                <!-- <i class="fa fa-star icon" aria-hidden="true"></i> -->
+                <i class="fa fa-star icon" aria-hidden="true"></i>
                 <span class="content-field">福利：</span>
             </span>
             <div class="content-right">
@@ -247,7 +243,7 @@
                             <li>
                                 <!-- <input id="" name="" type="text" class="stext" maxlength="20" /> -->
                                 <input type="text" placeholder="输入自定义福利：请输入6个中文字或12个英文字母以内的福利" maxlength="12"
-                                    class="input-commom">
+                                    class="input-commom input-value">
                                 <!-- <label>输入福利</label> -->
                                 <span class="fff"></span>
                             </li>
@@ -299,8 +295,8 @@
                 <i class="fa fa-star icon" aria-hidden="true"></i>
                 <span class="content-field">公司名称：</span>
             </span>
-            <div class="content-right"><input type="text" placeholder="请输入" maxlength="50"
-                    class="input-commom input-value" title="公司名称" name="company"></div>
+            <div class="content-right"><input type="text" placeholder="请输入" maxlength="50" class="input-commom input-value"
+                    name="company"></div>
         </div>
         <!-- 公司logo -->
         <div class="display-flex flex-warp content-wrap">
@@ -315,7 +311,7 @@
                         <button type="button" class="layui-btn layui-btn-normal"
                             onclick="upload_img(this)">上传图片</button>
                         <button type="button" class="layui-btn test" id="logo">上传图片</button>
-                        <input class="input-value" title="公司logo" type="hidden" name="logo" id="demoInput" value="">
+                        <input class="input-value" type="hidden" name="logo" id="demoInput" value="">
                         <div class="layui-upload-list">
                             <img class="layui-upload-img" id="img">
                             <p id="demoText"></p>
@@ -326,14 +322,13 @@
             </div>
         </div>
 
-        <!-- 联系电话 -->
+        <!-- 联系方式 -->
         <div class="display-flex flex-warp content-wrap">
             <span class="display-flex justify-end align-center content-name">
                 <i class="fa fa-star icon" aria-hidden="true"></i>
                 <span class="content-field">联系电话</span>
             </span>
-            <div class="content-right"><input type="text" placeholder="请输入" maxlength="25"
-                    class="input-commom input-value" title="联系电话" name="phone"></div>
+            <div class="content-right"><input type="text" placeholder="请输入" maxlength="25" class="input-commom input-value" name="phone"></div>
         </div>
         <!-- 邮箱 -->
         <div class="display-flex flex-warp content-wrap">
@@ -341,8 +336,7 @@
                 <i class="fa fa-star icon" aria-hidden="true"></i>
                 <span class="content-field">邮箱</span>
             </span>
-            <div class="content-right"><input type="text" placeholder="请输入" maxlength="50"
-                    class="input-commom input-value" title="邮箱" name="email"></div>
+            <div class="content-right"><input type="text" placeholder="请输入" maxlength="50" class="input-commom input-value" name="email"></div>
         </div>
         <!-- 公司简介 -->
         <div class="display-flex flex-warp content-wrap">
@@ -352,8 +346,7 @@
             </span>
             <div class="content-right">
                 <textarea maxlength="40000" placeholder="请输入公司简介" class="input-commom input-value content-textarea"
-                    name="company_introduction" style="resize: none; min-height: 157px; height: 157px;"
-                    title="公司简介"></textarea>
+                    name="company_introduction" style="resize: none; min-height: 157px; height: 157px;"></textarea>
             </div>
         </div>
         <!-- 公司人数 -->
@@ -363,7 +356,7 @@
                 <span class="content-field">公司人数：</span>
             </span>
             <div class="content-right">
-                <select class="service-select input-value" title="公司简介" name="people_number">
+                <select class="service-select input-value" name="people_number" title="公司人数"">  
                     <option value="0">选择公司人数</option>
                     <option value="1">1-10</option>
                     <option value="2">10-50</option>
@@ -384,7 +377,7 @@
                 <span class="content-field">企业类型 ：</span>
             </span>
             <div class="content-right">
-                <select class="service-select input-value" title="公司简介" name="enterprise_type">
+                <select class="service-select input-value" name="enterprise_type">
                     <option value="0">选择企业类型 </option>
                     <option value="1">个体工商户</option>
                     <option value="2">民营企业</option>
@@ -458,37 +451,156 @@
 
     // 提交
     function submit() {
+        
 
-        var data = {};
-        var success = true;
-        $('.input-value').each(function (index, element) {
+        var input_data = [];
+        $('.input-value').each(function(index, element){
             var name = $(this).attr('name');
-            var title = $(this).attr('title');
-            var val = $(this).val();
-            if (!val) {
-                layer.msg(title + '不能为空', { 'icon': 2 });
-                success = false;
-                return false;
-            }
-            data[name] = val;
+            input_data[name] = $(this).val();
         });
-        if (!success) return false;
-
+        
+        // 职位名称
+        var name = $('input[name="name"]').val();
+        // 职位描述
+        var job_description = $('textarea[name="job_description"]').val();
+        // 上班地址
+        var address = $('input[name="address"]').val();
+        // 发布城市
+        var city_value = $('input[name="city_value"]').val();
+        // 工作经验
+        var work_experience = $('select[name="work_experience"]').val();
+        // 最低学历
+        var education_background = $('select[name="education_background"]').val();
+        // 到岗时间
+        var duty_time = $('select[name="duty_time"]').val();
+        // 平台要求
+        var platform = $('select[name="platform"]').val();
+        // 工作职位
+        var position = $('select[name="position"]').val();
+        // 招聘人数
+        var job_number = $('input[name="job_number"]').val();
+        // 最低月薪
+        var salary_min = $('input[name="salary_min"]').val();
+        // 最高月薪
+        var salary_max = $('input[name="salary_max"]').val();
         // 福利
         var welfare = [];
         $("a", ".plus-tag").each(function () {
             welfare.push($(this).attr("title"))
         });
-        if (welfare.length > 0) data['welfare'] = welfare;
+        // 公司名称
+        var company = $('input[name="company"]').val();
+        // 公司logo
+        var logo = $('input[name="logo"]').val();
+        // 联系方式
+        var phone = $('input[name="phone"]').val();
+        // 邮箱
+        var email = $('input[name="email"]').val();
+        // 公司简介
+        var company_introduction = $('textarea[name="company_introduction"]').val();
+        // 公司人数
+        var people_number = $('select[name="people_number"]').val();
+        // 企业类型
+        var enterprise_type = $('select[name="enterprise_type"]').val();
+        
+        // 错误信息
+        let errorMsg = '';
+        if (name == '') {
+            errorMsg = '请输入职位名称';
+        }
+        else if (job_description == '') {
+            errorMsg = '请输入职位描述';
+        }
+        else if (address == '') {
+            errorMsg = '请输入上班地址';
+        }
+        else if (city_value == '') {
+            errorMsg = '请选择发布城市';
+        }
+        else if (work_experience == '') {
+            errorMsg = '请选择工作经验';
+        }
+        else if (education_background == '') {
+            errorMsg = '请选择最低学历';
+        }
+        else if (duty_time == '') {
+            errorMsg = '请选择到岗时间';
+        }
+        else if (platform == '') {
+            errorMsg = '请选择平台要求';
+        }
+        else if (phone == '') {
+            errorMsg = '请输入联系方式';
+        }
+        else if (email == '') {
+            errorMsg = '请输入邮箱';
+        }
+        else if (position == '') {
+            errorMsg = '请选择工作职位';
+        }
+        else if (job_number == '') {
+            errorMsg = '招聘人数';
+        }
+        else if (salary_min == '') {
+            errorMsg = '请输入最低月薪';
+        }
+        else if (salary_max == '') {
+            errorMsg = '请输入最高月薪';
+        }
+        else if (logo == '') {
+            errorMsg = '请上传logo';
+        }
+        else if (company == '') {
+            errorMsg = '请输入公司名称';
+        }
+        else if (company_introduction == '') {
+            errorMsg = '请输入公司简介';
+        }
+        else if (people_number == '') {
+            errorMsg = '请选择公司人数';
+        }
+        else if (enterprise_type == '') {
+            errorMsg = '请选择企业类型';
+        }
+        // else if (welfare.length < 0) {
+        //     errorMsg = '请输入福利';
+        // }
+        
+        // 错误信息
+        if (errorMsg) {
+            layer.alert(errorMsg);
+            return false;
+        }
 
-        console.log(data);
+        var data = {
+            name: name,
+            job_description: job_description,
+            address: address,
+            city_value: city_value,
+            work_experience: work_experience,
+            education_background: education_background,
+            duty_time: duty_time,
+            platform: platform,
+            position: position,
+            job_number: job_number,
+            phone: phone,
+            salary_min: salary_min,
+            salary_max: salary_max,
+            welfare: welfare,
+            company: company,
+            logo: logo,
+            company_introduction: company_introduction,
+            people_number: people_number,
+            enterprise_type: enterprise_type
+        };
+
         $.post('/index/job/save_release', data, function (res) {
             if (res.status != 20000) {
                 layer.msg(res.msg, { icon: 2 });
                 return false;
             }
             layer.msg(res.msg, { icon: 1 });
-            window.location.href = "{:url('job/index')}";
+            window.location.href="{:url('job/index')}"; 
         });
     }
 

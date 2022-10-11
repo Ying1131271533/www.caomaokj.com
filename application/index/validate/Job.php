@@ -11,6 +11,7 @@ class Job extends Validate
         'city_value|发布城市'           => 'require',
         'company|公司名称'              => 'require|max:50',
         'phone|联系方式'                => 'require|mobile',
+        'email|邮箱'                    => 'require|email',
         'company_introduction|公司简介' => 'require',
         'duty_time|到岗时间'            => 'require|number|gt:0',
         'education_background|最低学历' => 'require|number|gt:0',
