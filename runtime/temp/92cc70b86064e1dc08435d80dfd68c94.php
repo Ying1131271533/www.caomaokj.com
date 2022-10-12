@@ -1,4 +1,4 @@
-<?php /*a:9:{s:42:"../application/index/view/index\index.html";i:1652509834;s:42:"../application/index/view/layout\base.html";i:1652509834;s:44:"../application/index/view/layout\header.html";i:1645066486;s:41:"../application/index/view/layout\top.html";i:1662445147;s:42:"../application/index/view/layout\menu.html";i:1665366535;s:50:"../application/index/view/layout\left_article.html";i:1650941597;s:45:"../application/index/view/layout\toolbar.html";i:1624259554;s:44:"../application/index/view/layout\footer.html";i:1652509779;s:46:"../application/index/view/layout\open_img.html";i:1645170607;}*/ ?>
+<?php /*a:9:{s:42:"../application/index/view/index\index.html";i:1652509834;s:42:"../application/index/view/layout\base.html";i:1652509834;s:44:"../application/index/view/layout\header.html";i:1645066486;s:41:"../application/index/view/layout\top.html";i:1665386572;s:42:"../application/index/view/layout\menu.html";i:1665367712;s:50:"../application/index/view/layout\left_article.html";i:1650941597;s:45:"../application/index/view/layout\toolbar.html";i:1624259554;s:44:"../application/index/view/layout\footer.html";i:1652509779;s:46:"../application/index/view/layout\open_img.html";i:1645170607;}*/ ?>
 <!DOCTYPE html>
 <html lang="zh-CN">
 <head>
@@ -356,21 +356,6 @@
                 </span> -->
             </div>
         </li>
-
-        <li class="task-li taskliMenu" style="width:100px;">
-            <div class="header-right-nav-box rightNav-box">
-
-                <span class="header-drop-down-a select-dropdown">
-                    电商职位 <svg class="icon" style="width:14px;height:12px;" aria-hidden="true">
-                        <use xlink:href="#icon-arrowdown"></use>
-                    </svg>
-                    <div class="header-drop-down-list-box" style="width: 105px; display: none;">
-                        <a href="<?php echo url('job/release'); ?>">发布职位</a>
-                        <a href="<?php echo url('job/index'); ?>">电商求职</a>
-                    </div>
-                </span>
-            </div>
-        </li>
         
         <input type="hidden" name="user_type" value="0" class="user_type">
         <input type="hidden" name="user_service_id" value="0" class="user_service_id">
@@ -450,12 +435,12 @@
         </a>
         <?php else: ?>
         <div class="<?php echo $value['url']!=$controller ? htmlentities($value['url']) : 'menu_active'; ?> <?php echo htmlentities($value['class']); ?> menu_haiwaicang_div dropdown dropdown_jzc home-nav-hover">
-            <a href="" class="dropdown-toggle color_333">
-                <div>
+            <a href="javascript:;" class="color_333">
+                <span>
                 <!-- <span style="color:#525252;"> -->
                     <?php echo htmlentities($value['catname']); ?>
                     <img src="/static/akali/images/xia-copy.png" style="width: 15px;margin-left: 5px;margin-top:-3px;">
-                </div>
+                </span>
             </a>
             <ul class="dropdown-menu menu_dropdown_jzc" style="display: none;">
                 <?php foreach($value['child'] as $k => $val): ?>
