@@ -1,11 +1,11 @@
 <?php return array(
     'root' => array(
-        'pretty_version' => 'dev-master',
-        'version' => 'dev-master',
+        'pretty_version' => '1.0.0+no-version-set',
+        'version' => '1.0.0.0',
         'type' => 'project',
         'install_path' => __DIR__ . '/../../',
         'aliases' => array(),
-        'reference' => 'f2decb799e5e54e4210ae93a8d61dfa8ce1fb0d2',
+        'reference' => NULL,
         'name' => 'topthink/think',
         'dev' => true,
     ),
@@ -100,6 +100,33 @@
             'reference' => 'b942d263c641ddb5190929ff840c68f78713e937',
             'dev_requirement' => false,
         ),
+        'paragonie/constant_time_encoding' => array(
+            'pretty_version' => 'v2.6.3',
+            'version' => '2.6.3.0',
+            'type' => 'library',
+            'install_path' => __DIR__ . '/../paragonie/constant_time_encoding',
+            'aliases' => array(),
+            'reference' => '58c3f47f650c94ec05a151692652a868995d2938',
+            'dev_requirement' => false,
+        ),
+        'paragonie/random_compat' => array(
+            'pretty_version' => 'v9.99.100',
+            'version' => '9.99.100.0',
+            'type' => 'library',
+            'install_path' => __DIR__ . '/../paragonie/random_compat',
+            'aliases' => array(),
+            'reference' => '996434e5492cb4c3edcb9168db6fbb1359ef965a',
+            'dev_requirement' => false,
+        ),
+        'php-amqplib/php-amqplib' => array(
+            'pretty_version' => 'v3.1.2',
+            'version' => '3.1.2.0',
+            'type' => 'library',
+            'install_path' => __DIR__ . '/../php-amqplib/php-amqplib',
+            'aliases' => array(),
+            'reference' => 'e8aba06c4e1c467612f2d99304f672f2660e8492',
+            'dev_requirement' => false,
+        ),
         'phpoffice/phpexcel' => array(
             'pretty_version' => '1.8.2',
             'version' => '1.8.2.0',
@@ -116,6 +143,15 @@
             'install_path' => __DIR__ . '/../phpoffice/phpspreadsheet',
             'aliases' => array(),
             'reference' => '3a9e29b4f386a08a151a33578e80ef1747037a48',
+            'dev_requirement' => false,
+        ),
+        'phpseclib/phpseclib' => array(
+            'pretty_version' => '3.0.15',
+            'version' => '3.0.15.0',
+            'type' => 'library',
+            'install_path' => __DIR__ . '/../phpseclib/phpseclib',
+            'aliases' => array(),
+            'reference' => 'c96e250238e88bf1040e9f7715efab1d6bc7f622',
             'dev_requirement' => false,
         ),
         'psr/http-client' => array(
@@ -203,12 +239,12 @@
             'dev_requirement' => false,
         ),
         'topthink/think' => array(
-            'pretty_version' => 'dev-master',
-            'version' => 'dev-master',
+            'pretty_version' => '1.0.0+no-version-set',
+            'version' => '1.0.0.0',
             'type' => 'project',
             'install_path' => __DIR__ . '/../../',
             'aliases' => array(),
-            'reference' => 'f2decb799e5e54e4210ae93a8d61dfa8ce1fb0d2',
+            'reference' => NULL,
             'dev_requirement' => false,
         ),
         'topthink/think-captcha' => array(
@@ -237,6 +273,12 @@
             'aliases' => array(),
             'reference' => '38ba647706e35d6704b5d370c06f8a160b635f88',
             'dev_requirement' => false,
+        ),
+        'videlalvaro/php-amqplib' => array(
+            'dev_requirement' => false,
+            'replaced' => array(
+                0 => 'v3.1.2',
+            ),
         ),
     ),
 );

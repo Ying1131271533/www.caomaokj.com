@@ -24,7 +24,8 @@
         "phpoffice/phpexcel": "^1.8",
         "topthink/think-captcha": "2.0.*",
         "firebase/php-jwt": "^5.4",
-        "phpoffice/phpspreadsheet": "^1.22"
+        "phpoffice/phpspreadsheet": "^1.22",
+        "php-amqplib/php-amqplib": "3.1.2"
     },
     "autoload": {
         "psr-4": {

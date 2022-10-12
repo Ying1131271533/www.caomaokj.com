@@ -13,6 +13,7 @@ class ComposerStaticInitaab9d7824da5c2bafda370beb62e3d43
         '37a3dc5111fe8f707ab4c132ef1dbc62' => __DIR__ . '/..' . '/guzzlehttp/guzzle/src/functions_include.php',
         '0e6d7bf4a5811bfa5cf40c5ccd6fae6a' => __DIR__ . '/..' . '/symfony/polyfill-mbstring/bootstrap.php',
         '2cffec82183ee1cea088009cef9a6fc3' => __DIR__ . '/..' . '/ezyang/htmlpurifier/library/HTMLPurifier.composer.php',
+        'decc78cc4436b1292c6c0d151b19445c' => __DIR__ . '/..' . '/phpseclib/phpseclib/phpseclib/bootstrap.php',
         '1cfd2761b63b0a29ed23657ea394cb2d' => __DIR__ . '/..' . '/topthink/think-captcha/src/helper.php',
     );
 
@@ -22,6 +23,10 @@ class ComposerStaticInitaab9d7824da5c2bafda370beb62e3d43
             'think\\composer\\' => 15,
             'think\\captcha\\' => 14,
             'think\\' => 6,
+        ),
+        'p' => 
+        array (
+            'phpseclib3\\' => 11,
         ),
         'l' => 
         array (
@@ -49,6 +54,8 @@ class ComposerStaticInitaab9d7824da5c2bafda370beb62e3d43
             'Psr\\Http\\Message\\' => 17,
             'Psr\\Http\\Client\\' => 16,
             'PhpOffice\\PhpSpreadsheet\\' => 25,
+            'PhpAmqpLib\\' => 11,
+            'ParagonIE\\ConstantTime\\' => 23,
         ),
         'M' => 
         array (
@@ -83,6 +90,10 @@ class ComposerStaticInitaab9d7824da5c2bafda370beb62e3d43
         'think\\' => 
         array (
             0 => __DIR__ . '/..' . '/topthink/think-image/src',
+        ),
+        'phpseclib3\\' => 
+        array (
+            0 => __DIR__ . '/..' . '/phpseclib/phpseclib/phpseclib',
         ),
         'liliuwei\\social\\' => 
         array (
@@ -120,6 +131,14 @@ class ComposerStaticInitaab9d7824da5c2bafda370beb62e3d43
         'PhpOffice\\PhpSpreadsheet\\' => 
         array (
             0 => __DIR__ . '/..' . '/phpoffice/phpspreadsheet/src/PhpSpreadsheet',
+        ),
+        'PhpAmqpLib\\' => 
+        array (
+            0 => __DIR__ . '/..' . '/php-amqplib/php-amqplib/PhpAmqpLib',
+        ),
+        'ParagonIE\\ConstantTime\\' => 
+        array (
+            0 => __DIR__ . '/..' . '/paragonie/constant_time_encoding/src',
         ),
         'MyCLabs\\Enum\\' => 
         array (
