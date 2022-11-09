@@ -3,6 +3,8 @@ namespace library;
 
 /**
  * @author Tech
+ * 
+ * 不能使用繁体字！！！
  */
 
 /*
