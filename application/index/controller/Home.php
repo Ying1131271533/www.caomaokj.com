@@ -31,7 +31,7 @@ class Home extends Base
         $article = A::where(['status' => 1])
         // $article = A::where(['ispos' => 1, 'status' => 1])
             ->field('id, title, thumb')
-            ->order(['createtime' => 'desc'])
+            ->order('id', 'desc')
             ->limit(4)
             ->select();
 
@@ -138,7 +138,7 @@ class Home extends Base
         empty($articleKeyword) and akali('文章缺少关键词');
         $rightArticle = $articleKeyword->articles()
             ->field('id, title, createtime, thumb, catid')
-            ->order('id', 'asc')
+            ->order('id', 'desc')
             ->limit(3)
             ->select();
 
