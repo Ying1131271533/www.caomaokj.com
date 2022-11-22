@@ -16,19 +16,19 @@
             <dl class="wz_info clearfix">
                 <dt>
                     <span class="labelBg{$value.catid}  categoryLabel">{:getCateName($value.catid)}</span>
-                    <a href="{:url('home/article', ['id' => $value.id])}" title="{$value.title}" data-ac="{:getCateName($value.catid)}">
+                    <a href="{:url('home/article', ['id' => $value.id])}" target="_blank" title="{$value.title}" data-ac="{:getCateName($value.catid)}">
                         <img class="lazy" data-original="{$value.thumb}" alt="{$value.title}" style="display: inline;">
                     </a>
                 </dt>
                 <dd>
                     <h4>
                         {eq name="$value.hot_spot" value="1"}<span class="hot_title" style="margin-right: 5px;">热门</span>{/eq}
-                        <a href="{:url('home/article', ['id' => $value.id])}" title="{$value.title}">{$value.title}</a>
+                        <a href="{:url('home/article', ['id' => $value.id])}" target="_blank" title="{$value.title}">{$value.title}</a>
                     </h4>
                     <div class="bot_tips">
                         <span class="color-aaa font12">
                             <!-- 作者 -->
-                            <a href="{:url('home/article', ['id' => $value.id])}" class="pr15 a-small">草帽跨境</a>
+                            <a href="{:url('home/article', ['id' => $value.id])}" target="_blank" class="pr15 a-small">草帽跨境</a>
                             <!-- <a href="{:url('user/detail', ['id' => 124])}" class="pr15 a-small">草帽跨境</a> -->
                             <span class="fr pr10">
                             </span>
