@@ -91,7 +91,7 @@ function getArticle(type){
             		if(val.al_thumb != ''){
 						html += '<dt>';
 						html += '<span class="labelBg'+val.ac_id+' categoryLabel" >'+categoryLabels[val.ac_id]+'</span>';
-                		html += '<a title="'+ val.al_title +'" href="' + url + '">';
+                		html += '<a target="_blank" title="'+ val.al_title +'" href="' + url + '">';
                 		html += '<img class="lazy" src="'+ val.al_thumb +'" style="display: inline;">';
                 		html += '</a>';
                 		html += '</dt>';
@@ -101,11 +101,11 @@ function getArticle(type){
                     if(val.al_is_hot_article && val.al_is_hot_article == 1){
                         html += '<span class="hot_title" style="margin-right: 5px;">热门</span>';
                     }
-            		html += '<a href="' + url + '" title="'+ val.al_title +'">' + val.al_title + '</a>';
+            		html += '<a target="_blank" href="' + url + '" title="'+ val.al_title +'">' + val.al_title + '</a>';
             		html += '</h4>';
                     html += '<div class="bot_tips">';
                     html += '<span class="color-a font12">';
-                    html += '<a  href="/index/article/'+ val.al_id +'" class="pr15 a-small">'+ val.add_name +'</a>';
+                    html += '<a target="_blank" href="/index/article/'+ val.al_id +'" class="pr15 a-small">'+ val.add_name +'</a>';
                     html += '<span class="fr pr10">';
                     if(val.al_type == 1){
                         html += '<span>活动</span>';
@@ -114,7 +114,7 @@ function getArticle(type){
                     html += '</span>';
 
                     html += '</div>';
-            		html += '<a href="' + url + '" title="'+ val.al_title +'"><p>' + val.al_desc + '</p></a>';
+            		html += '<a target="_blank" href="' + url + '" title="'+ val.al_title +'"><p>' + val.al_desc + '</p></a>';
 					html += '<div class="tags_div_jzc tags_and_time">';
 					html += '<div class="tagItems">';
 
