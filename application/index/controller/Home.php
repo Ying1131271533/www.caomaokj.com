@@ -1,7 +1,7 @@
 <?php
 namespace app\index\controller;
 
-use app\common\model\Activity as Ac;
+use app\common\model\Activity as ActivityModel;
 use app\common\model\Article as A;
 use app\common\model\Category;
 use app\common\model\College as CollegeModel;
@@ -268,14 +268,14 @@ class Home extends Base
                 $count += $articleCount;
 
                 /**********************   活动   **********************/
-                $activityList = Ac::field('id, title, thumb, address, endtime, discount')
+                $activityList = ActivityModel::field('id, title, thumb, address, endtime, discount')
                     ->where($where)
                     ->order($order)
                     ->limit($limit)
                     ->select();
 
                 // 活动条数
-                $activityCount = Ac::where($where)->count();
+                $activityCount = ActivityModel::where($where)->count();
                 $count += $activityCount;
 
                 /**********************   学院   **********************/
@@ -307,7 +307,7 @@ class Home extends Base
             case 2:
 
                 /**********************   活动   **********************/
-                $activityList = Ac::field('id, title, thumb, address, endtime, discount')
+                $activityList = ActivityModel::field('id, title, thumb, address, endtime, discount')
                     ->where($where)
                     ->order($order)
                     ->page($page)
@@ -315,7 +315,7 @@ class Home extends Base
                     ->select();
 
                 /**********************   活动条数   **********************/
-                $activityCount = Ac::where($where)->count();
+                $activityCount = ActivityModel::where($where)->count();
                 $count += $activityCount;
 
                 break;
@@ -337,12 +337,12 @@ class Home extends Base
         }
 
         /**********************   热门活动   **********************/
-        $activity = Ac::where(['status' => 1, 'popular' => 1])
+        $activity = ActivityModel::where(['status' => 1, 'popular' => 1])
             ->where('endtime', '>', time() + 3600 * 24 * 30)
             ->field('id, title, thumb')
             ->order('listorder', 'desc')
             ->find();
-
+        
         /**********************   推荐培训   **********************/
         $college = CollegeModel::where(['status' => 1, 'recommend' => 1])
             ->field('id, title, thumb')

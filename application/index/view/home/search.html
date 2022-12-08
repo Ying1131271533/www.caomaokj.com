@@ -621,6 +621,7 @@
                             </h4>
                             <div class="activityContainer">
                                 <ul class="activityItems" id="activityItems">
+                                    {notempty name="$activity"}
                                     <li class="activityItem">
                                         <a target="_blank" href="{:url('activity/detail', ['id' => $activity.id])}">
                                             <img class="activityImg" src="{$activity.thumb}">
@@ -628,6 +629,7 @@
                                             <span>免费</span>
                                         </a>
                                     </li>
+                                    {/notempty}
                                 </ul>
                             </div>
                         </div>
