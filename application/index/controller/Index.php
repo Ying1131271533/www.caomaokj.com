@@ -5,8 +5,6 @@ use app\common\model\Activity;
 use app\common\model\Article;
 use app\common\model\Category;
 use app\common\model\College;
-use app\common\model\Continent;
-use app\common\model\Keyword;
 use app\common\model\Links;
 use app\common\model\Logistics;
 use app\common\model\Platform;
