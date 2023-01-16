@@ -12,8 +12,6 @@ return [
     'imageH'   => 50,
     // 验证码图片宽度，设置为0为自动计算
     'imageW'   => 120,
-    // 关闭验证码杂点
-    'useNoise' => false,
     // 是否画混淆曲线
     'useCurve' => false,
 ];
