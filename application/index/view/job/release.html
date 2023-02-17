@@ -50,12 +50,12 @@
                 <span class="content-field">职位描述：</span>
             </span>
             <div class="content-right">
-                <textarea id="demo" maxlength="40000" class="input-commom input-value content-textarea" title="职位描述"
-                    name="job_description" style="resize: none; min-height: 157px; height: 157px;color:#444746">请输入岗位职责、任职要求等，建议使用短句并分条列出，示例如下<br>
-                岗位职责：<br>
-                    1、 ...<br>
-                    2、 ... <br>
-                </textarea>
+                <script id="container" name="content" type="text/plain">
+                    请输入岗位职责、任职要求等，建议使用短句并分条列出，示例如下<br>
+                    岗位职责：<br>
+                        1、 ...<br>
+                        2、 ... <br>
+                    </script>
             </div>
 
             <script>
@@ -493,5 +493,20 @@
     }
 
 </script>
-
+<script type="text/javascript" src="__UJS__/ueditor/ueditor.config.js"></script>
+<script type="text/javascript" src="__UJS__/ueditor/ueditor.all.min.js"></script>
+<script type="text/javascript" src="__UJS__/ueditor/lang/zh-cn/zh-cn.js"></script>
+<script type="text/javascript">
+    // 富文本
+    // layui.use('layedit', function(){
+    //     var layedit = layui.layedit;
+    //     layedit.build('demo'); //建立编辑器
+    // });
+    var ue = UE.getEditor('container', {
+        initialFrameWidth : '100%',
+        initialFrameHeight : 200,
+        allowDivTransToP:false,
+        autoClearEmptyNode:false
+    });
+</script>
 {/block}

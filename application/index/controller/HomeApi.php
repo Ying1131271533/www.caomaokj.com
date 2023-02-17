@@ -114,7 +114,7 @@ class HomeApi extends BaseApi
         }
 
         // 评论长度
-        if(count($params['comment']) > 255){
+        if(strlen($params['comment']) > 255){
             return $this->create(400, '评论长度不能超过255个字符');
         }
 
