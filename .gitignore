@@ -1,6 +1,6 @@
 # 禁止上传的文件
-/.idea
-/.vscode
+#/.idea
+#/.vscode
 *.log
 #.env
 /runtime
